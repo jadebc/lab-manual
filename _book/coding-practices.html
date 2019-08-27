@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Coding practices | Data Science Best Practices</title>
+  <title>Chapter 5 Coding practices | Lab Manual</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Coding practices | Data Science Best Practices" />
+  <meta property="og:title" content="Chapter 5 Coding practices | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Coding practices | Data Science Best Practices" />
+  <meta name="twitter:title" content="Chapter 5 Coding practices | Lab Manual" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -63,7 +63,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Lab manual</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our lab!</a></li>
@@ -109,12 +109,12 @@
 <li class="chapter" data-level="6.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>6.2</b> Line breaks</a></li>
 <li class="chapter" data-level="6.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>6.3</b> Automated Tools for Style and Project Workflow</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>6.3.1</b> Styling</a></li>
-<li class="chapter" data-level="6.3.2" data-path="coding-style.html"><a href="coding-style.html#styling-1"><i class="fa fa-check"></i><b>6.3.2</b> Styling</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>7</b> Working with Big Data</a><ul>
 <li class="chapter" data-level="7.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>7.1</b> The data.table package</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.2</b> Optimal RStudio set up</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>7.2</b> Using downsampled data</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.3</b> Optimal RStudio set up</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
 <li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.1</b> How often should I commit?</a></li>
@@ -126,6 +126,7 @@
 <li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.3</b> Basics</a></li>
 <li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-scripts"><i class="fa fa-check"></i><b>9.4</b> Running scripts</a></li>
 <li class="chapter" data-level="9.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>9.5</b> Checking tasks and killing jobs</a></li>
+<li class="chapter" data-level="9.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>9.6</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>10</b> Resources</a><ul>
 <li class="chapter" data-level="10.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>10.1</b> Resources for R</a></li>
@@ -144,7 +145,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Best Practices</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lab Manual</a>
           </h1>
         </div>
 
@@ -254,7 +255,7 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </div>
 <div id="tidyverse" class="section level2">
 <h2><span class="header-section-number">5.7</span> Tidyverse</h2>
-<p>Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse’s performance-optimized competitor). Tidyverse is quickly becoming <a href="https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/">the gold standard</a> in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there’s a significant reason not to (i.e. big data pipelines that would benefit from Data.Table’s performance optimizations).</p>
+<p>Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse’s performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming <a href="https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/">the gold standard</a> in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there’s a significant reason not to (i.e. big data pipelines that would benefit from Data.Table’s performance optimizations).</p>
 <p>The package author has published a <a href="https://r4ds.had.co.nz/">great textbook on R for Data Science</a>, which leans heavily on many Tidyverse packages and may be worth checking out.</p>
 <p>The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:</p>
 <table>

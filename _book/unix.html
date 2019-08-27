@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Unix commands | Data Science Best Practices</title>
+  <title>Chapter 9 Unix commands | Lab Manual</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Unix commands | Data Science Best Practices" />
+  <meta property="og:title" content="Chapter 9 Unix commands | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Unix commands | Data Science Best Practices" />
+  <meta name="twitter:title" content="Chapter 9 Unix commands | Lab Manual" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -63,7 +63,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Lab manual</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our lab!</a></li>
@@ -126,6 +126,7 @@
 <li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.3</b> Basics</a></li>
 <li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-scripts"><i class="fa fa-check"></i><b>9.4</b> Running scripts</a></li>
 <li class="chapter" data-level="9.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>9.5</b> Checking tasks and killing jobs</a></li>
+<li class="chapter" data-level="9.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>9.6</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>10</b> Resources</a><ul>
 <li class="chapter" data-level="10.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>10.1</b> Resources for R</a></li>
@@ -144,7 +145,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Best Practices</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lab Manual</a>
           </h1>
         </div>
 
@@ -187,9 +188,12 @@
 <div id="checking-tasks-and-killing-jobs" class="section level2">
 <h2><span class="header-section-number">9.5</span> Checking tasks and killing jobs</h2>
 <p><strong>Stephanie please add your table then delete this</strong></p>
-<p>For big data workflows, the concept of “backgrounding” a Bash script allows you to start a “job” (i.e. run the script) and leave it overnight to run. At the top level, a bash script (<code>0-run-project.sh</code>) that simply calls the directory-level bash scripts (i.e. <code>0-prep-data.sh</code>, <code>0-run-analysis.sh</code>, <code>0-run-figures.sh</code>, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.</p>
+</div>
+<div id="running-big-jobs" class="section level2">
+<h2><span class="header-section-number">9.6</span> Running big jobs</h2>
+<p>For big data workflows, the concept of “backgrounding” a bash script allows you to start a “job” (i.e. run the script) and leave it overnight to run. At the top level, a bash script (<code>0-run-project.sh</code>) that simply calls the directory-level bash scripts (i.e. <code>0-prep-data.sh</code>, <code>0-run-analysis.sh</code>, <code>0-run-figures.sh</code>, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.</p>
 <ul>
-<li><p><strong>Running Bash Scripts in Background</strong>: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like <code>./run-project.sh</code>. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type <code>./run-project.sh &amp;; disown</code>. You can see the job running (and CPU utilization) with the command <code>top</code> and check your memory with <code>free -h</code>.</p></li>
+<li><p><strong>Running Bash Scripts in Background</strong>: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like <code>./run-project.sh</code>. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type <code>./run-project.sh &amp;; disown</code>. You can see the job running (and CPU utilization) with the command <code>top</code> or <code>ps -v</code> and check your memory with <code>free -h</code>.</p></li>
 <li><p><strong>Deleting Previously Computed Results</strong>: One helpful lesson we’ve learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).</p></li>
 <li><p><strong>Ensuring Things Ran Correctly</strong>: You should check the <code>.Rout</code> files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called <code>runFileSaveLogs</code>, and is used by the example bash scripts to… run files and save the generated logs. It is an awesome utility and one I definitely recommend using. For help and documentation, you can use the command <code>./runFileSaveLogs -h</code>.</p></li>
 </ul>

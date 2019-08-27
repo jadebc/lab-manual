@@ -1,5 +1,5 @@
 --- 
-title: "Data Science Best Practices"
+title: "Lab Manual"
 author: "Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -14,5 +14,5 @@ description: "This is a minimal example of using the bookdown package to write a
 
 # Welcome to our lab!
 
-We are a team of epidemiologists and biostatisticians 
+We are a team of epidemiologists and biostatisticians engaged in global health research. This lab manual covers our communication strategy and code of conduct and goes into detail about best practices for data science. It is a living document that is updated regularly. 
 
