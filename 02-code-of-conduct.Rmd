@@ -1,17 +1,32 @@
 # Code of conduct
 
+## Lab culture
+
+It goes without saying that we strive to work in an environment that is collaborative, supportive, open, and free from discrimination and harassment, per University policies. 
+
+We encourage students / staff of all experience levels to respectfully share their honest opinions and ideas on any topic. Our group has thrived upon such respectful honest input from team members over the years, and this document is a product of years of student and staff input (and even debate) that has gradually improved our productivity and overall quality of our work. 
+
 ## Protecting human subjects
 
-Confidentiality
-IRB
-CITI training certificates
+All lab members must complete [CITI Human Subjects Biomedical Group 1](https://cphs.berkeley.edu/quickguideCITItraining.pdf) training and share their certificate with Jade. She will add team members to relevant Institutional Review Board protocols prior to their start date to ensure they have permission to work with identifiable datasets. 
 
-## Scientific Integrity
+One of the most relevant aspects of protecting human subjects in our work is maintaining confidentiality. For students supporting our data science efforts, in practice this means: 
 
-Research (mis)conduct
-Reproducible research
-Authorship
+- If you are using a virtual computer (e.g., Bluevelvet, AWS, GHAP), never save the data in that system to your personal computer or any other computer without prior permission. 
+- Do not share data with anyone without permission, including to other members of the group, who might not be on the same IRB protocol as you (check with Jade first).
 
-## Trello
+Remember, data that looks like it does not contain identifiers to you might still be classified as data that requires special protection by our IRB or under HIPAA, so always proceed with caution and ask for help if you have any concerns about how to maintain study participant confidentiality. 
 
-## Google calendar
+## Authorship
+
+We adhere to the [ICMJE Definition of authorship](http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html) and are happy for team members who meet the definition of authorship to be included as co-authors on scientific manuscripts. 
+
+## Logging hours
+
+Please use [Caltime](caltime.berkeley.edu) to log your hours. If you have a non-exempt appointment (this is the default), you need to punch in when you start working and punch out when you stop working. The particular hours /days when you work are not important; rather, we monitor your total hours in a 2-week period. If you have trouble remembering to punch in/out, please devise a system that works for you (i.e., set timers / reminders). Please avoid missing punches, and if you do, please send Jade a Slack message with the time and date you intended to punch out. 
+
+If you have an exempt appointment (this is the case if you also have a teaching appointment), you do not need to punch in / out. You will be expected to work, on average, for a certain number of hours per week. 
+
+You may log hours for data science team meetings. You may not log hours for Colford-Hubbard Research Group meetings or commute time, if applicable. 
+
+
