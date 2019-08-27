@@ -14,10 +14,10 @@ Just as your data "flows" through your project, data should flow naturally throu
 
 Each of these sections should be "chunked together" using comments. See [this file](https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R) for a good example of how to cleanly organize a file in a way that follows this "flow" and functionally separate pieces of code that are doing different things.
 
-## Documenting your work
+## Documenting your code
 
 ### File headers
-1. **File Headers** - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
+Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
   ```
   ################################################################################
   # @Organization - Example Organization
@@ -29,125 +29,87 @@ Each of these sections should be "chunked together" using comments. See [this fi
     - **Note**: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
 
 ### Comments in the body of your script
-2. **Single-Line Comments** - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See [this file](https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R) for an example of how to comment your code and notice that comments are always in the form of:
+Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See [this file](https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R) for an example of how to comment your code and notice that comments are always in the form of:
 
   ```# This is a comment -- first letter is capitalized and spaced away from the pound sign```
 
-3. **Multi-Line Comments** - Occasionally, multi-line comments are necessary. Don't add line breaks manually to a single-line comment for the purpose of making it "fit" on the screen. Instead, in RStudio > Tools > Global Options > Code > “Soft-wrap R source files” to have lines wrap around. Format your multi-line comments like the file header from above.
-
 ### Function documentation
-4. **Function Documentation** - Functions _need_ documentation. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a `string` into an argument that is meant to be a `data.table`, or a `list` into an argument meant for a `tibble`. It is the responsibility of a function's author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by [JavaDocs](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format) and R's [Plumber API docs](https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/)):
-  ```
-  calculate_KSSS = function(centroids, statistical_input, time_column = "schoolyr", location_column = "school_dist", value_column = "absences_ill", population_column = "student_days", k_nearest_neighbors = 5, nsim = 9999, heat_map = TRUE, heat_map_title = NULL, heat_map_caption = NULL) {
-    # @Description: Calculates the population-based Kulldorff Spatial Scan Statistic
-    # @Arg: centroids: an SPDF from which the centroids of each school catchment area can be drawn, along with a uniquely identifying location_column (such as an ID or School-District combo)
-    # @Arg: statistical_input: a tibble of at least 4 columns containing a location, time, value, and population size, ordered by (location_column, time_column)
-    # @Arg: time_column: an integer or string column on which values can be clustered temporally
-    # @Arg: location_column: an integer or string column on which values can be clustered spatially (must be a unique key)
-    # @Arg: value_column: an integer or string column containing the count data for the given space-time
-    # @Arg: population_column: an integer column containing the size of the population for the given space-time
-    # @Arg: heat_map: a boolean variable dictating whether to plot a heat_map based on how likely a school catchment is to be part of a cluster
-    # @Arg: heat_map_title: a string used as the title for a heat_map if one is drawn
-    # @Arg: heat_map_caption: a string used as the caption for a heat_map if one is drawn
-    # @Output: plots a heatmap local clustering and prints the total number of significant clusters if heat_map = TRUE
-    # @Return: a list containing the results of running KSSS and a tibble of all clusters
+Every function you write must include a header to document its purpose, inputs, and outputs.  For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a `string` into an argument that is meant to be a `data.table`, or a `list` into an argument meant for a `tibble`. It is the responsibility of a function's author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by [JavaDocs](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format) and R's [Plumber API docs](https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/)):
+```
+##############################################
+##############################################
+# Documentation: calc_fluseas_mean
+# Usage: calc_fluseas_mean(data, yname)
+# Description: Make a dataframe with rows for flu season and site
+# and the number of patients with an outcome, the total patients,
+# and the percent of patients with the outcome
 
-    ...
-    Some code here
-    ...
-  }
-  ```
-  Even if you have no idea what a `KSSS` is, you have some way of understanding what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that the function is defined in one line at the top (which will soft-wrap around) and all optional arguments (i.e. ones with pre-specified defaults) follow arguments that require user input.
-    - **Note**: As someone trying to call a function, it is possible to access a function's documentation (and internal code) by `CMD-Left-Click`ing the function's name in RStudio
-    - **Note**: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add "type-checking" to your function with the `assertthat::assert_that()` function. You can, for example, `assert_that(is.data.frame(statistical_input))`, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e. that `time_column`, `location_column`, `value_column`, and `population_column` all exist within the `statistical_input` tibble).
+# Args/Options:
+# data: a data frame with variables flu_season, site, studyID, and yname
+# yname: a string for the outcome name
+# silent: a boolean specifying whether the function shouldn't output anything to the console (DEFAULT: TRUE)
+
+# Returns: the dataframe as described above
+# Output: prints the data frame described above if silent is not True
+
+calc_fluseas_mean = function(data, yname, silent = TRUE) {
+ ### function code here 
+
+}
+```
+The header tells you what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that all optional arguments (i.e. ones with pre-specified defaults) follow arguments that require user input.
+
+- **Note**: As someone trying to call a function, it is possible to access a function's documentation (and internal code) by `CMD-Left-Click`ing the function's name in RStudio
+
+- **Note**: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add "type-checking" to your function with the `assertthat::assert_that()` function. You can, for example, `assert_that(is.data.frame(statistical_input))`, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e. that `time_column`, `location_column`, `value_column`, and `population_column` all exist within the `statistical_input` tibble).
 
 ## Object naming
 
-1. **Object Names** - Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable `vaxcov_1718`, try naming it `vaccination_coverage_2017_18`. Similarly, `flu_res` could be named `absentee_flu_residuals`, making your code more readable and explicit.
-    - For more help, check out [Be Expressive: How to Give Your Variables Better Names](https://spin.atomicobject.com/2017/11/01/good-variable-names/)
+Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable `vaxcov_1718`, try naming it `vaccination_coverage_2017_18`. Similarly, `flu_res` could be named `absentee_flu_residuals`, making your code more readable and explicit.
 
-2. **Snake_Case** - Base R allows `.` in variable names and functions (such as `read.csv()`), but this goes against best practices for variable naming in many other coding languages. For consistencies sake, across the two main data science languages, `snake_case` has been adopted and modern packages and functions typically use it (i.e. `readr::read_csv()`). As a very general rule of thumb, if a package you're using doesn't use `snake_case`, there may be an updated version or more modern package that _does_, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
-    - **Note**: you may also see `camelCase` throughout the R code you come across. This is _okay_ but not ideal -- try to stay consistent across all your code with `snake_case`.
-    - **Note**: again, its also worth noting there's nothing inherently wrong with using `.` in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.
+- For more help, check out [Be Expressive: How to Give Your Variables Better Names](https://spin.atomicobject.com/2017/11/01/good-variable-names/)
+
+We recommend you use **Snake_Case**.  - Base R allows `.` in variable names and functions (such as `read.csv()`), but this goes against best practices for variable naming in many other coding languages. For consistency's sake, `snake_case` has been adopted across languages, and modern packages and functions typically use it (i.e. `readr::read_csv()`). As a very general rule of thumb, if a package you're using doesn't use `snake_case`, there may be an updated version or more modern package that _does_, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
+
+- **Note**: you may also see `camelCase` throughout the R code you come across. This is _okay_ but not ideal -- try to stay consistent across all your code with `snake_case`.
+
+- **Note**: again, its also worth noting there's nothing inherently wrong with using `.` in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.
 
 ## Function calls
-In a function call, use "named arguments" and separate arguments by to make your code more readable. Here's an example of what a function call for `calculate_KSSS` (documented above) might look like without named arguments or any separation:
-  ```
-  input_1_KSSS_ill = calculate_KSSS(all_study_school_shapes, input_1, 5, "Local Clustering of Illness-Specific\n Absence Rates in all years during Flu Season")
-  ```
-  And here it is again using the best practices we've outlined:
-  ```
-  input_1_KSSS_ill = calculate_KSSS(
-    centroids           = all_study_school_shapes,
-    statistical_input   = input_1,
-    k_nearest_neighbors = 5,
-    heat_map_title      = "Local Clustering of Illness-Specific\n Absence Rates in all years during Flu Season"
-  )
-  ```
-  I'll let you be the judge of which is more coherent.
+In a function call, use "named arguments" and separate arguments by to make your code more readable. 
 
-## Automated Tools for Style and Project Workflow
+Here's an example of what not to do when calling the function a function `calc_fluseas_mean` (defined above):
+```
+mean_Y = calc_fluseas_mean(flu_data, "maari_yn", FALSE)
+```
 
-- The `here` package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path `/home/oski/Some-R-Project`. My collaborator might clone the repository and work with it at some other path, such as  `/home/bear/R-Code/Some-R-Project`. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the `here` package comes in and this a [great vignette describing it](https://github.com/jennybc/here_here).
-
-### Styling
-1. **Code Autoformatting** - RStudio includes a fantastic built-in utility (keyboard shortcut: `CMD-Shift-A`) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a "first pass" on some code of yours that _doesn't_ follow many of these best practices!
-
-2. **Assignment Aligner** - A [cool R package](https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/) allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: `CMD-Shift-Z`). Here is an example of how assignment aligning can dramatically improve code readability:
-  ```
-  # Before
-  OUSD_not_found_aliases = list(
-    "Brookfield Village Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Brookfield"),
-    "Carl Munck Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Munck"),
-    "Community United Elementary School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Community United"),
-    "East Oakland PRIDE Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),
-    "EnCompass Academy" = str_subset(string = OUSD_school_shapes$schnam, pattern = "EnCompass"),
-    "Global Family School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Global"),
-    "International Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "International Community"),
-    "Madison Park Lower Campus" = "Madison Park Academy TK-5",
-    "Manzanita Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Manzanita Community"),
-    "Martin Luther King Jr Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "King"),
-    "PLACE @ Prescott" = "Preparatory Literary Academy of Cultural Excellence",
-    "RISE Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Rise Community")
+And here it is again using the best practices we've outlined:
+```
+mean_Y = calc_fluseas_mean(
+  data = flu_data, 
+  yname = "maari_yn",
+  silent = FALSE
 )
-  ```
-  ```
-  # After
-  OUSD_not_found_aliases = list(
-    "Brookfield Village Elementary"      = str_subset(string = OUSD_school_shapes$schnam, pattern = "Brookfield"),
-    "Carl Munck Elementary"              = str_subset(string = OUSD_school_shapes$schnam, pattern = "Munck"),
-    "Community United Elementary School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Community United"),
-    "East Oakland PRIDE Elementary"      = str_subset(string = OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),
-    "EnCompass Academy"                  = str_subset(string = OUSD_school_shapes$schnam, pattern = "EnCompass"),
-    "Global Family School"               = str_subset(string = OUSD_school_shapes$schnam, pattern = "Global"),
-    "International Community School"     = str_subset(string = OUSD_school_shapes$schnam, pattern = "International Community"),
-    "Madison Park Lower Campus"          = "Madison Park Academy TK-5",
-    "Manzanita Community School"         = str_subset(string = OUSD_school_shapes$schnam, pattern = "Manzanita Community"),
-    "Martin Luther King Jr Elementary"   = str_subset(string = OUSD_school_shapes$schnam, pattern = "King"),
-    "PLACE @ Prescott"                   = "Preparatory Literary Academy of Cultural Excellence",
-    "RISE Community School"              = str_subset(string = OUSD_school_shapes$schnam, pattern = "Rise Community")
-)
-  ```
+```
 
-3. **StyleR** - Another [cool R package from the Tidyverse](https://www.tidyverse.org/articles/2017/12/styler-1.0.0/) that can be powerful and used as a first pass on entire projects that need refactoring. The most useful function of the package is the `style_dir` function, which will style all files within a given directory. See the [function's documentation](https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir) and the vignette linked above for more details.
-    - **Note**: The default Tidyverse styler is subtly different from some of the things we've advocated for in this document. Most notably we differ with regards to the assignment operator (`<-` vs `=`) and number of spaces before/after "tokens" (i.e. Assignment Aligner add spaces before `=` signs to align them properly). For this reason, we'd recommend the following: `style_dir(path = ..., scope = "line_breaks", strict = FALSE)`. You can also customize StyleR [even more](http://styler.r-lib.org/articles/customizing_styler.html) if you're really hardcore.
-    - **Note**: As is mentioned in the package vignette linked above, StyleR modifies things _in-place_, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects _with version control_, but if you don't have backups or a good way to revert back to the intial code, I wouldn't recommend going this route.
+## The here package
+
+The `here` package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path `/home/oski/Some-R-Project`. My collaborator might clone the repository and work with it at some other path, such as  `/home/bear/R-Code/Some-R-Project`. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the `here` package comes in and this a [great vignette describing it](https://github.com/jennybc/here_here).
+
     
-    ## Outdated Base R Practices to Avoid
-
 ## Reading/Saving Data
-1. **`.RDS` vs `.RData` Files** - One of the most common ways to load and save data in Base R is with the `load()` and `save()`  functions to serialize multiple objects into a file. The biggest problems with this practice include an inability to control the names of things getting loaded in, the inherent confusion this creates in understanding older code, and the inability to load individual elements of a saved file. For this, we recommend using the RDS format to save R objects.
-    - **Note**: `saveRDS` and `loadRDS` are Base R functions to do this but we recommend using `save_rds` and `load_rds` from the `readr` package for the sake of consistency and performance improvements.
-    - **Note**: when you use `load_rds` you must assign the thing being loaded to a variable (i.e. `some_descriptive_variable_name = load_rds(...)`). Then, use the variable as you would. This makes your code less fragile and it doesn't need to rely on an `.RData` file to load in a particular name for the code to run properly.
-    - **Note**: if you have many related R objects you would have otherwise saved all together using the `save` function, the functional equivalent with `RDS` would be to create a (named) list containing each of these objects, and saving it.
 
-2. **CSVs** - Once again, the `readr` package as part of the Tidvyerse is great, with a much faster `read_csv()` than Base R's `read.csv()`. For massive CSVs (> 5 GB), you'll find `data.table::fread()` to be the fastest CSV reader in any data science language out there. For writing CSVs, `readr::write_csv()` and `data.table::fwrite()` outclass Base R's `write.csv()` by a significant margin as well.
+### `.RDS` vs `.RData` Files
+One of the most common ways to load and save data in Base R is with the `load()` and `save()`  functions to serialize multiple objects in a single `.RData` file. The biggest problems with this practice include an inability to control the names of things getting loaded in, the inherent confusion this creates in understanding older code, and the inability to load individual elements of a saved file. For this, we recommend using the RDS format to save R objects.
 
-3. **Feather** - If you're using both R and Python, you may wish to check out the [Feather package](https://www.rdocumentation.org/packages/feather/versions/0.3.3) for exchanging data between the two languages [extremely quickly](https://blog.rstudio.com/2016/03/29/feather/).
+- **Note**: if you have many related R objects you would have otherwise saved all together using the `save` function, the functional equivalent with `RDS` would be to create a (named) list containing each of these objects, and saving it.
+
+### CSVs
+Once again, the `readr` package as part of the Tidvyerse is great, with a much faster `read_csv()` than Base R's `read.csv()`. For massive CSVs (> 5 GB), you'll find `data.table::fread()` to be the fastest CSV reader in any data science language out there. For writing CSVs, `readr::write_csv()` and `data.table::fwrite()` outclass Base R's `write.csv()` by a significant margin as well.
 
 ## Tidyverse
 
-Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). Tidyverse is quickly becoming [the gold standard](https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/) in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e. big data pipelines that would benefit from Data.Table's performance optimizations).
+Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming [the gold standard](https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/) in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e. big data pipelines that would benefit from Data.Table's performance optimizations).
 
 The package author has published a [great textbook on R for Data Science](https://r4ds.had.co.nz/), which leans heavily on many Tidyverse packages and may be worth checking out.
 
@@ -188,3 +150,7 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
 - [Data Frame Columns as Arguments to Dplyr Functions](https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/) (blog)
 - [Standard Evaluation for *_join](https://stackoverflow.com/questions/28125816/r-standard-evaluation-for-join-dplyr) (stackoverflow)
 - [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html) (package vignette)
+
+## Coding with R and Python
+
+If you're using both R and Python, you may wish to check out the [Feather package](https://www.rdocumentation.org/packages/feather/versions/0.3.3) for exchanging data between the two languages [extremely quickly](https://blog.rstudio.com/2016/03/29/feather/).

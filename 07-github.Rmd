@@ -9,4 +9,6 @@ by Stephanie Djajadi and Nolan Pokpongkiat
 
 ## What should be pushed to github?
 
-Never push .Rout files!
+Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped. 
+
+There is a standardized `.gitignore` for `R` which you [can download](https://github.com/github/gitignore/blob/master/R.gitignore) and add to your project. This ensures you're not committing log files or things that would otherwise best be left ignored to GitHub. This is a [great discussion of project-oriented workflows](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/), extolling the virtues of a self-contained, portable projects, for your reference.
