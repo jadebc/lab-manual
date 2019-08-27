@@ -1,0 +1,32 @@
+# Unix commands
+
+by Stephanie Djajadi
+
+## Basics
+
+On the computer, there is a desktop with two folders, folder1 and folder2, and a file called file1. Inside folder1, we have a file called file2. Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
+
+**Stephanie please add your figure then delete this**
+
+## Syntax for both Mac/Windows
+When typing in directories or file names, quotes are necessary if the name includes spaces.
+
+**Stephanie please add your table and figure then delete this**
+
+## Basics
+
+**Stephanie please add your table then delete this**
+
+## Running scripts
+**Stephanie please reformat below**
+`Rscript file.R`
+`R CMD BATCH file.R`	# output will be in a new file called file.Rout
+`cat file.Rout` 		# check output
+http://datacornering.com/how-to-run-r-scripts-from-the-windows-command-line-cmd/
+https://happygitwithr.com/shell.html
+
+
+## Checking tasks and killing jobs
+
+**Stephanie please add your table then delete this**
+

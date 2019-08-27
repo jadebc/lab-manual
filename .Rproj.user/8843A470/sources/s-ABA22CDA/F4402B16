@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566930463607.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F4402B16",
+    "lastKnownWriteTime" : 1566928504,
+    "last_content_update" : 1566928504,
+    "path" : "~/Documents/CRG/data-science-best-practices/02-code-of-conduct.Rmd",
+    "project_path" : "02-code-of-conduct.Rmd",
+    "properties" : {
+        "cursorPosition" : "17,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,138 @@
+# Coding style
+
+by Kunal Mishra and Jade Benjamin-Chung
+
+## Comments
+
+1. **File Headers** - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
+  ```
+  ################################################################################
+  # @Organization - Example Organization
+  # @Project - Example Project
+  # @Description - This file is responsible for [...]
+  ################################################################################
+  ```
+2. **File Structure** - Just as your data "flows" through your project, data should flow naturally through a script. Very generally, you want to 1) source your config => 2) load all your data => 3) do all your analysis/computation => save your data. Each of these sections should be "chunked together" using comments. See [this file](https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R) for a good example of how to cleanly organize a file in a way that follows this "flow" and functionally separate pieces of code that are doing different things.
+    - **Note**: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
+3. **Single-Line Comments** - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See [this file](https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R) for an example of how to comment your code and notice that comments are always in the form of:
+
+  ```# This is a comment -- first letter is capitalized and spaced away from the pound sign```
+
+4. **Multi-Line Comments** - Occasionally, multi-line comments are necessary. Don't add line breaks manually to a single-line comment for the purpose of making it "fit" on the screen. Instead, in RStudio > Tools > Global Options > Code > “Soft-wrap R source files” to have lines wrap around. Format your multi-line comments like the file header from above.
+
+
+
+## Line breaks
+
+- For `ggplot` calls and `dplyr` pipelines, do not crowd single lines. Here are some nontrivial examples of "beautiful" pipelines, where beauty is defined by coherence:
+  ```
+  # Example 1
+  school_names = list(
+    OUSD_school_names = absentee_all %>%
+      filter(dist.n == 1) %>%
+      pull(school) %>%
+      unique %>%
+      sort,
+
+    WCCSD_school_names = absentee_all %>%
+      filter(dist.n == 0) %>%
+      pull(school) %>%
+      unique %>%
+      sort
+  )
+  ```
+  ```
+  # Example 2
+  absentee_all = fread(file = raw_data_path) %>%
+    mutate(program = case_when(schoolyr %in% pre_program_schoolyrs ~ 0,
+                               schoolyr %in% program_schoolyrs ~ 1)) %>%
+    mutate(period = case_when(schoolyr %in% pre_program_schoolyrs ~ 0,
+                              schoolyr %in% LAIV_schoolyrs ~ 1,
+                              schoolyr %in% IIV_schoolyrs ~ 2)) %>%
+    filter(schoolyr != "2017-18")
+  ```
+  And of a complex `ggplot` call:
+  ```
+  # Example 3
+  ggplot(data=data,
+         mapping=aes_string(x="year", y="rd", group=group)) +
+
+    geom_point(mapping=aes_string(col=group, shape=group),
+               position=position_dodge(width=0.2),
+               size=2.5) +
+
+    geom_errorbar(mapping=aes_string(ymin="lb", ymax="ub", col=group),
+                  position=position_dodge(width=0.2),
+                  width=0.2) +
+
+    geom_point(position=position_dodge(width=0.2),
+               size=2.5) +
+
+    geom_errorbar(mapping=aes(ymin=lb, ymax=ub),
+                  position=position_dodge(width=0.2),
+                  width=0.1) +
+
+    scale_y_continuous(limits=limits,
+                       breaks=breaks,
+                       labels=breaks) +
+
+    scale_color_manual(std_legend_title,values=cols,labels=legend_label) +
+    scale_shape_manual(std_legend_title,values=shapes, labels=legend_label) +
+    geom_hline(yintercept=0, linetype="dashed") +
+    xlab("Program year") +
+    ylab(yaxis_lab) +
+    theme_complete_bw() +
+    theme(strip.text.x = element_text(size = 14),
+          axis.text.x = element_text(size = 12)) +
+    ggtitle(title)
+  ```
+  Imagine (or perhaps mournfully recall) the mess that can occur when you don't strictly style a complicated `ggplot` call. Trying to fix bugs and ensure your code is working can be a nightmare. Now imagine trying to do it with the same code 6 months after you've written it. Invest the time now and reap the rewards as the code practically explains itself, line by line.
+
+## Automated Tools for Style and Project Workflow
+
+- The `here` package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path `/home/oski/Some-R-Project`. My collaborator might clone the repository and work with it at some other path, such as  `/home/bear/R-Code/Some-R-Project`. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the `here` package comes in and this a [great vignette describing it](https://github.com/jennybc/here_here).
+
+### Styling
+1. **Code Autoformatting** - RStudio includes a fantastic built-in utility (keyboard shortcut: `CMD-Shift-A`) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a "first pass" on some code of yours that _doesn't_ follow many of these best practices!
+
+2. **Assignment Aligner** - A [cool R package](https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/) allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: `CMD-Shift-Z`). Here is an example of how assignment aligning can dramatically improve code readability:
+  ```
+  # Before
+  OUSD_not_found_aliases = list(
+    "Brookfield Village Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Brookfield"),
+    "Carl Munck Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Munck"),
+    "Community United Elementary School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Community United"),
+    "East Oakland PRIDE Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),
+    "EnCompass Academy" = str_subset(string = OUSD_school_shapes$schnam, pattern = "EnCompass"),
+    "Global Family School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Global"),
+    "International Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "International Community"),
+    "Madison Park Lower Campus" = "Madison Park Academy TK-5",
+    "Manzanita Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Manzanita Community"),
+    "Martin Luther King Jr Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "King"),
+    "PLACE @ Prescott" = "Preparatory Literary Academy of Cultural Excellence",
+    "RISE Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Rise Community")
+)
+  ```
+  ```
+  # After
+  OUSD_not_found_aliases = list(
+    "Brookfield Village Elementary"      = str_subset(string = OUSD_school_shapes$schnam, pattern = "Brookfield"),
+    "Carl Munck Elementary"              = str_subset(string = OUSD_school_shapes$schnam, pattern = "Munck"),
+    "Community United Elementary School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Community United"),
+    "East Oakland PRIDE Elementary"      = str_subset(string = OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),
+    "EnCompass Academy"                  = str_subset(string = OUSD_school_shapes$schnam, pattern = "EnCompass"),
+    "Global Family School"               = str_subset(string = OUSD_school_shapes$schnam, pattern = "Global"),
+    "International Community School"     = str_subset(string = OUSD_school_shapes$schnam, pattern = "International Community"),
+    "Madison Park Lower Campus"          = "Madison Park Academy TK-5",
+    "Manzanita Community School"         = str_subset(string = OUSD_school_shapes$schnam, pattern = "Manzanita Community"),
+    "Martin Luther King Jr Elementary"   = str_subset(string = OUSD_school_shapes$schnam, pattern = "King"),
+    "PLACE @ Prescott"                   = "Preparatory Literary Academy of Cultural Excellence",
+    "RISE Community School"              = str_subset(string = OUSD_school_shapes$schnam, pattern = "Rise Community")
+)
+  ```
+
+3. **StyleR** - Another [cool R package from the Tidyverse](https://www.tidyverse.org/articles/2017/12/styler-1.0.0/) that can be powerful and used as a first pass on entire projects that need refactoring. The most useful function of the package is the `style_dir` function, which will style all files within a given directory. See the [function's documentation](https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir) and the vignette linked above for more details.
+    - **Note**: The default Tidyverse styler is subtly different from some of the things we've advocated for in this document. Most notably we differ with regards to the assignment operator (`<-` vs `=`) and number of spaces before/after "tokens" (i.e. Assignment Aligner add spaces before `=` signs to align them properly). For this reason, we'd recommend the following: `style_dir(path = ..., scope = "line_breaks", strict = FALSE)`. You can also customize StyleR [even more](http://styler.r-lib.org/articles/customizing_styler.html) if you're really hardcore.
+    - **Note**: As is mentioned in the package vignette linked above, StyleR modifies things _in-place_, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects _with version control_, but if you don't have backups or a good way to revert back to the intial code, I wouldn't recommend going this route.
+    
+    

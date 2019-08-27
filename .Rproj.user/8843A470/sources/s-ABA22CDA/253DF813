@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566930509337.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "253DF813",
+    "lastKnownWriteTime" : 1566929413,
+    "last_content_update" : 1566929413,
+    "path" : "~/Documents/CRG/data-science-best-practices/04-coding-practices.Rmd",
+    "project_path" : "04-coding-practices.Rmd",
+    "properties" : {
+        "cursorPosition" : "76,5",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Coding practices | Data Science Best Practices</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Coding practices | Data Science Best Practices" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Coding practices | Data Science Best Practices" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi" />
+
+
+<meta name="date" content="2019-08-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="code-repositories.html"/>
+<link rel="next" href="coding-style.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our lab!</a></li>
+<li class="chapter" data-level="2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html"><i class="fa fa-check"></i><b>2</b> Communication and coordination</a><ul>
+<li class="chapter" data-level="2.1" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#slack"><i class="fa fa-check"></i><b>2.1</b> Slack</a></li>
+<li class="chapter" data-level="2.2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#email"><i class="fa fa-check"></i><b>2.2</b> Email</a></li>
+<li class="chapter" data-level="2.3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#trello"><i class="fa fa-check"></i><b>2.3</b> Trello</a></li>
+<li class="chapter" data-level="2.4" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-calendar"><i class="fa fa-check"></i><b>2.4</b> Google calendar</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="code-of-conduct.html"><a href="code-of-conduct.html"><i class="fa fa-check"></i><b>3</b> Code of conduct</a><ul>
+<li class="chapter" data-level="3.1" data-path="code-of-conduct.html"><a href="code-of-conduct.html#protecting-human-subjects"><i class="fa fa-check"></i><b>3.1</b> Protecting human subjects</a></li>
+<li class="chapter" data-level="3.2" data-path="code-of-conduct.html"><a href="code-of-conduct.html#scientific-integrity"><i class="fa fa-check"></i><b>3.2</b> Scientific Integrity</a></li>
+<li class="chapter" data-level="3.3" data-path="code-of-conduct.html"><a href="code-of-conduct.html#trello-1"><i class="fa fa-check"></i><b>3.3</b> Trello</a></li>
+<li class="chapter" data-level="3.4" data-path="code-of-conduct.html"><a href="code-of-conduct.html#google-calendar-1"><i class="fa fa-check"></i><b>3.4</b> Google calendar</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>4</b> Code repositories</a><ul>
+<li class="chapter" data-level="4.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>4.1</b> Project Structure</a></li>
+<li class="chapter" data-level="4.2" data-path="code-repositories.html"><a href="code-repositories.html#use-a-config-file"><i class="fa fa-check"></i><b>4.2</b> Use a Config File</a></li>
+<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>4.3</b> Order Files and Directories</a></li>
+<li class="chapter" data-level="4.4" data-path="code-repositories.html"><a href="code-repositories.html#use.gitignore-and-.rproj-files"><i class="fa fa-check"></i><b>4.4</b> Use<code>.gitignore</code> and <code>.Rproj</code> files</a></li>
+<li class="chapter" data-level="4.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>4.5</b> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>5</b> Coding practices</a><ul>
+<li class="chapter" data-level="5.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>5.1</b> Organizing scripts</a></li>
+<li class="chapter" data-level="5.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-work"><i class="fa fa-check"></i><b>5.2</b> Documenting your work</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>5.2.1</b> File headers</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>5.2.2</b> Comments in the body of your script</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>5.2.3</b> Function documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>5.3</b> Object naming</a></li>
+<li class="chapter" data-level="5.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>5.4</b> Function calls</a></li>
+<li class="chapter" data-level="5.5" data-path="coding-practices.html"><a href="coding-practices.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>5.5</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="coding-practices.html"><a href="coding-practices.html#styling"><i class="fa fa-check"></i><b>5.5.1</b> Styling</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>5.6</b> Reading/Saving Data</a></li>
+<li class="chapter" data-level="5.7" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>5.7</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>6</b> Coding style</a><ul>
+<li class="chapter" data-level="6.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>6.1</b> Comments</a></li>
+<li class="chapter" data-level="6.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>6.2</b> Line breaks</a></li>
+<li class="chapter" data-level="6.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow-1"><i class="fa fa-check"></i><b>6.3</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="coding-style.html"><a href="coding-style.html#styling-1"><i class="fa fa-check"></i><b>6.3.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>7</b> Working with Big Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>7.1</b> The data.table package</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.2</b> Optimal RStudio set up</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
+<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.1</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.2</b> What should be pushed to github?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="unix-commands.html"><a href="unix-commands.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
+<li class="chapter" data-level="9.1" data-path="unix-commands.html"><a href="unix-commands.html#basics"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="unix-commands.html"><a href="unix-commands.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>9.2</b> Syntax for both Mac/Windows</a></li>
+<li class="chapter" data-level="9.3" data-path="unix-commands.html"><a href="unix-commands.html#basics-1"><i class="fa fa-check"></i><b>9.3</b> Basics</a></li>
+<li class="chapter" data-level="9.4" data-path="unix-commands.html"><a href="unix-commands.html#running-scripts"><i class="fa fa-check"></i><b>9.4</b> Running scripts</a></li>
+<li class="chapter" data-level="9.5" data-path="unix-commands.html"><a href="unix-commands.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>9.5</b> Checking tasks and killing jobs</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>10</b> Resources</a><ul>
+<li class="chapter" data-level="10.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>10.1</b> Resources for R</a></li>
+<li class="chapter" data-level="10.2" data-path="resources.html"><a href="resources.html#resources-for-github"><i class="fa fa-check"></i><b>10.2</b> Resources for Github</a></li>
+<li class="chapter" data-level="10.3" data-path="resources.html"><a href="resources.html#authorship"><i class="fa fa-check"></i><b>10.3</b> Authorship</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Best Practices</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="coding-practices" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Coding practices</h1>
+<p>by Kunal Mishra and Jade Benjamin-Chung</p>
+<div id="organizing-scripts" class="section level2">
+<h2><span class="header-section-number">5.1</span> Organizing scripts</h2>
+<p>Just as your data “flows” through your project, data should flow naturally through a script. Very generally, you want to:</p>
+<ol style="list-style-type: decimal">
+<li>describe the work completed in the script in a comment header</li>
+<li>source your configuratino file (<code>0-config.R</code>)</li>
+<li>load all your data</li>
+<li>do all your analysis/computation</li>
+<li>save your data.</li>
+</ol>
+<p>Each of these sections should be “chunked together” using comments. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R">this file</a> for a good example of how to cleanly organize a file in a way that follows this “flow” and functionally separate pieces of code that are doing different things.</p>
+</div>
+<div id="documenting-your-work" class="section level2">
+<h2><span class="header-section-number">5.2</span> Documenting your work</h2>
+<div id="file-headers" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> File headers</h3>
+<ol style="list-style-type: decimal">
+<li><strong>File Headers</strong> - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.</li>
+</ol>
+<pre><code>################################################################################
+# @Organization - Example Organization
+# @Project - Example Project
+# @Description - This file is responsible for [...]
+################################################################################</code></pre>
+<pre><code>- **Note**: If your computer isn&#39;t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won&#39;t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</code></pre>
+</div>
+<div id="comments-in-the-body-of-your-script" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Comments in the body of your script</h3>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Single-Line Comments</strong> - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you’ll be thankful for comments. There’s no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R">this file</a> for an example of how to comment your code and notice that comments are always in the form of:</li>
+</ol>
+<p><code># This is a comment -- first letter is capitalized and spaced away from the pound sign</code></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Multi-Line Comments</strong> - Occasionally, multi-line comments are necessary. Don’t add line breaks manually to a single-line comment for the purpose of making it “fit” on the screen. Instead, in RStudio &gt; Tools &gt; Global Options &gt; Code &gt; “Soft-wrap R source files” to have lines wrap around. Format your multi-line comments like the file header from above.</li>
+</ol>
+</div>
+<div id="function-documentation" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Function documentation</h3>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Function Documentation</strong> - Functions <em>need</em> documentation. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a <code>string</code> into an argument that is meant to be a <code>data.table</code>, or a <code>list</code> into an argument meant for a <code>tibble</code>. It is the responsibility of a function’s author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by <a href="https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format">JavaDocs</a> and R’s <a href="https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/">Plumber API docs</a>):</li>
+</ol>
+<pre><code>calculate_KSSS = function(centroids, statistical_input, time_column = &quot;schoolyr&quot;, location_column = &quot;school_dist&quot;, value_column = &quot;absences_ill&quot;, population_column = &quot;student_days&quot;, k_nearest_neighbors = 5, nsim = 9999, heat_map = TRUE, heat_map_title = NULL, heat_map_caption = NULL) {
+  # @Description: Calculates the population-based Kulldorff Spatial Scan Statistic
+  # @Arg: centroids: an SPDF from which the centroids of each school catchment area can be drawn, along with a uniquely identifying location_column (such as an ID or School-District combo)
+  # @Arg: statistical_input: a tibble of at least 4 columns containing a location, time, value, and population size, ordered by (location_column, time_column)
+  # @Arg: time_column: an integer or string column on which values can be clustered temporally
+  # @Arg: location_column: an integer or string column on which values can be clustered spatially (must be a unique key)
+  # @Arg: value_column: an integer or string column containing the count data for the given space-time
+  # @Arg: population_column: an integer column containing the size of the population for the given space-time
+  # @Arg: heat_map: a boolean variable dictating whether to plot a heat_map based on how likely a school catchment is to be part of a cluster
+  # @Arg: heat_map_title: a string used as the title for a heat_map if one is drawn
+  # @Arg: heat_map_caption: a string used as the caption for a heat_map if one is drawn
+  # @Output: plots a heatmap local clustering and prints the total number of significant clusters if heat_map = TRUE
+  # @Return: a list containing the results of running KSSS and a tibble of all clusters
+
+  ...
+  Some code here
+  ...
+}</code></pre>
+<p>Even if you have no idea what a <code>KSSS</code> is, you have some way of understanding what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that the function is defined in one line at the top (which will soft-wrap around) and all optional arguments (i.e. ones with pre-specified defaults) follow arguments that require user input.
+- <strong>Note</strong>: As someone trying to call a function, it is possible to access a function’s documentation (and internal code) by <code>CMD-Left-Click</code>ing the function’s name in RStudio
+- <strong>Note</strong>: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add “type-checking” to your function with the <code>assertthat::assert_that()</code> function. You can, for example, <code>assert_that(is.data.frame(statistical_input))</code>, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e. that <code>time_column</code>, <code>location_column</code>, <code>value_column</code>, and <code>population_column</code> all exist within the <code>statistical_input</code> tibble).</p>
+</div>
+</div>
+<div id="object-naming" class="section level2">
+<h2><span class="header-section-number">5.3</span> Object naming</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Object Names</strong> - Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable <code>vaxcov_1718</code>, try naming it <code>vaccination_coverage_2017_18</code>. Similarly, <code>flu_res</code> could be named <code>absentee_flu_residuals</code>, making your code more readable and explicit.
+<ul>
+<li>For more help, check out <a href="https://spin.atomicobject.com/2017/11/01/good-variable-names/">Be Expressive: How to Give Your Variables Better Names</a></li>
+</ul></li>
+<li><strong>Snake_Case</strong> - Base R allows <code>.</code> in variable names and functions (such as <code>read.csv()</code>), but this goes against best practices for variable naming in many other coding languages. For consistencies sake, across the two main data science languages, <code>snake_case</code> has been adopted and modern packages and functions typically use it (i.e. <code>readr::read_csv()</code>). As a very general rule of thumb, if a package you’re using doesn’t use <code>snake_case</code>, there may be an updated version or more modern package that <em>does</em>, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
+<ul>
+<li><strong>Note</strong>: you may also see <code>camelCase</code> throughout the R code you come across. This is <em>okay</em> but not ideal – try to stay consistent across all your code with <code>snake_case</code>.</li>
+<li><strong>Note</strong>: again, its also worth noting there’s nothing inherently wrong with using <code>.</code> in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.</li>
+</ul></li>
+</ol>
+</div>
+<div id="function-calls" class="section level2">
+<h2><span class="header-section-number">5.4</span> Function calls</h2>
+<p>In a function call, use “named arguments” and separate arguments by to make your code more readable. Here’s an example of what a function call for <code>calculate_KSSS</code> (documented above) might look like without named arguments or any separation:
+<code>input_1_KSSS_ill = calculate_KSSS(all_study_school_shapes, input_1, 5, &quot;Local Clustering of Illness-Specific\n Absence Rates in all years during Flu Season&quot;)</code>
+And here it is again using the best practices we’ve outlined:
+<code>input_1_KSSS_ill = calculate_KSSS(     centroids           = all_study_school_shapes,     statistical_input   = input_1,     k_nearest_neighbors = 5,     heat_map_title      = &quot;Local Clustering of Illness-Specific\n Absence Rates in all years during Flu Season&quot;   )</code>
+I’ll let you be the judge of which is more coherent.</p>
+</div>
+<div id="automated-tools-for-style-and-project-workflow" class="section level2">
+<h2><span class="header-section-number">5.5</span> Automated Tools for Style and Project Workflow</h2>
+<ul>
+<li>The <code>here</code> package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let’s say we have an R project at the path <code>/home/oski/Some-R-Project</code>. My collaborator might clone the repository and work with it at some other path, such as <code>/home/bear/R-Code/Some-R-Project</code>. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the <code>here</code> package comes in and this a <a href="https://github.com/jennybc/here_here">great vignette describing it</a>.</li>
+</ul>
+<div id="styling" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Styling</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>Code Autoformatting</strong> - RStudio includes a fantastic built-in utility (keyboard shortcut: <code>CMD-Shift-A</code>) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a “first pass” on some code of yours that <em>doesn’t</em> follow many of these best practices!</p></li>
+<li><strong>Assignment Aligner</strong> - A <a href="https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/">cool R package</a> allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: <code>CMD-Shift-Z</code>). Here is an example of how assignment aligning can dramatically improve code readability:</li>
+</ol>
+<pre><code># Before
+OUSD_not_found_aliases = list(
+  &quot;Brookfield Village Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Brookfield&quot;),
+  &quot;Carl Munck Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Munck&quot;),
+  &quot;Community United Elementary School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Community United&quot;),
+  &quot;East Oakland PRIDE Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;East Oakland Pride&quot;),
+  &quot;EnCompass Academy&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;EnCompass&quot;),
+  &quot;Global Family School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Global&quot;),
+  &quot;International Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;International Community&quot;),
+  &quot;Madison Park Lower Campus&quot; = &quot;Madison Park Academy TK-5&quot;,
+  &quot;Manzanita Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Manzanita Community&quot;),
+  &quot;Martin Luther King Jr Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;King&quot;),
+  &quot;PLACE @ Prescott&quot; = &quot;Preparatory Literary Academy of Cultural Excellence&quot;,
+  &quot;RISE Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Rise Community&quot;)
+)</code></pre>
+<pre><code># After
+OUSD_not_found_aliases = list(
+  &quot;Brookfield Village Elementary&quot;      = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Brookfield&quot;),
+  &quot;Carl Munck Elementary&quot;              = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Munck&quot;),
+  &quot;Community United Elementary School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Community United&quot;),
+  &quot;East Oakland PRIDE Elementary&quot;      = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;East Oakland Pride&quot;),
+  &quot;EnCompass Academy&quot;                  = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;EnCompass&quot;),
+  &quot;Global Family School&quot;               = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Global&quot;),
+  &quot;International Community School&quot;     = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;International Community&quot;),
+  &quot;Madison Park Lower Campus&quot;          = &quot;Madison Park Academy TK-5&quot;,
+  &quot;Manzanita Community School&quot;         = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Manzanita Community&quot;),
+  &quot;Martin Luther King Jr Elementary&quot;   = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;King&quot;),
+  &quot;PLACE @ Prescott&quot;                   = &quot;Preparatory Literary Academy of Cultural Excellence&quot;,
+  &quot;RISE Community School&quot;              = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Rise Community&quot;)
+)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>StyleR</strong> - Another <a href="https://www.tidyverse.org/articles/2017/12/styler-1.0.0/">cool R package from the Tidyverse</a> that can be powerful and used as a first pass on entire projects that need refactoring. The most useful function of the package is the <code>style_dir</code> function, which will style all files within a given directory. See the <a href="https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir">function’s documentation</a> and the vignette linked above for more details.
+<ul>
+<li><strong>Note</strong>: The default Tidyverse styler is subtly different from some of the things we’ve advocated for in this document. Most notably we differ with regards to the assignment operator (<code>&lt;-</code> vs <code>=</code>) and number of spaces before/after “tokens” (i.e. Assignment Aligner add spaces before <code>=</code> signs to align them properly). For this reason, we’d recommend the following: <code>style_dir(path = ..., scope = &quot;line_breaks&quot;, strict = FALSE)</code>. You can also customize StyleR <a href="http://styler.r-lib.org/articles/customizing_styler.html">even more</a> if you’re really hardcore.</li>
+<li><strong>Note</strong>: As is mentioned in the package vignette linked above, StyleR modifies things <em>in-place</em>, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects <em>with version control</em>, but if you don’t have backups or a good way to revert back to the intial code, I wouldn’t recommend going this route.</li>
+</ul>
+## Outdated Base R Practices to Avoid</li>
+</ol>
+</div>
+</div>
+<div id="readingsaving-data" class="section level2">
+<h2><span class="header-section-number">5.6</span> Reading/Saving Data</h2>
+<ol style="list-style-type: decimal">
+<li><strong><code>.RDS</code> vs <code>.RData</code> Files</strong> - One of the most common ways to load and save data in Base R is with the <code>load()</code> and <code>save()</code> functions to serialize multiple objects into a file. The biggest problems with this practice include an inability to control the names of things getting loaded in, the inherent confusion this creates in understanding older code, and the inability to load individual elements of a saved file. For this, we recommend using the RDS format to save R objects.
+<ul>
+<li><strong>Note</strong>: <code>saveRDS</code> and <code>loadRDS</code> are Base R functions to do this but we recommend using <code>save_rds</code> and <code>load_rds</code> from the <code>readr</code> package for the sake of consistency and performance improvements.</li>
+<li><strong>Note</strong>: when you use <code>load_rds</code> you must assign the thing being loaded to a variable (i.e. <code>some_descriptive_variable_name = load_rds(...)</code>). Then, use the variable as you would. This makes your code less fragile and it doesn’t need to rely on an <code>.RData</code> file to load in a particular name for the code to run properly.</li>
+<li><strong>Note</strong>: if you have many related R objects you would have otherwise saved all together using the <code>save</code> function, the functional equivalent with <code>RDS</code> would be to create a (named) list containing each of these objects, and saving it.</li>
+</ul></li>
+<li><p><strong>CSVs</strong> - Once again, the <code>readr</code> package as part of the Tidvyerse is great, with a much faster <code>read_csv()</code> than Base R’s <code>read.csv()</code>. For massive CSVs (&gt; 5 GB), you’ll find <code>data.table::fread()</code> to be the fastest CSV reader in any data science language out there. For writing CSVs, <code>readr::write_csv()</code> and <code>data.table::fwrite()</code> outclass Base R’s <code>write.csv()</code> by a significant margin as well.</p></li>
+<li><p><strong>Feather</strong> - If you’re using both R and Python, you may wish to check out the <a href="https://www.rdocumentation.org/packages/feather/versions/0.3.3">Feather package</a> for exchanging data between the two languages <a href="https://blog.rstudio.com/2016/03/29/feather/">extremely quickly</a>.</p></li>
+</ol>
+</div>
+<div id="tidyverse" class="section level2">
+<h2><span class="header-section-number">5.7</span> Tidyverse</h2>
+<p>Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse’s performance-optimized competitor). Tidyverse is quickly becoming <a href="https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/">the gold standard</a> in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there’s a significant reason not to (i.e. big data pipelines that would benefit from Data.Table’s performance optimizations).</p>
+<p>The package author has published a <a href="https://r4ds.had.co.nz/">great textbook on R for Data Science</a>, which leans heavily on many Tidyverse packages and may be worth checking out.</p>
+<p>The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Base R</th>
+<th>Better Style, Performance, and Utility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_</td>
+<td>_</td>
+</tr>
+<tr class="even">
+<td><code>read.csv()</code></td>
+<td><code>readr::read_csv()</code> or <code>data.table::fread()</code></td>
+</tr>
+<tr class="odd">
+<td><code>write.csv()</code></td>
+<td><code>readr::write_csv()</code> or <code>data.table::fwrite()</code></td>
+</tr>
+<tr class="even">
+<td><code>readRDS</code></td>
+<td><code>readr::read_rds()</code></td>
+</tr>
+<tr class="odd">
+<td><code>saveRDS()</code></td>
+<td><code>readr::write_rds()</code></td>
+</tr>
+<tr class="even">
+<td>_</td>
+<td>_</td>
+</tr>
+<tr class="odd">
+<td><code>data.frame()</code></td>
+<td><code>tibble::tibble()</code> or <code>data.table::data.table()</code></td>
+</tr>
+<tr class="even">
+<td><code>rbind()</code></td>
+<td><code>dplyr::bind_rows()</code></td>
+</tr>
+<tr class="odd">
+<td><code>cbind()</code></td>
+<td><code>dplyr::bind_cols()</code></td>
+</tr>
+<tr class="even">
+<td><code>df$some_column</code></td>
+<td><code>df %&gt;% dplyr::pull(some_column)</code></td>
+</tr>
+<tr class="odd">
+<td><code>df$some_column = ...</code></td>
+<td><code>df %&gt;% dplyr::mutate(some_column = ...)</code></td>
+</tr>
+<tr class="even">
+<td><code>df[get_rows_condition,]</code></td>
+<td><code>df %&gt;% dplyr::filter(get_rows_condition)</code></td>
+</tr>
+<tr class="odd">
+<td><code>df[,c(col1, col2)]</code></td>
+<td><code>df %&gt;% dplyr::select(col1, col2)</code></td>
+</tr>
+<tr class="even">
+<td><code>merge(df1, df2, by = ..., all.x = ..., all.y = ...)</code></td>
+<td><code>df1 %&gt;% dplyr::left_join(df2, by = ...)</code> or <code>dplyr::full_join</code> or <code>dplyr::inner_join</code> or <code>dplyr::right_join</code></td>
+</tr>
+<tr class="odd">
+<td>_</td>
+<td>_</td>
+</tr>
+<tr class="even">
+<td><code>str()</code></td>
+<td><code>dplyr::glimpse()</code></td>
+</tr>
+<tr class="odd">
+<td><code>grep(pattern, x)</code></td>
+<td><code>stringr::str_which(string, pattern)</code></td>
+</tr>
+<tr class="even">
+<td><code>gsub(pattern, replacement, x)</code></td>
+<td><code>stringr::str_replace(string, pattern, replacement)</code></td>
+</tr>
+<tr class="odd">
+<td><code>ifelse(test_expression, yes, no)</code></td>
+<td><code>if_else(condition, true, false)</code></td>
+</tr>
+<tr class="even">
+<td>Nested: <code>ifelse(test_expression1, yes1, ifelse(test_expression2, yes2, ifelse(test_expression3, yes3, no)))</code></td>
+<td><code>case_when(test_expression1 ~ yes1,  test_expression2 ~ yes2, test_expression3 ~ yes3, TRUE ~ no)</code></td>
+</tr>
+<tr class="odd">
+<td><code>proc.time()</code></td>
+<td><code>tictoc::tic()</code> and <code>tictoc::toc()</code></td>
+</tr>
+<tr class="even">
+<td><code>stopifnot()</code></td>
+<td><code>assertthat::assert_that()</code> or <code>assertthat::see_if()</code> or <code>assertthat::validate_that()</code></td>
+</tr>
+</tbody>
+</table>
+<p>For a more extensive set of syntactical translations to Tidyverse, you can check out <a href="https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html#reshaping_data">this document</a>.</p>
+<p>Working with Tidyverse within functions can be somewhat of a pain due to non-standard evaluation (NSE) semantics. If you’re an avid function writer, we’d recommend checking out the following resources:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=nERXS3ssntw">Tidy Eval in 5 Minutes</a> (video)</li>
+<li><a href="https://tidyeval.tidyverse.org/index.html">Tidy Evaluation</a> (e-book)</li>
+<li><a href="https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/">Data Frame Columns as Arguments to Dplyr Functions</a> (blog)</li>
+<li><a href="https://stackoverflow.com/questions/28125816/r-standard-evaluation-for-join-dplyr">Standard Evaluation for *_join</a> (stackoverflow)</li>
+<li><a href="https://dplyr.tidyverse.org/articles/programming.html">Programming with dplyr</a> (package vignette)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="code-repositories.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coding-style.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-coding-practices.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

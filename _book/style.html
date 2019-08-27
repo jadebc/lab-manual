@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Style | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Style | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Style | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2019-08-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="repositories.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="repositories.html"><a href="repositories.html"><i class="fa fa-check"></i><b>3</b> Repositories</a><ul>
+<li class="chapter" data-level="3.1" data-path="repositories.html"><a href="repositories.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project Structure</a></li>
+<li class="chapter" data-level="3.2" data-path="repositories.html"><a href="repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>3.2</b> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="style.html"><a href="style.html"><i class="fa fa-check"></i><b>4</b> Style</a><ul>
+<li class="chapter" data-level="4.1" data-path="style.html"><a href="style.html#comments"><i class="fa fa-check"></i><b>4.1</b> Comments</a></li>
+<li class="chapter" data-level="4.2" data-path="style.html"><a href="style.html#variables-function-calls"><i class="fa fa-check"></i><b>4.2</b> Variables &amp; Function Calls</a></li>
+<li class="chapter" data-level="4.3" data-path="style.html"><a href="style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>4.3</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="style.html"><a href="style.html#styling"><i class="fa fa-check"></i><b>4.3.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="style" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Style</h1>
+<div id="comments" class="section level2">
+<h2><span class="header-section-number">4.1</span> Comments</h2>
+<ol style="list-style-type: decimal">
+<li><strong>File Headers</strong> - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.</li>
+</ol>
+<pre><code>################################################################################
+# @Organization - Example Organization
+# @Project - Example Project
+# @Description - This file is responsible for [...]
+################################################################################</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>File Structure</strong> - Just as your data “flows” through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =&gt; 2) load all your data =&gt; 3) do all your analysis/computation =&gt; save your data. Each of these sections should be “chunked together” using comments. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R">this file</a> for a good example of how to cleanly organize a file in a way that follows this “flow” and functionally separate pieces of code that are doing different things.
+<ul>
+<li><strong>Note</strong>: If your computer isn’t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won’t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</li>
+</ul></li>
+<li><strong>Single-Line Comments</strong> - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you’ll be thankful for comments. There’s no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R">this file</a> for an example of how to comment your code and notice that comments are always in the form of:</li>
+</ol>
+<p><code># This is a comment -- first letter is capitalized and spaced away from the pound sign</code></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Multi-Line Comments</strong> - Occasionally, multi-line comments are necessary. Don’t add line breaks manually to a single-line comment for the purpose of making it “fit” on the screen. Instead, in RStudio &gt; Tools &gt; Global Options &gt; Code &gt; “Soft-wrap R source files” to have lines wrap around. Format your multi-line comments like the file header from above.</li>
+<li><strong>Function Documentation</strong> - Functions <em>need</em> documentation. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a <code>string</code> into an argument that is meant to be a <code>data.table</code>, or a <code>list</code> into an argument meant for a <code>tibble</code>. It is the responsibility of a function’s author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by <a href="https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format">JavaDocs</a> and R’s <a href="https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/">Plumber API docs</a>):</li>
+</ol>
+<pre><code>calculate_KSSS = function(centroids, statistical_input, time_column = &quot;schoolyr&quot;, location_column = &quot;school_dist&quot;, value_column = &quot;absences_ill&quot;, population_column = &quot;student_days&quot;, k_nearest_neighbors = 5, nsim = 9999, heat_map = TRUE, heat_map_title = NULL, heat_map_caption = NULL) {
+  # @Description: Calculates the population-based Kulldorff Spatial Scan Statistic
+  # @Arg: centroids: an SPDF from which the centroids of each school catchment area can be drawn, along with a uniquely identifying location_column (such as an ID or School-District combo)
+  # @Arg: statistical_input: a tibble of at least 4 columns containing a location, time, value, and population size, ordered by (location_column, time_column)
+  # @Arg: time_column: an integer or string column on which values can be clustered temporally
+  # @Arg: location_column: an integer or string column on which values can be clustered spatially (must be a unique key)
+  # @Arg: value_column: an integer or string column containing the count data for the given space-time
+  # @Arg: population_column: an integer column containing the size of the population for the given space-time
+  # @Arg: heat_map: a boolean variable dictating whether to plot a heat_map based on how likely a school catchment is to be part of a cluster
+  # @Arg: heat_map_title: a string used as the title for a heat_map if one is drawn
+  # @Arg: heat_map_caption: a string used as the caption for a heat_map if one is drawn
+  # @Output: plots a heatmap local clustering and prints the total number of significant clusters if heat_map = TRUE
+  # @Return: a list containing the results of running KSSS and a tibble of all clusters
+
+  ...
+  Some code here
+  ...
+}</code></pre>
+<p>Even if you have no idea what a <code>KSSS</code> is, you have some way of understanding what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that the function is defined in one line at the top (which will soft-wrap around) and all optional arguments (i.e. ones with pre-specified defaults) follow arguments that require user input.
+- <strong>Note</strong>: As someone trying to call a function, it is possible to access a function’s documentation (and internal code) by <code>CMD-Left-Click</code>ing the function’s name in RStudio
+- <strong>Note</strong>: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add “type-checking” to your function with the <code>assertthat::assert_that()</code> function. You can, for example, <code>assert_that(is.data.frame(statistical_input))</code>, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e. that <code>time_column</code>, <code>location_column</code>, <code>value_column</code>, and <code>population_column</code> all exist within the <code>statistical_input</code> tibble).</p>
+</div>
+<div id="variables-function-calls" class="section level2">
+<h2><span class="header-section-number">4.2</span> Variables &amp; Function Calls</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Variable Names</strong> - Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable <code>vaxcov_1718</code>, try naming it <code>vaccination_coverage_2017_18</code>. Similarly, <code>flu_res</code> could be named <code>absentee_flu_residuals</code>, making your code more readable and explicit.
+<ul>
+<li>For more help, check out <a href="https://spin.atomicobject.com/2017/11/01/good-variable-names/">Be Expressive: How to Give Your Variables Better Names</a></li>
+</ul></li>
+<li><strong>Snake_Case</strong> - Base R allows <code>.</code> in variable names and functions (such as <code>read.csv()</code>), but this goes against best practices for variable naming in many other coding languages. For consistencies sake, across the two main data science languages, <code>snake_case</code> has been adopted and modern packages and functions typically use it (i.e. <code>readr::read_csv()</code>). As a very general rule of thumb, if a package you’re using doesn’t use <code>snake_case</code>, there may be an updated version or more modern package that <em>does</em>, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
+<ul>
+<li><strong>Note</strong>: you may also see <code>camelCase</code> throughout the R code you come across. This is <em>okay</em> but not ideal – try to stay consistent across all your code with <code>snake_case</code>.</li>
+<li><strong>Note</strong>: again, its also worth noting there’s nothing inherently wrong with using <code>.</code> in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.</li>
+</ul></li>
+<li><strong>Assignment</strong> - <em>Please</em> use the <code>=</code> operator instead of <code>&lt;-</code>. Please! Similarly, in a function call, definitely use “named arguments” and separate arguments by to make your code more readable. Here’s an example of what a function call for <code>calculate_KSSS</code> (documented above) might look like without named arguments or any separation:</li>
+</ol>
+<pre><code>input_1_KSSS_ill = calculate_KSSS(all_study_school_shapes, input_1, 5, &quot;Local Clustering of Illness-Specific\n Absence Rates in all years during Flu Season&quot;)</code></pre>
+<p>And here it is again using the best practices we’ve outlined:
+<code>input_1_KSSS_ill = calculate_KSSS(     centroids           = all_study_school_shapes,     statistical_input   = input_1,     k_nearest_neighbors = 5,     heat_map_title      = &quot;Local Clustering of Illness-Specific\n Absence Rates in all years during Flu Season&quot;   )</code>
+I’ll let you be the judge of which is more coherent.</p>
+</div>
+<div id="automated-tools-for-style-and-project-workflow" class="section level2">
+<h2><span class="header-section-number">4.3</span> Automated Tools for Style and Project Workflow</h2>
+<ul>
+<li>The <code>here</code> package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let’s say we have an R project at the path <code>/home/oski/Some-R-Project</code>. My collaborator might clone the repository and work with it at some other path, such as <code>/home/bear/R-Code/Some-R-Project</code>. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the <code>here</code> package comes in and this a <a href="https://github.com/jennybc/here_here">great vignette describing it</a>.</li>
+</ul>
+<div id="styling" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Styling</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>Code Autoformatting</strong> - RStudio includes a fantastic built-in utility (keyboard shortcut: <code>CMD-Shift-A</code>) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a “first pass” on some code of yours that <em>doesn’t</em> follow many of these best practices!</p></li>
+<li><strong>Assignment Aligner</strong> - A <a href="https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/">cool R package</a> allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: <code>CMD-Shift-Z</code>). Here is an example of how assignment aligning can dramatically improve code readability:</li>
+</ol>
+<pre><code># Before
+OUSD_not_found_aliases = list(
+  &quot;Brookfield Village Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Brookfield&quot;),
+  &quot;Carl Munck Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Munck&quot;),
+  &quot;Community United Elementary School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Community United&quot;),
+  &quot;East Oakland PRIDE Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;East Oakland Pride&quot;),
+  &quot;EnCompass Academy&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;EnCompass&quot;),
+  &quot;Global Family School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Global&quot;),
+  &quot;International Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;International Community&quot;),
+  &quot;Madison Park Lower Campus&quot; = &quot;Madison Park Academy TK-5&quot;,
+  &quot;Manzanita Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Manzanita Community&quot;),
+  &quot;Martin Luther King Jr Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;King&quot;),
+  &quot;PLACE @ Prescott&quot; = &quot;Preparatory Literary Academy of Cultural Excellence&quot;,
+  &quot;RISE Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Rise Community&quot;)
+)</code></pre>
+<pre><code># After
+OUSD_not_found_aliases = list(
+  &quot;Brookfield Village Elementary&quot;      = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Brookfield&quot;),
+  &quot;Carl Munck Elementary&quot;              = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Munck&quot;),
+  &quot;Community United Elementary School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Community United&quot;),
+  &quot;East Oakland PRIDE Elementary&quot;      = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;East Oakland Pride&quot;),
+  &quot;EnCompass Academy&quot;                  = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;EnCompass&quot;),
+  &quot;Global Family School&quot;               = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Global&quot;),
+  &quot;International Community School&quot;     = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;International Community&quot;),
+  &quot;Madison Park Lower Campus&quot;          = &quot;Madison Park Academy TK-5&quot;,
+  &quot;Manzanita Community School&quot;         = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Manzanita Community&quot;),
+  &quot;Martin Luther King Jr Elementary&quot;   = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;King&quot;),
+  &quot;PLACE @ Prescott&quot;                   = &quot;Preparatory Literary Academy of Cultural Excellence&quot;,
+  &quot;RISE Community School&quot;              = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Rise Community&quot;)
+)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>StyleR</strong> - Another <a href="https://www.tidyverse.org/articles/2017/12/styler-1.0.0/">cool R package from the Tidyverse</a> that can be powerful and used as a first pass on entire projects that need refactoring. The most useful function of the package is the <code>style_dir</code> function, which will style all files within a given directory. See the <a href="https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir">function’s documentation</a> and the vignette linked above for more details.
+<ul>
+<li><strong>Note</strong>: The default Tidyverse styler is subtly different from some of the things we’ve advocated for in this document. Most notably we differ with regards to the assignment operator (<code>&lt;-</code> vs <code>=</code>) and number of spaces before/after “tokens” (i.e. Assignment Aligner add spaces before <code>=</code> signs to align them properly). For this reason, we’d recommend the following: <code>style_dir(path = ..., scope = &quot;line_breaks&quot;, strict = FALSE)</code>. You can also customize StyleR <a href="http://styler.r-lib.org/articles/customizing_styler.html">even more</a> if you’re really hardcore.</li>
+<li><strong>Note</strong>: As is mentioned in the package vignette linked above, StyleR modifies things <em>in-place</em>, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects <em>with version control</em>, but if you don’t have backups or a good way to revert back to the intial code, I wouldn’t recommend going this route.</li>
+</ul></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="repositories.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-style.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

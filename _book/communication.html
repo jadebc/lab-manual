@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Communication | Data Science Best Practices</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Communication | Data Science Best Practices" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Communication | Data Science Best Practices" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi" />
+
+
+<meta name="date" content="2019-08-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="repositories.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our lab!</a></li>
+<li class="chapter" data-level="2" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>2</b> Communication</a><ul>
+<li class="chapter" data-level="2.1" data-path="communication.html"><a href="communication.html#slack"><i class="fa fa-check"></i><b>2.1</b> Slack</a></li>
+<li class="chapter" data-level="2.2" data-path="communication.html"><a href="communication.html#email"><i class="fa fa-check"></i><b>2.2</b> Email</a></li>
+<li class="chapter" data-level="2.3" data-path="communication.html"><a href="communication.html#trello"><i class="fa fa-check"></i><b>2.3</b> Trello</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="repositories.html"><a href="repositories.html"><i class="fa fa-check"></i><b>3</b> Repositories</a><ul>
+<li class="chapter" data-level="3.1" data-path="repositories.html"><a href="repositories.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project Structure</a></li>
+<li class="chapter" data-level="3.2" data-path="repositories.html"><a href="repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>3.2</b> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>4</b> Coding practices</a><ul>
+<li class="chapter" data-level="4.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>4.1</b> Organizing scripts</a></li>
+<li class="chapter" data-level="4.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-work"><i class="fa fa-check"></i><b>4.2</b> Documenting your work</a></li>
+<li class="chapter" data-level="4.3" data-path="coding-practices.html"><a href="coding-practices.html#variables-function-calls"><i class="fa fa-check"></i><b>4.3</b> Variables &amp; Function Calls</a></li>
+<li class="chapter" data-level="4.4" data-path="coding-practices.html"><a href="coding-practices.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>4.4</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="coding-practices.html"><a href="coding-practices.html#styling"><i class="fa fa-check"></i><b>4.4.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>5</b> Coding style</a><ul>
+<li class="chapter" data-level="5.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>5.1</b> Comments</a></li>
+<li class="chapter" data-level="5.2" data-path="coding-style.html"><a href="coding-style.html#variables-function-calls-1"><i class="fa fa-check"></i><b>5.2</b> Variables &amp; Function Calls</a></li>
+<li class="chapter" data-level="5.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow-1"><i class="fa fa-check"></i><b>5.3</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="coding-style.html"><a href="coding-style.html#styling-1"><i class="fa fa-check"></i><b>5.3.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>7</b> Github</a></li>
+<li class="chapter" data-level="8" data-path="unix-commands.html"><a href="unix-commands.html"><i class="fa fa-check"></i><b>8</b> Unix commands</a><ul>
+<li class="chapter" data-level="8.1" data-path="unix-commands.html"><a href="unix-commands.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
+<li class="chapter" data-level="8.2" data-path="unix-commands.html"><a href="unix-commands.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>8.2</b> Syntax for both Mac/Windows</a></li>
+<li class="chapter" data-level="8.3" data-path="unix-commands.html"><a href="unix-commands.html#basics-1"><i class="fa fa-check"></i><b>8.3</b> Basics</a></li>
+<li class="chapter" data-level="8.4" data-path="unix-commands.html"><a href="unix-commands.html#running-scripts"><i class="fa fa-check"></i><b>8.4</b> Running scripts</a></li>
+<li class="chapter" data-level="8.5" data-path="unix-commands.html"><a href="unix-commands.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>8.5</b> Checking tasks and killing jobs</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>9</b> Resources</a><ul>
+<li class="chapter" data-level="9.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>9.1</b> Resources for R</a></li>
+<li class="chapter" data-level="9.2" data-path="resources.html"><a href="resources.html#resources-for-github"><i class="fa fa-check"></i><b>9.2</b> Resources for Github</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Best Practices</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="communication" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Communication</h1>
+<div id="slack" class="section level2">
+<h2><span class="header-section-number">2.1</span> Slack</h2>
+</div>
+<div id="email" class="section level2">
+<h2><span class="header-section-number">2.2</span> Email</h2>
+</div>
+<div id="trello" class="section level2">
+<h2><span class="header-section-number">2.3</span> Trello</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="repositories.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-communication.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

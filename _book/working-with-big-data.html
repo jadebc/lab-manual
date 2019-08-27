@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Working with Big Data | Data Science Best Practices</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Working with Big Data | Data Science Best Practices" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Working with Big Data | Data Science Best Practices" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi" />
+
+
+<meta name="date" content="2019-08-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="coding-style.html"/>
+<link rel="next" href="github.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our lab!</a></li>
+<li class="chapter" data-level="2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html"><i class="fa fa-check"></i><b>2</b> Communication and coordination</a><ul>
+<li class="chapter" data-level="2.1" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#slack"><i class="fa fa-check"></i><b>2.1</b> Slack</a></li>
+<li class="chapter" data-level="2.2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#email"><i class="fa fa-check"></i><b>2.2</b> Email</a></li>
+<li class="chapter" data-level="2.3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#trello"><i class="fa fa-check"></i><b>2.3</b> Trello</a></li>
+<li class="chapter" data-level="2.4" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-calendar"><i class="fa fa-check"></i><b>2.4</b> Google calendar</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="code-of-conduct.html"><a href="code-of-conduct.html"><i class="fa fa-check"></i><b>3</b> Code of conduct</a><ul>
+<li class="chapter" data-level="3.1" data-path="code-of-conduct.html"><a href="code-of-conduct.html#protecting-human-subjects"><i class="fa fa-check"></i><b>3.1</b> Protecting human subjects</a></li>
+<li class="chapter" data-level="3.2" data-path="code-of-conduct.html"><a href="code-of-conduct.html#scientific-integrity"><i class="fa fa-check"></i><b>3.2</b> Scientific Integrity</a></li>
+<li class="chapter" data-level="3.3" data-path="code-of-conduct.html"><a href="code-of-conduct.html#trello-1"><i class="fa fa-check"></i><b>3.3</b> Trello</a></li>
+<li class="chapter" data-level="3.4" data-path="code-of-conduct.html"><a href="code-of-conduct.html#google-calendar-1"><i class="fa fa-check"></i><b>3.4</b> Google calendar</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>4</b> Code repositories</a><ul>
+<li class="chapter" data-level="4.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>4.1</b> Project Structure</a></li>
+<li class="chapter" data-level="4.2" data-path="code-repositories.html"><a href="code-repositories.html#use-a-config-file"><i class="fa fa-check"></i><b>4.2</b> Use a Config File</a></li>
+<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>4.3</b> Order Files and Directories</a></li>
+<li class="chapter" data-level="4.4" data-path="code-repositories.html"><a href="code-repositories.html#use.gitignore-and-.rproj-files"><i class="fa fa-check"></i><b>4.4</b> Use<code>.gitignore</code> and <code>.Rproj</code> files</a></li>
+<li class="chapter" data-level="4.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>4.5</b> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>5</b> Coding practices</a><ul>
+<li class="chapter" data-level="5.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>5.1</b> Organizing scripts</a></li>
+<li class="chapter" data-level="5.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-work"><i class="fa fa-check"></i><b>5.2</b> Documenting your work</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>5.2.1</b> File headers</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>5.2.2</b> Comments in the body of your script</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>5.2.3</b> Function documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>5.3</b> Object naming</a></li>
+<li class="chapter" data-level="5.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>5.4</b> Function calls</a></li>
+<li class="chapter" data-level="5.5" data-path="coding-practices.html"><a href="coding-practices.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>5.5</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="coding-practices.html"><a href="coding-practices.html#styling"><i class="fa fa-check"></i><b>5.5.1</b> Styling</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>5.6</b> Reading/Saving Data</a></li>
+<li class="chapter" data-level="5.7" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>5.7</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>6</b> Coding style</a><ul>
+<li class="chapter" data-level="6.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>6.1</b> Comments</a></li>
+<li class="chapter" data-level="6.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>6.2</b> Line breaks</a></li>
+<li class="chapter" data-level="6.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow-1"><i class="fa fa-check"></i><b>6.3</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="coding-style.html"><a href="coding-style.html#styling-1"><i class="fa fa-check"></i><b>6.3.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>7</b> Working with Big Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>7.1</b> The data.table package</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.2</b> Optimal RStudio set up</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
+<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.1</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.2</b> What should be pushed to github?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="unix-commands.html"><a href="unix-commands.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
+<li class="chapter" data-level="9.1" data-path="unix-commands.html"><a href="unix-commands.html#basics"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="unix-commands.html"><a href="unix-commands.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>9.2</b> Syntax for both Mac/Windows</a></li>
+<li class="chapter" data-level="9.3" data-path="unix-commands.html"><a href="unix-commands.html#basics-1"><i class="fa fa-check"></i><b>9.3</b> Basics</a></li>
+<li class="chapter" data-level="9.4" data-path="unix-commands.html"><a href="unix-commands.html#running-scripts"><i class="fa fa-check"></i><b>9.4</b> Running scripts</a></li>
+<li class="chapter" data-level="9.5" data-path="unix-commands.html"><a href="unix-commands.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>9.5</b> Checking tasks and killing jobs</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>10</b> Resources</a><ul>
+<li class="chapter" data-level="10.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>10.1</b> Resources for R</a></li>
+<li class="chapter" data-level="10.2" data-path="resources.html"><a href="resources.html#resources-for-github"><i class="fa fa-check"></i><b>10.2</b> Resources for Github</a></li>
+<li class="chapter" data-level="10.3" data-path="resources.html"><a href="resources.html#authorship"><i class="fa fa-check"></i><b>10.3</b> Authorship</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Best Practices</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-with-big-data" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Working with Big Data</h1>
+<p>by Kunal Mishra and Jade Benjamin-Chung</p>
+<div id="the-data.table-package" class="section level2">
+<h2><span class="header-section-number">7.1</span> The data.table package</h2>
+<p>It may also be the case that you’re working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, <code>Tidvyerse</code> (more specificially, <code>dplyr</code>), and <code>data.table</code>. For a majority of things, Base R is inferior to both <code>dplyr</code> and <code>data.table</code>, with concise but less clear syntax and less speed. <code>Dplyr</code> is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to <code>data.table</code>. An overview of the <code>dplyr</code> vs <code>data.table</code> debate can be found in <a href="https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349#27840349">this stackoverflow post</a> and all 3 answers are worth a read.</p>
+<p>You can also achieve a performance boost by running <code>dplyr</code> commands on <code>data.table</code>s, which I find to be the best of both worlds, given that a <code>data.table</code> is a special type of <code>data.frame</code> and fairly easy to convert with the <code>as.data.table()</code> function. The speedup is due to <code>dplyr</code>’s use of the <code>data.table</code> backend and in the future this coupling should become even more natural.</p>
+<p>If you want to test whether using a certain coding approach increases speed, consider the <code>tictoc</code> package. Run <code>tic()</code> before a code chunk and <code>toc()</code> after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you <em>really</em> need to switch a code chunk from <code>dplyr</code> to <code>data.table</code>.</p>
+</div>
+<div id="optimal-rstudio-set-up" class="section level2">
+<h2><span class="header-section-number">7.2</span> Optimal RStudio set up</h2>
+<p>Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the “Tools” menu, then select “Global Options”. Under “General”:</p>
+<p><strong>Workspace</strong></p>
+<ul>
+<li><strong>Uncheck</strong> Restore RData into workspace at startup</li>
+<li>Save workspace to RData on exit – choose <strong>never</strong></li>
+</ul>
+<p><strong>History</strong></p>
+<ul>
+<li><strong>Uncheck</strong> Always save history</li>
+</ul>
+<p>Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="coding-style.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-big-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
