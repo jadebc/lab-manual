@@ -1,6 +1,6 @@
 --- 
 title: "Lab Manual"
-author: "Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi"
+author: "Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
