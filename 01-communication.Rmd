@@ -8,7 +8,8 @@ These communications guidelines are evolving as we increasingly adopt Slack, but
 
 - Use Slack for scheduling, coding related questions, quick check ins, etc. If your Slack message exceeds 200 words, it might be time to use email. 
 - Use channels instead of direct messages unless you need to discuss something private. 
-- Please make an effort to respond to messages that message you (e.g., `@jade`) as quickly as possible and always within 24 hours. If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual. 
+- Please make an effort to respond to messages that message you (e.g., `@jade`) as quickly as possible and always within 24 hours. 
+- If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual and also [set your status in Slack](https://get.slack.help/hc/en-us/articles/201864558-Set-your-Slack-status-and-availability) (e.g., it could say "On vacation") so we know not to expect to see you online. 
 - Please thread messages in Slack as much as possible. 
 
 ## Email
