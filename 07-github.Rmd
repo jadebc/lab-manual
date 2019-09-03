@@ -2,7 +2,37 @@
 
 by Stephanie Djajadi and Nolan Pokpongkiat
 
-** Stephanie please add your table ** 
+## Basic Git Commands
+- A detailed tutorial of Git can be found [here](https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction) on the CS61B website.
+- If you are already familiar with Git, you can reference the summary at the end of [Section B](https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction).
+- If you have made a mistake in Git, you can refer to this [article](https://sethrobertson.github.io/GitFixUm/fixup.html) to undo, fix, or remove commits in git.
+
+## Git Branching
+Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
+
+* You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don’t want to break the code for them.
+* You want to start working on a new part of the project, but you aren’t sure yet if your changes will work and make it to the final product.
+* You are working with others and don’t want to mix up your current work with theirs, even if you want to bring your work together later in the future.
+
+A detailed tutorial on Git Branching can be found [here](https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional). You can also find instructions on how to handle merge conflicts when joining branches together.
+
+| Command                                             | Description |
+| --------------------------------------------------- | ----------- |
+| `git pull origin master`                            | pull before making any changes |
+| `git branch`                                        | check what branch you are on   |
+| `git checkout -b <new_branch_name>`                 | create new branch and go to it (only necessary when you create a new branch)   |
+| `git checkout <branch name>`                        | switch to branch   |
+| `git add <file name>`                               | add file to stage for commit   |
+| `git commit -m <commit message>`                    | commit file with a message   |
+| `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only works if this is first push)   |
+| `git branch --set-upstream-to origin <branch_name>` | set upstream to origin/<branch_name> (use if you forgot -u on first push)   |
+| `git push origin <branch_name>`                     | push work to branch   |
+| `git checkout --track origin/<branch_name>`         | pulls a remote branch and creates a local branch to track it (use when trying to pull someone else’s branch onto your local computer)   |
+| `git push --delete <remote_name> <branch_name>`     | delete remote branch   |
+| `git branch -d <branch_name>`                       | deletes local branch, -D to force   |
+| `git fetch --all --prune`                           | untrack deleted remote branches   |
+
+From here, you can go to Github and add your pull requests from there.
 
 ## How often should I commit? 
 
