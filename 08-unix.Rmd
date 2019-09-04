@@ -19,8 +19,8 @@ On the computer, there is a desktop with two folders, `folder1` and `folder2`, a
 When typing in directories or file names, quotes are necessary if the name includes spaces.
 
 
-| Command | Description |
-|---------|-------------|
+| Command  | Description |
+|----------|-------------|
 | `cd desktop/folder1`    | Change directory to `folder1` |
 | `pwd`                   | Print working directory |
 | `ls`                    | List files in the directory |
@@ -39,33 +39,48 @@ When typing in directories or file names, quotes are necessary if the name inclu
 
 | Windows | Mac / Linux | Description |
 |---------|-------------|-------------|
-|`chmod +750 <filename.sh>` | `chmod +x <filename.sh>` | Change access permissions for a file (only needs to be done once) |
-| `./<filename.sh>` | `./<filename.sh>` | Run file (`./` to run any executable file) |
+|`chmod +750 <filename.sh>`    | `chmod +x <filename.sh>`     | Change access permissions for a file (only needs to be done once) |
+| `./<filename.sh>`            | `./<filename.sh>`            | Run file (`./` to run any executable file) |
 | `bash bash_script_name.sh &` | `bash bash_script_name.sh &` | Run shell script in the background |
 
 
-## Running Rscripts
-**Stephanie please reformat below**
-`Rscript file.R`
-`R CMD BATCH file.R`	# output will be in a new file called file.Rout
-`cat file.Rout` 		# check output
-http://datacornering.com/how-to-run-r-scripts-from-the-windows-command-line-cmd/
-https://happygitwithr.com/shell.html
+## Running Rscripts in Windows
+**Note: This code seems to work only with Windows Command Prompt, not with Git Bash.**
+
+When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your `PATH,` then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):
+
+`C:\Program Files\R\R-3.6.0\bin`
+
+For appending the `PATH` variable, please view [this link](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/). I strongly recommend completing this option.
+
+If you add the PATH as an environment variable, then you can run this line of code to test:
+`Rscript -e “cat(‘this is a test’)"`, where the `-e` flag refers to the expression that will be executed.
+
+If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above:
+`“C:\Program Files\R\R-3.6.0\bin” -e “cat(‘this is a test’)”`
+
+To run an R script from the command line, we can say:
+`Rscript -e “source(‘C:/path/to/script/some_code.R’)”`
+
+### Common Mistakes
+* Remember to include all of the quotation marks around file paths that have a spaces.
+* If you attempt to run an R script but run into `Error: '\U' used without hex digits in character string starting "'C:\U"`, try replacing all `\` with `\\` or `/`.
 
 
 ## Checking tasks and killing jobs
 
 | Windows | Mac / Linux | Description |
 |---------|-------------|-------------|
-| `tasklist` | `ps -v`       | List all processes on the command line |
-| | `top -o [cpu/rsize]`  | List all running processes, sorted by CPU or memory usage |
-| `taskkill /F /PID pid_number` | `kill <PID_number>` | Kill a process by its process ID|
-| `taskkill /IM "process name" /F`|   | Kill a process by its name |
-| `start /b program.exe` | | Runs jobs in the background (exclude `/b` if you want the program to run in a new console) |
-| | `nohup` | Prevents jobs from stopping |
-| | `disown` | Keeps jobs running in the background even if you close R |
-| `taskkill /?` | | Help, lists out other commands |
+| `tasklist`                      | `ps -v`              | List all processes on the command line |
+|                                 | `top -o [cpu/rsize]` | List all running processes, sorted by CPU or memory usage |
+| `taskkill /F /PID pid_number`   | `kill <PID_number>`  | Kill a process by its process ID|
+| `taskkill /IM "process name" /F`|                      | Kill a process by its name |
+| `start /b program.exe`          |                      | Runs jobs in the background (exclude `/b` if you want the program to run in a new console) |
+|                                 | `nohup`              | Prevents jobs from stopping |
+|                                 | `disown`             | Keeps jobs running in the background even if you close R |
+| `taskkill /?`                   |                      | Help, lists out other commands |
 
+To kill a task in Windows, you can also go to Task Manager > More details > Select your desired app > Click on End Task.
 
 
 ## Running big jobs
