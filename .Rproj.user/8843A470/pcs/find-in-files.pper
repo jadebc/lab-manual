@@ -5,7 +5,7 @@
         ],
         "path" : "",
         "projectRelative" : true,
-        "query" : "\"a minimal book example\"",
+        "query" : "\"minimal book\"",
         "regex" : false
     }
 }

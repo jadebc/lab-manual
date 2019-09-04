@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Communication and coordination | Lab Manual</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Communication and coordination | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Communication and coordination | Lab Manual" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="Lab practices and data science best practices" />
   
 
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat" />
 
 
-<meta name="date" content="2019-08-27" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,14 +117,18 @@
 <li class="chapter" data-level="7.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.3</b> Optimal RStudio set up</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
-<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.1</b> How often should I commit?</a></li>
-<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.2</b> What should be pushed to github?</a></li>
+<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
+<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>8.2</b> Git Branching</a></li>
+<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.3</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.4</b> What should be pushed to github?</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
-<li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
+<li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
 <li class="chapter" data-level="9.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>9.2</b> Syntax for both Mac/Windows</a></li>
-<li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.3</b> Basics</a></li>
-<li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-scripts"><i class="fa fa-check"></i><b>9.4</b> Running scripts</a></li>
+<li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>9.3</b> Running Bash Scripts</a></li>
+<li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>9.4</b> Running Rscripts in Windows</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>9.4.1</b> Common Mistakes</a></li>
+</ul></li>
 <li class="chapter" data-level="9.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>9.5</b> Checking tasks and killing jobs</a></li>
 <li class="chapter" data-level="9.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>9.6</b> Running big jobs</a></li>
 </ul></li>
@@ -162,7 +166,8 @@
 <ul>
 <li>Use Slack for scheduling, coding related questions, quick check ins, etc. If your Slack message exceeds 200 words, it might be time to use email.</li>
 <li>Use channels instead of direct messages unless you need to discuss something private.</li>
-<li>Please make an effort to respond to messages that message you (e.g., <code>@jade</code>) as quickly as possible and always within 24 hours. If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual.</li>
+<li>Please make an effort to respond to messages that message you (e.g., <code>@jade</code>) as quickly as possible and always within 24 hours.</li>
+<li>If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual and also <a href="https://get.slack.help/hc/en-us/articles/201864558-Set-your-Slack-status-and-availability">set your status in Slack</a> (e.g., it could say “On vacation”) so we know not to expect to see you online.</li>
 <li>Please thread messages in Slack as much as possible.</li>
 </ul>
 </div>

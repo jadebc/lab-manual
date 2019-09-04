@@ -84,7 +84,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-08-27}
+    \date{2019-09-04}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -124,7 +124,9 @@ These communications guidelines are evolving as we increasingly adopt Slack, but
 \item
   Use channels instead of direct messages unless you need to discuss something private.
 \item
-  Please make an effort to respond to messages that message you (e.g., \texttt{@jade}) as quickly as possible and always within 24 hours. If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual.
+  Please make an effort to respond to messages that message you (e.g., \texttt{@jade}) as quickly as possible and always within 24 hours.
+\item
+  If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual and also \href{https://get.slack.help/hc/en-us/articles/201864558-Set-your-Slack-status-and-availability}{set your status in Slack} (e.g., it could say ``On vacation'') so we know not to expect to see you online.
 \item
   Please thread messages in Slack as much as possible.
 \end{itemize}
@@ -841,7 +843,114 @@ Unfortunately RStudio often gets slow and/or freezes after hours working with bi
 
 by Stephanie Djajadi and Nolan Pokpongkiat
 
-** Stephanie please add your table **
+\hypertarget{basics}{%
+\section{Basics}\label{basics}}
+
+\begin{itemize}
+\tightlist
+\item
+  A detailed tutorial of Git can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{here} on the CS61B website.
+\item
+  If you are already familiar with Git, you can reference the summary at the end of \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{Section B}.
+\item
+  If you have made a mistake in Git, you can refer to this \href{https://sethrobertson.github.io/GitFixUm/fixup.html}{article} to undo, fix, or remove commits in git.
+\end{itemize}
+
+\hypertarget{git-branching}{%
+\section{Git Branching}\label{git-branching}}
+
+Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
+
+\begin{itemize}
+\tightlist
+\item
+  You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don't want to break the code for them.
+\item
+  You want to start working on a new part of the project, but you aren't sure yet if your changes will work and make it to the final product.
+\item
+  You are working with others and don't want to mix up your current work with theirs, even if you want to bring your work together later in the future.
+\end{itemize}
+
+A detailed tutorial on Git Branching can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#e-git-branching-advanced-git-optional}{here}. You can also find instructions on how to handle merge conflicts when joining branches together.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.77\columnwidth}\raggedright
+Command\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ pull\ origin\ master}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+pull before making any changes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ branch}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+check what branch you are on\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+create new branch and go to it (only necessary when you create a new branch)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ checkout\ \textless{}branch\ name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+switch to branch\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ add\ \textless{}file\ name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+add file to stage for commit\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+commit file with a message\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+push branch to remote and set to track (-u only works if this is first push)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ branch\ -\/-set-upstream-to\ origin\ \textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+set upstream to origin/ (use if you forgot -u on first push)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ push\ origin\ \textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+push work to branch\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ checkout\ -\/-track\ origin/\textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+pulls a remote branch and creates a local branch to track it (use when trying to pull someone else's branch onto your local computer)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ push\ -\/-delete\ \textless{}remote\_name\textgreater{}\ \textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+delete remote branch\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ branch\ -d\ \textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+deletes local branch, -D to force\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.77\columnwidth}\raggedright
+\texttt{git\ fetch\ -\/-all\ -\/-prune}\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+untrack deleted remote branches\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+From here, you can go to Github and add your pull requests from there.
 
 \hypertarget{how-often-should-i-commit}{%
 \section{How often should I commit?}\label{how-often-should-i-commit}}
@@ -871,39 +980,238 @@ We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Wind
   To use git and push to github
 \end{enumerate}
 
-\hypertarget{basics}{%
-\section{Basics}\label{basics}}
+\hypertarget{basics-1}{%
+\section{Basics}\label{basics-1}}
 
-On the computer, there is a desktop with two folders, folder1 and folder2, and a file called file1. Inside folder1, we have a file called file2. Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
+On the computer, there is a desktop with two folders, \texttt{folder1} and \texttt{folder2}, and a file called \texttt{file1.} Inside \texttt{folder1}, we have a file called \texttt{file2.} Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
 
-\textbf{Stephanie please add your figure then delete this}
+\begin{figure}
+\centering
+\includegraphics{assets/images/ex-desktop.jpg}
+\caption{Here is our example desktop.}
+\end{figure}
 
 \hypertarget{syntax-for-both-macwindows}{%
 \section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}}
 
 When typing in directories or file names, quotes are necessary if the name includes spaces.
 
-\textbf{Stephanie please add your table and figure then delete this}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.41\columnwidth}\raggedright
+Command\strut
+\end{minipage} & \begin{minipage}[b]{0.53\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{cd\ desktop/folder1}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Change directory to \texttt{folder1}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{pwd}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Print working directory\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{ls}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+List files in the directory\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{cp\ "file2"\ "newfile2"}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Copy file (remember to include file extensions when typing in file names like \texttt{.pdf} or \texttt{.R})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{mv\ “newfile2”\ “file3”}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Rename \texttt{newfile2} to \texttt{file3}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{cd\ ..}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Go to parent of the working directory (in this case, \texttt{desktop})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{mv\ “file1”\ folder2}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Move \texttt{file1} to \texttt{folder2}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{mkdir\ folder3}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Make a new folder in \texttt{folder2}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{rm\ \textless{}filename\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Remove files\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{rm\ -rf\ folder3}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Remove directories (\texttt{-r} will attempt to remove the directory recursively, \texttt{-rf} will force removal of the directory)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{clear}\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Clear terminal screen of all previous commands\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
-\hypertarget{basics-1}{%
-\section{Basics}\label{basics-1}}
+\begin{figure}
+\centering
+\includegraphics{assets/images/ex-terminal.PNG}
+\caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
+\end{figure}
 
-\textbf{Stephanie please add your table then delete this}
+\hypertarget{running-bash-scripts}{%
+\section{Running Bash Scripts}\label{running-bash-scripts}}
 
-\hypertarget{running-scripts}{%
-\section{Running scripts}\label{running-scripts}}
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright
+Windows\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+Mac / Linux\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{chmod\ +750\ \textless{}filename.sh\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{chmod\ +x\ \textless{}filename.sh\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Change access permissions for a file (only needs to be done once)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{./\textless{}filename.sh\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{./\textless{}filename.sh\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Run file (\texttt{./} to run any executable file)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{bash\ bash\_script\_name.sh\ \&}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{bash\ bash\_script\_name.sh\ \&}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Run shell script in the background\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
-\textbf{Stephanie please reformat below}
-\texttt{Rscript\ file.R}
-\texttt{R\ CMD\ BATCH\ file.R} \# output will be in a new file called file.Rout
-\texttt{cat\ file.Rout} \# check output
-\url{http://datacornering.com/how-to-run-r-scripts-from-the-windows-command-line-cmd/}
-\url{https://happygitwithr.com/shell.html}
+\hypertarget{running-rscripts-in-windows}{%
+\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}}
+
+\textbf{Note: This code seems to work only with Windows Command Prompt, not with Git Bash.}
+
+When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your \texttt{PATH,} then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):
+
+\texttt{C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin}
+
+For appending the \texttt{PATH} variable, please view \href{https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/}{this link}. I strongly recommend completing this option.
+
+If you add the PATH as an environment variable, then you can run this line of code to test:
+\texttt{Rscript\ -e\ “cat(‘this\ is\ a\ test’)"}, where the \texttt{-e} flag refers to the expression that will be executed.
+
+If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above:
+\texttt{“C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin”\ -e\ “cat(‘this\ is\ a\ test’)”}
+
+To run an R script from the command line, we can say:
+\texttt{Rscript\ -e\ “source(‘C:/path/to/script/some\_code.R’)”}
+
+\hypertarget{common-mistakes}{%
+\subsection{Common Mistakes}\label{common-mistakes}}
+
+\begin{itemize}
+\tightlist
+\item
+  Remember to include all of the quotation marks around file paths that have a spaces.
+\item
+  If you attempt to run an R script but run into \texttt{Error:\ \textquotesingle{}\textbackslash{}U\textquotesingle{}\ used\ without\ hex\ digits\ in\ character\ string\ starting\ "\textquotesingle{}C:\textbackslash{}U"}, try replacing all \texttt{\textbackslash{}} with \texttt{\textbackslash{}\textbackslash{}} or \texttt{/}.
+\end{itemize}
 
 \hypertarget{checking-tasks-and-killing-jobs}{%
 \section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}}
 
-\textbf{Stephanie please add your table then delete this}
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright
+Windows\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+Mac / Linux\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{tasklist}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{ps\ -v}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+List all processes on the command line\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{top\ -o\ {[}cpu/rsize{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+List all running processes, sorted by CPU or memory usage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{taskkill\ /F\ /PID\ pid\_number}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{kill\ \textless{}PID\_number\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Kill a process by its process ID\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{taskkill\ /IM\ "process\ name"\ /F}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Kill a process by its name\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{start\ /b\ program.exe}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Runs jobs in the background (exclude \texttt{/b} if you want the program to run in a new console)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{nohup}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Prevents jobs from stopping\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{disown}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Keeps jobs running in the background even if you close R\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{taskkill\ /?}\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Help, lists out other commands\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+To kill a task in Windows, you can also go to Task Manager \textgreater{} More details \textgreater{} Select your desired app \textgreater{} Click on End Task.
 
 \hypertarget{running-big-jobs}{%
 \section{Running big jobs}\label{running-big-jobs}}

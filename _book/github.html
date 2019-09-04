@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Github | Lab Manual</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Github | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 8 Github | Lab Manual" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="Lab practices and data science best practices" />
   
 
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat" />
 
 
-<meta name="date" content="2019-08-27" />
+<meta name="date" content="2019-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,14 +117,18 @@
 <li class="chapter" data-level="7.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.3</b> Optimal RStudio set up</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
-<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.1</b> How often should I commit?</a></li>
-<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.2</b> What should be pushed to github?</a></li>
+<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
+<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>8.2</b> Git Branching</a></li>
+<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.3</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.4</b> What should be pushed to github?</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
-<li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
+<li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
 <li class="chapter" data-level="9.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>9.2</b> Syntax for both Mac/Windows</a></li>
-<li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.3</b> Basics</a></li>
-<li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-scripts"><i class="fa fa-check"></i><b>9.4</b> Running scripts</a></li>
+<li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>9.3</b> Running Bash Scripts</a></li>
+<li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>9.4</b> Running Rscripts in Windows</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>9.4.1</b> Common Mistakes</a></li>
+</ul></li>
 <li class="chapter" data-level="9.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>9.5</b> Checking tasks and killing jobs</a></li>
 <li class="chapter" data-level="9.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>9.6</b> Running big jobs</a></li>
 </ul></li>
@@ -156,12 +160,96 @@
 <div id="github" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Github</h1>
 <p>by Stephanie Djajadi and Nolan Pokpongkiat</p>
-<p>** Stephanie please add your table **</p>
+<div id="basics" class="section level2">
+<h2><span class="header-section-number">8.1</span> Basics</h2>
+<ul>
+<li>A detailed tutorial of Git can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">here</a> on the CS61B website.</li>
+<li>If you are already familiar with Git, you can reference the summary at the end of <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">Section B</a>.</li>
+<li>If you have made a mistake in Git, you can refer to this <a href="https://sethrobertson.github.io/GitFixUm/fixup.html">article</a> to undo, fix, or remove commits in git.</li>
+</ul>
+</div>
+<div id="git-branching" class="section level2">
+<h2><span class="header-section-number">8.2</span> Git Branching</h2>
+<p>Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you’ve finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:</p>
+<ul>
+<li>You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don’t want to break the code for them.</li>
+<li>You want to start working on a new part of the project, but you aren’t sure yet if your changes will work and make it to the final product.</li>
+<li>You are working with others and don’t want to mix up your current work with theirs, even if you want to bring your work together later in the future.</li>
+</ul>
+<p>A detailed tutorial on Git Branching can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional">here</a>. You can also find instructions on how to handle merge conflicts when joining branches together.</p>
+<table>
+<colgroup>
+<col width="82%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git pull origin master</code></td>
+<td>pull before making any changes</td>
+</tr>
+<tr class="even">
+<td><code>git branch</code></td>
+<td>check what branch you are on</td>
+</tr>
+<tr class="odd">
+<td><code>git checkout -b &lt;new_branch_name&gt;</code></td>
+<td>create new branch and go to it (only necessary when you create a new branch)</td>
+</tr>
+<tr class="even">
+<td><code>git checkout &lt;branch name&gt;</code></td>
+<td>switch to branch</td>
+</tr>
+<tr class="odd">
+<td><code>git add &lt;file name&gt;</code></td>
+<td>add file to stage for commit</td>
+</tr>
+<tr class="even">
+<td><code>git commit -m &lt;commit message&gt;</code></td>
+<td>commit file with a message</td>
+</tr>
+<tr class="odd">
+<td><code>git push -u origin &lt;branch_name&gt;</code></td>
+<td>push branch to remote and set to track (-u only works if this is first push)</td>
+</tr>
+<tr class="even">
+<td><code>git branch --set-upstream-to origin &lt;branch_name&gt;</code></td>
+<td>set upstream to origin/<branch_name> (use if you forgot -u on first push)</td>
+</tr>
+<tr class="odd">
+<td><code>git push origin &lt;branch_name&gt;</code></td>
+<td>push work to branch</td>
+</tr>
+<tr class="even">
+<td><code>git checkout --track origin/&lt;branch_name&gt;</code></td>
+<td>pulls a remote branch and creates a local branch to track it (use when trying to pull someone else’s branch onto your local computer)</td>
+</tr>
+<tr class="odd">
+<td><code>git push --delete &lt;remote_name&gt; &lt;branch_name&gt;</code></td>
+<td>delete remote branch</td>
+</tr>
+<tr class="even">
+<td><code>git branch -d &lt;branch_name&gt;</code></td>
+<td>deletes local branch, -D to force</td>
+</tr>
+<tr class="odd">
+<td><code>git fetch --all --prune</code></td>
+<td>untrack deleted remote branches</td>
+</tr>
+</tbody>
+</table>
+<p>From here, you can go to Github and add your pull requests from there.</p>
+</div>
 <div id="how-often-should-i-commit" class="section level2">
-<h2><span class="header-section-number">8.1</span> How often should I commit?</h2>
+<h2><span class="header-section-number">8.3</span> How often should I commit?</h2>
 </div>
 <div id="what-should-be-pushed-to-github" class="section level2">
-<h2><span class="header-section-number">8.2</span> What should be pushed to github?</h2>
+<h2><span class="header-section-number">8.4</span> What should be pushed to github?</h2>
 <p>Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.</p>
 <p>There is a standardized <code>.gitignore</code> for <code>R</code> which you <a href="https://github.com/github/gitignore/blob/master/R.gitignore">can download</a> and add to your project. This ensures you’re not committing log files or things that would otherwise best be left ignored to GitHub. This is a <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">great discussion of project-oriented workflows</a>, extolling the virtues of a self-contained, portable projects, for your reference.</p>
 
