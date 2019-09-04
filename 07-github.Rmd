@@ -2,7 +2,7 @@
 
 by Stephanie Djajadi and Nolan Pokpongkiat
 
-## Basic Git Commands
+## Basics
 - A detailed tutorial of Git can be found [here](https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction) on the CS61B website.
 - If you are already familiar with Git, you can reference the summary at the end of [Section B](https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction).
 - If you have made a mistake in Git, you can refer to this [article](https://sethrobertson.github.io/GitFixUm/fixup.html) to undo, fix, or remove commits in git.

@@ -10,20 +10,41 @@ We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Wind
 
 ## Basics
 
-On the computer, there is a desktop with two folders, folder1 and folder2, and a file called file1. Inside folder1, we have a file called file2. Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
+On the computer, there is a desktop with two folders, `folder1` and `folder2`, and a file called `file1.` Inside `folder1`, we have a file called `file2.` Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
 
-**Stephanie please add your figure then delete this**
+![Here is our example desktop.](assets/images/ex-desktop.jpg)
+
 
 ## Syntax for both Mac/Windows
 When typing in directories or file names, quotes are necessary if the name includes spaces.
 
-**Stephanie please add your table and figure then delete this**
 
-## Basics
+| Command | Description |
+|---------|-------------|
+| `cd desktop/folder1`    | Change directory to `folder1` |
+| `pwd`                   | Print working directory |
+| `ls`                    | List files in the directory |
+| `cp "file2" "newfile2"` | Copy file (remember to include file extensions when typing in file names like `.pdf` or `.R`) |
+| `mv “newfile2” “file3”` | Rename `newfile2` to `file3` |
+| `cd ..`                 | Go to parent of the working directory (in this case, `desktop`) |
+| `mv “file1” folder2`    | Move `file1` to `folder2` |
+| `mkdir folder3`         | Make a new folder in `folder2` |
+| `rm <filename>`         | Remove files |
+| `rm -rf folder3`        | Remove directories (`-r` will attempt to remove the directory recursively, `-rf` will force removal of the directory) |
+| `clear`                 | Clear terminal screen of all previous commands |
 
-**Stephanie please add your table then delete this**
+![Here is an example of what your terminal might look like after executing the commands in the order listed above.](assets/images/ex-terminal.PNG)
 
-## Running scripts
+## Running Bash Scripts
+
+| Windows | Mac / Linux | Description |
+|---------|-------------|-------------|
+|`chmod +750 <filename.sh>` | `chmod +x <filename.sh>` | Change access permissions for a file (only needs to be done once) |
+| `./<filename.sh>` | `./<filename.sh>` | Run file (`./` to run any executable file) |
+| `bash bash_script_name.sh &` | `bash bash_script_name.sh &` | Run shell script in the background |
+
+
+## Running Rscripts
 **Stephanie please reformat below**
 `Rscript file.R`
 `R CMD BATCH file.R`	# output will be in a new file called file.Rout
@@ -34,7 +55,18 @@ https://happygitwithr.com/shell.html
 
 ## Checking tasks and killing jobs
 
-**Stephanie please add your table then delete this**
+| Windows | Mac / Linux | Description |
+|---------|-------------|-------------|
+| `tasklist` | `ps -v`       | List all processes on the command line |
+| | `top -o [cpu/rsize]`  | List all running processes, sorted by CPU or memory usage |
+| `taskkill /F /PID pid_number` | `kill <PID_number>` | Kill a process by its process ID|
+| `taskkill /IM "process name" /F`|   | Kill a process by its name |
+| `start /b program.exe` | | Runs jobs in the background (exclude `/b` if you want the program to run in a new console) |
+| | `nohup` | Prevents jobs from stopping |
+| | `disown` | Keeps jobs running in the background even if you close R |
+| `taskkill /?` | | Help, lists out other commands |
+
+
 
 ## Running big jobs
 
