@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  4 SEP 2019 10:46
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  10 SEP 2019 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1173,7 +1173,10 @@ Chapter 7.
 Chapter 8.
 [31
 
-] [32] [33] [34
+]
+Underfull \vbox (badness 1102) has occurred while \output is active []
+
+[32] [33] [34
 
 ]
 Chapter 9.
@@ -1182,15 +1185,15 @@ File: assets/images/ex-desktop.jpg Graphic file (type QTm)
 File: assets/images/ex-terminal.PNG Graphic file (type QTm)
 <use  "assets/images/ex-terminal.PNG" >
 
-LaTeX Warning: Float too large for page by 36.06166pt on input line 1070.
+LaTeX Warning: Float too large for page by 36.06166pt on input line 1077.
 
 
-Overfull \hbox (20.40147pt too wide) in paragraph at lines 1101--1102
+Overfull \hbox (20.40147pt too wide) in paragraph at lines 1108--1109
 \TU/lmtt/m/n/10 bash_script_name.sh 
  []
 
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1138--1139
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
 \TU/lmtt/m/n/10 without hex digits in character string starting "[]C:\U"\TU/lmr
 /m/n/10 , try
  []
@@ -1198,19 +1201,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 1138--1139
 [37] [38] [39] [40]
 Chapter 10.
 No file bookdown-demo.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1277.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1284.
 [41
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1277.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1284.
 (./bookdown-demo.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1277.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1277.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1284.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1284.
  ) 
 Here is how much of TeX's memory you used:
  20969 strings out of 493005
  385604 string characters out of 6134596
- 505369 words of memory out of 5000000
+ 505370 words of memory out of 5000000
  24721 multiletter control sequences out of 15000+600000
  16383 words of font info for 47 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
