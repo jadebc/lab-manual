@@ -16,11 +16,37 @@ Branches allow you to keep track of multiple versions of your work simultaneousl
 
 A detailed tutorial on Git Branching can be found [here](https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional). You can also find instructions on how to handle merge conflicts when joining branches together.
 
+## Example Workflow
+
+A standard workflow when starting on a new project and contributing code looks like this:
+
+
+
+| Command   | Description      |
+| --------- | ---------------- |
+| SETUP: FIRST TIME ONLY: `git clone <url> <directory_name>`                  | Clone the repo. This copies of all the project files in its current state on Github to your local computer. |
+| 1. `git pull origin master`                            | update the state of your files to match the most current version on GitHub |
+| 2. `git checkout -b <new_branch_name>`                 | create new branch that you'll be working on and go to it  |
+| 3. Make some file changes | work on your feature/implementation | 
+| 4. `git add <filename>`                               | add file to stage for commit |
+| 5. `git commit -m <commit message>`                    | commit file with a message   |
+| 6. `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only works if this is first push)   |
+| 7. Repeat step 4-5. | work and commit often |
+| 8. `git push` | push work to remote branch for others to view |
+| 9. Follow the link given from the `git push` command to submit a pull request (PR) on GitHub online | PR merges in work from your branch into master |
+| (10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging | |
+| 11. `git fetch --all --prune`                           | clean up your local git by untracking deleted remote branches   |
+
+Other helpful commands are listed below.
+
+## Commonly Used Git Commands
+
 | Command   | Description      |
 | --------- | ---------------- |
 | `git clone <url> <directory_name>`                  | clone a repository, only needs to be done the first time |
 | `git pull origin master`                            | pull before making any changes |
 | `git branch`                                        | check what branch you are on   |
+| `git branch -a`                                        | check what branch you are on + all remote branches   |
 | `git checkout -b <new_branch_name>`                 | create new branch and go to it (only necessary when you create a new branch)   |
 | `git checkout <branch name>`                        | switch to branch   |
 | `git add <file name>`                               | add file to stage for commit   |
@@ -33,12 +59,10 @@ A detailed tutorial on Git Branching can be found [here](https://sp19.datastruct
 | `git branch -d <branch_name>`                       | deletes local branch, -D to force   |
 | `git fetch --all --prune`                           | untrack deleted remote branches   |
 
-From here, you can go to Github and add your pull requests from there.
-
 ## How often should I commit? 
 It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less. 
 
-## What should be pushed to github?
+## What should be pushed to Github?
 
 Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped. 
 
