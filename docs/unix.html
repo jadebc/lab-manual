@@ -24,7 +24,7 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2019-09-18" />
+<meta name="date" content="2019-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,8 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
 <li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
 <li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>8.2</b> Git Branching</a></li>
-<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.3</b> How often should I commit?</a></li>
-<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.4</b> What should be pushed to github?</a></li>
+<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>8.3</b> Example Workflow</a></li>
+<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>8.4</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="8.5" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.5</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.6" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.6</b> What should be pushed to Github?</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
 <li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
@@ -447,63 +449,63 @@ tmux attach -tsession_name </code></pre>
 </ul>
 <div id="example-code-for-runfilesavelogs" class="section level3">
 <h3><span class="header-section-number">9.6.1</span> Example code for <code>runfileSaveLogs</code></h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#!/usr/bin/env python3</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># Type &quot;./runFileSaveLogs -h&quot; for help</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="im">import</span> os</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="im">import</span> sys</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="im">import</span> argparse</a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="im">import</span> getpass</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="im">import</span> datetime</a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="im">import</span> shutil</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="im">import</span> glob</a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="im">import</span> pathlib</a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co"># Setting working directory to this script&#39;s current directory</span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14">os.chdir(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))))</a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="bu">print</span>(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</a>
-<a class="sourceLine" id="cb13-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co"># Setting up argument parser</span></a>
-<a class="sourceLine" id="cb13-19" data-line-number="19">parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">&#39;Runs the argument R script(s) - in parallel if specified - and moves the subsequent generated .Rout log files to a timestamped directory.&#39;</span>)</a>
-<a class="sourceLine" id="cb13-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="kw">def</span> is_valid_file(parser, arg):</a>
-<a class="sourceLine" id="cb13-22" data-line-number="22">    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(arg):</a>
-<a class="sourceLine" id="cb13-23" data-line-number="23">        parser.error(<span class="st">&quot;The file </span><span class="sc">%s</span><span class="st"> does not exist!&quot;</span> <span class="op">%</span> arg)</a>
-<a class="sourceLine" id="cb13-24" data-line-number="24">    <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb13-25" data-line-number="25">        <span class="cf">return</span> arg</a>
-<a class="sourceLine" id="cb13-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb13-27" data-line-number="27">parser.add_argument(<span class="st">&#39;-p&#39;</span>, <span class="st">&#39;--parallel&#39;</span>, action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Runs the argument R scripts in parallel if specified&quot;</span>)</a>
-<a class="sourceLine" id="cb13-28" data-line-number="28">parser.add_argument(<span class="st">&#39;filenames&#39;</span>, nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="kw">lambda</span> x: is_valid_file(parser, x))</a>
-<a class="sourceLine" id="cb13-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb13-30" data-line-number="30">args <span class="op">=</span> parser.parse_args(<span class="st">&quot;0-Config.R&quot;</span>.split())</a>
-<a class="sourceLine" id="cb13-31" data-line-number="31">args_dict <span class="op">=</span> <span class="bu">vars</span>(args)</a>
-<a class="sourceLine" id="cb13-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb13-33" data-line-number="33"><span class="bu">print</span>(args_dict)</a>
-<a class="sourceLine" id="cb13-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb13-35" data-line-number="35"><span class="co"># Run given R Scripts</span></a>
-<a class="sourceLine" id="cb13-36" data-line-number="36"><span class="cf">for</span> filename <span class="kw">in</span> args_dict[<span class="st">&quot;filenames&quot;</span>]:</a>
-<a class="sourceLine" id="cb13-37" data-line-number="37">  system_call <span class="op">=</span> <span class="st">&quot;R CMD BATCH&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> filename</a>
-<a class="sourceLine" id="cb13-38" data-line-number="38">  <span class="cf">if</span> args_dict[<span class="st">&quot;parallel&quot;</span>]: system_call <span class="op">=</span> <span class="st">&quot;nohup&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> system_call <span class="op">+</span> <span class="st">&quot; &amp;&quot;</span></a>
-<a class="sourceLine" id="cb13-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb13-40" data-line-number="40">  os.system(system_call)</a>
-<a class="sourceLine" id="cb13-41" data-line-number="41"></a>
-<a class="sourceLine" id="cb13-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb13-43" data-line-number="43"><span class="co"># Create the directory (and any parents) of the log files</span></a>
-<a class="sourceLine" id="cb13-44" data-line-number="44">currentUser <span class="op">=</span> getpass.getuser()</a>
-<a class="sourceLine" id="cb13-45" data-line-number="45">currentTime <span class="op">=</span> datetime.datetime.now().strftime(<span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>)</a>
-<a class="sourceLine" id="cb13-46" data-line-number="46">logDirPrefix <span class="op">=</span> <span class="st">&quot;/home/kaiserData/logs/&quot;</span></a>
-<a class="sourceLine" id="cb13-47" data-line-number="47">logDir <span class="op">=</span> logDirPrefix <span class="op">+</span> currentTime <span class="op">+</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> currentUser <span class="op">+</span> <span class="st">&quot;/&quot;</span></a>
-<a class="sourceLine" id="cb13-48" data-line-number="48"></a>
-<a class="sourceLine" id="cb13-49" data-line-number="49">pathlib.Path(logDir).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</a>
-<a class="sourceLine" id="cb13-50" data-line-number="50"></a>
-<a class="sourceLine" id="cb13-51" data-line-number="51"></a>
-<a class="sourceLine" id="cb13-52" data-line-number="52"><span class="co"># Find and move all logs to this new directory</span></a>
-<a class="sourceLine" id="cb13-53" data-line-number="53">currentLogPaths <span class="op">=</span> glob.glob(<span class="st">&#39;./*.Rout&#39;</span>)</a>
-<a class="sourceLine" id="cb13-54" data-line-number="54"></a>
-<a class="sourceLine" id="cb13-55" data-line-number="55"><span class="cf">for</span> currentLogPath <span class="kw">in</span> currentLogPaths:</a>
-<a class="sourceLine" id="cb13-56" data-line-number="56">  filename <span class="op">=</span> currentLogPath.split(<span class="st">&quot;/&quot;</span>)[<span class="op">-</span><span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb13-57" data-line-number="57">  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co">#!/usr/bin/env python3</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># Type &quot;./runFileSaveLogs -h&quot; for help</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="im">import</span> os</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="im">import</span> sys</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="im">import</span> argparse</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="im">import</span> getpass</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="im">import</span> datetime</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="im">import</span> shutil</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="im">import</span> glob</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="im">import</span> pathlib</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co"># Setting working directory to this script&#39;s current directory</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">os.chdir(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))))</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="bu">print</span>(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co"># Setting up argument parser</span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19">parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">&#39;Runs the argument R script(s) - in parallel if specified - and moves the subsequent generated .Rout log files to a timestamped directory.&#39;</span>)</a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="kw">def</span> is_valid_file(parser, arg):</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22">    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(arg):</a>
+<a class="sourceLine" id="cb14-23" data-line-number="23">        parser.error(<span class="st">&quot;The file </span><span class="sc">%s</span><span class="st"> does not exist!&quot;</span> <span class="op">%</span> arg)</a>
+<a class="sourceLine" id="cb14-24" data-line-number="24">    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb14-25" data-line-number="25">        <span class="cf">return</span> arg</a>
+<a class="sourceLine" id="cb14-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb14-27" data-line-number="27">parser.add_argument(<span class="st">&#39;-p&#39;</span>, <span class="st">&#39;--parallel&#39;</span>, action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Runs the argument R scripts in parallel if specified&quot;</span>)</a>
+<a class="sourceLine" id="cb14-28" data-line-number="28">parser.add_argument(<span class="st">&#39;filenames&#39;</span>, nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="kw">lambda</span> x: is_valid_file(parser, x))</a>
+<a class="sourceLine" id="cb14-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb14-30" data-line-number="30">args <span class="op">=</span> parser.parse_args(<span class="st">&quot;0-Config.R&quot;</span>.split())</a>
+<a class="sourceLine" id="cb14-31" data-line-number="31">args_dict <span class="op">=</span> <span class="bu">vars</span>(args)</a>
+<a class="sourceLine" id="cb14-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb14-33" data-line-number="33"><span class="bu">print</span>(args_dict)</a>
+<a class="sourceLine" id="cb14-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb14-35" data-line-number="35"><span class="co"># Run given R Scripts</span></a>
+<a class="sourceLine" id="cb14-36" data-line-number="36"><span class="cf">for</span> filename <span class="kw">in</span> args_dict[<span class="st">&quot;filenames&quot;</span>]:</a>
+<a class="sourceLine" id="cb14-37" data-line-number="37">  system_call <span class="op">=</span> <span class="st">&quot;R CMD BATCH&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> filename</a>
+<a class="sourceLine" id="cb14-38" data-line-number="38">  <span class="cf">if</span> args_dict[<span class="st">&quot;parallel&quot;</span>]: system_call <span class="op">=</span> <span class="st">&quot;nohup&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> system_call <span class="op">+</span> <span class="st">&quot; &amp;&quot;</span></a>
+<a class="sourceLine" id="cb14-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb14-40" data-line-number="40">  os.system(system_call)</a>
+<a class="sourceLine" id="cb14-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb14-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb14-43" data-line-number="43"><span class="co"># Create the directory (and any parents) of the log files</span></a>
+<a class="sourceLine" id="cb14-44" data-line-number="44">currentUser <span class="op">=</span> getpass.getuser()</a>
+<a class="sourceLine" id="cb14-45" data-line-number="45">currentTime <span class="op">=</span> datetime.datetime.now().strftime(<span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>)</a>
+<a class="sourceLine" id="cb14-46" data-line-number="46">logDirPrefix <span class="op">=</span> <span class="st">&quot;/home/kaiserData/logs/&quot;</span></a>
+<a class="sourceLine" id="cb14-47" data-line-number="47">logDir <span class="op">=</span> logDirPrefix <span class="op">+</span> currentTime <span class="op">+</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> currentUser <span class="op">+</span> <span class="st">&quot;/&quot;</span></a>
+<a class="sourceLine" id="cb14-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb14-49" data-line-number="49">pathlib.Path(logDir).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</a>
+<a class="sourceLine" id="cb14-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb14-51" data-line-number="51"></a>
+<a class="sourceLine" id="cb14-52" data-line-number="52"><span class="co"># Find and move all logs to this new directory</span></a>
+<a class="sourceLine" id="cb14-53" data-line-number="53">currentLogPaths <span class="op">=</span> glob.glob(<span class="st">&#39;./*.Rout&#39;</span>)</a>
+<a class="sourceLine" id="cb14-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb14-55" data-line-number="55"><span class="cf">for</span> currentLogPath <span class="kw">in</span> currentLogPaths:</a>
+<a class="sourceLine" id="cb14-56" data-line-number="56">  filename <span class="op">=</span> currentLogPath.split(<span class="st">&quot;/&quot;</span>)[<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb14-57" data-line-number="57">  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</a></code></pre></div>
 
 </div>
 </div>

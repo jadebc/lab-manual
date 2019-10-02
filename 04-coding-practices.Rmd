@@ -7,7 +7,7 @@ by Kunal Mishra and Jade Benjamin-Chung
 Just as your data "flows" through your project, data should flow naturally through a script. Very generally, you want to:
 
 1. describe the work completed in the script in a comment header
-2. source your configuratino file (`0-config.R`) 
+2. source your configuration file (`0-config.R`) 
 3. load all your data 
 4. do all your analysis/computation 
 5. save your data. 
@@ -18,15 +18,23 @@ Each of these sections should be "chunked together" using comments. See [this fi
 
 ### File headers
 Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
+
   ```
   ################################################################################
   # @Organization - Example Organization
   # @Project - Example Project
   # @Description - This file is responsible for [...]
   ################################################################################
-  ```
 
-    - **Note**: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
+  ```
+  
+Consider using RStudio's [code folding](https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections) feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (#) automatically creates a code section. For example:
+
+```
+# Section 1 ------------------
+```
+
+**Note**: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
 
 ### Comments in the body of your script
 Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See [this file](https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R) for an example of how to comment your code and notice that comments are always in the form of:
