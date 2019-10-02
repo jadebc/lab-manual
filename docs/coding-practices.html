@@ -24,7 +24,7 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2019-09-18" />
+<meta name="date" content="2019-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,8 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
 <li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
 <li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>8.2</b> Git Branching</a></li>
-<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.3</b> How often should I commit?</a></li>
-<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.4</b> What should be pushed to github?</a></li>
+<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>8.3</b> Example Workflow</a></li>
+<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>8.4</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="8.5" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.5</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.6" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.6</b> What should be pushed to Github?</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
 <li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
@@ -229,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Just as your data “flows” through your project, data should flow naturally through a script. Very generally, you want to:</p>
 <ol style="list-style-type: decimal">
 <li>describe the work completed in the script in a comment header</li>
-<li>source your configuratino file (<code>0-config.R</code>)</li>
+<li>source your configuration file (<code>0-config.R</code>)</li>
 <li>load all your data</li>
 <li>do all your analysis/computation</li>
 <li>save your data.</li>
@@ -240,9 +242,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.2</span> Documenting your code</h2>
 <div id="file-headers" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> File headers</h3>
-<p>Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
-<code>################################################################################   # @Organization - Example Organization   # @Project - Example Project   # @Description - This file is responsible for [...]   ################################################################################</code></p>
-<pre><code>- **Note**: If your computer isn&#39;t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won&#39;t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</code></pre>
+<p>Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.</p>
+<pre><code>################################################################################
+# @Organization - Example Organization
+# @Project - Example Project
+# @Description - This file is responsible for [...]
+################################################################################
+</code></pre>
+<p>Consider using RStudio’s <a href="https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections">code folding</a> feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (#) automatically creates a code section. For example:</p>
+<pre><code># Section 1 ------------------</code></pre>
+<p><strong>Note</strong>: If your computer isn’t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won’t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</p>
 </div>
 <div id="comments-in-the-body-of-your-script" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Comments in the body of your script</h3>

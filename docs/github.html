@@ -24,7 +24,7 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2019-09-18" />
+<meta name="date" content="2019-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,8 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
 <li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
 <li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>8.2</b> Git Branching</a></li>
-<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.3</b> How often should I commit?</a></li>
-<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.4</b> What should be pushed to github?</a></li>
+<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>8.3</b> Example Workflow</a></li>
+<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>8.4</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="8.5" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.5</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.6" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.6</b> What should be pushed to Github?</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
 <li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
@@ -241,6 +243,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>You are working with others and don’t want to mix up your current work with theirs, even if you want to bring your work together later in the future.</li>
 </ul>
 <p>A detailed tutorial on Git Branching can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional">here</a>. You can also find instructions on how to handle merge conflicts when joining branches together.</p>
+</div>
+<div id="example-workflow" class="section level2">
+<h2><span class="header-section-number">8.3</span> Example Workflow</h2>
+<p>A standard workflow when starting on a new project and contributing code looks like this:</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SETUP: FIRST TIME ONLY: <code>git clone &lt;url&gt; &lt;directory_name&gt;</code></td>
+<td>Clone the repo. This copies of all the project files in its current state on Github to your local computer.</td>
+</tr>
+<tr class="even">
+<td>1. <code>git pull origin master</code></td>
+<td>update the state of your files to match the most current version on GitHub</td>
+</tr>
+<tr class="odd">
+<td>2. <code>git checkout -b &lt;new_branch_name&gt;</code></td>
+<td>create new branch that you’ll be working on and go to it</td>
+</tr>
+<tr class="even">
+<td>3. Make some file changes</td>
+<td>work on your feature/implementation</td>
+</tr>
+<tr class="odd">
+<td>4. <code>git add &lt;filename&gt;</code></td>
+<td>add file to stage for commit</td>
+</tr>
+<tr class="even">
+<td>5. <code>git commit -m &lt;commit message&gt;</code></td>
+<td>commit file with a message</td>
+</tr>
+<tr class="odd">
+<td>6. <code>git push -u origin &lt;branch_name&gt;</code></td>
+<td>push branch to remote and set to track (-u only works if this is first push)</td>
+</tr>
+<tr class="even">
+<td>7. Repeat step 4-5.</td>
+<td>work and commit often</td>
+</tr>
+<tr class="odd">
+<td>8. <code>git push</code></td>
+<td>push work to remote branch for others to view</td>
+</tr>
+<tr class="even">
+<td>9. Follow the link given from the <code>git push</code> command to submit a pull request (PR) on GitHub online</td>
+<td>PR merges in work from your branch into master</td>
+</tr>
+<tr class="odd">
+<td>(10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>11. <code>git fetch --all --prune</code></td>
+<td>clean up your local git by untracking deleted remote branches</td>
+</tr>
+</tbody>
+</table>
+<p>Other helpful commands are listed below.</p>
+</div>
+<div id="commonly-used-git-commands" class="section level2">
+<h2><span class="header-section-number">8.4</span> Commonly Used Git Commands</h2>
 <table>
 <colgroup>
 <col width="36%" />
@@ -266,59 +338,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td>check what branch you are on</td>
 </tr>
 <tr class="even">
+<td><code>git branch -a</code></td>
+<td>check what branch you are on + all remote branches</td>
+</tr>
+<tr class="odd">
 <td><code>git checkout -b &lt;new_branch_name&gt;</code></td>
 <td>create new branch and go to it (only necessary when you create a new branch)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>git checkout &lt;branch name&gt;</code></td>
 <td>switch to branch</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>git add &lt;file name&gt;</code></td>
 <td>add file to stage for commit</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>git commit -m &lt;commit message&gt;</code></td>
 <td>commit file with a message</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>git push -u origin &lt;branch_name&gt;</code></td>
 <td>push branch to remote and set to track (-u only works if this is first push)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>git branch --set-upstream-to origin &lt;branch_name&gt;</code></td>
 <td>set upstream to origin/<branch_name> (use if you forgot -u on first push)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>git push origin &lt;branch_name&gt;</code></td>
 <td>push work to branch</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>git checkout --track origin/&lt;branch_name&gt;</code></td>
 <td>pulls a remote branch and creates a local branch to track it (use when trying to pull someone else’s branch onto your local computer)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>git push --delete &lt;remote_name&gt; &lt;branch_name&gt;</code></td>
 <td>delete remote branch</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>git branch -d &lt;branch_name&gt;</code></td>
 <td>deletes local branch, -D to force</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>git fetch --all --prune</code></td>
 <td>untrack deleted remote branches</td>
 </tr>
 </tbody>
 </table>
-<p>From here, you can go to Github and add your pull requests from there.</p>
 </div>
 <div id="how-often-should-i-commit" class="section level2">
-<h2><span class="header-section-number">8.3</span> How often should I commit?</h2>
+<h2><span class="header-section-number">8.5</span> How often should I commit?</h2>
 <p>It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.</p>
 </div>
 <div id="what-should-be-pushed-to-github" class="section level2">
-<h2><span class="header-section-number">8.4</span> What should be pushed to github?</h2>
+<h2><span class="header-section-number">8.6</span> What should be pushed to Github?</h2>
 <p>Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.</p>
 <p>There is a standardized <code>.gitignore</code> for <code>R</code> which you <a href="https://github.com/github/gitignore/blob/master/R.gitignore">can download</a> and add to your project. This ensures you’re not committing log files or things that would otherwise best be left ignored to GitHub. This is a <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">great discussion of project-oriented workflows</a>, extolling the virtues of a self-contained, portable projects, for your reference.</p>
 
