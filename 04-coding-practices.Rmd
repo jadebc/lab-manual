@@ -166,3 +166,68 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
 ## Coding with R and Python
 
 If you're using both R and Python, you may wish to check out the [Feather package](https://www.rdocumentation.org/packages/feather/versions/0.3.3) for exchanging data between the two languages [extremely quickly](https://blog.rstudio.com/2016/03/29/feather/).
+
+## Reviewing Code
+
+Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the [GitHub](#Github) section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.
+
+
+### Creating a Pull Request Template
+
+Follow the instructions below to add a pull request template to a repository. More details can be found at this [GitHub link](https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository).
+
+1. On GitHub, navigate to the main page of the repository.
+2. Above the file list, click `Create new file`.
+3. Name the file `pull_request_template.md`. GitHub will not recognize this as the template if it is named anything else. The file must be on the `master` branch.
+    1. To store the file in a hidden directory instead of the main directory, name the file `.github/pull_request_template.md`.
+4. In the body of the new file, add your pull request template. This could include:
+    - A summary of the changes proposed in the pull request
+    - How the change has been tested
+    - \@mentions of the person or team responsible for reviewing proposed changes
+
+
+Here is an example pull request template.
+```text
+# Description
+
+## Summary of change
+
+Please include a summary of the change. 
+
+## Motivation and context for change
+
+Please also include relevant motivation and context. 
+
+## Dependencies 
+
+List any dependencies that are required for this change.
+
+## Type of change
+
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Incomplete change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] This change requires a documentation update
+
+## How Has This Been Tested?
+
+Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+
+- [ ] Test A
+
+## Checklist:
+
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
+- [ ] Any dependent changes have been merged and published in downstream modules
+
+### If an item has not been completed, why?
+
+## Who should review the pull request?
+@ ...
+```
