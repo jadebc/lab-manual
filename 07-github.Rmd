@@ -33,7 +33,7 @@ A standard workflow when starting on a new project and contributing code looks l
 | 6. `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only works if this is first push)   |
 | 7. Repeat step 4-5. | work and commit often |
 | 8. `git push` | push work to remote branch for others to view |
-| 9. Follow the link given from the `git push` command to submit a pull request (PR) on GitHub online | PR merges in work from your branch into master |
+| 9. Follow the link given from the `git push` command to [submit a pull request (PR) on GitHub online](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request) | PR merges in work from your branch into master |
 | (10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging | |
 | 11. `git fetch --all --prune`                           | clean up your local git by untracking deleted remote branches   |
 
