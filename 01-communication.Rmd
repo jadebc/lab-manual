@@ -15,7 +15,7 @@ These communications guidelines are evolving as we increasingly adopt Slack, but
 ## Email
 
 - Use email for longer messages (>200 words) or messages that merit preservation. 
-- Generally, strive to respond within 24 hours hours. As noted above, if you are unusually busy or on vacation please alert the team in advance so ecan expect you not to respond at all / as quickly as usual. 
+- Generally, strive to respond within 24 hours hours. As noted above, if you are unusually busy or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual. 
 
 ## Trello
 
