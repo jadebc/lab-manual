@@ -88,7 +88,7 @@ We recommend you use **Snake_Case**.
 - **Note**: again, its also worth noting there's nothing inherently wrong with using `.` in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.
 
 ## Function calls
-In a function call, use "named arguments" and separate arguments by to make your code more readable. 
+In a function call, use "named arguments" and put each argument on a separate line to make your code more readable. 
 
 Here's an example of what not to do when calling the function a function `calc_fluseas_mean` (defined above):
 ```
