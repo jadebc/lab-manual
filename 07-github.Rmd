@@ -44,7 +44,7 @@ Other helpful commands are listed below.
 | Command   | Description      |
 | --------- | ---------------- |
 | `git clone <url> <directory_name>`                  | clone a repository, only needs to be done the first time |
-| `git pull origin master`                            | pull before making any changes |
+| `git pull origin master`                            | pull from `master` before making any changes |
 | `git branch`                                        | check what branch you are on   |
 | `git branch -a`                                        | check what branch you are on + all remote branches   |
 | `git checkout -b <new_branch_name>`                 | create new branch and go to it (only necessary when you create a new branch)   |
@@ -52,8 +52,10 @@ Other helpful commands are listed below.
 | `git add <file name>`                               | add file to stage for commit   |
 | `git commit -m <commit message>`                    | commit file with a message   |
 | `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only works if this is first push)   |
-| `git branch --set-upstream-to origin <branch_name>` | set upstream to origin/<branch_name> (use if you forgot -u on first push)   |
+| `git branch --set-upstream-to origin <branch_name>` | set upstream to `origin/<branch_name>` (use if you forgot -u on first push)   |
 | `git push origin <branch_name>`                     | push work to branch   |
+| `git checkout <branch_name>` \ `git merge master`   | switch to branch and merge changes from `master` into `<branch_name>` (two commands) | 
+| `git merge <branch_name> master`                    | switch to branch and merge changes from `master` into `<branch_name>` (one command) | 
 | `git checkout --track origin/<branch_name>`         | pulls a remote branch and creates a local branch to track it (use when trying to pull someone else’s branch onto your local computer)   |
 | `git push --delete <remote_name> <branch_name>`     | delete remote branch   |
 | `git branch -d <branch_name>`                       | deletes local branch, -D to force   |

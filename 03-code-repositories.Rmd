@@ -63,4 +63,4 @@ This makes the jumble of alphabetized filenames much more coherent and places si
 ## Using Bash scripts to ensure reproducibility
 Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e. in `3 - Analysis`), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data "upstream" changes -- you simply run the bash script. See the [Unix Chapter](#unix) for further details. 
 
-
+After running bash scripts, `.Rout` log files will be generated for each script that has been executed. It is important to check these files. Scripts may appear to have run correctly in the terminal, but checking the log files is the only way to ensure that everything has run completely.
