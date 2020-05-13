@@ -1,6 +1,6 @@
 # Code repositories
 
-By Kunal Mishra and Jade Benjamin-Chung
+By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
 Each study has at least one code repository that typically holds R code, shell scripts with Unix code, and research outputs (results .RDS files, tables, figures). Repositories may also include datasets. This chapter outlines how to organize these files. Adhering to a standard format makes it easier for us to efficiently collaborate across projects. 
 
