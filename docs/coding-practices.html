@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Coding practices | Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Coding practices | Lab Manual" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2019-12-11" />
+<meta name="date" content="2020-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -145,7 +123,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>4</b> Code repositories</a><ul>
 <li class="chapter" data-level="4.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>4.1</b> Project Structure</a></li>
 <li class="chapter" data-level="4.2" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>4.2</b> <code>.Rproj</code> files</a></li>
-<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>4.3</b> Configuration (‘config’) File</a></li>
+<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>4.3</b> Configuration ('config') File</a></li>
 <li class="chapter" data-level="4.4" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>4.4</b> Order Files and Directories</a></li>
 <li class="chapter" data-level="4.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>4.5</b> Using Bash scripts to ensure reproducibility</a></li>
 </ul></li>
@@ -165,6 +143,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>5.7</b> Tidyverse</a></li>
 <li class="chapter" data-level="5.8" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>5.8</b> Coding with R and Python</a></li>
+<li class="chapter" data-level="5.9" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>5.9</b> Reviewing Code</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>5.9.1</b> Creating a Pull Request Template</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>6</b> Coding style</a><ul>
 <li class="chapter" data-level="6.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>6.1</b> Comments</a></li>
@@ -178,16 +159,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>7.2</b> Using downsampled data</a></li>
 <li class="chapter" data-level="7.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>7.3</b> Optimal RStudio set up</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
-<li class="chapter" data-level="8.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
-<li class="chapter" data-level="8.2" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>8.2</b> Git Branching</a></li>
-<li class="chapter" data-level="8.3" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>8.3</b> Example Workflow</a></li>
-<li class="chapter" data-level="8.4" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>8.4</b> Commonly Used Git Commands</a></li>
-<li class="chapter" data-level="8.5" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.5</b> How often should I commit?</a></li>
-<li class="chapter" data-level="8.6" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.6</b> What should be pushed to Github?</a></li>
+<li class="chapter" data-level="8" data-path="Github.html"><a href="Github.html"><i class="fa fa-check"></i><b>8</b> Github</a><ul>
+<li class="chapter" data-level="8.1" data-path="Github.html"><a href="Github.html#basics"><i class="fa fa-check"></i><b>8.1</b> Basics</a></li>
+<li class="chapter" data-level="8.2" data-path="Github.html"><a href="Github.html#github-desktop"><i class="fa fa-check"></i><b>8.2</b> Github Desktop</a></li>
+<li class="chapter" data-level="8.3" data-path="Github.html"><a href="Github.html#git-branching"><i class="fa fa-check"></i><b>8.3</b> Git Branching</a></li>
+<li class="chapter" data-level="8.4" data-path="Github.html"><a href="Github.html#example-workflow"><i class="fa fa-check"></i><b>8.4</b> Example Workflow</a></li>
+<li class="chapter" data-level="8.5" data-path="Github.html"><a href="Github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>8.5</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="8.6" data-path="Github.html"><a href="Github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>8.6</b> How often should I commit?</a></li>
+<li class="chapter" data-level="8.7" data-path="Github.html"><a href="Github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>8.7</b> What should be pushed to Github?</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>9</b> Unix commands</a><ul>
-<li class="chapter" data-level="9.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
+<li class="chapter" data-level="9.1" data-path="Github.html"><a href="Github.html#basics"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
 <li class="chapter" data-level="9.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>9.2</b> Syntax for both Mac/Windows</a></li>
 <li class="chapter" data-level="9.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>9.3</b> Running Bash Scripts</a></li>
 <li class="chapter" data-level="9.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>9.4</b> Running Rscripts in Windows</a><ul>
@@ -202,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>10</b> Resources</a><ul>
 <li class="chapter" data-level="10.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>10.1</b> Resources for R</a></li>
 <li class="chapter" data-level="10.2" data-path="resources.html"><a href="resources.html#resources-for-github"><i class="fa fa-check"></i><b>10.2</b> Resources for Github</a></li>
-<li class="chapter" data-level="10.3" data-path="resources.html"><a href="resources.html#authorship-1"><i class="fa fa-check"></i><b>10.3</b> Authorship</a></li>
+<li class="chapter" data-level="10.3" data-path="code-of-conduct.html"><a href="code-of-conduct.html#authorship"><i class="fa fa-check"></i><b>10.3</b> Authorship</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -229,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>by Kunal Mishra and Jade Benjamin-Chung</p>
 <div id="organizing-scripts" class="section level2">
 <h2><span class="header-section-number">5.1</span> Organizing scripts</h2>
-<p>Just as your data “flows” through your project, data should flow naturally through a script. Very generally, you want to:</p>
+<p>Just as your data &quot;flows&quot; through your project, data should flow naturally through a script. Very generally, you want to:</p>
 <ol style="list-style-type: decimal">
 <li>describe the work completed in the script in a comment header</li>
 <li>source your configuration file (<code>0-config.R</code>)</li>
@@ -237,31 +219,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>do all your analysis/computation</li>
 <li>save your data.</li>
 </ol>
-<p>Each of these sections should be “chunked together” using comments. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R">this file</a> for a good example of how to cleanly organize a file in a way that follows this “flow” and functionally separate pieces of code that are doing different things.</p>
+<p>Each of these sections should be &quot;chunked together&quot; using comments. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R">this file</a> for a good example of how to cleanly organize a file in a way that follows this &quot;flow&quot; and functionally separate pieces of code that are doing different things.</p>
 </div>
 <div id="documenting-your-code" class="section level2">
 <h2><span class="header-section-number">5.2</span> Documenting your code</h2>
 <div id="file-headers" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> File headers</h3>
 <p>Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.</p>
-<pre><code>################################################################################
-# @Organization - Example Organization
-# @Project - Example Project
-# @Description - This file is responsible for [...]
-################################################################################
-</code></pre>
-<p>Consider using RStudio’s <a href="https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections">code folding</a> feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (#) automatically creates a code section. For example:</p>
+<p>``` ################################################################################ # <span class="citation">(<span class="citeproc-not-found" data-reference-id="Organization"><strong>???</strong></span>)</span> - Example Organization # <span class="citation">(<span class="citeproc-not-found" data-reference-id="Project"><strong>???</strong></span>)</span> - Example Project # <span class="citation">(<span class="citeproc-not-found" data-reference-id="Description"><strong>???</strong></span>)</span> - This file is responsible for [...] ################################################################################</p>
+<p>```</p>
+<p>Consider using RStudio's <a href="https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections">code folding</a> feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (#) automatically creates a code section. For example:</p>
 <pre><code># Section 1 ------------------</code></pre>
-<p><strong>Note</strong>: If your computer isn’t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won’t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</p>
+<p><strong>Note</strong>: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</p>
 </div>
 <div id="comments-in-the-body-of-your-script" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Comments in the body of your script</h3>
-<p>Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you’ll be thankful for comments. There’s no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R">this file</a> for an example of how to comment your code and notice that comments are always in the form of:</p>
+<p>Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R">this file</a> for an example of how to comment your code and notice that comments are always in the form of:</p>
 <p><code># This is a comment -- first letter is capitalized and spaced away from the pound sign</code></p>
 </div>
 <div id="function-documentation" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Function documentation</h3>
-<p>Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a <code>string</code> into an argument that is meant to be a <code>data.table</code>, or a <code>list</code> into an argument meant for a <code>tibble</code>. It is the responsibility of a function’s author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by <a href="https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format">JavaDocs</a> and R’s <a href="https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/">Plumber API docs</a>):</p>
+<p>Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a <code>string</code> into an argument that is meant to be a <code>data.table</code>, or a <code>list</code> into an argument meant for a <code>tibble</code>. It is the responsibility of a function's author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by <a href="https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format">JavaDocs</a> and R's <a href="https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/">Plumber API docs</a>):</p>
 <pre><code>##############################################
 ##############################################
 # Documentation: calc_fluseas_mean
@@ -282,10 +260,10 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
  ### function code here 
 
 }</code></pre>
-<p>The header tells you what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that all optional arguments (i.e. ones with pre-specified defaults) follow arguments that require user input.</p>
+<p>The header tells you what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that all optional arguments (i.e. ones with pre-specified defaults) follow arguments that require user input.</p>
 <ul>
-<li><p><strong>Note</strong>: As someone trying to call a function, it is possible to access a function’s documentation (and internal code) by <code>CMD-Left-Click</code>ing the function’s name in RStudio</p></li>
-<li><p><strong>Note</strong>: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add “type-checking” to your function with the <code>assertthat::assert_that()</code> function. You can, for example, <code>assert_that(is.data.frame(statistical_input))</code>, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e. that <code>time_column</code>, <code>location_column</code>, <code>value_column</code>, and <code>population_column</code> all exist within the <code>statistical_input</code> tibble).</p></li>
+<li><p><strong>Note</strong>: As someone trying to call a function, it is possible to access a function's documentation (and internal code) by <code>CMD-Left-Click</code>ing the function's name in RStudio</p></li>
+<li><p><strong>Note</strong>: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add &quot;type-checking&quot; to your function with the <code>assertthat::assert_that()</code> function. You can, for example, <code>assert_that(is.data.frame(statistical_input))</code>, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e. that <code>time_column</code>, <code>location_column</code>, <code>value_column</code>, and <code>population_column</code> all exist within the <code>statistical_input</code> tibble).</p></li>
 </ul>
 </div>
 </div>
@@ -298,17 +276,17 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </ul>
 <p>We recommend you use <strong>Snake_Case</strong>.</p>
 <ul>
-<li><p>Base R allows <code>.</code> in variable names and functions (such as <code>read.csv()</code>), but this goes against best practices for variable naming in many other coding languages. For consistency’s sake, <code>snake_case</code> has been adopted across languages, and modern packages and functions typically use it (i.e. <code>readr::read_csv()</code>). As a very general rule of thumb, if a package you’re using doesn’t use <code>snake_case</code>, there may be an updated version or more modern package that <em>does</em>, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.</p></li>
-<li><p><strong>Note</strong>: you may also see <code>camelCase</code> throughout the R code you come across. This is <em>okay</em> but not ideal – try to stay consistent across all your code with <code>snake_case</code>.</p></li>
-<li><p><strong>Note</strong>: again, its also worth noting there’s nothing inherently wrong with using <code>.</code> in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.</p></li>
+<li><p>Base R allows <code>.</code> in variable names and functions (such as <code>read.csv()</code>), but this goes against best practices for variable naming in many other coding languages. For consistency's sake, <code>snake_case</code> has been adopted across languages, and modern packages and functions typically use it (i.e. <code>readr::read_csv()</code>). As a very general rule of thumb, if a package you're using doesn't use <code>snake_case</code>, there may be an updated version or more modern package that <em>does</em>, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.</p></li>
+<li><p><strong>Note</strong>: you may also see <code>camelCase</code> throughout the R code you come across. This is <em>okay</em> but not ideal -- try to stay consistent across all your code with <code>snake_case</code>.</p></li>
+<li><p><strong>Note</strong>: again, its also worth noting there's nothing inherently wrong with using <code>.</code> in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.</p></li>
 </ul>
 </div>
 <div id="function-calls" class="section level2">
 <h2><span class="header-section-number">5.4</span> Function calls</h2>
-<p>In a function call, use “named arguments” and separate arguments by to make your code more readable.</p>
-<p>Here’s an example of what not to do when calling the function a function <code>calc_fluseas_mean</code> (defined above):</p>
+<p>In a function call, use &quot;named arguments&quot; and put each argument on a separate line to make your code more readable.</p>
+<p>Here's an example of what not to do when calling the function a function <code>calc_fluseas_mean</code> (defined above):</p>
 <pre><code>mean_Y = calc_fluseas_mean(flu_data, &quot;maari_yn&quot;, FALSE)</code></pre>
-<p>And here it is again using the best practices we’ve outlined:</p>
+<p>And here it is again using the best practices we've outlined:</p>
 <pre><code>mean_Y = calc_fluseas_mean(
   data = flu_data, 
   yname = &quot;maari_yn&quot;,
@@ -317,7 +295,7 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </div>
 <div id="the-here-package" class="section level2">
 <h2><span class="header-section-number">5.5</span> The here package</h2>
-<p>The <code>here</code> package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let’s say we have an R project at the path <code>/home/oski/Some-R-Project</code>. My collaborator might clone the repository and work with it at some other path, such as <code>/home/bear/R-Code/Some-R-Project</code>. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the <code>here</code> package comes in and this a <a href="https://github.com/jennybc/here_here">great vignette describing it</a>.</p>
+<p>The <code>here</code> package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path <code>/home/oski/Some-R-Project</code>. My collaborator might clone the repository and work with it at some other path, such as <code>/home/bear/R-Code/Some-R-Project</code>. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the <code>here</code> package comes in and this a <a href="https://github.com/jennybc/here_here">great vignette describing it</a>.</p>
 </div>
 <div id="readingsaving-data" class="section level2">
 <h2><span class="header-section-number">5.6</span> Reading/Saving Data</h2>
@@ -330,18 +308,18 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </div>
 <div id="csvs" class="section level3">
 <h3><span class="header-section-number">5.6.2</span> CSVs</h3>
-<p>Once again, the <code>readr</code> package as part of the Tidvyerse is great, with a much faster <code>read_csv()</code> than Base R’s <code>read.csv()</code>. For massive CSVs (&gt; 5 GB), you’ll find <code>data.table::fread()</code> to be the fastest CSV reader in any data science language out there. For writing CSVs, <code>readr::write_csv()</code> and <code>data.table::fwrite()</code> outclass Base R’s <code>write.csv()</code> by a significant margin as well.</p>
+<p>Once again, the <code>readr</code> package as part of the Tidvyerse is great, with a much faster <code>read_csv()</code> than Base R's <code>read.csv()</code>. For massive CSVs (&gt; 5 GB), you'll find <code>data.table::fread()</code> to be the fastest CSV reader in any data science language out there. For writing CSVs, <code>readr::write_csv()</code> and <code>data.table::fwrite()</code> outclass Base R's <code>write.csv()</code> by a significant margin as well.</p>
 </div>
 </div>
 <div id="tidyverse" class="section level2">
 <h2><span class="header-section-number">5.7</span> Tidyverse</h2>
-<p>Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse’s performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming <a href="https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/">the gold standard</a> in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there’s a significant reason not to (i.e. big data pipelines that would benefit from Data.Table’s performance optimizations).</p>
+<p>Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming <a href="https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/">the gold standard</a> in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e. big data pipelines that would benefit from Data.Table's performance optimizations).</p>
 <p>The package author has published a <a href="https://r4ds.had.co.nz/">great textbook on R for Data Science</a>, which leans heavily on many Tidyverse packages and may be worth checking out.</p>
 <p>The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:</p>
-<table>
+<table style="width:11%;">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col width="5%" />
+<col width="5%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -441,7 +419,7 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </tbody>
 </table>
 <p>For a more extensive set of syntactical translations to Tidyverse, you can check out <a href="https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html#reshaping_data">this document</a>.</p>
-<p>Working with Tidyverse within functions can be somewhat of a pain due to non-standard evaluation (NSE) semantics. If you’re an avid function writer, we’d recommend checking out the following resources:</p>
+<p>Working with Tidyverse within functions can be somewhat of a pain due to non-standard evaluation (NSE) semantics. If you're an avid function writer, we'd recommend checking out the following resources:</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=nERXS3ssntw">Tidy Eval in 5 Minutes</a> (video)</li>
 <li><a href="https://tidyeval.tidyverse.org/index.html">Tidy Evaluation</a> (e-book)</li>
@@ -452,8 +430,73 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </div>
 <div id="coding-with-r-and-python" class="section level2">
 <h2><span class="header-section-number">5.8</span> Coding with R and Python</h2>
-<p>If you’re using both R and Python, you may wish to check out the <a href="https://www.rdocumentation.org/packages/feather/versions/0.3.3">Feather package</a> for exchanging data between the two languages <a href="https://blog.rstudio.com/2016/03/29/feather/">extremely quickly</a>.</p>
+<p>If you're using both R and Python, you may wish to check out the <a href="https://www.rdocumentation.org/packages/feather/versions/0.3.3">Feather package</a> for exchanging data between the two languages <a href="https://blog.rstudio.com/2016/03/29/feather/">extremely quickly</a>.</p>
+</div>
+<div id="reviewing-code" class="section level2">
+<h2><span class="header-section-number">5.9</span> Reviewing Code</h2>
+<p>Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the <a href="Github.html#Github">GitHub</a> section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.</p>
+<div id="creating-a-pull-request-template" class="section level3">
+<h3><span class="header-section-number">5.9.1</span> Creating a Pull Request Template</h3>
+<p>Follow the instructions below to add a pull request template to a repository. More details can be found at this <a href="https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository">GitHub link</a>.</p>
+<ol style="list-style-type: decimal">
+<li>On GitHub, navigate to the main page of the repository.</li>
+<li>Above the file list, click <code>Create new file</code>.</li>
+<li>Name the file <code>pull_request_template.md</code>. GitHub will not recognize this as the template if it is named anything else. The file must be on the <code>master</code> branch.
+<ol style="list-style-type: decimal">
+<li>To store the file in a hidden directory instead of the main directory, name the file <code>.github/pull_request_template.md</code>.</li>
+</ol></li>
+<li>In the body of the new file, add your pull request template. This could include:
+<ul>
+<li>A summary of the changes proposed in the pull request</li>
+<li>How the change has been tested</li>
+<li>@mentions of the person or team responsible for reviewing proposed changes</li>
+</ul></li>
+</ol>
+<p>Here is an example pull request template.</p>
+<pre class="text"><code># Description
 
+## Summary of change
+
+Please include a summary of the change. 
+
+## Motivation and context for change
+
+Please also include relevant motivation and context. 
+
+## Dependencies 
+
+List any dependencies that are required for this change.
+
+## Type of change
+
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Incomplete change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] This change requires a documentation update
+
+## How Has This Been Tested?
+
+Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+
+- [ ] Test A
+
+## Checklist:
+
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
+- [ ] Any dependent changes have been merged and published in downstream modules
+
+### If an item has not been completed, why?
+
+## Who should review the pull request?
+@ ...</code></pre>
+
+</div>
 </div>
 </div>
             </section>
@@ -467,11 +510,13 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -479,12 +524,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -496,6 +540,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
