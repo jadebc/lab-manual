@@ -7,6 +7,9 @@ by Stephanie Djajadi and Nolan Pokpongkiat
 - If you are already familiar with Git, you can reference the summary at the end of [Section B](https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction).
 - If you have made a mistake in Git, you can refer to this [article](https://sethrobertson.github.io/GitFixUm/fixup.html) to undo, fix, or remove commits in git.
 
+## Github Desktop
+While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides [Github Desktop](https://desktop.github.com/) as an graphical interface to do basic git commands--you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.
+
 ## Git Branching
 Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
 
@@ -28,9 +31,9 @@ A standard workflow when starting on a new project and contributing code looks l
 | 1. `git pull origin master`                            | update the state of your files to match the most current version on GitHub |
 | 2. `git checkout -b <new_branch_name>`                 | create new branch that you'll be working on and go to it  |
 | 3. Make some file changes | work on your feature/implementation | 
-| 4. `git add <filename>`                               | add file to stage for commit |
-| 5. `git commit -m <commit message>`                    | commit file with a message   |
-| 6. `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only works if this is first push)   |
+| 4. `git add -p`                               | add changes to stage for commit, going through changes line by line |
+| 5. `git commit -m <commit message>`                    | commit files with a message   |
+| 6. `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only needed if this is first push)   |
 | 7. Repeat step 4-5. | work and commit often |
 | 8. `git push` | push work to remote branch for others to view |
 | 9. Follow the link given from the `git push` command to [submit a pull request (PR) on GitHub online](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request) | PR merges in work from your branch into master |
@@ -50,6 +53,7 @@ Other helpful commands are listed below.
 | `git checkout -b <new_branch_name>`                 | create new branch and go to it (only necessary when you create a new branch)   |
 | `git checkout <branch name>`                        | switch to branch   |
 | `git add <file name>`                               | add file to stage for commit   |
+| `git add -p`                                        | adds changes to commit, showing you changes one by one
 | `git commit -m <commit message>`                    | commit file with a message   |
 | `git push -u origin <branch_name>`                  | push branch to remote and set to track (-u only works if this is first push)   |
 | `git branch --set-upstream-to origin <branch_name>` | set upstream to `origin/<branch_name>` (use if you forgot -u on first push)   |
