@@ -1,6 +1,6 @@
 # Coding practices
 
-by Kunal Mishra and Jade Benjamin-Chung
+by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
 ## Organizing scripts
 
@@ -118,6 +118,23 @@ One of the most common ways to load and save data in Base R is with the `load()`
 
 ### CSVs
 Once again, the `readr` package as part of the Tidvyerse is great, with a much faster `read_csv()` than Base R's `read.csv()`. For massive CSVs (> 5 GB), you'll find `data.table::fread()` to be the fastest CSV reader in any data science language out there. For writing CSVs, `readr::write_csv()` and `data.table::fwrite()` outclass Base R's `write.csv()` by a significant margin as well.
+
+## Integrating Box and Dropbox
+
+Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, we can automatically store them in one of these systems, and read the data from the cloud. This way, large files do not live on our local machines, we do not have to push large files to GitHub, and we avoid slowing down our workflow. 
+
+Box and Dropbox are separate platforms, but we can use either one to store and share files. To use them, we can install the packages that have been created to integrate Box and Dropbox into R. The set-up instructions are detailed below. 
+
+### Box
+Follow the instructions in this section to use the `boxr` package. Note that there are a few set-up steps that need to be done on the box website before you can use the `boxr` package, [explained here](https://r-box.github.io/boxr/articles/boxr-app-interactive.html#create) in the section "Creating an Interactive App." This gets the authentication keys that must be put in box. 
+
+Once that is done, add the authentication keys to your code, perhaps in the configuration file, with `box_auth(client_id = "<your_client_id>", client_secret = "<your_client_secret_id>")`. It is also important to set the default working directory so that the code can reference the correct folder in box: `box_setwd(<folder_id>)`. The folder ID is the sequence of digits at the end of the URL. 
+
+Further details can be found [here](https://github.com/r-box/boxr).  
+
+
+### Dropbox
+Follow the instructions at [this link](https://github.com/karthik/rdrop2) to use the `rdrop2` package.
 
 ## Tidyverse
 
