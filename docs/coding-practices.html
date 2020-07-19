@@ -24,7 +24,7 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2020-07-15" />
+<meta name="date" content="2020-07-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,17 +284,17 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 </div>
 <div id="integrating-box-and-dropbox" class="section level2">
 <h2><span class="header-section-number">5.7</span> Integrating Box and Dropbox</h2>
-<p>Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, we can automatically store them in one of these systems, and read the data from the cloud. This way, large files do not live on our local machines, we do not have to push large files to GitHub, and we avoid slowing down our workflow.</p>
+<p>Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, the files can slow down the workflow if they are pushed to GitHub. This makes collaboration difficult when not everyone has a copy of the file, unless we decide to duplicate files and share them manually. The files might also take up a lot of local storage. Box and Dropbox help us avoid these issues by automatically storing the files, reading data, and writing back to the cloud.</p>
 <p>Box and Dropbox are separate platforms, but we can use either one to store and share files. To use them, we can install the packages that have been created to integrate Box and Dropbox into R. The set-up instructions are detailed below.</p>
 <div id="box" class="section level3">
 <h3><span class="header-section-number">5.7.1</span> Box</h3>
-<p>Follow the instructions in this section to use the <code>boxr</code> package. Note that there are a few set-up steps that need to be done on the box website before you can use the <code>boxr</code> package, <a href="https://r-box.github.io/boxr/articles/boxr-app-interactive.html#create">explained here</a> in the section “Creating an Interactive App.” This gets the authentication keys that must be put in box.</p>
+<p>Follow the instructions in this section to use the <code>boxr</code> package. Note that there are a few setup steps that need to be done on the box website before you can use the <code>boxr</code> package, <a href="https://r-box.github.io/boxr/articles/boxr-app-interactive.html#create">explained here</a> in the section “Creating an Interactive App.” This gets the authentication keys that must be put in box.</p>
 <p>Once that is done, add the authentication keys to your code, perhaps in the configuration file, with <code>box_auth(client_id = "&lt;your_client_id&gt;", client_secret = "&lt;your_client_secret_id&gt;")</code>. It is also important to set the default working directory so that the code can reference the correct folder in box: <code>box_setwd(&lt;folder_id&gt;)</code>. The folder ID is the sequence of digits at the end of the URL.</p>
 <p>Further details can be found <a href="https://github.com/r-box/boxr">here</a>.</p>
 </div>
 <div id="dropbox" class="section level3">
 <h3><span class="header-section-number">5.7.2</span> Dropbox</h3>
-<p>Follow the instructions at <a href="https://github.com/karthik/rdrop2">this link</a> to use the <code>rdrop2</code> package.</p>
+<p>Follow the instructions at <a href="https://github.com/karthik/rdrop2">this link</a> to use the <code>rdrop2</code> package. Similar to the <code>boxr</code> package, you need to complete the setup steps and authenticate before reading and writing from Dropbox.</p>
 </div>
 </div>
 <div id="tidyverse" class="section level2">
