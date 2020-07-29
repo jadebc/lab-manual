@@ -134,7 +134,7 @@ Further details can be found [here](https://github.com/r-box/boxr).
 
 
 ### Dropbox
-Follow the instructions at [this link](https://github.com/karthik/rdrop2) to use the `rdrop2` package. Similar to the `boxr` package, you need to complete the setup steps and authenticate before reading and writing from Dropbox.
+Follow the instructions at [this link](https://github.com/karthik/rdrop2) to use the `rdrop2` package. Similar to the `boxr` package, you must authenticate before reading and writing from Dropbox, which can be done by running `drop_auth()`. This will prompt you to give your login credentials for Dropbox and will allow your application to access your Dropbox folder. Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently. 
 
 
 ## Tidyverse
