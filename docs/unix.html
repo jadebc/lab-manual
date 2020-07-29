@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Unix commands | Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Unix commands | Lab Manual" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2020-07-22" />
+<meta name="date" content="2020-07-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="github.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="github.html">
+<link rel="next" href="resources.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,9 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
 
 
 
@@ -53,41 +50,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -123,7 +146,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>4</b> Code repositories</a><ul>
 <li class="chapter" data-level="4.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>4.1</b> Project Structure</a></li>
 <li class="chapter" data-level="4.2" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>4.2</b> <code>.Rproj</code> files</a></li>
-<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>4.3</b> Configuration ('config') File</a></li>
+<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>4.3</b> Configuration (‘config’) File</a></li>
 <li class="chapter" data-level="4.4" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>4.4</b> Order Files and Directories</a></li>
 <li class="chapter" data-level="4.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>4.5</b> Using Bash scripts to ensure reproducibility</a></li>
 </ul></li>
@@ -184,7 +207,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>9.7</b> What should be pushed to Github?</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>10</b> Unix commands</a><ul>
-<li class="chapter" data-level="10.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>10.1</b> Basics</a></li>
+<li class="chapter" data-level="10.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>10.1</b> Basics</a></li>
 <li class="chapter" data-level="10.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>10.2</b> Syntax for both Mac/Windows</a></li>
 <li class="chapter" data-level="10.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>10.3</b> Running Bash Scripts</a></li>
 <li class="chapter" data-level="10.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>10.4</b> Running Rscripts in Windows</a><ul>
@@ -199,7 +222,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>11</b> Resources</a><ul>
 <li class="chapter" data-level="11.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>11.1</b> Resources for R</a></li>
 <li class="chapter" data-level="11.2" data-path="resources.html"><a href="resources.html#resources-for-github"><i class="fa fa-check"></i><b>11.2</b> Resources for Github</a></li>
-<li class="chapter" data-level="11.3" data-path="code-of-conduct.html"><a href="code-of-conduct.html#authorship"><i class="fa fa-check"></i><b>11.3</b> Authorship</a></li>
+<li class="chapter" data-level="11.3" data-path="resources.html"><a href="resources.html#authorship-1"><i class="fa fa-check"></i><b>11.3</b> Authorship</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -230,7 +253,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>To check on the progress of a batch of jobs</li>
 <li>To use git and push to github</li>
 </ol>
-<div id="basics" class="section level2">
+<div id="basics-1" class="section level2">
 <h2><span class="header-section-number">10.1</span> Basics</h2>
 <p>On the computer, there is a desktop with two folders, <code>folder1</code> and <code>folder2</code>, and a file called <code>file1.</code> Inside <code>folder1</code>, we have a file called <code>file2.</code> Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.</p>
 <div class="figure">
@@ -241,10 +264,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="syntax-for-both-macwindows" class="section level2">
 <h2><span class="header-section-number">10.2</span> Syntax for both Mac/Windows</h2>
 <p>When typing in directories or file names, quotes are necessary if the name includes spaces.</p>
-<table style="width:35%;">
+<table>
 <colgroup>
-<col width="15%" />
-<col width="19%" />
+<col width="43%" />
+<col width="56%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -306,11 +329,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="running-bash-scripts" class="section level2">
 <h2><span class="header-section-number">10.3</span> Running Bash Scripts</h2>
-<table style="width:53%;">
+<table>
 <colgroup>
-<col width="13%" />
-<col width="19%" />
-<col width="19%" />
+<col width="25%" />
+<col width="37%" />
+<col width="37%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -344,9 +367,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your <code>PATH,</code> then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):</p>
 <p><code>C:\Program Files\R\R-3.6.0\bin</code></p>
 <p>For appending the <code>PATH</code> variable, please view <a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/">this link</a>. I strongly recommend completing this option.</p>
-<p>If you add the PATH as an environment variable, then you can run this line of code to test: <code>Rscript -e “cat(‘this is a test’)&quot;</code>, where the <code>-e</code> flag refers to the expression that will be executed.</p>
-<p>If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above: <code>“C:\Program Files\R\R-3.6.0\bin” -e “cat(‘this is a test’)”</code></p>
-<p>To run an R script from the command line, we can say: <code>Rscript -e “source(‘C:/path/to/script/some_code.R’)”</code></p>
+<p>If you add the PATH as an environment variable, then you can run this line of code to test:
+<code>Rscript -e “cat(‘this is a test’)&quot;</code>, where the <code>-e</code> flag refers to the expression that will be executed.</p>
+<p>If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above:
+<code>“C:\Program Files\R\R-3.6.0\bin” -e “cat(‘this is a test’)”</code></p>
+<p>To run an R script from the command line, we can say:
+<code>Rscript -e “source(‘C:/path/to/script/some_code.R’)”</code></p>
 <div id="common-mistakes" class="section level3">
 <h3><span class="header-section-number">10.4.1</span> Common Mistakes</h3>
 <ul>
@@ -357,11 +383,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="checking-tasks-and-killing-jobs" class="section level2">
 <h2><span class="header-section-number">10.5</span> Checking tasks and killing jobs</h2>
-<table style="width:53%;">
+<table>
 <colgroup>
-<col width="13%" />
-<col width="19%" />
-<col width="19%" />
+<col width="25%" />
+<col width="37%" />
+<col width="37%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -417,7 +443,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="running-big-jobs" class="section level2">
 <h2><span class="header-section-number">10.6</span> Running big jobs</h2>
-<p>For big data workflows, the concept of &quot;backgrounding&quot; a bash script allows you to start a &quot;job&quot; (i.e. run the script) and leave it overnight to run. At the top level, a bash script (<code>0-run-project.sh</code>) that simply calls the directory-level bash scripts (i.e. <code>0-prep-data.sh</code>, <code>0-run-analysis.sh</code>, <code>0-run-figures.sh</code>, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.</p>
+<p>For big data workflows, the concept of “backgrounding” a bash script allows you to start a “job” (i.e. run the script) and leave it overnight to run. At the top level, a bash script (<code>0-run-project.sh</code>) that simply calls the directory-level bash scripts (i.e. <code>0-prep-data.sh</code>, <code>0-run-analysis.sh</code>, <code>0-run-figures.sh</code>, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.</p>
 <ul>
 <li><strong>Running Bash Scripts in Background</strong>: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like <code>./run-project.sh</code>. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type <code>./run-project.sh &amp;; disown</code>. You can see the job running (and CPU utilization) with the command <code>top</code> or <code>ps -v</code> and check your memory with <code>free -h</code>.</li>
 </ul>
@@ -439,12 +465,12 @@ d
 # start another job
 tmux attach -tsession_name </code></pre>
 <ul>
-<li><p><strong>Deleting Previously Computed Results</strong>: One helpful lesson we've learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).</p></li>
-<li><p><strong>Ensuring Things Ran Correctly</strong>: You should check the <code>.Rout</code> files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called <code>runFileSaveLogs</code>, and is used by the example bash scripts to... run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using <code>runFileSaveLogs</code>, it is necessary to put the file in the home working directory. For help and documentation, you can use the command <code>./runFileSaveLogs -h</code>. See example code and example usage for <code>runFileSaveLogs</code> below.</p></li>
+<li><p><strong>Deleting Previously Computed Results</strong>: One helpful lesson we’ve learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).</p></li>
+<li><p><strong>Ensuring Things Ran Correctly</strong>: You should check the <code>.Rout</code> files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called <code>runFileSaveLogs</code>, and is used by the example bash scripts to… run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using <code>runFileSaveLogs</code>, it is necessary to put the file in the home working directory. For help and documentation, you can use the command <code>./runFileSaveLogs -h</code>. See example code and example usage for <code>runFileSaveLogs</code> below.</p></li>
 </ul>
 <div id="example-code-for-runfilesavelogs" class="section level3">
 <h3><span class="header-section-number">10.6.1</span> Example code for <code>runfileSaveLogs</code></h3>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
+<pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
 <span class="co"># Type &quot;./runFileSaveLogs -h&quot; for help</span>
 
 <span class="im">import</span> os
@@ -513,7 +539,7 @@ currentLogPaths <span class="op">=</span> glob.glob(<span class="st">&#39;./*.Ro
 
 <span class="cf">for</span> currentLogPath <span class="kw">in</span> currentLogPaths:
   filename <span class="op">=</span> currentLogPath.split(<span class="st">&quot;/&quot;</span>)[<span class="op">-</span><span class="dv">1</span>]
-  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</code></pre></div>
+  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</code></pre>
 </div>
 <div id="example-usage-for-runfilesavelogs" class="section level3">
 <h3><span class="header-section-number">10.6.2</span> Example usage for <code>runfileSaveLogs</code></h3>
@@ -549,13 +575,11 @@ rm runFileSaveLogs</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -563,11 +587,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -579,10 +604,6 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },

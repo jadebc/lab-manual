@@ -18,12 +18,11 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
+\usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
-\hypersetup{
+\usepackage{hyperref}
+\hypersetup{unicode=true,
             pdftitle={Lab Manual},
             pdfauthor={Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen},
             pdfborder={0 0 0},
@@ -40,40 +39,38 @@
 \usepackage{framed}
 \definecolor{shadecolor}{RGB}{248,248,248}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -103,10 +100,31 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Lab Manual}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-07-29}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -117,11 +135,6 @@
 }
 \makeatother
 
-\title{Lab Manual}
-\author{Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat,
-Anna Nguyen}
-\date{2020-07-22}
-
 \begin{document}
 \maketitle
 
@@ -129,206 +142,143 @@ Anna Nguyen}
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter{Welcome to our lab!}\label{welcome-to-our-lab}
+\hypertarget{welcome-to-our-lab}{%
+\chapter{Welcome to our lab!}\label{welcome-to-our-lab}}
 
-We are a team of epidemiologists and biostatisticians engaged in global
-health research. This lab manual covers our communication strategy and
-code of conduct and goes into detail about best practices for data
-science. It is a living document that is updated regularly.
+We are a team of epidemiologists and biostatisticians engaged in global health research. This lab manual covers our communication strategy and code of conduct and goes into detail about best practices for data science. It is a living document that is updated regularly.
 
-This manual was created with input from a large number of team members
-and with inspiration from
-\href{https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf}{other
-scientists' lab manuals}. Feel free to draw from this manual (and please
-cite it if you do!).
+This manual was created with input from a large number of team members and with inspiration from \href{https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf}{other scientists' lab manuals}. Feel free to draw from this manual (and please cite it if you do!).
 
- This work is licensed under a Creative Commons
-Attribution-NonCommercial 4.0 International License.
+This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
 
-\chapter{Communication and
-coordination}\label{communication-and-coordination}
+\hypertarget{communication-and-coordination}{%
+\chapter{Communication and coordination}\label{communication-and-coordination}}
 
 by Jade Benjamin-Chung
 
-These communications guidelines are evolving as we increasingly adopt
-Slack, but here some general principles:
+These communications guidelines are evolving as we increasingly adopt Slack, but here some general principles:
 
-\section{Slack}\label{slack}
+\hypertarget{slack}{%
+\section{Slack}\label{slack}}
 
 \begin{itemize}
 \tightlist
 \item
-  Use Slack for scheduling, coding related questions, quick check ins,
-  etc. If your Slack message exceeds 200 words, it might be time to use
-  email.
+  Use Slack for scheduling, coding related questions, quick check ins, etc. If your Slack message exceeds 200 words, it might be time to use email.
 \item
-  Use channels instead of direct messages unless you need to discuss
-  something private.
+  Use channels instead of direct messages unless you need to discuss something private.
 \item
-  Please make an effort to respond to messages that message you (e.g.,
-  \texttt{@jade}) as quickly as possible and always within 24 hours.
+  Please make an effort to respond to messages that message you (e.g., \texttt{@jade}) as quickly as possible and always within 24 hours.
 \item
-  If you are unusually busy (e.g., taking MCAT/GRE, taking many exams)
-  or on vacation please alert the team in advance so we can expect you
-  not to respond at all / as quickly as usual and also
-  \href{https://get.slack.help/hc/en-us/articles/201864558-Set-your-Slack-status-and-availability}{set
-  your status in Slack} (e.g., it could say ``On vacation'') so we know
-  not to expect to see you online.
+  If you are unusually busy (e.g., taking MCAT/GRE, taking many exams) or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual and also \href{https://get.slack.help/hc/en-us/articles/201864558-Set-your-Slack-status-and-availability}{set your status in Slack} (e.g., it could say ``On vacation'') so we know not to expect to see you online.
 \item
   Please thread messages in Slack as much as possible.
 \end{itemize}
 
-\section{Email}\label{email}
+\hypertarget{email}{%
+\section{Email}\label{email}}
 
 \begin{itemize}
 \tightlist
 \item
-  Use email for longer messages (\textgreater{}200 words) or messages
-  that merit preservation.
+  Use email for longer messages (\textgreater{}200 words) or messages that merit preservation.
 \item
-  Generally, strive to respond within 24 hours hours. As noted above, if
-  you are unusually busy or on vacation please alert the team in advance
-  so we can expect you not to respond at all / as quickly as usual.
+  Generally, strive to respond within 24 hours hours. As noted above, if you are unusually busy or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual.
 \end{itemize}
 
-\section{Trello}\label{trello}
+\hypertarget{trello}{%
+\section{Trello}\label{trello}}
 
 \begin{itemize}
 \tightlist
 \item
-  Jade will add new cards within our shared Trello board that outline
-  your tasks.
+  Jade will add new cards within our shared Trello board that outline your tasks.
 \item
   The higher a card is within your list, the higher priority it is.
 \item
-  Generally, strive to complete the tasks in your card by the date
-  listed.
+  Generally, strive to complete the tasks in your card by the date listed.
 \item
-  Use checklists to break down a task into smaller chunks. Sometimes
-  Jade will write this for you, but you can also add this yourself.
+  Use checklists to break down a task into smaller chunks. Sometimes Jade will write this for you, but you can also add this yourself.
 \item
   Jade will move your card to the ``Completed'' list when it is done.
 \end{itemize}
 
-\section{Google Drives}\label{google-drives}
+\hypertarget{google-drives}{%
+\section{Google Drives}\label{google-drives}}
 
 \begin{itemize}
 \tightlist
 \item
-  We mostly use Google Drive to create shared documents with longer
-  descriptions of tasks. These documents are linked to in Trello. Jade
-  often shares these with the whole team since tasks are overlapping,
-  and even if a task is assigned to one person, others may have valuable
-  insights.
+  We mostly use Google Drive to create shared documents with longer descriptions of tasks. These documents are linked to in Trello. Jade often shares these with the whole team since tasks are overlapping, and even if a task is assigned to one person, others may have valuable insights.
 \item
-  Please invite both of Jade's email addresses to any documents you
-  create (\href{mailto:jadebc@gmail.com}{\nolinkurl{jadebc@gmail.com}},
-  \href{mailto:jadebc@berkeley.edu}{\nolinkurl{jadebc@berkeley.edu}}).
+  Please invite both of Jade's email addresses to any documents you create (\href{mailto:jadebc@gmail.com}{\nolinkurl{jadebc@gmail.com}}, \href{mailto:jadebc@berkeley.edu}{\nolinkurl{jadebc@berkeley.edu}}).
 \end{itemize}
 
-\section{Google Calendar / Meetings}\label{google-calendar-meetings}
+\hypertarget{google-calendar-meetings}{%
+\section{Google Calendar / Meetings}\label{google-calendar-meetings}}
 
 \begin{itemize}
 \tightlist
 \item
-  We use Google Calendar to set meetings. Please make sure your calendar
-  is set up correctly because sometimes you might not receive a specific
-  email or Slack message about it -- only a Google Calendar invitation.
+  We use Google Calendar to set meetings. Please make sure your calendar is set up correctly because sometimes you might not receive a specific email or Slack message about it -- only a Google Calendar invitation.
 \item
   Our meetings start on the hour, not on Berkeley time.
 \item
-  If you are going to be late, please send a message in our Slack
-  channel.
+  If you are going to be late, please send a message in our Slack channel.
 \item
-  If you are regularly not able to come on the hour, notify the team and
-  we might choose the modify the agenda order or the start time.
+  If you are regularly not able to come on the hour, notify the team and we might choose the modify the agenda order or the start time.
 \end{itemize}
 
-\chapter{Code of conduct}\label{code-of-conduct}
+\hypertarget{code-of-conduct}{%
+\chapter{Code of conduct}\label{code-of-conduct}}
 
-\section{Lab culture}\label{lab-culture}
+\hypertarget{lab-culture}{%
+\section{Lab culture}\label{lab-culture}}
 
-It goes without saying that we strive to work in an environment that is
-collaborative, supportive, open, and free from discrimination and
-harassment, per University policies.
+It goes without saying that we strive to work in an environment that is collaborative, supportive, open, and free from discrimination and harassment, per University policies.
 
-We encourage students / staff of all experience levels to respectfully
-share their honest opinions and ideas on any topic. Our group has
-thrived upon such respectful honest input from team members over the
-years, and this document is a product of years of student and staff
-input (and even debate) that has gradually improved our productivity and
-overall quality of our work.
+We encourage students / staff of all experience levels to respectfully share their honest opinions and ideas on any topic. Our group has thrived upon such respectful honest input from team members over the years, and this document is a product of years of student and staff input (and even debate) that has gradually improved our productivity and overall quality of our work.
 
-\section{Protecting human subjects}\label{protecting-human-subjects}
+\hypertarget{protecting-human-subjects}{%
+\section{Protecting human subjects}\label{protecting-human-subjects}}
 
-All lab members must complete
-\href{https://cphs.berkeley.edu/quickguideCITItraining.pdf}{CITI Human
-Subjects Biomedical Group 1} training and share their certificate with
-Jade. She will add team members to relevant Institutional Review Board
-protocols prior to their start date to ensure they have permission to
-work with identifiable datasets.
+All lab members must complete \href{https://cphs.berkeley.edu/quickguideCITItraining.pdf}{CITI Human Subjects Biomedical Group 1} training and share their certificate with Jade. She will add team members to relevant Institutional Review Board protocols prior to their start date to ensure they have permission to work with identifiable datasets.
 
-One of the most relevant aspects of protecting human subjects in our
-work is maintaining confidentiality. For students supporting our data
-science efforts, in practice this means:
+One of the most relevant aspects of protecting human subjects in our work is maintaining confidentiality. For students supporting our data science efforts, in practice this means:
 
 \begin{itemize}
 \tightlist
 \item
-  If you are using a virtual computer (e.g., Bluevelvet, AWS, GHAP),
-  never save the data in that system to your personal computer or any
-  other computer without prior permission.
+  If you are using a virtual computer (e.g., Bluevelvet, AWS, GHAP), never save the data in that system to your personal computer or any other computer without prior permission.
 \item
-  Do not share data with anyone without permission, including to other
-  members of the group, who might not be on the same IRB protocol as you
-  (check with Jade first).
+  Do not share data with anyone without permission, including to other members of the group, who might not be on the same IRB protocol as you (check with Jade first).
 \end{itemize}
 
-Remember, data that looks like it does not contain identifiers to you
-might still be classified as data that requires special protection by
-our IRB or under HIPAA, so always proceed with caution and ask for help
-if you have any concerns about how to maintain study participant
-confidentiality.
+Remember, data that looks like it does not contain identifiers to you might still be classified as data that requires special protection by our IRB or under HIPAA, so always proceed with caution and ask for help if you have any concerns about how to maintain study participant confidentiality.
 
-\section{Authorship}\label{authorship}
+\hypertarget{authorship}{%
+\section{Authorship}\label{authorship}}
 
-We adhere to the
-\href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE
-Definition of authorship} and are happy for team members who meet the
-definition of authorship to be included as co-authors on scientific
-manuscripts.
+We adhere to the \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE Definition of authorship} and are happy for team members who meet the definition of authorship to be included as co-authors on scientific manuscripts.
 
-\section{Logging hours}\label{logging-hours}
+\hypertarget{logging-hours}{%
+\section{Logging hours}\label{logging-hours}}
 
-Please use \href{caltime.berkeley.edu}{Caltime} to log your hours. If
-you have a non-exempt appointment (this is the default), you need to
-punch in when you start working and punch out when you stop working. The
-particular hours /days when you work are not important; rather, we
-monitor your total hours in a 2-week period. If you have trouble
-remembering to punch in/out, please devise a system that works for you
-(i.e., set timers / reminders). Please avoid missing punches, and if you
-do, please send Jade a Slack message with the time and date you intended
-to punch out.
+Please use \href{caltime.berkeley.edu}{Caltime} to log your hours. If you have a non-exempt appointment (this is the default), you need to punch in when you start working and punch out when you stop working. The particular hours /days when you work are not important; rather, we monitor your total hours in a 2-week period. If you have trouble remembering to punch in/out, please devise a system that works for you (i.e., set timers / reminders). Please avoid missing punches, and if you do, please send Jade a Slack message with the time and date you intended to punch out.
 
-If you have an exempt appointment (this is the case if you also have a
-teaching appointment), you do not need to punch in / out. You will be
-expected to work, on average, for a certain number of hours per week.
+If you have an exempt appointment (this is the case if you also have a teaching appointment), you do not need to punch in / out. You will be expected to work, on average, for a certain number of hours per week.
 
-You may log hours for data science team meetings. You may not log hours
-for Colford-Hubbard Research Group meetings or commute time, if
-applicable.
+You may log hours for data science team meetings. You may not log hours for Colford-Hubbard Research Group meetings or commute time, if applicable.
 
-\chapter{Code repositories}\label{code-repositories}
+\hypertarget{code-repositories}{%
+\chapter{Code repositories}\label{code-repositories}}
 
 By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
-Each study has at least one code repository that typically holds R code,
-shell scripts with Unix code, and research outputs (results .RDS files,
-tables, figures). Repositories may also include datasets. This chapter
-outlines how to organize these files. Adhering to a standard format
-makes it easier for us to efficiently collaborate across projects.
+Each study has at least one code repository that typically holds R code, shell scripts with Unix code, and research outputs (results .RDS files, tables, figures). Repositories may also include datasets. This chapter outlines how to organize these files. Adhering to a standard format makes it easier for us to efficiently collaborate across projects.
 
-\section{Project Structure}\label{project-structure}
+\hypertarget{project-structure}{%
+\section{Project Structure}\label{project-structure}}
 
 We recommend the following directory structure:
 
@@ -373,81 +323,39 @@ We recommend the following directory structure:
 .Rproj
 \end{verbatim}
 
-For brevity, not every directory is ``expanded'', but we can glean some
-important takeaways from what we \emph{do} see.
+For brevity, not every directory is ``expanded'', but we can glean some important takeaways from what we \emph{do} see.
 
-\section{\texorpdfstring{\texttt{.Rproj}
-files}{.Rproj files}}\label{rproj-files}
+\hypertarget{rproj-files}{%
+\section{\texorpdfstring{\texttt{.Rproj} files}{.Rproj files}}\label{rproj-files}}
 
-An ``R Project'' can be created within RStudio by going to
-\texttt{File\ \textgreater{}\textgreater{}\ New\ Project}. Depending on
-where you are with your research, choose the most appropriate option.
-This will save preferences, working directories, and even the results of
-running code/data (though I'd recommend starting from scratch each time
-you open your project, in general). Then, ensure that whenever you are
-working on that specific research project, you open your created project
-to enable the full utility of \texttt{.Rproj} files. This also
-automatically sets the directory to the top level of the project.
+An ``R Project'' can be created within RStudio by going to \texttt{File\ \textgreater{}\textgreater{}\ New\ Project}. Depending on where you are with your research, choose the most appropriate option. This will save preferences, working directories, and even the results of running code/data (though I'd recommend starting from scratch each time you open your project, in general). Then, ensure that whenever you are working on that specific research project, you open your created project to enable the full utility of \texttt{.Rproj} files. This also automatically sets the directory to the top level of the project.
 
-\section{\texorpdfstring{Configuration (`config')
-File}{Configuration (config) File}}\label{configuration-config-file}
+\hypertarget{configuration-config-file}{%
+\section{Configuration (`config') File}\label{configuration-config-file}}
 
-This is the single most important file for your project. It will be
-responsible for a variety of common tasks, declare global variables,
-load functions, declare paths, and more. \emph{Every other file in the
-project} will begin with \texttt{source("0-config")}, and its role is to
-reduce redundancy and create an abstraction layer that allows you to
-make changes in one place (\texttt{0-config.R}) rather than 5 different
-files. To this end, paths which will be reference in multiple scripts
-(i.e.~a \texttt{merged\_data\_path}) can be declared in
-\texttt{0-config.R} and simply referred to by its variable name in
-scripts. If you ever want to change things, rename them, or even switch
-from a downsample to the full data, all you would then to need to do is
-modify the path in one place and the change will automatically update
-throughout your project. See the example config file for more details.
-The paths defined in the \texttt{0-config.R} file assume that users have
-opened the \texttt{.Rproj} file, which sets the directory to the top
-level of the project.
+This is the single most important file for your project. It will be responsible for a variety of common tasks, declare global variables, load functions, declare paths, and more. \emph{Every other file in the project} will begin with \texttt{source("0-config")}, and its role is to reduce redundancy and create an abstraction layer that allows you to make changes in one place (\texttt{0-config.R}) rather than 5 different files. To this end, paths which will be reference in multiple scripts (i.e.~a \texttt{merged\_data\_path}) can be declared in \texttt{0-config.R} and simply referred to by its variable name in scripts. If you ever want to change things, rename them, or even switch from a downsample to the full data, all you would then to need to do is modify the path in one place and the change will automatically update throughout your project. See the example config file for more details. The paths defined in the \texttt{0-config.R} file assume that users have opened the \texttt{.Rproj} file, which sets the directory to the top level of the project.
 
-\section{Order Files and Directories}\label{order-files-and-directories}
+\hypertarget{order-files-and-directories}{%
+\section{Order Files and Directories}\label{order-files-and-directories}}
 
-This makes the jumble of alphabetized filenames much more coherent and
-places similar code and files next to one another. This also helps us
-understand how data flows from start to finish and allows us to easily
-map a script to its output (i.e.
-\texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R}
-=\textgreater{}
-\texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}).
-If you take nothing else away from this guide, this is the single most
-helpful suggestion to make your workflow more coherent. Often the
-particular order of files will be in flux until an analysis is close to
-completion. At that time it is important to review file order and naming
-and reproduce everything prior to drafting a manuscript.
+This makes the jumble of alphabetized filenames much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e. \texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R} =\textgreater{} \texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.
 
-\section{Using Bash scripts to ensure
-reproducibility}\label{using-bash-scripts-to-ensure-reproducibility}
+\hypertarget{using-bash-scripts-to-ensure-reproducibility}{%
+\section{Using Bash scripts to ensure reproducibility}\label{using-bash-scripts-to-ensure-reproducibility}}
 
-Bash scripts are useful components of a reproducible workflow. At many
-of the directory levels (i.e.~in \texttt{3\ -\ Analysis}), there is a
-bash script that runs each of the analysis scripts. This is
-exceptionally useful when data ``upstream'' changes -- you simply run
-the bash script. See the \protect\hyperlink{unix}{Unix Chapter} for
-further details.
+Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e.~in \texttt{3\ -\ Analysis}), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data ``upstream'' changes -- you simply run the bash script. See the \protect\hyperlink{unix}{Unix Chapter} for further details.
 
-After running bash scripts, \texttt{.Rout} log files will be generated
-for each script that has been executed. It is important to check these
-files. Scripts may appear to have run correctly in the terminal, but
-checking the log files is the only way to ensure that everything has run
-completely.
+After running bash scripts, \texttt{.Rout} log files will be generated for each script that has been executed. It is important to check these files. Scripts may appear to have run correctly in the terminal, but checking the log files is the only way to ensure that everything has run completely.
 
-\chapter{Coding practices}\label{coding-practices}
+\hypertarget{coding-practices}{%
+\chapter{Coding practices}\label{coding-practices}}
 
 by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
-\section{Organizing scripts}\label{organizing-scripts}
+\hypertarget{organizing-scripts}{%
+\section{Organizing scripts}\label{organizing-scripts}}
 
-Just as your data ``flows'' through your project, data should flow
-naturally through a script. Very generally, you want to:
+Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -464,78 +372,43 @@ naturally through a script. Very generally, you want to:
   save your data.
 \end{enumerate}
 
-Each of these sections should be ``chunked together'' using comments.
-See
-\href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this
-file} for a good example of how to cleanly organize a file in a way that
-follows this ``flow'' and functionally separate pieces of code that are
-doing different things.
+Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
 
-\section{Documenting your code}\label{documenting-your-code}
+\hypertarget{documenting-your-code}{%
+\section{Documenting your code}\label{documenting-your-code}}
 
-\subsection{File headers}\label{file-headers}
+\hypertarget{file-headers}{%
+\subsection{File headers}\label{file-headers}}
 
-Every file in a project should have a header that allows it to be
-interpreted on its own. It should include the name of the project and a
-short description for what this file (among the many in your project)
-does specifically. You may optionally wish to include the inputs and
-outputs of the script as well, though the next section makes this
-significantly less necessary.
+Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
 
-```
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-\# \citet{Organization} - Example Organization \# \citet{Project} -
-Example Project \# \citet{Description} - This file is responsible for
-{[}\ldots{}{]}
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+\begin{verbatim}
+################################################################################
+# @Organization - Example Organization
+# @Project - Example Project
+# @Description - This file is responsible for [...]
+################################################################################
+\end{verbatim}
 
-```
-
-Consider using RStudio's
-\href{https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections}{code
-folding} feature to collapse and expand different sections of your code.
-Any comment line with at least four trailing dashes (-), equal signs
-(=), or pound signs (\#) automatically creates a code section. For
-example:
+Consider using RStudio's \href{https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections}{code folding} feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (\#) automatically creates a code section. For example:
 
 \begin{verbatim}
 # Section 1 ------------------
 \end{verbatim}
 
-\textbf{Note}: If your computer isn't able to handle this workflow due
-to RAM or requirements, modifying the ordering of your code to
-accomodate it won't be ultimately helpful and your code will be fragile,
-not to mention less readable and messy. You need to look into
-high-performance computing (HPC) resources in this case.
+\textbf{Note}: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
 
-\subsection{Comments in the body of your
-script}\label{comments-in-the-body-of-your-script}
+\hypertarget{comments-in-the-body-of-your-script}{%
+\subsection{Comments in the body of your script}\label{comments-in-the-body-of-your-script}}
 
-Commenting your code is an important part of reproducibility and helps
-document your code for the future. When things change or break, you'll
-be thankful for comments. There's no need to comment excessively or
-unnecessarily, but a comment describing what a large or complex chunk of
-code does is always helpful. See
-\href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this
-file} for an example of how to comment your code and notice that
-comments are always in the form of:
+Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
 
 \texttt{\#\ This\ is\ a\ comment\ -\/-\ first\ letter\ is\ capitalized\ and\ spaced\ away\ from\ the\ pound\ sign}
 
-\subsection{Function documentation}\label{function-documentation}
+\hypertarget{function-documentation}{%
+\subsection{Function documentation}\label{function-documentation}}
 
-Every function you write must include a header to document its purpose,
-inputs, and outputs. For any reproducible workflows, they are essential,
-because R is dynamically typed. This means, you can pass a
-\texttt{string} into an argument that is meant to be a
-\texttt{data.table}, or a \texttt{list} into an argument meant for a
-\texttt{tibble}. It is the responsibility of a function's author to
-document what each argument is meant to do and its basic type. This is
-an example for documenting a function (inspired by
-\href{https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html\#format}{JavaDocs}
-and R's
-\href{https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/}{Plumber
-API docs}):
+Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a \texttt{string} into an argument that is meant to be a \texttt{data.table}, or a \texttt{list} into an argument meant for a \texttt{tibble}. It is the responsibility of a function's author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by \href{https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html\#format}{JavaDocs} and R's \href{https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/}{Plumber API docs}):
 
 \begin{verbatim}
 ##############################################
@@ -560,86 +433,45 @@ calc_fluseas_mean = function(data, yname, silent = TRUE) {
 }
 \end{verbatim}
 
-The header tells you what the function does, its various inputs, and how
-you might go about using the function to do what you want. Also notice
-that all optional arguments (i.e.~ones with pre-specified defaults)
-follow arguments that require user input.
+The header tells you what the function does, its various inputs, and how you might go about using the function to do what you want. Also notice that all optional arguments (i.e.~ones with pre-specified defaults) follow arguments that require user input.
 
 \begin{itemize}
 \item
-  \textbf{Note}: As someone trying to call a function, it is possible to
-  access a function's documentation (and internal code) by
-  \texttt{CMD-Left-Click}ing the function's name in RStudio
+  \textbf{Note}: As someone trying to call a function, it is possible to access a function's documentation (and internal code) by \texttt{CMD-Left-Click}ing the function's name in RStudio
 \item
-  \textbf{Note}: Depending on how important your function is, the
-  complexity of your function code, and the complexity of different
-  types of data in your project, you can also add ``type-checking'' to
-  your function with the \texttt{assertthat::assert\_that()} function.
-  You can, for example,
-  \texttt{assert\_that(is.data.frame(statistical\_input))}, which will
-  ensure that collaborators or reviewers of your project attempting to
-  use your function are using it in the way that it is intended by
-  calling it with (at the minimum) the correct type of arguments. You
-  can extend this to ensure that certain assumptions regarding the
-  inputs are fulfilled as well (i.e.~that \texttt{time\_column},
-  \texttt{location\_column}, \texttt{value\_column}, and
-  \texttt{population\_column} all exist within the
-  \texttt{statistical\_input} tibble).
+  \textbf{Note}: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add ``type-checking'' to your function with the \texttt{assertthat::assert\_that()} function. You can, for example, \texttt{assert\_that(is.data.frame(statistical\_input))}, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e.~that \texttt{time\_column}, \texttt{location\_column}, \texttt{value\_column}, and \texttt{population\_column} all exist within the \texttt{statistical\_input} tibble).
 \end{itemize}
 
-\section{Object naming}\label{object-naming}
+\hypertarget{object-naming}{%
+\section{Object naming}\label{object-naming}}
 
-Generally we recommend using nouns for objects and verbs for functions.
-This is because functions are performing actions, while objects are not.
+Generally we recommend using nouns for objects and verbs for functions. This is because functions are performing actions, while objects are not.
 
-Try to make your variable names both more expressive and more explicit.
-Being a bit more verbose is useful and easy in the age of
-autocompletion! For example, instead of naming a variable
-\texttt{vaxcov\_1718}, try naming it
-\texttt{vaccination\_coverage\_2017\_18}. Similarly, \texttt{flu\_res}
-could be named \texttt{absentee\_flu\_residuals}, making your code more
-readable and explicit.
+Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable \texttt{vaxcov\_1718}, try naming it \texttt{vaccination\_coverage\_2017\_18}. Similarly, \texttt{flu\_res} could be named \texttt{absentee\_flu\_residuals}, making your code more readable and explicit.
 
 \begin{itemize}
 \tightlist
 \item
-  For more help, check out
-  \href{https://spin.atomicobject.com/2017/11/01/good-variable-names/}{Be
-  Expressive: How to Give Your Variables Better Names}
+  For more help, check out \href{https://spin.atomicobject.com/2017/11/01/good-variable-names/}{Be Expressive: How to Give Your Variables Better Names}
 \end{itemize}
 
 We recommend you use \textbf{Snake\_Case}.
 
 \begin{itemize}
 \item
-  Base R allows \texttt{.} in variable names and functions (such as
-  \texttt{read.csv()}), but this goes against best practices for
-  variable naming in many other coding languages. For consistency's
-  sake, \texttt{snake\_case} has been adopted across languages, and
-  modern packages and functions typically use it (i.e.
-  \texttt{readr::read\_csv()}). As a very general rule of thumb, if a
-  package you're using doesn't use \texttt{snake\_case}, there may be an
-  updated version or more modern package that \emph{does}, bringing with
-  it the variety of performance improvements and bug fixes inherent in
-  more mature and modern software.
+  Base R allows \texttt{.} in variable names and functions (such as \texttt{read.csv()}), but this goes against best practices for variable naming in many other coding languages. For consistency's sake, \texttt{snake\_case} has been adopted across languages, and modern packages and functions typically use it (i.e. \texttt{readr::read\_csv()}). As a very general rule of thumb, if a package you're using doesn't use \texttt{snake\_case}, there may be an updated version or more modern package that \emph{does}, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
 \item
-  \textbf{Note}: you may also see \texttt{camelCase} throughout the R
-  code you come across. This is \emph{okay} but not ideal -- try to stay
-  consistent across all your code with \texttt{snake\_case}.
+  \textbf{Note}: you may also see \texttt{camelCase} throughout the R code you come across. This is \emph{okay} but not ideal -- try to stay consistent across all your code with \texttt{snake\_case}.
 \item
-  \textbf{Note}: again, its also worth noting there's nothing inherently
-  wrong with using \texttt{.} in variable names, just that it goes
-  against style best practices that are cropping up in data science, so
-  its worth getting rid of these bad habits now.
+  \textbf{Note}: again, its also worth noting there's nothing inherently wrong with using \texttt{.} in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.
 \end{itemize}
 
-\section{Function calls}\label{function-calls}
+\hypertarget{function-calls}{%
+\section{Function calls}\label{function-calls}}
 
-In a function call, use ``named arguments'' and put each argument on a
-separate line to make your code more readable.
+In a function call, use ``named arguments'' and put each argument on a separate line to make your code more readable.
 
-Here's an example of what not to do when calling the function a function
-\texttt{calc\_fluseas\_mean} (defined above):
+Here's an example of what not to do when calling the function a function \texttt{calc\_fluseas\_mean} (defined above):
 
 \begin{verbatim}
 mean_Y = calc_fluseas_mean(flu_data, "maari_yn", FALSE)
@@ -655,297 +487,214 @@ mean_Y = calc_fluseas_mean(
 )
 \end{verbatim}
 
-\section{The here package}\label{the-here-package}
+\hypertarget{the-here-package}{%
+\section{The here package}\label{the-here-package}}
 
-The \texttt{here} package is one great R package that helps multiple
-collaborators deal with the mess that is working directories within an R
-project structure. Let's say we have an R project at the path
-\texttt{/home/oski/Some-R-Project}. My collaborator might clone the
-repository and work with it at some other path, such as
-\texttt{/home/bear/R-Code/Some-R-Project}. Dealing with working
-directories and paths explicitly can be a very large pain, and as you
-might imagine, setting up a Config with paths requires those paths to
-flexibly work for all contributors to a project. This is where the
-\texttt{here} package comes in and this a
-\href{https://github.com/jennybc/here_here}{great vignette describing
-it}.
+The \texttt{here} package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path \texttt{/home/oski/Some-R-Project}. My collaborator might clone the repository and work with it at some other path, such as \texttt{/home/bear/R-Code/Some-R-Project}. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the \texttt{here} package comes in and this a \href{https://github.com/jennybc/here_here}{great vignette describing it}.
 
-\section{Reading/Saving Data}\label{readingsaving-data}
+\hypertarget{readingsaving-data}{%
+\section{Reading/Saving Data}\label{readingsaving-data}}
 
-\subsection{\texorpdfstring{\texttt{.RDS} vs \texttt{.RData}
-Files}{.RDS vs .RData Files}}\label{rds-vs-.rdata-files}
+\hypertarget{rds-vs-.rdata-files}{%
+\subsection{\texorpdfstring{\texttt{.RDS} vs \texttt{.RData} Files}{.RDS vs .RData Files}}\label{rds-vs-.rdata-files}}
 
-One of the most common ways to load and save data in Base R is with the
-\texttt{load()} and \texttt{save()} functions to serialize multiple
-objects in a single \texttt{.RData} file. The biggest problems with this
-practice include an inability to control the names of things getting
-loaded in, the inherent confusion this creates in understanding older
-code, and the inability to load individual elements of a saved file. For
-this, we recommend using the RDS format to save R objects.
+One of the most common ways to load and save data in Base R is with the \texttt{load()} and \texttt{save()} functions to serialize multiple objects in a single \texttt{.RData} file. The biggest problems with this practice include an inability to control the names of things getting loaded in, the inherent confusion this creates in understanding older code, and the inability to load individual elements of a saved file. For this, we recommend using the RDS format to save R objects.
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Note}: if you have many related R objects you would have
-  otherwise saved all together using the \texttt{save} function, the
-  functional equivalent with \texttt{RDS} would be to create a (named)
-  list containing each of these objects, and saving it.
+  \textbf{Note}: if you have many related R objects you would have otherwise saved all together using the \texttt{save} function, the functional equivalent with \texttt{RDS} would be to create a (named) list containing each of these objects, and saving it.
 \end{itemize}
 
-\subsection{CSVs}\label{csvs}
+\hypertarget{csvs}{%
+\subsection{CSVs}\label{csvs}}
 
-Once again, the \texttt{readr} package as part of the Tidvyerse is
-great, with a much faster \texttt{read\_csv()} than Base R's
-\texttt{read.csv()}. For massive CSVs (\textgreater{} 5 GB), you'll find
-\texttt{data.table::fread()} to be the fastest CSV reader in any data
-science language out there. For writing CSVs,
-\texttt{readr::write\_csv()} and \texttt{data.table::fwrite()} outclass
-Base R's \texttt{write.csv()} by a significant margin as well.
+Once again, the \texttt{readr} package as part of the Tidvyerse is great, with a much faster \texttt{read\_csv()} than Base R's \texttt{read.csv()}. For massive CSVs (\textgreater{} 5 GB), you'll find \texttt{data.table::fread()} to be the fastest CSV reader in any data science language out there. For writing CSVs, \texttt{readr::write\_csv()} and \texttt{data.table::fwrite()} outclass Base R's \texttt{write.csv()} by a significant margin as well.
 
-\section{Integrating Box and Dropbox}\label{integrating-box-and-dropbox}
+\hypertarget{integrating-box-and-dropbox}{%
+\section{Integrating Box and Dropbox}\label{integrating-box-and-dropbox}}
 
-Box and Dropbox are cloud-based file sharing systems that are useful
-when dealing with large files. When our scripts generate large output
-files, the files can slow down the workflow if they are pushed to
-GitHub. This makes collaboration difficult when not everyone has a copy
-of the file, unless we decide to duplicate files and share them
-manually. The files might also take up a lot of local storage. Box and
-Dropbox help us avoid these issues by automatically storing the files,
-reading data, and writing data back to the cloud.
+Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, the files can slow down the workflow if they are pushed to GitHub. This makes collaboration difficult when not everyone has a copy of the file, unless we decide to duplicate files and share them manually. The files might also take up a lot of local storage. Box and Dropbox help us avoid these issues by automatically storing the files, reading data, and writing data back to the cloud.
 
-Box and Dropbox are separate platforms, but we can use either one to
-store and share files. To use them, we can install the packages that
-have been created to integrate Box and Dropbox into R. The set-up
-instructions are detailed below.
+Box and Dropbox are separate platforms, but we can use either one to store and share files. To use them, we can install the packages that have been created to integrate Box and Dropbox into R. The set-up instructions are detailed below.
 
-\subsection{Box}\label{box}
+\hypertarget{box}{%
+\subsection{Box}\label{box}}
 
-Follow the instructions in this section to use the \texttt{boxr}
-package. Note that there are a few setup steps that need to be done on
-the box website before you can use the \texttt{boxr} package,
-\href{https://r-box.github.io/boxr/articles/boxr-app-interactive.html\#create}{explained
-here} in the section ``Creating an Interactive App.'' This gets the
-authentication keys that must be put in box.
+Follow the instructions in this section to use the \texttt{boxr} package. Note that there are a few setup steps that need to be done on the box website before you can use the \texttt{boxr} package, \href{https://r-box.github.io/boxr/articles/boxr-app-interactive.html\#create}{explained here} in the section ``Creating an Interactive App.'' This gets the authentication keys that must be put in box.
 
-Once that is done, add the authentication keys to your code, perhaps in
-the configuration file, with
-\texttt{box\_auth(client\_id\ =\ "\textless{}your\_client\_id\textgreater{}",\ client\_secret\ =\ "\textless{}your\_client\_secret\_id\textgreater{}")}.
-It is also important to set the default working directory so that the
-code can reference the correct folder in box:
-\texttt{box\_setwd(\textless{}folder\_id\textgreater{})}. The folder ID
-is the sequence of digits at the end of the URL.
+Once that is done, add the authentication keys to your code, perhaps in the configuration file, with \texttt{box\_auth(client\_id\ =\ "\textless{}your\_client\_id\textgreater{}",\ client\_secret\ =\ "\textless{}your\_client\_secret\_id\textgreater{}")}. It is also important to set the default working directory so that the code can reference the correct folder in box: \texttt{box\_setwd(\textless{}folder\_id\textgreater{})}. The folder ID is the sequence of digits at the end of the URL.
 
 Further details can be found \href{https://github.com/r-box/boxr}{here}.
 
-\subsection{Dropbox}\label{dropbox}
+\hypertarget{dropbox}{%
+\subsection{Dropbox}\label{dropbox}}
 
-Follow the instructions at \href{https://github.com/karthik/rdrop2}{this
-link} to use the \texttt{rdrop2} package. Similar to the \texttt{boxr}
-package, you need to complete the setup steps and authenticate before
-reading and writing from Dropbox.
+Follow the instructions at \href{https://github.com/karthik/rdrop2}{this link} to use the \texttt{rdrop2} package. Similar to the \texttt{boxr} package, you must authenticate before reading and writing from Dropbox, which can be done by running \texttt{drop\_auth()}. This will prompt you to give your login credentials for Dropbox and will allow your application to access your Dropbox folder. Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently.
 
-\section{Tidyverse}\label{tidyverse}
+\hypertarget{tidyverse}{%
+\section{Tidyverse}\label{tidyverse}}
 
-Throughout this document there have been references to the Tidyverse,
-but this section is to explicitly show you how to transform your Base R
-tendencies to Tidyverse (or Data.Table, Tidyverse's
-performance-optimized competitor). For most of our work that does not
-utilize very large datasets, we recommend that you code in Tidyverse
-rather than Base R. Tidyverse is quickly becoming
-\href{https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/}{the
-gold standard} in R data analysis and modern data science packages and
-code should use Tidyverse style and packages unless there's a
-significant reason not to (i.e.~big data pipelines that would benefit
-from Data.Table's performance optimizations).
+Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming \href{https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/}{the gold standard} in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e.~big data pipelines that would benefit from Data.Table's performance optimizations).
 
-The package author has published a \href{https://r4ds.had.co.nz/}{great
-textbook on R for Data Science}, which leans heavily on many Tidyverse
-packages and may be worth checking out.
+The package author has published a \href{https://r4ds.had.co.nz/}{great textbook on R for Data Science}, which leans heavily on many Tidyverse packages and may be worth checking out.
 
-The following list is not exhaustive, but is a compact overview to begin
-to translate Base R into something better:
+The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
 Base R\strut
-\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
 Better Style, Performance, and Utility\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \_\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \_\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{read.csv()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{readr::read\_csv()} or \texttt{data.table::fread()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{write.csv()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{readr::write\_csv()} or \texttt{data.table::fwrite()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{readRDS}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{readr::read\_rds()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{saveRDS()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{readr::write\_rds()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \_\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \_\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{data.frame()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{tibble::tibble()} or \texttt{data.table::data.table()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{rbind()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{dplyr::bind\_rows()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{cbind()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{dplyr::bind\_cols()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df\$some\_column}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df\ \%\textgreater{}\%\ dplyr::pull(some\_column)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df\$some\_column\ =\ ...}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df\ \%\textgreater{}\%\ dplyr::mutate(some\_column\ =\ ...)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df{[}get\_rows\_condition,{]}}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df\ \%\textgreater{}\%\ dplyr::filter(get\_rows\_condition)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df{[},c(col1,\ col2){]}}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{df\ \%\textgreater{}\%\ dplyr::select(col1,\ col2)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{merge(df1,\ df2,\ by\ =\ ...,\ all.x\ =\ ...,\ all.y\ =\ ...)}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-\texttt{df1\ \%\textgreater{}\%\ dplyr::left\_join(df2,\ by\ =\ ...)} or
-\texttt{dplyr::full\_join} or \texttt{dplyr::inner\_join} or
-\texttt{dplyr::right\_join}\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+\texttt{df1\ \%\textgreater{}\%\ dplyr::left\_join(df2,\ by\ =\ ...)} or \texttt{dplyr::full\_join} or \texttt{dplyr::inner\_join} or \texttt{dplyr::right\_join}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \_\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \_\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{str()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{dplyr::glimpse()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{grep(pattern,\ x)}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{stringr::str\_which(string,\ pattern)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{gsub(pattern,\ replacement,\ x)}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{stringr::str\_replace(string,\ pattern,\ replacement)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{ifelse(test\_expression,\ yes,\ no)}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{if\_else(condition,\ true,\ false)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-Nested:
-\texttt{ifelse(test\_expression1,\ yes1,\ ifelse(test\_expression2,\ yes2,\ ifelse(test\_expression3,\ yes3,\ no)))}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Nested: \texttt{ifelse(test\_expression1,\ yes1,\ ifelse(test\_expression2,\ yes2,\ ifelse(test\_expression3,\ yes3,\ no)))}\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{case\_when(test\_expression1\ \textasciitilde{}\ yes1,\ \ test\_expression2\ \textasciitilde{}\ yes2,\ test\_expression3\ \textasciitilde{}\ yes3,\ TRUE\ \textasciitilde{}\ no)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{proc.time()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{tictoc::tic()} and \texttt{tictoc::toc()}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
 \texttt{stopifnot()}\strut
-\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-\texttt{assertthat::assert\_that()} or \texttt{assertthat::see\_if()} or
-\texttt{assertthat::validate\_that()}\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+\texttt{assertthat::assert\_that()} or \texttt{assertthat::see\_if()} or \texttt{assertthat::validate\_that()}\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-For a more extensive set of syntactical translations to Tidyverse, you
-can check out
-\href{https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html\#reshaping_data}{this
-document}.
+For a more extensive set of syntactical translations to Tidyverse, you can check out \href{https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html\#reshaping_data}{this document}.
 
-Working with Tidyverse within functions can be somewhat of a pain due to
-non-standard evaluation (NSE) semantics. If you're an avid function
-writer, we'd recommend checking out the following resources:
+Working with Tidyverse within functions can be somewhat of a pain due to non-standard evaluation (NSE) semantics. If you're an avid function writer, we'd recommend checking out the following resources:
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://www.youtube.com/watch?v=nERXS3ssntw}{Tidy Eval in 5
-  Minutes} (video)
+  \href{https://www.youtube.com/watch?v=nERXS3ssntw}{Tidy Eval in 5 Minutes} (video)
 \item
-  \href{https://tidyeval.tidyverse.org/index.html}{Tidy Evaluation}
-  (e-book)
+  \href{https://tidyeval.tidyverse.org/index.html}{Tidy Evaluation} (e-book)
 \item
-  \href{https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/}{Data
-  Frame Columns as Arguments to Dplyr Functions} (blog)
+  \href{https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/}{Data Frame Columns as Arguments to Dplyr Functions} (blog)
 \item
-  \href{https://stackoverflow.com/questions/28125816/r-standard-evaluation-for-join-dplyr}{Standard
-  Evaluation for *\_join} (stackoverflow)
+  \href{https://stackoverflow.com/questions/28125816/r-standard-evaluation-for-join-dplyr}{Standard Evaluation for *\_join} (stackoverflow)
 \item
-  \href{https://dplyr.tidyverse.org/articles/programming.html}{Programming
-  with dplyr} (package vignette)
+  \href{https://dplyr.tidyverse.org/articles/programming.html}{Programming with dplyr} (package vignette)
 \end{itemize}
 
-\section{Coding with R and Python}\label{coding-with-r-and-python}
+\hypertarget{coding-with-r-and-python}{%
+\section{Coding with R and Python}\label{coding-with-r-and-python}}
 
-If you're using both R and Python, you may wish to check out the
-\href{https://www.rdocumentation.org/packages/feather/versions/0.3.3}{Feather
-package} for exchanging data between the two languages
-\href{https://blog.rstudio.com/2016/03/29/feather/}{extremely quickly}.
+If you're using both R and Python, you may wish to check out the \href{https://www.rdocumentation.org/packages/feather/versions/0.3.3}{Feather package} for exchanging data between the two languages \href{https://blog.rstudio.com/2016/03/29/feather/}{extremely quickly}.
 
-\section{Reviewing Code}\label{reviewing-code}
+\hypertarget{reviewing-code}{%
+\section{Reviewing Code}\label{reviewing-code}}
 
-Before publishing new changes, it is important to ensure that the code
-has been tested and well-documented. GitHub makes it possible to
-document all of these changes in a pull request. Pull requests can be
-used to describe changes in a branch that are ready to be merged with
-the base branch (more information in the
-\protect\hyperlink{Github}{GitHub} section). Github allows users to
-create a pull request template in a repository to standardize and
-customize the information in a pull request. When you add a pull request
-template to your repository, everyone will automatically see the
-template's contents in the pull request body.
+Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the \protect\hyperlink{Github}{GitHub} section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.
 
-\subsection{Creating a Pull Request
-Template}\label{creating-a-pull-request-template}
+\hypertarget{creating-a-pull-request-template}{%
+\subsection{Creating a Pull Request Template}\label{creating-a-pull-request-template}}
 
-Follow the instructions below to add a pull request template to a
-repository. More details can be found at this
-\href{https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository}{GitHub
-link}.
+Follow the instructions below to add a pull request template to a repository. More details can be found at this \href{https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository}{GitHub link}.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -955,21 +704,16 @@ link}.
 \item
   Above the file list, click \texttt{Create\ new\ file}.
 \item
-  Name the file \texttt{pull\_request\_template.md}. GitHub will not
-  recognize this as the template if it is named anything else. The file
-  must be on the \texttt{master} branch.
+  Name the file \texttt{pull\_request\_template.md}. GitHub will not recognize this as the template if it is named anything else. The file must be on the \texttt{master} branch.
 
   \begin{enumerate}
   \def\labelenumii{\arabic{enumii}.}
   \tightlist
   \item
-    To store the file in a hidden directory instead of the main
-    directory, name the file
-    \texttt{.github/pull\_request\_template.md}.
+    To store the file in a hidden directory instead of the main directory, name the file \texttt{.github/pull\_request\_template.md}.
   \end{enumerate}
 \item
-  In the body of the new file, add your pull request template. This
-  could include:
+  In the body of the new file, add your pull request template. This could include:
 
   \begin{itemize}
   \tightlist
@@ -978,8 +722,7 @@ link}.
   \item
     How the change has been tested
   \item
-    @mentions of the person or team responsible for reviewing proposed
-    changes
+    @mentions of the person or team responsible for reviewing proposed changes
   \end{itemize}
 \end{enumerate}
 
@@ -1030,54 +773,43 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 @ ...
 \end{verbatim}
 
-\chapter{Coding style}\label{coding-style}
+\hypertarget{coding-style}{%
+\chapter{Coding style}\label{coding-style}}
 
-by Kunal Mishra and Jade Benjamin-Chung
+by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
-\section{Comments}\label{comments}
+\hypertarget{comments}{%
+\section{Comments}\label{comments}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{File Headers} - Every file in a project should have a header
-  that allows it to be interpreted on its own. It should include the
-  name of the project and a short description for what this file (among
-  the many in your project) does specifically. You may optionally wish
-  to include the inputs and outputs of the script as well, though the
-  next section makes this significantly less necessary.
-  \texttt{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\ \ \ \#\ @Organization\ -\ Example\ Organization\ \ \ \#\ @Project\ -\ Example\ Project\ \ \ \#\ @Description\ -\ This\ file\ is\ responsible\ for\ {[}...{]}\ \ \ \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+  \textbf{File Headers} - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
+\end{enumerate}
+
+\begin{verbatim}
+################################################################################
+# @Organization - Example Organization
+# @Project - Example Project
+# @Description - This file is responsible for [...]
+################################################################################
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
-  \textbf{File Structure} - Just as your data ``flows'' through your
-  project, data should flow naturally through a script. Very generally,
-  you want to 1) source your config =\textgreater{} 2) load all your
-  data =\textgreater{} 3) do all your analysis/computation
-  =\textgreater{} save your data. Each of these sections should be
-  ``chunked together'' using comments. See
-  \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this
-  file} for a good example of how to cleanly organize a file in a way
-  that follows this ``flow'' and functionally separate pieces of code
-  that are doing different things.
+  \textbf{File Structure} - Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =\textgreater{} 2) load all your data =\textgreater{} 3) do all your analysis/computation =\textgreater{} save your data. Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Note}: If your computer isn't able to handle this workflow
-    due to RAM or requirements, modifying the ordering of your code to
-    accomodate it won't be ultimately helpful and your code will be
-    fragile, not to mention less readable and messy. You need to look
-    into high-performance computing (HPC) resources in this case.
+    \textbf{Note}: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
   \end{itemize}
 \item
-  \textbf{Single-Line Comments} - Commenting your code is an important
-  part of reproducibility and helps document your code for the future.
-  When things change or break, you'll be thankful for comments. There's
-  no need to comment excessively or unnecessarily, but a comment
-  describing what a large or complex chunk of code does is always
-  helpful. See
-  \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this
-  file} for an example of how to comment your code and notice that
-  comments are always in the form of:
+  \textbf{Single-Line Comments} - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
 \end{enumerate}
 
 \texttt{\#\ This\ is\ a\ comment\ -\/-\ first\ letter\ is\ capitalized\ and\ spaced\ away\ from\ the\ pound\ sign}
@@ -1087,130 +819,167 @@ by Kunal Mishra and Jade Benjamin-Chung
 \setcounter{enumi}{3}
 \tightlist
 \item
-  \textbf{Multi-Line Comments} - Occasionally, multi-line comments are
-  necessary. Don't add line breaks manually to a single-line comment for
-  the purpose of making it ``fit'' on the screen. Instead, in RStudio
-  \textgreater{} Tools \textgreater{} Global Options \textgreater{} Code
-  \textgreater{} ``Soft-wrap R source files'' to have lines wrap around.
-  Format your multi-line comments like the file header from above.
+  \textbf{Multi-Line Comments} - Occasionally, multi-line comments are necessary. Don't add line breaks manually to a single-line comment for the purpose of making it ``fit'' on the screen. Instead, in RStudio \textgreater{} Tools \textgreater{} Global Options \textgreater{} Code \textgreater{} ``Soft-wrap R source files'' to have lines wrap around. Format your multi-line comments like the file header from above.
 \end{enumerate}
 
-\section{Line breaks}\label{line-breaks}
+\hypertarget{line-breaks}{%
+\section{Line breaks}\label{line-breaks}}
 
 \begin{itemize}
 \item
-  For \texttt{ggplot} calls and \texttt{dplyr} pipelines, do not crowd
-  single lines. Here are some nontrivial examples of ``beautiful''
-  pipelines, where beauty is defined by coherence: ``` \# Example 1
-  school\_names = list( OUSD\_school\_names = absentee\_all
-  \%\textgreater{}\% filter(dist.n == 1) \%\textgreater{}\% pull(school)
-  \%\textgreater{}\% unique \%\textgreater{}\% sort,
+  For \texttt{ggplot} calls and \texttt{dplyr} pipelines, do not crowd single lines. Here are some nontrivial examples of ``beautiful'' pipelines, where beauty is defined by coherence:
 
-  WCCSD\_school\_names = absentee\_all \%\textgreater{}\% filter(dist.n
-  == 0) \%\textgreater{}\% pull(school) \%\textgreater{}\% unique
-  \%\textgreater{}\% sort ) \texttt{} \# Example 2 absentee\_all =
-  fread(file = raw\_data\_path) \%\textgreater{}\% mutate(program =
-  case\_when(schoolyr \%in\% pre\_program\_schoolyrs \textasciitilde{}
-  0, schoolyr \%in\% program\_schoolyrs \textasciitilde{} 1))
-  \%\textgreater{}\% mutate(period = case\_when(schoolyr \%in\%
-  pre\_program\_schoolyrs \textasciitilde{} 0, schoolyr \%in\%
-  LAIV\_schoolyrs \textasciitilde{} 1, schoolyr \%in\% IIV\_schoolyrs
-  \textasciitilde{} 2)) \%\textgreater{}\% filter(schoolyr !=
-  ``2017-18'')
-  \texttt{And\ of\ a\ complex\ \textasciigrave{}ggplot\textasciigrave{}\ call:}
-  \# Example 3 ggplot(data=data, mapping=aes\_string(x=``year'',
-  y=``rd'', group=group)) +
+\begin{verbatim}
+# Example 1
+school_names = list(
+  OUSD_school_names = absentee_all %>%
+    filter(dist.n == 1) %>%
+    pull(school) %>%
+    unique %>%
+    sort,
 
-  geom\_point(mapping=aes\_string(col=group, shape=group),
-  position=position\_dodge(width=0.2), size=2.5) +
+  WCCSD_school_names = absentee_all %>%
+    filter(dist.n == 0) %>%
+    pull(school) %>%
+    unique %>%
+    sort
+)
+\end{verbatim}
 
-  geom\_errorbar(mapping=aes\_string(ymin=``lb'', ymax=``ub'',
-  col=group), position=position\_dodge(width=0.2), width=0.2) +
+\begin{verbatim}
+# Example 2
+absentee_all = fread(file = raw_data_path) %>%
+  mutate(program = case_when(schoolyr %in% pre_program_schoolyrs ~ 0,
+                             schoolyr %in% program_schoolyrs ~ 1)) %>%
+  mutate(period = case_when(schoolyr %in% pre_program_schoolyrs ~ 0,
+                            schoolyr %in% LAIV_schoolyrs ~ 1,
+                            schoolyr %in% IIV_schoolyrs ~ 2)) %>%
+  filter(schoolyr != "2017-18")
+\end{verbatim}
 
-  geom\_point(position=position\_dodge(width=0.2), size=2.5) +
+  And of a complex \texttt{ggplot} call:
 
-  geom\_errorbar(mapping=aes(ymin=lb, ymax=ub),
-  position=position\_dodge(width=0.2), width=0.1) +
+\begin{verbatim}
+# Example 3
+ggplot(data=data,
+       mapping=aes_string(x="year", y="rd", group=group)) +
 
-  scale\_y\_continuous(limits=limits, breaks=breaks, labels=breaks) +
+  geom_point(mapping=aes_string(col=group, shape=group),
+             position=position_dodge(width=0.2),
+             size=2.5) +
 
-  scale\_color\_manual(std\_legend\_title,values=cols,labels=legend\_label)
-  + scale\_shape\_manual(std\_legend\_title,values=shapes,
-  labels=legend\_label) + geom\_hline(yintercept=0, linetype=``dashed'')
-  + xlab(``Program year'') + ylab(yaxis\_lab) + theme\_complete\_bw() +
-  theme(strip.text.x = element\_text(size = 14), axis.text.x =
-  element\_text(size = 12)) + ggtitle(title)
-  ``\texttt{Imagine\ (or\ perhaps\ mournfully\ recall)\ the\ mess\ that\ can\ occur\ when\ you\ don\textquotesingle{}t\ strictly\ style\ a\ complicated}ggplot`
-  call. Trying to fix bugs and ensure your code is working can be a
-  nightmare. Now imagine trying to do it with the same code 6 months
-  after you've written it. Invest the time now and reap the rewards as
-  the code practically explains itself, line by line.
+  geom_errorbar(mapping=aes_string(ymin="lb", ymax="ub", col=group),
+                position=position_dodge(width=0.2),
+                width=0.2) +
+
+  geom_point(position=position_dodge(width=0.2),
+             size=2.5) +
+
+  geom_errorbar(mapping=aes(ymin=lb, ymax=ub),
+                position=position_dodge(width=0.2),
+                width=0.1) +
+
+  scale_y_continuous(limits=limits,
+                     breaks=breaks,
+                     labels=breaks) +
+
+  scale_color_manual(std_legend_title,values=cols,labels=legend_label) +
+  scale_shape_manual(std_legend_title,values=shapes, labels=legend_label) +
+  geom_hline(yintercept=0, linetype="dashed") +
+  xlab("Program year") +
+  ylab(yaxis_lab) +
+  theme_complete_bw() +
+  theme(strip.text.x = element_text(size = 14),
+        axis.text.x = element_text(size = 12)) +
+  ggtitle(title)
+\end{verbatim}
+
+  Imagine (or perhaps mournfully recall) the mess that can occur when you don't strictly style a complicated \texttt{ggplot} call. Trying to fix bugs and ensure your code is working can be a nightmare. Now imagine trying to do it with the same code 6 months after you've written it. Invest the time now and reap the rewards as the code practically explains itself, line by line.
 \end{itemize}
 
-\section{Automated Tools for Style and Project
-Workflow}\label{automated-tools-for-style-and-project-workflow}
+\hypertarget{automated-tools-for-style-and-project-workflow}{%
+\section{Automated Tools for Style and Project Workflow}\label{automated-tools-for-style-and-project-workflow}}
 
-\subsection{Styling}\label{styling}
+\hypertarget{styling}{%
+\subsection{Styling}\label{styling}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Code Autoformatting} - RStudio includes a fantastic built-in
-  utility (keyboard shortcut: \texttt{CMD-Shift-A}) for autoformatting
-  highlighted chunks of code to fit many of the best practices listed
-  here. It generally makes code more readable and fixes a lot of the
-  small things you may not feel like fixing yourself. Try it out as a
-  ``first pass'' on some code of yours that \emph{doesn't} follow many
-  of these best practices!
+  \textbf{Code Autoformatting} - RStudio includes a fantastic built-in utility (keyboard shortcut: \texttt{CMD-Shift-A}) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a ``first pass'' on some code of yours that \emph{doesn't} follow many of these best practices!
 \item
-  \textbf{Assignment Aligner} - A
-  \href{https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/}{cool
-  R package} allows you to very powerfully format large chunks of
-  assignment code to be much cleaner and much more readable. Follow the
-  linked instructions and create a keyboard shortcut of your choosing
-  (recommendation: \texttt{CMD-Shift-Z}). Here is an example of how
-  assignment aligning can dramatically improve code readability:
-  \texttt{\#\ Before\ \ \ OUSD\_not\_found\_aliases\ =\ list(\ "Brookfield\ Village\ Elementary"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Brookfield"),\ "Carl\ Munck\ Elementary"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Munck"),\ "Community\ United\ Elementary\ School"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Community\ United"),\ "East\ Oakland\ PRIDE\ Elementary"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "East\ Oakland\ Pride"),\ "EnCompass\ Academy"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "EnCompass"),\ "Global\ Family\ School"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Global"),\ "International\ Community\ School"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "International\ Community"),\ "Madison\ Park\ Lower\ Campus"\ =\ "Madison\ Park\ Academy\ TK-5",\ "Manzanita\ Community\ School"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Manzanita\ Community"),\ "Martin\ Luther\ King\ Jr\ Elementary"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "King"),\ "PLACE\ @\ Prescott"\ =\ "Preparatory\ Literary\ Academy\ of\ Cultural\ Excellence",\ "RISE\ Community\ School"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Rise\ Community")\ )}
-  \texttt{\#\ After\ \ \ OUSD\_not\_found\_aliases\ =\ list(\ "Brookfield\ Village\ Elementary"\ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Brookfield"),\ "Carl\ Munck\ Elementary"\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Munck"),\ "Community\ United\ Elementary\ School"\ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Community\ United"),\ "East\ Oakland\ PRIDE\ Elementary"\ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "East\ Oakland\ Pride"),\ "EnCompass\ Academy"\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "EnCompass"),\ "Global\ Family\ School"\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Global"),\ "International\ Community\ School"\ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "International\ Community"),\ "Madison\ Park\ Lower\ Campus"\ \ \ \ \ \ \ \ \ \ =\ "Madison\ Park\ Academy\ TK-5",\ "Manzanita\ Community\ School"\ \ \ \ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Manzanita\ Community"),\ "Martin\ Luther\ King\ Jr\ Elementary"\ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "King"),\ "PLACE\ @\ Prescott"\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ "Preparatory\ Literary\ Academy\ of\ Cultural\ Excellence",\ "RISE\ Community\ School"\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ str\_subset(string\ =\ OUSD\_school\_shapes\$schnam,\ pattern\ =\ "Rise\ Community")\ )}
+  \textbf{Assignment Aligner} - A \href{https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/}{cool R package} allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: \texttt{CMD-Shift-Z}). Here is an example of how assignment aligning can dramatically improve code readability:
+\end{enumerate}
+
+\begin{verbatim}
+# Before
+OUSD_not_found_aliases = list(
+  "Brookfield Village Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Brookfield"),
+  "Carl Munck Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Munck"),
+  "Community United Elementary School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Community United"),
+  "East Oakland PRIDE Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),
+  "EnCompass Academy" = str_subset(string = OUSD_school_shapes$schnam, pattern = "EnCompass"),
+  "Global Family School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Global"),
+  "International Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "International Community"),
+  "Madison Park Lower Campus" = "Madison Park Academy TK-5",
+  "Manzanita Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Manzanita Community"),
+  "Martin Luther King Jr Elementary" = str_subset(string = OUSD_school_shapes$schnam, pattern = "King"),
+  "PLACE @ Prescott" = "Preparatory Literary Academy of Cultural Excellence",
+  "RISE Community School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Rise Community")
+)
+\end{verbatim}
+
+\begin{verbatim}
+# After
+OUSD_not_found_aliases = list(
+  "Brookfield Village Elementary"      = str_subset(string = OUSD_school_shapes$schnam, pattern = "Brookfield"),
+  "Carl Munck Elementary"              = str_subset(string = OUSD_school_shapes$schnam, pattern = "Munck"),
+  "Community United Elementary School" = str_subset(string = OUSD_school_shapes$schnam, pattern = "Community United"),
+  "East Oakland PRIDE Elementary"      = str_subset(string = OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),
+  "EnCompass Academy"                  = str_subset(string = OUSD_school_shapes$schnam, pattern = "EnCompass"),
+  "Global Family School"               = str_subset(string = OUSD_school_shapes$schnam, pattern = "Global"),
+  "International Community School"     = str_subset(string = OUSD_school_shapes$schnam, pattern = "International Community"),
+  "Madison Park Lower Campus"          = "Madison Park Academy TK-5",
+  "Manzanita Community School"         = str_subset(string = OUSD_school_shapes$schnam, pattern = "Manzanita Community"),
+  "Martin Luther King Jr Elementary"   = str_subset(string = OUSD_school_shapes$schnam, pattern = "King"),
+  "PLACE @ Prescott"                   = "Preparatory Literary Academy of Cultural Excellence",
+  "RISE Community School"              = str_subset(string = OUSD_school_shapes$schnam, pattern = "Rise Community")
+)
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
 \item
-  \textbf{StyleR} - Another
-  \href{https://www.tidyverse.org/articles/2017/12/styler-1.0.0/}{cool R
-  package from the Tidyverse} that can be powerful and used as a first
-  pass on entire projects that need refactoring. The most useful
-  function of the package is the \texttt{style\_dir} function, which
-  will style all files within a given directory. See the
-  \href{https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir}{function's
-  documentation} and the vignette linked above for more details.
+  \textbf{StyleR} - Another \href{https://www.tidyverse.org/articles/2017/12/styler-1.0.0/}{cool R package from the Tidyverse} that can be powerful and used as a first pass on entire projects that need refactoring. The most useful function of the package is the \texttt{style\_dir} function, which will style all files within a given directory. See the \href{https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir}{function's documentation} and the vignette linked above for more details.
 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Note}: The default Tidyverse styler is subtly different from
-    some of the things we've advocated for in this document. Most
-    notably we differ with regards to the assignment operator
-    (\texttt{\textless{}-} vs \texttt{=}) and number of spaces
-    before/after ``tokens'' (i.e.~Assignment Aligner add spaces before
-    \texttt{=} signs to align them properly). For this reason, we'd
-    recommend the following:
-    \texttt{style\_dir(path\ =\ ...,\ scope\ =\ "line\_breaks",\ strict\ =\ FALSE)}.
-    You can also customize StyleR
-    \href{http://styler.r-lib.org/articles/customizing_styler.html}{even
-    more} if you're really hardcore.
+    \textbf{Note}: The default Tidyverse styler is subtly different from some of the things we've advocated for in this document. Most notably we differ with regards to the assignment operator (\texttt{\textless{}-} vs \texttt{=}) and number of spaces before/after ``tokens'' (i.e.~Assignment Aligner add spaces before \texttt{=} signs to align them properly). For this reason, we'd recommend the following: \texttt{style\_dir(path\ =\ ...,\ scope\ =\ "line\_breaks",\ strict\ =\ FALSE)}. You can also customize StyleR \href{http://styler.r-lib.org/articles/customizing_styler.html}{even more} if you're really hardcore.
   \item
-    \textbf{Note}: As is mentioned in the package vignette linked above,
-    StyleR modifies things \emph{in-place}, meaning it overwrites your
-    existing code and replaces it with the updated, properly styled
-    code. This makes it a good fit on projects \emph{with version
-    control}, but if you don't have backups or a good way to revert back
-    to the intial code, I wouldn't recommend going this route.
+    \textbf{Note}: As is mentioned in the package vignette linked above, StyleR modifies things \emph{in-place}, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects \emph{with version control}, but if you don't have backups or a good way to revert back to the intial code, I wouldn't recommend going this route.
+  \end{itemize}
+\item
+  \textbf{Linter} - Linters are programming tools that check adherence to a given style, syntax errors, and possible semantic issues. The R linter, called \texttt{lintr}, can be found in this \href{https://www.rdocumentation.org/packages/lintr/versions/1.0.3}{package}. It helps keep files consistent across different authors and even different organizations. For example, it notifies you if you have unused variables, global variables with no visible binding, not enough or superflous whitespace, and improper use of parentheses or brackets. A list of its other purposes can be found \href{https://cran.r-project.org/web/packages/lintr/readme/README.html\#available-linters}{in this link}, and most guidelines are based on \href{http://r-pkgs.had.co.nz/style.html}{Hadley Wickham's R Style Guide}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Note}: You can customize your settings to set defaults or to exclude files. More details can be found \href{https://cran.r-project.org/web/packages/lintr/readme/README.html\#project-configuration}{here}.
+  \item
+    \textbf{Note}: The \texttt{lintr} package goes hand in hand with the \texttt{styler} package. The styler can be used to automatically fix the problems that the lintr catches.
   \end{itemize}
 \end{enumerate}
 
-\chapter{Code Publication}\label{code-publication}
+\hypertarget{code-publication}{%
+\chapter{Code Publication}\label{code-publication}}
 
 by Nolan Pokpongkiat
 
-\section{Checklist overview}\label{checklist-overview}
+\hypertarget{checklist-overview}{%
+\section{Checklist overview}\label{checklist-overview}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1222,116 +991,76 @@ by Nolan Pokpongkiat
 \item
   \protect\hyperlink{document-functions}{Document functions}
 \item
-  \protect\hyperlink{remove-deprecated-filepaths}{Remove deprecated
-  filepaths}
+  \protect\hyperlink{remove-deprecated-filepaths}{Remove deprecated filepaths}
 \item
-  \protect\hyperlink{ensure-project-runs-via-bash}{Ensure project runs
-  via bash}
+  \protect\hyperlink{ensure-project-runs-via-bash}{Ensure project runs via bash}
 \item
   \protect\hyperlink{complete-the-readme}{Complete the README}
 \item
-  \protect\hyperlink{clean-up-feature-branches}{Clean up feature
-  branches}
+  \protect\hyperlink{clean-up-feature-branches}{Clean up feature branches}
 \item
   \protect\hyperlink{create-github-release}{Create Github release}
 \end{enumerate}
 
-\hypertarget{fill-out-file-headers}{\section{Fill out file
-headers}\label{fill-out-file-headers}}
+\hypertarget{fill-out-file-headers}{%
+\section{Fill out file headers}\label{fill-out-file-headers}}
 
-Every file in a project should have a header that allows it to be
-interpreted on its own. It should include the name of the project and a
-short description for what this file (among the many in your project)
-does specifically. See template
-\href{https://jadebc.github.io/lab-manual/coding-practices.html\#file-headers}{here.}
+Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. See template \href{https://jadebc.github.io/lab-manual/coding-practices.html\#file-headers}{here.}
 
-\hypertarget{clean-up-comments}{\section{Clean up
-comments}\label{clean-up-comments}}
+\hypertarget{clean-up-comments}{%
+\section{Clean up comments}\label{clean-up-comments}}
 
-Make sure comments in the code are for code documentation purposes only.
-Do not leave comments to self in the final script files.
+Make sure comments in the code are for code documentation purposes only. Do not leave comments to self in the final script files.
 
-\hypertarget{document-functions}{\section{Document
-functions}\label{document-functions}}
+\hypertarget{document-functions}{%
+\section{Document functions}\label{document-functions}}
 
-Every function you write must include a header to document its purpose,
-inputs, and outputs. See template for the function documentation
-\href{https://jadebc.github.io/lab-manual/coding-practices.html\#function-documentation}{here.}
+Every function you write must include a header to document its purpose, inputs, and outputs. See template for the function documentation \href{https://jadebc.github.io/lab-manual/coding-practices.html\#function-documentation}{here.}
 
-\hypertarget{remove-deprecated-filepaths}{\section{Remove deprecated
-filepaths}\label{remove-deprecated-filepaths}}
+\hypertarget{remove-deprecated-filepaths}{%
+\section{Remove deprecated filepaths}\label{remove-deprecated-filepaths}}
 
-All file paths should be defined in 0-config.R, and should be set
-relative to the project working directory. All absolute file paths from
-your local computer should be removed, and replaced with a relative
-path. If a third party were to re-run this analysis, if they need to
-download data from a separate source and change a filepath in the
-0-config.R to match, make sure to specify in the README which line of
-0-config.R needs to be substituted.
+All file paths should be defined in 0-config.R, and should be set relative to the project working directory. All absolute file paths from your local computer should be removed, and replaced with a relative path. If a third party were to re-run this analysis, if they need to download data from a separate source and change a filepath in the 0-config.R to match, make sure to specify in the README which line of 0-config.R needs to be substituted.
 
-\hypertarget{ensure-project-runs-via-bash}{\section{Ensure project runs
-via bash}\label{ensure-project-runs-via-bash}}
+\hypertarget{ensure-project-runs-via-bash}{%
+\section{Ensure project runs via bash}\label{ensure-project-runs-via-bash}}
 
-The project should be configured to be entirely reproducible by running
-a master bash script, run-project.sh, which should live at the top
-directory. This bash script can call other bash scripts in subfolders,
-if necessary. Bash scripts should use the runFileSaveLogs utility
-script, which is a wrapper around the Rscript command, allowing you to
-specify where .Rout log files are moved after the R scripts are run.
+The project should be configured to be entirely reproducible by running a master bash script, run-project.sh, which should live at the top directory. This bash script can call other bash scripts in subfolders, if necessary. Bash scripts should use the runFileSaveLogs utility script, which is a wrapper around the Rscript command, allowing you to specify where .Rout log files are moved after the R scripts are run.
 
-See usage and documentation
-\href{https://jadebc.github.io/lab-manual/unix.html\#example-code-for-runfilesavelogs}{here.}
+See usage and documentation \href{https://jadebc.github.io/lab-manual/unix.html\#example-code-for-runfilesavelogs}{here.}
 
-\hypertarget{complete-the-readme}{\section{Complete the
-README}\label{complete-the-readme}}
+\hypertarget{complete-the-readme}{%
+\section{Complete the README}\label{complete-the-readme}}
 
-A README.md should live at the top directory of the project. This
-usually includes a Project Overview and a Directory Structure, along
-with the names of the contributors and the Creative Commons License. See
-below for a template:
+A README.md should live at the top directory of the project. This usually includes a Project Overview and a Directory Structure, along with the names of the contributors and the Creative Commons License. See below for a template:
 
 \begin{quote}
 \textbf{Overview}
 
-To date, coronavirus testing in the US has been extremely limited.
-Confirmed COVID-19 case counts underestimate the total number of
-infections in the population. We estimated the total COVID-19 infections
--- both symptomatic and asymptomatic -- in the US in March 2020. We used
-a semi-Bayesian approach to correct for bias due to incomplete testing
-and imperfect test performance.
+To date, coronavirus testing in the US has been extremely limited. Confirmed COVID-19 case counts underestimate the total number of infections in the population. We estimated the total COVID-19 infections -- both symptomatic and asymptomatic -- in the US in March 2020. We used a semi-Bayesian approach to correct for bias due to incomplete testing and imperfect test performance.
 
 \textbf{Directory structure}
 
 \begin{itemize}
 \item
-  0-config.R: configuration file that sets data directories, sources
-  base functions, and loads required libraries
+  0-config.R: configuration file that sets data directories, sources base functions, and loads required libraries
 \item
-  0-base-functions: folder containing scripts with functions used in the
-  analysis
+  0-base-functions: folder containing scripts with functions used in the analysis
 
   \begin{itemize}
   \item
-    0-base-functions.R: R script containing general functions used
-    across the analysis
+    0-base-functions.R: R script containing general functions used across the analysis
   \item
-    0-bias-corr-functions.R: R script containing functions used in bias
-    correction
+    0-bias-corr-functions.R: R script containing functions used in bias correction
   \item
-    0-bias-corr-functions-undertesting.R: R script containing functions
-    used in bias correction to estimate the percentage of
-    underestimation due to incomplete testing vs.~imperfect test
-    accuracy
+    0-bias-corr-functions-undertesting.R: R script containing functions used in bias correction to estimate the percentage of underestimation due to incomplete testing vs.~imperfect test accuracy
   \item
-    0-prior-functions.R: R script containing functions to generate
-    priors
+    0-prior-functions.R: R script containing functions to generate priors
   \end{itemize}
 \item
-  1-data: folder containing data processing scripts NOTE: some scripts
-  are deprecated
+  1-data: folder containing data processing scripts NOTE: some scripts are deprecated
 \item
-  2-analysis: folder containing analysis scripts. To rerun all scripts
-  in this subdirectory, run the bash script 0-run-analysis.sh.
+  2-analysis: folder containing analysis scripts. To rerun all scripts in this subdirectory, run the bash script 0-run-analysis.sh.
 
   \begin{itemize}
   \item
@@ -1339,134 +1068,85 @@ and imperfect test performance.
   \item
     2-est-expected-cases-state.R: estimate expected cases in each state
   \item
-    3-est-expected-cases-state-perf-testing.R: estimate expected cases
-    in each state, estimate the percentage of underestimation due to
-    incomplete testing vs.~imperfect test accuracy
+    3-est-expected-cases-state-perf-testing.R: estimate expected cases in each state, estimate the percentage of underestimation due to incomplete testing vs.~imperfect test accuracy
   \item
     4-obtain-testing-protocols.R: find testing protocols for each state.
   \item
-    5-summarize-results.R: summarize results; obtain results for in text
-    numerical results.
+    5-summarize-results.R: summarize results; obtain results for in text numerical results.
   \end{itemize}
 \item
-  3-figure-table-scripts: folder containing figure scripts. To rerun all
-  scripts in this subdirectory, run the bash script 0-run-figs.sh.
+  3-figure-table-scripts: folder containing figure scripts. To rerun all scripts in this subdirectory, run the bash script 0-run-figs.sh.
 
   \begin{itemize}
   \item
     1-fig-testing.R: creates plot of testing patterns by state over time
   \item
-    2-fig-cases-usa-state-bar.R: creates bar plot of confirmed
-    vs.~estimated infections by state
+    2-fig-cases-usa-state-bar.R: creates bar plot of confirmed vs.~estimated infections by state
   \item
-    3a-fig-map-usa-state.R: creates map of confirmed vs.~estimated
-    infections by state
+    3a-fig-map-usa-state.R: creates map of confirmed vs.~estimated infections by state
   \item
-    3b-fig-map-usa-state-shiny.R: creates map of confirmed vs.~estimated
-    infections by state with search functionality by state
+    3b-fig-map-usa-state-shiny.R: creates map of confirmed vs.~estimated infections by state with search functionality by state
   \item
     4-fig-priors.R: creates figure with priors for US as a whole
   \item
-    5-fig-density-usa.R: creates figure of distribution of estimated
-    cases in the US
+    5-fig-density-usa.R: creates figure of distribution of estimated cases in the US
   \item
-    6-table-data-quality.R: creates table of data quality grading from
-    COVID Tracking Project
+    6-table-data-quality.R: creates table of data quality grading from COVID Tracking Project
   \item
-    7-fig-testpos.R: creates figure of the probability of testing
-    positive among those tested by state
+    7-fig-testpos.R: creates figure of the probability of testing positive among those tested by state
   \item
-    8-fig-percent-undertesting-state.R: creates figure of the percentage
-    of under estimation due to incomplete testing
+    8-fig-percent-undertesting-state.R: creates figure of the percentage of under estimation due to incomplete testing
   \end{itemize}
 \item
   4-figures: folder containing figure files.
 \item
   5-results: folder containing analysis results objects.
 \item
-  6-sensitivity: folder containing scripts to run the sensitivity
-  analyses
+  6-sensitivity: folder containing scripts to run the sensitivity analyses
 \end{itemize}
 
-\textbf{Contributors:} Jade Benjamin-Chung, Sean L. Wu, Anna Nguyen,
-Stephanie Djajadi, Nolan N. Pokpongkiat, Anmol Seth, Andrew Mertens
+\textbf{Contributors:} Jade Benjamin-Chung, Sean L. Wu, Anna Nguyen, Stephanie Djajadi, Nolan N. Pokpongkiat, Anmol Seth, Andrew Mertens
 
-Wu SL, Mertens A, Crider YS, Nguyen A, Pokpongkiat NN, Djajadi S, et al.
-Substantial underestimation of SARS-CoV-2 infection in the United States
-due to incomplete testing and imperfect test accuracy. medRxiv. 2020;
-2020.05.12.20091744. \url{doi:10.1101/2020.05.12.20091744}
+Wu SL, Mertens A, Crider YS, Nguyen A, Pokpongkiat NN, Djajadi S, et al.~Substantial underestimation of SARS-CoV-2 infection in the United States due to incomplete testing and imperfect test accuracy. medRxiv. 2020; 2020.05.12.20091744. \url{doi:10.1101/2020.05.12.20091744}
 \end{quote}
 
-When possible, also include a description of the RDS results that are
-generated, detailing what data sources were used, where the script lives
-that creates it, and what information the RDS results hold.
+When possible, also include a description of the RDS results that are generated, detailing what data sources were used, where the script lives that creates it, and what information the RDS results hold.
 
-\hypertarget{clean-up-feature-branches}{\section{Clean up feature
-branches}\label{clean-up-feature-branches}}
+\hypertarget{clean-up-feature-branches}{%
+\section{Clean up feature branches}\label{clean-up-feature-branches}}
 
-In the remote repository on Github, all feature branches aside from
-master should be merged in and deleted. All outstanding PRs should be
-closed.
+In the remote repository on Github, all feature branches aside from master should be merged in and deleted. All outstanding PRs should be closed.
 
-\hypertarget{create-github-release}{\section{Create Github
-release}\label{create-github-release}}
+\hypertarget{create-github-release}{%
+\section{Create Github release}\label{create-github-release}}
 
-Once all of these items are verified, create a tag to make a Github
-release, which will tag the repository, creating a marker at this
-specific point in time.
+Once all of these items are verified, create a tag to make a Github release, which will tag the repository, creating a marker at this specific point in time.
 
-Detailed instructions
-\href{https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases}{here.}
+Detailed instructions \href{https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases}{here.}
 
-\chapter{Working with Big Data}\label{working-with-big-data}
+\hypertarget{working-with-big-data}{%
+\chapter{Working with Big Data}\label{working-with-big-data}}
 
 by Kunal Mishra and Jade Benjamin-Chung
 
-\section{The data.table package}\label{the-data.table-package}
+\hypertarget{the-data.table-package}{%
+\section{The data.table package}\label{the-data.table-package}}
 
-It may also be the case that you're working with very large datasets.
-Generally I would define this as 10+ million rows. As is outlined in
-this document, the 3 main players in the data analysis space are Base R,
-\texttt{Tidvyerse} (more specificially, \texttt{dplyr}), and
-\texttt{data.table}. For a majority of things, Base R is inferior to
-both \texttt{dplyr} and \texttt{data.table}, with concise but less clear
-syntax and less speed. \texttt{Dplyr} is architected for medium and
-smaller data, and while its very fast for everyday usage, it trades off
-maximum performance for ease of use and syntax compared to
-\texttt{data.table}. An overview of the \texttt{dplyr} vs
-\texttt{data.table} debate can be found in
-\href{https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349\#27840349}{this
-stackoverflow post} and all 3 answers are worth a read.
+It may also be the case that you're working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, \texttt{Tidvyerse} (more specificially, \texttt{dplyr}), and \texttt{data.table}. For a majority of things, Base R is inferior to both \texttt{dplyr} and \texttt{data.table}, with concise but less clear syntax and less speed. \texttt{Dplyr} is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to \texttt{data.table}. An overview of the \texttt{dplyr} vs \texttt{data.table} debate can be found in \href{https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349\#27840349}{this stackoverflow post} and all 3 answers are worth a read.
 
-You can also achieve a performance boost by running \texttt{dplyr}
-commands on \texttt{data.table}s, which I find to be the best of both
-worlds, given that a \texttt{data.table} is a special type of
-\texttt{data.frame} and fairly easy to convert with the
-\texttt{as.data.table()} function. The speedup is due to
-\texttt{dplyr}'s use of the \texttt{data.table} backend and in the
-future this coupling should become even more natural.
+You can also achieve a performance boost by running \texttt{dplyr} commands on \texttt{data.table}s, which I find to be the best of both worlds, given that a \texttt{data.table} is a special type of \texttt{data.frame} and fairly easy to convert with the \texttt{as.data.table()} function. The speedup is due to \texttt{dplyr}'s use of the \texttt{data.table} backend and in the future this coupling should become even more natural.
 
-If you want to test whether using a certain coding approach increases
-speed, consider the \texttt{tictoc} package. Run \texttt{tic()} before a
-code chunk and \texttt{toc()} after to measure the amount of system time
-it takes to run the chunk. For example, you might use this to decide if
-you \emph{really} need to switch a code chunk from \texttt{dplyr} to
-\texttt{data.table}.
+If you want to test whether using a certain coding approach increases speed, consider the \texttt{tictoc} package. Run \texttt{tic()} before a code chunk and \texttt{toc()} after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you \emph{really} need to switch a code chunk from \texttt{dplyr} to \texttt{data.table}.
 
-\section{Using downsampled data}\label{using-downsampled-data}
+\hypertarget{using-downsampled-data}{%
+\section{Using downsampled data}\label{using-downsampled-data}}
 
-In our studies with very large datasets, we save ``downsampled'' data
-that usually includes a 1\% random sample stratified by any important
-variables, such as year or household id. This allows us to efficiently
-write and test our code without having to load in large, slow datasets
-that can cause RStudio to freeze. Be very careful to be sure which
-dataset you are working with and to label results output accordingly.
+In our studies with very large datasets, we save ``downsampled'' data that usually includes a 1\% random sample stratified by any important variables, such as year or household id. This allows us to efficiently write and test our code without having to load in large, slow datasets that can cause RStudio to freeze. Be very careful to be sure which dataset you are working with and to label results output accordingly.
 
-\section{Optimal RStudio set up}\label{optimal-rstudio-set-up}
+\hypertarget{optimal-rstudio-set-up}{%
+\section{Optimal RStudio set up}\label{optimal-rstudio-set-up}}
 
-Using the following settings will help ensure a smooth experience when
-working with big data. In RStudio, go to the ``Tools'' menu, then select
-``Global Options''. Under ``General'':
+Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the ``Tools'' menu, then select ``Global Options''. Under ``General'':
 
 \textbf{Workspace}
 
@@ -1486,156 +1166,120 @@ working with big data. In RStudio, go to the ``Tools'' menu, then select
   \textbf{Uncheck} Always save history
 \end{itemize}
 
-Unfortunately RStudio often gets slow and/or freezes after hours working
-with big datasets. Sometimes it is much more efficient to just use
-Terminal / gitbash to run code and make updates in git.
+Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.
 
-\chapter{Github}\label{github}
+\hypertarget{github}{%
+\chapter{Github}\label{github}}
 
 by Stephanie Djajadi and Nolan Pokpongkiat
 
-\section{Basics}\label{basics}
+\hypertarget{basics}{%
+\section{Basics}\label{basics}}
 
 \begin{itemize}
 \tightlist
 \item
-  A detailed tutorial of Git can be found
-  \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{here
-  on the CS61B website}.
+  A detailed tutorial of Git can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{here on the CS61B website}.
 \item
-  If you are already familiar with Git, you can reference the summary at
-  the end of
-  \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{Section
-  B}.
+  If you are already familiar with Git, you can reference the summary at the end of \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{Section B}.
 \item
-  If you have made a mistake in Git, you can refer to this
-  \href{https://sethrobertson.github.io/GitFixUm/fixup.html}{article} to
-  undo, fix, or remove commits in git.
+  If you have made a mistake in Git, you can refer to this \href{https://sethrobertson.github.io/GitFixUm/fixup.html}{article} to undo, fix, or remove commits in git.
 \end{itemize}
 
-\section{Github Desktop}\label{github-desktop}
+\hypertarget{github-desktop}{%
+\section{Github Desktop}\label{github-desktop}}
 
-While knowing how to use Git on the command line will always be useful
-since the full power of Git and its customizations and flexibilty is
-designed for use with the command line, Github also provides
-\href{https://desktop.github.com/}{Github Desktop} as an graphical
-interface to do basic git commands; you can do all of the basic
-functions of Git using this desktop app. Feel free to use this as an
-alternative to Git on the command line if you prefer.
+While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides \href{https://desktop.github.com/}{Github Desktop} as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.
 
-\section{Git Branching}\label{git-branching}
+\hypertarget{git-branching}{%
+\section{Git Branching}\label{git-branching}}
 
-Branches allow you to keep track of multiple versions of your work
-simultaneously, and you can easily switch between versions and merge
-branches together once you've finished working on a section and want it
-to join the rest of your code. Here are some cases when it may be a good
-idea to branch:
+Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
 
 \begin{itemize}
 \tightlist
 \item
-  You may want to make a dramatic change to your existing code (called
-  refactoring) but it will break other parts of your project. But you
-  want to be able to simultaneously work on other parts or you are
-  collaborating with others, and you don't want to break the code for
-  them.
+  You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don't want to break the code for them.
 \item
-  You want to start working on a new part of the project, but you aren't
-  sure yet if your changes will work and make it to the final product.
+  You want to start working on a new part of the project, but you aren't sure yet if your changes will work and make it to the final product.
 \item
-  You are working with others and don't want to mix up your current work
-  with theirs, even if you want to bring your work together later in the
-  future.
+  You are working with others and don't want to mix up your current work with theirs, even if you want to bring your work together later in the future.
 \end{itemize}
 
-A detailed tutorial on Git Branching can be found
-\href{https://sp19.datastructur.es/materials/guides/using-git\#e-git-branching-advanced-git-optional}{here}.
-You can also find instructions on how to handle merge conflicts when
-joining branches together.
+A detailed tutorial on Git Branching can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#e-git-branching-advanced-git-optional}{here}. You can also find instructions on how to handle merge conflicts when joining branches together.
 
-\section{Example Workflow}\label{example-workflow}
+\hypertarget{example-workflow}{%
+\section{Example Workflow}\label{example-workflow}}
 
-A standard workflow when starting on a new project and contributing code
-looks like this:
+A standard workflow when starting on a new project and contributing code looks like this:
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.34\columnwidth}\raggedright
 Command\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedright
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-SETUP: FIRST TIME ONLY:
-\texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Clone the repo. This copies of all the project files in its current
-state on Github to your local computer.\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+SETUP: FIRST TIME ONLY: \texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Clone the repo. This copies of all the project files in its current state on Github to your local computer.\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 1. \texttt{git\ pull\ origin\ master}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-update the state of your files to match the most current version on
-GitHub\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+update the state of your files to match the most current version on GitHub\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-2.
-\texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+2. \texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 create new branch that you'll be working on and go to it\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 3. Make some file changes\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 work on your feature/implementation\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 4. \texttt{git\ add\ -p}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-add changes to stage for commit, going through changes line by
-line\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+add changes to stage for commit, going through changes line by line\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-5.
-\texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+5. \texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 commit files with a message\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-6.
-\texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-push branch to remote and set to track (-u only needed if this is first
-push)\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+6. \texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+push branch to remote and set to track (-u only needed if this is first push)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 7. Repeat step 4-5.\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 work and commit often\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 8. \texttt{git\ push}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 push work to remote branch for others to view\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-9. Follow the link given from the \texttt{git\ push} command to
-\href{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request\#creating-the-pull-request}{submit
-a pull request (PR) on GitHub online}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+9. Follow the link given from the \texttt{git\ push} command to \href{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request\#creating-the-pull-request}{submit a pull request (PR) on GitHub online}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 PR merges in work from your branch into master\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-(10.) Your changes and PR get approved, your reviewer deletes your
-remote branch upon merging\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+(10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 \strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 11. \texttt{git\ fetch\ -\/-all\ -\/-prune}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 clean up your local git by untracking deleted remote branches\strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -1643,166 +1287,145 @@ clean up your local git by untracking deleted remote branches\strut
 
 Other helpful commands are listed below.
 
-\section{Commonly Used Git Commands}\label{commonly-used-git-commands}
+\hypertarget{commonly-used-git-commands}{%
+\section{Commonly Used Git Commands}\label{commonly-used-git-commands}}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.34\columnwidth}\raggedright
 Command\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedright
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 clone a repository, only needs to be done the first time\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ pull\ origin\ master}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 pull from \texttt{master} before making any changes\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ branch}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 check what branch you are on\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ branch\ -a}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 check what branch you are on + all remote branches\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-create new branch and go to it (only necessary when you create a new
-branch)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+create new branch and go to it (only necessary when you create a new branch)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ checkout\ \textless{}branch\ name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 switch to branch\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ add\ \textless{}file\ name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 add file to stage for commit\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ add\ -p}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 adds changes to commit, showing you changes one by one\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 commit file with a message\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-push branch to remote and set to track (-u only works if this is first
-push)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+push branch to remote and set to track (-u only works if this is first push)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ branch\ -\/-set-upstream-to\ origin\ \textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-set upstream to \texttt{origin/\textless{}branch\_name\textgreater{}}
-(use if you forgot -u on first push)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+set upstream to \texttt{origin/\textless{}branch\_name\textgreater{}} (use if you forgot -u on first push)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ push\ origin\ \textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 push work to branch\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\texttt{git\ checkout\ \textless{}branch\_name\textgreater{}}
-~\texttt{git\ merge\ master}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-switch to branch and merge changes from \texttt{master} into
-\texttt{\textless{}branch\_name\textgreater{}} (two commands)\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\texttt{git\ checkout\ \textless{}branch\_name\textgreater{}} ~\texttt{git\ merge\ master}\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+switch to branch and merge changes from \texttt{master} into \texttt{\textless{}branch\_name\textgreater{}} (two commands)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ merge\ \textless{}branch\_name\textgreater{}\ master}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-switch to branch and merge changes from \texttt{master} into
-\texttt{\textless{}branch\_name\textgreater{}} (one command)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+switch to branch and merge changes from \texttt{master} into \texttt{\textless{}branch\_name\textgreater{}} (one command)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ checkout\ -\/-track\ origin/\textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-pulls a remote branch and creates a local branch to track it (use when
-trying to pull someone else's branch onto your local computer)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+pulls a remote branch and creates a local branch to track it (use when trying to pull someone else's branch onto your local computer)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ push\ -\/-delete\ \textless{}remote\_name\textgreater{}\ \textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 delete remote branch\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ branch\ -d\ \textless{}branch\_name\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 deletes local branch, -D to force\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{git\ fetch\ -\/-all\ -\/-prune}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
 untrack deleted remote branches\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\section{How often should I commit?}\label{how-often-should-i-commit}
+\hypertarget{how-often-should-i-commit}{%
+\section{How often should I commit?}\label{how-often-should-i-commit}}
 
-It is good practice to commit every 15 minutes, or every time you make a
-significant change. It is better to commit more rather than less.
+It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.
 
-\section{What should be pushed to
-Github?}\label{what-should-be-pushed-to-github}
+\hypertarget{what-should-be-pushed-to-github}{%
+\section{What should be pushed to Github?}\label{what-should-be-pushed-to-github}}
 
-Never push .Rout files! If someone else runs an R script and creates an
-.Rout file at the same time and both of you try to push to github, it is
-incredibly difficult to reconcile these two logs. If you run logs, keep
-them on your own system or (preferably) set up a shared directory where
-all logs are name and date timestamped.
+Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.
 
-There is a standardized \texttt{.gitignore} for \texttt{R} which you
-\href{https://github.com/github/gitignore/blob/master/R.gitignore}{can
-download} and add to your project. This ensures you're not committing
-log files or things that would otherwise best be left ignored to GitHub.
-This is a
-\href{https://www.tidyverse.org/articles/2017/12/workflow-vs-script/}{great
-discussion of project-oriented workflows}, extolling the virtues of a
-self-contained, portable projects, for your reference.
+There is a standardized \texttt{.gitignore} for \texttt{R} which you \href{https://github.com/github/gitignore/blob/master/R.gitignore}{can download} and add to your project. This ensures you're not committing log files or things that would otherwise best be left ignored to GitHub. This is a \href{https://www.tidyverse.org/articles/2017/12/workflow-vs-script/}{great discussion of project-oriented workflows}, extolling the virtues of a self-contained, portable projects, for your reference.
 
-\hypertarget{unix}{\chapter{Unix commands}\label{unix}}
+\hypertarget{unix}{%
+\chapter{Unix commands}\label{unix}}
 
 by Stephanie Djajadi, Kunal Mishra, Anna Nguyen, and Jade Benjamin-Chung
 
-We typically use Unix commands in Terminal (for Mac users) or Git Bash
-(for Windows users) to
+We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Windows users) to
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Run a series of scripts in parallel or in a specific order to
-  reproduce our work
+  Run a series of scripts in parallel or in a specific order to reproduce our work
 \item
   To check on the progress of a batch of jobs
 \item
   To use git and push to github
 \end{enumerate}
 
-\section{Basics}\label{basics}
+\hypertarget{basics-1}{%
+\section{Basics}\label{basics-1}}
 
-On the computer, there is a desktop with two folders, \texttt{folder1}
-and \texttt{folder2}, and a file called \texttt{file1.} Inside
-\texttt{folder1}, we have a file called \texttt{file2.} Mac users can
-run these commands on their terminal; it is recommended that Windows
-users use Git Bash, not Windows PowerShell.
+On the computer, there is a desktop with two folders, \texttt{folder1} and \texttt{folder2}, and a file called \texttt{file1.} Inside \texttt{folder1}, we have a file called \texttt{file2.} Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
 
 \begin{figure}
 \centering
@@ -1810,76 +1433,73 @@ users use Git Bash, not Windows PowerShell.
 \caption{Here is our example desktop.}
 \end{figure}
 
-\section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}
+\hypertarget{syntax-for-both-macwindows}{%
+\section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}}
 
-When typing in directories or file names, quotes are necessary if the
-name includes spaces.
+When typing in directories or file names, quotes are necessary if the name includes spaces.
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.41\columnwidth}\raggedright
 Command\strut
-\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.53\columnwidth}\raggedright
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{cd\ desktop/folder1}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Change directory to \texttt{folder1}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{pwd}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Print working directory\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{ls}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 List files in the directory\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{cp\ "file2"\ "newfile2"}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-Copy file (remember to include file extensions when typing in file names
-like \texttt{.pdf} or \texttt{.R})\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Copy file (remember to include file extensions when typing in file names like \texttt{.pdf} or \texttt{.R})\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{mv\ “newfile2”\ “file3”}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Rename \texttt{newfile2} to \texttt{file3}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{cd\ ..}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-Go to parent of the working directory (in this case,
-\texttt{desktop})\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Go to parent of the working directory (in this case, \texttt{desktop})\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{mv\ “file1”\ folder2}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Move \texttt{file1} to \texttt{folder2}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{mkdir\ folder3}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Make a new folder in \texttt{folder2}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{rm\ \textless{}filename\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Remove files\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{rm\ -rf\ folder3}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-Remove directories (\texttt{-r} will attempt to remove the directory
-recursively, \texttt{-rf} will force removal of the directory)\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Remove directories (\texttt{-r} will attempt to remove the directory recursively, \texttt{-rf} will force removal of the directory)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
 \texttt{clear}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
 Clear terminal screen of all previous commands\strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -1888,202 +1508,165 @@ Clear terminal screen of all previous commands\strut
 \begin{figure}
 \centering
 \includegraphics{assets/images/ex-terminal.PNG}
-\caption{Here is an example of what your terminal might look like after
-executing the commands in the order listed above.}
+\caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
 \end{figure}
 
-\section{Running Bash Scripts}\label{running-bash-scripts}
+\hypertarget{running-bash-scripts}{%
+\section{Running Bash Scripts}\label{running-bash-scripts}}
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
-\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.23\columnwidth}\raggedright
 Windows\strut
-\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
 Mac / Linux\strut
-\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{chmod\ +750\ \textless{}filename.sh\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{chmod\ +x\ \textless{}filename.sh\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Change access permissions for a file (only needs to be done once)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{./\textless{}filename.sh\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{./\textless{}filename.sh\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Run file (\texttt{./} to run any executable file)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{bash\ bash\_script\_name.sh\ \&}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{bash\ bash\_script\_name.sh\ \&}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Run shell script in the background\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}
+\hypertarget{running-rscripts-in-windows}{%
+\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}}
 
-\textbf{Note: This code seems to work only with Windows Command Prompt,
-not with Git Bash.}
+\textbf{Note: This code seems to work only with Windows Command Prompt, not with Git Bash.}
 
-When R is installed, it comes with a utility called Rscript. This allows
-you to run R commands from the command line. If Rscript is in your
-\texttt{PATH,} then typing Rscript into the command line, and pressing
-enter, will not error. Otherwise, to use Rscript, you will either need
-to add it to your PATH (as an environment variable), or append the full
-directory of the location of Rscript on your machine. To find the full
-directory, search for where R is installed your computer. For instance,
-it may be something like below (this will vary depending on what version
-of R you have installed):
+When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your \texttt{PATH,} then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):
 
 \texttt{C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin}
 
-For appending the \texttt{PATH} variable, please view
-\href{https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/}{this
-link}. I strongly recommend completing this option.
+For appending the \texttt{PATH} variable, please view \href{https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/}{this link}. I strongly recommend completing this option.
 
-If you add the PATH as an environment variable, then you can run this
-line of code to test: \texttt{Rscript\ -e\ “cat(‘this\ is\ a\ test’)"},
-where the \texttt{-e} flag refers to the expression that will be
-executed.
+If you add the PATH as an environment variable, then you can run this line of code to test:
+\texttt{Rscript\ -e\ “cat(‘this\ is\ a\ test’)"}, where the \texttt{-e} flag refers to the expression that will be executed.
 
-If you do not add the PATH as an environment variable, then you can run
-this line of code to replicate the results from above:
+If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above:
 \texttt{“C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin”\ -e\ “cat(‘this\ is\ a\ test’)”}
 
 To run an R script from the command line, we can say:
 \texttt{Rscript\ -e\ “source(‘C:/path/to/script/some\_code.R’)”}
 
-\subsection{Common Mistakes}\label{common-mistakes}
+\hypertarget{common-mistakes}{%
+\subsection{Common Mistakes}\label{common-mistakes}}
 
 \begin{itemize}
 \tightlist
 \item
-  Remember to include all of the quotation marks around file paths that
-  have a spaces.
+  Remember to include all of the quotation marks around file paths that have a spaces.
 \item
-  If you attempt to run an R script but run into
-  \texttt{Error:\ \textquotesingle{}\textbackslash{}U\textquotesingle{}\ used\ without\ hex\ digits\ in\ character\ string\ starting\ "\textquotesingle{}C:\textbackslash{}U"},
-  try replacing all \texttt{\textbackslash{}} with
-  \texttt{\textbackslash{}\textbackslash{}} or \texttt{/}.
+  If you attempt to run an R script but run into \texttt{Error:\ \textquotesingle{}\textbackslash{}U\textquotesingle{}\ used\ without\ hex\ digits\ in\ character\ string\ starting\ "\textquotesingle{}C:\textbackslash{}U"}, try replacing all \texttt{\textbackslash{}} with \texttt{\textbackslash{}\textbackslash{}} or \texttt{/}.
 \end{itemize}
 
-\section{Checking tasks and killing
-jobs}\label{checking-tasks-and-killing-jobs}
+\hypertarget{checking-tasks-and-killing-jobs}{%
+\section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}}
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
-\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.23\columnwidth}\raggedright
 Windows\strut
-\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
 Mac / Linux\strut
-\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
 Description\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{tasklist}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{ps\ -v}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 List all processes on the command line\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{top\ -o\ {[}cpu/rsize{]}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 List all running processes, sorted by CPU or memory usage\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{taskkill\ /F\ /PID\ pid\_number}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{kill\ \textless{}PID\_number\textgreater{}}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Kill a process by its process ID\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{taskkill\ /IM\ "process\ name"\ /F}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Kill a process by its name\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{start\ /b\ program.exe}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-Runs jobs in the background (exclude \texttt{/b} if you want the program
-to run in a new console)\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Runs jobs in the background (exclude \texttt{/b} if you want the program to run in a new console)\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{nohup}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Prevents jobs from stopping\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \texttt{disown}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Keeps jobs running in the background even if you close R\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
 \texttt{taskkill\ /?}\strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
 Help, lists out other commands\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-To kill a task in Windows, you can also go to Task Manager
-\textgreater{} More details \textgreater{} Select your desired app
-\textgreater{} Click on End Task.
+To kill a task in Windows, you can also go to Task Manager \textgreater{} More details \textgreater{} Select your desired app \textgreater{} Click on End Task.
 
-\section{Running big jobs}\label{running-big-jobs}
+\hypertarget{running-big-jobs}{%
+\section{Running big jobs}\label{running-big-jobs}}
 
-For big data workflows, the concept of ``backgrounding'' a bash script
-allows you to start a ``job'' (i.e.~run the script) and leave it
-overnight to run. At the top level, a bash script
-(\texttt{0-run-project.sh}) that simply calls the directory-level bash
-scripts (i.e. \texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh},
-\texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every
-script in your project. See the included example bash scripts for more
-details.
+For big data workflows, the concept of ``backgrounding'' a bash script allows you to start a ``job'' (i.e.~run the script) and leave it overnight to run. At the top level, a bash script (\texttt{0-run-project.sh}) that simply calls the directory-level bash scripts (i.e. \texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh}, \texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Running Bash Scripts in Background}: Running a long bash
-  script is not trivial. Normally you would run a bash script by opening
-  a terminal and typing something like \texttt{./run-project.sh}. But
-  what if you leave your computer, log out of your server, or close the
-  terminal? Normally, the bash script will exit and fail to complete. To
-  run it in background, type \texttt{./run-project.sh\ \&;\ disown}. You
-  can see the job running (and CPU utilization) with the command
-  \texttt{top} or \texttt{ps\ -v} and check your memory with
-  \texttt{free\ -h}.
+  \textbf{Running Bash Scripts in Background}: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like \texttt{./run-project.sh}. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type \texttt{./run-project.sh\ \&;\ disown}. You can see the job running (and CPU utilization) with the command \texttt{top} or \texttt{ps\ -v} and check your memory with \texttt{free\ -h}.
 \end{itemize}
 
-Alternatively, to keep code running in the background even when an SSH
-connection is broken, you can use \texttt{tmux}. In terminal or gitbash
-follow the steps below. This
-\href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site}
-has useful tips on using \texttt{tmux}.
+Alternatively, to keep code running in the background even when an SSH connection is broken, you can use \texttt{tmux}. In terminal or gitbash follow the steps below. This \href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site} has useful tips on using \texttt{tmux}.
 
 \begin{verbatim}
 # create a new tmux session called session_name
@@ -2106,28 +1689,13 @@ tmux attach -tsession_name
 
 \begin{itemize}
 \item
-  \textbf{Deleting Previously Computed Results}: One helpful lesson
-  we've learned is that your bash scripts should remove previous results
-  (computed and saved by scripts run at a previous time) so that you
-  never mix results from one run with a previous run. This can happen
-  when an R script errors out before saving its result, and can be
-  difficult to catch because your previously saved result exists
-  (leading you to believe everything ran correctly).
+  \textbf{Deleting Previously Computed Results}: One helpful lesson we've learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).
 \item
-  \textbf{Ensuring Things Ran Correctly}: You should check the
-  \texttt{.Rout} files generated by the R scripts run by your bash
-  scripts for errors once things are run. A utility file is include in
-  this repository, called \texttt{runFileSaveLogs}, and is used by the
-  example bash scripts to\ldots{} run files and save the generated logs.
-  It is an awesome utility and one I definitely recommend using. Before
-  using \texttt{runFileSaveLogs}, it is necessary to put the file in the
-  home working directory. For help and documentation, you can use the
-  command \texttt{./runFileSaveLogs\ -h}. See example code and example
-  usage for \texttt{runFileSaveLogs} below.
+  \textbf{Ensuring Things Ran Correctly}: You should check the \texttt{.Rout} files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called \texttt{runFileSaveLogs}, and is used by the example bash scripts to\ldots{} run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using \texttt{runFileSaveLogs}, it is necessary to put the file in the home working directory. For help and documentation, you can use the command \texttt{./runFileSaveLogs\ -h}. See example code and example usage for \texttt{runFileSaveLogs} below.
 \end{itemize}
 
-\subsection{\texorpdfstring{Example code for
-\texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}
+\hypertarget{example-code-for-runfilesavelogs}{%
+\subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2204,13 +1772,10 @@ tmux attach -tsession_name
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{\texorpdfstring{Example usage for
-\texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}
+\hypertarget{example-usage-for-runfilesavelogs}{%
+\subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}}
 
-This example bash script runs files and generates logs for five scripts
-in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i}
-flag is used as an identifier to add \texttt{figures} to the filename of
-each log.
+This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
 
 \begin{verbatim}
 #!/bin/bash
@@ -2231,59 +1796,53 @@ fig-weekly-rate.R
 rm runFileSaveLogs
 \end{verbatim}
 
-\chapter{Resources}\label{resources}
+\hypertarget{resources}{%
+\chapter{Resources}\label{resources}}
 
 by Jade Benjamin-Chung and Kunal Mishra
 
-\section{Resources for R}\label{resources-for-r}
+\hypertarget{resources-for-r}{%
+\section{Resources for R}\label{resources-for-r}}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}{dplyr
-  and tidyr cheat sheet}
+  \href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}{dplyr and tidyr cheat sheet}
 \item
-  \href{https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf}{ggplot
-  cheat sheet}
+  \href{https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf}{ggplot cheat sheet}
 \item
-  \href{https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf}{data
-  table cheat sheet}
+  \href{https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf}{data table cheat sheet}
 \item
-  \href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{RMarkdown
-  cheat sheet}
+  \href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{RMarkdown cheat sheet}
 \item
-  \href{http://adv-r.had.co.nz/Style.html}{Hadley Wickham's R Style
-  Guide}
+  \href{http://adv-r.had.co.nz/Style.html}{Hadley Wickham's R Style Guide}
 \item
   \href{https://ucb-epi-r.github.io}{Jade's R-for-epi course}
 \item
-  \href{https://www.youtube.com/watch?v=nERXS3ssntw}{Tidy Eval in 5
-  Minutes} (video)
+  \href{https://www.youtube.com/watch?v=nERXS3ssntw}{Tidy Eval in 5 Minutes} (video)
 \item
-  \href{https://tidyeval.tidyverse.org/index.html}{Tidy Evaluation}
-  (e-book)
+  \href{https://tidyeval.tidyverse.org/index.html}{Tidy Evaluation} (e-book)
 \item
-  \href{https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/}{Data
-  Frame Columns as Arguments to Dplyr Functions} (blog)
+  \href{https://www.brodrigues.co/blog/2016-07-18-data-frame-columns-as-arguments-to-dplyr-functions/}{Data Frame Columns as Arguments to Dplyr Functions} (blog)
 \item
-  \href{https://stackoverflow.com/questions/28125816/r-standard-evaluation-for-join-dplyr}{Standard
-  Evaluation for *\_join} (stackoverflow)
+  \href{https://stackoverflow.com/questions/28125816/r-standard-evaluation-for-join-dplyr}{Standard Evaluation for *\_join} (stackoverflow)
 \item
-  \href{https://dplyr.tidyverse.org/articles/programming.html}{Programming
-  with dplyr} (package vignette)
+  \href{https://dplyr.tidyverse.org/articles/programming.html}{Programming with dplyr} (package vignette)
 \end{itemize}
 
-\section{Resources for Github}\label{resources-for-github}
+\hypertarget{resources-for-github}{%
+\section{Resources for Github}\label{resources-for-github}}
 
-\section{Authorship}\label{authorship}
+\hypertarget{authorship-1}{%
+\section{Authorship}\label{authorship-1}}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE
-  Definition of authorship}
+  \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE Definition of authorship}
 \end{itemize}
 
 \bibliography{book.bib,packages.bib}
+
 
 \end{document}
