@@ -1,35 +1,46 @@
-\documentclass[]{book}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Lab Manual},
-            pdfauthor={Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Lab Manual},
+  pdfauthor={Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -71,6 +82,14 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -80,52 +99,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Lab Manual}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2020-07-29}
-
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
@@ -134,6 +115,12 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Lab Manual}
+\author{Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen}
+\date{2020-08-04}
 
 \begin{document}
 \maketitle
@@ -181,7 +168,7 @@ These communications guidelines are evolving as we increasingly adopt Slack, but
 \begin{itemize}
 \tightlist
 \item
-  Use email for longer messages (\textgreater{}200 words) or messages that merit preservation.
+  Use email for longer messages (\textgreater200 words) or messages that merit preservation.
 \item
   Generally, strive to respond within 24 hours hours. As noted above, if you are unusually busy or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual.
 \end{itemize}
@@ -338,7 +325,7 @@ This is the single most important file for your project. It will be responsible 
 \hypertarget{order-files-and-directories}{%
 \section{Order Files and Directories}\label{order-files-and-directories}}
 
-This makes the jumble of alphabetized filenames much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e. \texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R} =\textgreater{} \texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.
+This makes the jumble of alphabetized filenames much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e.~\texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R} =\textgreater{} \texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.
 
 \hypertarget{using-bash-scripts-to-ensure-reproducibility}{%
 \section{Using Bash scripts to ensure reproducibility}\label{using-bash-scripts-to-ensure-reproducibility}}
@@ -459,7 +446,7 @@ We recommend you use \textbf{Snake\_Case}.
 
 \begin{itemize}
 \item
-  Base R allows \texttt{.} in variable names and functions (such as \texttt{read.csv()}), but this goes against best practices for variable naming in many other coding languages. For consistency's sake, \texttt{snake\_case} has been adopted across languages, and modern packages and functions typically use it (i.e. \texttt{readr::read\_csv()}). As a very general rule of thumb, if a package you're using doesn't use \texttt{snake\_case}, there may be an updated version or more modern package that \emph{does}, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
+  Base R allows \texttt{.} in variable names and functions (such as \texttt{read.csv()}), but this goes against best practices for variable naming in many other coding languages. For consistency's sake, \texttt{snake\_case} has been adopted across languages, and modern packages and functions typically use it (i.e.~\texttt{readr::read\_csv()}). As a very general rule of thumb, if a package you're using doesn't use \texttt{snake\_case}, there may be an updated version or more modern package that \emph{does}, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
 \item
   \textbf{Note}: you may also see \texttt{camelCase} throughout the R code you come across. This is \emph{okay} but not ideal -- try to stay consistent across all your code with \texttt{snake\_case}.
 \item
@@ -518,19 +505,34 @@ Box and Dropbox are cloud-based file sharing systems that are useful when dealin
 
 Box and Dropbox are separate platforms, but we can use either one to store and share files. To use them, we can install the packages that have been created to integrate Box and Dropbox into R. The set-up instructions are detailed below.
 
+Make sure to authenticate before reading and writing from either Box or Dropbox. The authentication commands should go in the configuration file; it only needs to be done once. This will prompt you to give your login credentials for Box and Dropbox and will allow your application to access your shared folders.
+
 \hypertarget{box}{%
 \subsection{Box}\label{box}}
 
 Follow the instructions in this section to use the \texttt{boxr} package. Note that there are a few setup steps that need to be done on the box website before you can use the \texttt{boxr} package, \href{https://r-box.github.io/boxr/articles/boxr-app-interactive.html\#create}{explained here} in the section ``Creating an Interactive App.'' This gets the authentication keys that must be put in box.
-
-Once that is done, add the authentication keys to your code, perhaps in the configuration file, with \texttt{box\_auth(client\_id\ =\ "\textless{}your\_client\_id\textgreater{}",\ client\_secret\ =\ "\textless{}your\_client\_secret\_id\textgreater{}")}. It is also important to set the default working directory so that the code can reference the correct folder in box: \texttt{box\_setwd(\textless{}folder\_id\textgreater{})}. The folder ID is the sequence of digits at the end of the URL.
+Once that is done, add the authentication keys to your code in the configuration file, with \texttt{box\_auth(client\_id\ =\ "\textless{}your\_client\_id\textgreater{}",\ client\_secret\ =\ "\textless{}your\_client\_secret\_id\textgreater{}")}. It is also important to set the default working directory so that the code can reference the correct folder in box: \texttt{box\_setwd(\textless{}folder\_id\textgreater{})}. The folder ID is the sequence of digits at the end of the URL.
 
 Further details can be found \href{https://github.com/r-box/boxr}{here}.
 
 \hypertarget{dropbox}{%
 \subsection{Dropbox}\label{dropbox}}
 
-Follow the instructions at \href{https://github.com/karthik/rdrop2}{this link} to use the \texttt{rdrop2} package. Similar to the \texttt{boxr} package, you must authenticate before reading and writing from Dropbox, which can be done by running \texttt{drop\_auth()}. This will prompt you to give your login credentials for Dropbox and will allow your application to access your Dropbox folder. Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently.
+Follow the instructions at \href{https://github.com/karthik/rdrop2}{this link} to use the \texttt{rdrop2} package. Similar to the \texttt{boxr} package, you must authenticate before reading and writing from Dropbox, which can be done by adding \texttt{drop\_auth()} to the configuration file.
+
+Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently. To do so, save the token with the following commands. Tokens are valid until they are manually revoked.
+
+\begin{verbatim}
+# first time only
+# save the output of drop_auth to an RDS file
+token <- drop_auth()
+# this token only has to be generated once, it is valid until revoked
+saveRDS(token, "/path/to/tokenfile.RDS")
+
+# all future usages
+# to use a stored token, provide the rdstoken argument
+drop_auth(rdstoken = "/path/to/tokenfile.RDS")
+\end{verbatim}
 
 \hypertarget{tidyverse}{%
 \section{Tidyverse}\label{tidyverse}}
@@ -733,41 +735,11 @@ Here is an example pull request template.
 
 ## Summary of change
 
-Please include a summary of the change. 
+Please include a summary of the change, including any new functions added and example usage. 
 
-## Motivation and context for change
+## Link to Spec
 
-Please also include relevant motivation and context. 
-
-## Dependencies 
-
-List any dependencies that are required for this change.
-
-## Type of change
-
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Incomplete change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-
-## How Has This Been Tested?
-
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
-
-- [ ] Test A
-
-## Checklist:
-
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
-
-### If an item has not been completed, why?
+Please include a link to the Trello card or Google document with details of the task. 
 
 ## Who should review the pull request?
 @ ...
@@ -1422,8 +1394,8 @@ We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Wind
   To use git and push to github
 \end{enumerate}
 
-\hypertarget{basics-1}{%
-\section{Basics}\label{basics-1}}
+\hypertarget{basics}{%
+\section{Basics}\label{basics}}
 
 On the computer, there is a desktop with two folders, \texttt{folder1} and \texttt{folder2}, and a file called \texttt{file1.} Inside \texttt{folder1}, we have a file called \texttt{file2.} Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
 
@@ -1658,7 +1630,7 @@ To kill a task in Windows, you can also go to Task Manager \textgreater{} More d
 \hypertarget{running-big-jobs}{%
 \section{Running big jobs}\label{running-big-jobs}}
 
-For big data workflows, the concept of ``backgrounding'' a bash script allows you to start a ``job'' (i.e.~run the script) and leave it overnight to run. At the top level, a bash script (\texttt{0-run-project.sh}) that simply calls the directory-level bash scripts (i.e. \texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh}, \texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.
+For big data workflows, the concept of ``backgrounding'' a bash script allows you to start a ``job'' (i.e.~run the script) and leave it overnight to run. At the top level, a bash script (\texttt{0-run-project.sh}) that simply calls the directory-level bash scripts (i.e.~\texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh}, \texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.
 
 \begin{itemize}
 \tightlist
@@ -1668,24 +1640,26 @@ For big data workflows, the concept of ``backgrounding'' a bash script allows yo
 
 Alternatively, to keep code running in the background even when an SSH connection is broken, you can use \texttt{tmux}. In terminal or gitbash follow the steps below. This \href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site} has useful tips on using \texttt{tmux}.
 
-\begin{verbatim}
-# create a new tmux session called session_name
-tmux new -ssession_name
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# create a new tmux session called session_name}
+\ExtensionTok{tmux}\NormalTok{ new -ssession_name}
 
-# run your job of interest
-R CMD BATCH myjob.R & 
+\CommentTok{# run your job of interest}
+\ExtensionTok{R}\NormalTok{ CMD BATCH myjob.R }\KeywordTok{&} 
   
-# check that it is running
-ps -v
+\CommentTok{# check that it is running}
+\FunctionTok{ps}\NormalTok{ -v}
 
-# to exit the tmux session (Mac)
-ctrl + b 
-d
+\CommentTok{# to exit the tmux session (Mac)}
+\ExtensionTok{ctrl}\NormalTok{ + b }
+\ExtensionTok{d}
 
-# to reopen the tmux session to kill the job or 
-# start another job
-tmux attach -tsession_name 
-\end{verbatim}
+\CommentTok{# to reopen the tmux session to kill the job or }
+\CommentTok{# start another job}
+\ExtensionTok{tmux}\NormalTok{ attach -tsession_name }
+\end{Highlighting}
+\end{Shaded}
 
 \begin{itemize}
 \item
@@ -1745,7 +1719,7 @@ tmux attach -tsession_name
 \ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ args_dict[}\StringTok{"filenames"}\NormalTok{]:}
 \NormalTok{  system_call }\OperatorTok{=} \StringTok{"R CMD BATCH"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ filename}
   \ControlFlowTok{if}\NormalTok{ args_dict[}\StringTok{"parallel"}\NormalTok{]: }
-\NormalTok{    system_call }\OperatorTok{=} \StringTok{"nohup"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ system_call }\OperatorTok{+} \StringTok{" &"}
+\NormalTok{  	system_call }\OperatorTok{=} \StringTok{"nohup"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ system_call }\OperatorTok{+} \StringTok{" &"}
 
 \NormalTok{  os.system(system_call)}
 
@@ -1777,24 +1751,26 @@ tmux attach -tsession_name
 
 This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
 
-\begin{verbatim}
-#!/bin/bash
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#!/bin/bash}
 
-# Copy utility run script into this folder for concision in call
-cp ~/kaiserflu/runFileSaveLogs ~/kaiserflu/3-figures/
+\CommentTok{# Copy utility run script into this folder for concision in call}
+\FunctionTok{cp}\NormalTok{ ~/kaiserflu/runFileSaveLogs ~/kaiserflu/3-figures/}
 
-# Run folder scripts and produce output
-cd ~/kaiserflu/3-figures/
-./runFileSaveLogs -i "figures" \
-fig-mean-season-age.R \
-fig-monthly-rate.R \
-fig-point-estimates-combined.R \
-fig-point-estimates.R \
-fig-weekly-rate.R
+\CommentTok{# Run folder scripts and produce output}
+\BuiltInTok{cd}\NormalTok{ ~/kaiserflu/3-figures/}
+\ExtensionTok{./runFileSaveLogs}\NormalTok{ -i }\StringTok{"figures"}\NormalTok{ \textbackslash{}}
+\NormalTok{fig-mean-season-age.R \textbackslash{}}
+\NormalTok{fig-monthly-rate.R \textbackslash{}}
+\NormalTok{fig-point-estimates-combined.R \textbackslash{}}
+\NormalTok{fig-point-estimates.R \textbackslash{}}
+\NormalTok{fig-weekly-rate.R}
 
-# Remove copied utility run script
-rm runFileSaveLogs
-\end{verbatim}
+\CommentTok{# Remove copied utility run script}
+\FunctionTok{rm}\NormalTok{ runFileSaveLogs}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{resources}{%
 \chapter{Resources}\label{resources}}
@@ -1833,8 +1809,8 @@ by Jade Benjamin-Chung and Kunal Mishra
 \hypertarget{resources-for-github}{%
 \section{Resources for Github}\label{resources-for-github}}
 
-\hypertarget{authorship-1}{%
-\section{Authorship}\label{authorship-1}}
+\hypertarget{authorship}{%
+\section{Authorship}\label{authorship}}
 
 \begin{itemize}
 \tightlist
@@ -1842,7 +1818,6 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE Definition of authorship}
 \end{itemize}
 
-\bibliography{book.bib,packages.bib}
-
+  \bibliography{book.bib,packages.bib}
 
 \end{document}
