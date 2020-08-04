@@ -139,7 +139,8 @@ Further details can be found [here](https://github.com/r-box/boxr).
 ### Dropbox
 Follow the instructions at [this link](https://github.com/karthik/rdrop2) to use the `rdrop2` package. Similar to the `boxr` package, you must authenticate before reading and writing from Dropbox, which can be done by adding `drop_auth()` to the configuration file. 
 
-Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently. To do so, save the token with the following commands. Tokens are valid until they are manually revoked,. 
+Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently. To do so, save the token with the following commands. Tokens are valid until they are manually revoked. 
+
 ```
 # first time only
 # save the output of drop_auth to an RDS file
