@@ -31,3 +31,6 @@ vignettes/*.pdf
 *_cache/
 /cache/
 .Rproj.user
+placeholder.Rcheck/
+placeholder*.tar.gz
+placeholder*.tgz

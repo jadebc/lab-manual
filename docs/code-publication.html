@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Code Publication | Lab Manual</title>
+  <meta name="description" content="Lab practices and data science best practices" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Code Publication | Lab Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lab practices and data science best practices" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Code Publication | Lab Manual" />
+  
+  <meta name="twitter:description" content="Lab practices and data science best practices" />
+  
+
+<meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
+
+
+<meta name="date" content="2020-08-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="coding-style.html"/>
+<link rel="next" href="working-with-big-data.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Lab manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our lab!</a></li>
+<li class="chapter" data-level="2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html"><i class="fa fa-check"></i><b>2</b> Communication and coordination</a><ul>
+<li class="chapter" data-level="2.1" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#slack"><i class="fa fa-check"></i><b>2.1</b> Slack</a></li>
+<li class="chapter" data-level="2.2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#email"><i class="fa fa-check"></i><b>2.2</b> Email</a></li>
+<li class="chapter" data-level="2.3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#trello"><i class="fa fa-check"></i><b>2.3</b> Trello</a></li>
+<li class="chapter" data-level="2.4" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-drives"><i class="fa fa-check"></i><b>2.4</b> Google Drives</a></li>
+<li class="chapter" data-level="2.5" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-calendar-meetings"><i class="fa fa-check"></i><b>2.5</b> Google Calendar / Meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="code-of-conduct.html"><a href="code-of-conduct.html"><i class="fa fa-check"></i><b>3</b> Code of conduct</a><ul>
+<li class="chapter" data-level="3.1" data-path="code-of-conduct.html"><a href="code-of-conduct.html#lab-culture"><i class="fa fa-check"></i><b>3.1</b> Lab culture</a></li>
+<li class="chapter" data-level="3.2" data-path="code-of-conduct.html"><a href="code-of-conduct.html#protecting-human-subjects"><i class="fa fa-check"></i><b>3.2</b> Protecting human subjects</a></li>
+<li class="chapter" data-level="3.3" data-path="code-of-conduct.html"><a href="code-of-conduct.html#authorship"><i class="fa fa-check"></i><b>3.3</b> Authorship</a></li>
+<li class="chapter" data-level="3.4" data-path="code-of-conduct.html"><a href="code-of-conduct.html#logging-hours"><i class="fa fa-check"></i><b>3.4</b> Logging hours</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>4</b> Code repositories</a><ul>
+<li class="chapter" data-level="4.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>4.1</b> Project Structure</a></li>
+<li class="chapter" data-level="4.2" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>4.2</b> <code>.Rproj</code> files</a></li>
+<li class="chapter" data-level="4.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>4.3</b> Configuration (‘config’) File</a></li>
+<li class="chapter" data-level="4.4" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>4.4</b> Order Files and Directories</a></li>
+<li class="chapter" data-level="4.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>4.5</b> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>5</b> Coding practices</a><ul>
+<li class="chapter" data-level="5.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>5.1</b> Organizing scripts</a></li>
+<li class="chapter" data-level="5.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>5.2</b> Documenting your code</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>5.2.1</b> File headers</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>5.2.2</b> Comments in the body of your script</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>5.2.3</b> Function documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>5.3</b> Object naming</a></li>
+<li class="chapter" data-level="5.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>5.4</b> Function calls</a></li>
+<li class="chapter" data-level="5.5" data-path="coding-practices.html"><a href="coding-practices.html#the-here-package"><i class="fa fa-check"></i><b>5.5</b> The here package</a></li>
+<li class="chapter" data-level="5.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>5.6</b> Reading/Saving Data</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="coding-practices.html"><a href="coding-practices.html#rds-vs-.rdata-files"><i class="fa fa-check"></i><b>5.6.1</b> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
+<li class="chapter" data-level="5.6.2" data-path="coding-practices.html"><a href="coding-practices.html#csvs"><i class="fa fa-check"></i><b>5.6.2</b> CSVs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="coding-practices.html"><a href="coding-practices.html#integrating-box-and-dropbox"><i class="fa fa-check"></i><b>5.7</b> Integrating Box and Dropbox</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="coding-practices.html"><a href="coding-practices.html#box"><i class="fa fa-check"></i><b>5.7.1</b> Box</a></li>
+<li class="chapter" data-level="5.7.2" data-path="coding-practices.html"><a href="coding-practices.html#dropbox"><i class="fa fa-check"></i><b>5.7.2</b> Dropbox</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>5.8</b> Tidyverse</a></li>
+<li class="chapter" data-level="5.9" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>5.9</b> Coding with R and Python</a></li>
+<li class="chapter" data-level="5.10" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>5.10</b> Reviewing Code</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>5.10.1</b> Creating a Pull Request Template</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>6</b> Coding style</a><ul>
+<li class="chapter" data-level="6.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>6.1</b> Comments</a></li>
+<li class="chapter" data-level="6.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>6.2</b> Line breaks</a></li>
+<li class="chapter" data-level="6.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>6.3</b> Automated Tools for Style and Project Workflow</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>6.3.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="code-publication.html"><a href="code-publication.html"><i class="fa fa-check"></i><b>7</b> Code Publication</a><ul>
+<li class="chapter" data-level="7.1" data-path="code-publication.html"><a href="code-publication.html#checklist-overview"><i class="fa fa-check"></i><b>7.1</b> Checklist overview</a></li>
+<li class="chapter" data-level="7.2" data-path="code-publication.html"><a href="code-publication.html#fill-out-file-headers"><i class="fa fa-check"></i><b>7.2</b> Fill out file headers</a></li>
+<li class="chapter" data-level="7.3" data-path="code-publication.html"><a href="code-publication.html#clean-up-comments"><i class="fa fa-check"></i><b>7.3</b> Clean up comments</a></li>
+<li class="chapter" data-level="7.4" data-path="code-publication.html"><a href="code-publication.html#document-functions"><i class="fa fa-check"></i><b>7.4</b> Document functions</a></li>
+<li class="chapter" data-level="7.5" data-path="code-publication.html"><a href="code-publication.html#remove-deprecated-filepaths"><i class="fa fa-check"></i><b>7.5</b> Remove deprecated filepaths</a></li>
+<li class="chapter" data-level="7.6" data-path="code-publication.html"><a href="code-publication.html#ensure-project-runs-via-bash"><i class="fa fa-check"></i><b>7.6</b> Ensure project runs via bash</a></li>
+<li class="chapter" data-level="7.7" data-path="code-publication.html"><a href="code-publication.html#complete-the-readme"><i class="fa fa-check"></i><b>7.7</b> Complete the README</a></li>
+<li class="chapter" data-level="7.8" data-path="code-publication.html"><a href="code-publication.html#clean-up-feature-branches"><i class="fa fa-check"></i><b>7.8</b> Clean up feature branches</a></li>
+<li class="chapter" data-level="7.9" data-path="code-publication.html"><a href="code-publication.html#create-github-release"><i class="fa fa-check"></i><b>7.9</b> Create Github release</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>8</b> Working with Big Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>8.1</b> The data.table package</a></li>
+<li class="chapter" data-level="8.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>8.2</b> Using downsampled data</a></li>
+<li class="chapter" data-level="8.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>8.3</b> Optimal RStudio set up</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>9</b> Github</a><ul>
+<li class="chapter" data-level="9.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>9.1</b> Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="github.html"><a href="github.html#github-desktop"><i class="fa fa-check"></i><b>9.2</b> Github Desktop</a></li>
+<li class="chapter" data-level="9.3" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>9.3</b> Git Branching</a></li>
+<li class="chapter" data-level="9.4" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>9.4</b> Example Workflow</a></li>
+<li class="chapter" data-level="9.5" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>9.5</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="9.6" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>9.6</b> How often should I commit?</a></li>
+<li class="chapter" data-level="9.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>9.7</b> What should be pushed to Github?</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>10</b> Unix commands</a><ul>
+<li class="chapter" data-level="10.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>10.1</b> Basics</a></li>
+<li class="chapter" data-level="10.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>10.2</b> Syntax for both Mac/Windows</a></li>
+<li class="chapter" data-level="10.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>10.3</b> Running Bash Scripts</a></li>
+<li class="chapter" data-level="10.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>10.4</b> Running Rscripts in Windows</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>10.4.1</b> Common Mistakes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>10.5</b> Checking tasks and killing jobs</a></li>
+<li class="chapter" data-level="10.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>10.6</b> Running big jobs</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="unix.html"><a href="unix.html#example-code-for-runfilesavelogs"><i class="fa fa-check"></i><b>10.6.1</b> Example code for <code>runfileSaveLogs</code></a></li>
+<li class="chapter" data-level="10.6.2" data-path="unix.html"><a href="unix.html#example-usage-for-runfilesavelogs"><i class="fa fa-check"></i><b>10.6.2</b> Example usage for <code>runfileSaveLogs</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>11</b> Resources</a><ul>
+<li class="chapter" data-level="11.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>11.1</b> Resources for R</a></li>
+<li class="chapter" data-level="11.2" data-path="resources.html"><a href="resources.html#resources-for-github"><i class="fa fa-check"></i><b>11.2</b> Resources for Github</a></li>
+<li class="chapter" data-level="11.3" data-path="code-of-conduct.html"><a href="code-of-conduct.html#authorship"><i class="fa fa-check"></i><b>11.3</b> Authorship</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lab Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="code-publication" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Code Publication</h1>
+<p>by Nolan Pokpongkiat</p>
+<div id="checklist-overview" class="section level2">
+<h2><span class="header-section-number">7.1</span> Checklist overview</h2>
+<ol style="list-style-type: decimal">
+<li><a href="code-publication.html#fill-out-file-headers">Fill out file headers</a></li>
+<li><a href="code-publication.html#clean-up-comments">Clean up comments</a></li>
+<li><a href="code-publication.html#document-functions">Document functions</a></li>
+<li><a href="code-publication.html#remove-deprecated-filepaths">Remove deprecated filepaths</a></li>
+<li><a href="code-publication.html#ensure-project-runs-via-bash">Ensure project runs via bash</a></li>
+<li><a href="code-publication.html#complete-the-readme">Complete the README</a></li>
+<li><a href="code-publication.html#clean-up-feature-branches">Clean up feature branches</a></li>
+<li><a href="code-publication.html#create-github-release">Create Github release</a></li>
+</ol>
+</div>
+<div id="fill-out-file-headers" class="section level2">
+<h2><span class="header-section-number">7.2</span> Fill out file headers</h2>
+<p>Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. See template <a href="https://jadebc.github.io/lab-manual/coding-practices.html#file-headers">here.</a></p>
+</div>
+<div id="clean-up-comments" class="section level2">
+<h2><span class="header-section-number">7.3</span> Clean up comments</h2>
+<p>Make sure comments in the code are for code documentation purposes only. Do not leave comments to self in the final script files.</p>
+</div>
+<div id="document-functions" class="section level2">
+<h2><span class="header-section-number">7.4</span> Document functions</h2>
+<p>Every function you write must include a header to document its purpose, inputs, and outputs. See template for the function documentation <a href="https://jadebc.github.io/lab-manual/coding-practices.html#function-documentation">here.</a></p>
+</div>
+<div id="remove-deprecated-filepaths" class="section level2">
+<h2><span class="header-section-number">7.5</span> Remove deprecated filepaths</h2>
+<p>All file paths should be defined in 0-config.R, and should be set relative to the project working directory. All absolute file paths from your local computer should be removed, and replaced with a relative path. If a third party were to re-run this analysis, if they need to download data from a separate source and change a filepath in the 0-config.R to match, make sure to specify in the README which line of 0-config.R needs to be substituted.</p>
+</div>
+<div id="ensure-project-runs-via-bash" class="section level2">
+<h2><span class="header-section-number">7.6</span> Ensure project runs via bash</h2>
+<p>The project should be configured to be entirely reproducible by running a master bash script, run-project.sh, which should live at the top directory. This bash script can call other bash scripts in subfolders, if necessary. Bash scripts should use the runFileSaveLogs utility script, which is a wrapper around the Rscript command, allowing you to specify where .Rout log files are moved after the R scripts are run.</p>
+<p>See usage and documentation <a href="https://jadebc.github.io/lab-manual/unix.html#example-code-for-runfilesavelogs">here.</a></p>
+</div>
+<div id="complete-the-readme" class="section level2">
+<h2><span class="header-section-number">7.7</span> Complete the README</h2>
+<p>A README.md should live at the top directory of the project. This usually includes a Project Overview and a Directory Structure, along with the names of the contributors and the Creative Commons License. See below for a template:</p>
+<blockquote>
+<p><strong>Overview</strong></p>
+<p>To date, coronavirus testing in the US has been extremely limited. Confirmed COVID-19 case counts underestimate the total number of infections in the population. We estimated the total COVID-19 infections – both symptomatic and asymptomatic – in the US in March 2020. We used a semi-Bayesian approach to correct for bias due to incomplete testing and imperfect test performance.</p>
+<p><strong>Directory structure</strong></p>
+<ul>
+<li><p>0-config.R: configuration file that sets data directories, sources base functions, and loads required libraries</p></li>
+<li><p>0-base-functions: folder containing scripts with functions used in the analysis</p>
+<ul>
+<li><p>0-base-functions.R: R script containing general functions used across the analysis</p></li>
+<li><p>0-bias-corr-functions.R: R script containing functions used in bias correction</p></li>
+<li><p>0-bias-corr-functions-undertesting.R: R script containing functions used in bias correction to estimate the percentage of underestimation due to incomplete testing vs. imperfect test accuracy</p></li>
+<li><p>0-prior-functions.R: R script containing functions to generate priors</p></li>
+</ul></li>
+<li><p>1-data: folder containing data processing scripts NOTE: some scripts are deprecated</p></li>
+<li><p>2-analysis: folder containing analysis scripts. To rerun all scripts in this subdirectory, run the bash script 0-run-analysis.sh.</p>
+<ul>
+<li><p>1-obtain-priors-state.R: obtain priors for each state</p></li>
+<li><p>2-est-expected-cases-state.R: estimate expected cases in each state</p></li>
+<li><p>3-est-expected-cases-state-perf-testing.R: estimate expected cases in each state, estimate the percentage of underestimation due to incomplete testing vs. imperfect test accuracy</p></li>
+<li><p>4-obtain-testing-protocols.R: find testing protocols for each state.</p></li>
+<li><p>5-summarize-results.R: summarize results; obtain results for in text numerical results.</p></li>
+</ul></li>
+<li><p>3-figure-table-scripts: folder containing figure scripts. To rerun all scripts in this subdirectory, run the bash script 0-run-figs.sh.</p>
+<ul>
+<li><p>1-fig-testing.R: creates plot of testing patterns by state over time</p></li>
+<li><p>2-fig-cases-usa-state-bar.R: creates bar plot of confirmed vs. estimated infections by state</p></li>
+<li><p>3a-fig-map-usa-state.R: creates map of confirmed vs. estimated infections by state</p></li>
+<li><p>3b-fig-map-usa-state-shiny.R: creates map of confirmed vs. estimated infections by state with search functionality by state</p></li>
+<li><p>4-fig-priors.R: creates figure with priors for US as a whole</p></li>
+<li><p>5-fig-density-usa.R: creates figure of distribution of estimated cases in the US</p></li>
+<li><p>6-table-data-quality.R: creates table of data quality grading from COVID Tracking Project</p></li>
+<li><p>7-fig-testpos.R: creates figure of the probability of testing positive among those tested by state</p></li>
+<li><p>8-fig-percent-undertesting-state.R: creates figure of the percentage of under estimation due to incomplete testing</p></li>
+</ul></li>
+<li><p>4-figures: folder containing figure files.</p></li>
+<li><p>5-results: folder containing analysis results objects.</p></li>
+<li><p>6-sensitivity: folder containing scripts to run the sensitivity analyses</p></li>
+</ul>
+<p><strong>Contributors:</strong> Jade Benjamin-Chung, Sean L. Wu, Anna Nguyen, Stephanie Djajadi, Nolan N. Pokpongkiat, Anmol Seth, Andrew Mertens</p>
+<p>Wu SL, Mertens A, Crider YS, Nguyen A, Pokpongkiat NN, Djajadi S, et al. Substantial underestimation of SARS-CoV-2 infection in the United States due to incomplete testing and imperfect test accuracy. medRxiv. 2020; 2020.05.12.20091744. <a href="doi:10.1101/2020.05.12.20091744" class="uri">doi:10.1101/2020.05.12.20091744</a></p>
+</blockquote>
+<p>When possible, also include a description of the RDS results that are generated, detailing what data sources were used, where the script lives that creates it, and what information the RDS results hold.</p>
+</div>
+<div id="clean-up-feature-branches" class="section level2">
+<h2><span class="header-section-number">7.8</span> Clean up feature branches</h2>
+<p>In the remote repository on Github, all feature branches aside from master should be merged in and deleted. All outstanding PRs should be closed.</p>
+</div>
+<div id="create-github-release" class="section level2">
+<h2><span class="header-section-number">7.9</span> Create Github release</h2>
+<p>Once all of these items are verified, create a tag to make a Github release, which will tag the repository, creating a marker at this specific point in time.</p>
+<p>Detailed instructions <a href="https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases">here.</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="coding-style.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-big-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-code-publication.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

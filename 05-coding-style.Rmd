@@ -1,6 +1,6 @@
 # Coding style
 
-by Kunal Mishra and Jade Benjamin-Chung
+by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
 ## Comments
 
@@ -133,4 +133,6 @@ by Kunal Mishra and Jade Benjamin-Chung
     - **Note**: The default Tidyverse styler is subtly different from some of the things we've advocated for in this document. Most notably we differ with regards to the assignment operator (`<-` vs `=`) and number of spaces before/after "tokens" (i.e. Assignment Aligner add spaces before `=` signs to align them properly). For this reason, we'd recommend the following: `style_dir(path = ..., scope = "line_breaks", strict = FALSE)`. You can also customize StyleR [even more](http://styler.r-lib.org/articles/customizing_styler.html) if you're really hardcore.
     - **Note**: As is mentioned in the package vignette linked above, StyleR modifies things _in-place_, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects _with version control_, but if you don't have backups or a good way to revert back to the intial code, I wouldn't recommend going this route.
     
-    
+4. **Linter** - Linters are programming tools that check adherence to a given style, syntax errors, and possible semantic issues. The R linter, called `lintr`, can be found in this [package](https://www.rdocumentation.org/packages/lintr/versions/1.0.3). It helps keep files consistent across different authors and even different organizations. For example, it notifies you if you have unused variables, global variables with no visible binding, not enough or superflous whitespace, and improper use of parentheses or brackets. A list of its other purposes can be found [in this link](https://cran.r-project.org/web/packages/lintr/readme/README.html#available-linters), and most guidelines are based on [Hadley Wickham’s R Style Guide](http://r-pkgs.had.co.nz/style.html).
+    - **Note**: You can customize your settings to set defaults or to exclude files. More details can be found [here](https://cran.r-project.org/web/packages/lintr/readme/README.html#project-configuration).
+    - **Note**: The `lintr` package goes hand in hand with the `styler` package. The styler can be used to automatically fix the problems that the lintr catches.

@@ -119,22 +119,40 @@ One of the most common ways to load and save data in Base R is with the `load()`
 ### CSVs
 Once again, the `readr` package as part of the Tidvyerse is great, with a much faster `read_csv()` than Base R's `read.csv()`. For massive CSVs (> 5 GB), you'll find `data.table::fread()` to be the fastest CSV reader in any data science language out there. For writing CSVs, `readr::write_csv()` and `data.table::fwrite()` outclass Base R's `write.csv()` by a significant margin as well.
 
+
 ## Integrating Box and Dropbox
 
 Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, the files can slow down the workflow if they are pushed to GitHub. This makes collaboration difficult when not everyone has a copy of the file, unless we decide to duplicate files and share them manually. The files might also take up a lot of local storage. Box and Dropbox help us avoid these issues by automatically storing the files, reading data, and writing data back to the cloud.
 
 Box and Dropbox are separate platforms, but we can use either one to store and share files. To use them, we can install the packages that have been created to integrate Box and Dropbox into R. The set-up instructions are detailed below. 
 
+Make sure to authenticate before reading and writing from either Box or Dropbox. The authentication commands should go in the configuration file; it only needs to be done once. This will prompt you to give your login credentials for Box and Dropbox and will allow your application to access your shared folders. 
+
+
 ### Box
 Follow the instructions in this section to use the `boxr` package. Note that there are a few setup steps that need to be done on the box website before you can use the `boxr` package, [explained here](https://r-box.github.io/boxr/articles/boxr-app-interactive.html#create) in the section "Creating an Interactive App." This gets the authentication keys that must be put in box. 
-
-Once that is done, add the authentication keys to your code, perhaps in the configuration file, with `box_auth(client_id = "<your_client_id>", client_secret = "<your_client_secret_id>")`. It is also important to set the default working directory so that the code can reference the correct folder in box: `box_setwd(<folder_id>)`. The folder ID is the sequence of digits at the end of the URL. 
+Once that is done, add the authentication keys to your code in the configuration file, with `box_auth(client_id = "<your_client_id>", client_secret = "<your_client_secret_id>")`. It is also important to set the default working directory so that the code can reference the correct folder in box: `box_setwd(<folder_id>)`. The folder ID is the sequence of digits at the end of the URL. 
 
 Further details can be found [here](https://github.com/r-box/boxr).  
 
 
 ### Dropbox
-Follow the instructions at [this link](https://github.com/karthik/rdrop2) to use the `rdrop2` package. Similar to the `boxr` package, you need to complete the setup steps and authenticate before reading and writing from Dropbox.
+Follow the instructions at [this link](https://github.com/karthik/rdrop2) to use the `rdrop2` package. Similar to the `boxr` package, you must authenticate before reading and writing from Dropbox, which can be done by adding `drop_auth()` to the configuration file. 
+
+Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently. To do so, save the token with the following commands. Tokens are valid until they are manually revoked. 
+
+```
+# first time only
+# save the output of drop_auth to an RDS file
+token <- drop_auth()
+# this token only has to be generated once, it is valid until revoked
+saveRDS(token, "/path/to/tokenfile.RDS")
+
+# all future usages
+# to use a stored token, provide the rdstoken argument
+drop_auth(rdstoken = "/path/to/tokenfile.RDS")
+
+```
 
 
 ## Tidyverse
@@ -210,42 +228,13 @@ Here is an example pull request template.
 
 ## Summary of change
 
-Please include a summary of the change. 
+Please include a summary of the change, including any new functions added and example usage. 
 
-## Motivation and context for change
+## Link to Spec
 
-Please also include relevant motivation and context. 
-
-## Dependencies 
-
-List any dependencies that are required for this change.
-
-## Type of change
-
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Incomplete change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-
-## How Has This Been Tested?
-
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
-
-- [ ] Test A
-
-## Checklist:
-
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
-
-### If an item has not been completed, why?
+Please include a link to the Trello card or Google document with details of the task. 
 
 ## Who should review the pull request?
 @ ...
+
 ```

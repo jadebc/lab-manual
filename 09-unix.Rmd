@@ -91,7 +91,7 @@ For big data workflows, the concept of "backgrounding" a bash script allows you 
 
 Alternatively, to keep code running in the background even when an SSH connection is broken, you can use `tmux`. In terminal or gitbash follow the steps below. This [site](https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e) has useful tips on using `tmux`. 
 
-```{unix, eval=FALSE}
+```{bash, eval=FALSE}
 # create a new tmux session called session_name
 tmux new -ssession_name
 
@@ -193,7 +193,7 @@ for currentLogPath in currentLogPaths:
 
 This example bash script runs files and generates logs for five scripts in the `kaiserflu/3-figures` folder. Note that the `-i` flag is used as an identifier to add `figures` to the filename of each log.
 
-```{unix, eval=FALSE}
+```{bash, eval=FALSE}
 #!/bin/bash
 
 # Copy utility run script into this folder for concision in call
