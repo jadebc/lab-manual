@@ -19,6 +19,7 @@ by Jade Benjamin-Chung and Kunal Mishra
 ## Resources for Github
 
 
-## Authorship
+## Writing
 
+- [Tips on how to write a great science paper](https://www.nature.com/articles/d41586-019-02918-5)
 - [ICMJE Definition of authorship](http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html)
