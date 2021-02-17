@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Checklists | Lab Manual</title>
+  <title>Chapter 6 Coding style | Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta property="og:title" content="Chapter 6 Coding style | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta name="twitter:title" content="Chapter 6 Coding style | Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="unix.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="coding-practices.html"/>
+<link rel="next" href="code-publication.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -250,47 +250,145 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="checklists" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Checklists</h1>
-<p>by Jade Benjamin-Chung</p>
-<div id="code-checklist" class="section level2">
-<h2><span class="header-section-number">11.1</span> Code checklist</h2>
+<div id="coding-style" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Coding style</h1>
+<p>by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi</p>
+<div id="comments" class="section level2">
+<h2><span class="header-section-number">6.1</span> Comments</h2>
+<ol style="list-style-type: decimal">
+<li><strong>File Headers</strong> - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.</li>
+</ol>
+<pre><code>################################################################################
+# @Organization - Example Organization
+# @Project - Example Project
+# @Description - This file is responsible for [...]
+################################################################################</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>File Structure</strong> - Just as your data “flows” through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =&gt; 2) load all your data =&gt; 3) do all your analysis/computation =&gt; save your data. Each of these sections should be “chunked together” using comments. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/2a%20-%20Statistical-Inputs.R">this file</a> for a good example of how to cleanly organize a file in a way that follows this “flow” and functionally separate pieces of code that are doing different things.
 <ul>
-<li>Does the script run without errors?</li>
-<li>Is code self-contained within repo and/or associated Box folder?</li>
-<li>Is all commented out code / remarks removed?</li>
-<li>Does the header accurately describe the process completed in the script?</li>
-<li>Is the script pushed to its github repository?</li>
-<li>Does the code adhere to the coding style guide? <a href="https://jadebc.github.io/lab-manual/coding-style.html" class="uri">https://jadebc.github.io/lab-manual/coding-style.html</a></li>
-<li>Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?</li>
-</ul>
+<li><strong>Note</strong>: If your computer isn’t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won’t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</li>
+</ul></li>
+<li><strong>Single-Line Comments</strong> - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you’ll be thankful for comments. There’s no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R">this file</a> for an example of how to comment your code and notice that comments are always in the form of:</li>
+</ol>
+<p><code># This is a comment -- first letter is capitalized and spaced away from the pound sign</code></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Multi-Line Comments</strong> - Occasionally, multi-line comments are necessary. Don’t add line breaks manually to a single-line comment for the purpose of making it “fit” on the screen. Instead, in RStudio &gt; Tools &gt; Global Options &gt; Code &gt; “Soft-wrap R source files” to have lines wrap around. Format your multi-line comments like the file header from above.</li>
+</ol>
 </div>
-<div id="manuscript-checklist" class="section level2">
-<h2><span class="header-section-number">11.2</span> Manuscript checklist</h2>
+<div id="line-breaks" class="section level2">
+<h2><span class="header-section-number">6.2</span> Line breaks</h2>
 <ul>
-<li>Have you completed the relevant reporting checklist, if applicable? (add links)</li>
-<li>Is a target journal selected?</li>
-<li>Is the word count of the manuscript close to the target journal’s allowance?</li>
-<li>Does the manuscript adhere to the formatting guide of the target journal?</li>
-<li>Does the manuscript use a consistent voice (passive or active – usually active is preferred … pun intended)?</li>
-<li>Is each figure and table (including supplementary material) referenced in the main text?</li>
-<li>Is there a caption for each figure and table (including supplementary material)?</li>
-</ul>
-</div>
-<div id="figure-checklist" class="section level2">
-<h2><span class="header-section-number">11.3</span> Figure checklist</h2>
-<ul>
-<li>Are the x-axis and y-axis labeled?</li>
-<li>If the figure includes panels, is each panel labeled?</li>
-<li>Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?</li>
-<li>Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)</li>
-<li>Are the colors used colorblind friendly? See a colorblind-friendly palette [here](<a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette" class="uri">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette</a>.</li>
-<li>Are colors/shapes/line types defined in a legend?</li>
-<li>Are the legends and other labels easy to understand with minimal abbreviations?</li>
-<li>If there is overplotting, is transparency used to show overlapping data?</li>
-<li>Are 95% confidence intervals or other measures of precision shown, if applicable?</li>
-</ul>
+<li><p>For <code>ggplot</code> calls and <code>dplyr</code> pipelines, do not crowd single lines. Here are some nontrivial examples of “beautiful” pipelines, where beauty is defined by coherence:</p>
+<pre><code># Example 1
+school_names = list(
+  OUSD_school_names = absentee_all %&gt;%
+    filter(dist.n == 1) %&gt;%
+    pull(school) %&gt;%
+    unique %&gt;%
+    sort,
 
+  WCCSD_school_names = absentee_all %&gt;%
+    filter(dist.n == 0) %&gt;%
+    pull(school) %&gt;%
+    unique %&gt;%
+    sort
+)</code></pre>
+<pre><code># Example 2
+absentee_all = fread(file = raw_data_path) %&gt;%
+  mutate(program = case_when(schoolyr %in% pre_program_schoolyrs ~ 0,
+                             schoolyr %in% program_schoolyrs ~ 1)) %&gt;%
+  mutate(period = case_when(schoolyr %in% pre_program_schoolyrs ~ 0,
+                            schoolyr %in% LAIV_schoolyrs ~ 1,
+                            schoolyr %in% IIV_schoolyrs ~ 2)) %&gt;%
+  filter(schoolyr != &quot;2017-18&quot;)</code></pre>
+<p>And of a complex <code>ggplot</code> call:</p>
+<pre><code># Example 3
+ggplot(data=data,
+       mapping=aes_string(x=&quot;year&quot;, y=&quot;rd&quot;, group=group)) +
+
+  geom_point(mapping=aes_string(col=group, shape=group),
+             position=position_dodge(width=0.2),
+             size=2.5) +
+
+  geom_errorbar(mapping=aes_string(ymin=&quot;lb&quot;, ymax=&quot;ub&quot;, col=group),
+                position=position_dodge(width=0.2),
+                width=0.2) +
+
+  geom_point(position=position_dodge(width=0.2),
+             size=2.5) +
+
+  geom_errorbar(mapping=aes(ymin=lb, ymax=ub),
+                position=position_dodge(width=0.2),
+                width=0.1) +
+
+  scale_y_continuous(limits=limits,
+                     breaks=breaks,
+                     labels=breaks) +
+
+  scale_color_manual(std_legend_title,values=cols,labels=legend_label) +
+  scale_shape_manual(std_legend_title,values=shapes, labels=legend_label) +
+  geom_hline(yintercept=0, linetype=&quot;dashed&quot;) +
+  xlab(&quot;Program year&quot;) +
+  ylab(yaxis_lab) +
+  theme_complete_bw() +
+  theme(strip.text.x = element_text(size = 14),
+        axis.text.x = element_text(size = 12)) +
+  ggtitle(title)</code></pre>
+<p>Imagine (or perhaps mournfully recall) the mess that can occur when you don’t strictly style a complicated <code>ggplot</code> call. Trying to fix bugs and ensure your code is working can be a nightmare. Now imagine trying to do it with the same code 6 months after you’ve written it. Invest the time now and reap the rewards as the code practically explains itself, line by line.</p></li>
+</ul>
+</div>
+<div id="automated-tools-for-style-and-project-workflow" class="section level2">
+<h2><span class="header-section-number">6.3</span> Automated Tools for Style and Project Workflow</h2>
+<div id="styling" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Styling</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>Code Autoformatting</strong> - RStudio includes a fantastic built-in utility (keyboard shortcut: <code>CMD-Shift-A</code>) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a “first pass” on some code of yours that <em>doesn’t</em> follow many of these best practices!</p></li>
+<li><p><strong>Assignment Aligner</strong> - A <a href="https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/">cool R package</a> allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: <code>CMD-Shift-Z</code>). Here is an example of how assignment aligning can dramatically improve code readability:</p></li>
+</ol>
+<pre><code># Before
+OUSD_not_found_aliases = list(
+  &quot;Brookfield Village Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Brookfield&quot;),
+  &quot;Carl Munck Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Munck&quot;),
+  &quot;Community United Elementary School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Community United&quot;),
+  &quot;East Oakland PRIDE Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;East Oakland Pride&quot;),
+  &quot;EnCompass Academy&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;EnCompass&quot;),
+  &quot;Global Family School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Global&quot;),
+  &quot;International Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;International Community&quot;),
+  &quot;Madison Park Lower Campus&quot; = &quot;Madison Park Academy TK-5&quot;,
+  &quot;Manzanita Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Manzanita Community&quot;),
+  &quot;Martin Luther King Jr Elementary&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;King&quot;),
+  &quot;PLACE @ Prescott&quot; = &quot;Preparatory Literary Academy of Cultural Excellence&quot;,
+  &quot;RISE Community School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Rise Community&quot;)
+)</code></pre>
+<pre><code># After
+OUSD_not_found_aliases = list(
+  &quot;Brookfield Village Elementary&quot;      = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Brookfield&quot;),
+  &quot;Carl Munck Elementary&quot;              = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Munck&quot;),
+  &quot;Community United Elementary School&quot; = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Community United&quot;),
+  &quot;East Oakland PRIDE Elementary&quot;      = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;East Oakland Pride&quot;),
+  &quot;EnCompass Academy&quot;                  = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;EnCompass&quot;),
+  &quot;Global Family School&quot;               = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Global&quot;),
+  &quot;International Community School&quot;     = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;International Community&quot;),
+  &quot;Madison Park Lower Campus&quot;          = &quot;Madison Park Academy TK-5&quot;,
+  &quot;Manzanita Community School&quot;         = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Manzanita Community&quot;),
+  &quot;Martin Luther King Jr Elementary&quot;   = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;King&quot;),
+  &quot;PLACE @ Prescott&quot;                   = &quot;Preparatory Literary Academy of Cultural Excellence&quot;,
+  &quot;RISE Community School&quot;              = str_subset(string = OUSD_school_shapes$schnam, pattern = &quot;Rise Community&quot;)
+)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>StyleR</strong> - Another <a href="https://www.tidyverse.org/articles/2017/12/styler-1.0.0/">cool R package from the Tidyverse</a> that can be powerful and used as a first pass on entire projects that need refactoring. The most useful function of the package is the <code>style_dir</code> function, which will style all files within a given directory. See the <a href="https://www.rdocumentation.org/packages/styler/versions/1.1.0/topics/style_dir">function’s documentation</a> and the vignette linked above for more details.
+<ul>
+<li><strong>Note</strong>: The default Tidyverse styler is subtly different from some of the things we’ve advocated for in this document. Most notably we differ with regards to the assignment operator (<code>&lt;-</code> vs <code>=</code>) and number of spaces before/after “tokens” (i.e. Assignment Aligner add spaces before <code>=</code> signs to align them properly). For this reason, we’d recommend the following: <code>style_dir(path = ..., scope = "line_breaks", strict = FALSE)</code>. You can also customize StyleR <a href="http://styler.r-lib.org/articles/customizing_styler.html">even more</a> if you’re really hardcore.</li>
+<li><strong>Note</strong>: As is mentioned in the package vignette linked above, StyleR modifies things <em>in-place</em>, meaning it overwrites your existing code and replaces it with the updated, properly styled code. This makes it a good fit on projects <em>with version control</em>, but if you don’t have backups or a good way to revert back to the intial code, I wouldn’t recommend going this route.</li>
+</ul></li>
+<li><strong>Linter</strong> - Linters are programming tools that check adherence to a given style, syntax errors, and possible semantic issues. The R linter, called <code>lintr</code>, can be found in this <a href="https://www.rdocumentation.org/packages/lintr/versions/1.0.3">package</a>. It helps keep files consistent across different authors and even different organizations. For example, it notifies you if you have unused variables, global variables with no visible binding, not enough or superflous whitespace, and improper use of parentheses or brackets. A list of its other purposes can be found <a href="https://cran.r-project.org/web/packages/lintr/readme/README.html#available-linters">in this link</a>, and most guidelines are based on <a href="http://r-pkgs.had.co.nz/style.html">Hadley Wickham’s R Style Guide</a>.
+<ul>
+<li><strong>Note</strong>: You can customize your settings to set defaults or to exclude files. More details can be found <a href="https://cran.r-project.org/web/packages/lintr/readme/README.html#project-configuration">here</a>.</li>
+<li><strong>Note</strong>: The <code>lintr</code> package goes hand in hand with the <code>styler</code> package. The styler can be used to automatically fix the problems that the lintr catches.</li>
+</ul></li>
+</ol>
+
+</div>
 </div>
 </div>
             </section>
@@ -298,8 +396,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coding-practices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="code-publication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -329,7 +427,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-checklists.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-coding-style.Rmd",
 "text": "Edit"
 },
 "history": {

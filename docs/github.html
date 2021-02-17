@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Checklists | Lab Manual</title>
+  <title>Chapter 9 Github | Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta property="og:title" content="Chapter 9 Github | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta name="twitter:title" content="Chapter 9 Github | Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="unix.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="working-with-big-data.html"/>
+<link rel="next" href="unix.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -250,46 +250,195 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="checklists" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Checklists</h1>
-<p>by Jade Benjamin-Chung</p>
-<div id="code-checklist" class="section level2">
-<h2><span class="header-section-number">11.1</span> Code checklist</h2>
+<div id="github" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Github</h1>
+<p>by Stephanie Djajadi and Nolan Pokpongkiat</p>
+<div id="basics" class="section level2">
+<h2><span class="header-section-number">9.1</span> Basics</h2>
 <ul>
-<li>Does the script run without errors?</li>
-<li>Is code self-contained within repo and/or associated Box folder?</li>
-<li>Is all commented out code / remarks removed?</li>
-<li>Does the header accurately describe the process completed in the script?</li>
-<li>Is the script pushed to its github repository?</li>
-<li>Does the code adhere to the coding style guide? <a href="https://jadebc.github.io/lab-manual/coding-style.html" class="uri">https://jadebc.github.io/lab-manual/coding-style.html</a></li>
-<li>Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?</li>
+<li>A detailed tutorial of Git can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">here on the CS61B website</a>.</li>
+<li>If you are already familiar with Git, you can reference the summary at the end of <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">Section B</a>.</li>
+<li>If you have made a mistake in Git, you can refer to this <a href="https://sethrobertson.github.io/GitFixUm/fixup.html">article</a> to undo, fix, or remove commits in git.</li>
 </ul>
 </div>
-<div id="manuscript-checklist" class="section level2">
-<h2><span class="header-section-number">11.2</span> Manuscript checklist</h2>
-<ul>
-<li>Have you completed the relevant reporting checklist, if applicable? (add links)</li>
-<li>Is a target journal selected?</li>
-<li>Is the word count of the manuscript close to the target journal’s allowance?</li>
-<li>Does the manuscript adhere to the formatting guide of the target journal?</li>
-<li>Does the manuscript use a consistent voice (passive or active – usually active is preferred … pun intended)?</li>
-<li>Is each figure and table (including supplementary material) referenced in the main text?</li>
-<li>Is there a caption for each figure and table (including supplementary material)?</li>
-</ul>
+<div id="github-desktop" class="section level2">
+<h2><span class="header-section-number">9.2</span> Github Desktop</h2>
+<p>While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides <a href="https://desktop.github.com/">Github Desktop</a> as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.</p>
 </div>
-<div id="figure-checklist" class="section level2">
-<h2><span class="header-section-number">11.3</span> Figure checklist</h2>
+<div id="git-branching" class="section level2">
+<h2><span class="header-section-number">9.3</span> Git Branching</h2>
+<p>Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you’ve finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:</p>
 <ul>
-<li>Are the x-axis and y-axis labeled?</li>
-<li>If the figure includes panels, is each panel labeled?</li>
-<li>Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?</li>
-<li>Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)</li>
-<li>Are the colors used colorblind friendly? See a colorblind-friendly palette [here](<a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette" class="uri">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette</a>.</li>
-<li>Are colors/shapes/line types defined in a legend?</li>
-<li>Are the legends and other labels easy to understand with minimal abbreviations?</li>
-<li>If there is overplotting, is transparency used to show overlapping data?</li>
-<li>Are 95% confidence intervals or other measures of precision shown, if applicable?</li>
+<li>You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don’t want to break the code for them.</li>
+<li>You want to start working on a new part of the project, but you aren’t sure yet if your changes will work and make it to the final product.</li>
+<li>You are working with others and don’t want to mix up your current work with theirs, even if you want to bring your work together later in the future.</li>
 </ul>
+<p>A detailed tutorial on Git Branching can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional">here</a>. You can also find instructions on how to handle merge conflicts when joining branches together.</p>
+</div>
+<div id="example-workflow" class="section level2">
+<h2><span class="header-section-number">9.4</span> Example Workflow</h2>
+<p>A standard workflow when starting on a new project and contributing code looks like this:</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SETUP: FIRST TIME ONLY: <code>git clone &lt;url&gt; &lt;directory_name&gt;</code></td>
+<td>Clone the repo. This copies of all the project files in its current state on Github to your local computer.</td>
+</tr>
+<tr class="even">
+<td>1. <code>git pull origin master</code></td>
+<td>update the state of your files to match the most current version on GitHub</td>
+</tr>
+<tr class="odd">
+<td>2. <code>git checkout -b &lt;new_branch_name&gt;</code></td>
+<td>create new branch that you’ll be working on and go to it</td>
+</tr>
+<tr class="even">
+<td>3. Make some file changes</td>
+<td>work on your feature/implementation</td>
+</tr>
+<tr class="odd">
+<td>4. <code>git add -p</code></td>
+<td>add changes to stage for commit, going through changes line by line</td>
+</tr>
+<tr class="even">
+<td>5. <code>git commit -m &lt;commit message&gt;</code></td>
+<td>commit files with a message</td>
+</tr>
+<tr class="odd">
+<td>6. <code>git push -u origin &lt;branch_name&gt;</code></td>
+<td>push branch to remote and set to track (-u only needed if this is first push)</td>
+</tr>
+<tr class="even">
+<td>7. Repeat step 4-5.</td>
+<td>work and commit often</td>
+</tr>
+<tr class="odd">
+<td>8. <code>git push</code></td>
+<td>push work to remote branch for others to view</td>
+</tr>
+<tr class="even">
+<td>9. Follow the link given from the <code>git push</code> command to <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request">submit a pull request (PR) on GitHub online</a></td>
+<td>PR merges in work from your branch into master</td>
+</tr>
+<tr class="odd">
+<td>(10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>11. <code>git fetch --all --prune</code></td>
+<td>clean up your local git by untracking deleted remote branches</td>
+</tr>
+</tbody>
+</table>
+<p>Other helpful commands are listed below.</p>
+</div>
+<div id="commonly-used-git-commands" class="section level2">
+<h2><span class="header-section-number">9.5</span> Commonly Used Git Commands</h2>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git clone &lt;url&gt; &lt;directory_name&gt;</code></td>
+<td>clone a repository, only needs to be done the first time</td>
+</tr>
+<tr class="even">
+<td><code>git pull origin master</code></td>
+<td>pull from <code>master</code> before making any changes</td>
+</tr>
+<tr class="odd">
+<td><code>git branch</code></td>
+<td>check what branch you are on</td>
+</tr>
+<tr class="even">
+<td><code>git branch -a</code></td>
+<td>check what branch you are on + all remote branches</td>
+</tr>
+<tr class="odd">
+<td><code>git checkout -b &lt;new_branch_name&gt;</code></td>
+<td>create new branch and go to it (only necessary when you create a new branch)</td>
+</tr>
+<tr class="even">
+<td><code>git checkout &lt;branch name&gt;</code></td>
+<td>switch to branch</td>
+</tr>
+<tr class="odd">
+<td><code>git add &lt;file name&gt;</code></td>
+<td>add file to stage for commit</td>
+</tr>
+<tr class="even">
+<td><code>git add -p</code></td>
+<td>adds changes to commit, showing you changes one by one</td>
+</tr>
+<tr class="odd">
+<td><code>git commit -m &lt;commit message&gt;</code></td>
+<td>commit file with a message</td>
+</tr>
+<tr class="even">
+<td><code>git push -u origin &lt;branch_name&gt;</code></td>
+<td>push branch to remote and set to track (-u only works if this is first push)</td>
+</tr>
+<tr class="odd">
+<td><code>git branch --set-upstream-to origin &lt;branch_name&gt;</code></td>
+<td>set upstream to <code>origin/&lt;branch_name&gt;</code> (use if you forgot -u on first push)</td>
+</tr>
+<tr class="even">
+<td><code>git push origin &lt;branch_name&gt;</code></td>
+<td>push work to branch</td>
+</tr>
+<tr class="odd">
+<td><code>git checkout &lt;branch_name&gt;</code>  <code>git merge master</code></td>
+<td>switch to branch and merge changes from <code>master</code> into <code>&lt;branch_name&gt;</code> (two commands)</td>
+</tr>
+<tr class="even">
+<td><code>git merge &lt;branch_name&gt; master</code></td>
+<td>switch to branch and merge changes from <code>master</code> into <code>&lt;branch_name&gt;</code> (one command)</td>
+</tr>
+<tr class="odd">
+<td><code>git checkout --track origin/&lt;branch_name&gt;</code></td>
+<td>pulls a remote branch and creates a local branch to track it (use when trying to pull someone else’s branch onto your local computer)</td>
+</tr>
+<tr class="even">
+<td><code>git push --delete &lt;remote_name&gt; &lt;branch_name&gt;</code></td>
+<td>delete remote branch</td>
+</tr>
+<tr class="odd">
+<td><code>git branch -d &lt;branch_name&gt;</code></td>
+<td>deletes local branch, -D to force</td>
+</tr>
+<tr class="even">
+<td><code>git fetch --all --prune</code></td>
+<td>untrack deleted remote branches</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="how-often-should-i-commit" class="section level2">
+<h2><span class="header-section-number">9.6</span> How often should I commit?</h2>
+<p>It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.</p>
+</div>
+<div id="what-should-be-pushed-to-github" class="section level2">
+<h2><span class="header-section-number">9.7</span> What should be pushed to Github?</h2>
+<p>Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.</p>
+<p>There is a standardized <code>.gitignore</code> for <code>R</code> which you <a href="https://github.com/github/gitignore/blob/master/R.gitignore">can download</a> and add to your project. This ensures you’re not committing log files or things that would otherwise best be left ignored to GitHub. This is a <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">great discussion of project-oriented workflows</a>, extolling the virtues of a self-contained, portable projects, for your reference.</p>
 
 </div>
 </div>
@@ -298,8 +447,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="working-with-big-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="unix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -329,7 +478,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-checklists.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-github.Rmd",
 "text": "Edit"
 },
 "history": {

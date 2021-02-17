@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Checklists | Lab Manual</title>
+  <title>Chapter 8 Working with Big Data | Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta property="og:title" content="Chapter 8 Working with Big Data | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta name="twitter:title" content="Chapter 8 Working with Big Data | Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="unix.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="code-publication.html"/>
+<link rel="next" href="github.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -250,46 +250,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="checklists" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Checklists</h1>
-<p>by Jade Benjamin-Chung</p>
-<div id="code-checklist" class="section level2">
-<h2><span class="header-section-number">11.1</span> Code checklist</h2>
-<ul>
-<li>Does the script run without errors?</li>
-<li>Is code self-contained within repo and/or associated Box folder?</li>
-<li>Is all commented out code / remarks removed?</li>
-<li>Does the header accurately describe the process completed in the script?</li>
-<li>Is the script pushed to its github repository?</li>
-<li>Does the code adhere to the coding style guide? <a href="https://jadebc.github.io/lab-manual/coding-style.html" class="uri">https://jadebc.github.io/lab-manual/coding-style.html</a></li>
-<li>Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?</li>
-</ul>
+<div id="working-with-big-data" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Working with Big Data</h1>
+<p>by Kunal Mishra and Jade Benjamin-Chung</p>
+<div id="the-data.table-package" class="section level2">
+<h2><span class="header-section-number">8.1</span> The data.table package</h2>
+<p>It may also be the case that you’re working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, <code>Tidvyerse</code> (more specificially, <code>dplyr</code>), and <code>data.table</code>. For a majority of things, Base R is inferior to both <code>dplyr</code> and <code>data.table</code>, with concise but less clear syntax and less speed. <code>Dplyr</code> is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to <code>data.table</code>. An overview of the <code>dplyr</code> vs <code>data.table</code> debate can be found in <a href="https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349#27840349">this stackoverflow post</a> and all 3 answers are worth a read.</p>
+<p>You can also achieve a performance boost by running <code>dplyr</code> commands on <code>data.table</code>s, which I find to be the best of both worlds, given that a <code>data.table</code> is a special type of <code>data.frame</code> and fairly easy to convert with the <code>as.data.table()</code> function. The speedup is due to <code>dplyr</code>’s use of the <code>data.table</code> backend and in the future this coupling should become even more natural.</p>
+<p>If you want to test whether using a certain coding approach increases speed, consider the <code>tictoc</code> package. Run <code>tic()</code> before a code chunk and <code>toc()</code> after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you <em>really</em> need to switch a code chunk from <code>dplyr</code> to <code>data.table</code>.</p>
 </div>
-<div id="manuscript-checklist" class="section level2">
-<h2><span class="header-section-number">11.2</span> Manuscript checklist</h2>
-<ul>
-<li>Have you completed the relevant reporting checklist, if applicable? (add links)</li>
-<li>Is a target journal selected?</li>
-<li>Is the word count of the manuscript close to the target journal’s allowance?</li>
-<li>Does the manuscript adhere to the formatting guide of the target journal?</li>
-<li>Does the manuscript use a consistent voice (passive or active – usually active is preferred … pun intended)?</li>
-<li>Is each figure and table (including supplementary material) referenced in the main text?</li>
-<li>Is there a caption for each figure and table (including supplementary material)?</li>
-</ul>
+<div id="using-downsampled-data" class="section level2">
+<h2><span class="header-section-number">8.2</span> Using downsampled data</h2>
+<p>In our studies with very large datasets, we save “downsampled” data that usually includes a 1% random sample stratified by any important variables, such as year or household id. This allows us to efficiently write and test our code without having to load in large, slow datasets that can cause RStudio to freeze. Be very careful to be sure which dataset you are working with and to label results output accordingly.</p>
 </div>
-<div id="figure-checklist" class="section level2">
-<h2><span class="header-section-number">11.3</span> Figure checklist</h2>
+<div id="optimal-rstudio-set-up" class="section level2">
+<h2><span class="header-section-number">8.3</span> Optimal RStudio set up</h2>
+<p>Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the “Tools” menu, then select “Global Options”. Under “General”:</p>
+<p><strong>Workspace</strong></p>
 <ul>
-<li>Are the x-axis and y-axis labeled?</li>
-<li>If the figure includes panels, is each panel labeled?</li>
-<li>Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?</li>
-<li>Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)</li>
-<li>Are the colors used colorblind friendly? See a colorblind-friendly palette [here](<a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette" class="uri">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette</a>.</li>
-<li>Are colors/shapes/line types defined in a legend?</li>
-<li>Are the legends and other labels easy to understand with minimal abbreviations?</li>
-<li>If there is overplotting, is transparency used to show overlapping data?</li>
-<li>Are 95% confidence intervals or other measures of precision shown, if applicable?</li>
+<li><strong>Uncheck</strong> Restore RData into workspace at startup</li>
+<li>Save workspace to RData on exit – choose <strong>never</strong></li>
 </ul>
+<p><strong>History</strong></p>
+<ul>
+<li><strong>Uncheck</strong> Always save history</li>
+</ul>
+<p>Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.</p>
 
 </div>
 </div>
@@ -298,8 +284,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="code-publication.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -329,7 +315,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-checklists.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-big-data.Rmd",
 "text": "Edit"
 },
 "history": {

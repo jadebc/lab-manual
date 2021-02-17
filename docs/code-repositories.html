@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Checklists | Lab Manual</title>
+  <title>Chapter 4 Code repositories | Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta property="og:title" content="Chapter 4 Code repositories | Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Checklists | Lab Manual" />
+  <meta name="twitter:title" content="Chapter 4 Code repositories | Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="unix.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="code-of-conduct.html"/>
+<link rel="next" href="coding-practices.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -250,46 +250,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="checklists" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Checklists</h1>
-<p>by Jade Benjamin-Chung</p>
-<div id="code-checklist" class="section level2">
-<h2><span class="header-section-number">11.1</span> Code checklist</h2>
-<ul>
-<li>Does the script run without errors?</li>
-<li>Is code self-contained within repo and/or associated Box folder?</li>
-<li>Is all commented out code / remarks removed?</li>
-<li>Does the header accurately describe the process completed in the script?</li>
-<li>Is the script pushed to its github repository?</li>
-<li>Does the code adhere to the coding style guide? <a href="https://jadebc.github.io/lab-manual/coding-style.html" class="uri">https://jadebc.github.io/lab-manual/coding-style.html</a></li>
-<li>Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?</li>
-</ul>
+<div id="code-repositories" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Code repositories</h1>
+<p>By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi</p>
+<p>Each study has at least one code repository that typically holds R code, shell scripts with Unix code, and research outputs (results .RDS files, tables, figures). Repositories may also include datasets. This chapter outlines how to organize these files. Adhering to a standard format makes it easier for us to efficiently collaborate across projects.</p>
+<div id="project-structure" class="section level2">
+<h2><span class="header-section-number">4.1</span> Project Structure</h2>
+<p>We recommend the following directory structure:</p>
+<pre><code>0-run-project.sh
+0-config.R
+1 - Data-Management/
+    0-prep-data.sh
+    1-prep-cdph-fluseas.R
+    2a-prep-absentee.R
+    2b-prep-absentee-weighted.R
+    3a-prep-absentee-adj.R
+    3b-prep-absentee-adj-weighted.R
+2 - Analysis/
+    0-run-analysis.sh
+    1 - Absentee-Mean/
+        1-absentee-mean-primary.R
+        2-absentee-mean-negative-control.R
+        3-absentee-mean-CDC.R
+        4-absentee-mean-peakwk.R
+        5-absentee-mean-cdph2.R
+        6-absentee-mean-cdph3.R
+    2 - Absentee-Positivity-Check/
+    3 - Absentee-P1/
+    4 - Absentee-P2/
+3 - Figures/
+    0-run-figures.sh
+    ...
+4 - Tables/
+    0-run-tables.sh
+    ...
+5 - Results/
+    1 - Absentee-Mean/
+        1-absentee-mean-primary.RDS
+        2-absentee-mean-negative-control.RDS
+        3-absentee-mean-CDC.RDS
+        4-absentee-mean-peakwk.RDS
+        5-absentee-mean-cdph2.RDS
+        6-absentee-mean-cdph3.RDS
+    ...
+.gitignore
+.Rproj</code></pre>
+<p>For brevity, not every directory is “expanded”, but we can glean some important takeaways from what we <em>do</em> see.</p>
 </div>
-<div id="manuscript-checklist" class="section level2">
-<h2><span class="header-section-number">11.2</span> Manuscript checklist</h2>
-<ul>
-<li>Have you completed the relevant reporting checklist, if applicable? (add links)</li>
-<li>Is a target journal selected?</li>
-<li>Is the word count of the manuscript close to the target journal’s allowance?</li>
-<li>Does the manuscript adhere to the formatting guide of the target journal?</li>
-<li>Does the manuscript use a consistent voice (passive or active – usually active is preferred … pun intended)?</li>
-<li>Is each figure and table (including supplementary material) referenced in the main text?</li>
-<li>Is there a caption for each figure and table (including supplementary material)?</li>
-</ul>
+<div id="rproj-files" class="section level2">
+<h2><span class="header-section-number">4.2</span> <code>.Rproj</code> files</h2>
+<p>An “R Project” can be created within RStudio by going to <code>File &gt;&gt; New Project</code>. Depending on where you are with your research, choose the most appropriate option. This will save preferences, working directories, and even the results of running code/data (though I’d recommend starting from scratch each time you open your project, in general). Then, ensure that whenever you are working on that specific research project, you open your created project to enable the full utility of <code>.Rproj</code> files. This also automatically sets the directory to the top level of the project.</p>
 </div>
-<div id="figure-checklist" class="section level2">
-<h2><span class="header-section-number">11.3</span> Figure checklist</h2>
-<ul>
-<li>Are the x-axis and y-axis labeled?</li>
-<li>If the figure includes panels, is each panel labeled?</li>
-<li>Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?</li>
-<li>Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)</li>
-<li>Are the colors used colorblind friendly? See a colorblind-friendly palette [here](<a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette" class="uri">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette</a>.</li>
-<li>Are colors/shapes/line types defined in a legend?</li>
-<li>Are the legends and other labels easy to understand with minimal abbreviations?</li>
-<li>If there is overplotting, is transparency used to show overlapping data?</li>
-<li>Are 95% confidence intervals or other measures of precision shown, if applicable?</li>
-</ul>
+<div id="configuration-config-file" class="section level2">
+<h2><span class="header-section-number">4.3</span> Configuration (‘config’) File</h2>
+<p>This is the single most important file for your project. It will be responsible for a variety of common tasks, declare global variables, load functions, declare paths, and more. <em>Every other file in the project</em> will begin with <code>source("0-config")</code>, and its role is to reduce redundancy and create an abstraction layer that allows you to make changes in one place (<code>0-config.R</code>) rather than 5 different files. To this end, paths which will be reference in multiple scripts (i.e. a <code>merged_data_path</code>) can be declared in <code>0-config.R</code> and simply referred to by its variable name in scripts. If you ever want to change things, rename them, or even switch from a downsample to the full data, all you would then to need to do is modify the path in one place and the change will automatically update throughout your project. See the example config file for more details. The paths defined in the <code>0-config.R</code> file assume that users have opened the <code>.Rproj</code> file, which sets the directory to the top level of the project.</p>
+</div>
+<div id="order-files-and-directories" class="section level2">
+<h2><span class="header-section-number">4.4</span> Order Files and Directories</h2>
+<p>This makes the jumble of alphabetized filenames much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e. <code>2 - Analysis/1 - Absentee-Mean/1-absentee-mean-primary.R</code> =&gt; <code>5 - Results/1 - Absentee-Mean/1-absentee-mean-primary.RDS</code>). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.</p>
+</div>
+<div id="using-bash-scripts-to-ensure-reproducibility" class="section level2">
+<h2><span class="header-section-number">4.5</span> Using Bash scripts to ensure reproducibility</h2>
+<p>Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e. in <code>3 - Analysis</code>), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data “upstream” changes – you simply run the bash script. See the <a href="unix.html#unix">Unix Chapter</a> for further details.</p>
+<p>After running bash scripts, <code>.Rout</code> log files will be generated for each script that has been executed. It is important to check these files. Scripts may appear to have run correctly in the terminal, but checking the log files is the only way to ensure that everything has run completely.</p>
 
 </div>
 </div>
@@ -298,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="code-of-conduct.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coding-practices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -329,7 +352,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-checklists.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-code-repositories.Rmd",
 "text": "Edit"
 },
 "history": {
