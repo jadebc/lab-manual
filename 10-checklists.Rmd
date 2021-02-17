@@ -1,0 +1,34 @@
+# Checklists
+
+by Jade Benjamin-Chung 
+
+## Code checklist
+- Does the script run without errors?
+- Is code self-contained within repo and/or associated Box folder?
+- Is all commented out code / remarks removed? 
+- Does the header accurately describe the process completed in the script? 
+- Is the script pushed to its github repository?
+- Does the code adhere to the coding style guide? https://jadebc.github.io/lab-manual/coding-style.html
+- Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?
+
+
+## Manuscript checklist
+- Have you completed the relevant reporting checklist, if applicable?  (add links)
+- Is a target journal selected?
+- Is the word count of the manuscript close to the target journal's allowance?
+- Does the manuscript adhere to the formatting guide of the target journal?
+- Does the manuscript use a consistent voice (passive or active -- usually active is preferred ... pun intended)?
+- Is each figure and table (including supplementary material) referenced in the main text?
+- Is there a caption for each figure and table (including supplementary material)?
+
+
+## Figure checklist
+- Are the x-axis and y-axis labeled?
+- If the figure includes panels, is each panel labeled?
+- Are there sufficient numerical / text labels and breaks on the x-axis and y-axis? 
+- Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)
+- Are the colors used colorblind friendly? See a colorblind-friendly palette [here](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette.
+- Are colors/shapes/line types defined in a legend?
+- Are the legends and other labels easy to understand with minimal abbreviations? 
+- If there is overplotting, is transparency used to show overlapping data? 
+- Are 95% confidence intervals or other measures of precision shown, if applicable?
