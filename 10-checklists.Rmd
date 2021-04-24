@@ -15,8 +15,9 @@ by Jade Benjamin-Chung
 ## Manuscript checklist
 *This is adapted in part from [this article](https://www.nature.com/articles/d41586-019-01431-z).*
 
-- Have you completed the relevant reporting checklist, if applicable?  (add links)
+- Have you completed the relevant reporting checklist, if applicable? ([Collection of checklists](https://www.equator-network.org/about-us/what-is-a-reporting-guideline/))
 - Is a target journal selected?
+- Is the title declarative, in other words, does it state the object/findings rather than suggest them?
 - Is the word count of the manuscript close to the target journal's allowance?
 - Does the manuscript adhere to the formatting guide of the target journal?
 - Does the manuscript use a consistent voice (passive or active -- usually active is preferred ... pun intended)?
@@ -26,8 +27,7 @@ by Jade Benjamin-Chung
 - Does the text use minimal abbreviations, and are all abbreviations defined at first use?
 - Does the text avoid directionless words? (e.g., instead of writing, ‘Precipitation influences disease risk’, write, ‘Precipitation was associated with increased disease risk’). 
 - Does the text avoid making causal claims that are not supported by the study design? Be careful about the words "effect", "increase", and "decrease", which are often interpreted as causal. 
-- Does the text avoid describing results with the word "significant", which can easily be confused with statistical significance? 
-- Is the title declarative, in other words, does it state the object/findings rather than suggest them?
+- Does the text avoid describing results with the word "significant", which can easily be confused with statistical significance? (see references on this topic [here](https://journals.lww.com/epidem/Fulltext/2001/05000/The_Value_of_P.2.aspx))
 - Have you drafted author contributions? Do they follow the [CRediT Taxonomy](https://journals.plos.org/plosone/s/authorship/?utm_source=plos&utm_medium=blog&utm_campaign=plos-1607-credit#loc-author-contributions) for author contributions?
 
 ## Figure checklist
