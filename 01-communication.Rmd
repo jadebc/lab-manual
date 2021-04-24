@@ -28,11 +28,10 @@ These communications guidelines are evolving as we increasingly adopt Slack, but
 ## Google Drives
 
 - We mostly use Google Drive to create shared documents with longer descriptions of tasks. These documents are linked to in Trello. Jade often shares these with the whole team since tasks are overlapping, and even if a task is assigned to one person, others may have valuable insights. 
-- Please invite both of Jade's email addresses to any documents you create (jadebc@gmail.com, jadebc@berkeley.edu).
 
 ## Google Calendar / Meetings
 
 - We use Google Calendar to set meetings. Please make sure your calendar is set up correctly because sometimes you might not receive a specific email or Slack message about it -- only a Google Calendar invitation. 
-- Our meetings start on the hour, not on Berkeley time. 
+- Our meetings start on the hour.
 - If you are going to be late, please send a message in our Slack channel. 
 - If you are regularly not able to come on the hour, notify the team and we might choose the modify the agenda order or the start time. 

@@ -12,9 +12,9 @@ github-repo: rstudio/bookdown-demo
 description: "Lab practices and data science best practices"
 ---
 
-# Welcome to our lab!
+# Welcome to the Benjamin-Chung Lab!
 
-We are a team of epidemiologists and biostatisticians engaged in global health research. This lab manual covers our communication strategy and code of conduct and goes into detail about best practices for data science. It is a living document that is updated regularly. 
+This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly. To learn more about our lab, visit [jadebc.net](https://jadebc.net).
 
 This manual was created with input from a large number of team members and with inspiration from [other scientists' lab manuals](https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf). Feel free to draw from this manual (and please cite it if you do!).
 

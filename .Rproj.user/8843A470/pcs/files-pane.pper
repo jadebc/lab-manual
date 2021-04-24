@@ -1,9 +1,9 @@
 {
-    "path" : "~/Documents/CRG/data-science-best-practices",
-    "sortOrder" : [
+    "path": "~/Documents/Code/lab-manual",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }
