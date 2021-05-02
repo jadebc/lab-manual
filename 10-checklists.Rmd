@@ -23,6 +23,7 @@ by Jade Benjamin-Chung
 - Does the manuscript use a consistent voice (passive or active -- usually active is preferred ... pun intended)?
 - Is each figure and table (including supplementary material) referenced in the main text?
 - Is there a caption for each figure and table (including supplementary material)?
+- Does the text use past tense if it is reporting research findings or future tense if it is a study protocol? 
 - Does the text avoid subjective wording (e.g., "interesting", "dramatic")?
 - Does the text use minimal abbreviations, and are all abbreviations defined at first use?
 - Does the text avoid directionless words? (e.g., instead of writing, ‘Precipitation influences disease risk’, write, ‘Precipitation was associated with increased disease risk’). 
