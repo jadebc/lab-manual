@@ -16,6 +16,7 @@ by Jade Benjamin-Chung
 *This is adapted in part from [this article](https://www.nature.com/articles/d41586-019-01431-z).*
 
 - Have you completed the relevant reporting checklist, if applicable? ([Collection of checklists](https://www.equator-network.org/about-us/what-is-a-reporting-guideline/))
+- Are the study results within the manuscript replicable (i.e., if you rerun the code in the study's repository, the tables and figures will be exactly replicated?)
 - Is a target journal selected?
 - Is the title declarative, in other words, does it state the object/findings rather than suggest them?
 - Is the word count of the manuscript close to the target journal's allowance?
@@ -23,6 +24,7 @@ by Jade Benjamin-Chung
 - Does the manuscript use a consistent voice (passive or active -- usually active is preferred ... pun intended)?
 - Is each figure and table (including supplementary material) referenced in the main text?
 - Is there a caption for each figure and table (including supplementary material)?
+- Are tables/figures and supplementary material numbered in accordance with their appearance in the main text? 
 - Does the text use past tense if it is reporting research findings or future tense if it is a study protocol? 
 - Does the text avoid subjective wording (e.g., "interesting", "dramatic")?
 - Does the text use minimal abbreviations, and are all abbreviations defined at first use?
