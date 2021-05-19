@@ -28,6 +28,16 @@ Every file in a project should have a header that allows it to be interpreted on
 
   ```
   
+### Sections and subsections
+Rstudio ([v1.4 or more recent](https://blog.rstudio.com/2020/12/02/rstudio-v1-4-preview-little-things/)) supports the use of Sections and Subsections. You can easily navigate through longer scripts using the navigation pane in RStudio, as shown on the right in the image below. 
+```{r, echo=FALSE}
+# Define variable containing url
+url <- "https://d33wubrfki0l68.cloudfront.net/3c6a9c7fc8ab36f19167d1c845c1ad6ed96c4c78/544c8/2020/12/02/rstudio-v1-4-preview-little-things/document-outline_hu96c1ff5aadb66c494c67f86aa1b02b40_127394_709x0_resize_box_2.png"
+```
+![](`r url`)
+
+### Code folding
+
 Consider using RStudio's [code folding](https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections) feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (#) automatically creates a code section. For example:
 
 ```

@@ -24,7 +24,7 @@
 <meta name="author" content="Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,8 +160,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>5.2</b> Documenting your code</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>5.2.1</b> File headers</a></li>
-<li class="chapter" data-level="5.2.2" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>5.2.2</b> Comments in the body of your script</a></li>
-<li class="chapter" data-level="5.2.3" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>5.2.3</b> Function documentation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding-practices.html"><a href="coding-practices.html#sections-and-subsections"><i class="fa fa-check"></i><b>5.2.2</b> Sections and subsections</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding-practices.html"><a href="coding-practices.html#code-folding"><i class="fa fa-check"></i><b>5.2.3</b> Code folding</a></li>
+<li class="chapter" data-level="5.2.4" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>5.2.4</b> Comments in the body of your script</a></li>
+<li class="chapter" data-level="5.2.5" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>5.2.5</b> Function documentation</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>5.3</b> Object naming</a></li>
 <li class="chapter" data-level="5.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>5.4</b> Function calls</a></li>
@@ -295,17 +297,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 # @Description - This file is responsible for [...]
 ################################################################################
 </code></pre>
+</div>
+<div id="sections-and-subsections" class="section level3" number="5.2.2">
+<h3 number="5.2.2"><span class="header-section-number">5.2.2</span> Sections and subsections</h3>
+<p>Rstudio (<a href="https://blog.rstudio.com/2020/12/02/rstudio-v1-4-preview-little-things/">v1.4 or more recent</a>) supports the use of Sections and Subsections. You can easily navigate through longer scripts using the navigation pane in RStudio, as shown on the right in the image below.</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/3c6a9c7fc8ab36f19167d1c845c1ad6ed96c4c78/544c8/2020/12/02/rstudio-v1-4-preview-little-things/document-outline_hu96c1ff5aadb66c494c67f86aa1b02b40_127394_709x0_resize_box_2.png" /></p>
+</div>
+<div id="code-folding" class="section level3" number="5.2.3">
+<h3 number="5.2.3"><span class="header-section-number">5.2.3</span> Code folding</h3>
 <p>Consider using RStudio’s <a href="https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections">code folding</a> feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (#) automatically creates a code section. For example:</p>
 <pre><code># Section 1 ------------------</code></pre>
 <p><strong>Note</strong>: If your computer isn’t able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won’t be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.</p>
 </div>
-<div id="comments-in-the-body-of-your-script" class="section level3" number="5.2.2">
-<h3 number="5.2.2"><span class="header-section-number">5.2.2</span> Comments in the body of your script</h3>
+<div id="comments-in-the-body-of-your-script" class="section level3" number="5.2.4">
+<h3 number="5.2.4"><span class="header-section-number">5.2.4</span> Comments in the body of your script</h3>
 <p>Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you’ll be thankful for comments. There’s no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See <a href="https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master&#39;s%20Thesis%20-%20Spatial%20Epidemiology%20of%20Influenza/1b%20-%20Map-Management.R">this file</a> for an example of how to comment your code and notice that comments are always in the form of:</p>
 <p><code># This is a comment -- first letter is capitalized and spaced away from the pound sign</code></p>
 </div>
-<div id="function-documentation" class="section level3" number="5.2.3">
-<h3 number="5.2.3"><span class="header-section-number">5.2.3</span> Function documentation</h3>
+<div id="function-documentation" class="section level3" number="5.2.5">
+<h3 number="5.2.5"><span class="header-section-number">5.2.5</span> Function documentation</h3>
 <p>Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a <code>string</code> into an argument that is meant to be a <code>data.table</code>, or a <code>list</code> into an argument meant for a <code>tibble</code>. It is the responsibility of a function’s author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by <a href="https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#format">JavaDocs</a> and R’s <a href="https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/">Plumber API docs</a>):</p>
 <pre><code>##############################################
 ##############################################
