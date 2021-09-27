@@ -12,3 +12,27 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+
+/* Whole document: */
+body{
+  font-family: Source Sans Pro;
+  font-size: 12pt;
+}
+/* Headers */
+h1{
+  font-size: 18pt;
+  font-weight: bold;
+}
+h2{
+  font-size: 15pt;
+  font-weight: bold;
+}
+h3{
+  font-size: 13pt;
+  font-weight: bold;
+}
+h4,h5,h6{
+  font-size: 12pt;
+  font-weight: bold;
+}

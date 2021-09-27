@@ -5,8 +5,8 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Lab manual</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+        <li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/jadebc/lab-manual/edit/master/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:

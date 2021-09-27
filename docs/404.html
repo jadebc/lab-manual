@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Code Publication | Benjamin-Chung Lab Manual</title>
+  <title>Page not found | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Code Publication | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Page not found | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Code Publication | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Page not found | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="coding-style.html"/>
-<link rel="next" href="working-with-big-data.html"/>
+
+
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -293,107 +293,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="code-publication" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Code Publication</h1>
-<p>by Nolan Pokpongkiat</p>
-<div id="checklist-overview" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Checklist overview</h2>
-<ol style="list-style-type: decimal">
-<li><a href="code-publication.html#fill-out-file-headers">Fill out file headers</a></li>
-<li><a href="code-publication.html#clean-up-comments">Clean up comments</a></li>
-<li><a href="code-publication.html#document-functions">Document functions</a></li>
-<li><a href="code-publication.html#remove-deprecated-filepaths">Remove deprecated filepaths</a></li>
-<li><a href="code-publication.html#ensure-project-runs-via-bash">Ensure project runs via bash</a></li>
-<li><a href="code-publication.html#complete-the-readme">Complete the README</a></li>
-<li><a href="code-publication.html#clean-up-feature-branches">Clean up feature branches</a></li>
-<li><a href="code-publication.html#create-github-release">Create Github release</a></li>
-</ol>
-</div>
-<div id="fill-out-file-headers" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Fill out file headers</h2>
-<p>Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. See template <a href="https://jadebc.github.io/lab-manual/coding-practices.html#file-headers">here.</a></p>
-</div>
-<div id="clean-up-comments" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Clean up comments</h2>
-<p>Make sure comments in the code are for code documentation purposes only. Do not leave comments to self in the final script files.</p>
-</div>
-<div id="document-functions" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Document functions</h2>
-<p>Every function you write must include a header to document its purpose, inputs, and outputs. See template for the function documentation <a href="https://jadebc.github.io/lab-manual/coding-practices.html#function-documentation">here.</a></p>
-</div>
-<div id="remove-deprecated-filepaths" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> Remove deprecated filepaths</h2>
-<p>All file paths should be defined in 0-config.R, and should be set relative to the project working directory. All absolute file paths from your local computer should be removed, and replaced with a relative path. If a third party were to re-run this analysis, if they need to download data from a separate source and change a filepath in the 0-config.R to match, make sure to specify in the README which line of 0-config.R needs to be substituted.</p>
-</div>
-<div id="ensure-project-runs-via-bash" class="section level2" number="8.6">
-<h2><span class="header-section-number">8.6</span> Ensure project runs via bash</h2>
-<p>The project should be configured to be entirely reproducible by running a master bash script, run-project.sh, which should live at the top directory. This bash script can call other bash scripts in subfolders, if necessary. Bash scripts should use the runFileSaveLogs utility script, which is a wrapper around the Rscript command, allowing you to specify where .Rout log files are moved after the R scripts are run.</p>
-<p>See usage and documentation <a href="https://jadebc.github.io/lab-manual/unix.html#example-code-for-runfilesavelogs">here.</a></p>
-</div>
-<div id="complete-the-readme" class="section level2" number="8.7">
-<h2><span class="header-section-number">8.7</span> Complete the README</h2>
-<p>A README.md should live at the top directory of the project. This usually includes a Project Overview and a Directory Structure, along with the names of the contributors and the Creative Commons License. See below for a template:</p>
-<blockquote>
-<p><strong>Overview</strong></p>
-<p>To date, coronavirus testing in the US has been extremely limited. Confirmed COVID-19 case counts underestimate the total number of infections in the population. We estimated the total COVID-19 infections – both symptomatic and asymptomatic – in the US in March 2020. We used a semi-Bayesian approach to correct for bias due to incomplete testing and imperfect test performance.</p>
-<p><strong>Directory structure</strong></p>
-<ul>
-<li><p>0-config.R: configuration file that sets data directories, sources base functions, and loads required libraries</p></li>
-<li><p>0-base-functions: folder containing scripts with functions used in the analysis</p>
-<ul>
-<li><p>0-base-functions.R: R script containing general functions used across the analysis</p></li>
-<li><p>0-bias-corr-functions.R: R script containing functions used in bias correction</p></li>
-<li><p>0-bias-corr-functions-undertesting.R: R script containing functions used in bias correction to estimate the percentage of underestimation due to incomplete testing vs. imperfect test accuracy</p></li>
-<li><p>0-prior-functions.R: R script containing functions to generate priors</p></li>
-</ul></li>
-<li><p>1-data: folder containing data processing scripts NOTE: some scripts are deprecated</p></li>
-<li><p>2-analysis: folder containing analysis scripts. To rerun all scripts in this subdirectory, run the bash script 0-run-analysis.sh.</p>
-<ul>
-<li><p>1-obtain-priors-state.R: obtain priors for each state</p></li>
-<li><p>2-est-expected-cases-state.R: estimate expected cases in each state</p></li>
-<li><p>3-est-expected-cases-state-perf-testing.R: estimate expected cases in each state, estimate the percentage of underestimation due to incomplete testing vs. imperfect test accuracy</p></li>
-<li><p>4-obtain-testing-protocols.R: find testing protocols for each state.</p></li>
-<li><p>5-summarize-results.R: summarize results; obtain results for in text numerical results.</p></li>
-</ul></li>
-<li><p>3-figure-table-scripts: folder containing figure scripts. To rerun all scripts in this subdirectory, run the bash script 0-run-figs.sh.</p>
-<ul>
-<li><p>1-fig-testing.R: creates plot of testing patterns by state over time</p></li>
-<li><p>2-fig-cases-usa-state-bar.R: creates bar plot of confirmed vs. estimated infections by state</p></li>
-<li><p>3a-fig-map-usa-state.R: creates map of confirmed vs. estimated infections by state</p></li>
-<li><p>3b-fig-map-usa-state-shiny.R: creates map of confirmed vs. estimated infections by state with search functionality by state</p></li>
-<li><p>4-fig-priors.R: creates figure with priors for US as a whole</p></li>
-<li><p>5-fig-density-usa.R: creates figure of distribution of estimated cases in the US</p></li>
-<li><p>6-table-data-quality.R: creates table of data quality grading from COVID Tracking Project</p></li>
-<li><p>7-fig-testpos.R: creates figure of the probability of testing positive among those tested by state</p></li>
-<li><p>8-fig-percent-undertesting-state.R: creates figure of the percentage of under estimation due to incomplete testing</p></li>
-</ul></li>
-<li><p>4-figures: folder containing figure files.</p></li>
-<li><p>5-results: folder containing analysis results objects.</p></li>
-<li><p>6-sensitivity: folder containing scripts to run the sensitivity analyses</p></li>
-</ul>
-<p><strong>Contributors:</strong> Jade Benjamin-Chung, Sean L. Wu, Anna Nguyen, Stephanie Djajadi, Nolan N. Pokpongkiat, Anmol Seth, Andrew Mertens</p>
-<p>Wu SL, Mertens A, Crider YS, Nguyen A, Pokpongkiat NN, Djajadi S, et al. Substantial underestimation of SARS-CoV-2 infection in the United States due to incomplete testing and imperfect test accuracy. medRxiv. 2020; 2020.05.12.20091744. <a href="doi:10.1101/2020.05.12.20091744" class="uri">doi:10.1101/2020.05.12.20091744</a></p>
-</blockquote>
-<p>When possible, also include a description of the RDS results that are generated, detailing what data sources were used, where the script lives that creates it, and what information the RDS results hold.</p>
-</div>
-<div id="clean-up-feature-branches" class="section level2" number="8.8">
-<h2><span class="header-section-number">8.8</span> Clean up feature branches</h2>
-<p>In the remote repository on Github, all feature branches aside from master should be merged in and deleted. All outstanding PRs should be closed.</p>
-</div>
-<div id="create-github-release" class="section level2" number="8.9">
-<h2><span class="header-section-number">8.9</span> Create Github release</h2>
-<p>Once all of these items are verified, create a tag to make a Github release, which will tag the repository, creating a marker at this specific point in time.</p>
-<p>Detailed instructions <a href="https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases">here.</a></p>
-
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="coding-style.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="working-with-big-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -424,7 +336,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/07-code-publication.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/%s",
 "text": "Edit"
 },
 "history": {

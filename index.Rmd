@@ -1,23 +1,31 @@
 --- 
-title: "Lab Manual"
-author: "Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen"
-date: "`r Sys.Date()`"
+title: "Benjamin-Chung Lab Manual"
+date: "Updated: `r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: jadebc/lab-manual
 description: "Lab practices and data science best practices"
 ---
 
 # Welcome to the Benjamin-Chung Lab!
 
-This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly. To learn more about our lab, visit [jadebc.net](https://jadebc.net).
+## About the lab
+Welcome to the lab of Dr. Jade Benjamin-Chung, Assistant Professor in Epidemiology & Population Health at Stanford University. Our mission is to improve population health by creating high quality evidence about what health interventions work in whom and where, when, and how to implement them. Most of our research is focused on infectious diseases, including malaria, diarrhea, soil-transmitted helminths, and influenza. Our focus is on improving the health of vulnerable populations from low-resource settings, both domestically and internationally. We use a variety of epidemiologic, computational, and statistical methods, including causal inference and machine learning methods, in pursuit of our mission. To learn more about the lab, visit [jadebc.net](https://jadebc.net).
 
-This manual was created with input from a large number of team members and with inspiration from [other scientists' lab manuals](https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf). Feel free to draw from this manual (and please cite it if you do!).
+## About this lab manual
+This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly. 
 
+This manual was created with input from a large number of team members and with inspiration from [other scientists' lab manuals](https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf). 
+Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, and Anna Nguyen.  
+
+Feel free to draw from this manual (and please cite it if you do!).  
+
+<!-- https://beierlab.com/lab-antiracism-statement/ -->
+<!-- https://ib.berkeley.edu/labs/stillman/images/Stillman%20Lab%20Anti.pdf -->
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

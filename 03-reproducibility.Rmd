@@ -1,0 +1,90 @@
+# Reproducibility
+
+by Jade Benjamin-Chung
+
+Our lab adopts the following practices to maximize the reproducibility of our work. 
+
+1. Design studies with appropriate methodology and adherence to best practices in epidemiology and biostatistics
+2. Register study protocols
+3. Write and register pre-analysis plans
+4. Create reproducible workflows
+5. Process and analyze data with internal replication and masking
+6. Use reporting checklists with manuscripts
+7. Publish preprints
+8. Publish data (when possible) and replication scripts
+
+
+## What is the reproducibility crisis? 
+
+In the past decade, an increasing number of studies have found that published study findings could not be reproduced. Researchers found that it was not possible to reproduce estimates from published studies: 1) with the same data and same or similar code and 2) with newly collected data using the same (or similar) study design. These "failures" of reproducibility were frequent enough and broad enough in scope, occurring across a range of disciplines (epidemiology, psychology, economics, and others) to be deeply troubling. Program and policy decisions based on erroneous research findings could lead to wasted resources, and at worst, could harm intended beneficiaries. This crisis has motivated new practices in reproducibility, transparency, and openness. Our lab is committed to adopting these best practices, and much of the remainder of the lab manual focuses on how to do so. 
+
+Recommended readings on the "reproducibility crisis": 
+
+- Nuzzo R. How scientists fool themselves – and how they can stop. 2015. [https://www.nature.com/articles/526182a]()
+
+- Stoddart C. Is there a reproducibility crisis in science? 2016. [https://www.nature.com/articles/d41586-019-00067-3](https://www.nature.com/articles/d41586-019-00067-3)
+
+- Munafo MR, et al. A manifesto for reproducible science. *Nature Human Behavior* 2017 [http://dx.doi.org/10.1038/s41562-016-0021](http://dx.doi.org/10.1038/s41562-016-0021)
+
+
+## Study design
+
+Appropriate study design is beyond the scope of this lab manual and is something trainees develop through their coursework and mentoring. 
+
+## Register study protocols
+
+We register all randomized trials on [clinicaltrials.gov](clinicaltrials.gov), and in some cases register observational studies as well. 
+
+## Write and register pre-analysis plans
+
+We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Here is an example of one: [https://osf.io/tgbxr/](https://osf.io/tgbxr/). Generally, these include: 
+
+1. Brief background on the study (a condensed version of the introduction section of the paper)
+2. Hypotheses / objectives
+3. Study design
+4. Description of data
+5. Definition of outcomes
+6. Definition of interventions / exposures
+7. Definition of covariates 
+8. Statistical power calculation 
+9. Statistical analysis:
+- Type of model 
+- Covariate selection / screening
+- Standard error estimation method
+- Missing data analysis
+- Assessment of effect modification / subgroup analyses
+- Sensitivity analyses
+- Negative control analyses
+
+## Create reproducible workflows
+
+Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a "single click". In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic: 
+
+- Chapter 5: Code repositories
+- Chapter 6: Coding practices
+- Chapter 7: Coding style
+- Chapter 8: Code publication
+- Chapter 9: Working with big data
+- Chapter 10: Github
+- Chapter 11: Unix
+
+## Process and analyze data with internal replication and masking
+
+See my video on this topic: [https://www.youtube.com/watch?v=WoYkY9MkbRE](https://www.youtube.com/watch?v=WoYkY9MkbRE)
+
+## Use reporting checklists with manuscripts
+
+Using reporting checklists helps ensure that peer-reviewed articles contain the information needed for readers to assess the validity of your work and/or attempt to reproduce it. A collection of reporting checklists is available here: [https://www.equator-network.org/about-us/what-is-a-reporting-guideline/)](https://www.equator-network.org/about-us/what-is-a-reporting-guideline/)
+
+## Publish preprints
+
+A preprint is a scientific manuscript that has not been peer reviewed. Preprint servers create digital object identifiers (DOIs) and can be cited in other articles and in grant applications. Because the peer review process can take many months, publishing preprints prior to or during peer review enables other scientists to immediately learn from and build on your work. Importantly, NIH allows applicants to include preprint citations in their biosketches. In most cases, we publish preprints on [medRxiv](https://www.medrxiv.org/).
+
+## Publish data (when possible) and replication scripts
+
+Publishing data and replication scripts allows other scientists to reproduce your work and to build upon it. We typically publish data on [Open Science Framework](osf.io), share links to [Github](github.com) repositories, and archive code on [Zenodo](zenodo.org).
+
+
+
+
+
