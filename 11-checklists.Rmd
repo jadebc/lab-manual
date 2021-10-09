@@ -56,7 +56,7 @@ by Jade Benjamin-Chung
 - If the figure includes panels, is each panel labeled?
 - Are there sufficient numerical / text labels and breaks on the x-axis and y-axis? 
 - Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)
-- Are the colors used colorblind friendly? See a colorblind-friendly palette [here](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette).
+- Are the colors used colorblind friendly? See a colorblind-friendly palette [here](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette), a neat palette generator with colorblind options [here](https://medialab.github.io/iwanthue/?utm_source=Nature+Briefing&utm_campaign=2c68711076-briefing-dy-20211006&utm_medium=email&utm_term=0_c9dfd39373-2c68711076-44335685), and an article on why this matters [here](https://www.nature.com/articles/d41586-021-02696-z)
 - Are colors/shapes/line types defined in a legend?
 - Are the legends and other labels easy to understand with minimal abbreviations? 
 - If there is overplotting, is transparency used to show overlapping data? 
