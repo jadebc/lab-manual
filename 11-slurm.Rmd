@@ -1,0 +1,123 @@
+# Slurm and cluster computing {#slurm}
+
+by Anna Nguyen, and Jade Benjamin-Chung
+
+When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the [Sherlock user guide](https://www.sherlock.stanford.edu/docs/overview/introduction/) to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab. 
+
+
+## Getting started
+
+To access Sherlock, in terminal, log in using the following syntax and replace "USERNAME" with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication. 
+
+```{code1, eval=FALSE}
+ssh USERNAME@login.sherlock.stanford.edu
+```
+
+Once you log in, you can view the contents of your home directory in command line by entering `cd $HOME`. You can create subfolders within this directory using the `mkdir` command. For example, you could make a  "code" subdirectory and clone a Github repository there using the following code: 
+
+```{code2, eval=FALSE}
+cd $HOME
+mkdir code
+git clone https://github.com/jadebc/covid19-infections.git
+```
+
+## Moving files to Sherlock
+The `$HOME` directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the `$SCRATCH` directory (quota: 100 TB per user). On the `$SCRATCH` directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below: 
+
+```{bash, eval=FALSE}
+# securely transfer folders from Box to sherlock home directory
+# note: the -r option is for folders and is not needed for files
+scp -r "Box/malaria-project/folder-1/" USERNAME@login.sherlock.stanford.edu:
+scp -r "Box/malaria-project/folder-2/" USERNAME@login.sherlock.stanford.edu:
+
+# log into sherlock
+ssh USERNAME@login.sherlock.stanford.edu
+
+# make a malaria-project subfolder in scratch directory
+cd $SCRATCH
+mkdir malaria-project
+
+# move files from sherlock home directory to scratch directory
+cd $HOME
+mv folder-1 $SCRATCH/malaria-project/
+mv folder-2 $SCRATCH/malaria-project/
+```
+
+## Testing your code
+Typically, you will want to initially test your scripts by initiating a development node using the command `sdev`. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code, or you can test your code in the [Rstudio server via Sherlock](https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio).
+
+```{bash, eval=FALSE}
+# start development node
+sdev
+
+# load R - default version (see Sherlock documentation for which version)
+module load R
+
+# initiate R in command line
+R
+```
+
+In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example: 
+
+```{bash, eval=FALSE}
+# set sherlock-specific file paths
+if(Sys.getenv("LMOD_SYSHOST")=="sherlock"){
+  
+  sherlock_path = paste0(Sys.getenv("HOME"), "/malaria-project/")
+  
+  data_path = paste0(sherlock_path, "data/")
+  results_path = paste0(sherlock_path, "results/")
+}
+```
+
+## Running big jobs
+
+Once your test scripts run successfully, you can submit an sbatch script for larger jobs. These are text files with a `.sh` suffix. Use a text editor like Sublime to create such a script. Documentation on sbatch options is available [here](https://slurm.schedmd.com/sbatch.html). Here is an example of an sbatch script with the following options: 
+
+- `job-name=run_inc`: Job name that will show up in the Sherlock system
+- `begin=now`: Requests to start the job as soon as the requested resources are available
+- `dependency=singleton`: Jobs can begin after all previously launched jobs with the same name and user have ended. 
+- `mail-type=ALL`: Receive all types of email notification (e.g., when job starts, fails, ends)
+- `cpus-per-task=16`: Request 16 processors per task. The default is one processor per task.
+- `mem=64G`: Request 64 GB memory per node. 
+- `output=00-run_inc_log.out`: Create a log file called `00-run_inc_log.out` that contains information about the Slurm session
+
+The file `analysis.out` will contain the log file for the R script `analysis.R`. 
+
+```{bash, eval=FALSE}
+#!/bin/bash
+
+#SBATCH --job-name=run_inc
+#SBATCH --begin=now
+#SBATCH --dependency=singleton
+#SBATCH --mail-type=ALL
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=64G
+#SBATCH --mem=64G
+#SBATCH --output=00-run_inc_log.out
+
+cd $HOME/malaria-code-repo/2-analysis/
+
+module purge 
+
+# load R version 4.0.2 (required for certain packages)
+module load R/4.0.2
+
+# load software required for spatial analyses in R
+module load physics gdal
+module load physics proj
+
+R CMD BATCH --no-save analysis.R analysis.out
+```
+
+To submit this job, save the code in the chunk above in a script called `myjob.sh` and then enter the following command into terminal: 
+
+```{bash, eval=FALSE}
+sbatch myjob.sh 
+```
+
+To check on the status of your job, enter the following code into terminal: 
+
+```{bash, eval=FALSE}
+squeue -u $USERNAME
+```

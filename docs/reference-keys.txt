@@ -86,6 +86,11 @@ checking-tasks-and-killing-jobs
 running-big-jobs
 example-code-for-runfilesavelogs
 example-usage-for-runfilesavelogs
+slurm
+getting-started
+moving-files-to-sherlock
+testing-your-code
+running-big-jobs-1
 checklists
 pre-analysis-plan-checklist
 code-checklist

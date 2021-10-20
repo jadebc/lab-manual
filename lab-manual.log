@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.7.13)  9 OCT 2021 06:19
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.7.13)  20 OCT 2021 06:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1227,23 +1227,33 @@ Underfull \vbox (badness 10000) detected at line 1576
 Chapter 12.
 [55
 
+] [56]
+Overfull \hbox (7.98502pt too wide) in paragraph at lines 1707--1708
+[]\TU/lmtt/m/n/10 output=00-run_inc_log.out\TU/lmr/m/n/10 : Create a log file c
+alled \TU/lmtt/m/n/10 00-run_inc_log.out
+ []
+
+[57] [58]
+Chapter 13.
+[59
+
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[56] [57] [58
+[60] [61] [62
 
 ]
-Chapter 13.
-[59]
+Chapter 14.
+[63]
 No file lab-manual.bbl.
-[60] (./lab-manual.aux) ) 
+[64] (./lab-manual.aux) ) 
 Here is how much of TeX's memory you used:
- 18561 strings out of 476919
- 327874 string characters out of 5821840
- 821483 words of memory out of 5000000
- 38259 multiletter control sequences out of 15000+600000
+ 18571 strings out of 476919
+ 327993 string characters out of 5821840
+ 821728 words of memory out of 5000000
+ 38269 multiletter control sequences out of 15000+600000
  409921 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,6n,122p,1108b,495s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on lab-manual.pdf (60 pages).
+Output written on lab-manual.pdf (64 pages).

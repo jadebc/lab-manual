@@ -123,7 +123,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2021-10-09}
+\date{\vspace{-2.5em}Updated: 2021-10-20}
 
 \begin{document}
 \maketitle
@@ -1598,6 +1598,158 @@ This example bash script runs files and generates logs for five scripts in the \
 
 \CommentTok{\# Remove copied utility run script}
 \FunctionTok{rm}\NormalTok{ runFileSaveLogs}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{slurm}{%
+\chapter{Slurm and cluster computing}\label{slurm}}
+
+by Anna Nguyen, and Jade Benjamin-Chung
+
+When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the \href{https://www.sherlock.stanford.edu/docs/overview/introduction/}{Sherlock user guide} to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.
+
+\hypertarget{getting-started}{%
+\section{Getting started}\label{getting-started}}
+
+To access Sherlock, in terminal, log in using the following syntax and replace ``USERNAME'' with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.
+
+\begin{verbatim}
+ssh USERNAME@login.sherlock.stanford.edu
+\end{verbatim}
+
+Once you log in, you can view the contents of your home directory in command line by entering \texttt{cd\ \$HOME}. You can create subfolders within this directory using the \texttt{mkdir} command. For example, you could make a ``code'' subdirectory and clone a Github repository there using the following code:
+
+\begin{verbatim}
+cd $HOME
+mkdir code
+git clone https://github.com/jadebc/covid19-infections.git
+\end{verbatim}
+
+\hypertarget{moving-files-to-sherlock}{%
+\section{Moving files to Sherlock}\label{moving-files-to-sherlock}}
+
+The \texttt{\$HOME} directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the \texttt{\$SCRATCH} directory (quota: 100 TB per user). On the \texttt{\$SCRATCH} directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# securely transfer folders from Box to sherlock home directory}
+\CommentTok{\# note: the {-}r option is for folders and is not needed for files}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}1/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}2/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:}
+
+\CommentTok{\# log into sherlock}
+\FunctionTok{ssh}\NormalTok{ USERNAME@login.sherlock.stanford.edu}
+
+\CommentTok{\# make a malaria{-}project subfolder in scratch directory}
+\BuiltInTok{cd} \VariableTok{$SCRATCH}
+\FunctionTok{mkdir}\NormalTok{ malaria{-}project}
+
+\CommentTok{\# move files from sherlock home directory to scratch directory}
+\BuiltInTok{cd} \VariableTok{$HOME}
+\FunctionTok{mv}\NormalTok{ folder{-}1 }\VariableTok{$SCRATCH}\NormalTok{/malaria{-}project/}
+\FunctionTok{mv}\NormalTok{ folder{-}2 }\VariableTok{$SCRATCH}\NormalTok{/malaria{-}project/}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{testing-your-code}{%
+\section{Testing your code}\label{testing-your-code}}
+
+Typically, you will want to initially test your scripts by initiating a development node using the command \texttt{sdev}. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code, or you can test your code in the \href{https://www.sherlock.stanford.edu/docs/user-guide/ondemand/\#rstudio}{Rstudio server via Sherlock}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# start development node}
+\ExtensionTok{sdev}
+
+\CommentTok{\# load R {-} default version (see Sherlock documentation for which version)}
+\ExtensionTok{module}\NormalTok{ load R}
+
+\CommentTok{\# initiate R in command line}
+\ExtensionTok{R}
+\end{Highlighting}
+\end{Shaded}
+
+In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set sherlock{-}specific file paths}
+\ControlFlowTok{if}\KeywordTok{(}\ExtensionTok{Sys.getenv}\ErrorTok{(}\StringTok{"LMOD\_SYSHOST"}\KeywordTok{)}\ExtensionTok{==}\StringTok{"sherlock"}\KeywordTok{)\{}
+  
+  \ExtensionTok{sherlock\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{Sys.getenv}\ErrorTok{(}\StringTok{"HOME"}\KeywordTok{)}\ExtensionTok{,} \StringTok{"/malaria{-}project/"}\KeywordTok{)}
+  
+  \ExtensionTok{data\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{sherlock\_path,} \StringTok{"data/"}\KeywordTok{)}
+  \ExtensionTok{results\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{sherlock\_path,} \StringTok{"results/"}\KeywordTok{)}
+\KeywordTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{running-big-jobs-1}{%
+\section{Running big jobs}\label{running-big-jobs-1}}
+
+Once your test scripts run successfully, you can submit an sbatch script for larger jobs. These are text files with a \texttt{.sh} suffix. Use a text editor like Sublime to create such a script. Documentation on sbatch options is available \href{https://slurm.schedmd.com/sbatch.html}{here}. Here is an example of an sbatch script with the following options:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{job-name=run\_inc}: Job name that will show up in the Sherlock system
+\item
+  \texttt{begin=now}: Requests to start the job as soon as the requested resources are available
+\item
+  \texttt{dependency=singleton}: Jobs can begin after all previously launched jobs with the same name and user have ended.
+\item
+  \texttt{mail-type=ALL}: Receive all types of email notification (e.g., when job starts, fails, ends)
+\item
+  \texttt{cpus-per-task=16}: Request 16 processors per task. The default is one processor per task.
+\item
+  \texttt{mem=64G}: Request 64 GB memory per node.
+\item
+  \texttt{output=00-run\_inc\_log.out}: Create a log file called \texttt{00-run\_inc\_log.out} that contains information about the Slurm session
+\end{itemize}
+
+The file \texttt{analysis.out} will contain the log file for the R script \texttt{analysis.R}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+
+\CommentTok{\#SBATCH {-}{-}job{-}name=run\_inc}
+\CommentTok{\#SBATCH {-}{-}begin=now}
+\CommentTok{\#SBATCH {-}{-}dependency=singleton}
+\CommentTok{\#SBATCH {-}{-}mail{-}type=ALL}
+\CommentTok{\#SBATCH {-}{-}cpus{-}per{-}task=16}
+\CommentTok{\#SBATCH {-}{-}mem=64G}
+\CommentTok{\#SBATCH {-}{-}mem=64G}
+\CommentTok{\#SBATCH {-}{-}output=00{-}run\_inc\_log.out}
+
+\BuiltInTok{cd} \VariableTok{$HOME}\NormalTok{/malaria{-}code{-}repo/2{-}analysis/}
+
+\ExtensionTok{module}\NormalTok{ purge }
+
+\CommentTok{\# load R version 4.0.2 (required for certain packages)}
+\ExtensionTok{module}\NormalTok{ load R/4.0.2}
+
+\CommentTok{\# load software required for spatial analyses in R}
+\ExtensionTok{module}\NormalTok{ load physics gdal}
+\ExtensionTok{module}\NormalTok{ load physics proj}
+
+\ExtensionTok{R}\NormalTok{ CMD BATCH }\AttributeTok{{-}{-}no{-}save}\NormalTok{ analysis.R analysis.out}
+\end{Highlighting}
+\end{Shaded}
+
+To submit this job, save the code in the chunk above in a script called \texttt{myjob.sh} and then enter the following command into terminal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{sbatch}\NormalTok{ myjob.sh }
+\end{Highlighting}
+\end{Shaded}
+
+To check on the status of your job, enter the following code into terminal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{squeue} \AttributeTok{{-}u} \VariableTok{$USERNAME}
 \end{Highlighting}
 \end{Shaded}
 

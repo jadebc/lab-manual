@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Github | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 12 Slurm and cluster computing | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 Github | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 12 Slurm and cluster computing | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Github | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 12 Slurm and cluster computing | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="working-with-big-data.html"/>
-<link rel="next" href="unix.html"/>
+<link rel="prev" href="unix.html"/>
+<link rel="next" href="checklists.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -300,195 +300,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="github" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Github</h1>
-<p>by Stephanie Djajadi and Nolan Pokpongkiat</p>
-<div id="basics" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> Basics</h2>
+<div id="slurm" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Slurm and cluster computing</h1>
+<p>by Anna Nguyen, and Jade Benjamin-Chung</p>
+<p>When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford’s computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the <a href="https://www.sherlock.stanford.edu/docs/overview/introduction/">Sherlock user guide</a> to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.</p>
+<div id="getting-started" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Getting started</h2>
+<p>To access Sherlock, in terminal, log in using the following syntax and replace “USERNAME” with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.</p>
+<pre class="code1"><code>ssh USERNAME@login.sherlock.stanford.edu</code></pre>
+<p>Once you log in, you can view the contents of your home directory in command line by entering <code>cd $HOME</code>. You can create subfolders within this directory using the <code>mkdir</code> command. For example, you could make a “code” subdirectory and clone a Github repository there using the following code:</p>
+<pre class="code2"><code>cd $HOME
+mkdir code
+git clone https://github.com/jadebc/covid19-infections.git</code></pre>
+</div>
+<div id="moving-files-to-sherlock" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Moving files to Sherlock</h2>
+<p>The <code>$HOME</code> directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the <code>$SCRATCH</code> directory (quota: 100 TB per user). On the <code>$SCRATCH</code> directory, files that are not modified after 90 days are automatically deleted. For this reason, it’s best to create a bash script that records the file transfer process for a given project. See example code below:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="slurm.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
+<span id="cb20-2"><a href="slurm.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
+<span id="cb20-3"><a href="slurm.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
+<span id="cb20-4"><a href="slurm.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
+<span id="cb20-5"><a href="slurm.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="slurm.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># log into sherlock</span></span>
+<span id="cb20-7"><a href="slurm.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> USERNAME@login.sherlock.stanford.edu</span>
+<span id="cb20-8"><a href="slurm.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="slurm.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make a malaria-project subfolder in scratch directory</span></span>
+<span id="cb20-10"><a href="slurm.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SCRATCH</span></span>
+<span id="cb20-11"><a href="slurm.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> malaria-project</span>
+<span id="cb20-12"><a href="slurm.html#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="slurm.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># move files from sherlock home directory to scratch directory</span></span>
+<span id="cb20-14"><a href="slurm.html#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span></span>
+<span id="cb20-15"><a href="slurm.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-1 <span class="va">$SCRATCH</span>/malaria-project/</span>
+<span id="cb20-16"><a href="slurm.html#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-2 <span class="va">$SCRATCH</span>/malaria-project/</span></code></pre></div>
+</div>
+<div id="testing-your-code" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Testing your code</h2>
+<p>Typically, you will want to initially test your scripts by initiating a development node using the command <code>sdev</code>. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code, or you can test your code in the <a href="https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio">Rstudio server via Sherlock</a>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="slurm.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start development node</span></span>
+<span id="cb21-2"><a href="slurm.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span>
+<span id="cb21-3"><a href="slurm.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="slurm.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load R - default version (see Sherlock documentation for which version)</span></span>
+<span id="cb21-5"><a href="slurm.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R</span>
+<span id="cb21-6"><a href="slurm.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="slurm.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
+<span id="cb21-8"><a href="slurm.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
+<p>In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="slurm.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
+<span id="cb22-2"><a href="slurm.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
+<span id="cb22-3"><a href="slurm.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-4"><a href="slurm.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
+<span id="cb22-5"><a href="slurm.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-6"><a href="slurm.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
+<span id="cb22-7"><a href="slurm.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
+<span id="cb22-8"><a href="slurm.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+</div>
+<div id="running-big-jobs-1" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Running big jobs</h2>
+<p>Once your test scripts run successfully, you can submit an sbatch script for larger jobs. These are text files with a <code>.sh</code> suffix. Use a text editor like Sublime to create such a script. Documentation on sbatch options is available <a href="https://slurm.schedmd.com/sbatch.html">here</a>. Here is an example of an sbatch script with the following options:</p>
 <ul>
-<li>A detailed tutorial of Git can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">here on the CS61B website</a>.</li>
-<li>If you are already familiar with Git, you can reference the summary at the end of <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">Section B</a>.</li>
-<li>If you have made a mistake in Git, you can refer to this <a href="https://sethrobertson.github.io/GitFixUm/fixup.html">article</a> to undo, fix, or remove commits in git.</li>
+<li><code>job-name=run_inc</code>: Job name that will show up in the Sherlock system</li>
+<li><code>begin=now</code>: Requests to start the job as soon as the requested resources are available</li>
+<li><code>dependency=singleton</code>: Jobs can begin after all previously launched jobs with the same name and user have ended.</li>
+<li><code>mail-type=ALL</code>: Receive all types of email notification (e.g., when job starts, fails, ends)</li>
+<li><code>cpus-per-task=16</code>: Request 16 processors per task. The default is one processor per task.</li>
+<li><code>mem=64G</code>: Request 64 GB memory per node.</li>
+<li><code>output=00-run_inc_log.out</code>: Create a log file called <code>00-run_inc_log.out</code> that contains information about the Slurm session</li>
 </ul>
-</div>
-<div id="github-desktop" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> Github Desktop</h2>
-<p>While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides <a href="https://desktop.github.com/">Github Desktop</a> as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.</p>
-</div>
-<div id="git-branching" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Git Branching</h2>
-<p>Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you’ve finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:</p>
-<ul>
-<li>You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don’t want to break the code for them.</li>
-<li>You want to start working on a new part of the project, but you aren’t sure yet if your changes will work and make it to the final product.</li>
-<li>You are working with others and don’t want to mix up your current work with theirs, even if you want to bring your work together later in the future.</li>
-</ul>
-<p>A detailed tutorial on Git Branching can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional">here</a>. You can also find instructions on how to handle merge conflicts when joining branches together.</p>
-</div>
-<div id="example-workflow" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Example Workflow</h2>
-<p>A standard workflow when starting on a new project and contributing code looks like this:</p>
-<table>
-<colgroup>
-<col width="36%" />
-<col width="64%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SETUP: FIRST TIME ONLY: <code>git clone &lt;url&gt; &lt;directory_name&gt;</code></td>
-<td>Clone the repo. This copies of all the project files in its current state on Github to your local computer.</td>
-</tr>
-<tr class="even">
-<td>1. <code>git pull origin master</code></td>
-<td>update the state of your files to match the most current version on GitHub</td>
-</tr>
-<tr class="odd">
-<td>2. <code>git checkout -b &lt;new_branch_name&gt;</code></td>
-<td>create new branch that you’ll be working on and go to it</td>
-</tr>
-<tr class="even">
-<td>3. Make some file changes</td>
-<td>work on your feature/implementation</td>
-</tr>
-<tr class="odd">
-<td>4. <code>git add -p</code></td>
-<td>add changes to stage for commit, going through changes line by line</td>
-</tr>
-<tr class="even">
-<td>5. <code>git commit -m &lt;commit message&gt;</code></td>
-<td>commit files with a message</td>
-</tr>
-<tr class="odd">
-<td>6. <code>git push -u origin &lt;branch_name&gt;</code></td>
-<td>push branch to remote and set to track (-u only needed if this is first push)</td>
-</tr>
-<tr class="even">
-<td>7. Repeat step 4-5.</td>
-<td>work and commit often</td>
-</tr>
-<tr class="odd">
-<td>8. <code>git push</code></td>
-<td>push work to remote branch for others to view</td>
-</tr>
-<tr class="even">
-<td>9. Follow the link given from the <code>git push</code> command to <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request">submit a pull request (PR) on GitHub online</a></td>
-<td>PR merges in work from your branch into master</td>
-</tr>
-<tr class="odd">
-<td>(10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>11. <code>git fetch --all --prune</code></td>
-<td>clean up your local git by untracking deleted remote branches</td>
-</tr>
-</tbody>
-</table>
-<p>Other helpful commands are listed below.</p>
-</div>
-<div id="commonly-used-git-commands" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> Commonly Used Git Commands</h2>
-<table>
-<colgroup>
-<col width="36%" />
-<col width="64%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>git clone &lt;url&gt; &lt;directory_name&gt;</code></td>
-<td>clone a repository, only needs to be done the first time</td>
-</tr>
-<tr class="even">
-<td><code>git pull origin master</code></td>
-<td>pull from <code>master</code> before making any changes</td>
-</tr>
-<tr class="odd">
-<td><code>git branch</code></td>
-<td>check what branch you are on</td>
-</tr>
-<tr class="even">
-<td><code>git branch -a</code></td>
-<td>check what branch you are on + all remote branches</td>
-</tr>
-<tr class="odd">
-<td><code>git checkout -b &lt;new_branch_name&gt;</code></td>
-<td>create new branch and go to it (only necessary when you create a new branch)</td>
-</tr>
-<tr class="even">
-<td><code>git checkout &lt;branch name&gt;</code></td>
-<td>switch to branch</td>
-</tr>
-<tr class="odd">
-<td><code>git add &lt;file name&gt;</code></td>
-<td>add file to stage for commit</td>
-</tr>
-<tr class="even">
-<td><code>git add -p</code></td>
-<td>adds changes to commit, showing you changes one by one</td>
-</tr>
-<tr class="odd">
-<td><code>git commit -m &lt;commit message&gt;</code></td>
-<td>commit file with a message</td>
-</tr>
-<tr class="even">
-<td><code>git push -u origin &lt;branch_name&gt;</code></td>
-<td>push branch to remote and set to track (-u only works if this is first push)</td>
-</tr>
-<tr class="odd">
-<td><code>git branch --set-upstream-to origin &lt;branch_name&gt;</code></td>
-<td>set upstream to <code>origin/&lt;branch_name&gt;</code> (use if you forgot -u on first push)</td>
-</tr>
-<tr class="even">
-<td><code>git push origin &lt;branch_name&gt;</code></td>
-<td>push work to branch</td>
-</tr>
-<tr class="odd">
-<td><code>git checkout &lt;branch_name&gt;</code>  <code>git merge master</code></td>
-<td>switch to branch and merge changes from <code>master</code> into <code>&lt;branch_name&gt;</code> (two commands)</td>
-</tr>
-<tr class="even">
-<td><code>git merge &lt;branch_name&gt; master</code></td>
-<td>switch to branch and merge changes from <code>master</code> into <code>&lt;branch_name&gt;</code> (one command)</td>
-</tr>
-<tr class="odd">
-<td><code>git checkout --track origin/&lt;branch_name&gt;</code></td>
-<td>pulls a remote branch and creates a local branch to track it (use when trying to pull someone else’s branch onto your local computer)</td>
-</tr>
-<tr class="even">
-<td><code>git push --delete &lt;remote_name&gt; &lt;branch_name&gt;</code></td>
-<td>delete remote branch</td>
-</tr>
-<tr class="odd">
-<td><code>git branch -d &lt;branch_name&gt;</code></td>
-<td>deletes local branch, -D to force</td>
-</tr>
-<tr class="even">
-<td><code>git fetch --all --prune</code></td>
-<td>untrack deleted remote branches</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="how-often-should-i-commit" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> How often should I commit?</h2>
-<p>It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.</p>
-</div>
-<div id="what-should-be-pushed-to-github" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> What should be pushed to Github?</h2>
-<p>Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.</p>
-<p>There is a standardized <code>.gitignore</code> for <code>R</code> which you <a href="https://github.com/github/gitignore/blob/master/R.gitignore">can download</a> and add to your project. This ensures you’re not committing log files or things that would otherwise best be left ignored to GitHub. This is a <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">great discussion of project-oriented workflows</a>, extolling the virtues of a self-contained, portable projects, for your reference.</p>
+<p>The file <code>analysis.out</code> will contain the log file for the R script <code>analysis.R</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="slurm.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb23-2"><a href="slurm.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="slurm.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
+<span id="cb23-4"><a href="slurm.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
+<span id="cb23-5"><a href="slurm.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
+<span id="cb23-6"><a href="slurm.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
+<span id="cb23-7"><a href="slurm.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
+<span id="cb23-8"><a href="slurm.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb23-9"><a href="slurm.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb23-10"><a href="slurm.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
+<span id="cb23-11"><a href="slurm.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="slurm.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
+<span id="cb23-13"><a href="slurm.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="slurm.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
+<span id="cb23-15"><a href="slurm.html#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="slurm.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
+<span id="cb23-17"><a href="slurm.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
+<span id="cb23-18"><a href="slurm.html#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="slurm.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
+<span id="cb23-20"><a href="slurm.html#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
+<span id="cb23-21"><a href="slurm.html#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<span id="cb23-22"><a href="slurm.html#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-23"><a href="slurm.html#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
+<p>To submit this job, save the code in the chunk above in a script called <code>myjob.sh</code> and then enter the following command into terminal:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="slurm.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
+<p>To check on the status of your job, enter the following code into terminal:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="slurm.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
 
 </div>
 </div>
@@ -497,8 +402,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="working-with-big-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="unix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="checklists.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -529,7 +434,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/09-github.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/11-slurm.Rmd",
 "text": "Edit"
 },
 "history": {
