@@ -123,7 +123,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2021-10-20}
+\date{\vspace{-2.5em}Updated: 2021-11-09}
 
 \begin{document}
 \maketitle
@@ -1625,6 +1625,55 @@ mkdir code
 git clone https://github.com/jadebc/covid19-infections.git
 \end{verbatim}
 
+\hypertarget{one-time-system-set-up}{%
+\subsection{One-Time System Set-Up}\label{one-time-system-set-up}}
+
+To keep the install packages consistent across diferent nodes, you will need to explcitly
+
+Open your \texttt{\textasciitilde{}/.Renviron} file (\texttt{vi\ \textasciitilde{}/.Renviron}) and append the following line:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{R\_LIBS=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0}
+\end{Highlighting}
+\end{Shaded}
+
+Alternatively, run an R script with the following code on Sherlock:
+
+\begin{verbatim}
+r_environ_file_path = file.path(Sys.getenv("HOME"), ".Renviron")
+if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
+
+cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0",
+    file = r_environ_file_path, sep = "\n", append = TRUE)
+\end{verbatim}
+
+To load packages that run off of C++, you'll need to set the correct compiler options in your R environment.
+
+Open the Makevars file in Sherlock (\texttt{vi\ \textasciitilde{}/.R/Makevars}) and append the following lines
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{CXX14FLAGS=}\NormalTok{{-}O3 }\ExtensionTok{{-}march=native} \AttributeTok{{-}mtune}\OperatorTok{=}\NormalTok{native }\AttributeTok{{-}fPIC}
+
+\VariableTok{CXX14=}\NormalTok{g++}
+\end{Highlighting}
+\end{Shaded}
+
+Alternatively, create an R script with the following code, and run it on Sherlock:
+
+\begin{verbatim}
+dotR = file.path(Sys.getenv("HOME"), ".R")
+if (!file.exists(dotR)) dir.create(dotR)
+
+M = file.path(dotR, "Makevars")
+if (!file.exists(M)) file.create(M)
+
+cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC",
+    "CXX14=g++",
+    file = M, sep = "\n", append = TRUE)
+\end{verbatim}
+
 \hypertarget{moving-files-to-sherlock}{%
 \section{Moving files to Sherlock}\label{moving-files-to-sherlock}}
 
@@ -1728,6 +1777,9 @@ The file \texttt{analysis.out} will contain the log file for the R script \textt
 
 \CommentTok{\# load R version 4.0.2 (required for certain packages)}
 \ExtensionTok{module}\NormalTok{ load R/4.0.2}
+
+\CommentTok{\# load gcc, a C++ compiler (required for certain packages)}
+\ExtensionTok{module}\NormalTok{ load gcc/10}
 
 \CommentTok{\# load software required for spatial analyses in R}
 \ExtensionTok{module}\NormalTok{ load physics gdal}

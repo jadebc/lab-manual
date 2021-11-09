@@ -88,6 +88,7 @@ example-code-for-runfilesavelogs
 example-usage-for-runfilesavelogs
 slurm
 getting-started
+one-time-system-set-up
 moving-files-to-sherlock
 testing-your-code
 running-big-jobs-1

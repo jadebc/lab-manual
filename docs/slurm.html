@@ -31,7 +31,7 @@
   
 <link rel="prev" href="unix.html"/>
 <link rel="next" href="checklists.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,7 +261,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="slurm.html"><a href="slurm.html"><i class="fa fa-check"></i><b>12</b> Slurm and cluster computing</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="slurm.html"><a href="slurm.html#getting-started"><i class="fa fa-check"></i><b>12.1</b> Getting started</a></li>
+<li class="chapter" data-level="12.1" data-path="slurm.html"><a href="slurm.html#getting-started"><i class="fa fa-check"></i><b>12.1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>12.1.1</b> One-Time System Set-Up</a></li>
+</ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
 <li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
 <li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.4</b> Running big jobs</a></li>
@@ -312,47 +315,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre class="code2"><code>cd $HOME
 mkdir code
 git clone https://github.com/jadebc/covid19-infections.git</code></pre>
+<div id="one-time-system-set-up" class="section level3" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> One-Time System Set-Up</h3>
+<p>To keep the install packages consistent across diferent nodes, you will need to explcitly</p>
+<p>Open your <code>~/.Renviron</code> file (<code>vi ~/.Renviron</code>) and append the following line:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="slurm.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">R_LIBS=</span>~/R/x86_64-pc-linux-gnu-library/4.0</span></code></pre></div>
+<p>Alternatively, run an R script with the following code on Sherlock:</p>
+<pre class="code3"><code>r_environ_file_path = file.path(Sys.getenv(&quot;HOME&quot;), &quot;.Renviron&quot;)
+if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
+
+cat(&quot;\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0&quot;,
+    file = r_environ_file_path, sep = &quot;\n&quot;, append = TRUE)</code></pre>
+<p>To load packages that run off of C++, you’ll need to set the correct compiler options in your R environment.</p>
+<p>Open the Makevars file in Sherlock (<code>vi ~/.R/Makevars</code>) and append the following lines</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="slurm.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14FLAGS=</span>-O3 <span class="ex">-march=native</span> <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-fPIC</span></span>
+<span id="cb22-2"><a href="slurm.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="slurm.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14=</span>g++</span></code></pre></div>
+<p>Alternatively, create an R script with the following code, and run it on Sherlock:</p>
+<pre class="code4"><code>dotR = file.path(Sys.getenv(&quot;HOME&quot;), &quot;.R&quot;)
+if (!file.exists(dotR)) dir.create(dotR)
+
+M = file.path(dotR, &quot;Makevars&quot;)
+if (!file.exists(M)) file.create(M)
+
+cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
+    &quot;CXX14=g++&quot;,
+    file = M, sep = &quot;\n&quot;, append = TRUE)</code></pre>
+</div>
 </div>
 <div id="moving-files-to-sherlock" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> Moving files to Sherlock</h2>
 <p>The <code>$HOME</code> directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the <code>$SCRATCH</code> directory (quota: 100 TB per user). On the <code>$SCRATCH</code> directory, files that are not modified after 90 days are automatically deleted. For this reason, it’s best to create a bash script that records the file transfer process for a given project. See example code below:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="slurm.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
-<span id="cb20-2"><a href="slurm.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
-<span id="cb20-3"><a href="slurm.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
-<span id="cb20-4"><a href="slurm.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
-<span id="cb20-5"><a href="slurm.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="slurm.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># log into sherlock</span></span>
-<span id="cb20-7"><a href="slurm.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> USERNAME@login.sherlock.stanford.edu</span>
-<span id="cb20-8"><a href="slurm.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="slurm.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make a malaria-project subfolder in scratch directory</span></span>
-<span id="cb20-10"><a href="slurm.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SCRATCH</span></span>
-<span id="cb20-11"><a href="slurm.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> malaria-project</span>
-<span id="cb20-12"><a href="slurm.html#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="slurm.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># move files from sherlock home directory to scratch directory</span></span>
-<span id="cb20-14"><a href="slurm.html#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span></span>
-<span id="cb20-15"><a href="slurm.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-1 <span class="va">$SCRATCH</span>/malaria-project/</span>
-<span id="cb20-16"><a href="slurm.html#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-2 <span class="va">$SCRATCH</span>/malaria-project/</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="slurm.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
+<span id="cb24-2"><a href="slurm.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
+<span id="cb24-3"><a href="slurm.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
+<span id="cb24-4"><a href="slurm.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
+<span id="cb24-5"><a href="slurm.html#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="slurm.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># log into sherlock</span></span>
+<span id="cb24-7"><a href="slurm.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> USERNAME@login.sherlock.stanford.edu</span>
+<span id="cb24-8"><a href="slurm.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="slurm.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make a malaria-project subfolder in scratch directory</span></span>
+<span id="cb24-10"><a href="slurm.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SCRATCH</span></span>
+<span id="cb24-11"><a href="slurm.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> malaria-project</span>
+<span id="cb24-12"><a href="slurm.html#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="slurm.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># move files from sherlock home directory to scratch directory</span></span>
+<span id="cb24-14"><a href="slurm.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span></span>
+<span id="cb24-15"><a href="slurm.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-1 <span class="va">$SCRATCH</span>/malaria-project/</span>
+<span id="cb24-16"><a href="slurm.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-2 <span class="va">$SCRATCH</span>/malaria-project/</span></code></pre></div>
 </div>
 <div id="testing-your-code" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Testing your code</h2>
 <p>Typically, you will want to initially test your scripts by initiating a development node using the command <code>sdev</code>. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code, or you can test your code in the <a href="https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio">Rstudio server via Sherlock</a>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="slurm.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start development node</span></span>
-<span id="cb21-2"><a href="slurm.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span>
-<span id="cb21-3"><a href="slurm.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="slurm.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load R - default version (see Sherlock documentation for which version)</span></span>
-<span id="cb21-5"><a href="slurm.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R</span>
-<span id="cb21-6"><a href="slurm.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="slurm.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
-<span id="cb21-8"><a href="slurm.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="slurm.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start development node</span></span>
+<span id="cb25-2"><a href="slurm.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span>
+<span id="cb25-3"><a href="slurm.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="slurm.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load R - default version (see Sherlock documentation for which version)</span></span>
+<span id="cb25-5"><a href="slurm.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R</span>
+<span id="cb25-6"><a href="slurm.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="slurm.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
+<span id="cb25-8"><a href="slurm.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
 <p>In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="slurm.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
-<span id="cb22-2"><a href="slurm.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
-<span id="cb22-3"><a href="slurm.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-4"><a href="slurm.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
-<span id="cb22-5"><a href="slurm.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-6"><a href="slurm.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
-<span id="cb22-7"><a href="slurm.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
-<span id="cb22-8"><a href="slurm.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="slurm.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
+<span id="cb26-2"><a href="slurm.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
+<span id="cb26-3"><a href="slurm.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-4"><a href="slurm.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
+<span id="cb26-5"><a href="slurm.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-6"><a href="slurm.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
+<span id="cb26-7"><a href="slurm.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
+<span id="cb26-8"><a href="slurm.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
 </div>
 <div id="running-big-jobs-1" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> Running big jobs</h2>
@@ -367,33 +397,36 @@ git clone https://github.com/jadebc/covid19-infections.git</code></pre>
 <li><code>output=00-run_inc_log.out</code>: Create a log file called <code>00-run_inc_log.out</code> that contains information about the Slurm session</li>
 </ul>
 <p>The file <code>analysis.out</code> will contain the log file for the R script <code>analysis.R</code>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="slurm.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb23-2"><a href="slurm.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="slurm.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
-<span id="cb23-4"><a href="slurm.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
-<span id="cb23-5"><a href="slurm.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
-<span id="cb23-6"><a href="slurm.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
-<span id="cb23-7"><a href="slurm.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
-<span id="cb23-8"><a href="slurm.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
-<span id="cb23-9"><a href="slurm.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
-<span id="cb23-10"><a href="slurm.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
-<span id="cb23-11"><a href="slurm.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="slurm.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
-<span id="cb23-13"><a href="slurm.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="slurm.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
-<span id="cb23-15"><a href="slurm.html#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-16"><a href="slurm.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
-<span id="cb23-17"><a href="slurm.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
-<span id="cb23-18"><a href="slurm.html#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-19"><a href="slurm.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
-<span id="cb23-20"><a href="slurm.html#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
-<span id="cb23-21"><a href="slurm.html#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
-<span id="cb23-22"><a href="slurm.html#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-23"><a href="slurm.html#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="slurm.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb27-2"><a href="slurm.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="slurm.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
+<span id="cb27-4"><a href="slurm.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
+<span id="cb27-5"><a href="slurm.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
+<span id="cb27-6"><a href="slurm.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
+<span id="cb27-7"><a href="slurm.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
+<span id="cb27-8"><a href="slurm.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb27-9"><a href="slurm.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb27-10"><a href="slurm.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
+<span id="cb27-11"><a href="slurm.html#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="slurm.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
+<span id="cb27-13"><a href="slurm.html#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="slurm.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
+<span id="cb27-15"><a href="slurm.html#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="slurm.html#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
+<span id="cb27-17"><a href="slurm.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
+<span id="cb27-18"><a href="slurm.html#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="slurm.html#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
+<span id="cb27-20"><a href="slurm.html#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
+<span id="cb27-21"><a href="slurm.html#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-22"><a href="slurm.html#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
+<span id="cb27-23"><a href="slurm.html#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
+<span id="cb27-24"><a href="slurm.html#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<span id="cb27-25"><a href="slurm.html#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="slurm.html#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
 <p>To submit this job, save the code in the chunk above in a script called <code>myjob.sh</code> and then enter the following command into terminal:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="slurm.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="slurm.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
 <p>To check on the status of your job, enter the following code into terminal:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="slurm.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="slurm.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
 
 </div>
 </div>

@@ -21,6 +21,51 @@ mkdir code
 git clone https://github.com/jadebc/covid19-infections.git
 ```
 
+### One-Time System Set-Up
+
+To keep the install packages consistent across diferent nodes, you will need to explcitly 
+
+Open your `~/.Renviron` file (`vi ~/.Renviron`) and append the following line:
+
+```{bash, eval=FALSE}
+R_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0
+```
+
+Alternatively, run an R script with the following code on Sherlock:
+
+```{code3, eval=FALSE}
+r_environ_file_path = file.path(Sys.getenv("HOME"), ".Renviron")
+if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
+
+cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0",
+    file = r_environ_file_path, sep = "\n", append = TRUE)
+```
+
+To load packages that run off of C++, you'll need to set the correct compiler options in your R environment. 
+
+Open the Makevars file in Sherlock (`vi ~/.R/Makevars`) and append the following lines
+
+```{bash, eval=FALSE}
+CXX14FLAGS=-O3 -march=native -mtune=native -fPIC
+
+CXX14=g++
+```
+
+Alternatively, create an R script with the following code, and run it on Sherlock: 
+
+```{code4, eval=FALSE}
+dotR = file.path(Sys.getenv("HOME"), ".R")
+if (!file.exists(dotR)) dir.create(dotR)
+
+M = file.path(dotR, "Makevars")
+if (!file.exists(M)) file.create(M)
+
+cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC",
+    "CXX14=g++",
+    file = M, sep = "\n", append = TRUE)
+```
+
+
 ## Moving files to Sherlock
 The `$HOME` directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the `$SCRATCH` directory (quota: 100 TB per user). On the `$SCRATCH` directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below: 
 
@@ -102,6 +147,9 @@ module purge
 
 # load R version 4.0.2 (required for certain packages)
 module load R/4.0.2
+
+# load gcc, a C++ compiler (required for certain packages)
+module load gcc/10
 
 # load software required for spatial analyses in R
 module load physics gdal
