@@ -23,9 +23,11 @@ git clone https://github.com/jadebc/covid19-infections.git
 
 ### One-Time System Set-Up
 
-To keep the install packages consistent across diferent nodes, you will need to explcitly 
+To keep the install packages consistent across different nodes, you will need to explicitly set the pathway to your R library directory. 
 
 Open your `~/.Renviron` file (`vi ~/.Renviron`) and append the following line:
+
+*Note: Once you open the file using `vi [file_name]`, you must press `i` (on Mac OS) or `Insert` (on Windows) to make edits. After you finish, hit `Esc` to exit editing mode and type `:wq` to save and close the file.*
 
 ```{bash, eval=FALSE}
 R_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0
@@ -47,7 +49,6 @@ Open the Makevars file in Sherlock (`vi ~/.R/Makevars`) and append the following
 
 ```{bash, eval=FALSE}
 CXX14FLAGS=-O3 -march=native -mtune=native -fPIC
-
 CXX14=g++
 ```
 

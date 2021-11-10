@@ -317,8 +317,9 @@ mkdir code
 git clone https://github.com/jadebc/covid19-infections.git</code></pre>
 <div id="one-time-system-set-up" class="section level3" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> One-Time System Set-Up</h3>
-<p>To keep the install packages consistent across diferent nodes, you will need to explcitly</p>
+<p>To keep the install packages consistent across different nodes, you will need to explicitly set the pathway to your R library directory.</p>
 <p>Open your <code>~/.Renviron</code> file (<code>vi ~/.Renviron</code>) and append the following line:</p>
+<p><em>Note: Once you open the file using <code>vi [file_name]</code>, you must press <code>i</code> (on Mac OS) or <code>Insert</code> (on Windows) to make edits. After you finish, hit <code>Esc</code> to exit editing mode and type <code>:wq</code> to save and close the file.</em></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="slurm.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">R_LIBS=</span>~/R/x86_64-pc-linux-gnu-library/4.0</span></code></pre></div>
 <p>Alternatively, run an R script with the following code on Sherlock:</p>
 <pre class="code3"><code>r_environ_file_path = file.path(Sys.getenv(&quot;HOME&quot;), &quot;.Renviron&quot;)
@@ -329,8 +330,7 @@ cat(&quot;\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0&quot;,
 <p>To load packages that run off of C++, you’ll need to set the correct compiler options in your R environment.</p>
 <p>Open the Makevars file in Sherlock (<code>vi ~/.R/Makevars</code>) and append the following lines</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="slurm.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14FLAGS=</span>-O3 <span class="ex">-march=native</span> <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-fPIC</span></span>
-<span id="cb22-2"><a href="slurm.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="slurm.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14=</span>g++</span></code></pre></div>
+<span id="cb22-2"><a href="slurm.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14=</span>g++</span></code></pre></div>
 <p>Alternatively, create an R script with the following code, and run it on Sherlock:</p>
 <pre class="code4"><code>dotR = file.path(Sys.getenv(&quot;HOME&quot;), &quot;.R&quot;)
 if (!file.exists(dotR)) dir.create(dotR)

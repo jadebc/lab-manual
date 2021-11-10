@@ -1628,9 +1628,11 @@ git clone https://github.com/jadebc/covid19-infections.git
 \hypertarget{one-time-system-set-up}{%
 \subsection{One-Time System Set-Up}\label{one-time-system-set-up}}
 
-To keep the install packages consistent across diferent nodes, you will need to explcitly
+To keep the install packages consistent across different nodes, you will need to explicitly set the pathway to your R library directory.
 
 Open your \texttt{\textasciitilde{}/.Renviron} file (\texttt{vi\ \textasciitilde{}/.Renviron}) and append the following line:
+
+\emph{Note: Once you open the file using \texttt{vi\ {[}file\_name{]}}, you must press \texttt{i} (on Mac OS) or \texttt{Insert} (on Windows) to make edits. After you finish, hit \texttt{Esc} to exit editing mode and type \texttt{:wq} to save and close the file.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1655,7 +1657,6 @@ Open the Makevars file in Sherlock (\texttt{vi\ \textasciitilde{}/.R/Makevars}) 
 \begin{Shaded}
 \begin{Highlighting}[]
 \VariableTok{CXX14FLAGS=}\NormalTok{{-}O3 }\ExtensionTok{{-}march=native} \AttributeTok{{-}mtune}\OperatorTok{=}\NormalTok{native }\AttributeTok{{-}fPIC}
-
 \VariableTok{CXX14=}\NormalTok{g++}
 \end{Highlighting}
 \end{Shaded}
