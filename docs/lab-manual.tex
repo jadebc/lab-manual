@@ -123,7 +123,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2021-11-09}
+\date{\vspace{-2.5em}Updated: 2021-12-09}
 
 \begin{document}
 \maketitle
@@ -1682,22 +1682,18 @@ The \texttt{\$HOME} directory is a good place to store code and small test files
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# note: the following steps should be done from your local }
+\CommentTok{\# (not after ssh{-}ing into sherlock)}
+
 \CommentTok{\# securely transfer folders from Box to sherlock home directory}
 \CommentTok{\# note: the {-}r option is for folders and is not needed for files}
-\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}1/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:}
-\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}2/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}1/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/}
 
-\CommentTok{\# log into sherlock}
-\FunctionTok{ssh}\NormalTok{ USERNAME@login.sherlock.stanford.edu}
+\CommentTok{\# securely transfer folders from Box to your sherlock scratch directory}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}2/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/}
 
-\CommentTok{\# make a malaria{-}project subfolder in scratch directory}
-\BuiltInTok{cd} \VariableTok{$SCRATCH}
-\FunctionTok{mkdir}\NormalTok{ malaria{-}project}
-
-\CommentTok{\# move files from sherlock home directory to scratch directory}
-\BuiltInTok{cd} \VariableTok{$HOME}
-\FunctionTok{mv}\NormalTok{ folder{-}1 }\VariableTok{$SCRATCH}\NormalTok{/malaria{-}project/}
-\FunctionTok{mv}\NormalTok{ folder{-}2 }\VariableTok{$SCRATCH}\NormalTok{/malaria{-}project/}
+\CommentTok{\# securely transfer folders from Box to our shared scratch directory}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}3/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1755,6 +1751,8 @@ Once your test scripts run successfully, you can submit an sbatch script for lar
   \texttt{mem=64G}: Request 64 GB memory per node.
 \item
   \texttt{output=00-run\_inc\_log.out}: Create a log file called \texttt{00-run\_inc\_log.out} that contains information about the Slurm session
+\item
+  \texttt{time=47:59:00}: Set maximum run time to 47 hours and 59 minutes. If you don't include this option, Sherlock will automatically exit scripts after 2 hours of run time.
 \end{itemize}
 
 The file \texttt{analysis.out} will contain the log file for the R script \texttt{analysis.R}.
@@ -1771,6 +1769,7 @@ The file \texttt{analysis.out} will contain the log file for the R script \textt
 \CommentTok{\#SBATCH {-}{-}mem=64G}
 \CommentTok{\#SBATCH {-}{-}mem=64G}
 \CommentTok{\#SBATCH {-}{-}output=00{-}run\_inc\_log.out}
+\CommentTok{\#SBATCH {-}{-}time=47:59:00}
 
 \BuiltInTok{cd} \VariableTok{$HOME}\NormalTok{/malaria{-}code{-}repo/2{-}analysis/}
 
@@ -2002,6 +2001,15 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE Definition of authorship}
 \item
   \href{https://www.nature.com/articles/nphys724}{Nature article on elements of style for scientific writing}
+\end{itemize}
+
+\hypertarget{presentations}{%
+\section{Presentations}\label{presentations}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.nature.com/articles/d41586-021-03603-2}{How to tell a compelling story in scientific presentations}
 \end{itemize}
 
   \bibliography{book.bib,packages.bib}

@@ -28,3 +28,7 @@ by Jade Benjamin-Chung and Kunal Mishra
 - [Tips on how to write a great science paper](https://www.nature.com/articles/d41586-019-02918-5)
 - [ICMJE Definition of authorship](http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html)
 - [Nature article on elements of style for scientific writing](https://www.nature.com/articles/nphys724)
+
+## Presentations
+
+- [How to tell a compelling story in scientific presentations](https://www.nature.com/articles/d41586-021-03603-2)

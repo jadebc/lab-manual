@@ -102,3 +102,4 @@ resources-for-r
 resources-for-git-github
 scientific-figures
 writing
+presentations

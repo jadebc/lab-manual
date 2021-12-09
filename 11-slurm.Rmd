@@ -71,22 +71,18 @@ cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC",
 The `$HOME` directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the `$SCRATCH` directory (quota: 100 TB per user). On the `$SCRATCH` directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below: 
 
 ```{bash, eval=FALSE}
+# note: the following steps should be done from your local 
+# (not after ssh-ing into sherlock)
+
 # securely transfer folders from Box to sherlock home directory
 # note: the -r option is for folders and is not needed for files
-scp -r "Box/malaria-project/folder-1/" USERNAME@login.sherlock.stanford.edu:
-scp -r "Box/malaria-project/folder-2/" USERNAME@login.sherlock.stanford.edu:
+scp -r "Box/malaria-project/folder-1/" USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/
 
-# log into sherlock
-ssh USERNAME@login.sherlock.stanford.edu
+# securely transfer folders from Box to your sherlock scratch directory
+scp -r "Box/malaria-project/folder-2/" USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/
 
-# make a malaria-project subfolder in scratch directory
-cd $SCRATCH
-mkdir malaria-project
-
-# move files from sherlock home directory to scratch directory
-cd $HOME
-mv folder-1 $SCRATCH/malaria-project/
-mv folder-2 $SCRATCH/malaria-project/
+# securely transfer folders from Box to our shared scratch directory
+scp -r "Box/malaria-project/folder-3/" USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/
 ```
 
 ## Testing your code
@@ -127,6 +123,7 @@ Once your test scripts run successfully, you can submit an sbatch script for lar
 - `cpus-per-task=16`: Request 16 processors per task. The default is one processor per task.
 - `mem=64G`: Request 64 GB memory per node. 
 - `output=00-run_inc_log.out`: Create a log file called `00-run_inc_log.out` that contains information about the Slurm session
+- `time=47:59:00`: Set maximum run time to 47 hours and 59 minutes. If you don't include this option, Sherlock will automatically exit scripts after 2 hours of run time. 
 
 The file `analysis.out` will contain the log file for the R script `analysis.R`. 
 
@@ -141,6 +138,7 @@ The file `analysis.out` will contain the log file for the R script `analysis.R`.
 #SBATCH --mem=64G
 #SBATCH --mem=64G
 #SBATCH --output=00-run_inc_log.out
+#SBATCH --time=47:59:00
 
 cd $HOME/malaria-code-repo/2-analysis/
 
@@ -170,3 +168,4 @@ To check on the status of your job, enter the following code into terminal:
 ```{bash, eval=FALSE}
 squeue -u $USERNAME
 ```
+

@@ -31,7 +31,7 @@
   
 <link rel="prev" href="unix.html"/>
 <link rel="next" href="checklists.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -282,6 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2" data-path="resources.html"><a href="resources.html#resources-for-git-github"><i class="fa fa-check"></i><b>14.2</b> Resources for Git &amp; Github</a></li>
 <li class="chapter" data-level="14.3" data-path="resources.html"><a href="resources.html#scientific-figures"><i class="fa fa-check"></i><b>14.3</b> Scientific figures</a></li>
 <li class="chapter" data-level="14.4" data-path="resources.html"><a href="resources.html#writing"><i class="fa fa-check"></i><b>14.4</b> Writing</a></li>
+<li class="chapter" data-level="14.5" data-path="resources.html"><a href="resources.html#presentations"><i class="fa fa-check"></i><b>14.5</b> Presentations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
@@ -346,22 +347,18 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <div id="moving-files-to-sherlock" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> Moving files to Sherlock</h2>
 <p>The <code>$HOME</code> directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the <code>$SCRATCH</code> directory (quota: 100 TB per user). On the <code>$SCRATCH</code> directory, files that are not modified after 90 days are automatically deleted. For this reason, it’s best to create a bash script that records the file transfer process for a given project. See example code below:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="slurm.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
-<span id="cb24-2"><a href="slurm.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
-<span id="cb24-3"><a href="slurm.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
-<span id="cb24-4"><a href="slurm.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:</span>
-<span id="cb24-5"><a href="slurm.html#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="slurm.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># log into sherlock</span></span>
-<span id="cb24-7"><a href="slurm.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> USERNAME@login.sherlock.stanford.edu</span>
-<span id="cb24-8"><a href="slurm.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="slurm.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make a malaria-project subfolder in scratch directory</span></span>
-<span id="cb24-10"><a href="slurm.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SCRATCH</span></span>
-<span id="cb24-11"><a href="slurm.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> malaria-project</span>
-<span id="cb24-12"><a href="slurm.html#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="slurm.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># move files from sherlock home directory to scratch directory</span></span>
-<span id="cb24-14"><a href="slurm.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span></span>
-<span id="cb24-15"><a href="slurm.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-1 <span class="va">$SCRATCH</span>/malaria-project/</span>
-<span id="cb24-16"><a href="slurm.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> folder-2 <span class="va">$SCRATCH</span>/malaria-project/</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="slurm.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the following steps should be done from your local </span></span>
+<span id="cb24-2"><a href="slurm.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (not after ssh-ing into sherlock)</span></span>
+<span id="cb24-3"><a href="slurm.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="slurm.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
+<span id="cb24-5"><a href="slurm.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
+<span id="cb24-6"><a href="slurm.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/</span>
+<span id="cb24-7"><a href="slurm.html#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="slurm.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to your sherlock scratch directory</span></span>
+<span id="cb24-9"><a href="slurm.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/</span>
+<span id="cb24-10"><a href="slurm.html#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="slurm.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to our shared scratch directory</span></span>
+<span id="cb24-12"><a href="slurm.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-3/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/</span></code></pre></div>
 </div>
 <div id="testing-your-code" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Testing your code</h2>
@@ -395,6 +392,7 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <li><code>cpus-per-task=16</code>: Request 16 processors per task. The default is one processor per task.</li>
 <li><code>mem=64G</code>: Request 64 GB memory per node.</li>
 <li><code>output=00-run_inc_log.out</code>: Create a log file called <code>00-run_inc_log.out</code> that contains information about the Slurm session</li>
+<li><code>time=47:59:00</code>: Set maximum run time to 47 hours and 59 minutes. If you don’t include this option, Sherlock will automatically exit scripts after 2 hours of run time.</li>
 </ul>
 <p>The file <code>analysis.out</code> will contain the log file for the R script <code>analysis.R</code>.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="slurm.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
@@ -407,22 +405,23 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <span id="cb27-8"><a href="slurm.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
 <span id="cb27-9"><a href="slurm.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
 <span id="cb27-10"><a href="slurm.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
-<span id="cb27-11"><a href="slurm.html#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="slurm.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
-<span id="cb27-13"><a href="slurm.html#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-14"><a href="slurm.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
-<span id="cb27-15"><a href="slurm.html#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-16"><a href="slurm.html#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
-<span id="cb27-17"><a href="slurm.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
-<span id="cb27-18"><a href="slurm.html#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-19"><a href="slurm.html#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
-<span id="cb27-20"><a href="slurm.html#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
-<span id="cb27-21"><a href="slurm.html#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-22"><a href="slurm.html#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
-<span id="cb27-23"><a href="slurm.html#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
-<span id="cb27-24"><a href="slurm.html#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
-<span id="cb27-25"><a href="slurm.html#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="slurm.html#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
+<span id="cb27-11"><a href="slurm.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=47:59:00</span></span>
+<span id="cb27-12"><a href="slurm.html#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="slurm.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
+<span id="cb27-14"><a href="slurm.html#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="slurm.html#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
+<span id="cb27-16"><a href="slurm.html#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="slurm.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
+<span id="cb27-18"><a href="slurm.html#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
+<span id="cb27-19"><a href="slurm.html#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-20"><a href="slurm.html#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
+<span id="cb27-21"><a href="slurm.html#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
+<span id="cb27-22"><a href="slurm.html#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="slurm.html#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
+<span id="cb27-24"><a href="slurm.html#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
+<span id="cb27-25"><a href="slurm.html#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<span id="cb27-26"><a href="slurm.html#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="slurm.html#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
 <p>To submit this job, save the code in the chunk above in a script called <code>myjob.sh</code> and then enter the following command into terminal:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="slurm.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
 <p>To check on the status of your job, enter the following code into terminal:</p>
