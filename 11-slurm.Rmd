@@ -112,11 +112,11 @@ if(Sys.getenv("LMOD_SYSHOST")=="sherlock"){
 }
 ```
 
-## Installing Packages on Sherlock
+## Installing packages on Sherlock
 
 When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation [file](https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view) explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once if you run it on the command line.
 
-You may also get an error message because Sherlock has some package dependencies as "modules." These modules should be loaded on the command line or in the sbatch script before trying to install the package. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R or include them in the sbatch script before submitting your job: 
+You may also get an error message because Sherlock has some package dependencies as "modules." These modules should be loaded on the command line. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R: 
 
 ```{bash, eval=FALSE}
 module --force purge # remove any previously loaded modules
