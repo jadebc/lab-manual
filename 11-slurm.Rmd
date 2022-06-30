@@ -122,7 +122,7 @@ R
 *Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
 
 ### The Sherlock OnDemand Dashboard 
-The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing login.sherlock.stanford.edu into a web browser. You will be prompted to authenticate the way you would for any Stanford website. 
+The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing login.sherlock.stanford.edu into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way for people who are not comfortable accessing & editing in base R in a Shell application.
 
 You can test your code via the [Rstudio server on Sherlock](https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio). Access this by clicking on Interactive Apps in the menu bar and choose R Studio Server. Similar to the sdev node, you have to set various parameters for your session. Choose a version of R and set the time -- 1-2 hours (max. 2 hours). You can play with the other configurations, but this is likely unnecessary, as you should not need huge computing power to test small amounts of code. Keep in mind the more computing power you request, the lower priority your request becomes. You will then wait for the resources to become available, and you will be able to click "Launch" when they are (if you don't mess with the CPU or GPU, this is usually less than 2 minutes). The screen that opens will look very similar to the RStudio on your local. 
 
