@@ -30,7 +30,7 @@ Open your `~/.Renviron` file (`vi ~/.Renviron`) and append the following line:
 *Note: Once you open the file using `vi [file_name]`, you must press `i` (on Mac OS) or `Insert` (on Windows) to make edits. After you finish, hit `Esc` to exit editing mode and type `:wq` to save and close the file.*
 
 ```{bash, eval=FALSE}
-R_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0
+R_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0.2
 ```
 
 Alternatively, run an R script with the following code on Sherlock:
@@ -39,7 +39,7 @@ Alternatively, run an R script with the following code on Sherlock:
 r_environ_file_path = file.path(Sys.getenv("HOME"), ".Renviron")
 if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
 
-cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0",
+cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0.2",
     file = r_environ_file_path, sep = "\n", append = TRUE)
 ```
 
@@ -66,7 +66,6 @@ cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC",
     file = M, sep = "\n", append = TRUE)
 ```
 
-
 ## Moving files to Sherlock
 The `$HOME` directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the `$SCRATCH` directory (quota: 100 TB per user). On the `$SCRATCH` directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below: 
 
@@ -92,12 +91,13 @@ Typically, you will want to initially test your scripts by initiating a developm
 # start development node
 sdev
 
-# load R - default version (see Sherlock documentation for which version)
+# load R - default version (see Sherlock documentation for which version)*
 module load R
 
 # initiate R in command line
 R
 ```
+*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others who are working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
 
 In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example: 
 
@@ -111,6 +111,24 @@ if(Sys.getenv("LMOD_SYSHOST")=="sherlock"){
   results_path = paste0(sherlock_path, "results/")
 }
 ```
+
+## Installing Packages on Sherlock
+
+When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation [file](https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view) explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once if you run it on the command line.
+
+You may also get an error message because Sherlock has some package dependencies as "modules." These modules should be loaded on the command line or in the sbatch script before trying to install the package. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R or include them in the sbatch script before submitting your job: 
+
+```{bash, eval=FALSE}
+module --force purge # remove any previously loaded modules
+ml load devel cmake
+ml math eigen
+module load physics gdal
+module load physics proj
+
+module load R/4.0.2 # or whatever version is being used for this project
+```
+
+Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. However, the most efficient solution will probably be to ask the Sherlock team for help. You can email them at (srcc-support@stanford.edu). They also hold [office hours](https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours). 
 
 ## Running big jobs
 
@@ -168,4 +186,3 @@ To check on the status of your job, enter the following code into terminal:
 ```{bash, eval=FALSE}
 squeue -u $USERNAME
 ```
-
