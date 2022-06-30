@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Github | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Github | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="working-with-big-data.html"/>
 <link rel="next" href="unix.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -267,7 +266,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
 <li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.4</b> Running big jobs</a></li>
+<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.4</b> Installing Packages on Sherlock</a></li>
+<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.5</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
 <ul>
@@ -304,23 +304,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="github" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Github</h1>
+<div id="github" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Github<a href="github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Stephanie Djajadi and Nolan Pokpongkiat</p>
-<div id="basics" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> Basics</h2>
+<div id="basics" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basics<a href="github.html#basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>A detailed tutorial of Git can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">here on the CS61B website</a>.</li>
 <li>If you are already familiar with Git, you can reference the summary at the end of <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">Section B</a>.</li>
 <li>If you have made a mistake in Git, you can refer to this <a href="https://sethrobertson.github.io/GitFixUm/fixup.html">article</a> to undo, fix, or remove commits in git.</li>
 </ul>
 </div>
-<div id="github-desktop" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> Github Desktop</h2>
+<div id="github-desktop" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Github Desktop<a href="github.html#github-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides <a href="https://desktop.github.com/">Github Desktop</a> as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.</p>
 </div>
-<div id="git-branching" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Git Branching</h2>
+<div id="git-branching" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Git Branching<a href="github.html#git-branching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you’ve finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:</p>
 <ul>
 <li>You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don’t want to break the code for them.</li>
@@ -329,8 +329,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>A detailed tutorial on Git Branching can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional">here</a>. You can also find instructions on how to handle merge conflicts when joining branches together.</p>
 </div>
-<div id="example-workflow" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Example Workflow</h2>
+<div id="example-workflow" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Example Workflow<a href="github.html#example-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A standard workflow when starting on a new project and contributing code looks like this:</p>
 <table>
 <colgroup>
@@ -396,8 +396,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Other helpful commands are listed below.</p>
 </div>
-<div id="commonly-used-git-commands" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> Commonly Used Git Commands</h2>
+<div id="commonly-used-git-commands" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Commonly Used Git Commands<a href="github.html#commonly-used-git-commands" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="36%" />
@@ -485,12 +485,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="how-often-should-i-commit" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> How often should I commit?</h2>
+<div id="how-often-should-i-commit" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> How often should I commit?<a href="github.html#how-often-should-i-commit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.</p>
 </div>
-<div id="what-should-be-pushed-to-github" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> What should be pushed to Github?</h2>
+<div id="what-should-be-pushed-to-github" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> What should be pushed to Github?<a href="github.html#what-should-be-pushed-to-github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.</p>
 <p>There is a standardized <code>.gitignore</code> for <code>R</code> which you <a href="https://github.com/github/gitignore/blob/master/R.gitignore">can download</a> and add to your project. This ensures you’re not committing log files or things that would otherwise best be left ignored to GitHub. This is a <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">great discussion of project-oriented workflows</a>, extolling the virtues of a self-contained, portable projects, for your reference.</p>
 

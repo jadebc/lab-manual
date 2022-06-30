@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Reproducibility | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Reproducibility | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="communication-and-coordination.html"/>
 <link rel="next" href="code-repositories.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -267,7 +266,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
 <li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.4</b> Running big jobs</a></li>
+<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.4</b> Installing Packages on Sherlock</a></li>
+<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.5</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
 <ul>
@@ -304,8 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reproducibility" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Reproducibility</h1>
+<div id="reproducibility" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Reproducibility<a href="reproducibility.html#reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Jade Benjamin-Chung</p>
 <p>Our lab adopts the following practices to maximize the reproducibility of our work.</p>
 <ol style="list-style-type: decimal">
@@ -318,8 +318,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Publish preprints</li>
 <li>Publish data (when possible) and replication scripts</li>
 </ol>
-<div id="what-is-the-reproducibility-crisis" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> What is the reproducibility crisis?</h2>
+<div id="what-is-the-reproducibility-crisis" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> What is the reproducibility crisis?<a href="reproducibility.html#what-is-the-reproducibility-crisis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the past decade, an increasing number of studies have found that published study findings could not be reproduced. Researchers found that it was not possible to reproduce estimates from published studies: 1) with the same data and same or similar code and 2) with newly collected data using the same (or similar) study design. These “failures” of reproducibility were frequent enough and broad enough in scope, occurring across a range of disciplines (epidemiology, psychology, economics, and others) to be deeply troubling. Program and policy decisions based on erroneous research findings could lead to wasted resources, and at worst, could harm intended beneficiaries. This crisis has motivated new practices in reproducibility, transparency, and openness. Our lab is committed to adopting these best practices, and much of the remainder of the lab manual focuses on how to do so.</p>
 <p>Recommended readings on the “reproducibility crisis”:</p>
 <ul>
@@ -328,16 +328,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Munafo MR, et al. A manifesto for reproducible science. <em>Nature Human Behavior</em> 2017 <a href="http://dx.doi.org/10.1038/s41562-016-0021">http://dx.doi.org/10.1038/s41562-016-0021</a></p></li>
 </ul>
 </div>
-<div id="study-design" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Study design</h2>
+<div id="study-design" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Study design<a href="reproducibility.html#study-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Appropriate study design is beyond the scope of this lab manual and is something trainees develop through their coursework and mentoring.</p>
 </div>
-<div id="register-study-protocols" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Register study protocols</h2>
+<div id="register-study-protocols" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Register study protocols<a href="reproducibility.html#register-study-protocols" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We register all randomized trials on <a href="clinicaltrials.gov">clinicaltrials.gov</a>, and in some cases register observational studies as well.</p>
 </div>
-<div id="write-and-register-pre-analysis-plans" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Write and register pre-analysis plans</h2>
+<div id="write-and-register-pre-analysis-plans" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Write and register pre-analysis plans<a href="reproducibility.html#write-and-register-pre-analysis-plans" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Here is an example of one: <a href="https://osf.io/tgbxr/">https://osf.io/tgbxr/</a>. Generally, these include:</p>
 <ol style="list-style-type: decimal">
 <li>Brief background on the study (a condensed version of the introduction section of the paper)</li>
@@ -360,8 +360,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Negative control analyses</li>
 </ul>
 </div>
-<div id="create-reproducible-workflows" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Create reproducible workflows</h2>
+<div id="create-reproducible-workflows" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Create reproducible workflows<a href="reproducibility.html#create-reproducible-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a “single click.” In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic:</p>
 <ul>
 <li>Chapter 5: Code repositories</li>
@@ -373,20 +373,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Chapter 11: Unix</li>
 </ul>
 </div>
-<div id="process-and-analyze-data-with-internal-replication-and-masking" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Process and analyze data with internal replication and masking</h2>
+<div id="process-and-analyze-data-with-internal-replication-and-masking" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Process and analyze data with internal replication and masking<a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>See my video on this topic: <a href="https://www.youtube.com/watch?v=WoYkY9MkbRE">https://www.youtube.com/watch?v=WoYkY9MkbRE</a></p>
 </div>
-<div id="use-reporting-checklists-with-manuscripts" class="section level2" number="4.7">
-<h2><span class="header-section-number">4.7</span> Use reporting checklists with manuscripts</h2>
+<div id="use-reporting-checklists-with-manuscripts" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Use reporting checklists with manuscripts<a href="reproducibility.html#use-reporting-checklists-with-manuscripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using reporting checklists helps ensure that peer-reviewed articles contain the information needed for readers to assess the validity of your work and/or attempt to reproduce it. A collection of reporting checklists is available here: <a href="https://www.equator-network.org/about-us/what-is-a-reporting-guideline/">https://www.equator-network.org/about-us/what-is-a-reporting-guideline/)</a></p>
 </div>
-<div id="publish-preprints" class="section level2" number="4.8">
-<h2><span class="header-section-number">4.8</span> Publish preprints</h2>
+<div id="publish-preprints" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Publish preprints<a href="reproducibility.html#publish-preprints" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A preprint is a scientific manuscript that has not been peer reviewed. Preprint servers create digital object identifiers (DOIs) and can be cited in other articles and in grant applications. Because the peer review process can take many months, publishing preprints prior to or during peer review enables other scientists to immediately learn from and build on your work. Importantly, NIH allows applicants to include preprint citations in their biosketches. In most cases, we publish preprints on <a href="https://www.medrxiv.org/">medRxiv</a>.</p>
 </div>
-<div id="publish-data-when-possible-and-replication-scripts" class="section level2" number="4.9">
-<h2><span class="header-section-number">4.9</span> Publish data (when possible) and replication scripts</h2>
+<div id="publish-data-when-possible-and-replication-scripts" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Publish data (when possible) and replication scripts<a href="reproducibility.html#publish-data-when-possible-and-replication-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Publishing data and replication scripts allows other scientists to reproduce your work and to build upon it. We typically publish data on <a href="osf.io">Open Science Framework</a>, share links to <a href="github.com">Github</a> repositories, and archive code on <a href="zenodo.org">Zenodo</a>.</p>
 
 </div>

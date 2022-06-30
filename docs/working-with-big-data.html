@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Working with Big Data | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Working with Big Data | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="code-publication.html"/>
 <link rel="next" href="github.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -267,7 +266,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
 <li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.4</b> Running big jobs</a></li>
+<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.4</b> Installing Packages on Sherlock</a></li>
+<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.5</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
 <ul>
@@ -304,21 +304,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-big-data" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Working with Big Data</h1>
+<div id="working-with-big-data" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Working with Big Data<a href="working-with-big-data.html#working-with-big-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Kunal Mishra and Jade Benjamin-Chung</p>
-<div id="the-data.table-package" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> The data.table package</h2>
+<div id="the-data.table-package" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> The data.table package<a href="working-with-big-data.html#the-data.table-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It may also be the case that you’re working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, <code>Tidvyerse</code> (more specificially, <code>dplyr</code>), and <code>data.table</code>. For a majority of things, Base R is inferior to both <code>dplyr</code> and <code>data.table</code>, with concise but less clear syntax and less speed. <code>Dplyr</code> is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to <code>data.table</code>. An overview of the <code>dplyr</code> vs <code>data.table</code> debate can be found in <a href="https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349#27840349">this stackoverflow post</a> and all 3 answers are worth a read.</p>
 <p>You can also achieve a performance boost by running <code>dplyr</code> commands on <code>data.table</code>s, which I find to be the best of both worlds, given that a <code>data.table</code> is a special type of <code>data.frame</code> and fairly easy to convert with the <code>as.data.table()</code> function. The speedup is due to <code>dplyr</code>’s use of the <code>data.table</code> backend and in the future this coupling should become even more natural.</p>
 <p>If you want to test whether using a certain coding approach increases speed, consider the <code>tictoc</code> package. Run <code>tic()</code> before a code chunk and <code>toc()</code> after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you <em>really</em> need to switch a code chunk from <code>dplyr</code> to <code>data.table</code>.</p>
 </div>
-<div id="using-downsampled-data" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Using downsampled data</h2>
+<div id="using-downsampled-data" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Using downsampled data<a href="working-with-big-data.html#using-downsampled-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In our studies with very large datasets, we save “downsampled” data that usually includes a 1% random sample stratified by any important variables, such as year or household id. This allows us to efficiently write and test our code without having to load in large, slow datasets that can cause RStudio to freeze. Be very careful to be sure which dataset you are working with and to label results output accordingly.</p>
 </div>
-<div id="optimal-rstudio-set-up" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Optimal RStudio set up</h2>
+<div id="optimal-rstudio-set-up" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Optimal RStudio set up<a href="working-with-big-data.html#optimal-rstudio-set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the “Tools” menu, then select “Global Options.” Under “General”:</p>
 <p><strong>Workspace</strong></p>
 <ul>

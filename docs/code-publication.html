@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Code Publication | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Code Publication | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="coding-style.html"/>
 <link rel="next" href="working-with-big-data.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -267,7 +266,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
 <li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.4</b> Running big jobs</a></li>
+<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.4</b> Installing Packages on Sherlock</a></li>
+<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.5</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
 <ul>
@@ -304,11 +304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="code-publication" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Code Publication</h1>
+<div id="code-publication" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Code Publication<a href="code-publication.html#code-publication" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Nolan Pokpongkiat</p>
-<div id="checklist-overview" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Checklist overview</h2>
+<div id="checklist-overview" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Checklist overview<a href="code-publication.html#checklist-overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><a href="code-publication.html#fill-out-file-headers">Fill out file headers</a></li>
 <li><a href="code-publication.html#clean-up-comments">Clean up comments</a></li>
@@ -320,29 +320,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="code-publication.html#create-github-release">Create Github release</a></li>
 </ol>
 </div>
-<div id="fill-out-file-headers" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Fill out file headers</h2>
+<div id="fill-out-file-headers" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Fill out file headers<a href="code-publication.html#fill-out-file-headers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. See template <a href="https://jadebc.github.io/lab-manual/coding-practices.html#file-headers">here.</a></p>
 </div>
-<div id="clean-up-comments" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Clean up comments</h2>
+<div id="clean-up-comments" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Clean up comments<a href="code-publication.html#clean-up-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Make sure comments in the code are for code documentation purposes only. Do not leave comments to self in the final script files.</p>
 </div>
-<div id="document-functions" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Document functions</h2>
+<div id="document-functions" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Document functions<a href="code-publication.html#document-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Every function you write must include a header to document its purpose, inputs, and outputs. See template for the function documentation <a href="https://jadebc.github.io/lab-manual/coding-practices.html#function-documentation">here.</a></p>
 </div>
-<div id="remove-deprecated-filepaths" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> Remove deprecated filepaths</h2>
+<div id="remove-deprecated-filepaths" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Remove deprecated filepaths<a href="code-publication.html#remove-deprecated-filepaths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>All file paths should be defined in 0-config.R, and should be set relative to the project working directory. All absolute file paths from your local computer should be removed, and replaced with a relative path. If a third party were to re-run this analysis, if they need to download data from a separate source and change a filepath in the 0-config.R to match, make sure to specify in the README which line of 0-config.R needs to be substituted.</p>
 </div>
-<div id="ensure-project-runs-via-bash" class="section level2" number="8.6">
-<h2><span class="header-section-number">8.6</span> Ensure project runs via bash</h2>
+<div id="ensure-project-runs-via-bash" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Ensure project runs via bash<a href="code-publication.html#ensure-project-runs-via-bash" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The project should be configured to be entirely reproducible by running a master bash script, run-project.sh, which should live at the top directory. This bash script can call other bash scripts in subfolders, if necessary. Bash scripts should use the runFileSaveLogs utility script, which is a wrapper around the Rscript command, allowing you to specify where .Rout log files are moved after the R scripts are run.</p>
 <p>See usage and documentation <a href="https://jadebc.github.io/lab-manual/unix.html#example-code-for-runfilesavelogs">here.</a></p>
 </div>
-<div id="complete-the-readme" class="section level2" number="8.7">
-<h2><span class="header-section-number">8.7</span> Complete the README</h2>
+<div id="complete-the-readme" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Complete the README<a href="code-publication.html#complete-the-readme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A README.md should live at the top directory of the project. This usually includes a Project Overview and a Directory Structure, along with the names of the contributors and the Creative Commons License. See below for a template:</p>
 <blockquote>
 <p><strong>Overview</strong></p>
@@ -387,12 +387,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>When possible, also include a description of the RDS results that are generated, detailing what data sources were used, where the script lives that creates it, and what information the RDS results hold.</p>
 </div>
-<div id="clean-up-feature-branches" class="section level2" number="8.8">
-<h2><span class="header-section-number">8.8</span> Clean up feature branches</h2>
+<div id="clean-up-feature-branches" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Clean up feature branches<a href="code-publication.html#clean-up-feature-branches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the remote repository on Github, all feature branches aside from master should be merged in and deleted. All outstanding PRs should be closed.</p>
 </div>
-<div id="create-github-release" class="section level2" number="8.9">
-<h2><span class="header-section-number">8.9</span> Create Github release</h2>
+<div id="create-github-release" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> Create Github release<a href="code-publication.html#create-github-release" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once all of these items are verified, create a tag to make a Github release, which will tag the repository, creating a marker at this specific point in time.</p>
 <p>Detailed instructions <a href="https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases">here.</a></p>
 

@@ -123,7 +123,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2021-12-09}
+\date{\vspace{-2.5em}Updated: 2022-06-29}
 
 \begin{document}
 \maketitle
@@ -1636,7 +1636,7 @@ Open your \texttt{\textasciitilde{}/.Renviron} file (\texttt{vi\ \textasciitilde
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\VariableTok{R\_LIBS=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0}
+\VariableTok{R\_LIBS=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1646,7 +1646,7 @@ Alternatively, run an R script with the following code on Sherlock:
 r_environ_file_path = file.path(Sys.getenv("HOME"), ".Renviron")
 if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
 
-cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0",
+cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0.2",
     file = r_environ_file_path, sep = "\n", append = TRUE)
 \end{verbatim}
 
@@ -1707,13 +1707,15 @@ Typically, you will want to initially test your scripts by initiating a developm
 \CommentTok{\# start development node}
 \ExtensionTok{sdev}
 
-\CommentTok{\# load R {-} default version (see Sherlock documentation for which version)}
+\CommentTok{\# load R {-} default version (see Sherlock documentation for which version)*}
 \ExtensionTok{module}\NormalTok{ load R}
 
 \CommentTok{\# initiate R in command line}
 \ExtensionTok{R}
 \end{Highlighting}
 \end{Shaded}
+
+*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others who are working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
 
 In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:
 
@@ -1729,6 +1731,27 @@ In most cases, you will want to test that the file paths work correctly on Sherl
 \KeywordTok{\}}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{installing-packages-on-sherlock}{%
+\section{Installing Packages on Sherlock}\label{installing-packages-on-sherlock}}
+
+When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation \href{https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view}{file} explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once if you run it on the command line.
+
+You may also get an error message because Sherlock has some package dependencies as ``modules.'' These modules should be loaded on the command line or in the sbatch script before trying to install the package. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g.~cmake, normally. Instead, try loading the following modules on the command line before opening R or include them in the sbatch script before submitting your job:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module} \AttributeTok{{-}{-}force}\NormalTok{ purge }\CommentTok{\# remove any previously loaded modules}
+\ExtensionTok{ml}\NormalTok{ load devel cmake}
+\ExtensionTok{ml}\NormalTok{ math eigen}
+\ExtensionTok{module}\NormalTok{ load physics gdal}
+\ExtensionTok{module}\NormalTok{ load physics proj}
+
+\ExtensionTok{module}\NormalTok{ load R/4.0.2 }\CommentTok{\# or whatever version is being used for this project}
+\end{Highlighting}
+\end{Shaded}
+
+Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. However, the most efficient solution will probably be to ask the Sherlock team for help. You can email them at (\href{mailto:srcc-support@stanford.edu}{\nolinkurl{srcc-support@stanford.edu}}). They also hold \href{https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours}{office hours}.
 
 \hypertarget{running-big-jobs-1}{%
 \section{Running big jobs}\label{running-big-jobs-1}}

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Coding style | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Coding style | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="coding-practices.html"/>
 <link rel="next" href="code-publication.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -267,7 +266,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
 <li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.4</b> Running big jobs</a></li>
+<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.4</b> Installing Packages on Sherlock</a></li>
+<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.5</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
 <ul>
@@ -304,11 +304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="coding-style" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Coding style</h1>
+<div id="coding-style" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Coding style<a href="coding-style.html#coding-style" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi</p>
-<div id="comments" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Comments</h2>
+<div id="comments" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Comments<a href="coding-style.html#comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><strong>File Headers</strong> - Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.</li>
 </ol>
@@ -329,8 +329,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Multi-Line Comments</strong> - Occasionally, multi-line comments are necessary. Don’t add line breaks manually to a single-line comment for the purpose of making it “fit” on the screen. Instead, in RStudio &gt; Tools &gt; Global Options &gt; Code &gt; “Soft-wrap R source files” to have lines wrap around. Format your multi-line comments like the file header from above.</li>
 </ol>
 </div>
-<div id="line-breaks" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Line breaks</h2>
+<div id="line-breaks" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Line breaks<a href="coding-style.html#line-breaks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>For <code>ggplot</code> calls and <code>dplyr</code> pipelines, do not crowd single lines. Here are some nontrivial examples of “beautiful” pipelines, where beauty is defined by coherence:</p>
 <pre><code># Example 1
@@ -391,10 +391,10 @@ ggplot(data=data,
 <p>Imagine (or perhaps mournfully recall) the mess that can occur when you don’t strictly style a complicated <code>ggplot</code> call. Trying to fix bugs and ensure your code is working can be a nightmare. Now imagine trying to do it with the same code 6 months after you’ve written it. Invest the time now and reap the rewards as the code practically explains itself, line by line.</p></li>
 </ul>
 </div>
-<div id="automated-tools-for-style-and-project-workflow" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Automated Tools for Style and Project Workflow</h2>
-<div id="styling" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Styling</h3>
+<div id="automated-tools-for-style-and-project-workflow" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Automated Tools for Style and Project Workflow<a href="coding-style.html#automated-tools-for-style-and-project-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="styling" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Styling<a href="coding-style.html#styling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p><strong>Code Autoformatting</strong> - RStudio includes a fantastic built-in utility (keyboard shortcut: <code>CMD-Shift-A</code>) for autoformatting highlighted chunks of code to fit many of the best practices listed here. It generally makes code more readable and fixes a lot of the small things you may not feel like fixing yourself. Try it out as a “first pass” on some code of yours that <em>doesn’t</em> follow many of these best practices!</p></li>
 <li><p><strong>Assignment Aligner</strong> - A <a href="https://www.r-bloggers.com/align-assign-rstudio-addin-to-align-assignment-operators/">cool R package</a> allows you to very powerfully format large chunks of assignment code to be much cleaner and much more readable. Follow the linked instructions and create a keyboard shortcut of your choosing (recommendation: <code>CMD-Shift-Z</code>). Here is an example of how assignment aligning can dramatically improve code readability:</p></li>
