@@ -86,7 +86,7 @@ scp -r "Box/malaria-project/folder-3/" USERNAME@login.sherlock.stanford.edu:/scr
 
 ## Installing packages on Sherlock
 
-When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation [file](https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view) explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once if you run it on the command line.
+When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation [file](https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view) explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once. Sherlock requires that you specify the repository where the package is downloaded from (if you don't do this in the command, the console will prompt you to choose a repository).
 
 You may also get an error message because Sherlock has some package dependencies as "modules." These modules should be loaded on the command line. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R: 
 
@@ -103,8 +103,12 @@ module load R/4.0.2 # or whatever version is being used for this project
 Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. However, the most efficient solution will probably be to ask the Sherlock team for help. You can email them at (srcc-support@stanford.edu). They also hold [office hours](https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours). 
 
 ## Testing your code
-Typically, you will want to initially test your scripts by initiating a development node using the command `sdev`. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code, or you can test your code in the [Rstudio server via Sherlock](https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio).
+Both of the following ways to test code on Sherlock are recommended for making small changes, such as editing file paths and making sure the packages and source files load. You should write and test the functionality of your script locally, only testing on Sherlock once major bugs are out.
 
+### The command line
+There are two main ways to explore and test code on Sherlock. The first way is best for users who are comfortable working on the command line and editing code in base R. Even if you are not comfortable yet, this is probably the better way because these commands will transfer between Sherlock and other cluster computers using Slurm. 
+
+Typically, you will want to initially test your scripts by initiating a development node using the command `sdev`. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code.
 ```{bash, eval=FALSE}
 # start development node
 sdev
@@ -115,8 +119,16 @@ module load R
 # initiate R in command line
 R
 ```
-*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others who are working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
+*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
 
+### The Sherlock OnDemand Dashboard 
+The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing login.sherlock.stanford.edu into a web browser. You will be prompted to authenticate the way you would for any Stanford website. 
+
+You can test your code via the [Rstudio server on Sherlock](https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio). Access this by clicking on Interactive Apps in the menu bar and choose R Studio Server. Similar to the sdev node, you have to set various parameters for your session. Choose a version of R and set the time -- 1-2 hours (max. 2 hours). You can play with the other configurations, but this is likely unnecessary, as you should not need huge computing power to test small amounts of code. Keep in mind the more computing power you request, the lower priority your request becomes. You will then wait for the resources to become available, and you will be able to click "Launch" when they are (if you don't mess with the CPU or GPU, this is usually less than 2 minutes). The screen that opens will look very similar to the RStudio on your local. 
+
+Do NOT use the RStudio Server's Terminal to install packages, set your R environment, and do everything else needed to configure Sherlock because you will likely need to re-do it for every session/project. It's best to use this if you are more comfortable testing & editing in RStudio rather than through base R in a Shell application. 
+
+### Filepaths & configuration on Sherlock
 In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example: 
 
 ```{bash, eval=FALSE}
