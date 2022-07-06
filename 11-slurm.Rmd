@@ -67,7 +67,7 @@ cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC",
 ```
 
 ## Moving files to Sherlock
-The `$HOME` directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the `$SCRATCH` directory (quota: 100 TB per user). On the `$SCRATCH` directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below: 
+The `$HOME` directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the `$SCRATCH` directory (quota: 100 TB per user). You can read more about storage options on Sherlock [here](https://www.sherlock.stanford.edu/docs/storage/). On the `$SCRATCH` directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below: 
 
 ```{bash, eval=FALSE}
 # note: the following steps should be done from your local 
