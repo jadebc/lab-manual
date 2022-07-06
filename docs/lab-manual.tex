@@ -1731,7 +1731,7 @@ Sherlock has some package dependencies as ``modules.'' These modules must be loa
 \end{Highlighting}
 \end{Shaded}
 
-Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the module spider command:
+Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the \texttt{module\ spider} command:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1771,11 +1771,11 @@ Typically, you will want to initially test your scripts by initiating a developm
 \hypertarget{the-sherlock-ondemand-dashboard}{%
 \subsection{The Sherlock OnDemand Dashboard}\label{the-sherlock-ondemand-dashboard}}
 
-The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing login.sherlock.stanford.edu into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way for people who are not comfortable accessing \& editing in base R in a Shell application.
+The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing \url{login.sherlock.stanford.edu} into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way to edit code for people who are not comfortable accessing \& editing in base R in a Shell application.
 
-You can test your code via the \href{https://www.sherlock.stanford.edu/docs/user-guide/ondemand/\#rstudio}{Rstudio server on Sherlock}. Access this by clicking on Interactive Apps in the menu bar and choose R Studio Server. Similar to the sdev node, you have to set various parameters for your session. Choose a version of R and set the time -- max. 2 hours. You can play with the other configurations, but this is likely unnecessary, as you should not need huge computing power to test small amounts of code. Keep in mind the more computing power you request, the lower priority your request becomes. You will then wait for the resources to become available, and you will be able to click ``Launch'' when they are (if you don't mess with the CPU or GPU, this is usually less than 2 minutes). The screen that opens will look very similar to the RStudio on your local.
+You can test your code via the \href{https://www.sherlock.stanford.edu/docs/user-guide/ondemand/\#rstudio}{Rstudio server on Sherlock}. To access this, login to the Dashboard, then click on Interactive Apps in the menu bar and choose R Studio Server. Similar to the sdev node, you have to set various parameters for your session. Choose a version of R and set the time -- max. 2 hours. You can play with the other configurations, but this is likely unnecessary, as you should not need huge computing power to test small amounts of code. Keep in mind the more computing power you request, the lower priority your request becomes. You will then wait for the resources to become available, and you will be able to click ``Launch'' when they are (if you don't mess with the CPU or GPU, this is usually less than 2 minutes). The screen that opens will look very similar to the RStudio on your local.
 
-Do NOT use the RStudio Server's Terminal to install packages, set your R environment, and do everything else needed to configure Sherlock because you will likely need to re-do it for every session/project. It's best to use this if you are more comfortable testing \& editing in RStudio rather than through base R in a Shell application.
+Do NOT use the RStudio Server's Terminal to install packages, set your R environment, and do everything else needed to configure Sherlock because you will likely need to re-do it for every session/project. It's best to use the Dashboard/RStudio Server if you are more comfortable testing \& editing in RStudio rather than through base R in a Shell application.
 
 \hypertarget{filepaths-configuration-on-sherlock}{%
 \subsection{Filepaths \& configuration on Sherlock}\label{filepaths-configuration-on-sherlock}}
