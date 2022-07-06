@@ -265,8 +265,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>12.1.1</b> One-Time System Set-Up</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
-<li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.3</b> Testing your code</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.4</b> Installing Packages on Sherlock</a></li>
+<li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.3</b> Installing packages on Sherlock</a></li>
+<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.4</b> Testing your code</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="slurm.html"><a href="slurm.html#the-command-line"><i class="fa fa-check"></i><b>12.4.1</b> The command line</a></li>
+<li class="chapter" data-level="12.4.2" data-path="slurm.html"><a href="slurm.html#the-sherlock-ondemand-dashboard"><i class="fa fa-check"></i><b>12.4.2</b> The Sherlock OnDemand Dashboard</a></li>
+<li class="chapter" data-level="12.4.3" data-path="slurm.html"><a href="slurm.html#filepaths-configuration-on-sherlock"><i class="fa fa-check"></i><b>12.4.3</b> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
 <li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.5</b> Running big jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
@@ -360,40 +365,55 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <span id="cb24-11"><a href="slurm.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to our shared scratch directory</span></span>
 <span id="cb24-12"><a href="slurm.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-3/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/</span></code></pre></div>
 </div>
-<div id="testing-your-code" class="section level2 hasAnchor" number="12.3">
-<h2><span class="header-section-number">12.3</span> Testing your code<a href="slurm.html#testing-your-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Typically, you will want to initially test your scripts by initiating a development node using the command <code>sdev</code>. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code, or you can test your code in the <a href="https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio">Rstudio server via Sherlock</a>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="slurm.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start development node</span></span>
-<span id="cb25-2"><a href="slurm.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span>
-<span id="cb25-3"><a href="slurm.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="slurm.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load R - default version (see Sherlock documentation for which version)*</span></span>
-<span id="cb25-5"><a href="slurm.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R</span>
-<span id="cb25-6"><a href="slurm.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="slurm.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
-<span id="cb25-8"><a href="slurm.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
-<p>*Note: for collaboration purposes, it’s best for everyone to work with one version of R. Check what versions others who are working on the project use. Some packages only work with some versions of R, so it’s best to keep it consistent.</p>
-<p>In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="slurm.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
-<span id="cb26-2"><a href="slurm.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
-<span id="cb26-3"><a href="slurm.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-4"><a href="slurm.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
-<span id="cb26-5"><a href="slurm.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-6"><a href="slurm.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
-<span id="cb26-7"><a href="slurm.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
-<span id="cb26-8"><a href="slurm.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<div id="installing-packages-on-sherlock" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Installing packages on Sherlock<a href="slurm.html#installing-packages-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation <a href="https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view">file</a> explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to prevent the packages from locking:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="slurm.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(“pgirmess”, <span class="at">repos=</span>“http<span class="sc">:</span><span class="er">//</span>cran.us.ur<span class="sc">-</span>project.org”, <span class="at">INSTALL_opts =</span> ‘—no<span class="sc">-</span>lock’)</span></code></pre></div>
+<p>You may also get an error message because Sherlock has some package dependencies as “modules.” These modules should be loaded on the command line. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="slurm.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> <span class="at">--force</span> purge <span class="co"># remove any previously loaded modules</span></span>
+<span id="cb26-2"><a href="slurm.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ml</span> load devel cmake</span>
+<span id="cb26-3"><a href="slurm.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ml</span> math eigen</span>
+<span id="cb26-4"><a href="slurm.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
+<span id="cb26-5"><a href="slurm.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<span id="cb26-6"><a href="slurm.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="slurm.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2 <span class="co"># or version being used for your project</span></span></code></pre></div>
+<p>Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. However, you can also reach out to the Sherlock team for help. You can email them at (<a href="mailto:srcc-support@stanford.edu" class="email">srcc-support@stanford.edu</a>). They also hold <a href="https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours">office hours</a>.</p>
 </div>
-<div id="installing-packages-on-sherlock" class="section level2 hasAnchor" number="12.4">
-<h2><span class="header-section-number">12.4</span> Installing Packages on Sherlock<a href="slurm.html#installing-packages-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation <a href="https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view">file</a> explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once if you run it on the command line.</p>
-<p>You may also get an error message because Sherlock has some package dependencies as “modules.” These modules should be loaded on the command line or in the sbatch script before trying to install the package. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R or include them in the sbatch script before submitting your job:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="slurm.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> <span class="at">--force</span> purge <span class="co"># remove any previously loaded modules</span></span>
-<span id="cb27-2"><a href="slurm.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ml</span> load devel cmake</span>
-<span id="cb27-3"><a href="slurm.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ml</span> math eigen</span>
-<span id="cb27-4"><a href="slurm.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
-<span id="cb27-5"><a href="slurm.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<div id="testing-your-code" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Testing your code<a href="slurm.html#testing-your-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Both of the following ways to test code on Sherlock are recommended for making small changes, such as editing file paths and making sure the packages and source files load. You should write and test the functionality of your script locally, only testing on Sherlock once major bugs are out.</p>
+<div id="the-command-line" class="section level3 hasAnchor" number="12.4.1">
+<h3><span class="header-section-number">12.4.1</span> The command line<a href="slurm.html#the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are two main ways to explore and test code on Sherlock. The first way is best for users who are comfortable working on the command line and editing code in base R. Even if you are not comfortable yet, this is probably the better way because these commands will transfer between Sherlock and other cluster computers using Slurm.</p>
+<p>Typically, you will want to initially test your scripts by initiating a development node using the command <code>sdev</code>. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="slurm.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start development node</span></span>
+<span id="cb27-2"><a href="slurm.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span>
+<span id="cb27-3"><a href="slurm.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="slurm.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load R - default version (see Sherlock documentation for which version)*</span></span>
+<span id="cb27-5"><a href="slurm.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R</span>
 <span id="cb27-6"><a href="slurm.html#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="slurm.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2 <span class="co"># or whatever version is being used for this project</span></span></code></pre></div>
-<p>Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. However, the most efficient solution will probably be to ask the Sherlock team for help. You can email them at (<a href="mailto:srcc-support@stanford.edu" class="email">srcc-support@stanford.edu</a>). They also hold <a href="https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours">office hours</a>.</p>
+<span id="cb27-7"><a href="slurm.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
+<span id="cb27-8"><a href="slurm.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
+<p>*Note: for collaboration purposes, it’s best for everyone to work with one version of R. Check what versions others working on the project use. Some packages only work with some versions of R, so it’s best to keep it consistent.</p>
+</div>
+<div id="the-sherlock-ondemand-dashboard" class="section level3 hasAnchor" number="12.4.2">
+<h3><span class="header-section-number">12.4.2</span> The Sherlock OnDemand Dashboard<a href="slurm.html#the-sherlock-ondemand-dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing login.sherlock.stanford.edu into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way for people who are not comfortable accessing &amp; editing in base R in a Shell application.</p>
+<p>You can test your code via the <a href="https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio">Rstudio server on Sherlock</a>. Access this by clicking on Interactive Apps in the menu bar and choose R Studio Server. Similar to the sdev node, you have to set various parameters for your session. Choose a version of R and set the time – max. 2 hours. You can play with the other configurations, but this is likely unnecessary, as you should not need huge computing power to test small amounts of code. Keep in mind the more computing power you request, the lower priority your request becomes. You will then wait for the resources to become available, and you will be able to click “Launch” when they are (if you don’t mess with the CPU or GPU, this is usually less than 2 minutes). The screen that opens will look very similar to the RStudio on your local.</p>
+<p>Do NOT use the RStudio Server’s Terminal to install packages, set your R environment, and do everything else needed to configure Sherlock because you will likely need to re-do it for every session/project. It’s best to use this if you are more comfortable testing &amp; editing in RStudio rather than through base R in a Shell application.</p>
+</div>
+<div id="filepaths-configuration-on-sherlock" class="section level3 hasAnchor" number="12.4.3">
+<h3><span class="header-section-number">12.4.3</span> Filepaths &amp; configuration on Sherlock<a href="slurm.html#filepaths-configuration-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="slurm.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
+<span id="cb28-2"><a href="slurm.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
+<span id="cb28-3"><a href="slurm.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-4"><a href="slurm.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
+<span id="cb28-5"><a href="slurm.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-6"><a href="slurm.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
+<span id="cb28-7"><a href="slurm.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
+<span id="cb28-8"><a href="slurm.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+</div>
 </div>
 <div id="running-big-jobs-1" class="section level2 hasAnchor" number="12.5">
 <h2><span class="header-section-number">12.5</span> Running big jobs<a href="slurm.html#running-big-jobs-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -409,37 +429,37 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <li><code>time=47:59:00</code>: Set maximum run time to 47 hours and 59 minutes. If you don’t include this option, Sherlock will automatically exit scripts after 2 hours of run time.</li>
 </ul>
 <p>The file <code>analysis.out</code> will contain the log file for the R script <code>analysis.R</code>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="slurm.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb28-2"><a href="slurm.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="slurm.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
-<span id="cb28-4"><a href="slurm.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
-<span id="cb28-5"><a href="slurm.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
-<span id="cb28-6"><a href="slurm.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
-<span id="cb28-7"><a href="slurm.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
-<span id="cb28-8"><a href="slurm.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
-<span id="cb28-9"><a href="slurm.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
-<span id="cb28-10"><a href="slurm.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
-<span id="cb28-11"><a href="slurm.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=47:59:00</span></span>
-<span id="cb28-12"><a href="slurm.html#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a href="slurm.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
-<span id="cb28-14"><a href="slurm.html#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="slurm.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
-<span id="cb28-16"><a href="slurm.html#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-17"><a href="slurm.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
-<span id="cb28-18"><a href="slurm.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
-<span id="cb28-19"><a href="slurm.html#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-20"><a href="slurm.html#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
-<span id="cb28-21"><a href="slurm.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
-<span id="cb28-22"><a href="slurm.html#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-23"><a href="slurm.html#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
-<span id="cb28-24"><a href="slurm.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
-<span id="cb28-25"><a href="slurm.html#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
-<span id="cb28-26"><a href="slurm.html#cb28-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-27"><a href="slurm.html#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="slurm.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-2"><a href="slurm.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="slurm.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
+<span id="cb29-4"><a href="slurm.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
+<span id="cb29-5"><a href="slurm.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
+<span id="cb29-6"><a href="slurm.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
+<span id="cb29-7"><a href="slurm.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
+<span id="cb29-8"><a href="slurm.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb29-9"><a href="slurm.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb29-10"><a href="slurm.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
+<span id="cb29-11"><a href="slurm.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=47:59:00</span></span>
+<span id="cb29-12"><a href="slurm.html#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="slurm.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
+<span id="cb29-14"><a href="slurm.html#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="slurm.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
+<span id="cb29-16"><a href="slurm.html#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="slurm.html#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
+<span id="cb29-18"><a href="slurm.html#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
+<span id="cb29-19"><a href="slurm.html#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-20"><a href="slurm.html#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
+<span id="cb29-21"><a href="slurm.html#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
+<span id="cb29-22"><a href="slurm.html#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="slurm.html#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
+<span id="cb29-24"><a href="slurm.html#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
+<span id="cb29-25"><a href="slurm.html#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<span id="cb29-26"><a href="slurm.html#cb29-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-27"><a href="slurm.html#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
 <p>To submit this job, save the code in the chunk above in a script called <code>myjob.sh</code> and then enter the following command into terminal:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="slurm.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="slurm.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
 <p>To check on the status of your job, enter the following code into terminal:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="slurm.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="slurm.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
 
 </div>
 </div>

@@ -90,8 +90,11 @@ slurm
 getting-started
 one-time-system-set-up
 moving-files-to-sherlock
-testing-your-code
 installing-packages-on-sherlock
+testing-your-code
+the-command-line
+the-sherlock-ondemand-dashboard
+filepaths-configuration-on-sherlock
 running-big-jobs-1
 checklists
 pre-analysis-plan-checklist
