@@ -1704,25 +1704,42 @@ When you begin working on Sherlock, you will most likely encounter problems with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(“pgirmess”, }\AttributeTok{repos=}\NormalTok{“http}\SpecialCharTok{:}\ErrorTok{//}\NormalTok{cran.us.ur}\SpecialCharTok{{-}}\NormalTok{project.org”, }\AttributeTok{INSTALL\_opts =}\NormalTok{ ‘—no}\SpecialCharTok{{-}}\NormalTok{lock’)}
+\FunctionTok{install.packages}\NormalTok{(“pgirmess”, }\AttributeTok{repos=}\NormalTok{“http}\SpecialCharTok{:}\ErrorTok{//}\NormalTok{cran.us.ur}\SpecialCharTok{{-}}\NormalTok{project.org”, }
+                  \AttributeTok{INSTALL\_opts =}\NormalTok{ ‘—no}\SpecialCharTok{{-}}\NormalTok{lock’)}
 \end{Highlighting}
 \end{Shaded}
 
-You may also get an error message because Sherlock has some package dependencies as ``modules.'' These modules should be loaded on the command line. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g.~cmake, normally. Instead, try loading the following modules on the command line before opening R:
+Sherlock has some package dependencies as ``modules.'' These modules must be loaded on the command line prior to opening R in order for package installation to work. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g.~cmake, normally. Instead, try loading the following modules on the command line before opening R and running the package installation script:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ExtensionTok{module} \AttributeTok{{-}{-}force}\NormalTok{ purge }\CommentTok{\# remove any previously loaded modules}
-\ExtensionTok{ml}\NormalTok{ load devel cmake}
-\ExtensionTok{ml}\NormalTok{ math eigen}
-\ExtensionTok{module}\NormalTok{ load physics gdal}
-\ExtensionTok{module}\NormalTok{ load physics proj}
+\ExtensionTok{module} \AttributeTok{{-}{-}force}\NormalTok{ purge }\CommentTok{\# remove any previously loaded modules, including math and devel}
+\ExtensionTok{module}\NormalTok{ load math}
+\ExtensionTok{mdoule}\NormalTok{ load math gmp/6.1.2}
+\ExtensionTok{module}\NormalTok{ load devel}
+\ExtensionTok{module}\NormalTok{ load gcc/10}
+\ExtensionTok{module}\NormalTok{ load system}
+\ExtensionTok{module}\NormalTok{ load json{-}glib/1.4.4}
+\ExtensionTok{module}\NormalTok{ load curl/7.81.0}
+\ExtensionTok{module}\NormalTok{ load physics}
+\ExtensionTok{module}\NormalTok{ load physics udunits geos}
+\ExtensionTok{module}\NormalTok{ load physics gdal/2.2.1 }\CommentTok{\# for R/4.0.2}
+\ExtensionTok{module}\NormalTok{ load physics proj/4.9.3 }\CommentTok{\# for R/4.0.2}
+\ExtensionTok{module}\NormalTok{ load pandoc/2.7.3}
 
-\ExtensionTok{module}\NormalTok{ load R/4.0.2 }\CommentTok{\# or version being used for your project}
+\ExtensionTok{module}\NormalTok{ load R/4.0.2}
 \end{Highlighting}
 \end{Shaded}
 
-Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. However, you can also reach out to the Sherlock team for help. You can email them at (\href{mailto:srcc-support@stanford.edu}{\nolinkurl{srcc-support@stanford.edu}}). They also hold \href{https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours}{office hours}.
+Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the module spider command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module}\NormalTok{ spider }\OperatorTok{\textless{}}\NormalTok{dependency name}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+However, you can also reach out to the Sherlock team for help. You can email them at (\href{mailto:srcc-support@stanford.edu}{\nolinkurl{srcc-support@stanford.edu}}). They also hold \href{https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours}{office hours}.
 
 \hypertarget{testing-your-code}{%
 \section{Testing your code}\label{testing-your-code}}
