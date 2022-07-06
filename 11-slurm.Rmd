@@ -90,7 +90,7 @@ When you begin working on Sherlock, you will most likely encounter problems with
 
 ```{R, eval= FALSE}
 install.packages(“pgirmess”, repos=“http://cran.us.ur-project.org”, 
-                  INSTALL_opts = ‘—no-lock’)
+                  INSTALL_opts = "--no-lock"")
 ```
 
 Sherlock has some package dependencies as "modules." These modules must be loaded on the command line prior to opening R in order for package installation to work. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R and running the package installation script: 
@@ -119,7 +119,7 @@ Figuring out the issues with some packages will require some trial and error. If
 module spider <dependency name>
 ```
 
-However, you can also reach out to the Sherlock team for help. You can email them at (srcc-support@stanford.edu). They also hold [office hours](https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours).
+However, you can also reach out to the Sherlock team for help. You can email them at srcc-support@stanford.edu. They also hold [office hours](https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours).
 
 ## Testing your code
 Both of the following ways to test code on Sherlock are recommended for making small changes, such as editing file paths and making sure the packages and source files load. You should write and test the functionality of your script locally, only testing on Sherlock once major bugs are out.
