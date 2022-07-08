@@ -191,6 +191,8 @@ You can also navigate to these using the File Explorer on Sherlock OnDemand.
 
 `$HOME` has a volume quota of 15 GB. `$SCRATCH` has a volume quota of 100 TB, but files here get deleted 90 days after their last modification. Thus, use `$SCRACTH` for test files, exploratory analyses, and temporary storage. Use `$HOME` for long-term storage of important files and more finalized analyses.
 
+You can read more about storage options on Sherlock [here](https://www.sherlock.stanford.edu/docs/storage/).
+
 ### Group storage
 The lab also has a `$GROUP_HOME` and a `$GROUP_SCRATCH` to store files for collaborative use. `$GROUP_HOME` has a volume quota of 1 TB and infinite retention time, whereas `$GROUP_SCRATCH` has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:
 ```{bash, eval=FALSE}
@@ -200,7 +202,7 @@ cd /home/groups/jadebc
 cd $GROUP_SCRATCH
 cd /scratch/groups/jadebc
 ```
-However, saving files to group storage can be tricky. Please read the next section to ensure you have the right permissions.
+However, saving files to group storage can be tricky. You can try using the scp command in the section "Moving files to Sherlock" to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.
 
 ### Folder permissions
 Generally, when we put folders in `$GROUP_HOME` or `$GROUP_SCRATCH`, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in `$GROUP_HOME` or `$GROUP_SCRATCH`, please check the folder's permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter `ls -l`. You will see output like this: 
@@ -215,7 +217,6 @@ Please review [this website](https://www.chriswrites.com/how-to-change-file-perm
 chmod ugo+rwx FOLDER_NAME
 ```
 
-You can read more about storage options on Sherlock [here](https://www.sherlock.stanford.edu/docs/storage/).
 
 ## Running big jobs
 

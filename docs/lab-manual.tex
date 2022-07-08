@@ -1833,6 +1833,8 @@ You can also navigate to these using the File Explorer on Sherlock OnDemand.
 
 \texttt{\$HOME} has a volume quota of 15 GB. \texttt{\$SCRATCH} has a volume quota of 100 TB, but files here get deleted 90 days after their last modification. Thus, use \texttt{\$SCRACTH} for test files, exploratory analyses, and temporary storage. Use \texttt{\$HOME} for long-term storage of important files and more finalized analyses.
 
+You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}.
+
 \hypertarget{group-storage}{%
 \subsection{Group storage}\label{group-storage}}
 
@@ -1848,7 +1850,7 @@ The lab also has a \texttt{\$GROUP\_HOME} and a \texttt{\$GROUP\_SCRATCH} to sto
 \end{Highlighting}
 \end{Shaded}
 
-However, saving files to group storage can be tricky. Please read the next section to ensure you have the right permissions.
+However, saving files to group storage can be tricky. You can try using the scp command in the section ``Moving files to Sherlock'' to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.
 
 \hypertarget{folder-permissions}{%
 \subsection{Folder permissions}\label{folder-permissions}}
@@ -1868,8 +1870,6 @@ Please review \href{https://www.chriswrites.com/how-to-change-file-permissions-u
 \FunctionTok{chmod}\NormalTok{ ugo+rwx FOLDER\_NAME}
 \end{Highlighting}
 \end{Shaded}
-
-You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}.
 
 \hypertarget{running-big-jobs-1}{%
 \section{Running big jobs}\label{running-big-jobs-1}}

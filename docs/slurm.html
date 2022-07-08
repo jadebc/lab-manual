@@ -454,6 +454,7 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <span id="cb31-5"><a href="slurm.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/users/USERNAME <span class="co"># Full path</span></span></code></pre></div>
 <p>You can also navigate to these using the File Explorer on Sherlock OnDemand.</p>
 <p><code>$HOME</code> has a volume quota of 15 GB. <code>$SCRATCH</code> has a volume quota of 100 TB, but files here get deleted 90 days after their last modification. Thus, use <code>$SCRACTH</code> for test files, exploratory analyses, and temporary storage. Use <code>$HOME</code> for long-term storage of important files and more finalized analyses.</p>
+<p>You can read more about storage options on Sherlock <a href="https://www.sherlock.stanford.edu/docs/storage/">here</a>.</p>
 </div>
 <div id="group-storage" class="section level3 hasAnchor" number="12.5.2">
 <h3><span class="header-section-number">12.5.2</span> Group storage<a href="slurm.html#group-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -463,7 +464,7 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <span id="cb32-3"><a href="slurm.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="slurm.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$GROUP_SCRATCH</span></span>
 <span id="cb32-5"><a href="slurm.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/groups/jadebc</span></code></pre></div>
-<p>However, saving files to group storage can be tricky. Please read the next section to ensure you have the right permissions.</p>
+<p>However, saving files to group storage can be tricky. You can try using the scp command in the section “Moving files to Sherlock” to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.</p>
 </div>
 <div id="folder-permissions" class="section level3 hasAnchor" number="12.5.3">
 <h3><span class="header-section-number">12.5.3</span> Folder permissions<a href="slurm.html#folder-permissions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -471,7 +472,6 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="slurm.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxrwx</span> 2 jadebc jadebc  2204 Jun 17 13:12 myfolder</span></code></pre></div>
 <p>Please review <a href="https://www.chriswrites.com/how-to-change-file-permissions-using-the-terminal/">this website</a> to learn how to interpret the code on the left side of this output. The website also tells you how to change folder permissions. In order to ensure that all users and group members are able to access a folder’s contents, you can use the following command:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="slurm.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ugo+rwx FOLDER_NAME</span></code></pre></div>
-<p>You can read more about storage options on Sherlock <a href="https://www.sherlock.stanford.edu/docs/storage/">here</a>.</p>
 </div>
 </div>
 <div id="running-big-jobs-1" class="section level2 hasAnchor" number="12.6">
