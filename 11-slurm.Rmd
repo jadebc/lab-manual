@@ -1,6 +1,6 @@
 # Slurm and cluster computing {#slurm}
 
-by Anna Nguyen, and Jade Benjamin-Chung
+by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
 
 When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the [Sherlock user guide](https://www.sherlock.stanford.edu/docs/overview/introduction/) to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab. 
 
@@ -86,14 +86,22 @@ scp -r "Box/malaria-project/folder-3/" USERNAME@login.sherlock.stanford.edu:/scr
 
 ## Installing packages on Sherlock
 
-When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation [file](https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view) explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new  session you open. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to prevent the packages from locking:
+When you begin working on Sherlock, you will most likely encounter problems with installing packages. To install packages, login to Sherlock on the command line and open a development node using the command `sdev`. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new  session you open. 
+
+```{bash, eval = FALSE}
+ssh USERNAME@login.sherlock.stanford.edu
+
+sdev
+```
+
+There is a package installation [file](https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view) explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to install packages once. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to install.packages to prevent the packages from locking after installation:
 
 ```{R, eval= FALSE}
-install.packages(“pgirmess”, repos=“http://cran.us.ur-project.org”, 
+install.packages(<PACKAGE NAME>, repos=“http://cran.us.ur-project.org”, 
                   INSTALL_opts = "--no-lock"")
 ```
 
-Sherlock has some package dependencies as "modules." These modules must be loaded on the command line prior to opening R in order for package installation to work. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g. cmake, normally. Instead, try loading the following modules on the command line before opening R and running the package installation script: 
+In order for some R packages to work on Sherlock, it is necessary to load specific software modules before running R. These must be loaded in Sherlock each time you want to use the package in R. For example, for spatial and random effects analyses, you may need the modules/packages below. These modules must also be loaded on the command line prior to opening R in order for package installation to work. 
 
 ```{bash, eval=FALSE}
 module --force purge # remove any previously loaded modules, including math and devel
@@ -111,12 +119,15 @@ module load physics proj/4.9.3 # for R/4.0.2
 module load pandoc/2.7.3
 
 module load R/4.0.2
+
+R # Open R in the Shell window to install individual packages or test code
+Rscript install-packages.R # Alternatively, run the entire package installation script in the Shell window
 ```
 
 Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the `module spider` command: 
 
 ```{bash, eval=FALSE}
-module spider <dependency name>
+module spider DEPENDENCY NAME
 ```
 
 However, you can also reach out to the Sherlock team for help. You can email them at srcc-support@stanford.edu. They also hold [office hours](https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours).
@@ -130,16 +141,19 @@ There are two main ways to explore and test code on Sherlock. The first way is b
 Typically, you will want to initially test your scripts by initiating a development node using the command `sdev`. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code.
 
 ```{bash, eval=FALSE}
-# start development node
+# open development node
 sdev
 
-# load R - default version (see Sherlock documentation for which version)*
-module load R
+# Load all the modules required by the packages you are using
+module load MODULE NAME  
+
+# Load R (default version)*
+module load R 
 
 # initiate R in command line
 R
 ```
-*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
+*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what version is being used for the project you are working on. Some packages only work with some versions of R, so it's best to keep it consistent.
 
 ### The Sherlock OnDemand Dashboard 
 The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing [login.sherlock.stanford.edu](login.sherlock.stanford.edu) into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way to edit code for people who are not comfortable accessing & editing in base R in a Shell application.
@@ -162,6 +176,46 @@ if(Sys.getenv("LMOD_SYSHOST")=="sherlock"){
 }
 ```
 
+## Storage & group storage access
+
+### Individual storage
+There are multiple places to store your files on Sherlock. Each user has their own `$HOME` directory as well as a `$SCRATCH` directory. These are directories that can be accessed via the command line once you've logged in to Sherlock: 
+```{bash, eval=FALSE}
+cd $HOME 
+cd /home/users/USERNAME # Alternatively, use the full path
+
+cd $SCRATCH
+cd /scratch/users/USERNAME # Full path
+```
+You can also navigate to these using the File Explorer on Sherlock OnDemand.
+
+`$HOME` has a volume quota of 15 GB. `$SCRATCH` has a volume quota of 100 TB, but files here get deleted 90 days after their last modification. Thus, use `$SCRACTH` for test files, exploratory analyses, and temporary storage. Use `$HOME` for long-term storage of important files and more finalized analyses.
+
+### Group storage
+The lab also has a `$GROUP_HOME` and a `$GROUP_SCRATCH` to store files for collaborative use. `$GROUP_HOME` has a volume quota of 1 TB and infinite retention time, whereas `$GROUP_SCRATCH` has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:
+```{bash, eval=FALSE}
+cd $GROUP_HOME
+cd /home/groups/jadebc
+
+cd $GROUP_SCRATCH
+cd /scratch/groups/jadebc
+```
+However, saving files to group storage can be tricky. Please read the next section to ensure you have the right permissions.
+
+### Folder permissions
+Generally, when we put folders in `$GROUP_HOME` or `$GROUP_SCRATCH`, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in `$GROUP_HOME` or `$GROUP_SCRATCH`, please check the folder's permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter `ls -l`. You will see output like this: 
+
+```{bash, eval=FALSE}
+drwxrwxrwx 2 jadebc jadebc  2204 Jun 17 13:12 myfolder
+```
+
+Please review [this website](https://www.chriswrites.com/how-to-change-file-permissions-using-the-terminal/) to learn how to interpret the code on the left side of this output. The website also tells you how to change folder permissions. In order to ensure that all users and group members are able to access a folder's contents, you can use the following command: 
+
+```{bash, eval=FALSE}
+chmod ugo+rwx FOLDER_NAME
+```
+
+You can read more about storage options on Sherlock [here](https://www.sherlock.stanford.edu/docs/storage/).
 
 ## Running big jobs
 

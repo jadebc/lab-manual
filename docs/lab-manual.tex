@@ -123,7 +123,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2022-07-06}
+\date{\vspace{-2.5em}Updated: 2022-07-08}
 
 \begin{document}
 \maketitle
@@ -1604,7 +1604,7 @@ This example bash script runs files and generates logs for five scripts in the \
 \hypertarget{slurm}{%
 \chapter{Slurm and cluster computing}\label{slurm}}
 
-by Anna Nguyen, and Jade Benjamin-Chung
+by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
 
 When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the \href{https://www.sherlock.stanford.edu/docs/overview/introduction/}{Sherlock user guide} to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.
 
@@ -1700,16 +1700,26 @@ The \texttt{\$HOME} directory is a good place to store code and small test files
 \hypertarget{installing-packages-on-sherlock}{%
 \section{Installing packages on Sherlock}\label{installing-packages-on-sherlock}}
 
-When you begin working on Sherlock, you will most likely encounter problems with installing packages. There is a package installation \href{https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view}{file} explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to do this once. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to prevent the packages from locking:
+When you begin working on Sherlock, you will most likely encounter problems with installing packages. To install packages, login to Sherlock on the command line and open a development node using the command \texttt{sdev}. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(“pgirmess”, }\AttributeTok{repos=}\NormalTok{“http}\SpecialCharTok{:}\ErrorTok{//}\NormalTok{cran.us.ur}\SpecialCharTok{{-}}\NormalTok{project.org”, }
+\FunctionTok{ssh}\NormalTok{ USERNAME@login.sherlock.stanford.edu}
+
+\ExtensionTok{sdev}
+\end{Highlighting}
+\end{Shaded}
+
+There is a package installation \href{https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view}{file} explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to install packages once. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to install.packages to prevent the packages from locking after installation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{PACKAGE NAME}\SpecialCharTok{\textgreater{}}\NormalTok{, }\AttributeTok{repos=}\NormalTok{“http}\SpecialCharTok{:}\ErrorTok{//}\NormalTok{cran.us.ur}\SpecialCharTok{{-}}\NormalTok{project.org”, }
                   \AttributeTok{INSTALL\_opts =} \StringTok{"{-}{-}no{-}lock"")}
 \end{Highlighting}
 \end{Shaded}
 
-Sherlock has some package dependencies as ``modules.'' These modules must be loaded on the command line prior to opening R in order for package installation to work. For example, the lme4 package requires nloptr, and you may encounter problems installing nloptr and its dependencies, e.g.~cmake, normally. Instead, try loading the following modules on the command line before opening R and running the package installation script:
+In order for some R packages to work on Sherlock, it is necessary to load specific software modules before running R. These must be loaded in Sherlock each time you want to use the package in R. For example, for spatial and random effects analyses, you may need the modules/packages below. These modules must also be loaded on the command line prior to opening R in order for package installation to work.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1728,6 +1738,9 @@ Sherlock has some package dependencies as ``modules.'' These modules must be loa
 \ExtensionTok{module}\NormalTok{ load pandoc/2.7.3}
 
 \ExtensionTok{module}\NormalTok{ load R/4.0.2}
+
+\ExtensionTok{R} \CommentTok{\# Open R in the Shell window to install individual packages or test code}
+\ExtensionTok{Rscript}\NormalTok{ install{-}packages.R }\CommentTok{\# Alternatively, run the entire package installation script in the Shell window}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1735,7 +1748,7 @@ Figuring out the issues with some packages will require some trial and error. If
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ExtensionTok{module}\NormalTok{ spider }\OperatorTok{\textless{}}\NormalTok{dependency name}\OperatorTok{\textgreater{}}
+\ExtensionTok{module}\NormalTok{ spider DEPENDENCY NAME}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1755,18 +1768,21 @@ Typically, you will want to initially test your scripts by initiating a developm
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# start development node}
+\CommentTok{\# open development node}
 \ExtensionTok{sdev}
 
-\CommentTok{\# load R {-} default version (see Sherlock documentation for which version)*}
-\ExtensionTok{module}\NormalTok{ load R}
+\CommentTok{\# Load all the modules required by the packages you are using}
+\ExtensionTok{module}\NormalTok{ load MODULE NAME  }
+
+\CommentTok{\# Load R (default version)*}
+\ExtensionTok{module}\NormalTok{ load R }
 
 \CommentTok{\# initiate R in command line}
 \ExtensionTok{R}
 \end{Highlighting}
 \end{Shaded}
 
-*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what versions others working on the project use. Some packages only work with some versions of R, so it's best to keep it consistent.
+*Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what version is being used for the project you are working on. Some packages only work with some versions of R, so it's best to keep it consistent.
 
 \hypertarget{the-sherlock-ondemand-dashboard}{%
 \subsection{The Sherlock OnDemand Dashboard}\label{the-sherlock-ondemand-dashboard}}
@@ -1794,6 +1810,66 @@ In most cases, you will want to test that the file paths work correctly on Sherl
 \KeywordTok{\}}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{storage-group-storage-access}{%
+\section{Storage \& group storage access}\label{storage-group-storage-access}}
+
+\hypertarget{individual-storage}{%
+\subsection{Individual storage}\label{individual-storage}}
+
+There are multiple places to store your files on Sherlock. Each user has their own \texttt{\$HOME} directory as well as a \texttt{\$SCRATCH} directory. These are directories that can be accessed via the command line once you've logged in to Sherlock:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd} \VariableTok{$HOME} 
+\BuiltInTok{cd}\NormalTok{ /home/users/USERNAME }\CommentTok{\# Alternatively, use the full path}
+
+\BuiltInTok{cd} \VariableTok{$SCRATCH}
+\BuiltInTok{cd}\NormalTok{ /scratch/users/USERNAME }\CommentTok{\# Full path}
+\end{Highlighting}
+\end{Shaded}
+
+You can also navigate to these using the File Explorer on Sherlock OnDemand.
+
+\texttt{\$HOME} has a volume quota of 15 GB. \texttt{\$SCRATCH} has a volume quota of 100 TB, but files here get deleted 90 days after their last modification. Thus, use \texttt{\$SCRACTH} for test files, exploratory analyses, and temporary storage. Use \texttt{\$HOME} for long-term storage of important files and more finalized analyses.
+
+\hypertarget{group-storage}{%
+\subsection{Group storage}\label{group-storage}}
+
+The lab also has a \texttt{\$GROUP\_HOME} and a \texttt{\$GROUP\_SCRATCH} to store files for collaborative use. \texttt{\$GROUP\_HOME} has a volume quota of 1 TB and infinite retention time, whereas \texttt{\$GROUP\_SCRATCH} has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd} \VariableTok{$GROUP\_HOME}
+\BuiltInTok{cd}\NormalTok{ /home/groups/jadebc}
+
+\BuiltInTok{cd} \VariableTok{$GROUP\_SCRATCH}
+\BuiltInTok{cd}\NormalTok{ /scratch/groups/jadebc}
+\end{Highlighting}
+\end{Shaded}
+
+However, saving files to group storage can be tricky. Please read the next section to ensure you have the right permissions.
+
+\hypertarget{folder-permissions}{%
+\subsection{Folder permissions}\label{folder-permissions}}
+
+Generally, when we put folders in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, please check the folder's permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter \texttt{ls\ -l}. You will see output like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{drwxrwxrwx}\NormalTok{ 2 jadebc jadebc  2204 Jun 17 13:12 myfolder}
+\end{Highlighting}
+\end{Shaded}
+
+Please review \href{https://www.chriswrites.com/how-to-change-file-permissions-using-the-terminal/}{this website} to learn how to interpret the code on the left side of this output. The website also tells you how to change folder permissions. In order to ensure that all users and group members are able to access a folder's contents, you can use the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{chmod}\NormalTok{ ugo+rwx FOLDER\_NAME}
+\end{Highlighting}
+\end{Shaded}
+
+You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}.
 
 \hypertarget{running-big-jobs-1}{%
 \section{Running big jobs}\label{running-big-jobs-1}}

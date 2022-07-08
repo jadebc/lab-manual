@@ -95,6 +95,10 @@ testing-your-code
 the-command-line
 the-sherlock-ondemand-dashboard
 filepaths-configuration-on-sherlock
+storage-group-storage-access
+individual-storage
+group-storage
+folder-permissions
 running-big-jobs-1
 checklists
 pre-analysis-plan-checklist
