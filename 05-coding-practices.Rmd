@@ -116,6 +116,95 @@ mean_Y = calc_fluseas_mean(
 
 The `here` package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path `/home/oski/Some-R-Project`. My collaborator might clone the repository and work with it at some other path, such as  `/home/bear/R-Code/Some-R-Project`. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the `here` package comes in and this a [great vignette describing it](https://github.com/jennybc/here_here).
 
+## Repeating analyses with different variations
+
+In many cases, we will need to apply our modeling on different combinations of interests (outcomes, exposures, etc.). We can certainly use a `for` loop to repeat the execution of a wrapper function, but generally, `for` loops request high memory usage and produce the results in long computation time. 
+
+Fortunately, R has some functions which implement looping in a compact form to help repeating your analyses with different variations (subgroups, outcomes, covariate sets, etc.) with better performances.
+
+### `lapply()` and `sapply()`
+
+`lapply()` is a function in the base R package that applies a function to each element of a list and returns a list. It's typically faster than `for`. Here is a simple generic example:
+
+```
+result <- lapply(X = mylist, FUN = func)
+```
+
+There is another very similar function called `sapply()`. It also takes a list as its input, but if the output of the `func` is of the same length for each element in the input list, then `sapply()` will simplify the output to the simplest data structure possible, which will usually be a vector.
+
+### Parallel processing with `parallel` and `future` packages
+
+Assume you have a list called `mylist` of length 1000, and `lapply(X = mylist, FUN = func)` applies the function to each of the 1000 elements one by one in $T$ seconds. If we could execute the `func` in $n$ processors simultaneously, then ideally, we would shrink the computation time to $T/n$ seconds. 
+
+In practice, we can split `mylist` into smaller chunks and apply the function to each element of the several chunks in parallel using functions under the `parallel` and the `future` packages to significantly reduce the run time.
+
+#### `parLapply()`
+
+Below is a generic example of `parLapply()`:
+
+```
+library(parallel)
+
+# Set how many processors will be used to process the list and make cluster
+n_cores <- 4
+cl <- makeCluster(n_cores)
+
+#Use parLapply() to apply func to each element in mylist
+result <- parLapply(cl = cl, x = mylist, FUN = func)
+
+#Stop the parallel processing
+stopCluster(cl)
+```
+
+Let's still assume `mylist` is of length 1000. The `parLapply` above splits `mylist` into 4 sub-lists each of length 250 and applies the function to the elements of each sub-list in parallel. To be more specific, first apply the function to element 1, 251, 501, 751; second apply to element 2, 252, 502, 752; so on and so forth. As such, the computation time will be greatly reduced.
+
+You can use `parallel::detectCores()` to test how many cores your machine has and to help decide what to put for `n_cores`. It would be a good idea to leave at least one core free for the operating system to use.
+
+We will always start `parLapply()` with `makeCluster()`. **`stopCluster()` is not fully necessary but follows the best practices.** If not stopped, the processing will continue in the back end and consuming the computation capacity for other software in your machine. But keep in mind that stopping the cluster is similar quitting R, meaning that you will need to re-load the packages needed when you need to do parallel processing use `parLapply()` again. 
+
+#### `future.lapply()`
+
+Below is a generic example of `future.lapply()`:
+
+```
+library(future)
+library(future.apply)
+
+# First, plan how the future_lapply() will be resolved
+future::plan(
+  multisession, workers = future::availableCores() - 1
+)
+
+# Use future_lapply() to apply func to each element in mylist
+future_lapply(x = mylist, FUN = func)
+```
+
+Here, `future::availableCores()` checks how many cores your machine has. Similar to `parLapply()` showed above, `future_lapply()` parallelizes the computation of `lapply()` by executing the function `func` simultaneously on different sub-lists of `mylist`.
+
+
+### `mapply()` and `map()`
+
+Sometimes, we'd like to apply the same wrapper function to a matrix or a list of lists where each row of the matrix or each list contains a different combination of interests. Then, we can consider using `mapply()` and `map()`, both of which are a part of the base R packages.
+
+Assume we have a matrix to be processed:
+
+```
+# Convert matrix to list of lists, where each row is a list
+mat_list <- as.list(matrix)
+
+# Use mapply() to apply a function to each list
+mapply(FUN = func, ... = mat_list)
+
+# Use map() to apply a function to each list
+map(.x = mat_list, .f = func)
+````
+
+As the syntax above shows, **`mapply()` and `map()` cannot directly process a matrix**, so we need to transform it into a list of lists first.
+
+Please note that if your input lists are of different lengths, these two functions probably will not give the preferable results. If using `map()`, the function is only applied to the elements up to the length of the shortest input list. For any input lists that are longer than the shortest one, the extra elements are ignored. If using `mapply()`, the function is applied to the elements of the longest input list and the shorter input lists are recycled to match the length of the longest input list. If one of the input lists is longer than the others and the length is not a multiple of the lengths of the other input lists, `mapply()` will return an error.
+
+Thus, **when the input lists are of different lengths, maybe the best practice is to use `lapply()` to each of the lists and then combine them with `append()` or with `bind_rows()` if the output is a list of data frames.**
+
     
 ## Reading/Saving Data
 
