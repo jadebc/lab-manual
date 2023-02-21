@@ -123,3 +123,4 @@ mapply-and-map-1
 parallel-processing-with-parallel-and-future-packages-1
 parlapply-1
 future.lapply-1
+mapply-and-pmap

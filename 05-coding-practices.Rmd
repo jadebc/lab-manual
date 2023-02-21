@@ -229,40 +229,71 @@ result <- lapply(X = mylist, FUN = func)
 There is another very similar function called `sapply()`. It also takes a list as its input, but if the output of the `func` is of the same length for each element in the input list, then `sapply()` will simplify the output to the simplest data structure possible, which will usually be a vector.
 
 
-### `mapply()` and `map()`
+### `mapply()` and `pmap()`
 
-Sometimes, we'd like to apply the same wrapper function to a matrix or a list of lists where each row of the matrix or each list contains a different combination of interests. Then, we can consider using `mapply()` and `map()`, both of which are a part of the base R packages.
+Sometimes, we'd like to employ a wrapper function that takes arguments from multiple different lists/vectors. Then, we can consider using `mapply()` from the base R package or `pmap()` from the `purrr` package.
 
-Assume we have a matrix to be processed:
-
-```
-# Convert matrix to list of lists, where each row is a list
-mat_list <- as.list(matrix)
-
-# Use mapply() to apply a function to each list
-mapply(FUN = func, ... = mat_list)
-
-# Use map() to apply a function to each list
-map(.x = mat_list, .f = func)
-````
-
-As the syntax above shows, **`mapply()` and `map()` cannot directly process a matrix**, so we need to transform it into a list of lists first.
-
-Please note that if your input lists are of different lengths, these two functions probably will not give the preferable results. If using `map()`, the function is only applied to the elements up to the length of the shortest input list. For any input lists that are longer than the shortest one, the extra elements are ignored. If using `mapply()`, the function is applied to the elements of the longest input list and the shorter input lists are recycled to match the length of the longest input list. If one of the input lists is longer than the others and the length is not a multiple of the lengths of the other input lists, `mapply()` will return an error.
-
-Thus, **when the input lists are of different lengths, maybe the best practice is to use `lapply()` to each of the lists and then combine them with `append()` or with `bind_rows()` if the output is a list of data frames.** See the example below:
+Please see the simple specific example below where the two input lists are of the same length and we are doing a pairwise calculation:
 
 ```
+mylist1 = list(0:3)
+mylist2 = list(6:9)
+mylists = list(mylist1, mylist2)
+
+square_sum <- function(x, y) {
+  x^2 + y^2
+}
+
+#Use `mapply()`
+result1 <- mapply(FUN = square_sum, mylist1, mylist2)
+
+#Use `pmap()`
+library(purrr)
+result2 <- pmap(.l = mylists, .f = square_sum)
+
+#unlist(as.list(result1)) = result2 = [36 50 68 90]
+
 ```
+
+There are two major differences between `mapply()` and `pmap()`. The first difference is that `mapply()` takes seperate lists as its input arguments, while `pmap()` takes a list of list. Secondly, the output of `mapply()` will be in the form of a matrix or an array, but `pmap()` produces a list directly.
+
+However, when **the input lists are of different lengths AND/OR the wrapper function doesn't take arguments in pairs, `mapply()` and `pmap()` may not give the preferable results.**
+
+Both `mapply()` and `pmap()` will recycle shorter input lists to match the length of the longest input list. Assume that now `mylist2 = list(6:12)`. Then, `pmap(mylists, square_sum)` will generate `[36  50  68  90 100 122 148]` where elements 0, 1, and 2 are recycled to match 10, 11, and 12. And it will return an error message that "longer object length is not a multiple of shorter object length."
+
+Thus, unless the recycling pattern described above is desirable feature for a certain experiment design, **when the input lists are of different lengths, the best practice is probably to use `lapply()` and then combine the results.** 
+
+Here is an example where we'd like to find the `square_sum` for every element combination of `mylist1` and `mylist2`. 
+
+```
+mylist1 <- list(0:3)
+mylist2 <- list(6:12)
+
+square_sum <- function(x, y) {
+  x^2 + y^2
+}
+
+results <- list()
+
+for (i in seq_along(mylist1[[1]])) {
+  result <- lapply(X = mylist2, FUN = function(y) square_sum(mylist1[[1]][i], y))
+  results[[i]] <- result
+}
+
+```
+
+This example doesn't work in the way that 0 is paired to 6, 1 is paired to 7, and so on. Instead, every element in `mylist1` will be paired with every element in `mylist2`. Thus, the "unlisted" results from the example will have $4*7 = 28$ elements. 
+
+We can use `flatten()` or `unlist()` functions to decrease the depths of our results. If the results are data frames, then we will need to use `bind_rows()` to combine them.
 
 
 ### Parallel processing with `parallel` and `future` packages
 
-One big drawback of `lapply()` is its long computation time, especially when the list length is long. Fortunately, parallel processing can help make it much faster.
+One big drawback of `lapply()` is its long computation time, especially when the list length is long. Fortunately, computers nowadays must have multiple cores which makes parallel processing possible to help make computation much faster.
 
 Assume you have a list called `mylist` of length 1000, and `lapply(X = mylist, FUN = func)` applies the function to each of the 1000 elements one by one in $T$ seconds. If we could execute the `func` in $n$ processors simultaneously, then ideally, we would shrink the computation time to $T/n$ seconds. 
 
-In practice, we can split `mylist` into smaller chunks and apply the function to each element of the several chunks in parallel using functions under the `parallel` and the `future` packages to significantly reduce the run time.
+In practice, using functions under the `parallel` and the `future` packages, we can split `mylist` into smaller chunks and apply the function to each element of the several chunks in parallel in different cores to significantly reduce the run time.
 
 #### `parLapply()`
 
