@@ -211,6 +211,134 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
 
 If you're using both R and Python, you may wish to check out the [Feather package](https://www.rdocumentation.org/packages/feather/versions/0.3.3) for exchanging data between the two languages [extremely quickly](https://blog.rstudio.com/2016/03/29/feather/).
 
+
+## Repeating analyses with different variations
+
+In many cases, we will need to apply our modeling on different combinations of interests (outcomes, exposures, etc.). We can certainly use a `for` loop to repeat the execution of a wrapper function, but generally, `for` loops request high memory usage and produce the results in long computation time. 
+
+Fortunately, R has some functions which implement looping in a compact form to help repeating your analyses with different variations (subgroups, outcomes, covariate sets, etc.) with better performances.
+
+### `lapply()` and `sapply()`
+
+`lapply()` is a function in the base R package that applies a function to each element of a list and returns a list. It's typically faster than `for`. Here is a simple generic example:
+
+```
+result <- lapply(X = mylist, FUN = func)
+```
+
+There is another very similar function called `sapply()`. It also takes a list as its input, but if the output of the `func` is of the same length for each element in the input list, then `sapply()` will simplify the output to the simplest data structure possible, which will usually be a vector.
+
+
+### `mapply()` and `pmap()`
+
+Sometimes, we'd like to employ a wrapper function that takes arguments from multiple different lists/vectors. Then, we can consider using `mapply()` from the base R package or `pmap()` from the `purrr` package.
+
+Please see the simple specific example below where the two input lists are of the same length and we are doing a pairwise calculation:
+
+```
+mylist1 = list(0:3)
+mylist2 = list(6:9)
+mylists = list(mylist1, mylist2)
+
+square_sum <- function(x, y) {
+  x^2 + y^2
+}
+
+#Use `mapply()`
+result1 <- mapply(FUN = square_sum, mylist1, mylist2)
+
+#Use `pmap()`
+library(purrr)
+result2 <- pmap(.l = mylists, .f = square_sum)
+
+#unlist(as.list(result1)) = result2 = [36 50 68 90]
+
+```
+
+There are two major differences between `mapply()` and `pmap()`. The first difference is that `mapply()` takes seperate lists as its input arguments, while `pmap()` takes a list of list. Secondly, the output of `mapply()` will be in the form of a matrix or an array, but `pmap()` produces a list directly.
+
+However, when **the input lists are of different lengths AND/OR the wrapper function doesn't take arguments in pairs, `mapply()` and `pmap()` may not give the preferable results.**
+
+Both `mapply()` and `pmap()` will recycle shorter input lists to match the length of the longest input list. Assume that now `mylist2 = list(6:12)`. Then, `pmap(mylists, square_sum)` will generate `[36  50  68  90 100 122 148]` where elements 0, 1, and 2 are recycled to match 10, 11, and 12. And it will return an error message that "longer object length is not a multiple of shorter object length."
+
+Thus, unless the recycling pattern described above is desirable feature for a certain experiment design, **when the input lists are of different lengths, the best practice is probably to use `lapply()` and then combine the results.** 
+
+Here is an example where we'd like to find the `square_sum` for every element combination of `mylist1` and `mylist2`. 
+
+```
+mylist1 <- list(0:3)
+mylist2 <- list(6:12)
+
+square_sum <- function(x, y) {
+  x^2 + y^2
+}
+
+results <- list()
+
+for (i in seq_along(mylist1[[1]])) {
+  result <- lapply(X = mylist2, FUN = function(y) square_sum(mylist1[[1]][i], y))
+  results[[i]] <- result
+}
+
+```
+
+This example doesn't work in the way that 0 is paired to 6, 1 is paired to 7, and so on. Instead, every element in `mylist1` will be paired with every element in `mylist2`. Thus, the "unlisted" results from the example will have $4*7 = 28$ elements. 
+
+We can use `flatten()` or `unlist()` functions to decrease the depths of our results. If the results are data frames, then we will need to use `bind_rows()` to combine them.
+
+
+### Parallel processing with `parallel` and `future` packages
+
+One big drawback of `lapply()` is its long computation time, especially when the list length is long. Fortunately, computers nowadays must have multiple cores which makes parallel processing possible to help make computation much faster.
+
+Assume you have a list called `mylist` of length 1000, and `lapply(X = mylist, FUN = func)` applies the function to each of the 1000 elements one by one in $T$ seconds. If we could execute the `func` in $n$ processors simultaneously, then ideally, we would shrink the computation time to $T/n$ seconds. 
+
+In practice, using functions under the `parallel` and the `future` packages, we can split `mylist` into smaller chunks and apply the function to each element of the several chunks in parallel in different cores to significantly reduce the run time.
+
+#### `parLapply()`
+
+Below is a generic example of `parLapply()`:
+
+```
+library(parallel)
+
+# Set how many processors will be used to process the list and make cluster
+n_cores <- 4
+cl <- makeCluster(n_cores)
+
+#Use parLapply() to apply func to each element in mylist
+result <- parLapply(cl = cl, x = mylist, FUN = func)
+
+#Stop the parallel processing
+stopCluster(cl)
+```
+
+Let's still assume `mylist` is of length 1000. The `parLapply` above splits `mylist` into 4 sub-lists each of length 250 and applies the function to the elements of each sub-list in parallel. To be more specific, first apply the function to element 1, 251, 501, 751; second apply to element 2, 252, 502, 752; so on and so forth. As such, the computation time will be greatly reduced.
+
+You can use `parallel::detectCores()` to test how many cores your machine has and to help decide what to put for `n_cores`. It would be a good idea to leave at least one core free for the operating system to use.
+
+We will always start `parLapply()` with `makeCluster()`. **`stopCluster()` is not fully necessary but follows the best practices.** If not stopped, the processing will continue in the back end and consuming the computation capacity for other software in your machine. But keep in mind that stopping the cluster is similar quitting R, meaning that you will need to re-load the packages needed when you need to do parallel processing use `parLapply()` again. 
+
+#### `future.lapply()`
+
+Below is a generic example of `future.lapply()`:
+
+```
+library(future)
+library(future.apply)
+
+# First, plan how the future_lapply() will be resolved
+future::plan(
+  multisession, workers = future::availableCores() - 1
+)
+
+# Use future_lapply() to apply func to each element in mylist
+future_lapply(x = mylist, FUN = func)
+```
+
+Here, `future::availableCores()` checks how many cores your machine has. Similar to `parLapply()` showed above, `future_lapply()` parallelizes the computation of `lapply()` by executing the function `func` simultaneously on different sub-lists of `mylist`.
+
+
 ## Reviewing Code
 
 Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the [GitHub](#Github) section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.

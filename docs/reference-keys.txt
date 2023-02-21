@@ -111,3 +111,16 @@ resources-for-git-github
 scientific-figures
 writing
 presentations
+repeating-analyses-with-different-variations
+lapply-and-sapply
+parallel-processing-with-parallel-and-future-packages
+parlapply
+future.lapply
+mapply-and-map
+repeating-analyses-with-different-variations-1
+lapply-and-sapply-1
+mapply-and-map-1
+parallel-processing-with-parallel-and-future-packages-1
+parlapply-1
+future.lapply-1
+mapply-and-pmap
