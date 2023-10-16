@@ -106,7 +106,7 @@ In order for some R packages to work on Sherlock, it is necessary to load specif
 ```{bash, eval=FALSE}
 module --force purge # remove any previously loaded modules, including math and devel
 module load math
-mdoule load math gmp/6.1.2
+module load math gmp/6.1.2
 module load devel
 module load gcc/10
 module load system
@@ -121,7 +121,7 @@ module load pandoc/2.7.3
 module load R/4.0.2
 
 R # Open R in the Shell window to install individual packages or test code
-Rscript install-packages.R # Alternatively, run the entire package installation script in the Shell window
+Rscript install-packages-sherlock.R # Alternatively, run the entire package installation script in the Shell window
 ```
 
 Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the `module spider` command: 
