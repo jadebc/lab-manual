@@ -5,16 +5,19 @@
 \documentclass[
 ]{book}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -33,13 +36,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Benjamin-Chung Lab Manual},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -51,13 +47,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -65,7 +61,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -74,7 +70,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -115,15 +111,22 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Benjamin-Chung Lab Manual},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2022-07-08}
+\date{\vspace{-2.5em}Updated: 2024-10-14}
 
 \begin{document}
 \maketitle
@@ -146,7 +149,7 @@ Welcome to the lab of Dr.~Jade Benjamin-Chung, Assistant Professor in Epidemiolo
 This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly.
 
 This manual was created with input from a large number of team members and with inspiration from \href{https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf}{other scientists' lab manuals}.
-Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, and Anna Nguyen.
+Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen, Iris Tong, and Gabby Barratt Heitmann.
 
 Feel free to draw from this manual (and please cite it if you do!).
 
@@ -488,7 +491,7 @@ After running bash scripts, \texttt{.Rout} log files will be generated for each 
 \hypertarget{coding-practices}{%
 \chapter{Coding practices}\label{coding-practices}}
 
-by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
+by Kunal Mishra, Jade Benjamin-Chung, Stephanie Djajadi, and Iris Tong
 
 \hypertarget{organizing-scripts}{%
 \section{Organizing scripts}\label{organizing-scripts}}
@@ -510,7 +513,7 @@ Just as your data ``flows'' through your project, data should flow naturally thr
   save your data.
 \end{enumerate}
 
-Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
+Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
 
 \hypertarget{documenting-your-code}{%
 \section{Documenting your code}\label{documenting-your-code}}
@@ -549,7 +552,7 @@ Consider using RStudio's \href{https://support.rstudio.com/hc/en-us/articles/200
 \hypertarget{comments-in-the-body-of-your-script}{%
 \subsection{Comments in the body of your script}\label{comments-in-the-body-of-your-script}}
 
-Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
+Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
 
 \texttt{\#\ This\ is\ a\ comment\ -\/-\ first\ letter\ is\ capitalized\ and\ spaced\ away\ from\ the\ pound\ sign}
 
@@ -705,12 +708,18 @@ The package author has published a \href{https://r4ds.had.co.nz/}{great textbook
 The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.50}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.50}}@{}}
-\toprule
-Base R & Better Style, Performance, and Utility \\
-\midrule
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Base R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Better Style, Performance, and Utility
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 \_ & \_ \\
 \texttt{read.csv()} & \texttt{readr::read\_csv()} or \texttt{data.table::fread()} \\
 \texttt{write.csv()} & \texttt{readr::write\_csv()} or \texttt{data.table::fwrite()} \\
@@ -733,7 +742,6 @@ Base R & Better Style, Performance, and Utility \\
 Nested: \texttt{ifelse(test\_expression1,\ yes1,\ ifelse(test\_expression2,\ yes2,\ ifelse(test\_expression3,\ yes3,\ no)))} & \texttt{case\_when(test\_expression1\ \textasciitilde{}\ yes1,\ \ test\_expression2\ \textasciitilde{}\ yes2,\ test\_expression3\ \textasciitilde{}\ yes3,\ TRUE\ \textasciitilde{}\ no)} \\
 \texttt{proc.time()} & \texttt{tictoc::tic()} and \texttt{tictoc::toc()} \\
 \texttt{stopifnot()} & \texttt{assertthat::assert\_that()} or \texttt{assertthat::see\_if()} or \texttt{assertthat::validate\_that()} \\
-\bottomrule
 \end{longtable}
 
 For a more extensive set of syntactical translations to Tidyverse, you can check out \href{https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html\#reshaping_data}{this document}.
@@ -758,6 +766,134 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
 \section{Coding with R and Python}\label{coding-with-r-and-python}}
 
 If you're using both R and Python, you may wish to check out the \href{https://www.rdocumentation.org/packages/feather/versions/0.3.3}{Feather package} for exchanging data between the two languages \href{https://blog.rstudio.com/2016/03/29/feather/}{extremely quickly}.
+
+\hypertarget{repeating-analyses-with-different-variations}{%
+\section{Repeating analyses with different variations}\label{repeating-analyses-with-different-variations}}
+
+In many cases, we will need to apply our modeling on different combinations of interests (outcomes, exposures, etc.). We can certainly use a \texttt{for} loop to repeat the execution of a wrapper function, but generally, \texttt{for} loops request high memory usage and produce the results in long computation time.
+
+Fortunately, R has some functions which implement looping in a compact form to help repeating your analyses with different variations (subgroups, outcomes, covariate sets, etc.) with better performances.
+
+\hypertarget{lapply-and-sapply}{%
+\subsection{\texorpdfstring{\texttt{lapply()} and \texttt{sapply()}}{lapply() and sapply()}}\label{lapply-and-sapply}}
+
+\texttt{lapply()} is a function in the base R package that applies a function to each element of a list and returns a list. It's typically faster than \texttt{for}. Here is a simple generic example:
+
+\begin{verbatim}
+result <- lapply(X = mylist, FUN = func)
+\end{verbatim}
+
+There is another very similar function called \texttt{sapply()}. It also takes a list as its input, but if the output of the \texttt{func} is of the same length for each element in the input list, then \texttt{sapply()} will simplify the output to the simplest data structure possible, which will usually be a vector.
+
+\hypertarget{mapply-and-pmap}{%
+\subsection{\texorpdfstring{\texttt{mapply()} and \texttt{pmap()}}{mapply() and pmap()}}\label{mapply-and-pmap}}
+
+Sometimes, we'd like to employ a wrapper function that takes arguments from multiple different lists/vectors. Then, we can consider using \texttt{mapply()} from the base R package or \texttt{pmap()} from the \texttt{purrr} package.
+
+Please see the simple specific example below where the two input lists are of the same length and we are doing a pairwise calculation:
+
+\begin{verbatim}
+mylist1 = list(0:3)
+mylist2 = list(6:9)
+mylists = list(mylist1, mylist2)
+
+square_sum <- function(x, y) {
+  x^2 + y^2
+}
+
+#Use `mapply()`
+result1 <- mapply(FUN = square_sum, mylist1, mylist2)
+
+#Use `pmap()`
+library(purrr)
+result2 <- pmap(.l = mylists, .f = square_sum)
+
+#unlist(as.list(result1)) = result2 = [36 50 68 90]
+\end{verbatim}
+
+There are two major differences between \texttt{mapply()} and \texttt{pmap()}. The first difference is that \texttt{mapply()} takes seperate lists as its input arguments, while \texttt{pmap()} takes a list of list. Secondly, the output of \texttt{mapply()} will be in the form of a matrix or an array, but \texttt{pmap()} produces a list directly.
+
+However, when \textbf{the input lists are of different lengths AND/OR the wrapper function doesn't take arguments in pairs, \texttt{mapply()} and \texttt{pmap()} may not give the preferable results.}
+
+Both \texttt{mapply()} and \texttt{pmap()} will recycle shorter input lists to match the length of the longest input list. Assume that now \texttt{mylist2\ =\ list(6:12)}. Then, \texttt{pmap(mylists,\ square\_sum)} will generate \texttt{{[}36\ \ 50\ \ 68\ \ 90\ 100\ 122\ 148{]}} where elements 0, 1, and 2 are recycled to match 10, 11, and 12. And it will return an error message that ``longer object length is not a multiple of shorter object length.''
+
+Thus, unless the recycling pattern described above is desirable feature for a certain experiment design, \textbf{when the input lists are of different lengths, the best practice is probably to use \texttt{lapply()} and then combine the results.}
+
+Here is an example where we'd like to find the \texttt{square\_sum} for every element combination of \texttt{mylist1} and \texttt{mylist2}.
+
+\begin{verbatim}
+mylist1 <- list(0:3)
+mylist2 <- list(6:12)
+
+square_sum <- function(x, y) {
+  x^2 + y^2
+}
+
+results <- list()
+
+for (i in seq_along(mylist1[[1]])) {
+  result <- lapply(X = mylist2, FUN = function(y) square_sum(mylist1[[1]][i], y))
+  results[[i]] <- result
+}
+\end{verbatim}
+
+This example doesn't work in the way that 0 is paired to 6, 1 is paired to 7, and so on. Instead, every element in \texttt{mylist1} will be paired with every element in \texttt{mylist2}. Thus, the ``unlisted'' results from the example will have \(4*7 = 28\) elements.
+
+We can use \texttt{flatten()} or \texttt{unlist()} functions to decrease the depths of our results. If the results are data frames, then we will need to use \texttt{bind\_rows()} to combine them.
+
+\hypertarget{parallel-processing-with-parallel-and-future-packages}{%
+\subsection{\texorpdfstring{Parallel processing with \texttt{parallel} and \texttt{future} packages}{Parallel processing with parallel and future packages}}\label{parallel-processing-with-parallel-and-future-packages}}
+
+One big drawback of \texttt{lapply()} is its long computation time, especially when the list length is long. Fortunately, computers nowadays must have multiple cores which makes parallel processing possible to help make computation much faster.
+
+Assume you have a list called \texttt{mylist} of length 1000, and \texttt{lapply(X\ =\ mylist,\ FUN\ =\ func)} applies the function to each of the 1000 elements one by one in \(T\) seconds. If we could execute the \texttt{func} in \(n\) processors simultaneously, then ideally, we would shrink the computation time to \(T/n\) seconds.
+
+In practice, using functions under the \texttt{parallel} and the \texttt{future} packages, we can split \texttt{mylist} into smaller chunks and apply the function to each element of the several chunks in parallel in different cores to significantly reduce the run time.
+
+\hypertarget{parlapply}{%
+\subsubsection{\texorpdfstring{\texttt{parLapply()}}{parLapply()}}\label{parlapply}}
+
+Below is a generic example of \texttt{parLapply()}:
+
+\begin{verbatim}
+library(parallel)
+
+# Set how many processors will be used to process the list and make cluster
+n_cores <- 4
+cl <- makeCluster(n_cores)
+
+#Use parLapply() to apply func to each element in mylist
+result <- parLapply(cl = cl, x = mylist, FUN = func)
+
+#Stop the parallel processing
+stopCluster(cl)
+\end{verbatim}
+
+Let's still assume \texttt{mylist} is of length 1000. The \texttt{parLapply} above splits \texttt{mylist} into 4 sub-lists each of length 250 and applies the function to the elements of each sub-list in parallel. To be more specific, first apply the function to element 1, 251, 501, 751; second apply to element 2, 252, 502, 752; so on and so forth. As such, the computation time will be greatly reduced.
+
+You can use \texttt{parallel::detectCores()} to test how many cores your machine has and to help decide what to put for \texttt{n\_cores}. It would be a good idea to leave at least one core free for the operating system to use.
+
+We will always start \texttt{parLapply()} with \texttt{makeCluster()}. \textbf{\texttt{stopCluster()} is not fully necessary but follows the best practices.} If not stopped, the processing will continue in the back end and consuming the computation capacity for other software in your machine. But keep in mind that stopping the cluster is similar quitting R, meaning that you will need to re-load the packages needed when you need to do parallel processing use \texttt{parLapply()} again.
+
+\hypertarget{future.lapply}{%
+\subsubsection{\texorpdfstring{\texttt{future.lapply()}}{future.lapply()}}\label{future.lapply}}
+
+Below is a generic example of \texttt{future.lapply()}:
+
+\begin{verbatim}
+library(future)
+library(future.apply)
+
+# First, plan how the future_lapply() will be resolved
+future::plan(
+  multisession, workers = future::availableCores() - 1
+)
+
+# Use future_lapply() to apply func to each element in mylist
+future_lapply(x = mylist, FUN = func)
+\end{verbatim}
+
+Here, \texttt{future::availableCores()} checks how many cores your machine has. Similar to \texttt{parLapply()} showed above, \texttt{future\_lapply()} parallelizes the computation of \texttt{lapply()} by executing the function \texttt{func} simultaneously on different sub-lists of \texttt{mylist}.
 
 \hypertarget{reviewing-code}{%
 \section{Reviewing Code}\label{reviewing-code}}
@@ -801,20 +937,22 @@ Follow the instructions below to add a pull request template to a repository. Mo
 
 Here is an example pull request template.
 
-\begin{verbatim}
-# Description
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\# Description}
 
-## Summary of change
+\NormalTok{\#\# Summary of change}
 
-Please include a summary of the change, including any new functions added and example usage. 
+\NormalTok{Please include a summary of the change, including any new functions added and example usage. }
 
-## Link to Spec
+\NormalTok{\#\# Link to Spec}
 
-Please include a link to the Trello card or Google document with details of the task. 
+\NormalTok{Please include a link to the Trello card or Google document with details of the task. }
 
-## Who should review the pull request?
-@ ...
-\end{verbatim}
+\NormalTok{\#\# Who should review the pull request?}
+\NormalTok{@ ...}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{coding-style}{%
 \chapter{Coding style}\label{coding-style}}
@@ -844,7 +982,7 @@ by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 \setcounter{enumi}{1}
 \tightlist
 \item
-  \textbf{File Structure} - Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =\textgreater{} 2) load all your data =\textgreater{} 3) do all your analysis/computation =\textgreater{} save your data. Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
+  \textbf{File Structure} - Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =\textgreater{} 2) load all your data =\textgreater{} 3) do all your analysis/computation =\textgreater{} save your data. Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
 
   \begin{itemize}
   \tightlist
@@ -852,7 +990,7 @@ by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
     \textbf{Note}: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
   \end{itemize}
 \item
-  \textbf{Single-Line Comments} - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
+  \textbf{Single-Line Comments} - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
 \end{enumerate}
 
 \texttt{\#\ This\ is\ a\ comment\ -\/-\ first\ letter\ is\ capitalized\ and\ spaced\ away\ from\ the\ pound\ sign}
@@ -1016,6 +1154,540 @@ OUSD_not_found_aliases = list(
   \end{itemize}
 \end{enumerate}
 
+\hypertarget{working-with-big-data}{%
+\chapter{Working with Big Data}\label{working-with-big-data}}
+
+by Kunal Mishra and Jade Benjamin-Chung
+
+\hypertarget{the-data.table-package}{%
+\section{The data.table package}\label{the-data.table-package}}
+
+It may also be the case that you're working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, \texttt{Tidvyerse} (more specificially, \texttt{dplyr}), and \texttt{data.table}. For a majority of things, Base R is inferior to both \texttt{dplyr} and \texttt{data.table}, with concise but less clear syntax and less speed. \texttt{Dplyr} is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to \texttt{data.table}. An overview of the \texttt{dplyr} vs \texttt{data.table} debate can be found in \href{https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349\#27840349}{this stackoverflow post} and all 3 answers are worth a read.
+
+You can also achieve a performance boost by running \texttt{dplyr} commands on \texttt{data.table}s, which I find to be the best of both worlds, given that a \texttt{data.table} is a special type of \texttt{data.frame} and fairly easy to convert with the \texttt{as.data.table()} function. The speedup is due to \texttt{dplyr}'s use of the \texttt{data.table} backend and in the future this coupling should become even more natural.
+
+If you want to test whether using a certain coding approach increases speed, consider the \texttt{tictoc} package. Run \texttt{tic()} before a code chunk and \texttt{toc()} after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you \emph{really} need to switch a code chunk from \texttt{dplyr} to \texttt{data.table}.
+
+\hypertarget{using-downsampled-data}{%
+\section{Using downsampled data}\label{using-downsampled-data}}
+
+In our studies with very large datasets, we save ``downsampled'' data that usually includes a 1\% random sample stratified by any important variables, such as year or household id. This allows us to efficiently write and test our code without having to load in large, slow datasets that can cause RStudio to freeze. Be very careful to be sure which dataset you are working with and to label results output accordingly.
+
+\hypertarget{optimal-rstudio-set-up}{%
+\section{Optimal RStudio set up}\label{optimal-rstudio-set-up}}
+
+Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the ``Tools'' menu, then select ``Global Options''. Under ``General'':
+
+\textbf{Workspace}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Uncheck} Restore RData into workspace at startup
+\item
+  Save workspace to RData on exit -- choose \textbf{never}
+\end{itemize}
+
+\textbf{History}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Uncheck} Always save history
+\end{itemize}
+
+Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.
+
+\hypertarget{github}{%
+\chapter{Github}\label{github}}
+
+by Stephanie Djajadi and Nolan Pokpongkiat
+
+\hypertarget{basics}{%
+\section{Basics}\label{basics}}
+
+\begin{itemize}
+\tightlist
+\item
+  A detailed tutorial of Git can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{here on the CS61B website}.
+\item
+  If you are already familiar with Git, you can reference the summary at the end of \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{Section B}.
+\item
+  If you have made a mistake in Git, you can refer to this \href{https://sethrobertson.github.io/GitFixUm/fixup.html}{article} to undo, fix, or remove commits in git.
+\end{itemize}
+
+\hypertarget{github-desktop}{%
+\section{Github Desktop}\label{github-desktop}}
+
+While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides \href{https://desktop.github.com/}{Github Desktop} as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.
+
+\hypertarget{git-branching}{%
+\section{Git Branching}\label{git-branching}}
+
+Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
+
+\begin{itemize}
+\tightlist
+\item
+  You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don't want to break the code for them.
+\item
+  You want to start working on a new part of the project, but you aren't sure yet if your changes will work and make it to the final product.
+\item
+  You are working with others and don't want to mix up your current work with theirs, even if you want to bring your work together later in the future.
+\end{itemize}
+
+A detailed tutorial on Git Branching can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#e-git-branching-advanced-git-optional}{here}. You can also find instructions on how to handle merge conflicts when joining branches together.
+
+\hypertarget{example-workflow}{%
+\section{Example Workflow}\label{example-workflow}}
+
+A standard workflow when starting on a new project and contributing code looks like this:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3600}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+SETUP: FIRST TIME ONLY: \texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}} & Clone the repo. This copies of all the project files in its current state on Github to your local computer. \\
+1. \texttt{git\ pull\ origin\ master} & update the state of your files to match the most current version on GitHub \\
+2. \texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}} & create new branch that you'll be working on and go to it \\
+3. Make some file changes & work on your feature/implementation \\
+4. \texttt{git\ add\ -p} & add changes to stage for commit, going through changes line by line \\
+5. \texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}} & commit files with a message \\
+6. \texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}} & push branch to remote and set to track (-u only needed if this is first push) \\
+7. Repeat step 4-5. & work and commit often \\
+8. \texttt{git\ push} & push work to remote branch for others to view \\
+9. Follow the link given from the \texttt{git\ push} command to \href{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request\#creating-the-pull-request}{submit a pull request (PR) on GitHub online} & PR merges in work from your branch into master \\
+(10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging & \\
+11. \texttt{git\ fetch\ -\/-all\ -\/-prune} & clean up your local git by untracking deleted remote branches \\
+\end{longtable}
+
+Other helpful commands are listed below.
+
+\hypertarget{commonly-used-git-commands}{%
+\section{Commonly Used Git Commands}\label{commonly-used-git-commands}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3600}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}} & clone a repository, only needs to be done the first time \\
+\texttt{git\ pull\ origin\ master} & pull from \texttt{master} before making any changes \\
+\texttt{git\ branch} & check what branch you are on \\
+\texttt{git\ branch\ -a} & check what branch you are on + all remote branches \\
+\texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}} & create new branch and go to it (only necessary when you create a new branch) \\
+\texttt{git\ checkout\ \textless{}branch\ name\textgreater{}} & switch to branch \\
+\texttt{git\ add\ \textless{}file\ name\textgreater{}} & add file to stage for commit \\
+\texttt{git\ add\ -p} & adds changes to commit, showing you changes one by one \\
+\texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}} & commit file with a message \\
+\texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}} & push branch to remote and set to track (-u only works if this is first push) \\
+\texttt{git\ branch\ -\/-set-upstream-to\ origin\ \textless{}branch\_name\textgreater{}} & set upstream to \texttt{origin/\textless{}branch\_name\textgreater{}} (use if you forgot -u on first push) \\
+\texttt{git\ push\ origin\ \textless{}branch\_name\textgreater{}} & push work to branch \\
+\texttt{git\ checkout\ \textless{}branch\_name\textgreater{}} ~\texttt{git\ merge\ master} & switch to branch and merge changes from \texttt{master} into \texttt{\textless{}branch\_name\textgreater{}} (two commands) \\
+\texttt{git\ merge\ \textless{}branch\_name\textgreater{}\ master} & switch to branch and merge changes from \texttt{master} into \texttt{\textless{}branch\_name\textgreater{}} (one command) \\
+\texttt{git\ checkout\ -\/-track\ origin/\textless{}branch\_name\textgreater{}} & pulls a remote branch and creates a local branch to track it (use when trying to pull someone else's branch onto your local computer) \\
+\texttt{git\ push\ -\/-delete\ \textless{}remote\_name\textgreater{}\ \textless{}branch\_name\textgreater{}} & delete remote branch \\
+\texttt{git\ branch\ -d\ \textless{}branch\_name\textgreater{}} & deletes local branch, -D to force \\
+\texttt{git\ fetch\ -\/-all\ -\/-prune} & untrack deleted remote branches \\
+\end{longtable}
+
+\hypertarget{how-often-should-i-commit}{%
+\section{How often should I commit?}\label{how-often-should-i-commit}}
+
+It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.
+
+\hypertarget{what-should-be-pushed-to-github}{%
+\section{What should be pushed to Github?}\label{what-should-be-pushed-to-github}}
+
+Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.
+
+There is a standardized \texttt{.gitignore} for \texttt{R} which you \href{https://github.com/github/gitignore/blob/master/R.gitignore}{can download} and add to your project. This ensures you're not committing log files or things that would otherwise best be left ignored to GitHub. This is a \href{https://www.tidyverse.org/articles/2017/12/workflow-vs-script/}{great discussion of project-oriented workflows}, extolling the virtues of a self-contained, portable projects, for your reference.
+
+\hypertarget{unix}{%
+\chapter{Unix commands}\label{unix}}
+
+by Stephanie Djajadi, Kunal Mishra, Anna Nguyen, and Jade Benjamin-Chung
+
+We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Windows users) to
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Run a series of scripts in parallel or in a specific order to reproduce our work
+\item
+  To check on the progress of a batch of jobs
+\item
+  To use git and push to github
+\end{enumerate}
+
+\hypertarget{basics-1}{%
+\section{Basics}\label{basics-1}}
+
+On the computer, there is a desktop with two folders, \texttt{folder1} and \texttt{folder2}, and a file called \texttt{file1.} Inside \texttt{folder1}, we have a file called \texttt{file2.} Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
+
+\begin{figure}
+\centering
+\includegraphics{assets/images/ex-desktop.jpg}
+\caption{Here is our example desktop.}
+\end{figure}
+
+\hypertarget{syntax-for-both-macwindows}{%
+\section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}}
+
+When typing in directories or file names, quotes are necessary if the name includes spaces.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4348}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5652}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{cd\ desktop/folder1} & Change directory to \texttt{folder1} \\
+\texttt{pwd} & Print working directory \\
+\texttt{ls} & List files in the directory \\
+\texttt{cp\ "file2"\ "newfile2"} & Copy file (remember to include file extensions when typing in file names like \texttt{.pdf} or \texttt{.R}) \\
+\texttt{mv\ “newfile2”\ “file3”} & Rename \texttt{newfile2} to \texttt{file3} \\
+\texttt{cd\ ..} & Go to parent of the working directory (in this case, \texttt{desktop}) \\
+\texttt{mv\ “file1”\ folder2} & Move \texttt{file1} to \texttt{folder2} \\
+\texttt{mkdir\ folder3} & Make a new folder in \texttt{folder2} \\
+\texttt{rm\ \textless{}filename\textgreater{}} & Remove files \\
+\texttt{rm\ -rf\ folder3} & Remove directories (\texttt{-r} will attempt to remove the directory recursively, \texttt{-rf} will force removal of the directory) \\
+\texttt{clear} & Clear terminal screen of all previous commands \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\includegraphics{assets/images/ex-terminal.PNG}
+\caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
+\end{figure}
+
+\hypertarget{running-bash-scripts}{%
+\section{Running Bash Scripts}\label{running-bash-scripts}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2571}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Windows
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mac / Linux
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{chmod\ +750\ \textless{}filename.sh\textgreater{}} & \texttt{chmod\ +x\ \textless{}filename.sh\textgreater{}} & Change access permissions for a file (only needs to be done once) \\
+\texttt{./\textless{}filename.sh\textgreater{}} & \texttt{./\textless{}filename.sh\textgreater{}} & Run file (\texttt{./} to run any executable file) \\
+\texttt{bash\ bash\_script\_name.sh\ \&} & \texttt{bash\ bash\_script\_name.sh\ \&} & Run shell script in the background \\
+\end{longtable}
+
+\hypertarget{running-rscripts-in-windows}{%
+\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}}
+
+\textbf{Note: This code seems to work only with Windows Command Prompt, not with Git Bash.}
+
+When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your \texttt{PATH,} then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):
+
+\texttt{C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin}
+
+For appending the \texttt{PATH} variable, please view \href{https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/}{this link}. I strongly recommend completing this option.
+
+If you add the PATH as an environment variable, then you can run this line of code to test:
+\texttt{Rscript\ -e\ “cat(‘this\ is\ a\ test’)"}, where the \texttt{-e} flag refers to the expression that will be executed.
+
+If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above:
+\texttt{“C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin”\ -e\ “cat(‘this\ is\ a\ test’)”}
+
+To run an R script from the command line, we can say:
+\texttt{Rscript\ -e\ “source(‘C:/path/to/script/some\_code.R’)”}
+
+\hypertarget{common-mistakes}{%
+\subsection{Common Mistakes}\label{common-mistakes}}
+
+\begin{itemize}
+\tightlist
+\item
+  Remember to include all of the quotation marks around file paths that have a spaces.
+\item
+  If you attempt to run an R script but run into \texttt{Error:\ \textquotesingle{}\textbackslash{}U\textquotesingle{}\ used\ without\ hex\ digits\ in\ character\ string\ starting\ "\textquotesingle{}C:\textbackslash{}U"}, try replacing all \texttt{\textbackslash{}} with \texttt{\textbackslash{}\textbackslash{}} or \texttt{/}.
+\end{itemize}
+
+\hypertarget{checking-tasks-and-killing-jobs}{%
+\section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2571}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Windows
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mac / Linux
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{tasklist} & \texttt{ps\ -v} & List all processes on the command line \\
+& \texttt{top\ -o\ {[}cpu/rsize{]}} & List all running processes, sorted by CPU or memory usage \\
+\texttt{taskkill\ /F\ /PID\ pid\_number} & \texttt{kill\ \textless{}PID\_number\textgreater{}} & Kill a process by its process ID \\
+\texttt{taskkill\ /IM\ "process\ name"\ /F} & & Kill a process by its name \\
+\texttt{start\ /b\ program.exe} & & Runs jobs in the background (exclude \texttt{/b} if you want the program to run in a new console) \\
+& \texttt{nohup} & Prevents jobs from stopping \\
+& \texttt{disown} & Keeps jobs running in the background even if you close R \\
+\texttt{taskkill\ /?} & & Help, lists out other commands \\
+\end{longtable}
+
+To kill a task in Windows, you can also go to Task Manager \textgreater{} More details \textgreater{} Select your desired app \textgreater{} Click on End Task.
+
+\hypertarget{running-big-jobs}{%
+\section{Running big jobs}\label{running-big-jobs}}
+
+For big data workflows, the concept of ``backgrounding'' a bash script allows you to start a ``job'' (i.e.~run the script) and leave it overnight to run. At the top level, a bash script (\texttt{0-run-project.sh}) that simply calls the directory-level bash scripts (i.e.~\texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh}, \texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Running Bash Scripts in Background}: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like \texttt{./run-project.sh}. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type \texttt{./run-project.sh\ \&;\ disown}. You can see the job running (and CPU utilization) with the command \texttt{top} or \texttt{ps\ -v} and check your memory with \texttt{free\ -h}.
+\end{itemize}
+
+Alternatively, to keep code running in the background even when an SSH connection is broken, you can use \texttt{tmux}. In terminal or gitbash follow the steps below. This \href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site} has useful tips on using \texttt{tmux}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a new tmux session called session\_name}
+\ExtensionTok{tmux}\NormalTok{ new }\AttributeTok{{-}ssession\_name}
+
+\CommentTok{\# run your job of interest}
+\ExtensionTok{R}\NormalTok{ CMD BATCH myjob.R }\KeywordTok{\&} 
+  
+\CommentTok{\# check that it is running}
+\FunctionTok{ps} \AttributeTok{{-}v}
+
+\CommentTok{\# to exit the tmux session (Mac)}
+\ExtensionTok{ctrl}\NormalTok{ + b }
+\ExtensionTok{d}
+
+\CommentTok{\# to reopen the tmux session to kill the job or }
+\CommentTok{\# start another job}
+\ExtensionTok{tmux}\NormalTok{ attach }\AttributeTok{{-}tsession\_name} 
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \textbf{Deleting Previously Computed Results}: One helpful lesson we've learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).
+\item
+  \textbf{Ensuring Things Ran Correctly}: You should check the \texttt{.Rout} files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called \texttt{runFileSaveLogs}, and is used by the example bash scripts to\ldots{} run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using \texttt{runFileSaveLogs}, it is necessary to put the file in the home working directory. For help and documentation, you can use the command \texttt{./runFileSaveLogs\ -h}. See example code and example usage for \texttt{runFileSaveLogs} below.
+\end{itemize}
+
+\hypertarget{example-code-for-runfilesavelogs}{%
+\subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/usr/bin/env python3}
+\CommentTok{\# Type "./runFileSaveLogs {-}h" for help}
+
+\ImportTok{import}\NormalTok{ os}
+\ImportTok{import}\NormalTok{ sys}
+\ImportTok{import}\NormalTok{ argparse}
+\ImportTok{import}\NormalTok{ getpass}
+\ImportTok{import}\NormalTok{ datetime}
+\ImportTok{import}\NormalTok{ shutil}
+\ImportTok{import}\NormalTok{ glob}
+\ImportTok{import}\NormalTok{ pathlib}
+
+\CommentTok{\# Setting working directory to this script\textquotesingle{}s current directory}
+\NormalTok{os.chdir(os.path.dirname(os.path.abspath(}\VariableTok{\_\_file\_\_}\NormalTok{)))}
+
+\CommentTok{\# Setting up argument parser}
+\NormalTok{parser }\OperatorTok{=}\NormalTok{ argparse.ArgumentParser(description}\OperatorTok{=}\StringTok{\textquotesingle{}Runs the argument R script(s) {-} in parallel if specified {-} and moves the subsequent generated .Rout log files to a timestamped directory.\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Function ensuring that the file is valid}
+\KeywordTok{def}\NormalTok{ is\_valid\_file(parser, arg):}
+    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.exists(arg):}
+\NormalTok{        parser.error(}\StringTok{"The file }\SpecialCharTok{\%s}\StringTok{ does not exist!"} \OperatorTok{\%}\NormalTok{ arg)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ arg}
+
+\CommentTok{\# Function ensuring that the directory is valid}
+\KeywordTok{def}\NormalTok{ is\_valid\_directory(parser, arg):}
+    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.isdir(arg):}
+\NormalTok{        parser.error(}\StringTok{"The specified path (}\SpecialCharTok{\%s}\StringTok{) is not a directory!"} \OperatorTok{\%}\NormalTok{ arg)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ arg}
+
+\CommentTok{\# Additional arguments that can be added when running runFileSaveLogs}
+\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}{-}p\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}{-}parallel\textquotesingle{}}\NormalTok{, action}\OperatorTok{=}\StringTok{\textquotesingle{}store\_true\textquotesingle{}}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Runs the argument R scripts in parallel if specified"}\NormalTok{)}
+\NormalTok{parser.add\_argument(}\StringTok{"{-}i"}\NormalTok{, }\StringTok{"{-}{-}identifier"}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Adds an identifier to the directory name where this is saved"}\NormalTok{)}
+\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}filenames\textquotesingle{}}\NormalTok{, nargs}\OperatorTok{=}\StringTok{\textquotesingle{}+\textquotesingle{}}\NormalTok{, }\BuiltInTok{type}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ x: is\_valid\_file(parser, x))}
+
+\NormalTok{args }\OperatorTok{=}\NormalTok{ parser.parse\_args()}
+\NormalTok{args\_dict }\OperatorTok{=} \BuiltInTok{vars}\NormalTok{(args)}
+
+\BuiltInTok{print}\NormalTok{(args\_dict)}
+
+\CommentTok{\# Run given R Scripts}
+\ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ args\_dict[}\StringTok{"filenames"}\NormalTok{]:}
+\NormalTok{  system\_call }\OperatorTok{=} \StringTok{"R CMD BATCH"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ filename}
+  \ControlFlowTok{if}\NormalTok{ args\_dict[}\StringTok{"parallel"}\NormalTok{]: }
+\NormalTok{    system\_call }\OperatorTok{=} \StringTok{"nohup"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ system\_call }\OperatorTok{+} \StringTok{" \&"}
+
+\NormalTok{  os.system(system\_call)}
+
+\CommentTok{\# Create the directory (and any parents) of the log files}
+\NormalTok{currentUser }\OperatorTok{=}\NormalTok{ getpass.getuser()}
+\NormalTok{currentTime }\OperatorTok{=}\NormalTok{ datetime.datetime.now().strftime(}\StringTok{"\%Y{-}\%m{-}}\SpecialCharTok{\%d}\StringTok{ \%H:\%M:\%S"}\NormalTok{)}
+\NormalTok{logDirPrefix }\OperatorTok{=} \StringTok{"/home/kaiserData/logs/"} \CommentTok{\# Change to the directory where the logs should be saved}
+\NormalTok{logDir }\OperatorTok{=}\NormalTok{ logDirPrefix }\OperatorTok{+}\NormalTok{ currentTime }\OperatorTok{+} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ currentUser }
+
+\CommentTok{\# If specified, adds the identifier to the filename of the log}
+\ControlFlowTok{if}\NormalTok{ args.identifier }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{:}
+\NormalTok{  logDir }\OperatorTok{+=} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ args.identifier}
+
+\NormalTok{logDir }\OperatorTok{+=} \StringTok{"/"}
+
+\NormalTok{pathlib.Path(logDir).mkdir(parents}\OperatorTok{=}\VariableTok{True}\NormalTok{, exist\_ok}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# Find and move all logs to this new directory}
+\NormalTok{currentLogPaths }\OperatorTok{=}\NormalTok{ glob.glob(}\StringTok{\textquotesingle{}./*.Rout\textquotesingle{}}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ currentLogPath }\KeywordTok{in}\NormalTok{ currentLogPaths:}
+\NormalTok{  filename }\OperatorTok{=}\NormalTok{ currentLogPath.split(}\StringTok{"/"}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{  shutil.move(currentLogPath, logDir }\OperatorTok{+}\NormalTok{ filename)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{example-usage-for-runfilesavelogs}{%
+\subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}}
+
+This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+
+\CommentTok{\# Copy utility run script into this folder for concision in call}
+\FunctionTok{cp}\NormalTok{ \textasciitilde{}/kaiserflu/runFileSaveLogs \textasciitilde{}/kaiserflu/3{-}figures/}
+
+\CommentTok{\# Run folder scripts and produce output}
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/kaiserflu/3{-}figures/}
+\ExtensionTok{./runFileSaveLogs} \AttributeTok{{-}i} \StringTok{"figures"} \DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}mean{-}season{-}age.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}monthly{-}rate.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}point{-}estimates{-}combined.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}point{-}estimates.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}weekly{-}rate.R}
+
+\CommentTok{\# Remove copied utility run script}
+\FunctionTok{rm}\NormalTok{ runFileSaveLogs}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{reproducible-environments}{%
+\chapter{Reproducible Environments}\label{reproducible-environments}}
+
+by Anna Nguyen
+
+\hypertarget{package-version-control-with-renv}{%
+\section{Package Version Control with renv}\label{package-version-control-with-renv}}
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+Replicable code should produce the same results, regardless of when or where it's run. However, our analyses often leverage open-source R packages that are developed by other teams. These packages continue to be developed after research projects are completed, which may include changes to analysis functions that could impact how code runs for both other team members and external replicators.
+
+For example, suppose we had used a function that took in one argument, such that our code contained \texttt{example\_function(arg\_a\ =\ “a”)}. A few months after we publish our code, the package developers update the function to take in another mandatory argument \texttt{arg\_b}. If someone runs our code, but has the most recent version of the package, they'll receive an error message that the argument \texttt{arg\_b} is missing and will not be able to full reproduce our results.
+
+To ensure that the right functions are used in replication efforts, it is important for us to keep track of package versions used in each project.
+
+\texttt{renv} can be to promote reproducible environments within R projects. \texttt{renv} creates individual package libraries for each project instead of having all projects, which may use different versions of the same package, share the same package library. However, for projects that use many packages, this process can be memory intensive and increase the time needed for a new users to start running code.
+
+In this lab manual chapter, we provide a quick tutorial for integrating \texttt{renv} into research workflows. For more detailed instructions, please refer to the \texttt{renv} package vignette.
+
+\hypertarget{implementing-renv-in-projects}{%
+\subsection{Implementing renv in projects}\label{implementing-renv-in-projects}}
+
+Ideally, \texttt{renv} should be initiated at the start of projects and updated continuously when new packages are introduced in the codebase. However, this process can be initated at any point in a project
+
+To add \texttt{renv} to your workflow, follow these steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Install the \texttt{renv} package by running \texttt{install.packages(“renv”)}
+\item
+  Create an RProject file and ensure that your working directory is set to the correct folder
+\item
+  In the R console, run \texttt{renv::init()} to intiialize renv in your R Project
+\item
+  This will create the following files: \texttt{renv.lock}, .\texttt{Rprofile}, \texttt{renv/settings.json} and \texttt{renv/activate.R}. Commit and push these files to GitHub so that they're accessible to other users.
+\item
+  As you write code, update the project's R library by running \texttt{renv::snapshot()} in the R console
+\item
+  Add \texttt{renv::restore()} to the head of your config file, to make sure that all users that run your code are on the same package versions.
+\end{enumerate}
+
+\hypertarget{using-projects-with-renv}{%
+\subsection{Using projects with renv}\label{using-projects-with-renv}}
+
+If you're starting to work on an ongoing project that already has \texttt{renv} set up, follow these steps to ensure that you're using the same project versions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Install the \texttt{renv} package by running \texttt{install.packages(“renv”)}
+\item
+  Pull the most updated version of the project from GitHub
+\item
+  Open the project's RProject file
+\item
+  Run \texttt{renv::restore()}. In our lab's projects, this is often already found at the top of the config file, so you can just run scripts as is.
+\item
+  This will pull up a list of the project's packages that need to be updated for you to be consistent with the project. The console will ask if you want to proceed with updating these packages - type ``Y'' to continue.
+\item
+  Wait for the correct versions of each package to install/update. This may take some time, depending on how many packages the project uses.
+\item
+  Your R environment should now be using the same package versions as specified in the \texttt{renv} lock file. You should now be able to replicate the code.
+\item
+  If you make edits to the code and introduce new/updated packages, see the section above for instructions on how to make updates.
+\end{enumerate}
+
 \hypertarget{code-publication}{%
 \chapter{Code Publication}\label{code-publication}}
 
@@ -1167,439 +1839,187 @@ Once all of these items are verified, create a tag to make a Github release, whi
 
 Detailed instructions \href{https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases}{here.}
 
-\hypertarget{working-with-big-data}{%
-\chapter{Working with Big Data}\label{working-with-big-data}}
+\hypertarget{data-publication}{%
+\chapter{Data Publication}\label{data-publication}}
 
-by Kunal Mishra and Jade Benjamin-Chung
+Adapted from Fanice Nyatigo and Ben Arnold's chapter in the \href{https://urlisolation.com/browser?clickId=524DE241-3F8F-4C98-B619-3C278374BF64\&traceToken=1728923499\%3Bucsfmed_hosted\%3Bhttps\%3A\%2F\%2Fproctor-ucsf.github.io\%2Fd\&url=https\%3A\%2F\%2Fproctor-ucsf.github.io\%2Fdcc-handbook\%2Fpublicdata.html}{Proctor-UCSF Lab Manual}
 
-\hypertarget{the-data.table-package}{%
-\section{The data.table package}\label{the-data.table-package}}
+\hypertarget{overview}{%
+\section{Overview}\label{overview}}
 
-It may also be the case that you're working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, \texttt{Tidvyerse} (more specificially, \texttt{dplyr}), and \texttt{data.table}. For a majority of things, Base R is inferior to both \texttt{dplyr} and \texttt{data.table}, with concise but less clear syntax and less speed. \texttt{Dplyr} is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to \texttt{data.table}. An overview of the \texttt{dplyr} vs \texttt{data.table} debate can be found in \href{https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349\#27840349}{this stackoverflow post} and all 3 answers are worth a read.
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-You can also achieve a performance boost by running \texttt{dplyr} commands on \texttt{data.table}s, which I find to be the best of both worlds, given that a \texttt{data.table} is a special type of \texttt{data.frame} and fairly easy to convert with the \texttt{as.data.table()} function. The speedup is due to \texttt{dplyr}'s use of the \texttt{data.table} backend and in the future this coupling should become even more natural.
+\begin{quote}
+\emph{\textbf{Warning! } \textbf{NEVER} push a dataset into the public domain (e.g., GitHub, OSF) without first checking with Jade to ensure that it is appropriately de-identified and we have approval from the sponsor and/or human subjects review board to do so. For example, we will need to re-code participant IDs (even if they contain no identifying information) before making data public to completely break the link between IDs and identifiable information stored on our servers. }
+\end{quote}
 
-If you want to test whether using a certain coding approach increases speed, consider the \texttt{tictoc} package. Run \texttt{tic()} before a code chunk and \texttt{toc()} after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you \emph{really} need to switch a code chunk from \texttt{dplyr} to \texttt{data.table}.
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{using-downsampled-data}{%
-\section{Using downsampled data}\label{using-downsampled-data}}
+If you are releasing data into the public domain, then consider making available \emph{at minimum} a \texttt{.csv} file and a codebook of the same name (note: you should have a codebook for internal data as well). We often also make available \texttt{.rds} files as well. For example, your \texttt{mystudy/data/public} directory could include three files for a single dataset, two with the actual data in \texttt{.rds} and \texttt{.csv} formats, and a third that describes their contents:
 
-In our studies with very large datasets, we save ``downsampled'' data that usually includes a 1\% random sample stratified by any important variables, such as year or household id. This allows us to efficiently write and test our code without having to load in large, slow datasets that can cause RStudio to freeze. Be very careful to be sure which dataset you are working with and to label results output accordingly.
+\begin{verbatim}
+analysis_data_public.csv
+analysis_data_public.rds
+analysis_data_public_codebook.txt
+\end{verbatim}
 
-\hypertarget{optimal-rstudio-set-up}{%
-\section{Optimal RStudio set up}\label{optimal-rstudio-set-up}}
+In general, datasets are usually too big to save on GitHub, but occasionally they are small. Here is an example of where we actually pushed the data directly to GitHub: \url{https://github.com/ben-arnold/enterics-seroepi/tree/master/data} .
 
-Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the ``Tools'' menu, then select ``Global Options''. Under ``General'':
+If the data are bigger, then maintaining them under version control in your git repository can be unweildy. Instead, we recommend using another stable repository that has version control, such as the Open Science Framework (\href{https://osf.io}{osf.io}). For example, all of the data from the WASH Benefits trials (led by investigators at Berkeley, icddr,b, IPA-Kenya and others) are all stored through data components nested within in OSF projects: \url{https://osf.io/tprw2/}. Another good option is Dryad (\href{https://datadryad.org/}{datadryad.org}) or the (Stanford Digital Repository){[}\url{https://sdr.stanford.edu/}{]}.
 
-\textbf{Workspace}
+We recommend cross-linking public files in GitHub (scripts/notebooks only) and OSF/Dryad/Stanford Digital Repository.
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Uncheck} Restore RData into workspace at startup
-\item
-  Save workspace to RData on exit -- choose \textbf{never}
-\end{itemize}
+Below are the main steps to making data public, after finalizing the analysis datasets and scripts:\\
+1. Remove Protected Health Information (PHI)\\
+2. Create public IDs or join already created public IDs to the data\\
+3. Create an OSF repository and/or Dryad/Stanford Digital Repository\\
+4. Edit analysis scripts to run using the public datasets and test (optional)\\
+5. Create a public github page for analysis scripts and link to OSF and/or Dryad/Zenodo\\
+6. Go live
 
-\textbf{History}
+\hypertarget{removing-phi}{%
+\section{Removing PHI}\label{removing-phi}}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Uncheck} Always save history
-\end{itemize}
+Once the data is finalized for analysis, the first step is to strip it of Protected Health Information (PHI), or any other data that could be used to link back to specific participants, such as names, birth dates, or GPS coordinates at the village/neighborhood level or below. PHI includes, but is not limited to:
 
-Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.
+\hypertarget{personal-information}{%
+\subsection{Personal information}\label{personal-information}}
 
-\hypertarget{github}{%
-\chapter{Github}\label{github}}
+These are identifiers that directly point to specific individuals, such as:\\
+- Names, addresses, photographs, date of birth\\
+- A combination of age, sex, and geographic location (below population 20,000) is considered identifiable
 
-by Stephanie Djajadi and Nolan Pokpongkiat
+\hypertarget{dates}{%
+\subsection{Dates}\label{dates}}
 
-\hypertarget{basics}{%
-\section{Basics}\label{basics}}
+Any specific dates (e.g., study visit dates, birth dates, treatment dates) are usually problematic.\\
+- If a dataset requires high resolution temporal information, coarsen visit or measurement dates to be two variables: year and week of the year (1-52).\\
+- If a dataset requires age, provide that information without a birth date (typically month resolution is sufficient)
 
-\begin{itemize}
-\tightlist
-\item
-  A detailed tutorial of Git can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{here on the CS61B website}.
-\item
-  If you are already familiar with Git, you can reference the summary at the end of \href{https://sp19.datastructur.es/materials/guides/using-git\#b-local-repositories-narrative-introduction}{Section B}.
-\item
-  If you have made a mistake in Git, you can refer to this \href{https://sethrobertson.github.io/GitFixUm/fixup.html}{article} to undo, fix, or remove commits in git.
-\end{itemize}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{github-desktop}{%
-\section{Github Desktop}\label{github-desktop}}
+\begin{quote}
+\emph{\textbf{Caution!} If making changes to the format of dates or ages, make sure your analysis code runs on these modified versions of the data (step 3)! }
+\end{quote}
 
-While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides \href{https://desktop.github.com/}{Github Desktop} as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{git-branching}{%
-\section{Git Branching}\label{git-branching}}
+\hypertarget{geographic-information}{%
+\subsection{Geographic information}\label{geographic-information}}
 
-Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
+Do not include GPS coordinates (longitude, latitude) except in special circumstances where they have been obfuscated/shifted. Reach out to Jade before doing this because it can be complicated.
 
-\begin{itemize}
-\tightlist
-\item
-  You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don't want to break the code for them.
-\item
-  You want to start working on a new part of the project, but you aren't sure yet if your changes will work and make it to the final product.
-\item
-  You are working with others and don't want to mix up your current work with theirs, even if you want to bring your work together later in the future.
-\end{itemize}
+Do not include place names or codes (e.g., US Zip Codes) if the place contains \textless20,000 people. For villages or neighborhoods, code them with uninformative IDs. For sub-districts or districts, names are fine.
 
-A detailed tutorial on Git Branching can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#e-git-branching-advanced-git-optional}{here}. You can also find instructions on how to handle merge conflicts when joining branches together.
+If an analysis requires GPS locations (e.g., to make a map), then typically we include a disclaimer in the article's data availability statement that explains we cannot make GPS locations public to protect participant confidentiality. As a middle ground, we typically make our \emph{code} public that runs on the geo-located data for transparency, even if independent researchers can't actually run that code (although please be careful to ensure the code itself does not in any way include geographic identifiers).
 
-\hypertarget{example-workflow}{%
-\section{Example Workflow}\label{example-workflow}}
+For more examples of what constitutes PHI, please refer to this link: \url{https://cphs.berkeley.edu/hipaa/hipaa18.html}
 
-A standard workflow when starting on a new project and contributing code looks like this:
+\hypertarget{create-public-ids}{%
+\section{Create public IDs}\label{create-public-ids}}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.36}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.64}}@{}}
-\toprule
-Command & Description \\
-\midrule
-\endhead
-SETUP: FIRST TIME ONLY: \texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}} & Clone the repo. This copies of all the project files in its current state on Github to your local computer. \\
-1. \texttt{git\ pull\ origin\ master} & update the state of your files to match the most current version on GitHub \\
-2. \texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}} & create new branch that you'll be working on and go to it \\
-3. Make some file changes & work on your feature/implementation \\
-4. \texttt{git\ add\ -p} & add changes to stage for commit, going through changes line by line \\
-5. \texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}} & commit files with a message \\
-6. \texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}} & push branch to remote and set to track (-u only needed if this is first push) \\
-7. Repeat step 4-5. & work and commit often \\
-8. \texttt{git\ push} & push work to remote branch for others to view \\
-9. Follow the link given from the \texttt{git\ push} command to \href{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request\#creating-the-pull-request}{submit a pull request (PR) on GitHub online} & PR merges in work from your branch into master \\
-(10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging & \\
-11. \texttt{git\ fetch\ -\/-all\ -\/-prune} & clean up your local git by untracking deleted remote branches \\
-\bottomrule
-\end{longtable}
+\hypertarget{rationale}{%
+\subsection{Rationale}\label{rationale}}
 
-Other helpful commands are listed below.
+The Stanford IRB requires that public datasets not include the original study IDs to identify participants or other units in the study (such as village IDs). The reason is that those IDs are linked in our private datasets to PHI. By creating a new set of public IDs, the public dataset is one step further removed from the potential to link to PHI.
 
-\hypertarget{commonly-used-git-commands}{%
-\section{Commonly Used Git Commands}\label{commonly-used-git-commands}}
+\hypertarget{a-single-set-of-public-ids-for-each-study}{%
+\subsection{A single set of public IDs for each study}\label{a-single-set-of-public-ids-for-each-study}}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.36}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.64}}@{}}
-\toprule
-Command & Description \\
-\midrule
-\endhead
-\texttt{git\ clone\ \textless{}url\textgreater{}\ \textless{}directory\_name\textgreater{}} & clone a repository, only needs to be done the first time \\
-\texttt{git\ pull\ origin\ master} & pull from \texttt{master} before making any changes \\
-\texttt{git\ branch} & check what branch you are on \\
-\texttt{git\ branch\ -a} & check what branch you are on + all remote branches \\
-\texttt{git\ checkout\ -b\ \textless{}new\_branch\_name\textgreater{}} & create new branch and go to it (only necessary when you create a new branch) \\
-\texttt{git\ checkout\ \textless{}branch\ name\textgreater{}} & switch to branch \\
-\texttt{git\ add\ \textless{}file\ name\textgreater{}} & add file to stage for commit \\
-\texttt{git\ add\ -p} & adds changes to commit, showing you changes one by one \\
-\texttt{git\ commit\ -m\ \textless{}commit\ message\textgreater{}} & commit file with a message \\
-\texttt{git\ push\ -u\ origin\ \textless{}branch\_name\textgreater{}} & push branch to remote and set to track (-u only works if this is first push) \\
-\texttt{git\ branch\ -\/-set-upstream-to\ origin\ \textless{}branch\_name\textgreater{}} & set upstream to \texttt{origin/\textless{}branch\_name\textgreater{}} (use if you forgot -u on first push) \\
-\texttt{git\ push\ origin\ \textless{}branch\_name\textgreater{}} & push work to branch \\
-\texttt{git\ checkout\ \textless{}branch\_name\textgreater{}} ~\texttt{git\ merge\ master} & switch to branch and merge changes from \texttt{master} into \texttt{\textless{}branch\_name\textgreater{}} (two commands) \\
-\texttt{git\ merge\ \textless{}branch\_name\textgreater{}\ master} & switch to branch and merge changes from \texttt{master} into \texttt{\textless{}branch\_name\textgreater{}} (one command) \\
-\texttt{git\ checkout\ -\/-track\ origin/\textless{}branch\_name\textgreater{}} & pulls a remote branch and creates a local branch to track it (use when trying to pull someone else's branch onto your local computer) \\
-\texttt{git\ push\ -\/-delete\ \textless{}remote\_name\textgreater{}\ \textless{}branch\_name\textgreater{}} & delete remote branch \\
-\texttt{git\ branch\ -d\ \textless{}branch\_name\textgreater{}} & deletes local branch, -D to force \\
-\texttt{git\ fetch\ -\/-all\ -\/-prune} & untrack deleted remote branches \\
-\bottomrule
-\end{longtable}
+For each study, it is ideal to create a single set of public IDs whenever possible. We could create a new set of public IDs for every public dataset, but the downside is that independent researchers could no longer link data that might be related. By creating a single set of public IDs associated with each internal study ID, public files retain the link.
 
-\hypertarget{how-often-should-i-commit}{%
-\section{How often should I commit?}\label{how-often-should-i-commit}}
+Maintaining a single set of public IDs requires a shared ``bridge'' dataset, that includes a row for each study ID and has the associated public ID. For studies with multiple levels of ID, we would typically have separate bridge datasets for each type of ID (e.g,. cluster ID, participant ID, etc.)
 
-It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.
+Create a public ID that can be used to uniquely identify participants and that can internally be linked to the original study IDs. We recommend creating a subdirectory in the study's shared data directory to store the public IDs. The shared location enables multiple projects to use the same IDs. Create the IDs using a script that reads in the study IDs, creates a unique (uninformative) public ID for the study IDs, and then saves the bridge dataset. The script should be saved in the same directory as the public ID files.
 
-\hypertarget{what-should-be-pushed-to-github}{%
-\section{What should be pushed to Github?}\label{what-should-be-pushed-to-github}}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.
+\begin{quote}
+\emph{\textbf{Caution!} Note that small differences may arise if the new public IDs do not necessarily order participants in the same way as the internal IDs. The small differences are all in estimates that rely on resampling, such as Bootstrap CIs, permutation P-values, and TMLE, as the resampling process may lead tp slightly different re-samples. The key here, to ensure the results are consistent irrespective of the dataset used, is simply to not assign public IDs randomly. Use \texttt{rank()} on the internal ID instead of \texttt{row\_number()} to ensure that the order is always the same. }
+\end{quote}
 
-There is a standardized \texttt{.gitignore} for \texttt{R} which you \href{https://github.com/github/gitignore/blob/master/R.gitignore}{can download} and add to your project. This ensures you're not committing log files or things that would otherwise best be left ignored to GitHub. This is a \href{https://www.tidyverse.org/articles/2017/12/workflow-vs-script/}{great discussion of project-oriented workflows}, extolling the virtues of a self-contained, portable projects, for your reference.
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{unix}{%
-\chapter{Unix commands}\label{unix}}
+\hypertarget{example-scripts}{%
+\subsection{Example scripts}\label{example-scripts}}
 
-by Stephanie Djajadi, Kunal Mishra, Anna Nguyen, and Jade Benjamin-Chung
-
-We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Windows users) to
+We have created a self-contained and reproducible example that you can run and replicate when making data public for your projects. It contains the following files and folders:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Run a series of scripts in parallel or in a specific order to reproduce our work
+  \texttt{data/final/}- folder containing the projects final data in both csv and rds formats\\
 \item
-  To check on the progress of a batch of jobs
+  \texttt{code/DEMO\_generate\_public\_IDs.R}- creates randomly generated public IDs that can be matched to the trial's assigned patient IDs.\\
 \item
-  To use git and push to github
+  \texttt{data/make\_public/DEMO\_internal\_to\_publicID.csv}- the output from step \#2, a bridge dataset with two variables- the new public ID and the patient's assigned ID.\\
+\item
+  \texttt{code/DEMO\_create\_public\_datasets.R}- joins the public IDs to the trial's full dataset, and strips it of the assigned patient ID.
+\item
+  \texttt{data/public/}- folder containing the output from step \#3- de-identified public dataset, in csv and rds formats, with uniquely identifying public IDs that cannot be easily linked back to the patient's ID.
 \end{enumerate}
 
-\hypertarget{basics-1}{%
-\section{Basics}\label{basics-1}}
+The example workflow is accessible via GitHub: \url{https://github.com/proctor-ucsf/dcc-handbook/tree/master/templates/making-data-public}
 
-On the computer, there is a desktop with two folders, \texttt{folder1} and \texttt{folder2}, and a file called \texttt{file1.} Inside \texttt{folder1}, we have a file called \texttt{file2.} Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
+\hypertarget{create-a-data-repository}{%
+\section{Create a data repository}\label{create-a-data-repository}}
 
-\begin{figure}
-\centering
-\includegraphics{assets/images/ex-desktop.jpg}
-\caption{Here is our example desktop.}
-\end{figure}
+First, ensure that you create a codebook and metadata file for each public dataset \href{https://proctor-ucsf.github.io/dcc-handbook/datawrangling.html\#documenting-datasets}{See the DCC guide on Documenting datasets}. Use the same name as the datasets, but with ``-codebook.txt'' / ``-codebook.html'' / ``-codebook.csv'' at the end (depending on the file format for the codebook). One nice option is the R codebook package, which also generates JSON output that is machine-readable.
 
-\hypertarget{syntax-for-both-macwindows}{%
-\section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}}
+\hypertarget{steps-for-creating-an-open-science-framework-osf-repository}{%
+\subsection{Steps for creating an Open Science Framework (OSF) repository:}\label{steps-for-creating-an-open-science-framework-osf-repository}}
 
-When typing in directories or file names, quotes are necessary if the name includes spaces.
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.43}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.57}}@{}}
-\toprule
-Command & Description \\
-\midrule
-\endhead
-\texttt{cd\ desktop/folder1} & Change directory to \texttt{folder1} \\
-\texttt{pwd} & Print working directory \\
-\texttt{ls} & List files in the directory \\
-\texttt{cp\ "file2"\ "newfile2"} & Copy file (remember to include file extensions when typing in file names like \texttt{.pdf} or \texttt{.R}) \\
-\texttt{mv\ “newfile2”\ “file3”} & Rename \texttt{newfile2} to \texttt{file3} \\
-\texttt{cd\ ..} & Go to parent of the working directory (in this case, \texttt{desktop}) \\
-\texttt{mv\ “file1”\ folder2} & Move \texttt{file1} to \texttt{folder2} \\
-\texttt{mkdir\ folder3} & Make a new folder in \texttt{folder2} \\
-\texttt{rm\ \textless{}filename\textgreater{}} & Remove files \\
-\texttt{rm\ -rf\ folder3} & Remove directories (\texttt{-r} will attempt to remove the directory recursively, \texttt{-rf} will force removal of the directory) \\
-\texttt{clear} & Clear terminal screen of all previous commands \\
-\bottomrule
-\end{longtable}
-
-\begin{figure}
-\centering
-\includegraphics{assets/images/ex-terminal.PNG}
-\caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
-\end{figure}
-
-\hypertarget{running-bash-scripts}{%
-\section{Running Bash Scripts}\label{running-bash-scripts}}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.26}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.37}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.37}}@{}}
-\toprule
-Windows & Mac / Linux & Description \\
-\midrule
-\endhead
-\texttt{chmod\ +750\ \textless{}filename.sh\textgreater{}} & \texttt{chmod\ +x\ \textless{}filename.sh\textgreater{}} & Change access permissions for a file (only needs to be done once) \\
-\texttt{./\textless{}filename.sh\textgreater{}} & \texttt{./\textless{}filename.sh\textgreater{}} & Run file (\texttt{./} to run any executable file) \\
-\texttt{bash\ bash\_script\_name.sh\ \&} & \texttt{bash\ bash\_script\_name.sh\ \&} & Run shell script in the background \\
-\bottomrule
-\end{longtable}
-
-\hypertarget{running-rscripts-in-windows}{%
-\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}}
-
-\textbf{Note: This code seems to work only with Windows Command Prompt, not with Git Bash.}
-
-When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your \texttt{PATH,} then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):
-
-\texttt{C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin}
-
-For appending the \texttt{PATH} variable, please view \href{https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/}{this link}. I strongly recommend completing this option.
-
-If you add the PATH as an environment variable, then you can run this line of code to test:
-\texttt{Rscript\ -e\ “cat(‘this\ is\ a\ test’)"}, where the \texttt{-e} flag refers to the expression that will be executed.
-
-If you do not add the PATH as an environment variable, then you can run this line of code to replicate the results from above:
-\texttt{“C:\textbackslash{}Program\ Files\textbackslash{}R\textbackslash{}R-3.6.0\textbackslash{}bin”\ -e\ “cat(‘this\ is\ a\ test’)”}
-
-To run an R script from the command line, we can say:
-\texttt{Rscript\ -e\ “source(‘C:/path/to/script/some\_code.R’)”}
-
-\hypertarget{common-mistakes}{%
-\subsection{Common Mistakes}\label{common-mistakes}}
-
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Remember to include all of the quotation marks around file paths that have a spaces.
+  Create a new OSF project per these instructions: \url{https://help.osf.io/article/252-create-a-project}
 \item
-  If you attempt to run an R script but run into \texttt{Error:\ \textquotesingle{}\textbackslash{}U\textquotesingle{}\ used\ without\ hex\ digits\ in\ character\ string\ starting\ "\textquotesingle{}C:\textbackslash{}U"}, try replacing all \texttt{\textbackslash{}} with \texttt{\textbackslash{}\textbackslash{}} or \texttt{/}.
-\end{itemize}
-
-\hypertarget{checking-tasks-and-killing-jobs}{%
-\section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.26}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.37}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.37}}@{}}
-\toprule
-Windows & Mac / Linux & Description \\
-\midrule
-\endhead
-\texttt{tasklist} & \texttt{ps\ -v} & List all processes on the command line \\
-& \texttt{top\ -o\ {[}cpu/rsize{]}} & List all running processes, sorted by CPU or memory usage \\
-\texttt{taskkill\ /F\ /PID\ pid\_number} & \texttt{kill\ \textless{}PID\_number\textgreater{}} & Kill a process by its process ID \\
-\texttt{taskkill\ /IM\ "process\ name"\ /F} & & Kill a process by its name \\
-\texttt{start\ /b\ program.exe} & & Runs jobs in the background (exclude \texttt{/b} if you want the program to run in a new console) \\
-& \texttt{nohup} & Prevents jobs from stopping \\
-& \texttt{disown} & Keeps jobs running in the background even if you close R \\
-\texttt{taskkill\ /?} & & Help, lists out other commands \\
-\bottomrule
-\end{longtable}
-
-To kill a task in Windows, you can also go to Task Manager \textgreater{} More details \textgreater{} Select your desired app \textgreater{} Click on End Task.
-
-\hypertarget{running-big-jobs}{%
-\section{Running big jobs}\label{running-big-jobs}}
-
-For big data workflows, the concept of ``backgrounding'' a bash script allows you to start a ``job'' (i.e.~run the script) and leave it overnight to run. At the top level, a bash script (\texttt{0-run-project.sh}) that simply calls the directory-level bash scripts (i.e.~\texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh}, \texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.
-
-\begin{itemize}
-\tightlist
+  Create a data component and upload the datasets in .csv and .rds format along with the codebooks. The primary format for public dissemination is .csv but we make the .rds files available too as auxiliary files for convenience.
 \item
-  \textbf{Running Bash Scripts in Background}: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like \texttt{./run-project.sh}. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type \texttt{./run-project.sh\ \&;\ disown}. You can see the job running (and CPU utilization) with the command \texttt{top} or \texttt{ps\ -v} and check your memory with \texttt{free\ -h}.
-\end{itemize}
-
-Alternatively, to keep code running in the background even when an SSH connection is broken, you can use \texttt{tmux}. In terminal or gitbash follow the steps below. This \href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site} has useful tips on using \texttt{tmux}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# create a new tmux session called session\_name}
-\ExtensionTok{tmux}\NormalTok{ new }\AttributeTok{{-}ssession\_name}
-
-\CommentTok{\# run your job of interest}
-\ExtensionTok{R}\NormalTok{ CMD BATCH myjob.R }\KeywordTok{\&} 
-  
-\CommentTok{\# check that it is running}
-\FunctionTok{ps} \AttributeTok{{-}v}
-
-\CommentTok{\# to exit the tmux session (Mac)}
-\ExtensionTok{ctrl}\NormalTok{ + b }
-\ExtensionTok{d}
-
-\CommentTok{\# to reopen the tmux session to kill the job or }
-\CommentTok{\# start another job}
-\ExtensionTok{tmux}\NormalTok{ attach }\AttributeTok{{-}tsession\_name} 
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
+  Create a notebook component and upload the final .html files (which will not be on github\ldots{} but see optional item below)
 \item
-  \textbf{Deleting Previously Computed Results}: One helpful lesson we've learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).
+  On the OSF landing Wiki, provide some context. Here is a recent example: \url{https://osf.io/954bt/}
 \item
-  \textbf{Ensuring Things Ran Correctly}: You should check the \texttt{.Rout} files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called \texttt{runFileSaveLogs}, and is used by the example bash scripts to\ldots{} run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using \texttt{runFileSaveLogs}, it is necessary to put the file in the home working directory. For help and documentation, you can use the command \texttt{./runFileSaveLogs\ -h}. See example code and example usage for \texttt{runFileSaveLogs} below.
-\end{itemize}
+  Create a Digital Object Identifier (DOI) for the repository. A DOI is a unique identifier that provides a persistent link to content, such as a dataset in this case. \href{https://researchdata.princeton.edu/research-lifecycle-guide/whats-doi-and-what-should-i-know-about-citing-datasets}{Learn more about DOIs}
+\item
+  Optional: Complete the software checklist and system requirement guide for the analysis to guide others. Include it on the GitHub README for the project: \url{https://github.com/proctor-ucsf/mordor-antibody}
+\end{enumerate}
 
-\hypertarget{example-code-for-runfilesavelogs}{%
-\subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}}
+\hypertarget{edit-and-test-analysis-scripts}{%
+\section{Edit and test analysis scripts}\label{edit-and-test-analysis-scripts}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#!/usr/bin/env python3}
-\CommentTok{\# Type "./runFileSaveLogs {-}h" for help}
+Make minor changes to the analysis scripts so that they run on public data. If using version control in GitHub, the most straight-forward way is to create a branch from the main git branch that reads in the public files, and then renames the new public ID variable, e.g., ``id\_public'' to the internally recognized ID variable name, e.g.~``recordID'', when reading in the public data. Re-run all the analysis scripts to ensure that they still work with the public version of the dataset.
 
-\ImportTok{import}\NormalTok{ os}
-\ImportTok{import}\NormalTok{ sys}
-\ImportTok{import}\NormalTok{ argparse}
-\ImportTok{import}\NormalTok{ getpass}
-\ImportTok{import}\NormalTok{ datetime}
-\ImportTok{import}\NormalTok{ shutil}
-\ImportTok{import}\NormalTok{ glob}
-\ImportTok{import}\NormalTok{ pathlib}
+\hypertarget{create-a-public-github-page-for-public-scripts}{%
+\section{Create a public GitHub page for public scripts}\label{create-a-public-github-page-for-public-scripts}}
 
-\CommentTok{\# Setting working directory to this script\textquotesingle{}s current directory}
-\NormalTok{os.chdir(os.path.dirname(os.path.abspath(}\VariableTok{\_\_file\_\_}\NormalTok{)))}
+At minimum, we should include all of the scripts required to run the analyses. \textbf{IMPORTANT}: ensure you have taken a snapshot and saved your computing environment using the \texttt{renv} package (\protect\hyperlink{renv}{\texttt{renv}}).
 
-\CommentTok{\# Setting up argument parser}
-\NormalTok{parser }\OperatorTok{=}\NormalTok{ argparse.ArgumentParser(description}\OperatorTok{=}\StringTok{\textquotesingle{}Runs the argument R script(s) {-} in parallel if specified {-} and moves the subsequent generated .Rout log files to a timestamped directory.\textquotesingle{}}\NormalTok{)}
+See examples:\\
+- ACTION - \url{https://github.com/proctor-ucsf/ACTION-public}\\
+- NAITRE - \url{https://github.com/proctor-ucsf/NAITRE-primary}
 
-\CommentTok{\# Function ensuring that the file is valid}
-\KeywordTok{def}\NormalTok{ is\_valid\_file(parser, arg):}
-    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.exists(arg):}
-\NormalTok{        parser.error(}\StringTok{"The file }\SpecialCharTok{\%s}\StringTok{ does not exist!"} \OperatorTok{\%}\NormalTok{ arg)}
-    \ControlFlowTok{else}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ arg}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\CommentTok{\# Function ensuring that the directory is valid}
-\KeywordTok{def}\NormalTok{ is\_valid\_directory(parser, arg):}
-    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.isdir(arg):}
-\NormalTok{        parser.error(}\StringTok{"The specified path (}\SpecialCharTok{\%s}\StringTok{) is not a directory!"} \OperatorTok{\%}\NormalTok{ arg)}
-    \ControlFlowTok{else}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ arg}
+\begin{quote}
+\emph{\textbf{Caution!} Read through the scripts carefully to ensure there is no PHI in the code itself }
+\end{quote}
 
-\CommentTok{\# Additional arguments that can be added when running runFileSaveLogs}
-\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}{-}p\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}{-}parallel\textquotesingle{}}\NormalTok{, action}\OperatorTok{=}\StringTok{\textquotesingle{}store\_true\textquotesingle{}}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Runs the argument R scripts in parallel if specified"}\NormalTok{)}
-\NormalTok{parser.add\_argument(}\StringTok{"{-}i"}\NormalTok{, }\StringTok{"{-}{-}identifier"}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Adds an identifier to the directory name where this is saved"}\NormalTok{)}
-\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}filenames\textquotesingle{}}\NormalTok{, nargs}\OperatorTok{=}\StringTok{\textquotesingle{}+\textquotesingle{}}\NormalTok{, }\BuiltInTok{type}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ x: is\_valid\_file(parser, x))}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\NormalTok{args }\OperatorTok{=}\NormalTok{ parser.parse\_args()}
-\NormalTok{args\_dict }\OperatorTok{=} \BuiltInTok{vars}\NormalTok{(args)}
+Once a public GitHub page exists, you can create a new component on an OSF project (step 3, above) and link it to the public version of the GitHub repo.
 
-\BuiltInTok{print}\NormalTok{(args\_dict)}
+\hypertarget{go-live}{%
+\section{Go live}\label{go-live}}
 
-\CommentTok{\# Run given R Scripts}
-\ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ args\_dict[}\StringTok{"filenames"}\NormalTok{]:}
-\NormalTok{  system\_call }\OperatorTok{=} \StringTok{"R CMD BATCH"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ filename}
-  \ControlFlowTok{if}\NormalTok{ args\_dict[}\StringTok{"parallel"}\NormalTok{]: }
-\NormalTok{    system\_call }\OperatorTok{=} \StringTok{"nohup"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ system\_call }\OperatorTok{+} \StringTok{" \&"}
+On GitHub, it is useful to create an official ``release'' version to freeze the repository, where you can have ``associated files'' with each version. Include the .html notebook output as additional files --- since they aren't tracked in GitHub, it does provide a way of freezing / saving the HTML output for us and others. OSF examples of a few Proctor trials:\\
+- ACTION - \url{https://osf.io/ca3pe/}\\
+- NAITRE - \url{https://osf.io/ujeyb/}\\
+- MORDOR Niger antibody study - \url{https://osf.io/dgsq3/}
 
-\NormalTok{  os.system(system\_call)}
-
-\CommentTok{\# Create the directory (and any parents) of the log files}
-\NormalTok{currentUser }\OperatorTok{=}\NormalTok{ getpass.getuser()}
-\NormalTok{currentTime }\OperatorTok{=}\NormalTok{ datetime.datetime.now().strftime(}\StringTok{"\%Y{-}\%m{-}}\SpecialCharTok{\%d}\StringTok{ \%H:\%M:\%S"}\NormalTok{)}
-\NormalTok{logDirPrefix }\OperatorTok{=} \StringTok{"/home/kaiserData/logs/"} \CommentTok{\# Change to the directory where the logs should be saved}
-\NormalTok{logDir }\OperatorTok{=}\NormalTok{ logDirPrefix }\OperatorTok{+}\NormalTok{ currentTime }\OperatorTok{+} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ currentUser }
-
-\CommentTok{\# If specified, adds the identifier to the filename of the log}
-\ControlFlowTok{if}\NormalTok{ args.identifier }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{:}
-\NormalTok{  logDir }\OperatorTok{+=} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ args.identifier}
-
-\NormalTok{logDir }\OperatorTok{+=} \StringTok{"/"}
-
-\NormalTok{pathlib.Path(logDir).mkdir(parents}\OperatorTok{=}\VariableTok{True}\NormalTok{, exist\_ok}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-
-\CommentTok{\# Find and move all logs to this new directory}
-\NormalTok{currentLogPaths }\OperatorTok{=}\NormalTok{ glob.glob(}\StringTok{\textquotesingle{}./*.Rout\textquotesingle{}}\NormalTok{)}
-
-\ControlFlowTok{for}\NormalTok{ currentLogPath }\KeywordTok{in}\NormalTok{ currentLogPaths:}
-\NormalTok{  filename }\OperatorTok{=}\NormalTok{ currentLogPath.split(}\StringTok{"/"}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
-\NormalTok{  shutil.move(currentLogPath, logDir }\OperatorTok{+}\NormalTok{ filename)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{example-usage-for-runfilesavelogs}{%
-\subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}}
-
-This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#!/bin/bash}
-
-\CommentTok{\# Copy utility run script into this folder for concision in call}
-\FunctionTok{cp}\NormalTok{ \textasciitilde{}/kaiserflu/runFileSaveLogs \textasciitilde{}/kaiserflu/3{-}figures/}
-
-\CommentTok{\# Run folder scripts and produce output}
-\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/kaiserflu/3{-}figures/}
-\ExtensionTok{./runFileSaveLogs} \AttributeTok{{-}i} \StringTok{"figures"} \DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}mean{-}season{-}age.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}monthly{-}rate.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}point{-}estimates{-}combined.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}point{-}estimates.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}weekly{-}rate.R}
-
-\CommentTok{\# Remove copied utility run script}
-\FunctionTok{rm}\NormalTok{ runFileSaveLogs}
-\end{Highlighting}
-\end{Shaded}
+Further reading on end-to-end data management: \href{https://plos.org/resource/how-to-store-and-manage-your-data/\#data-management-plan}{How to Store and Manage Your Data - PLOS}
 
 \hypertarget{slurm}{%
 \chapter{Slurm and cluster computing}\label{slurm}}
@@ -1613,17 +2033,21 @@ When you need to run a script that requires a large amount of RAM, large files, 
 
 To access Sherlock, in terminal, log in using the following syntax and replace ``USERNAME'' with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.
 
-\begin{verbatim}
-ssh USERNAME@login.sherlock.stanford.edu
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ssh USERNAME@login.sherlock.stanford.edu}
+\end{Highlighting}
+\end{Shaded}
 
 Once you log in, you can view the contents of your home directory in command line by entering \texttt{cd\ \$HOME}. You can create subfolders within this directory using the \texttt{mkdir} command. For example, you could make a ``code'' subdirectory and clone a Github repository there using the following code:
 
-\begin{verbatim}
-cd $HOME
-mkdir code
-git clone https://github.com/jadebc/covid19-infections.git
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cd $HOME}
+\NormalTok{mkdir code}
+\NormalTok{git clone https://github.com/jadebc/covid19{-}infections.git}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{one-time-system-set-up}{%
 \subsection{One-Time System Set-Up}\label{one-time-system-set-up}}
@@ -1636,19 +2060,21 @@ Open your \texttt{\textasciitilde{}/.Renviron} file (\texttt{vi\ \textasciitilde
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\VariableTok{R\_LIBS=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2}
+\VariableTok{R\_LIBS}\OperatorTok{=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2}
 \end{Highlighting}
 \end{Shaded}
 
 Alternatively, run an R script with the following code on Sherlock:
 
-\begin{verbatim}
-r_environ_file_path = file.path(Sys.getenv("HOME"), ".Renviron")
-if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_environ\_file\_path = file.path(Sys.getenv("HOME"), ".Renviron")}
+\NormalTok{if (!file.exists(r\_environ\_file\_path)) file.create(r\_environ\_file\_path)}
 
-cat("\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0.2",
-    file = r_environ_file_path, sep = "\n", append = TRUE)
-\end{verbatim}
+\NormalTok{cat("\textbackslash{}nR\_LIBS=\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2",}
+\NormalTok{    file = r\_environ\_file\_path, sep = "\textbackslash{}n", append = TRUE)}
+\end{Highlighting}
+\end{Shaded}
 
 To load packages that run off of C++, you'll need to set the correct compiler options in your R environment.
 
@@ -1656,24 +2082,26 @@ Open the Makevars file in Sherlock (\texttt{vi\ \textasciitilde{}/.R/Makevars}) 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\VariableTok{CXX14FLAGS=}\NormalTok{{-}O3 }\ExtensionTok{{-}march=native} \AttributeTok{{-}mtune}\OperatorTok{=}\NormalTok{native }\AttributeTok{{-}fPIC}
-\VariableTok{CXX14=}\NormalTok{g++}
+\VariableTok{CXX14FLAGS}\OperatorTok{=}\NormalTok{{-}O3 }\ExtensionTok{{-}march=native} \AttributeTok{{-}mtune}\OperatorTok{=}\NormalTok{native }\AttributeTok{{-}fPIC}
+\VariableTok{CXX14}\OperatorTok{=}\NormalTok{g++}
 \end{Highlighting}
 \end{Shaded}
 
 Alternatively, create an R script with the following code, and run it on Sherlock:
 
-\begin{verbatim}
-dotR = file.path(Sys.getenv("HOME"), ".R")
-if (!file.exists(dotR)) dir.create(dotR)
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dotR = file.path(Sys.getenv("HOME"), ".R")}
+\NormalTok{if (!file.exists(dotR)) dir.create(dotR)}
 
-M = file.path(dotR, "Makevars")
-if (!file.exists(M)) file.create(M)
+\NormalTok{M = file.path(dotR, "Makevars")}
+\NormalTok{if (!file.exists(M)) file.create(M)}
 
-cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC",
-    "CXX14=g++",
-    file = M, sep = "\n", append = TRUE)
-\end{verbatim}
+\NormalTok{cat("\textbackslash{}nCXX14FLAGS={-}O3 {-}march=native {-}mtune=native {-}fPIC",}
+\NormalTok{    "CXX14=g++",}
+\NormalTok{    file = M, sep = "\textbackslash{}n", append = TRUE)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{moving-files-to-sherlock}{%
 \section{Moving files to Sherlock}\label{moving-files-to-sherlock}}
@@ -1725,7 +2153,7 @@ In order for some R packages to work on Sherlock, it is necessary to load specif
 \begin{Highlighting}[]
 \ExtensionTok{module} \AttributeTok{{-}{-}force}\NormalTok{ purge }\CommentTok{\# remove any previously loaded modules, including math and devel}
 \ExtensionTok{module}\NormalTok{ load math}
-\ExtensionTok{mdoule}\NormalTok{ load math gmp/6.1.2}
+\ExtensionTok{module}\NormalTok{ load math gmp/6.1.2}
 \ExtensionTok{module}\NormalTok{ load devel}
 \ExtensionTok{module}\NormalTok{ load gcc/10}
 \ExtensionTok{module}\NormalTok{ load system}
@@ -1740,7 +2168,7 @@ In order for some R packages to work on Sherlock, it is necessary to load specif
 \ExtensionTok{module}\NormalTok{ load R/4.0.2}
 
 \ExtensionTok{R} \CommentTok{\# Open R in the Shell window to install individual packages or test code}
-\ExtensionTok{Rscript}\NormalTok{ install{-}packages.R }\CommentTok{\# Alternatively, run the entire package installation script in the Shell window}
+\ExtensionTok{Rscript}\NormalTok{ install{-}packages{-}sherlock.R }\CommentTok{\# Alternatively, run the entire package installation script in the Shell window}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2142,6 +2570,10 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE Definition of authorship}
 \item
   \href{https://www.nature.com/articles/nphys724}{Nature article on elements of style for scientific writing}
+\item
+  \href{https://link.springer.com/book/10.1007/978-3-030-98175-4}{The Pathway to Publishing: A Guide to Quantitative Writing in the Health Sciences}
+\item
+  \href{https://x.com/acagamic/status/1680381737816424450}{Secret, actionable writing tips}
 \end{itemize}
 
 \hypertarget{presentations}{%
@@ -2151,6 +2583,43 @@ by Jade Benjamin-Chung and Kunal Mishra
 \tightlist
 \item
   \href{https://www.nature.com/articles/d41586-021-03603-2}{How to tell a compelling story in scientific presentations}
+\item
+  \href{https://www-sciencedirect-com.stanford.idm.oclc.org/science/article/pii/S1471491423000928}{How to give a killer narratively-driven scientific talk}
+\item
+  \href{https://www.youtube.com/watch?v=1RwJbhkCA58\&t=1171s}{How to make a better poster}
+\item
+  \href{https://mitcommlab.mit.edu/be/2023/09/27/toward-an-evenbetterposter-improving-the-betterposter-template/}{How to make an even better poster}
+\end{itemize}
+
+\hypertarget{professional-advice}{%
+\section{Professional advice}\label{professional-advice}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://docs.google.com/document/d/1ckgRCcr7FFPyymyMA6Y_-cB_vftOyrrxT28c6gRg0PI/edit}{Professional advice, especially for your first job}
+\end{itemize}
+
+\hypertarget{funding}{%
+\section{Funding}\label{funding}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://grantwriting.stanford.edu/funding-train/\#ep}{Building Your Funding Train}
+\end{itemize}
+
+\hypertarget{ethics-and-global-health-research}{%
+\section{Ethics and global health research}\label{ethics-and-global-health-research}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.globalcodeofconduct.org/wp-content/uploads/2018/05/Global-Code-of-Conduct-Brochure.pdf}{Global Code of Conduct For Research in Resource-Poor Settings}
+\item
+  \href{https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0002269}{Who is a global health expert? Advice for aspiring global health experts}
+\item
+  \href{https://link.springer.com/book/9783031537929}{Transforming Global Health Partnerships}
 \end{itemize}
 
   \bibliography{book.bib,packages.bib}

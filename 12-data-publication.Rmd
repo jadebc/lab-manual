@@ -1,0 +1,143 @@
+# Data Publication
+
+Adapted from Fanice Nyatigo and Ben Arnold's chapter in the [Proctor-UCSF Lab Manual](https://urlisolation.com/browser?clickId=524DE241-3F8F-4C98-B619-3C278374BF64&traceToken=1728923499%3Bucsfmed_hosted%3Bhttps%3A%2F%2Fproctor-ucsf.github.io%2Fd&url=https%3A%2F%2Fproctor-ucsf.github.io%2Fdcc-handbook%2Fpublicdata.html) 
+
+## Overview
+
+---
+
+> _**Warning! ** **NEVER** push a dataset into the public domain (e.g., GitHub, OSF) without first checking with Jade to ensure that it is appropriately de-identified and we have approval from the sponsor and/or human subjects review board to do so.  For example, we will need to re-code participant IDs (even if they contain no identifying information) before making data public to completely break the link between IDs and identifiable information stored on our servers. _
+
+---
+
+If you are releasing data into the public domain, then consider making available _at minimum_ a `.csv` file and a codebook of the same name (note: you should have a codebook for internal data as well). We often also make available `.rds` files as well. For example, your `mystudy/data/public` directory could include three files for a single dataset, two with the actual data in `.rds` and `.csv` formats, and a third that describes their contents:
+
+```
+analysis_data_public.csv
+analysis_data_public.rds
+analysis_data_public_codebook.txt
+```
+
+In general, datasets are usually too big to save on GitHub, but occasionally they are small. Here is an example of where we actually pushed the data directly to GitHub: https://github.com/ben-arnold/enterics-seroepi/tree/master/data . 
+
+If the data are bigger, then maintaining them under version control in your git repository can be unweildy. Instead, we recommend using another stable repository that has version control, such as the Open Science Framework ([osf.io](https://osf.io)).  For example, all of the data from the WASH Benefits trials (led by investigators at Berkeley, icddr,b, IPA-Kenya and others) are all stored through data components nested within in OSF projects: https://osf.io/tprw2/. Another good option is Dryad ([datadryad.org](https://datadryad.org/)) or the (Stanford Digital Repository)[https://sdr.stanford.edu/]. 
+
+We recommend cross-linking public files in GitHub (scripts/notebooks only) and OSF/Dryad/Stanford Digital Repository.
+
+Below are the main steps to making data public, after finalizing the analysis datasets and scripts:   
+1. Remove Protected Health Information (PHI)   
+2. Create public IDs or join already created public IDs to the data   
+3. Create an OSF repository and/or Dryad/Stanford Digital Repository   
+4. Edit analysis scripts to run using the public datasets and test (optional)    
+5. Create a public github page for analysis scripts and link to OSF and/or Dryad/Zenodo    
+6. Go live    
+
+## Removing PHI
+
+Once the data is finalized for analysis, the first step is to strip it of Protected Health Information (PHI), or any other data that could be used to link back to specific participants, such as names, birth dates, or GPS coordinates at the village/neighborhood level or below. PHI includes, but is not limited to:
+
+### Personal information
+These are identifiers that directly point to specific individuals, such as:             
+- Names, addresses, photographs, date of birth             
+- A combination of age, sex, and geographic location (below population 20,000) is considered identifiable                 
+
+### Dates
+Any specific dates (e.g., study visit dates, birth dates, treatment dates) are usually problematic.              
+- If a dataset requires high resolution temporal information, coarsen visit or measurement dates to be two variables: year and week of the year (1-52).                 
+- If a dataset requires age, provide that information without a birth date (typically month resolution is sufficient)           
+
+---
+
+> _**Caution!** If making changes to the format of dates or ages, make sure your analysis code runs on these modified versions of the data (step 3)! _
+
+---
+
+
+### Geographic information
+
+Do not include GPS coordinates (longitude, latitude) except in special circumstances where they have been obfuscated/shifted. Reach out to Jade  before doing this because it can be complicated. 
+
+Do not include place names or codes (e.g., US Zip Codes)  if the place contains <20,000 people.  For villages or neighborhoods, code them with uninformative IDs.  For sub-districts or districts, names are fine.
+
+If an analysis requires GPS locations (e.g., to make a map), then typically we include a disclaimer in the article’s data availability statement that explains we cannot make GPS locations public to protect participant confidentiality. As a middle ground, we typically make our _code_ public that runs on the geo-located data for transparency, even if independent researchers can’t actually run that code (although please be careful to ensure the code itself does not in any way include geographic identifiers).
+
+For more examples of what constitutes PHI, please refer to this link: https://cphs.berkeley.edu/hipaa/hipaa18.html 
+
+## Create public IDs
+
+### Rationale
+The Stanford IRB requires that public datasets not include the original study IDs to identify participants or other units in the study (such as village IDs). The reason is that those IDs are linked in our private datasets to PHI.  By creating a new set of public IDs, the public dataset is one step further removed from the potential to link to PHI.  
+
+### A single set of public IDs for each study
+For each study, it is ideal to create a single set of public IDs whenever possible. We could create a new set of public IDs for every public dataset, but the downside is that independent researchers could no longer link data that might be related. By creating a single set of public IDs associated with each internal study ID, public files retain the link.
+
+Maintaining a single set of public IDs requires a shared "bridge" dataset, that includes a row for each study ID and has the associated public ID.  For studies with multiple levels of ID, we would typically have separate bridge datasets for each type of ID (e.g,. cluster ID, participant ID, etc.)
+
+Create a public ID that can be used to uniquely identify participants and that can internally be linked to the original study IDs. We recommend creating a subdirectory in the study’s shared data directory to store the public IDs. The shared location enables multiple projects to use the same IDs.  Create the IDs using a script that reads in the study IDs, creates a unique (uninformative) public ID for the study IDs, and then saves the bridge dataset. The script should be saved in the same directory as the public ID files.
+
+---
+
+> _**Caution!** Note that small differences may arise if the new public IDs do not necessarily order participants in the same way as the internal IDs. The small differences are all in estimates that rely on resampling, such as Bootstrap CIs, permutation P-values, and TMLE, as the resampling process may lead tp slightly different re-samples. The key here, to ensure the results are consistent irrespective of the dataset used, is simply to not assign public IDs randomly. Use `rank()` on the internal ID instead of `row_number()` to ensure that the order is always the same. _
+
+---
+
+### Example scripts
+
+We have created a self-contained and reproducible example that you can run and replicate when making data public for your projects. It contains the following files and folders:
+
+1. `data/final/`- folder containing the projects final data in both csv and rds formats              
+2. `code/DEMO_generate_public_IDs.R`- creates randomly generated public IDs that can be matched to the trial's assigned patient IDs.              
+3. `data/make_public/DEMO_internal_to_publicID.csv`- the output from step #2, a bridge dataset with two variables- the new public ID and the patient's assigned ID.   
+3. `code/DEMO_create_public_datasets.R`- joins the public IDs to the trial's full dataset, and strips it of the assigned patient ID. 
+4. `data/public/`- folder containing the output from step #3- de-identified public dataset, in csv and rds formats, with uniquely identifying public IDs that cannot be easily linked back to the patient's ID.
+
+The example workflow is accessible via GitHub: https://github.com/proctor-ucsf/dcc-handbook/tree/master/templates/making-data-public 
+
+## Create a data repository
+
+First, ensure that you create a codebook and metadata file for each public dataset [See the DCC guide on Documenting datasets](https://proctor-ucsf.github.io/dcc-handbook/datawrangling.html#documenting-datasets). Use the same name as the datasets, but with "-codebook.txt” /  “-codebook.html” / “-codebook.csv” at the end (depending on the file format for the codebook).  One nice option is the R codebook package, which also generates JSON output that is machine-readable.  
+
+### Steps for creating an Open Science Framework (OSF) repository:
+1. Create a new OSF project per these instructions: https://help.osf.io/article/252-create-a-project 
+2. Create a data component and upload the datasets in .csv and .rds format along with the codebooks.  The primary format for public dissemination is .csv but we make the .rds files available too as auxiliary files for convenience.
+3. Create a notebook component and upload the final .html files (which will not be on github... but see optional item below)
+4. On the OSF landing Wiki,  provide some context.  Here is a recent example: https://osf.io/954bt/
+5. Create a Digital Object Identifier (DOI) for the repository. A DOI is a unique identifier that provides a persistent link to content, such as a dataset in this case. [Learn more about DOIs](https://researchdata.princeton.edu/research-lifecycle-guide/whats-doi-and-what-should-i-know-about-citing-datasets)
+6. Optional: Complete the software checklist and system requirement guide for the analysis to guide others. Include it on the GitHub README for the project: https://github.com/proctor-ucsf/mordor-antibody
+
+
+## Edit and test analysis scripts 
+
+Make minor changes to the analysis scripts so that they run on public data. If using version control in GitHub, the most straight-forward way is to create a branch from the main git branch that reads in the public files, and then renames the new public ID variable, e.g., "id_public" to the internally recognized ID variable name, e.g. "recordID", when reading in the public data. Re-run all the analysis scripts to ensure that they still work with the public version of the dataset. 
+
+
+## Create a public GitHub page for public scripts
+
+At minimum, we should include all of the scripts required to run the analyses. **IMPORTANT**: ensure you have taken a snapshot and saved your computing environment using the `renv` package ([`renv`](#renv)).
+
+See examples:   
+- ACTION - https://github.com/proctor-ucsf/ACTION-public     
+- NAITRE - https://github.com/proctor-ucsf/NAITRE-primary    
+
+---
+
+> _**Caution!** Read through the scripts carefully to ensure there is no PHI in the code itself _
+
+---
+
+Once a public GitHub page exists, you can create a new component on an OSF project (step 3, above) and link it to the public version of the GitHub repo.
+
+## Go live 
+
+On GitHub, it is useful to create an official "release" version to freeze the repository, where you can have "associated files" with each version. Include the .html notebook output as additional files — since they aren't tracked in GitHub, it does provide a way of freezing / saving the HTML output for us and others. OSF examples of a studies from UCSF's Proctor Foundation:   
+- ACTION - https://osf.io/ca3pe/    
+- NAITRE -  https://osf.io/ujeyb/   
+- MORDOR Niger antibody study - https://osf.io/dgsq3/   
+
+        
+
+Further reading on end-to-end data management: [How to Store and Manage Your Data - PLOS](https://plos.org/resource/how-to-store-and-manage-your-data/#data-management-plan) 
+ 
+ 
+
+

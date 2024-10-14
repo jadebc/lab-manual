@@ -4,18 +4,19 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Slurm and cluster computing | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 14 Slurm and cluster computing | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Slurm and cluster computing | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 14 Slurm and cluster computing | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
+  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Slurm and cluster computing | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 14 Slurm and cluster computing | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -28,8 +29,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="unix.html"/>
+<link rel="prev" href="data-publication.html"/>
 <link rel="next" href="checklists.html"/>
+<script src="libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -90,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -103,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -134,166 +136,207 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Lab manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Benjamin-Chung Lab!</a>
+<li><a href="index.html#welcome-to-the-benjamin-chung-lab" id="toc-welcome-to-the-benjamin-chung-lab"><span class="toc-section-number">1</span> Welcome to the Benjamin-Chung Lab!</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-the-lab"><i class="fa fa-check"></i><b>1.1</b> About the lab</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about-this-lab-manual"><i class="fa fa-check"></i><b>1.2</b> About this lab manual</a></li>
+<li><a href="index.html#about-the-lab" id="toc-about-the-lab"><span class="toc-section-number">1.1</span> About the lab</a></li>
+<li><a href="index.html#about-this-lab-manual" id="toc-about-this-lab-manual"><span class="toc-section-number">1.2</span> About this lab manual</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html"><i class="fa fa-check"></i><b>2</b> Culture and conduct</a>
+<li><a href="culture-and-conduct.html#culture-and-conduct" id="toc-culture-and-conduct"><span class="toc-section-number">2</span> Culture and conduct</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#lab-culture"><i class="fa fa-check"></i><b>2.1</b> Lab culture</a></li>
-<li class="chapter" data-level="2.2" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#diversity-equity-and-inclusion"><i class="fa fa-check"></i><b>2.2</b> Diversity, equity, and inclusion</a></li>
-<li class="chapter" data-level="2.3" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#protecting-human-subjects"><i class="fa fa-check"></i><b>2.3</b> Protecting human subjects</a></li>
-<li class="chapter" data-level="2.4" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#authorship"><i class="fa fa-check"></i><b>2.4</b> Authorship</a></li>
+<li><a href="culture-and-conduct.html#lab-culture" id="toc-lab-culture"><span class="toc-section-number">2.1</span> Lab culture</a></li>
+<li><a href="culture-and-conduct.html#diversity-equity-and-inclusion" id="toc-diversity-equity-and-inclusion"><span class="toc-section-number">2.2</span> Diversity, equity, and inclusion</a></li>
+<li><a href="culture-and-conduct.html#protecting-human-subjects" id="toc-protecting-human-subjects"><span class="toc-section-number">2.3</span> Protecting human subjects</a></li>
+<li><a href="culture-and-conduct.html#authorship" id="toc-authorship"><span class="toc-section-number">2.4</span> Authorship</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html"><i class="fa fa-check"></i><b>3</b> Communication and coordination</a>
+<li><a href="communication-and-coordination.html#communication-and-coordination" id="toc-communication-and-coordination"><span class="toc-section-number">3</span> Communication and coordination</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#slack"><i class="fa fa-check"></i><b>3.1</b> Slack</a></li>
-<li class="chapter" data-level="3.2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#email"><i class="fa fa-check"></i><b>3.2</b> Email</a></li>
-<li class="chapter" data-level="3.3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#trello"><i class="fa fa-check"></i><b>3.3</b> Trello</a></li>
-<li class="chapter" data-level="3.4" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-drives"><i class="fa fa-check"></i><b>3.4</b> Google Drives</a></li>
-<li class="chapter" data-level="3.5" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#meetings"><i class="fa fa-check"></i><b>3.5</b> Meetings</a></li>
+<li><a href="communication-and-coordination.html#slack" id="toc-slack"><span class="toc-section-number">3.1</span> Slack</a></li>
+<li><a href="communication-and-coordination.html#email" id="toc-email"><span class="toc-section-number">3.2</span> Email</a></li>
+<li><a href="communication-and-coordination.html#trello" id="toc-trello"><span class="toc-section-number">3.3</span> Trello</a></li>
+<li><a href="communication-and-coordination.html#google-drives" id="toc-google-drives"><span class="toc-section-number">3.4</span> Google Drives</a></li>
+<li><a href="communication-and-coordination.html#meetings" id="toc-meetings"><span class="toc-section-number">3.5</span> Meetings</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="reproducibility.html"><a href="reproducibility.html"><i class="fa fa-check"></i><b>4</b> Reproducibility</a>
+<li><a href="reproducibility.html#reproducibility" id="toc-reproducibility"><span class="toc-section-number">4</span> Reproducibility</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reproducibility.html"><a href="reproducibility.html#what-is-the-reproducibility-crisis"><i class="fa fa-check"></i><b>4.1</b> What is the reproducibility crisis?</a></li>
-<li class="chapter" data-level="4.2" data-path="reproducibility.html"><a href="reproducibility.html#study-design"><i class="fa fa-check"></i><b>4.2</b> Study design</a></li>
-<li class="chapter" data-level="4.3" data-path="reproducibility.html"><a href="reproducibility.html#register-study-protocols"><i class="fa fa-check"></i><b>4.3</b> Register study protocols</a></li>
-<li class="chapter" data-level="4.4" data-path="reproducibility.html"><a href="reproducibility.html#write-and-register-pre-analysis-plans"><i class="fa fa-check"></i><b>4.4</b> Write and register pre-analysis plans</a></li>
-<li class="chapter" data-level="4.5" data-path="reproducibility.html"><a href="reproducibility.html#create-reproducible-workflows"><i class="fa fa-check"></i><b>4.5</b> Create reproducible workflows</a></li>
-<li class="chapter" data-level="4.6" data-path="reproducibility.html"><a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking"><i class="fa fa-check"></i><b>4.6</b> Process and analyze data with internal replication and masking</a></li>
-<li class="chapter" data-level="4.7" data-path="reproducibility.html"><a href="reproducibility.html#use-reporting-checklists-with-manuscripts"><i class="fa fa-check"></i><b>4.7</b> Use reporting checklists with manuscripts</a></li>
-<li class="chapter" data-level="4.8" data-path="reproducibility.html"><a href="reproducibility.html#publish-preprints"><i class="fa fa-check"></i><b>4.8</b> Publish preprints</a></li>
-<li class="chapter" data-level="4.9" data-path="reproducibility.html"><a href="reproducibility.html#publish-data-when-possible-and-replication-scripts"><i class="fa fa-check"></i><b>4.9</b> Publish data (when possible) and replication scripts</a></li>
+<li><a href="reproducibility.html#what-is-the-reproducibility-crisis" id="toc-what-is-the-reproducibility-crisis"><span class="toc-section-number">4.1</span> What is the reproducibility crisis?</a></li>
+<li><a href="reproducibility.html#study-design" id="toc-study-design"><span class="toc-section-number">4.2</span> Study design</a></li>
+<li><a href="reproducibility.html#register-study-protocols" id="toc-register-study-protocols"><span class="toc-section-number">4.3</span> Register study protocols</a></li>
+<li><a href="reproducibility.html#write-and-register-pre-analysis-plans" id="toc-write-and-register-pre-analysis-plans"><span class="toc-section-number">4.4</span> Write and register pre-analysis plans</a></li>
+<li><a href="reproducibility.html#create-reproducible-workflows" id="toc-create-reproducible-workflows"><span class="toc-section-number">4.5</span> Create reproducible workflows</a></li>
+<li><a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking" id="toc-process-and-analyze-data-with-internal-replication-and-masking"><span class="toc-section-number">4.6</span> Process and analyze data with internal replication and masking</a></li>
+<li><a href="reproducibility.html#use-reporting-checklists-with-manuscripts" id="toc-use-reporting-checklists-with-manuscripts"><span class="toc-section-number">4.7</span> Use reporting checklists with manuscripts</a></li>
+<li><a href="reproducibility.html#publish-preprints" id="toc-publish-preprints"><span class="toc-section-number">4.8</span> Publish preprints</a></li>
+<li><a href="reproducibility.html#publish-data-when-possible-and-replication-scripts" id="toc-publish-data-when-possible-and-replication-scripts"><span class="toc-section-number">4.9</span> Publish data (when possible) and replication scripts</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>5</b> Code repositories</a>
+<li><a href="code-repositories.html#code-repositories" id="toc-code-repositories"><span class="toc-section-number">5</span> Code repositories</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>5.1</b> Project Structure</a></li>
-<li class="chapter" data-level="5.2" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>5.2</b> <code>.Rproj</code> files</a></li>
-<li class="chapter" data-level="5.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>5.3</b> Configuration (‘config’) File</a></li>
-<li class="chapter" data-level="5.4" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>5.4</b> Order Files and Directories</a></li>
-<li class="chapter" data-level="5.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>5.5</b> Using Bash scripts to ensure reproducibility</a></li>
+<li><a href="code-repositories.html#project-structure" id="toc-project-structure"><span class="toc-section-number">5.1</span> Project Structure</a></li>
+<li><a href="code-repositories.html#rproj-files" id="toc-rproj-files"><span class="toc-section-number">5.2</span> <code>.Rproj</code> files</a></li>
+<li><a href="code-repositories.html#configuration-config-file" id="toc-configuration-config-file"><span class="toc-section-number">5.3</span> Configuration (‘config’) File</a></li>
+<li><a href="code-repositories.html#order-files-and-directories" id="toc-order-files-and-directories"><span class="toc-section-number">5.4</span> Order Files and Directories</a></li>
+<li><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility" id="toc-using-bash-scripts-to-ensure-reproducibility"><span class="toc-section-number">5.5</span> Using Bash scripts to ensure reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>6</b> Coding practices</a>
+<li><a href="coding-practices.html#coding-practices" id="toc-coding-practices"><span class="toc-section-number">6</span> Coding practices</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>6.1</b> Organizing scripts</a></li>
-<li class="chapter" data-level="6.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>6.2</b> Documenting your code</a>
+<li><a href="coding-practices.html#organizing-scripts" id="toc-organizing-scripts"><span class="toc-section-number">6.1</span> Organizing scripts</a></li>
+<li><a href="coding-practices.html#documenting-your-code" id="toc-documenting-your-code"><span class="toc-section-number">6.2</span> Documenting your code</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>6.2.1</b> File headers</a></li>
-<li class="chapter" data-level="6.2.2" data-path="coding-practices.html"><a href="coding-practices.html#sections-and-subsections"><i class="fa fa-check"></i><b>6.2.2</b> Sections and subsections</a></li>
-<li class="chapter" data-level="6.2.3" data-path="coding-practices.html"><a href="coding-practices.html#code-folding"><i class="fa fa-check"></i><b>6.2.3</b> Code folding</a></li>
-<li class="chapter" data-level="6.2.4" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>6.2.4</b> Comments in the body of your script</a></li>
-<li class="chapter" data-level="6.2.5" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>6.2.5</b> Function documentation</a></li>
+<li><a href="coding-practices.html#file-headers" id="toc-file-headers"><span class="toc-section-number">6.2.1</span> File headers</a></li>
+<li><a href="coding-practices.html#sections-and-subsections" id="toc-sections-and-subsections"><span class="toc-section-number">6.2.2</span> Sections and subsections</a></li>
+<li><a href="coding-practices.html#code-folding" id="toc-code-folding"><span class="toc-section-number">6.2.3</span> Code folding</a></li>
+<li><a href="coding-practices.html#comments-in-the-body-of-your-script" id="toc-comments-in-the-body-of-your-script"><span class="toc-section-number">6.2.4</span> Comments in the body of your script</a></li>
+<li><a href="coding-practices.html#function-documentation" id="toc-function-documentation"><span class="toc-section-number">6.2.5</span> Function documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>6.3</b> Object naming</a></li>
-<li class="chapter" data-level="6.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>6.4</b> Function calls</a></li>
-<li class="chapter" data-level="6.5" data-path="coding-practices.html"><a href="coding-practices.html#the-here-package"><i class="fa fa-check"></i><b>6.5</b> The here package</a></li>
-<li class="chapter" data-level="6.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>6.6</b> Reading/Saving Data</a>
+<li><a href="coding-practices.html#object-naming" id="toc-object-naming"><span class="toc-section-number">6.3</span> Object naming</a></li>
+<li><a href="coding-practices.html#function-calls" id="toc-function-calls"><span class="toc-section-number">6.4</span> Function calls</a></li>
+<li><a href="coding-practices.html#the-here-package" id="toc-the-here-package"><span class="toc-section-number">6.5</span> The here package</a></li>
+<li><a href="coding-practices.html#readingsaving-data" id="toc-readingsaving-data"><span class="toc-section-number">6.6</span> Reading/Saving Data</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="coding-practices.html"><a href="coding-practices.html#rds-vs-.rdata-files"><i class="fa fa-check"></i><b>6.6.1</b> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
-<li class="chapter" data-level="6.6.2" data-path="coding-practices.html"><a href="coding-practices.html#csvs"><i class="fa fa-check"></i><b>6.6.2</b> CSVs</a></li>
+<li><a href="coding-practices.html#rds-vs-.rdata-files" id="toc-rds-vs-.rdata-files"><span class="toc-section-number">6.6.1</span> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
+<li><a href="coding-practices.html#csvs" id="toc-csvs"><span class="toc-section-number">6.6.2</span> CSVs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="coding-practices.html"><a href="coding-practices.html#integrating-box-and-dropbox"><i class="fa fa-check"></i><b>6.7</b> Integrating Box and Dropbox</a>
+<li><a href="coding-practices.html#integrating-box-and-dropbox" id="toc-integrating-box-and-dropbox"><span class="toc-section-number">6.7</span> Integrating Box and Dropbox</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="coding-practices.html"><a href="coding-practices.html#box"><i class="fa fa-check"></i><b>6.7.1</b> Box</a></li>
-<li class="chapter" data-level="6.7.2" data-path="coding-practices.html"><a href="coding-practices.html#dropbox"><i class="fa fa-check"></i><b>6.7.2</b> Dropbox</a></li>
+<li><a href="coding-practices.html#box" id="toc-box"><span class="toc-section-number">6.7.1</span> Box</a></li>
+<li><a href="coding-practices.html#dropbox" id="toc-dropbox"><span class="toc-section-number">6.7.2</span> Dropbox</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>6.8</b> Tidyverse</a></li>
-<li class="chapter" data-level="6.9" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>6.9</b> Coding with R and Python</a></li>
-<li class="chapter" data-level="6.10" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>6.10</b> Reviewing Code</a>
+<li><a href="coding-practices.html#tidyverse" id="toc-tidyverse"><span class="toc-section-number">6.8</span> Tidyverse</a></li>
+<li><a href="coding-practices.html#coding-with-r-and-python" id="toc-coding-with-r-and-python"><span class="toc-section-number">6.9</span> Coding with R and Python</a></li>
+<li><a href="coding-practices.html#repeating-analyses-with-different-variations" id="toc-repeating-analyses-with-different-variations"><span class="toc-section-number">6.10</span> Repeating analyses with different variations</a>
 <ul>
-<li class="chapter" data-level="6.10.1" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>6.10.1</b> Creating a Pull Request Template</a></li>
+<li><a href="coding-practices.html#lapply-and-sapply" id="toc-lapply-and-sapply"><span class="toc-section-number">6.10.1</span> <code>lapply()</code> and <code>sapply()</code></a></li>
+<li><a href="coding-practices.html#mapply-and-pmap" id="toc-mapply-and-pmap"><span class="toc-section-number">6.10.2</span> <code>mapply()</code> and <code>pmap()</code></a></li>
+<li><a href="coding-practices.html#parallel-processing-with-parallel-and-future-packages" id="toc-parallel-processing-with-parallel-and-future-packages"><span class="toc-section-number">6.10.3</span> Parallel processing with <code>parallel</code> and <code>future</code> packages</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>7</b> Coding style</a>
+<li><a href="coding-practices.html#reviewing-code" id="toc-reviewing-code"><span class="toc-section-number">6.11</span> Reviewing Code</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>7.1</b> Comments</a></li>
-<li class="chapter" data-level="7.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>7.2</b> Line breaks</a></li>
-<li class="chapter" data-level="7.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>7.3</b> Automated Tools for Style and Project Workflow</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>7.3.1</b> Styling</a></li>
+<li><a href="coding-practices.html#creating-a-pull-request-template" id="toc-creating-a-pull-request-template"><span class="toc-section-number">6.11.1</span> Creating a Pull Request Template</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="code-publication.html"><a href="code-publication.html"><i class="fa fa-check"></i><b>8</b> Code Publication</a>
+<li><a href="coding-style.html#coding-style" id="toc-coding-style"><span class="toc-section-number">7</span> Coding style</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="code-publication.html"><a href="code-publication.html#checklist-overview"><i class="fa fa-check"></i><b>8.1</b> Checklist overview</a></li>
-<li class="chapter" data-level="8.2" data-path="code-publication.html"><a href="code-publication.html#fill-out-file-headers"><i class="fa fa-check"></i><b>8.2</b> Fill out file headers</a></li>
-<li class="chapter" data-level="8.3" data-path="code-publication.html"><a href="code-publication.html#clean-up-comments"><i class="fa fa-check"></i><b>8.3</b> Clean up comments</a></li>
-<li class="chapter" data-level="8.4" data-path="code-publication.html"><a href="code-publication.html#document-functions"><i class="fa fa-check"></i><b>8.4</b> Document functions</a></li>
-<li class="chapter" data-level="8.5" data-path="code-publication.html"><a href="code-publication.html#remove-deprecated-filepaths"><i class="fa fa-check"></i><b>8.5</b> Remove deprecated filepaths</a></li>
-<li class="chapter" data-level="8.6" data-path="code-publication.html"><a href="code-publication.html#ensure-project-runs-via-bash"><i class="fa fa-check"></i><b>8.6</b> Ensure project runs via bash</a></li>
-<li class="chapter" data-level="8.7" data-path="code-publication.html"><a href="code-publication.html#complete-the-readme"><i class="fa fa-check"></i><b>8.7</b> Complete the README</a></li>
-<li class="chapter" data-level="8.8" data-path="code-publication.html"><a href="code-publication.html#clean-up-feature-branches"><i class="fa fa-check"></i><b>8.8</b> Clean up feature branches</a></li>
-<li class="chapter" data-level="8.9" data-path="code-publication.html"><a href="code-publication.html#create-github-release"><i class="fa fa-check"></i><b>8.9</b> Create Github release</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>9</b> Working with Big Data</a>
+<li><a href="coding-style.html#comments" id="toc-comments"><span class="toc-section-number">7.1</span> Comments</a></li>
+<li><a href="coding-style.html#line-breaks" id="toc-line-breaks"><span class="toc-section-number">7.2</span> Line breaks</a></li>
+<li><a href="coding-style.html#automated-tools-for-style-and-project-workflow" id="toc-automated-tools-for-style-and-project-workflow"><span class="toc-section-number">7.3</span> Automated Tools for Style and Project Workflow</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>9.1</b> The data.table package</a></li>
-<li class="chapter" data-level="9.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>9.2</b> Using downsampled data</a></li>
-<li class="chapter" data-level="9.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>9.3</b> Optimal RStudio set up</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>10</b> Github</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>10.1</b> Basics</a></li>
-<li class="chapter" data-level="10.2" data-path="github.html"><a href="github.html#github-desktop"><i class="fa fa-check"></i><b>10.2</b> Github Desktop</a></li>
-<li class="chapter" data-level="10.3" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>10.3</b> Git Branching</a></li>
-<li class="chapter" data-level="10.4" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>10.4</b> Example Workflow</a></li>
-<li class="chapter" data-level="10.5" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>10.5</b> Commonly Used Git Commands</a></li>
-<li class="chapter" data-level="10.6" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>10.6</b> How often should I commit?</a></li>
-<li class="chapter" data-level="10.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>10.7</b> What should be pushed to Github?</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>11</b> Unix commands</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>11.1</b> Basics</a></li>
-<li class="chapter" data-level="11.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>11.2</b> Syntax for both Mac/Windows</a></li>
-<li class="chapter" data-level="11.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>11.3</b> Running Bash Scripts</a></li>
-<li class="chapter" data-level="11.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>11.4</b> Running Rscripts in Windows</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>11.4.1</b> Common Mistakes</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>11.5</b> Checking tasks and killing jobs</a></li>
-<li class="chapter" data-level="11.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>11.6</b> Running big jobs</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="unix.html"><a href="unix.html#example-code-for-runfilesavelogs"><i class="fa fa-check"></i><b>11.6.1</b> Example code for <code>runfileSaveLogs</code></a></li>
-<li class="chapter" data-level="11.6.2" data-path="unix.html"><a href="unix.html#example-usage-for-runfilesavelogs"><i class="fa fa-check"></i><b>11.6.2</b> Example usage for <code>runfileSaveLogs</code></a></li>
+<li><a href="coding-style.html#styling" id="toc-styling"><span class="toc-section-number">7.3.1</span> Styling</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="slurm.html"><a href="slurm.html"><i class="fa fa-check"></i><b>12</b> Slurm and cluster computing</a>
+<li><a href="working-with-big-data.html#working-with-big-data" id="toc-working-with-big-data"><span class="toc-section-number">8</span> Working with Big Data</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="slurm.html"><a href="slurm.html#getting-started"><i class="fa fa-check"></i><b>12.1</b> Getting started</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>12.1.1</b> One-Time System Set-Up</a></li>
+<li><a href="working-with-big-data.html#the-data.table-package" id="toc-the-data.table-package"><span class="toc-section-number">8.1</span> The data.table package</a></li>
+<li><a href="working-with-big-data.html#using-downsampled-data" id="toc-using-downsampled-data"><span class="toc-section-number">8.2</span> Using downsampled data</a></li>
+<li><a href="working-with-big-data.html#optimal-rstudio-set-up" id="toc-optimal-rstudio-set-up"><span class="toc-section-number">8.3</span> Optimal RStudio set up</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
-<li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.3</b> Installing packages on Sherlock</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.4</b> Testing your code</a>
+<li><a href="github.html#github" id="toc-github"><span class="toc-section-number">9</span> Github</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="slurm.html"><a href="slurm.html#the-command-line"><i class="fa fa-check"></i><b>12.4.1</b> The command line</a></li>
-<li class="chapter" data-level="12.4.2" data-path="slurm.html"><a href="slurm.html#the-sherlock-ondemand-dashboard"><i class="fa fa-check"></i><b>12.4.2</b> The Sherlock OnDemand Dashboard</a></li>
-<li class="chapter" data-level="12.4.3" data-path="slurm.html"><a href="slurm.html#filepaths-configuration-on-sherlock"><i class="fa fa-check"></i><b>12.4.3</b> Filepaths &amp; configuration on Sherlock</a></li>
+<li><a href="github.html#basics" id="toc-basics"><span class="toc-section-number">9.1</span> Basics</a></li>
+<li><a href="github.html#github-desktop" id="toc-github-desktop"><span class="toc-section-number">9.2</span> Github Desktop</a></li>
+<li><a href="github.html#git-branching" id="toc-git-branching"><span class="toc-section-number">9.3</span> Git Branching</a></li>
+<li><a href="github.html#example-workflow" id="toc-example-workflow"><span class="toc-section-number">9.4</span> Example Workflow</a></li>
+<li><a href="github.html#commonly-used-git-commands" id="toc-commonly-used-git-commands"><span class="toc-section-number">9.5</span> Commonly Used Git Commands</a></li>
+<li><a href="github.html#how-often-should-i-commit" id="toc-how-often-should-i-commit"><span class="toc-section-number">9.6</span> How often should I commit?</a></li>
+<li><a href="github.html#what-should-be-pushed-to-github" id="toc-what-should-be-pushed-to-github"><span class="toc-section-number">9.7</span> What should be pushed to Github?</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#storage-group-storage-access"><i class="fa fa-check"></i><b>12.5</b> Storage &amp; group storage access</a>
+<li><a href="unix.html#unix" id="toc-unix"><span class="toc-section-number">10</span> Unix commands</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="slurm.html"><a href="slurm.html#individual-storage"><i class="fa fa-check"></i><b>12.5.1</b> Individual storage</a></li>
-<li class="chapter" data-level="12.5.2" data-path="slurm.html"><a href="slurm.html#group-storage"><i class="fa fa-check"></i><b>12.5.2</b> Group storage</a></li>
-<li class="chapter" data-level="12.5.3" data-path="slurm.html"><a href="slurm.html#folder-permissions"><i class="fa fa-check"></i><b>12.5.3</b> Folder permissions</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.6</b> Running big jobs</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
+<li><a href="unix.html#basics-1" id="toc-basics-1"><span class="toc-section-number">10.1</span> Basics</a></li>
+<li><a href="unix.html#syntax-for-both-macwindows" id="toc-syntax-for-both-macwindows"><span class="toc-section-number">10.2</span> Syntax for both Mac/Windows</a></li>
+<li><a href="unix.html#running-bash-scripts" id="toc-running-bash-scripts"><span class="toc-section-number">10.3</span> Running Bash Scripts</a></li>
+<li><a href="unix.html#running-rscripts-in-windows" id="toc-running-rscripts-in-windows"><span class="toc-section-number">10.4</span> Running Rscripts in Windows</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="checklists.html"><a href="checklists.html#pre-analysis-plan-checklist"><i class="fa fa-check"></i><b>13.1</b> Pre-analysis plan checklist</a></li>
-<li class="chapter" data-level="13.2" data-path="checklists.html"><a href="checklists.html#code-checklist"><i class="fa fa-check"></i><b>13.2</b> Code checklist</a></li>
-<li class="chapter" data-level="13.3" data-path="checklists.html"><a href="checklists.html#manuscript-checklist"><i class="fa fa-check"></i><b>13.3</b> Manuscript checklist</a></li>
-<li class="chapter" data-level="13.4" data-path="checklists.html"><a href="checklists.html#figure-checklist"><i class="fa fa-check"></i><b>13.4</b> Figure checklist</a></li>
+<li><a href="unix.html#common-mistakes" id="toc-common-mistakes"><span class="toc-section-number">10.4.1</span> Common Mistakes</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>14</b> Resources</a>
+<li><a href="unix.html#checking-tasks-and-killing-jobs" id="toc-checking-tasks-and-killing-jobs"><span class="toc-section-number">10.5</span> Checking tasks and killing jobs</a></li>
+<li><a href="unix.html#running-big-jobs" id="toc-running-big-jobs"><span class="toc-section-number">10.6</span> Running big jobs</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>14.1</b> Resources for R</a></li>
-<li class="chapter" data-level="14.2" data-path="resources.html"><a href="resources.html#resources-for-git-github"><i class="fa fa-check"></i><b>14.2</b> Resources for Git &amp; Github</a></li>
-<li class="chapter" data-level="14.3" data-path="resources.html"><a href="resources.html#scientific-figures"><i class="fa fa-check"></i><b>14.3</b> Scientific figures</a></li>
-<li class="chapter" data-level="14.4" data-path="resources.html"><a href="resources.html#writing"><i class="fa fa-check"></i><b>14.4</b> Writing</a></li>
-<li class="chapter" data-level="14.5" data-path="resources.html"><a href="resources.html#presentations"><i class="fa fa-check"></i><b>14.5</b> Presentations</a></li>
+<li><a href="unix.html#example-code-for-runfilesavelogs" id="toc-example-code-for-runfilesavelogs"><span class="toc-section-number">10.6.1</span> Example code for <code>runfileSaveLogs</code></a></li>
+<li><a href="unix.html#example-usage-for-runfilesavelogs" id="toc-example-usage-for-runfilesavelogs"><span class="toc-section-number">10.6.2</span> Example usage for <code>runfileSaveLogs</code></a></li>
+</ul></li>
+</ul></li>
+<li><a href="reproducible-environments.html#reproducible-environments" id="toc-reproducible-environments"><span class="toc-section-number">11</span> Reproducible Environments</a>
+<ul>
+<li><a href="reproducible-environments.html#package-version-control-with-renv" id="toc-package-version-control-with-renv"><span class="toc-section-number">11.1</span> Package Version Control with renv</a>
+<ul>
+<li><a href="reproducible-environments.html#introduction" id="toc-introduction"><span class="toc-section-number">11.1.1</span> Introduction</a></li>
+<li><a href="reproducible-environments.html#implementing-renv-in-projects" id="toc-implementing-renv-in-projects"><span class="toc-section-number">11.1.2</span> Implementing renv in projects</a></li>
+<li><a href="reproducible-environments.html#using-projects-with-renv" id="toc-using-projects-with-renv"><span class="toc-section-number">11.1.3</span> Using projects with renv</a></li>
+</ul></li>
+</ul></li>
+<li><a href="code-publication.html#code-publication" id="toc-code-publication"><span class="toc-section-number">12</span> Code Publication</a>
+<ul>
+<li><a href="code-publication.html#checklist-overview" id="toc-checklist-overview"><span class="toc-section-number">12.1</span> Checklist overview</a></li>
+<li><a href="code-publication.html#fill-out-file-headers" id="toc-fill-out-file-headers"><span class="toc-section-number">12.2</span> Fill out file headers</a></li>
+<li><a href="code-publication.html#clean-up-comments" id="toc-clean-up-comments"><span class="toc-section-number">12.3</span> Clean up comments</a></li>
+<li><a href="code-publication.html#document-functions" id="toc-document-functions"><span class="toc-section-number">12.4</span> Document functions</a></li>
+<li><a href="code-publication.html#remove-deprecated-filepaths" id="toc-remove-deprecated-filepaths"><span class="toc-section-number">12.5</span> Remove deprecated filepaths</a></li>
+<li><a href="code-publication.html#ensure-project-runs-via-bash" id="toc-ensure-project-runs-via-bash"><span class="toc-section-number">12.6</span> Ensure project runs via bash</a></li>
+<li><a href="code-publication.html#complete-the-readme" id="toc-complete-the-readme"><span class="toc-section-number">12.7</span> Complete the README</a></li>
+<li><a href="code-publication.html#clean-up-feature-branches" id="toc-clean-up-feature-branches"><span class="toc-section-number">12.8</span> Clean up feature branches</a></li>
+<li><a href="code-publication.html#create-github-release" id="toc-create-github-release"><span class="toc-section-number">12.9</span> Create Github release</a></li>
+</ul></li>
+<li><a href="data-publication.html#data-publication" id="toc-data-publication"><span class="toc-section-number">13</span> Data Publication</a>
+<ul>
+<li><a href="data-publication.html#overview" id="toc-overview"><span class="toc-section-number">13.1</span> Overview</a></li>
+<li><a href="data-publication.html#removing-phi" id="toc-removing-phi"><span class="toc-section-number">13.2</span> Removing PHI</a>
+<ul>
+<li><a href="data-publication.html#personal-information" id="toc-personal-information"><span class="toc-section-number">13.2.1</span> Personal information</a></li>
+<li><a href="data-publication.html#dates" id="toc-dates"><span class="toc-section-number">13.2.2</span> Dates</a></li>
+<li><a href="data-publication.html#geographic-information" id="toc-geographic-information"><span class="toc-section-number">13.2.3</span> Geographic information</a></li>
+</ul></li>
+<li><a href="data-publication.html#create-public-ids" id="toc-create-public-ids"><span class="toc-section-number">13.3</span> Create public IDs</a>
+<ul>
+<li><a href="data-publication.html#rationale" id="toc-rationale"><span class="toc-section-number">13.3.1</span> Rationale</a></li>
+<li><a href="data-publication.html#a-single-set-of-public-ids-for-each-study" id="toc-a-single-set-of-public-ids-for-each-study"><span class="toc-section-number">13.3.2</span> A single set of public IDs for each study</a></li>
+<li><a href="data-publication.html#example-scripts" id="toc-example-scripts"><span class="toc-section-number">13.3.3</span> Example scripts</a></li>
+</ul></li>
+<li><a href="data-publication.html#create-a-data-repository" id="toc-create-a-data-repository"><span class="toc-section-number">13.4</span> Create a data repository</a>
+<ul>
+<li><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository" id="toc-steps-for-creating-an-open-science-framework-osf-repository"><span class="toc-section-number">13.4.1</span> Steps for creating an Open Science Framework (OSF) repository:</a></li>
+</ul></li>
+<li><a href="data-publication.html#edit-and-test-analysis-scripts" id="toc-edit-and-test-analysis-scripts"><span class="toc-section-number">13.5</span> Edit and test analysis scripts</a></li>
+<li><a href="data-publication.html#create-a-public-github-page-for-public-scripts" id="toc-create-a-public-github-page-for-public-scripts"><span class="toc-section-number">13.6</span> Create a public GitHub page for public scripts</a></li>
+<li><a href="data-publication.html#go-live" id="toc-go-live"><span class="toc-section-number">13.7</span> Go live</a></li>
+</ul></li>
+<li><a href="slurm.html#slurm" id="toc-slurm"><span class="toc-section-number">14</span> Slurm and cluster computing</a>
+<ul>
+<li><a href="slurm.html#getting-started" id="toc-getting-started"><span class="toc-section-number">14.1</span> Getting started</a>
+<ul>
+<li><a href="slurm.html#one-time-system-set-up" id="toc-one-time-system-set-up"><span class="toc-section-number">14.1.1</span> One-Time System Set-Up</a></li>
+</ul></li>
+<li><a href="slurm.html#moving-files-to-sherlock" id="toc-moving-files-to-sherlock"><span class="toc-section-number">14.2</span> Moving files to Sherlock</a></li>
+<li><a href="slurm.html#installing-packages-on-sherlock" id="toc-installing-packages-on-sherlock"><span class="toc-section-number">14.3</span> Installing packages on Sherlock</a></li>
+<li><a href="slurm.html#testing-your-code" id="toc-testing-your-code"><span class="toc-section-number">14.4</span> Testing your code</a>
+<ul>
+<li><a href="slurm.html#the-command-line" id="toc-the-command-line"><span class="toc-section-number">14.4.1</span> The command line</a></li>
+<li><a href="slurm.html#the-sherlock-ondemand-dashboard" id="toc-the-sherlock-ondemand-dashboard"><span class="toc-section-number">14.4.2</span> The Sherlock OnDemand Dashboard</a></li>
+<li><a href="slurm.html#filepaths-configuration-on-sherlock" id="toc-filepaths-configuration-on-sherlock"><span class="toc-section-number">14.4.3</span> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
+<li><a href="slurm.html#storage-group-storage-access" id="toc-storage-group-storage-access"><span class="toc-section-number">14.5</span> Storage &amp; group storage access</a>
+<ul>
+<li><a href="slurm.html#individual-storage" id="toc-individual-storage"><span class="toc-section-number">14.5.1</span> Individual storage</a></li>
+<li><a href="slurm.html#group-storage" id="toc-group-storage"><span class="toc-section-number">14.5.2</span> Group storage</a></li>
+<li><a href="slurm.html#folder-permissions" id="toc-folder-permissions"><span class="toc-section-number">14.5.3</span> Folder permissions</a></li>
+</ul></li>
+<li><a href="slurm.html#running-big-jobs-1" id="toc-running-big-jobs-1"><span class="toc-section-number">14.6</span> Running big jobs</a></li>
+</ul></li>
+<li><a href="checklists.html#checklists" id="toc-checklists"><span class="toc-section-number">15</span> Checklists</a>
+<ul>
+<li><a href="checklists.html#pre-analysis-plan-checklist" id="toc-pre-analysis-plan-checklist"><span class="toc-section-number">15.1</span> Pre-analysis plan checklist</a></li>
+<li><a href="checklists.html#code-checklist" id="toc-code-checklist"><span class="toc-section-number">15.2</span> Code checklist</a></li>
+<li><a href="checklists.html#manuscript-checklist" id="toc-manuscript-checklist"><span class="toc-section-number">15.3</span> Manuscript checklist</a></li>
+<li><a href="checklists.html#figure-checklist" id="toc-figure-checklist"><span class="toc-section-number">15.4</span> Figure checklist</a></li>
+</ul></li>
+<li><a href="resources.html#resources" id="toc-resources"><span class="toc-section-number">16</span> Resources</a>
+<ul>
+<li><a href="resources.html#resources-for-r" id="toc-resources-for-r"><span class="toc-section-number">16.1</span> Resources for R</a></li>
+<li><a href="resources.html#resources-for-git-github" id="toc-resources-for-git-github"><span class="toc-section-number">16.2</span> Resources for Git &amp; Github</a></li>
+<li><a href="resources.html#scientific-figures" id="toc-scientific-figures"><span class="toc-section-number">16.3</span> Scientific figures</a></li>
+<li><a href="resources.html#writing" id="toc-writing"><span class="toc-section-number">16.4</span> Writing</a></li>
+<li><a href="resources.html#presentations" id="toc-presentations"><span class="toc-section-number">16.5</span> Presentations</a></li>
+<li><a href="resources.html#professional-advice" id="toc-professional-advice"><span class="toc-section-number">16.6</span> Professional advice</a></li>
+<li><a href="resources.html#funding" id="toc-funding"><span class="toc-section-number">16.7</span> Funding</a></li>
+<li><a href="resources.html#ethics-and-global-health-research" id="toc-ethics-and-global-health-research"><span class="toc-section-number">16.8</span> Ethics and global health research</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
@@ -315,24 +358,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="slurm" class="section level1 hasAnchor" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Slurm and cluster computing<a href="slurm.html#slurm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="slurm" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Slurm and cluster computing<a href="slurm.html#slurm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann</p>
 <p>When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford’s computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the <a href="https://www.sherlock.stanford.edu/docs/overview/introduction/">Sherlock user guide</a> to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.</p>
-<div id="getting-started" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Getting started<a href="slurm.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="getting-started" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Getting started<a href="slurm.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To access Sherlock, in terminal, log in using the following syntax and replace “USERNAME” with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.</p>
 <pre class="code1"><code>ssh USERNAME@login.sherlock.stanford.edu</code></pre>
 <p>Once you log in, you can view the contents of your home directory in command line by entering <code>cd $HOME</code>. You can create subfolders within this directory using the <code>mkdir</code> command. For example, you could make a “code” subdirectory and clone a Github repository there using the following code:</p>
 <pre class="code2"><code>cd $HOME
 mkdir code
 git clone https://github.com/jadebc/covid19-infections.git</code></pre>
-<div id="one-time-system-set-up" class="section level3 hasAnchor" number="12.1.1">
-<h3><span class="header-section-number">12.1.1</span> One-Time System Set-Up<a href="slurm.html#one-time-system-set-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="one-time-system-set-up" class="section level3 hasAnchor" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> One-Time System Set-Up<a href="slurm.html#one-time-system-set-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To keep the install packages consistent across different nodes, you will need to explicitly set the pathway to your R library directory.</p>
 <p>Open your <code>~/.Renviron</code> file (<code>vi ~/.Renviron</code>) and append the following line:</p>
 <p><em>Note: Once you open the file using <code>vi [file_name]</code>, you must press <code>i</code> (on Mac OS) or <code>Insert</code> (on Windows) to make edits. After you finish, hit <code>Esc</code> to exit editing mode and type <code>:wq</code> to save and close the file.</em></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="slurm.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">R_LIBS=</span>~/R/x86_64-pc-linux-gnu-library/4.0.2</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="slurm.html#cb26-1" tabindex="-1"></a><span class="va">R_LIBS</span><span class="op">=</span>~/R/x86_64-pc-linux-gnu-library/4.0.2</span></code></pre></div>
 <p>Alternatively, run an R script with the following code on Sherlock:</p>
 <pre class="code3"><code>r_environ_file_path = file.path(Sys.getenv(&quot;HOME&quot;), &quot;.Renviron&quot;)
 if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
@@ -341,8 +384,8 @@ cat(&quot;\nR_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0.2&quot;,
     file = r_environ_file_path, sep = &quot;\n&quot;, append = TRUE)</code></pre>
 <p>To load packages that run off of C++, you’ll need to set the correct compiler options in your R environment.</p>
 <p>Open the Makevars file in Sherlock (<code>vi ~/.R/Makevars</code>) and append the following lines</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="slurm.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14FLAGS=</span>-O3 <span class="ex">-march=native</span> <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-fPIC</span></span>
-<span id="cb22-2"><a href="slurm.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="va">CXX14=</span>g++</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="slurm.html#cb28-1" tabindex="-1"></a><span class="va">CXX14FLAGS</span><span class="op">=</span>-O3 <span class="ex">-march=native</span> <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-fPIC</span></span>
+<span id="cb28-2"><a href="slurm.html#cb28-2" tabindex="-1"></a><span class="va">CXX14</span><span class="op">=</span>g++</span></code></pre></div>
 <p>Alternatively, create an R script with the following code, and run it on Sherlock:</p>
 <pre class="code4"><code>dotR = file.path(Sys.getenv(&quot;HOME&quot;), &quot;.R&quot;)
 if (!file.exists(dotR)) dir.create(dotR)
@@ -355,127 +398,127 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
     file = M, sep = &quot;\n&quot;, append = TRUE)</code></pre>
 </div>
 </div>
-<div id="moving-files-to-sherlock" class="section level2 hasAnchor" number="12.2">
-<h2><span class="header-section-number">12.2</span> Moving files to Sherlock<a href="slurm.html#moving-files-to-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="moving-files-to-sherlock" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Moving files to Sherlock<a href="slurm.html#moving-files-to-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>$HOME</code> directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the <code>$SCRATCH</code> directory (quota: 100 TB per user). You can read more about storage options on Sherlock <a href="https://www.sherlock.stanford.edu/docs/storage/">here</a>. On the <code>$SCRATCH</code> directory, files that are not modified after 90 days are automatically deleted. For this reason, it’s best to create a bash script that records the file transfer process for a given project. See example code below:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="slurm.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the following steps should be done from your local </span></span>
-<span id="cb24-2"><a href="slurm.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (not after ssh-ing into sherlock)</span></span>
-<span id="cb24-3"><a href="slurm.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="slurm.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
-<span id="cb24-5"><a href="slurm.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
-<span id="cb24-6"><a href="slurm.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/</span>
-<span id="cb24-7"><a href="slurm.html#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="slurm.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to your sherlock scratch directory</span></span>
-<span id="cb24-9"><a href="slurm.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/</span>
-<span id="cb24-10"><a href="slurm.html#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="slurm.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># securely transfer folders from Box to our shared scratch directory</span></span>
-<span id="cb24-12"><a href="slurm.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-3/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="slurm.html#cb30-1" tabindex="-1"></a><span class="co"># note: the following steps should be done from your local </span></span>
+<span id="cb30-2"><a href="slurm.html#cb30-2" tabindex="-1"></a><span class="co"># (not after ssh-ing into sherlock)</span></span>
+<span id="cb30-3"><a href="slurm.html#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="slurm.html#cb30-4" tabindex="-1"></a><span class="co"># securely transfer folders from Box to sherlock home directory</span></span>
+<span id="cb30-5"><a href="slurm.html#cb30-5" tabindex="-1"></a><span class="co"># note: the -r option is for folders and is not needed for files</span></span>
+<span id="cb30-6"><a href="slurm.html#cb30-6" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-1/&quot;</span> USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/</span>
+<span id="cb30-7"><a href="slurm.html#cb30-7" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="slurm.html#cb30-8" tabindex="-1"></a><span class="co"># securely transfer folders from Box to your sherlock scratch directory</span></span>
+<span id="cb30-9"><a href="slurm.html#cb30-9" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-2/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/</span>
+<span id="cb30-10"><a href="slurm.html#cb30-10" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="slurm.html#cb30-11" tabindex="-1"></a><span class="co"># securely transfer folders from Box to our shared scratch directory</span></span>
+<span id="cb30-12"><a href="slurm.html#cb30-12" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="st">&quot;Box/malaria-project/folder-3/&quot;</span> USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/</span></code></pre></div>
 </div>
-<div id="installing-packages-on-sherlock" class="section level2 hasAnchor" number="12.3">
-<h2><span class="header-section-number">12.3</span> Installing packages on Sherlock<a href="slurm.html#installing-packages-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="installing-packages-on-sherlock" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Installing packages on Sherlock<a href="slurm.html#installing-packages-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you begin working on Sherlock, you will most likely encounter problems with installing packages. To install packages, login to Sherlock on the command line and open a development node using the command <code>sdev</code>. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="slurm.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> USERNAME@login.sherlock.stanford.edu</span>
-<span id="cb25-2"><a href="slurm.html#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="slurm.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="slurm.html#cb31-1" tabindex="-1"></a><span class="fu">ssh</span> USERNAME@login.sherlock.stanford.edu</span>
+<span id="cb31-2"><a href="slurm.html#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="slurm.html#cb31-3" tabindex="-1"></a><span class="ex">sdev</span></span></code></pre></div>
 <p>There is a package installation <a href="https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view">file</a> explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to install packages once. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to install.packages to prevent the packages from locking after installation:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="slurm.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="sc">&lt;</span>PACKAGE NAME<span class="sc">&gt;</span>, <span class="at">repos=</span>“http<span class="sc">:</span><span class="er">//</span>cran.us.ur<span class="sc">-</span>project.org”, </span>
-<span id="cb26-2"><a href="slurm.html#cb26-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">INSTALL_opts =</span> <span class="st">&quot;--no-lock&quot;&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="slurm.html#cb32-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="sc">&lt;</span>PACKAGE NAME<span class="sc">&gt;</span>, <span class="at">repos=</span>“http<span class="sc">:</span><span class="er">//</span>cran.us.ur<span class="sc">-</span>project.org”, </span>
+<span id="cb32-2"><a href="slurm.html#cb32-2" tabindex="-1"></a>                  <span class="at">INSTALL_opts =</span> <span class="st">&quot;--no-lock&quot;&quot;)</span></span></code></pre></div>
 <p>In order for some R packages to work on Sherlock, it is necessary to load specific software modules before running R. These must be loaded in Sherlock each time you want to use the package in R. For example, for spatial and random effects analyses, you may need the modules/packages below. These modules must also be loaded on the command line prior to opening R in order for package installation to work.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="slurm.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> <span class="at">--force</span> purge <span class="co"># remove any previously loaded modules, including math and devel</span></span>
-<span id="cb27-2"><a href="slurm.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load math</span>
-<span id="cb27-3"><a href="slurm.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mdoule</span> load math gmp/6.1.2</span>
-<span id="cb27-4"><a href="slurm.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load devel</span>
-<span id="cb27-5"><a href="slurm.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
-<span id="cb27-6"><a href="slurm.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load system</span>
-<span id="cb27-7"><a href="slurm.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load json-glib/1.4.4</span>
-<span id="cb27-8"><a href="slurm.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load curl/7.81.0</span>
-<span id="cb27-9"><a href="slurm.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics</span>
-<span id="cb27-10"><a href="slurm.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics udunits geos</span>
-<span id="cb27-11"><a href="slurm.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal/2.2.1 <span class="co"># for R/4.0.2</span></span>
-<span id="cb27-12"><a href="slurm.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj/4.9.3 <span class="co"># for R/4.0.2</span></span>
-<span id="cb27-13"><a href="slurm.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load pandoc/2.7.3</span>
-<span id="cb27-14"><a href="slurm.html#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-15"><a href="slurm.html#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
-<span id="cb27-16"><a href="slurm.html#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-17"><a href="slurm.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="co"># Open R in the Shell window to install individual packages or test code</span></span>
-<span id="cb27-18"><a href="slurm.html#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> install-packages.R <span class="co"># Alternatively, run the entire package installation script in the Shell window</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="slurm.html#cb33-1" tabindex="-1"></a><span class="ex">module</span> <span class="at">--force</span> purge <span class="co"># remove any previously loaded modules, including math and devel</span></span>
+<span id="cb33-2"><a href="slurm.html#cb33-2" tabindex="-1"></a><span class="ex">module</span> load math</span>
+<span id="cb33-3"><a href="slurm.html#cb33-3" tabindex="-1"></a><span class="ex">module</span> load math gmp/6.1.2</span>
+<span id="cb33-4"><a href="slurm.html#cb33-4" tabindex="-1"></a><span class="ex">module</span> load devel</span>
+<span id="cb33-5"><a href="slurm.html#cb33-5" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
+<span id="cb33-6"><a href="slurm.html#cb33-6" tabindex="-1"></a><span class="ex">module</span> load system</span>
+<span id="cb33-7"><a href="slurm.html#cb33-7" tabindex="-1"></a><span class="ex">module</span> load json-glib/1.4.4</span>
+<span id="cb33-8"><a href="slurm.html#cb33-8" tabindex="-1"></a><span class="ex">module</span> load curl/7.81.0</span>
+<span id="cb33-9"><a href="slurm.html#cb33-9" tabindex="-1"></a><span class="ex">module</span> load physics</span>
+<span id="cb33-10"><a href="slurm.html#cb33-10" tabindex="-1"></a><span class="ex">module</span> load physics udunits geos</span>
+<span id="cb33-11"><a href="slurm.html#cb33-11" tabindex="-1"></a><span class="ex">module</span> load physics gdal/2.2.1 <span class="co"># for R/4.0.2</span></span>
+<span id="cb33-12"><a href="slurm.html#cb33-12" tabindex="-1"></a><span class="ex">module</span> load physics proj/4.9.3 <span class="co"># for R/4.0.2</span></span>
+<span id="cb33-13"><a href="slurm.html#cb33-13" tabindex="-1"></a><span class="ex">module</span> load pandoc/2.7.3</span>
+<span id="cb33-14"><a href="slurm.html#cb33-14" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="slurm.html#cb33-15" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
+<span id="cb33-16"><a href="slurm.html#cb33-16" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="slurm.html#cb33-17" tabindex="-1"></a><span class="ex">R</span> <span class="co"># Open R in the Shell window to install individual packages or test code</span></span>
+<span id="cb33-18"><a href="slurm.html#cb33-18" tabindex="-1"></a><span class="ex">Rscript</span> install-packages-sherlock.R <span class="co"># Alternatively, run the entire package installation script in the Shell window</span></span></code></pre></div>
 <p>Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn’t working, it may be a module. You can search for it using the <code>module spider</code> command:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="slurm.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> spider DEPENDENCY NAME</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="slurm.html#cb34-1" tabindex="-1"></a><span class="ex">module</span> spider DEPENDENCY NAME</span></code></pre></div>
 <p>However, you can also reach out to the Sherlock team for help. You can email them at <a href="mailto:srcc-support@stanford.edu" class="email">srcc-support@stanford.edu</a>. They also hold <a href="https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours">office hours</a>.</p>
 </div>
-<div id="testing-your-code" class="section level2 hasAnchor" number="12.4">
-<h2><span class="header-section-number">12.4</span> Testing your code<a href="slurm.html#testing-your-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="testing-your-code" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Testing your code<a href="slurm.html#testing-your-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Both of the following ways to test code on Sherlock are recommended for making small changes, such as editing file paths and making sure the packages and source files load. You should write and test the functionality of your script locally, only testing on Sherlock once major bugs are out.</p>
-<div id="the-command-line" class="section level3 hasAnchor" number="12.4.1">
-<h3><span class="header-section-number">12.4.1</span> The command line<a href="slurm.html#the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-command-line" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> The command line<a href="slurm.html#the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are two main ways to explore and test code on Sherlock. The first way is best for users who are comfortable working on the command line and editing code in base R. Even if you are not comfortable yet, this is probably the better way because these commands will transfer between Sherlock and other cluster computers using Slurm.</p>
 <p>Typically, you will want to initially test your scripts by initiating a development node using the command <code>sdev</code>. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="slurm.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># open development node</span></span>
-<span id="cb29-2"><a href="slurm.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sdev</span></span>
-<span id="cb29-3"><a href="slurm.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="slurm.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all the modules required by the packages you are using</span></span>
-<span id="cb29-5"><a href="slurm.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load MODULE NAME  </span>
-<span id="cb29-6"><a href="slurm.html#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="slurm.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load R (default version)*</span></span>
-<span id="cb29-8"><a href="slurm.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R </span>
-<span id="cb29-9"><a href="slurm.html#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="slurm.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
-<span id="cb29-11"><a href="slurm.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="slurm.html#cb35-1" tabindex="-1"></a><span class="co"># open development node</span></span>
+<span id="cb35-2"><a href="slurm.html#cb35-2" tabindex="-1"></a><span class="ex">sdev</span></span>
+<span id="cb35-3"><a href="slurm.html#cb35-3" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="slurm.html#cb35-4" tabindex="-1"></a><span class="co"># Load all the modules required by the packages you are using</span></span>
+<span id="cb35-5"><a href="slurm.html#cb35-5" tabindex="-1"></a><span class="ex">module</span> load MODULE NAME  </span>
+<span id="cb35-6"><a href="slurm.html#cb35-6" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="slurm.html#cb35-7" tabindex="-1"></a><span class="co"># Load R (default version)*</span></span>
+<span id="cb35-8"><a href="slurm.html#cb35-8" tabindex="-1"></a><span class="ex">module</span> load R </span>
+<span id="cb35-9"><a href="slurm.html#cb35-9" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="slurm.html#cb35-10" tabindex="-1"></a><span class="co"># initiate R in command line</span></span>
+<span id="cb35-11"><a href="slurm.html#cb35-11" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
 <p>*Note: for collaboration purposes, it’s best for everyone to work with one version of R. Check what version is being used for the project you are working on. Some packages only work with some versions of R, so it’s best to keep it consistent.</p>
 </div>
-<div id="the-sherlock-ondemand-dashboard" class="section level3 hasAnchor" number="12.4.2">
-<h3><span class="header-section-number">12.4.2</span> The Sherlock OnDemand Dashboard<a href="slurm.html#the-sherlock-ondemand-dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-sherlock-ondemand-dashboard" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> The Sherlock OnDemand Dashboard<a href="slurm.html#the-sherlock-ondemand-dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing <a href="login.sherlock.stanford.edu">login.sherlock.stanford.edu</a> into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way to edit code for people who are not comfortable accessing &amp; editing in base R in a Shell application.</p>
 <p>You can test your code via the <a href="https://www.sherlock.stanford.edu/docs/user-guide/ondemand/#rstudio">Rstudio server on Sherlock</a>. To access this, login to the Dashboard, then click on Interactive Apps in the menu bar and choose R Studio Server. Similar to the sdev node, you have to set various parameters for your session. Choose a version of R and set the time – max. 2 hours. You can play with the other configurations, but this is likely unnecessary, as you should not need huge computing power to test small amounts of code. Keep in mind the more computing power you request, the lower priority your request becomes. You will then wait for the resources to become available, and you will be able to click “Launch” when they are (if you don’t mess with the CPU or GPU, this is usually less than 2 minutes). The screen that opens will look very similar to the RStudio on your local.</p>
 <p>Do NOT use the RStudio Server’s Terminal to install packages, set your R environment, and do everything else needed to configure Sherlock because you will likely need to re-do it for every session/project. It’s best to use the Dashboard/RStudio Server if you are more comfortable testing &amp; editing in RStudio rather than through base R in a Shell application.</p>
 </div>
-<div id="filepaths-configuration-on-sherlock" class="section level3 hasAnchor" number="12.4.3">
-<h3><span class="header-section-number">12.4.3</span> Filepaths &amp; configuration on Sherlock<a href="slurm.html#filepaths-configuration-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="filepaths-configuration-on-sherlock" class="section level3 hasAnchor" number="14.4.3">
+<h3><span class="header-section-number">14.4.3</span> Filepaths &amp; configuration on Sherlock<a href="slurm.html#filepaths-configuration-on-sherlock" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="slurm.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
-<span id="cb30-2"><a href="slurm.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
-<span id="cb30-3"><a href="slurm.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-4"><a href="slurm.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
-<span id="cb30-5"><a href="slurm.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-6"><a href="slurm.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
-<span id="cb30-7"><a href="slurm.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
-<span id="cb30-8"><a href="slurm.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="slurm.html#cb36-1" tabindex="-1"></a><span class="co"># set sherlock-specific file paths</span></span>
+<span id="cb36-2"><a href="slurm.html#cb36-2" tabindex="-1"></a><span class="cf">if</span><span class="kw">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;LMOD_SYSHOST&quot;</span><span class="kw">)</span><span class="ex">==</span><span class="st">&quot;sherlock&quot;</span><span class="kw">){</span></span>
+<span id="cb36-3"><a href="slurm.html#cb36-3" tabindex="-1"></a>  </span>
+<span id="cb36-4"><a href="slurm.html#cb36-4" tabindex="-1"></a>  <span class="ex">sherlock_path</span> = paste0<span class="er">(</span><span class="ex">Sys.getenv</span><span class="er">(</span><span class="st">&quot;HOME&quot;</span><span class="kw">)</span><span class="ex">,</span> <span class="st">&quot;/malaria-project/&quot;</span><span class="kw">)</span></span>
+<span id="cb36-5"><a href="slurm.html#cb36-5" tabindex="-1"></a>  </span>
+<span id="cb36-6"><a href="slurm.html#cb36-6" tabindex="-1"></a>  <span class="ex">data_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;data/&quot;</span><span class="kw">)</span></span>
+<span id="cb36-7"><a href="slurm.html#cb36-7" tabindex="-1"></a>  <span class="ex">results_path</span> = paste0<span class="er">(</span><span class="ex">sherlock_path,</span> <span class="st">&quot;results/&quot;</span><span class="kw">)</span></span>
+<span id="cb36-8"><a href="slurm.html#cb36-8" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="storage-group-storage-access" class="section level2 hasAnchor" number="12.5">
-<h2><span class="header-section-number">12.5</span> Storage &amp; group storage access<a href="slurm.html#storage-group-storage-access" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="individual-storage" class="section level3 hasAnchor" number="12.5.1">
-<h3><span class="header-section-number">12.5.1</span> Individual storage<a href="slurm.html#individual-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="storage-group-storage-access" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> Storage &amp; group storage access<a href="slurm.html#storage-group-storage-access" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="individual-storage" class="section level3 hasAnchor" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> Individual storage<a href="slurm.html#individual-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are multiple places to store your files on Sherlock. Each user has their own <code>$HOME</code> directory as well as a <code>$SCRATCH</code> directory. These are directories that can be accessed via the command line once you’ve logged in to Sherlock:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="slurm.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span> </span>
-<span id="cb31-2"><a href="slurm.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/users/USERNAME <span class="co"># Alternatively, use the full path</span></span>
-<span id="cb31-3"><a href="slurm.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="slurm.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SCRATCH</span></span>
-<span id="cb31-5"><a href="slurm.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/users/USERNAME <span class="co"># Full path</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="slurm.html#cb37-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span> </span>
+<span id="cb37-2"><a href="slurm.html#cb37-2" tabindex="-1"></a><span class="bu">cd</span> /home/users/USERNAME <span class="co"># Alternatively, use the full path</span></span>
+<span id="cb37-3"><a href="slurm.html#cb37-3" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="slurm.html#cb37-4" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$SCRATCH</span></span>
+<span id="cb37-5"><a href="slurm.html#cb37-5" tabindex="-1"></a><span class="bu">cd</span> /scratch/users/USERNAME <span class="co"># Full path</span></span></code></pre></div>
 <p>You can also navigate to these using the File Explorer on Sherlock OnDemand.</p>
 <p><code>$HOME</code> has a volume quota of 15 GB. <code>$SCRATCH</code> has a volume quota of 100 TB, but files here get deleted 90 days after their last modification. Thus, use <code>$SCRACTH</code> for test files, exploratory analyses, and temporary storage. Use <code>$HOME</code> for long-term storage of important files and more finalized analyses.</p>
 <p>You can read more about storage options on Sherlock <a href="https://www.sherlock.stanford.edu/docs/storage/">here</a>.</p>
 </div>
-<div id="group-storage" class="section level3 hasAnchor" number="12.5.2">
-<h3><span class="header-section-number">12.5.2</span> Group storage<a href="slurm.html#group-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="group-storage" class="section level3 hasAnchor" number="14.5.2">
+<h3><span class="header-section-number">14.5.2</span> Group storage<a href="slurm.html#group-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The lab also has a <code>$GROUP_HOME</code> and a <code>$GROUP_SCRATCH</code> to store files for collaborative use. <code>$GROUP_HOME</code> has a volume quota of 1 TB and infinite retention time, whereas <code>$GROUP_SCRATCH</code> has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="slurm.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$GROUP_HOME</span></span>
-<span id="cb32-2"><a href="slurm.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/groups/jadebc</span>
-<span id="cb32-3"><a href="slurm.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="slurm.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$GROUP_SCRATCH</span></span>
-<span id="cb32-5"><a href="slurm.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /scratch/groups/jadebc</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="slurm.html#cb38-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$GROUP_HOME</span></span>
+<span id="cb38-2"><a href="slurm.html#cb38-2" tabindex="-1"></a><span class="bu">cd</span> /home/groups/jadebc</span>
+<span id="cb38-3"><a href="slurm.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="slurm.html#cb38-4" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$GROUP_SCRATCH</span></span>
+<span id="cb38-5"><a href="slurm.html#cb38-5" tabindex="-1"></a><span class="bu">cd</span> /scratch/groups/jadebc</span></code></pre></div>
 <p>However, saving files to group storage can be tricky. You can try using the scp command in the section “Moving files to Sherlock” to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.</p>
 </div>
-<div id="folder-permissions" class="section level3 hasAnchor" number="12.5.3">
-<h3><span class="header-section-number">12.5.3</span> Folder permissions<a href="slurm.html#folder-permissions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="folder-permissions" class="section level3 hasAnchor" number="14.5.3">
+<h3><span class="header-section-number">14.5.3</span> Folder permissions<a href="slurm.html#folder-permissions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Generally, when we put folders in <code>$GROUP_HOME</code> or <code>$GROUP_SCRATCH</code>, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in <code>$GROUP_HOME</code> or <code>$GROUP_SCRATCH</code>, please check the folder’s permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter <code>ls -l</code>. You will see output like this:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="slurm.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxrwx</span> 2 jadebc jadebc  2204 Jun 17 13:12 myfolder</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="slurm.html#cb39-1" tabindex="-1"></a><span class="ex">drwxrwxrwx</span> 2 jadebc jadebc  2204 Jun 17 13:12 myfolder</span></code></pre></div>
 <p>Please review <a href="https://www.chriswrites.com/how-to-change-file-permissions-using-the-terminal/">this website</a> to learn how to interpret the code on the left side of this output. The website also tells you how to change folder permissions. In order to ensure that all users and group members are able to access a folder’s contents, you can use the following command:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="slurm.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ugo+rwx FOLDER_NAME</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="slurm.html#cb40-1" tabindex="-1"></a><span class="fu">chmod</span> ugo+rwx FOLDER_NAME</span></code></pre></div>
 </div>
 </div>
-<div id="running-big-jobs-1" class="section level2 hasAnchor" number="12.6">
-<h2><span class="header-section-number">12.6</span> Running big jobs<a href="slurm.html#running-big-jobs-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="running-big-jobs-1" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> Running big jobs<a href="slurm.html#running-big-jobs-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once your test scripts run successfully, you can submit an sbatch script for larger jobs. These are text files with a <code>.sh</code> suffix. Use a text editor like Sublime to create such a script. Documentation on sbatch options is available <a href="https://slurm.schedmd.com/sbatch.html">here</a>. Here is an example of an sbatch script with the following options:</p>
 <ul>
 <li><code>job-name=run_inc</code>: Job name that will show up in the Sherlock system</li>
@@ -488,37 +531,37 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
 <li><code>time=47:59:00</code>: Set maximum run time to 47 hours and 59 minutes. If you don’t include this option, Sherlock will automatically exit scripts after 2 hours of run time.</li>
 </ul>
 <p>The file <code>analysis.out</code> will contain the log file for the R script <code>analysis.R</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="slurm.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb35-2"><a href="slurm.html#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="slurm.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
-<span id="cb35-4"><a href="slurm.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
-<span id="cb35-5"><a href="slurm.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
-<span id="cb35-6"><a href="slurm.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
-<span id="cb35-7"><a href="slurm.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
-<span id="cb35-8"><a href="slurm.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
-<span id="cb35-9"><a href="slurm.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
-<span id="cb35-10"><a href="slurm.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
-<span id="cb35-11"><a href="slurm.html#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=47:59:00</span></span>
-<span id="cb35-12"><a href="slurm.html#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-13"><a href="slurm.html#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
-<span id="cb35-14"><a href="slurm.html#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-15"><a href="slurm.html#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge </span>
-<span id="cb35-16"><a href="slurm.html#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-17"><a href="slurm.html#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
-<span id="cb35-18"><a href="slurm.html#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
-<span id="cb35-19"><a href="slurm.html#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-20"><a href="slurm.html#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
-<span id="cb35-21"><a href="slurm.html#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
-<span id="cb35-22"><a href="slurm.html#cb35-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-23"><a href="slurm.html#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
-<span id="cb35-24"><a href="slurm.html#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
-<span id="cb35-25"><a href="slurm.html#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
-<span id="cb35-26"><a href="slurm.html#cb35-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-27"><a href="slurm.html#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="slurm.html#cb41-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb41-2"><a href="slurm.html#cb41-2" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="slurm.html#cb41-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=run_inc</span></span>
+<span id="cb41-4"><a href="slurm.html#cb41-4" tabindex="-1"></a><span class="co">#SBATCH --begin=now</span></span>
+<span id="cb41-5"><a href="slurm.html#cb41-5" tabindex="-1"></a><span class="co">#SBATCH --dependency=singleton</span></span>
+<span id="cb41-6"><a href="slurm.html#cb41-6" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
+<span id="cb41-7"><a href="slurm.html#cb41-7" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=16</span></span>
+<span id="cb41-8"><a href="slurm.html#cb41-8" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb41-9"><a href="slurm.html#cb41-9" tabindex="-1"></a><span class="co">#SBATCH --mem=64G</span></span>
+<span id="cb41-10"><a href="slurm.html#cb41-10" tabindex="-1"></a><span class="co">#SBATCH --output=00-run_inc_log.out</span></span>
+<span id="cb41-11"><a href="slurm.html#cb41-11" tabindex="-1"></a><span class="co">#SBATCH --time=47:59:00</span></span>
+<span id="cb41-12"><a href="slurm.html#cb41-12" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="slurm.html#cb41-13" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/malaria-code-repo/2-analysis/</span>
+<span id="cb41-14"><a href="slurm.html#cb41-14" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="slurm.html#cb41-15" tabindex="-1"></a><span class="ex">module</span> purge </span>
+<span id="cb41-16"><a href="slurm.html#cb41-16" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="slurm.html#cb41-17" tabindex="-1"></a><span class="co"># load R version 4.0.2 (required for certain packages)</span></span>
+<span id="cb41-18"><a href="slurm.html#cb41-18" tabindex="-1"></a><span class="ex">module</span> load R/4.0.2</span>
+<span id="cb41-19"><a href="slurm.html#cb41-19" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="slurm.html#cb41-20" tabindex="-1"></a><span class="co"># load gcc, a C++ compiler (required for certain packages)</span></span>
+<span id="cb41-21"><a href="slurm.html#cb41-21" tabindex="-1"></a><span class="ex">module</span> load gcc/10</span>
+<span id="cb41-22"><a href="slurm.html#cb41-22" tabindex="-1"></a></span>
+<span id="cb41-23"><a href="slurm.html#cb41-23" tabindex="-1"></a><span class="co"># load software required for spatial analyses in R</span></span>
+<span id="cb41-24"><a href="slurm.html#cb41-24" tabindex="-1"></a><span class="ex">module</span> load physics gdal</span>
+<span id="cb41-25"><a href="slurm.html#cb41-25" tabindex="-1"></a><span class="ex">module</span> load physics proj</span>
+<span id="cb41-26"><a href="slurm.html#cb41-26" tabindex="-1"></a></span>
+<span id="cb41-27"><a href="slurm.html#cb41-27" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> analysis.R analysis.out</span></code></pre></div>
 <p>To submit this job, save the code in the chunk above in a script called <code>myjob.sh</code> and then enter the following command into terminal:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="slurm.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="slurm.html#cb42-1" tabindex="-1"></a><span class="ex">sbatch</span> myjob.sh </span></code></pre></div>
 <p>To check on the status of your job, enter the following code into terminal:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="slurm.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="slurm.html#cb43-1" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USERNAME</span></span></code></pre></div>
 
 </div>
 </div>
@@ -527,7 +570,7 @@ cat(&quot;\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC&quot;,
           </div>
         </div>
       </div>
-<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-publication.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="checklists.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -559,7 +602,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/11-slurm.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/13-slurm.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -582,6 +625,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

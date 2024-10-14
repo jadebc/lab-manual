@@ -4,18 +4,19 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Unix commands | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 10 Unix commands | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Unix commands | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 10 Unix commands | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
+  
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Unix commands | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 10 Unix commands | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -29,7 +30,8 @@
   
   
 <link rel="prev" href="github.html"/>
-<link rel="next" href="slurm.html"/>
+<link rel="next" href="reproducible-environments.html"/>
+<script src="libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -90,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -103,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -134,166 +136,207 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Lab manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Benjamin-Chung Lab!</a>
+<li><a href="index.html#welcome-to-the-benjamin-chung-lab" id="toc-welcome-to-the-benjamin-chung-lab"><span class="toc-section-number">1</span> Welcome to the Benjamin-Chung Lab!</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-the-lab"><i class="fa fa-check"></i><b>1.1</b> About the lab</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about-this-lab-manual"><i class="fa fa-check"></i><b>1.2</b> About this lab manual</a></li>
+<li><a href="index.html#about-the-lab" id="toc-about-the-lab"><span class="toc-section-number">1.1</span> About the lab</a></li>
+<li><a href="index.html#about-this-lab-manual" id="toc-about-this-lab-manual"><span class="toc-section-number">1.2</span> About this lab manual</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html"><i class="fa fa-check"></i><b>2</b> Culture and conduct</a>
+<li><a href="culture-and-conduct.html#culture-and-conduct" id="toc-culture-and-conduct"><span class="toc-section-number">2</span> Culture and conduct</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#lab-culture"><i class="fa fa-check"></i><b>2.1</b> Lab culture</a></li>
-<li class="chapter" data-level="2.2" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#diversity-equity-and-inclusion"><i class="fa fa-check"></i><b>2.2</b> Diversity, equity, and inclusion</a></li>
-<li class="chapter" data-level="2.3" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#protecting-human-subjects"><i class="fa fa-check"></i><b>2.3</b> Protecting human subjects</a></li>
-<li class="chapter" data-level="2.4" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#authorship"><i class="fa fa-check"></i><b>2.4</b> Authorship</a></li>
+<li><a href="culture-and-conduct.html#lab-culture" id="toc-lab-culture"><span class="toc-section-number">2.1</span> Lab culture</a></li>
+<li><a href="culture-and-conduct.html#diversity-equity-and-inclusion" id="toc-diversity-equity-and-inclusion"><span class="toc-section-number">2.2</span> Diversity, equity, and inclusion</a></li>
+<li><a href="culture-and-conduct.html#protecting-human-subjects" id="toc-protecting-human-subjects"><span class="toc-section-number">2.3</span> Protecting human subjects</a></li>
+<li><a href="culture-and-conduct.html#authorship" id="toc-authorship"><span class="toc-section-number">2.4</span> Authorship</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html"><i class="fa fa-check"></i><b>3</b> Communication and coordination</a>
+<li><a href="communication-and-coordination.html#communication-and-coordination" id="toc-communication-and-coordination"><span class="toc-section-number">3</span> Communication and coordination</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#slack"><i class="fa fa-check"></i><b>3.1</b> Slack</a></li>
-<li class="chapter" data-level="3.2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#email"><i class="fa fa-check"></i><b>3.2</b> Email</a></li>
-<li class="chapter" data-level="3.3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#trello"><i class="fa fa-check"></i><b>3.3</b> Trello</a></li>
-<li class="chapter" data-level="3.4" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-drives"><i class="fa fa-check"></i><b>3.4</b> Google Drives</a></li>
-<li class="chapter" data-level="3.5" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#meetings"><i class="fa fa-check"></i><b>3.5</b> Meetings</a></li>
+<li><a href="communication-and-coordination.html#slack" id="toc-slack"><span class="toc-section-number">3.1</span> Slack</a></li>
+<li><a href="communication-and-coordination.html#email" id="toc-email"><span class="toc-section-number">3.2</span> Email</a></li>
+<li><a href="communication-and-coordination.html#trello" id="toc-trello"><span class="toc-section-number">3.3</span> Trello</a></li>
+<li><a href="communication-and-coordination.html#google-drives" id="toc-google-drives"><span class="toc-section-number">3.4</span> Google Drives</a></li>
+<li><a href="communication-and-coordination.html#meetings" id="toc-meetings"><span class="toc-section-number">3.5</span> Meetings</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="reproducibility.html"><a href="reproducibility.html"><i class="fa fa-check"></i><b>4</b> Reproducibility</a>
+<li><a href="reproducibility.html#reproducibility" id="toc-reproducibility"><span class="toc-section-number">4</span> Reproducibility</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reproducibility.html"><a href="reproducibility.html#what-is-the-reproducibility-crisis"><i class="fa fa-check"></i><b>4.1</b> What is the reproducibility crisis?</a></li>
-<li class="chapter" data-level="4.2" data-path="reproducibility.html"><a href="reproducibility.html#study-design"><i class="fa fa-check"></i><b>4.2</b> Study design</a></li>
-<li class="chapter" data-level="4.3" data-path="reproducibility.html"><a href="reproducibility.html#register-study-protocols"><i class="fa fa-check"></i><b>4.3</b> Register study protocols</a></li>
-<li class="chapter" data-level="4.4" data-path="reproducibility.html"><a href="reproducibility.html#write-and-register-pre-analysis-plans"><i class="fa fa-check"></i><b>4.4</b> Write and register pre-analysis plans</a></li>
-<li class="chapter" data-level="4.5" data-path="reproducibility.html"><a href="reproducibility.html#create-reproducible-workflows"><i class="fa fa-check"></i><b>4.5</b> Create reproducible workflows</a></li>
-<li class="chapter" data-level="4.6" data-path="reproducibility.html"><a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking"><i class="fa fa-check"></i><b>4.6</b> Process and analyze data with internal replication and masking</a></li>
-<li class="chapter" data-level="4.7" data-path="reproducibility.html"><a href="reproducibility.html#use-reporting-checklists-with-manuscripts"><i class="fa fa-check"></i><b>4.7</b> Use reporting checklists with manuscripts</a></li>
-<li class="chapter" data-level="4.8" data-path="reproducibility.html"><a href="reproducibility.html#publish-preprints"><i class="fa fa-check"></i><b>4.8</b> Publish preprints</a></li>
-<li class="chapter" data-level="4.9" data-path="reproducibility.html"><a href="reproducibility.html#publish-data-when-possible-and-replication-scripts"><i class="fa fa-check"></i><b>4.9</b> Publish data (when possible) and replication scripts</a></li>
+<li><a href="reproducibility.html#what-is-the-reproducibility-crisis" id="toc-what-is-the-reproducibility-crisis"><span class="toc-section-number">4.1</span> What is the reproducibility crisis?</a></li>
+<li><a href="reproducibility.html#study-design" id="toc-study-design"><span class="toc-section-number">4.2</span> Study design</a></li>
+<li><a href="reproducibility.html#register-study-protocols" id="toc-register-study-protocols"><span class="toc-section-number">4.3</span> Register study protocols</a></li>
+<li><a href="reproducibility.html#write-and-register-pre-analysis-plans" id="toc-write-and-register-pre-analysis-plans"><span class="toc-section-number">4.4</span> Write and register pre-analysis plans</a></li>
+<li><a href="reproducibility.html#create-reproducible-workflows" id="toc-create-reproducible-workflows"><span class="toc-section-number">4.5</span> Create reproducible workflows</a></li>
+<li><a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking" id="toc-process-and-analyze-data-with-internal-replication-and-masking"><span class="toc-section-number">4.6</span> Process and analyze data with internal replication and masking</a></li>
+<li><a href="reproducibility.html#use-reporting-checklists-with-manuscripts" id="toc-use-reporting-checklists-with-manuscripts"><span class="toc-section-number">4.7</span> Use reporting checklists with manuscripts</a></li>
+<li><a href="reproducibility.html#publish-preprints" id="toc-publish-preprints"><span class="toc-section-number">4.8</span> Publish preprints</a></li>
+<li><a href="reproducibility.html#publish-data-when-possible-and-replication-scripts" id="toc-publish-data-when-possible-and-replication-scripts"><span class="toc-section-number">4.9</span> Publish data (when possible) and replication scripts</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>5</b> Code repositories</a>
+<li><a href="code-repositories.html#code-repositories" id="toc-code-repositories"><span class="toc-section-number">5</span> Code repositories</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>5.1</b> Project Structure</a></li>
-<li class="chapter" data-level="5.2" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>5.2</b> <code>.Rproj</code> files</a></li>
-<li class="chapter" data-level="5.3" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>5.3</b> Configuration (‘config’) File</a></li>
-<li class="chapter" data-level="5.4" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>5.4</b> Order Files and Directories</a></li>
-<li class="chapter" data-level="5.5" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>5.5</b> Using Bash scripts to ensure reproducibility</a></li>
+<li><a href="code-repositories.html#project-structure" id="toc-project-structure"><span class="toc-section-number">5.1</span> Project Structure</a></li>
+<li><a href="code-repositories.html#rproj-files" id="toc-rproj-files"><span class="toc-section-number">5.2</span> <code>.Rproj</code> files</a></li>
+<li><a href="code-repositories.html#configuration-config-file" id="toc-configuration-config-file"><span class="toc-section-number">5.3</span> Configuration (‘config’) File</a></li>
+<li><a href="code-repositories.html#order-files-and-directories" id="toc-order-files-and-directories"><span class="toc-section-number">5.4</span> Order Files and Directories</a></li>
+<li><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility" id="toc-using-bash-scripts-to-ensure-reproducibility"><span class="toc-section-number">5.5</span> Using Bash scripts to ensure reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>6</b> Coding practices</a>
+<li><a href="coding-practices.html#coding-practices" id="toc-coding-practices"><span class="toc-section-number">6</span> Coding practices</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>6.1</b> Organizing scripts</a></li>
-<li class="chapter" data-level="6.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>6.2</b> Documenting your code</a>
+<li><a href="coding-practices.html#organizing-scripts" id="toc-organizing-scripts"><span class="toc-section-number">6.1</span> Organizing scripts</a></li>
+<li><a href="coding-practices.html#documenting-your-code" id="toc-documenting-your-code"><span class="toc-section-number">6.2</span> Documenting your code</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>6.2.1</b> File headers</a></li>
-<li class="chapter" data-level="6.2.2" data-path="coding-practices.html"><a href="coding-practices.html#sections-and-subsections"><i class="fa fa-check"></i><b>6.2.2</b> Sections and subsections</a></li>
-<li class="chapter" data-level="6.2.3" data-path="coding-practices.html"><a href="coding-practices.html#code-folding"><i class="fa fa-check"></i><b>6.2.3</b> Code folding</a></li>
-<li class="chapter" data-level="6.2.4" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>6.2.4</b> Comments in the body of your script</a></li>
-<li class="chapter" data-level="6.2.5" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>6.2.5</b> Function documentation</a></li>
+<li><a href="coding-practices.html#file-headers" id="toc-file-headers"><span class="toc-section-number">6.2.1</span> File headers</a></li>
+<li><a href="coding-practices.html#sections-and-subsections" id="toc-sections-and-subsections"><span class="toc-section-number">6.2.2</span> Sections and subsections</a></li>
+<li><a href="coding-practices.html#code-folding" id="toc-code-folding"><span class="toc-section-number">6.2.3</span> Code folding</a></li>
+<li><a href="coding-practices.html#comments-in-the-body-of-your-script" id="toc-comments-in-the-body-of-your-script"><span class="toc-section-number">6.2.4</span> Comments in the body of your script</a></li>
+<li><a href="coding-practices.html#function-documentation" id="toc-function-documentation"><span class="toc-section-number">6.2.5</span> Function documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>6.3</b> Object naming</a></li>
-<li class="chapter" data-level="6.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>6.4</b> Function calls</a></li>
-<li class="chapter" data-level="6.5" data-path="coding-practices.html"><a href="coding-practices.html#the-here-package"><i class="fa fa-check"></i><b>6.5</b> The here package</a></li>
-<li class="chapter" data-level="6.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>6.6</b> Reading/Saving Data</a>
+<li><a href="coding-practices.html#object-naming" id="toc-object-naming"><span class="toc-section-number">6.3</span> Object naming</a></li>
+<li><a href="coding-practices.html#function-calls" id="toc-function-calls"><span class="toc-section-number">6.4</span> Function calls</a></li>
+<li><a href="coding-practices.html#the-here-package" id="toc-the-here-package"><span class="toc-section-number">6.5</span> The here package</a></li>
+<li><a href="coding-practices.html#readingsaving-data" id="toc-readingsaving-data"><span class="toc-section-number">6.6</span> Reading/Saving Data</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="coding-practices.html"><a href="coding-practices.html#rds-vs-.rdata-files"><i class="fa fa-check"></i><b>6.6.1</b> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
-<li class="chapter" data-level="6.6.2" data-path="coding-practices.html"><a href="coding-practices.html#csvs"><i class="fa fa-check"></i><b>6.6.2</b> CSVs</a></li>
+<li><a href="coding-practices.html#rds-vs-.rdata-files" id="toc-rds-vs-.rdata-files"><span class="toc-section-number">6.6.1</span> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
+<li><a href="coding-practices.html#csvs" id="toc-csvs"><span class="toc-section-number">6.6.2</span> CSVs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="coding-practices.html"><a href="coding-practices.html#integrating-box-and-dropbox"><i class="fa fa-check"></i><b>6.7</b> Integrating Box and Dropbox</a>
+<li><a href="coding-practices.html#integrating-box-and-dropbox" id="toc-integrating-box-and-dropbox"><span class="toc-section-number">6.7</span> Integrating Box and Dropbox</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="coding-practices.html"><a href="coding-practices.html#box"><i class="fa fa-check"></i><b>6.7.1</b> Box</a></li>
-<li class="chapter" data-level="6.7.2" data-path="coding-practices.html"><a href="coding-practices.html#dropbox"><i class="fa fa-check"></i><b>6.7.2</b> Dropbox</a></li>
+<li><a href="coding-practices.html#box" id="toc-box"><span class="toc-section-number">6.7.1</span> Box</a></li>
+<li><a href="coding-practices.html#dropbox" id="toc-dropbox"><span class="toc-section-number">6.7.2</span> Dropbox</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>6.8</b> Tidyverse</a></li>
-<li class="chapter" data-level="6.9" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>6.9</b> Coding with R and Python</a></li>
-<li class="chapter" data-level="6.10" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>6.10</b> Reviewing Code</a>
+<li><a href="coding-practices.html#tidyverse" id="toc-tidyverse"><span class="toc-section-number">6.8</span> Tidyverse</a></li>
+<li><a href="coding-practices.html#coding-with-r-and-python" id="toc-coding-with-r-and-python"><span class="toc-section-number">6.9</span> Coding with R and Python</a></li>
+<li><a href="coding-practices.html#repeating-analyses-with-different-variations" id="toc-repeating-analyses-with-different-variations"><span class="toc-section-number">6.10</span> Repeating analyses with different variations</a>
 <ul>
-<li class="chapter" data-level="6.10.1" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>6.10.1</b> Creating a Pull Request Template</a></li>
+<li><a href="coding-practices.html#lapply-and-sapply" id="toc-lapply-and-sapply"><span class="toc-section-number">6.10.1</span> <code>lapply()</code> and <code>sapply()</code></a></li>
+<li><a href="coding-practices.html#mapply-and-pmap" id="toc-mapply-and-pmap"><span class="toc-section-number">6.10.2</span> <code>mapply()</code> and <code>pmap()</code></a></li>
+<li><a href="coding-practices.html#parallel-processing-with-parallel-and-future-packages" id="toc-parallel-processing-with-parallel-and-future-packages"><span class="toc-section-number">6.10.3</span> Parallel processing with <code>parallel</code> and <code>future</code> packages</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>7</b> Coding style</a>
+<li><a href="coding-practices.html#reviewing-code" id="toc-reviewing-code"><span class="toc-section-number">6.11</span> Reviewing Code</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>7.1</b> Comments</a></li>
-<li class="chapter" data-level="7.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>7.2</b> Line breaks</a></li>
-<li class="chapter" data-level="7.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>7.3</b> Automated Tools for Style and Project Workflow</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>7.3.1</b> Styling</a></li>
+<li><a href="coding-practices.html#creating-a-pull-request-template" id="toc-creating-a-pull-request-template"><span class="toc-section-number">6.11.1</span> Creating a Pull Request Template</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="code-publication.html"><a href="code-publication.html"><i class="fa fa-check"></i><b>8</b> Code Publication</a>
+<li><a href="coding-style.html#coding-style" id="toc-coding-style"><span class="toc-section-number">7</span> Coding style</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="code-publication.html"><a href="code-publication.html#checklist-overview"><i class="fa fa-check"></i><b>8.1</b> Checklist overview</a></li>
-<li class="chapter" data-level="8.2" data-path="code-publication.html"><a href="code-publication.html#fill-out-file-headers"><i class="fa fa-check"></i><b>8.2</b> Fill out file headers</a></li>
-<li class="chapter" data-level="8.3" data-path="code-publication.html"><a href="code-publication.html#clean-up-comments"><i class="fa fa-check"></i><b>8.3</b> Clean up comments</a></li>
-<li class="chapter" data-level="8.4" data-path="code-publication.html"><a href="code-publication.html#document-functions"><i class="fa fa-check"></i><b>8.4</b> Document functions</a></li>
-<li class="chapter" data-level="8.5" data-path="code-publication.html"><a href="code-publication.html#remove-deprecated-filepaths"><i class="fa fa-check"></i><b>8.5</b> Remove deprecated filepaths</a></li>
-<li class="chapter" data-level="8.6" data-path="code-publication.html"><a href="code-publication.html#ensure-project-runs-via-bash"><i class="fa fa-check"></i><b>8.6</b> Ensure project runs via bash</a></li>
-<li class="chapter" data-level="8.7" data-path="code-publication.html"><a href="code-publication.html#complete-the-readme"><i class="fa fa-check"></i><b>8.7</b> Complete the README</a></li>
-<li class="chapter" data-level="8.8" data-path="code-publication.html"><a href="code-publication.html#clean-up-feature-branches"><i class="fa fa-check"></i><b>8.8</b> Clean up feature branches</a></li>
-<li class="chapter" data-level="8.9" data-path="code-publication.html"><a href="code-publication.html#create-github-release"><i class="fa fa-check"></i><b>8.9</b> Create Github release</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>9</b> Working with Big Data</a>
+<li><a href="coding-style.html#comments" id="toc-comments"><span class="toc-section-number">7.1</span> Comments</a></li>
+<li><a href="coding-style.html#line-breaks" id="toc-line-breaks"><span class="toc-section-number">7.2</span> Line breaks</a></li>
+<li><a href="coding-style.html#automated-tools-for-style-and-project-workflow" id="toc-automated-tools-for-style-and-project-workflow"><span class="toc-section-number">7.3</span> Automated Tools for Style and Project Workflow</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>9.1</b> The data.table package</a></li>
-<li class="chapter" data-level="9.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>9.2</b> Using downsampled data</a></li>
-<li class="chapter" data-level="9.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>9.3</b> Optimal RStudio set up</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>10</b> Github</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>10.1</b> Basics</a></li>
-<li class="chapter" data-level="10.2" data-path="github.html"><a href="github.html#github-desktop"><i class="fa fa-check"></i><b>10.2</b> Github Desktop</a></li>
-<li class="chapter" data-level="10.3" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>10.3</b> Git Branching</a></li>
-<li class="chapter" data-level="10.4" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>10.4</b> Example Workflow</a></li>
-<li class="chapter" data-level="10.5" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>10.5</b> Commonly Used Git Commands</a></li>
-<li class="chapter" data-level="10.6" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>10.6</b> How often should I commit?</a></li>
-<li class="chapter" data-level="10.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>10.7</b> What should be pushed to Github?</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>11</b> Unix commands</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>11.1</b> Basics</a></li>
-<li class="chapter" data-level="11.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>11.2</b> Syntax for both Mac/Windows</a></li>
-<li class="chapter" data-level="11.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>11.3</b> Running Bash Scripts</a></li>
-<li class="chapter" data-level="11.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>11.4</b> Running Rscripts in Windows</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>11.4.1</b> Common Mistakes</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>11.5</b> Checking tasks and killing jobs</a></li>
-<li class="chapter" data-level="11.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>11.6</b> Running big jobs</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="unix.html"><a href="unix.html#example-code-for-runfilesavelogs"><i class="fa fa-check"></i><b>11.6.1</b> Example code for <code>runfileSaveLogs</code></a></li>
-<li class="chapter" data-level="11.6.2" data-path="unix.html"><a href="unix.html#example-usage-for-runfilesavelogs"><i class="fa fa-check"></i><b>11.6.2</b> Example usage for <code>runfileSaveLogs</code></a></li>
+<li><a href="coding-style.html#styling" id="toc-styling"><span class="toc-section-number">7.3.1</span> Styling</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="slurm.html"><a href="slurm.html"><i class="fa fa-check"></i><b>12</b> Slurm and cluster computing</a>
+<li><a href="working-with-big-data.html#working-with-big-data" id="toc-working-with-big-data"><span class="toc-section-number">8</span> Working with Big Data</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="slurm.html"><a href="slurm.html#getting-started"><i class="fa fa-check"></i><b>12.1</b> Getting started</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>12.1.1</b> One-Time System Set-Up</a></li>
+<li><a href="working-with-big-data.html#the-data.table-package" id="toc-the-data.table-package"><span class="toc-section-number">8.1</span> The data.table package</a></li>
+<li><a href="working-with-big-data.html#using-downsampled-data" id="toc-using-downsampled-data"><span class="toc-section-number">8.2</span> Using downsampled data</a></li>
+<li><a href="working-with-big-data.html#optimal-rstudio-set-up" id="toc-optimal-rstudio-set-up"><span class="toc-section-number">8.3</span> Optimal RStudio set up</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>12.2</b> Moving files to Sherlock</a></li>
-<li class="chapter" data-level="12.3" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>12.3</b> Installing packages on Sherlock</a></li>
-<li class="chapter" data-level="12.4" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>12.4</b> Testing your code</a>
+<li><a href="github.html#github" id="toc-github"><span class="toc-section-number">9</span> Github</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="slurm.html"><a href="slurm.html#the-command-line"><i class="fa fa-check"></i><b>12.4.1</b> The command line</a></li>
-<li class="chapter" data-level="12.4.2" data-path="slurm.html"><a href="slurm.html#the-sherlock-ondemand-dashboard"><i class="fa fa-check"></i><b>12.4.2</b> The Sherlock OnDemand Dashboard</a></li>
-<li class="chapter" data-level="12.4.3" data-path="slurm.html"><a href="slurm.html#filepaths-configuration-on-sherlock"><i class="fa fa-check"></i><b>12.4.3</b> Filepaths &amp; configuration on Sherlock</a></li>
+<li><a href="github.html#basics" id="toc-basics"><span class="toc-section-number">9.1</span> Basics</a></li>
+<li><a href="github.html#github-desktop" id="toc-github-desktop"><span class="toc-section-number">9.2</span> Github Desktop</a></li>
+<li><a href="github.html#git-branching" id="toc-git-branching"><span class="toc-section-number">9.3</span> Git Branching</a></li>
+<li><a href="github.html#example-workflow" id="toc-example-workflow"><span class="toc-section-number">9.4</span> Example Workflow</a></li>
+<li><a href="github.html#commonly-used-git-commands" id="toc-commonly-used-git-commands"><span class="toc-section-number">9.5</span> Commonly Used Git Commands</a></li>
+<li><a href="github.html#how-often-should-i-commit" id="toc-how-often-should-i-commit"><span class="toc-section-number">9.6</span> How often should I commit?</a></li>
+<li><a href="github.html#what-should-be-pushed-to-github" id="toc-what-should-be-pushed-to-github"><span class="toc-section-number">9.7</span> What should be pushed to Github?</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="slurm.html"><a href="slurm.html#storage-group-storage-access"><i class="fa fa-check"></i><b>12.5</b> Storage &amp; group storage access</a>
+<li><a href="unix.html#unix" id="toc-unix"><span class="toc-section-number">10</span> Unix commands</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="slurm.html"><a href="slurm.html#individual-storage"><i class="fa fa-check"></i><b>12.5.1</b> Individual storage</a></li>
-<li class="chapter" data-level="12.5.2" data-path="slurm.html"><a href="slurm.html#group-storage"><i class="fa fa-check"></i><b>12.5.2</b> Group storage</a></li>
-<li class="chapter" data-level="12.5.3" data-path="slurm.html"><a href="slurm.html#folder-permissions"><i class="fa fa-check"></i><b>12.5.3</b> Folder permissions</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>12.6</b> Running big jobs</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>13</b> Checklists</a>
+<li><a href="unix.html#basics-1" id="toc-basics-1"><span class="toc-section-number">10.1</span> Basics</a></li>
+<li><a href="unix.html#syntax-for-both-macwindows" id="toc-syntax-for-both-macwindows"><span class="toc-section-number">10.2</span> Syntax for both Mac/Windows</a></li>
+<li><a href="unix.html#running-bash-scripts" id="toc-running-bash-scripts"><span class="toc-section-number">10.3</span> Running Bash Scripts</a></li>
+<li><a href="unix.html#running-rscripts-in-windows" id="toc-running-rscripts-in-windows"><span class="toc-section-number">10.4</span> Running Rscripts in Windows</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="checklists.html"><a href="checklists.html#pre-analysis-plan-checklist"><i class="fa fa-check"></i><b>13.1</b> Pre-analysis plan checklist</a></li>
-<li class="chapter" data-level="13.2" data-path="checklists.html"><a href="checklists.html#code-checklist"><i class="fa fa-check"></i><b>13.2</b> Code checklist</a></li>
-<li class="chapter" data-level="13.3" data-path="checklists.html"><a href="checklists.html#manuscript-checklist"><i class="fa fa-check"></i><b>13.3</b> Manuscript checklist</a></li>
-<li class="chapter" data-level="13.4" data-path="checklists.html"><a href="checklists.html#figure-checklist"><i class="fa fa-check"></i><b>13.4</b> Figure checklist</a></li>
+<li><a href="unix.html#common-mistakes" id="toc-common-mistakes"><span class="toc-section-number">10.4.1</span> Common Mistakes</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>14</b> Resources</a>
+<li><a href="unix.html#checking-tasks-and-killing-jobs" id="toc-checking-tasks-and-killing-jobs"><span class="toc-section-number">10.5</span> Checking tasks and killing jobs</a></li>
+<li><a href="unix.html#running-big-jobs" id="toc-running-big-jobs"><span class="toc-section-number">10.6</span> Running big jobs</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>14.1</b> Resources for R</a></li>
-<li class="chapter" data-level="14.2" data-path="resources.html"><a href="resources.html#resources-for-git-github"><i class="fa fa-check"></i><b>14.2</b> Resources for Git &amp; Github</a></li>
-<li class="chapter" data-level="14.3" data-path="resources.html"><a href="resources.html#scientific-figures"><i class="fa fa-check"></i><b>14.3</b> Scientific figures</a></li>
-<li class="chapter" data-level="14.4" data-path="resources.html"><a href="resources.html#writing"><i class="fa fa-check"></i><b>14.4</b> Writing</a></li>
-<li class="chapter" data-level="14.5" data-path="resources.html"><a href="resources.html#presentations"><i class="fa fa-check"></i><b>14.5</b> Presentations</a></li>
+<li><a href="unix.html#example-code-for-runfilesavelogs" id="toc-example-code-for-runfilesavelogs"><span class="toc-section-number">10.6.1</span> Example code for <code>runfileSaveLogs</code></a></li>
+<li><a href="unix.html#example-usage-for-runfilesavelogs" id="toc-example-usage-for-runfilesavelogs"><span class="toc-section-number">10.6.2</span> Example usage for <code>runfileSaveLogs</code></a></li>
+</ul></li>
+</ul></li>
+<li><a href="reproducible-environments.html#reproducible-environments" id="toc-reproducible-environments"><span class="toc-section-number">11</span> Reproducible Environments</a>
+<ul>
+<li><a href="reproducible-environments.html#package-version-control-with-renv" id="toc-package-version-control-with-renv"><span class="toc-section-number">11.1</span> Package Version Control with renv</a>
+<ul>
+<li><a href="reproducible-environments.html#introduction" id="toc-introduction"><span class="toc-section-number">11.1.1</span> Introduction</a></li>
+<li><a href="reproducible-environments.html#implementing-renv-in-projects" id="toc-implementing-renv-in-projects"><span class="toc-section-number">11.1.2</span> Implementing renv in projects</a></li>
+<li><a href="reproducible-environments.html#using-projects-with-renv" id="toc-using-projects-with-renv"><span class="toc-section-number">11.1.3</span> Using projects with renv</a></li>
+</ul></li>
+</ul></li>
+<li><a href="code-publication.html#code-publication" id="toc-code-publication"><span class="toc-section-number">12</span> Code Publication</a>
+<ul>
+<li><a href="code-publication.html#checklist-overview" id="toc-checklist-overview"><span class="toc-section-number">12.1</span> Checklist overview</a></li>
+<li><a href="code-publication.html#fill-out-file-headers" id="toc-fill-out-file-headers"><span class="toc-section-number">12.2</span> Fill out file headers</a></li>
+<li><a href="code-publication.html#clean-up-comments" id="toc-clean-up-comments"><span class="toc-section-number">12.3</span> Clean up comments</a></li>
+<li><a href="code-publication.html#document-functions" id="toc-document-functions"><span class="toc-section-number">12.4</span> Document functions</a></li>
+<li><a href="code-publication.html#remove-deprecated-filepaths" id="toc-remove-deprecated-filepaths"><span class="toc-section-number">12.5</span> Remove deprecated filepaths</a></li>
+<li><a href="code-publication.html#ensure-project-runs-via-bash" id="toc-ensure-project-runs-via-bash"><span class="toc-section-number">12.6</span> Ensure project runs via bash</a></li>
+<li><a href="code-publication.html#complete-the-readme" id="toc-complete-the-readme"><span class="toc-section-number">12.7</span> Complete the README</a></li>
+<li><a href="code-publication.html#clean-up-feature-branches" id="toc-clean-up-feature-branches"><span class="toc-section-number">12.8</span> Clean up feature branches</a></li>
+<li><a href="code-publication.html#create-github-release" id="toc-create-github-release"><span class="toc-section-number">12.9</span> Create Github release</a></li>
+</ul></li>
+<li><a href="data-publication.html#data-publication" id="toc-data-publication"><span class="toc-section-number">13</span> Data Publication</a>
+<ul>
+<li><a href="data-publication.html#overview" id="toc-overview"><span class="toc-section-number">13.1</span> Overview</a></li>
+<li><a href="data-publication.html#removing-phi" id="toc-removing-phi"><span class="toc-section-number">13.2</span> Removing PHI</a>
+<ul>
+<li><a href="data-publication.html#personal-information" id="toc-personal-information"><span class="toc-section-number">13.2.1</span> Personal information</a></li>
+<li><a href="data-publication.html#dates" id="toc-dates"><span class="toc-section-number">13.2.2</span> Dates</a></li>
+<li><a href="data-publication.html#geographic-information" id="toc-geographic-information"><span class="toc-section-number">13.2.3</span> Geographic information</a></li>
+</ul></li>
+<li><a href="data-publication.html#create-public-ids" id="toc-create-public-ids"><span class="toc-section-number">13.3</span> Create public IDs</a>
+<ul>
+<li><a href="data-publication.html#rationale" id="toc-rationale"><span class="toc-section-number">13.3.1</span> Rationale</a></li>
+<li><a href="data-publication.html#a-single-set-of-public-ids-for-each-study" id="toc-a-single-set-of-public-ids-for-each-study"><span class="toc-section-number">13.3.2</span> A single set of public IDs for each study</a></li>
+<li><a href="data-publication.html#example-scripts" id="toc-example-scripts"><span class="toc-section-number">13.3.3</span> Example scripts</a></li>
+</ul></li>
+<li><a href="data-publication.html#create-a-data-repository" id="toc-create-a-data-repository"><span class="toc-section-number">13.4</span> Create a data repository</a>
+<ul>
+<li><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository" id="toc-steps-for-creating-an-open-science-framework-osf-repository"><span class="toc-section-number">13.4.1</span> Steps for creating an Open Science Framework (OSF) repository:</a></li>
+</ul></li>
+<li><a href="data-publication.html#edit-and-test-analysis-scripts" id="toc-edit-and-test-analysis-scripts"><span class="toc-section-number">13.5</span> Edit and test analysis scripts</a></li>
+<li><a href="data-publication.html#create-a-public-github-page-for-public-scripts" id="toc-create-a-public-github-page-for-public-scripts"><span class="toc-section-number">13.6</span> Create a public GitHub page for public scripts</a></li>
+<li><a href="data-publication.html#go-live" id="toc-go-live"><span class="toc-section-number">13.7</span> Go live</a></li>
+</ul></li>
+<li><a href="slurm.html#slurm" id="toc-slurm"><span class="toc-section-number">14</span> Slurm and cluster computing</a>
+<ul>
+<li><a href="slurm.html#getting-started" id="toc-getting-started"><span class="toc-section-number">14.1</span> Getting started</a>
+<ul>
+<li><a href="slurm.html#one-time-system-set-up" id="toc-one-time-system-set-up"><span class="toc-section-number">14.1.1</span> One-Time System Set-Up</a></li>
+</ul></li>
+<li><a href="slurm.html#moving-files-to-sherlock" id="toc-moving-files-to-sherlock"><span class="toc-section-number">14.2</span> Moving files to Sherlock</a></li>
+<li><a href="slurm.html#installing-packages-on-sherlock" id="toc-installing-packages-on-sherlock"><span class="toc-section-number">14.3</span> Installing packages on Sherlock</a></li>
+<li><a href="slurm.html#testing-your-code" id="toc-testing-your-code"><span class="toc-section-number">14.4</span> Testing your code</a>
+<ul>
+<li><a href="slurm.html#the-command-line" id="toc-the-command-line"><span class="toc-section-number">14.4.1</span> The command line</a></li>
+<li><a href="slurm.html#the-sherlock-ondemand-dashboard" id="toc-the-sherlock-ondemand-dashboard"><span class="toc-section-number">14.4.2</span> The Sherlock OnDemand Dashboard</a></li>
+<li><a href="slurm.html#filepaths-configuration-on-sherlock" id="toc-filepaths-configuration-on-sherlock"><span class="toc-section-number">14.4.3</span> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
+<li><a href="slurm.html#storage-group-storage-access" id="toc-storage-group-storage-access"><span class="toc-section-number">14.5</span> Storage &amp; group storage access</a>
+<ul>
+<li><a href="slurm.html#individual-storage" id="toc-individual-storage"><span class="toc-section-number">14.5.1</span> Individual storage</a></li>
+<li><a href="slurm.html#group-storage" id="toc-group-storage"><span class="toc-section-number">14.5.2</span> Group storage</a></li>
+<li><a href="slurm.html#folder-permissions" id="toc-folder-permissions"><span class="toc-section-number">14.5.3</span> Folder permissions</a></li>
+</ul></li>
+<li><a href="slurm.html#running-big-jobs-1" id="toc-running-big-jobs-1"><span class="toc-section-number">14.6</span> Running big jobs</a></li>
+</ul></li>
+<li><a href="checklists.html#checklists" id="toc-checklists"><span class="toc-section-number">15</span> Checklists</a>
+<ul>
+<li><a href="checklists.html#pre-analysis-plan-checklist" id="toc-pre-analysis-plan-checklist"><span class="toc-section-number">15.1</span> Pre-analysis plan checklist</a></li>
+<li><a href="checklists.html#code-checklist" id="toc-code-checklist"><span class="toc-section-number">15.2</span> Code checklist</a></li>
+<li><a href="checklists.html#manuscript-checklist" id="toc-manuscript-checklist"><span class="toc-section-number">15.3</span> Manuscript checklist</a></li>
+<li><a href="checklists.html#figure-checklist" id="toc-figure-checklist"><span class="toc-section-number">15.4</span> Figure checklist</a></li>
+</ul></li>
+<li><a href="resources.html#resources" id="toc-resources"><span class="toc-section-number">16</span> Resources</a>
+<ul>
+<li><a href="resources.html#resources-for-r" id="toc-resources-for-r"><span class="toc-section-number">16.1</span> Resources for R</a></li>
+<li><a href="resources.html#resources-for-git-github" id="toc-resources-for-git-github"><span class="toc-section-number">16.2</span> Resources for Git &amp; Github</a></li>
+<li><a href="resources.html#scientific-figures" id="toc-scientific-figures"><span class="toc-section-number">16.3</span> Scientific figures</a></li>
+<li><a href="resources.html#writing" id="toc-writing"><span class="toc-section-number">16.4</span> Writing</a></li>
+<li><a href="resources.html#presentations" id="toc-presentations"><span class="toc-section-number">16.5</span> Presentations</a></li>
+<li><a href="resources.html#professional-advice" id="toc-professional-advice"><span class="toc-section-number">16.6</span> Professional advice</a></li>
+<li><a href="resources.html#funding" id="toc-funding"><span class="toc-section-number">16.7</span> Funding</a></li>
+<li><a href="resources.html#ethics-and-global-health-research" id="toc-ethics-and-global-health-research"><span class="toc-section-number">16.8</span> Ethics and global health research</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
@@ -315,8 +358,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="unix" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Unix commands<a href="unix.html#unix" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="unix" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Unix commands<a href="unix.html#unix" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Stephanie Djajadi, Kunal Mishra, Anna Nguyen, and Jade Benjamin-Chung</p>
 <p>We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Windows users) to</p>
 <ol style="list-style-type: decimal">
@@ -324,16 +367,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>To check on the progress of a batch of jobs</li>
 <li>To use git and push to github</li>
 </ol>
-<div id="basics-1" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> Basics<a href="unix.html#basics-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basics-1" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basics<a href="unix.html#basics-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>On the computer, there is a desktop with two folders, <code>folder1</code> and <code>folder2</code>, and a file called <code>file1.</code> Inside <code>folder1</code>, we have a file called <code>file2.</code> Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.</p>
-<div class="figure">
-<img src="assets/images/ex-desktop.jpg" alt="" />
-<p class="caption">Here is our example desktop.</p>
+<div class="float">
+<img src="assets/images/ex-desktop.jpg" alt="Here is our example desktop." />
+<div class="figcaption">Here is our example desktop.</div>
 </div>
 </div>
-<div id="syntax-for-both-macwindows" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">11.2</span> Syntax for both Mac/Windows<a href="unix.html#syntax-for-both-macwindows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="syntax-for-both-macwindows" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Syntax for both Mac/Windows<a href="unix.html#syntax-for-both-macwindows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When typing in directories or file names, quotes are necessary if the name includes spaces.</p>
 <table>
 <colgroup>
@@ -393,13 +436,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="figure">
-<img src="assets/images/ex-terminal.PNG" alt="" />
-<p class="caption">Here is an example of what your terminal might look like after executing the commands in the order listed above.</p>
+<div class="float">
+<img src="assets/images/ex-terminal.PNG" alt="Here is an example of what your terminal might look like after executing the commands in the order listed above." />
+<div class="figcaption">Here is an example of what your terminal might look like after executing the commands in the order listed above.</div>
 </div>
 </div>
-<div id="running-bash-scripts" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">11.3</span> Running Bash Scripts<a href="unix.html#running-bash-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="running-bash-scripts" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Running Bash Scripts<a href="unix.html#running-bash-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="25%" />
@@ -432,8 +475,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="running-rscripts-in-windows" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> Running Rscripts in Windows<a href="unix.html#running-rscripts-in-windows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="running-rscripts-in-windows" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Running Rscripts in Windows<a href="unix.html#running-rscripts-in-windows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Note: This code seems to work only with Windows Command Prompt, not with Git Bash.</strong></p>
 <p>When R is installed, it comes with a utility called Rscript. This allows you to run R commands from the command line. If Rscript is in your <code>PATH,</code> then typing Rscript into the command line, and pressing enter, will not error. Otherwise, to use Rscript, you will either need to add it to your PATH (as an environment variable), or append the full directory of the location of Rscript on your machine. To find the full directory, search for where R is installed your computer. For instance, it may be something like below (this will vary depending on what version of R you have installed):</p>
 <p><code>C:\Program Files\R\R-3.6.0\bin</code></p>
@@ -444,16 +487,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>“C:\Program Files\R\R-3.6.0\bin” -e “cat(‘this is a test’)”</code></p>
 <p>To run an R script from the command line, we can say:
 <code>Rscript -e “source(‘C:/path/to/script/some_code.R’)”</code></p>
-<div id="common-mistakes" class="section level3 hasAnchor" number="11.4.1">
-<h3><span class="header-section-number">11.4.1</span> Common Mistakes<a href="unix.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="common-mistakes" class="section level3 hasAnchor" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> Common Mistakes<a href="unix.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Remember to include all of the quotation marks around file paths that have a spaces.</li>
 <li>If you attempt to run an R script but run into <code>Error: '\U' used without hex digits in character string starting "'C:\U"</code>, try replacing all <code>\</code> with <code>\\</code> or <code>/</code>.</li>
 </ul>
 </div>
 </div>
-<div id="checking-tasks-and-killing-jobs" class="section level2 hasAnchor" number="11.5">
-<h2><span class="header-section-number">11.5</span> Checking tasks and killing jobs<a href="unix.html#checking-tasks-and-killing-jobs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="checking-tasks-and-killing-jobs" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Checking tasks and killing jobs<a href="unix.html#checking-tasks-and-killing-jobs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="25%" />
@@ -512,125 +555,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>To kill a task in Windows, you can also go to Task Manager &gt; More details &gt; Select your desired app &gt; Click on End Task.</p>
 </div>
-<div id="running-big-jobs" class="section level2 hasAnchor" number="11.6">
-<h2><span class="header-section-number">11.6</span> Running big jobs<a href="unix.html#running-big-jobs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="running-big-jobs" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Running big jobs<a href="unix.html#running-big-jobs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For big data workflows, the concept of “backgrounding” a bash script allows you to start a “job” (i.e. run the script) and leave it overnight to run. At the top level, a bash script (<code>0-run-project.sh</code>) that simply calls the directory-level bash scripts (i.e. <code>0-prep-data.sh</code>, <code>0-run-analysis.sh</code>, <code>0-run-figures.sh</code>, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.</p>
 <ul>
 <li><strong>Running Bash Scripts in Background</strong>: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like <code>./run-project.sh</code>. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type <code>./run-project.sh &amp;; disown</code>. You can see the job running (and CPU utilization) with the command <code>top</code> or <code>ps -v</code> and check your memory with <code>free -h</code>.</li>
 </ul>
 <p>Alternatively, to keep code running in the background even when an SSH connection is broken, you can use <code>tmux</code>. In terminal or gitbash follow the steps below. This <a href="https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e">site</a> has useful tips on using <code>tmux</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="unix.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new tmux session called session_name</span></span>
-<span id="cb15-2"><a href="unix.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-ssession_name</span></span>
-<span id="cb15-3"><a href="unix.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="unix.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run your job of interest</span></span>
-<span id="cb15-5"><a href="unix.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH myjob.R <span class="kw">&amp;</span> </span>
-<span id="cb15-6"><a href="unix.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-7"><a href="unix.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it is running</span></span>
-<span id="cb15-8"><a href="unix.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-v</span></span>
-<span id="cb15-9"><a href="unix.html#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="unix.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to exit the tmux session (Mac)</span></span>
-<span id="cb15-11"><a href="unix.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ctrl</span> + b </span>
-<span id="cb15-12"><a href="unix.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="ex">d</span></span>
-<span id="cb15-13"><a href="unix.html#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="unix.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># to reopen the tmux session to kill the job or </span></span>
-<span id="cb15-15"><a href="unix.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># start another job</span></span>
-<span id="cb15-16"><a href="unix.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> attach <span class="at">-tsession_name</span> </span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="unix.html#cb20-1" tabindex="-1"></a><span class="co"># create a new tmux session called session_name</span></span>
+<span id="cb20-2"><a href="unix.html#cb20-2" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-ssession_name</span></span>
+<span id="cb20-3"><a href="unix.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="unix.html#cb20-4" tabindex="-1"></a><span class="co"># run your job of interest</span></span>
+<span id="cb20-5"><a href="unix.html#cb20-5" tabindex="-1"></a><span class="ex">R</span> CMD BATCH myjob.R <span class="kw">&amp;</span> </span>
+<span id="cb20-6"><a href="unix.html#cb20-6" tabindex="-1"></a>  </span>
+<span id="cb20-7"><a href="unix.html#cb20-7" tabindex="-1"></a><span class="co"># check that it is running</span></span>
+<span id="cb20-8"><a href="unix.html#cb20-8" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-v</span></span>
+<span id="cb20-9"><a href="unix.html#cb20-9" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="unix.html#cb20-10" tabindex="-1"></a><span class="co"># to exit the tmux session (Mac)</span></span>
+<span id="cb20-11"><a href="unix.html#cb20-11" tabindex="-1"></a><span class="ex">ctrl</span> + b </span>
+<span id="cb20-12"><a href="unix.html#cb20-12" tabindex="-1"></a><span class="ex">d</span></span>
+<span id="cb20-13"><a href="unix.html#cb20-13" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="unix.html#cb20-14" tabindex="-1"></a><span class="co"># to reopen the tmux session to kill the job or </span></span>
+<span id="cb20-15"><a href="unix.html#cb20-15" tabindex="-1"></a><span class="co"># start another job</span></span>
+<span id="cb20-16"><a href="unix.html#cb20-16" tabindex="-1"></a><span class="ex">tmux</span> attach <span class="at">-tsession_name</span> </span></code></pre></div>
 <ul>
 <li><p><strong>Deleting Previously Computed Results</strong>: One helpful lesson we’ve learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).</p></li>
 <li><p><strong>Ensuring Things Ran Correctly</strong>: You should check the <code>.Rout</code> files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called <code>runFileSaveLogs</code>, and is used by the example bash scripts to… run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using <code>runFileSaveLogs</code>, it is necessary to put the file in the home working directory. For help and documentation, you can use the command <code>./runFileSaveLogs -h</code>. See example code and example usage for <code>runFileSaveLogs</code> below.</p></li>
 </ul>
-<div id="example-code-for-runfilesavelogs" class="section level3 hasAnchor" number="11.6.1">
-<h3><span class="header-section-number">11.6.1</span> Example code for <code>runfileSaveLogs</code><a href="unix.html#example-code-for-runfilesavelogs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="unix.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb16-2"><a href="unix.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type &quot;./runFileSaveLogs -h&quot; for help</span></span>
-<span id="cb16-3"><a href="unix.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="unix.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb16-5"><a href="unix.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb16-6"><a href="unix.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
-<span id="cb16-7"><a href="unix.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> getpass</span>
-<span id="cb16-8"><a href="unix.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
-<span id="cb16-9"><a href="unix.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
-<span id="cb16-10"><a href="unix.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
-<span id="cb16-11"><a href="unix.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib</span>
-<span id="cb16-12"><a href="unix.html#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="unix.html#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting working directory to this script&#39;s current directory</span></span>
-<span id="cb16-14"><a href="unix.html#cb16-14" aria-hidden="true" tabindex="-1"></a>os.chdir(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
-<span id="cb16-15"><a href="unix.html#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="unix.html#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up argument parser</span></span>
-<span id="cb16-17"><a href="unix.html#cb16-17" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">&#39;Runs the argument R script(s) - in parallel if specified - and moves the subsequent generated .Rout log files to a timestamped directory.&#39;</span>)</span>
-<span id="cb16-18"><a href="unix.html#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="unix.html#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Function ensuring that the file is valid</span></span>
-<span id="cb16-20"><a href="unix.html#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_valid_file(parser, arg):</span>
-<span id="cb16-21"><a href="unix.html#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(arg):</span>
-<span id="cb16-22"><a href="unix.html#cb16-22" aria-hidden="true" tabindex="-1"></a>        parser.error(<span class="st">&quot;The file </span><span class="sc">%s</span><span class="st"> does not exist!&quot;</span> <span class="op">%</span> arg)</span>
-<span id="cb16-23"><a href="unix.html#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb16-24"><a href="unix.html#cb16-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arg</span>
-<span id="cb16-25"><a href="unix.html#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="unix.html#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Function ensuring that the directory is valid</span></span>
-<span id="cb16-27"><a href="unix.html#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_valid_directory(parser, arg):</span>
-<span id="cb16-28"><a href="unix.html#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(arg):</span>
-<span id="cb16-29"><a href="unix.html#cb16-29" aria-hidden="true" tabindex="-1"></a>        parser.error(<span class="st">&quot;The specified path (</span><span class="sc">%s</span><span class="st">) is not a directory!&quot;</span> <span class="op">%</span> arg)</span>
-<span id="cb16-30"><a href="unix.html#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb16-31"><a href="unix.html#cb16-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arg</span>
-<span id="cb16-32"><a href="unix.html#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="unix.html#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional arguments that can be added when running runFileSaveLogs</span></span>
-<span id="cb16-34"><a href="unix.html#cb16-34" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-p&#39;</span>, <span class="st">&#39;--parallel&#39;</span>, action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Runs the argument R scripts in parallel if specified&quot;</span>)</span>
-<span id="cb16-35"><a href="unix.html#cb16-35" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&quot;-i&quot;</span>, <span class="st">&quot;--identifier&quot;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Adds an identifier to the directory name where this is saved&quot;</span>)</span>
-<span id="cb16-36"><a href="unix.html#cb16-36" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;filenames&#39;</span>, nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="kw">lambda</span> x: is_valid_file(parser, x))</span>
-<span id="cb16-37"><a href="unix.html#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-38"><a href="unix.html#cb16-38" aria-hidden="true" tabindex="-1"></a>args <span class="op">=</span> parser.parse_args()</span>
-<span id="cb16-39"><a href="unix.html#cb16-39" aria-hidden="true" tabindex="-1"></a>args_dict <span class="op">=</span> <span class="bu">vars</span>(args)</span>
-<span id="cb16-40"><a href="unix.html#cb16-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-41"><a href="unix.html#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(args_dict)</span>
-<span id="cb16-42"><a href="unix.html#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-43"><a href="unix.html#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Run given R Scripts</span></span>
-<span id="cb16-44"><a href="unix.html#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> args_dict[<span class="st">&quot;filenames&quot;</span>]:</span>
-<span id="cb16-45"><a href="unix.html#cb16-45" aria-hidden="true" tabindex="-1"></a>  system_call <span class="op">=</span> <span class="st">&quot;R CMD BATCH&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> filename</span>
-<span id="cb16-46"><a href="unix.html#cb16-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> args_dict[<span class="st">&quot;parallel&quot;</span>]: </span>
-<span id="cb16-47"><a href="unix.html#cb16-47" aria-hidden="true" tabindex="-1"></a>    system_call <span class="op">=</span> <span class="st">&quot;nohup&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> system_call <span class="op">+</span> <span class="st">&quot; &amp;&quot;</span></span>
-<span id="cb16-48"><a href="unix.html#cb16-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-49"><a href="unix.html#cb16-49" aria-hidden="true" tabindex="-1"></a>  os.system(system_call)</span>
-<span id="cb16-50"><a href="unix.html#cb16-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-51"><a href="unix.html#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the directory (and any parents) of the log files</span></span>
-<span id="cb16-52"><a href="unix.html#cb16-52" aria-hidden="true" tabindex="-1"></a>currentUser <span class="op">=</span> getpass.getuser()</span>
-<span id="cb16-53"><a href="unix.html#cb16-53" aria-hidden="true" tabindex="-1"></a>currentTime <span class="op">=</span> datetime.datetime.now().strftime(<span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>)</span>
-<span id="cb16-54"><a href="unix.html#cb16-54" aria-hidden="true" tabindex="-1"></a>logDirPrefix <span class="op">=</span> <span class="st">&quot;/home/kaiserData/logs/&quot;</span> <span class="co"># Change to the directory where the logs should be saved</span></span>
-<span id="cb16-55"><a href="unix.html#cb16-55" aria-hidden="true" tabindex="-1"></a>logDir <span class="op">=</span> logDirPrefix <span class="op">+</span> currentTime <span class="op">+</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> currentUser </span>
-<span id="cb16-56"><a href="unix.html#cb16-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-57"><a href="unix.html#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="co"># If specified, adds the identifier to the filename of the log</span></span>
-<span id="cb16-58"><a href="unix.html#cb16-58" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> args.identifier <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb16-59"><a href="unix.html#cb16-59" aria-hidden="true" tabindex="-1"></a>  logDir <span class="op">+=</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> args.identifier</span>
-<span id="cb16-60"><a href="unix.html#cb16-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-61"><a href="unix.html#cb16-61" aria-hidden="true" tabindex="-1"></a>logDir <span class="op">+=</span> <span class="st">&quot;/&quot;</span></span>
-<span id="cb16-62"><a href="unix.html#cb16-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-63"><a href="unix.html#cb16-63" aria-hidden="true" tabindex="-1"></a>pathlib.Path(logDir).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb16-64"><a href="unix.html#cb16-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-65"><a href="unix.html#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Find and move all logs to this new directory</span></span>
-<span id="cb16-66"><a href="unix.html#cb16-66" aria-hidden="true" tabindex="-1"></a>currentLogPaths <span class="op">=</span> glob.glob(<span class="st">&#39;./*.Rout&#39;</span>)</span>
-<span id="cb16-67"><a href="unix.html#cb16-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-68"><a href="unix.html#cb16-68" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> currentLogPath <span class="kw">in</span> currentLogPaths:</span>
-<span id="cb16-69"><a href="unix.html#cb16-69" aria-hidden="true" tabindex="-1"></a>  filename <span class="op">=</span> currentLogPath.split(<span class="st">&quot;/&quot;</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb16-70"><a href="unix.html#cb16-70" aria-hidden="true" tabindex="-1"></a>  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</span></code></pre></div>
+<div id="example-code-for-runfilesavelogs" class="section level3 hasAnchor" number="10.6.1">
+<h3><span class="header-section-number">10.6.1</span> Example code for <code>runfileSaveLogs</code><a href="unix.html#example-code-for-runfilesavelogs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="unix.html#cb21-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb21-2"><a href="unix.html#cb21-2" tabindex="-1"></a><span class="co"># Type &quot;./runFileSaveLogs -h&quot; for help</span></span>
+<span id="cb21-3"><a href="unix.html#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="unix.html#cb21-4" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb21-5"><a href="unix.html#cb21-5" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb21-6"><a href="unix.html#cb21-6" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb21-7"><a href="unix.html#cb21-7" tabindex="-1"></a><span class="im">import</span> getpass</span>
+<span id="cb21-8"><a href="unix.html#cb21-8" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb21-9"><a href="unix.html#cb21-9" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb21-10"><a href="unix.html#cb21-10" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb21-11"><a href="unix.html#cb21-11" tabindex="-1"></a><span class="im">import</span> pathlib</span>
+<span id="cb21-12"><a href="unix.html#cb21-12" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="unix.html#cb21-13" tabindex="-1"></a><span class="co"># Setting working directory to this script&#39;s current directory</span></span>
+<span id="cb21-14"><a href="unix.html#cb21-14" tabindex="-1"></a>os.chdir(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
+<span id="cb21-15"><a href="unix.html#cb21-15" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="unix.html#cb21-16" tabindex="-1"></a><span class="co"># Setting up argument parser</span></span>
+<span id="cb21-17"><a href="unix.html#cb21-17" tabindex="-1"></a>parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">&#39;Runs the argument R script(s) - in parallel if specified - and moves the subsequent generated .Rout log files to a timestamped directory.&#39;</span>)</span>
+<span id="cb21-18"><a href="unix.html#cb21-18" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="unix.html#cb21-19" tabindex="-1"></a><span class="co"># Function ensuring that the file is valid</span></span>
+<span id="cb21-20"><a href="unix.html#cb21-20" tabindex="-1"></a><span class="kw">def</span> is_valid_file(parser, arg):</span>
+<span id="cb21-21"><a href="unix.html#cb21-21" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(arg):</span>
+<span id="cb21-22"><a href="unix.html#cb21-22" tabindex="-1"></a>        parser.error(<span class="st">&quot;The file </span><span class="sc">%s</span><span class="st"> does not exist!&quot;</span> <span class="op">%</span> arg)</span>
+<span id="cb21-23"><a href="unix.html#cb21-23" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-24"><a href="unix.html#cb21-24" tabindex="-1"></a>        <span class="cf">return</span> arg</span>
+<span id="cb21-25"><a href="unix.html#cb21-25" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="unix.html#cb21-26" tabindex="-1"></a><span class="co"># Function ensuring that the directory is valid</span></span>
+<span id="cb21-27"><a href="unix.html#cb21-27" tabindex="-1"></a><span class="kw">def</span> is_valid_directory(parser, arg):</span>
+<span id="cb21-28"><a href="unix.html#cb21-28" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(arg):</span>
+<span id="cb21-29"><a href="unix.html#cb21-29" tabindex="-1"></a>        parser.error(<span class="st">&quot;The specified path (</span><span class="sc">%s</span><span class="st">) is not a directory!&quot;</span> <span class="op">%</span> arg)</span>
+<span id="cb21-30"><a href="unix.html#cb21-30" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-31"><a href="unix.html#cb21-31" tabindex="-1"></a>        <span class="cf">return</span> arg</span>
+<span id="cb21-32"><a href="unix.html#cb21-32" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="unix.html#cb21-33" tabindex="-1"></a><span class="co"># Additional arguments that can be added when running runFileSaveLogs</span></span>
+<span id="cb21-34"><a href="unix.html#cb21-34" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-p&#39;</span>, <span class="st">&#39;--parallel&#39;</span>, action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Runs the argument R scripts in parallel if specified&quot;</span>)</span>
+<span id="cb21-35"><a href="unix.html#cb21-35" tabindex="-1"></a>parser.add_argument(<span class="st">&quot;-i&quot;</span>, <span class="st">&quot;--identifier&quot;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Adds an identifier to the directory name where this is saved&quot;</span>)</span>
+<span id="cb21-36"><a href="unix.html#cb21-36" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;filenames&#39;</span>, nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="kw">lambda</span> x: is_valid_file(parser, x))</span>
+<span id="cb21-37"><a href="unix.html#cb21-37" tabindex="-1"></a></span>
+<span id="cb21-38"><a href="unix.html#cb21-38" tabindex="-1"></a>args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb21-39"><a href="unix.html#cb21-39" tabindex="-1"></a>args_dict <span class="op">=</span> <span class="bu">vars</span>(args)</span>
+<span id="cb21-40"><a href="unix.html#cb21-40" tabindex="-1"></a></span>
+<span id="cb21-41"><a href="unix.html#cb21-41" tabindex="-1"></a><span class="bu">print</span>(args_dict)</span>
+<span id="cb21-42"><a href="unix.html#cb21-42" tabindex="-1"></a></span>
+<span id="cb21-43"><a href="unix.html#cb21-43" tabindex="-1"></a><span class="co"># Run given R Scripts</span></span>
+<span id="cb21-44"><a href="unix.html#cb21-44" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> args_dict[<span class="st">&quot;filenames&quot;</span>]:</span>
+<span id="cb21-45"><a href="unix.html#cb21-45" tabindex="-1"></a>  system_call <span class="op">=</span> <span class="st">&quot;R CMD BATCH&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> filename</span>
+<span id="cb21-46"><a href="unix.html#cb21-46" tabindex="-1"></a>  <span class="cf">if</span> args_dict[<span class="st">&quot;parallel&quot;</span>]: </span>
+<span id="cb21-47"><a href="unix.html#cb21-47" tabindex="-1"></a>    system_call <span class="op">=</span> <span class="st">&quot;nohup&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> system_call <span class="op">+</span> <span class="st">&quot; &amp;&quot;</span></span>
+<span id="cb21-48"><a href="unix.html#cb21-48" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="unix.html#cb21-49" tabindex="-1"></a>  os.system(system_call)</span>
+<span id="cb21-50"><a href="unix.html#cb21-50" tabindex="-1"></a></span>
+<span id="cb21-51"><a href="unix.html#cb21-51" tabindex="-1"></a><span class="co"># Create the directory (and any parents) of the log files</span></span>
+<span id="cb21-52"><a href="unix.html#cb21-52" tabindex="-1"></a>currentUser <span class="op">=</span> getpass.getuser()</span>
+<span id="cb21-53"><a href="unix.html#cb21-53" tabindex="-1"></a>currentTime <span class="op">=</span> datetime.datetime.now().strftime(<span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>)</span>
+<span id="cb21-54"><a href="unix.html#cb21-54" tabindex="-1"></a>logDirPrefix <span class="op">=</span> <span class="st">&quot;/home/kaiserData/logs/&quot;</span> <span class="co"># Change to the directory where the logs should be saved</span></span>
+<span id="cb21-55"><a href="unix.html#cb21-55" tabindex="-1"></a>logDir <span class="op">=</span> logDirPrefix <span class="op">+</span> currentTime <span class="op">+</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> currentUser </span>
+<span id="cb21-56"><a href="unix.html#cb21-56" tabindex="-1"></a></span>
+<span id="cb21-57"><a href="unix.html#cb21-57" tabindex="-1"></a><span class="co"># If specified, adds the identifier to the filename of the log</span></span>
+<span id="cb21-58"><a href="unix.html#cb21-58" tabindex="-1"></a><span class="cf">if</span> args.identifier <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb21-59"><a href="unix.html#cb21-59" tabindex="-1"></a>  logDir <span class="op">+=</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> args.identifier</span>
+<span id="cb21-60"><a href="unix.html#cb21-60" tabindex="-1"></a></span>
+<span id="cb21-61"><a href="unix.html#cb21-61" tabindex="-1"></a>logDir <span class="op">+=</span> <span class="st">&quot;/&quot;</span></span>
+<span id="cb21-62"><a href="unix.html#cb21-62" tabindex="-1"></a></span>
+<span id="cb21-63"><a href="unix.html#cb21-63" tabindex="-1"></a>pathlib.Path(logDir).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-64"><a href="unix.html#cb21-64" tabindex="-1"></a></span>
+<span id="cb21-65"><a href="unix.html#cb21-65" tabindex="-1"></a><span class="co"># Find and move all logs to this new directory</span></span>
+<span id="cb21-66"><a href="unix.html#cb21-66" tabindex="-1"></a>currentLogPaths <span class="op">=</span> glob.glob(<span class="st">&#39;./*.Rout&#39;</span>)</span>
+<span id="cb21-67"><a href="unix.html#cb21-67" tabindex="-1"></a></span>
+<span id="cb21-68"><a href="unix.html#cb21-68" tabindex="-1"></a><span class="cf">for</span> currentLogPath <span class="kw">in</span> currentLogPaths:</span>
+<span id="cb21-69"><a href="unix.html#cb21-69" tabindex="-1"></a>  filename <span class="op">=</span> currentLogPath.split(<span class="st">&quot;/&quot;</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb21-70"><a href="unix.html#cb21-70" tabindex="-1"></a>  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</span></code></pre></div>
 </div>
-<div id="example-usage-for-runfilesavelogs" class="section level3 hasAnchor" number="11.6.2">
-<h3><span class="header-section-number">11.6.2</span> Example usage for <code>runfileSaveLogs</code><a href="unix.html#example-usage-for-runfilesavelogs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="example-usage-for-runfilesavelogs" class="section level3 hasAnchor" number="10.6.2">
+<h3><span class="header-section-number">10.6.2</span> Example usage for <code>runfileSaveLogs</code><a href="unix.html#example-usage-for-runfilesavelogs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This example bash script runs files and generates logs for five scripts in the <code>kaiserflu/3-figures</code> folder. Note that the <code>-i</code> flag is used as an identifier to add <code>figures</code> to the filename of each log.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="unix.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb17-2"><a href="unix.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="unix.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy utility run script into this folder for concision in call</span></span>
-<span id="cb17-4"><a href="unix.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/kaiserflu/runFileSaveLogs ~/kaiserflu/3-figures/</span>
-<span id="cb17-5"><a href="unix.html#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="unix.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Run folder scripts and produce output</span></span>
-<span id="cb17-7"><a href="unix.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/kaiserflu/3-figures/</span>
-<span id="cb17-8"><a href="unix.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">./runFileSaveLogs</span> <span class="at">-i</span> <span class="st">&quot;figures&quot;</span> <span class="dt">\</span></span>
-<span id="cb17-9"><a href="unix.html#cb17-9" aria-hidden="true" tabindex="-1"></a>fig-mean-season-age.R <span class="dt">\</span></span>
-<span id="cb17-10"><a href="unix.html#cb17-10" aria-hidden="true" tabindex="-1"></a>fig-monthly-rate.R <span class="dt">\</span></span>
-<span id="cb17-11"><a href="unix.html#cb17-11" aria-hidden="true" tabindex="-1"></a>fig-point-estimates-combined.R <span class="dt">\</span></span>
-<span id="cb17-12"><a href="unix.html#cb17-12" aria-hidden="true" tabindex="-1"></a>fig-point-estimates.R <span class="dt">\</span></span>
-<span id="cb17-13"><a href="unix.html#cb17-13" aria-hidden="true" tabindex="-1"></a>fig-weekly-rate.R</span>
-<span id="cb17-14"><a href="unix.html#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="unix.html#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove copied utility run script</span></span>
-<span id="cb17-16"><a href="unix.html#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> runFileSaveLogs</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="unix.html#cb22-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb22-2"><a href="unix.html#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="unix.html#cb22-3" tabindex="-1"></a><span class="co"># Copy utility run script into this folder for concision in call</span></span>
+<span id="cb22-4"><a href="unix.html#cb22-4" tabindex="-1"></a><span class="fu">cp</span> ~/kaiserflu/runFileSaveLogs ~/kaiserflu/3-figures/</span>
+<span id="cb22-5"><a href="unix.html#cb22-5" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="unix.html#cb22-6" tabindex="-1"></a><span class="co"># Run folder scripts and produce output</span></span>
+<span id="cb22-7"><a href="unix.html#cb22-7" tabindex="-1"></a><span class="bu">cd</span> ~/kaiserflu/3-figures/</span>
+<span id="cb22-8"><a href="unix.html#cb22-8" tabindex="-1"></a><span class="ex">./runFileSaveLogs</span> <span class="at">-i</span> <span class="st">&quot;figures&quot;</span> <span class="dt">\</span></span>
+<span id="cb22-9"><a href="unix.html#cb22-9" tabindex="-1"></a>fig-mean-season-age.R <span class="dt">\</span></span>
+<span id="cb22-10"><a href="unix.html#cb22-10" tabindex="-1"></a>fig-monthly-rate.R <span class="dt">\</span></span>
+<span id="cb22-11"><a href="unix.html#cb22-11" tabindex="-1"></a>fig-point-estimates-combined.R <span class="dt">\</span></span>
+<span id="cb22-12"><a href="unix.html#cb22-12" tabindex="-1"></a>fig-point-estimates.R <span class="dt">\</span></span>
+<span id="cb22-13"><a href="unix.html#cb22-13" tabindex="-1"></a>fig-weekly-rate.R</span>
+<span id="cb22-14"><a href="unix.html#cb22-14" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="unix.html#cb22-15" tabindex="-1"></a><span class="co"># Remove copied utility run script</span></span>
+<span id="cb22-16"><a href="unix.html#cb22-16" tabindex="-1"></a><span class="fu">rm</span> runFileSaveLogs</span></code></pre></div>
 
 </div>
 </div>
@@ -641,7 +684,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="slurm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reproducible-environments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -672,7 +715,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/10-unix.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/09-unix.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -695,6 +738,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

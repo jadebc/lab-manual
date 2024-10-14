@@ -28,7 +28,23 @@ by Jade Benjamin-Chung and Kunal Mishra
 - [Tips on how to write a great science paper](https://www.nature.com/articles/d41586-019-02918-5)
 - [ICMJE Definition of authorship](http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html)
 - [Nature article on elements of style for scientific writing](https://www.nature.com/articles/nphys724)
+- [The Pathway to Publishing: A Guide to Quantitative Writing in the Health Sciences ](https://link.springer.com/book/10.1007/978-3-030-98175-4)
+- [Secret, actionable writing tips](https://x.com/acagamic/status/1680381737816424450)
 
 ## Presentations
 
 - [How to tell a compelling story in scientific presentations](https://www.nature.com/articles/d41586-021-03603-2)
+- [How to give a killer narratively-driven scientific talk](https://www-sciencedirect-com.stanford.idm.oclc.org/science/article/pii/S1471491423000928)
+- [How to make a better poster](https://www.youtube.com/watch?v=1RwJbhkCA58&t=1171s)
+- [How to make an even better poster](https://mitcommlab.mit.edu/be/2023/09/27/toward-an-evenbetterposter-improving-the-betterposter-template/)
+
+## Professional advice
+- [Professional advice, especially for your first job](https://docs.google.com/document/d/1ckgRCcr7FFPyymyMA6Y_-cB_vftOyrrxT28c6gRg0PI/edit)
+
+## Funding
+- [Building Your Funding Train](https://grantwriting.stanford.edu/funding-train/#ep)
+
+## Ethics and global health research
+- [Global Code of Conduct For Research in Resource-Poor Settings](https://www.globalcodeofconduct.org/wp-content/uploads/2018/05/Global-Code-of-Conduct-Brochure.pdf)
+- [Who is a global health expert? Advice for aspiring global health experts](https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0002269)
+- [Transforming Global Health Partnerships](https://link.springer.com/book/9783031537929)

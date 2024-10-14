@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 Checklists | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 11 Reproducible Environments | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 Checklists | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 11 Reproducible Environments | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 Checklists | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 11 Reproducible Environments | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slurm.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="unix.html"/>
+<link rel="next" href="code-publication.html"/>
 <script src="libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -358,78 +358,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="checklists" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">Chapter 15</span> Checklists<a href="checklists.html#checklists" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>by Jade Benjamin-Chung</p>
-<div id="pre-analysis-plan-checklist" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> Pre-analysis plan checklist<a href="checklists.html#pre-analysis-plan-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Brief background on the study (a condensed version of the introduction section of the paper)</li>
-<li>Hypotheses / objectives</li>
-<li>Study design</li>
-<li>Description of data</li>
-<li>Definition of outcomes</li>
-<li>Definition of interventions / exposures</li>
-<li>Definition of covariates</li>
-<li>Statistical power calculation</li>
-<li>Statistical model description</li>
-<li>Covariate selection / screening</li>
-<li>Standard error estimation method</li>
-<li>Missing data analysis</li>
-<li>Assessment of effect modification / subgroup analyses</li>
-<li>Sensitivity analyses</li>
-<li>Negative control analyses</li>
-</ul>
+<div id="reproducible-environments" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Reproducible Environments<a href="reproducible-environments.html#reproducible-environments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>by Anna Nguyen</p>
+<div id="package-version-control-with-renv" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Package Version Control with renv<a href="reproducible-environments.html#package-version-control-with-renv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Introduction<a href="reproducible-environments.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Replicable code should produce the same results, regardless of when or where it’s run. However, our analyses often leverage open-source R packages that are developed by other teams. These packages continue to be developed after research projects are completed, which may include changes to analysis functions that could impact how code runs for both other team members and external replicators.</p>
+<p>For example, suppose we had used a function that took in one argument, such that our code contained <code>example_function(arg_a = “a”)</code>. A few months after we publish our code, the package developers update the function to take in another mandatory argument <code>arg_b</code>. If someone runs our code, but has the most recent version of the package, they’ll receive an error message that the argument <code>arg_b</code> is missing and will not be able to full reproduce our results.</p>
+<p>To ensure that the right functions are used in replication efforts, it is important for us to keep track of package versions used in each project.</p>
+<p><code>renv</code> can be to promote reproducible environments within R projects. <code>renv</code> creates individual package libraries for each project instead of having all projects, which may use different versions of the same package, share the same package library. However, for projects that use many packages, this process can be memory intensive and increase the time needed for a new users to start running code.</p>
+<p>In this lab manual chapter, we provide a quick tutorial for integrating <code>renv</code> into research workflows. For more detailed instructions, please refer to the <code>renv</code> package vignette.</p>
 </div>
-<div id="code-checklist" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> Code checklist<a href="checklists.html#code-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Does the script run without errors?</li>
-<li>Is code self-contained within repo and/or associated Box folder?</li>
-<li>Is all commented out code / remarks removed?</li>
-<li>Does the header accurately describe the process completed in the script?</li>
-<li>Is the script pushed to its github repository?</li>
-<li>Does the code adhere to the <a href="https://jadebc.github.io/lab-manual/coding-style.html">coding style guide</a>?</li>
-<li>Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?</li>
-</ul>
+<div id="implementing-renv-in-projects" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Implementing renv in projects<a href="reproducible-environments.html#implementing-renv-in-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ideally, <code>renv</code> should be initiated at the start of projects and updated continuously when new packages are introduced in the codebase. However, this process can be initated at any point in a project</p>
+<p>To add <code>renv</code> to your workflow, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li>Install the <code>renv</code> package by running <code>install.packages(“renv”)</code></li>
+<li>Create an RProject file and ensure that your working directory is set to the correct folder</li>
+<li>In the R console, run <code>renv::init()</code> to intiialize renv in your R Project</li>
+<li>This will create the following files: <code>renv.lock</code>, .<code>Rprofile</code>, <code>renv/settings.json</code> and <code>renv/activate.R</code>. Commit and push these files to GitHub so that they’re accessible to other users.</li>
+<li>As you write code, update the project’s R library by running <code>renv::snapshot()</code> in the R console</li>
+<li>Add <code>renv::restore()</code> to the head of your config file, to make sure that all users that run your code are on the same package versions.</li>
+</ol>
 </div>
-<div id="manuscript-checklist" class="section level2 hasAnchor" number="15.3">
-<h2><span class="header-section-number">15.3</span> Manuscript checklist<a href="checklists.html#manuscript-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><em>This is adapted in part from <a href="https://www.nature.com/articles/d41586-019-01431-z">this article</a>.</em></p>
-<ul>
-<li>Have you completed the relevant reporting checklist, if applicable? (<a href="https://www.equator-network.org/about-us/what-is-a-reporting-guideline/">Collection of checklists</a>)</li>
-<li>Are the study results within the manuscript replicable (i.e., if you rerun the code in the study’s repository, the tables and figures will be exactly replicated?)</li>
-<li>Is a target journal selected?</li>
-<li>Is the title declarative, in other words, does it state the object/findings rather than suggest them?</li>
-<li>Is the word count of the manuscript close to the target journal’s allowance?</li>
-<li>Does the manuscript adhere to the formatting guide of the target journal?</li>
-<li>Does the manuscript use a consistent voice (passive or active – usually active is preferred … pun intended)?</li>
-<li>Is each figure and table (including supplementary material) referenced in the main text?</li>
-<li>Is there a caption for each figure and table (including supplementary material)?</li>
-<li>Are tables/figures and supplementary material numbered in accordance with their appearance in the main text?</li>
-<li>Does the text use past tense if it is reporting research findings or future tense if it is a study protocol?</li>
-<li>Does the text avoid subjective wording (e.g., “interesting”, “dramatic”)?</li>
-<li>Does the text use minimal abbreviations, and are all abbreviations defined at first use?</li>
-<li>Does the text avoid directionless words? (e.g., instead of writing, ‘Precipitation influences disease risk’, write, ‘Precipitation was associated with increased disease risk’).</li>
-<li>Does the text avoid making causal claims that are not supported by the study design? Be careful about the words “effect”, “increase”, and “decrease”, which are often interpreted as causal.</li>
-<li>Does the text avoid describing results with the word “significant”, which can easily be confused with statistical significance? (see references on this topic <a href="https://journals.lww.com/epidem/Fulltext/2001/05000/The_Value_of_P.2.aspx">here</a>)</li>
-<li>Have you drafted author contributions? Do they follow the <a href="https://journals.plos.org/plosone/s/authorship/?utm_source=plos&amp;utm_medium=blog&amp;utm_campaign=plos-1607-credit#loc-author-contributions">CRediT Taxonomy</a> for author contributions?</li>
-</ul>
-</div>
-<div id="figure-checklist" class="section level2 hasAnchor" number="15.4">
-<h2><span class="header-section-number">15.4</span> Figure checklist<a href="checklists.html#figure-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Are the x-axis and y-axis labeled?</li>
-<li>If the figure includes panels, is each panel labeled?</li>
-<li>Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?</li>
-<li>Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)</li>
-<li>Are the colors used colorblind friendly? See a colorblind-friendly palette <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">here</a>, a neat palette generator with colorblind options <a href="https://medialab.github.io/iwanthue/?utm_source=Nature+Briefing&amp;utm_campaign=2c68711076-briefing-dy-20211006&amp;utm_medium=email&amp;utm_term=0_c9dfd39373-2c68711076-44335685">here</a>, and an article on why this matters <a href="https://www.nature.com/articles/d41586-021-02696-z">here</a></li>
-<li>Are colors/shapes/line types defined in a legend?</li>
-<li>Are the legends and other labels easy to understand with minimal abbreviations?</li>
-<li>If there is overplotting, is transparency used to show overlapping data?</li>
-<li>Are 95% confidence intervals or other measures of precision shown, if applicable?</li>
-</ul>
+<div id="using-projects-with-renv" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> Using projects with renv<a href="reproducible-environments.html#using-projects-with-renv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you’re starting to work on an ongoing project that already has <code>renv</code> set up, follow these steps to ensure that you’re using the same project versions.</p>
+<ol style="list-style-type: decimal">
+<li>Install the <code>renv</code> package by running <code>install.packages(“renv”)</code></li>
+<li>Pull the most updated version of the project from GitHub</li>
+<li>Open the project’s RProject file</li>
+<li>Run <code>renv::restore()</code>. In our lab’s projects, this is often already found at the top of the config file, so you can just run scripts as is.</li>
+<li>This will pull up a list of the project’s packages that need to be updated for you to be consistent with the project. The console will ask if you want to proceed with updating these packages - type “Y” to continue.</li>
+<li>Wait for the correct versions of each package to install/update. This may take some time, depending on how many packages the project uses.</li>
+<li>Your R environment should now be using the same package versions as specified in the <code>renv</code> lock file. You should now be able to replicate the code.</li>
+<li>If you make edits to the code and introduce new/updated packages, see the section above for instructions on how to make updates.</li>
+</ol>
 
+</div>
 </div>
 </div>
             </section>
@@ -437,8 +406,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="slurm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="unix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="code-publication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -469,7 +438,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/14-checklists.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/10-reproducible-environments.Rmd",
 "text": "Edit"
 },
 "history": {

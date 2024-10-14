@@ -1,6 +1,6 @@
 # Coding practices
 
-by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
+by Kunal Mishra, Jade Benjamin-Chung, Stephanie Djajadi, and Iris Tong
 
 ## Organizing scripts
 

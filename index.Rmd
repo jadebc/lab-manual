@@ -20,7 +20,7 @@ Welcome to the lab of Dr. Jade Benjamin-Chung, Assistant Professor in Epidemiolo
 This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly. 
 
 This manual was created with input from a large number of team members and with inspiration from [other scientists' lab manuals](https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf). 
-Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, and Anna Nguyen.  
+Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen, Iris Tong, and Gabby Barratt Heitmann.
 
 Feel free to draw from this manual (and please cite it if you do!).  
 

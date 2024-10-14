@@ -1,0 +1,44 @@
+# Reproducible Environments
+
+by Anna Nguyen
+
+## Package Version Control with renv
+
+### Introduction 
+Replicable code should produce the same results, regardless of when or where it’s run. However, our analyses often leverage open-source R packages that are developed by other teams. These packages continue to be developed after research projects are completed, which may include changes to analysis functions that could impact how code runs for both other team members and external replicators. 
+
+For example, suppose we had used a function that took in one argument, such that our code contained `example_function(arg_a = “a”)`. A few months after we publish our code, the package developers update the function to take in another mandatory argument `arg_b`. If someone runs our code, but has the most recent version of the package, they’ll receive an error message that the argument `arg_b` is missing and will not be able to full reproduce our results. 
+
+To ensure that the right functions are used in replication efforts, it is important for us to keep track of package versions used in each project. 
+
+`renv` can be to promote reproducible environments within R projects. `renv` creates individual package libraries for each project instead of having all projects, which may use different versions of the same package, share the same package library. However, for projects that use many packages, this process can be memory intensive and increase the time needed for a new users to start running code. 
+
+In this lab manual chapter, we provide a quick tutorial for integrating `renv` into research workflows. For more detailed instructions, please refer to the `renv` package vignette.
+
+### Implementing renv in projects
+ 
+Ideally, `renv` should be initiated at the start of projects and updated continuously when new packages are introduced in the codebase. However, this process can be initated at any point in a project
+
+To add `renv` to your workflow, follow these steps:
+
+1. Install the `renv` package by running `install.packages(“renv”)`
+2. Create an RProject file and ensure that your working directory is set to the correct folder
+3. In the R console, run `renv::init()` to intiialize renv in your R Project
+4. This will create the following files: `renv.lock`, .`Rprofile`, `renv/settings.json` and `renv/activate.R`. Commit and push these files to GitHub so that they’re accessible to other users. 
+5. As you write code, update the project’s R library by running `renv::snapshot()` in the R console
+6. Add `renv::restore()` to the head of your config file, to make sure that all users that run your code are on the same package versions. 
+
+### Using projects with renv
+
+If you’re starting to work on an ongoing project that already has `renv` set up, follow these steps to ensure that you’re using the same project versions.
+
+1. Install the `renv` package by running `install.packages(“renv”)`
+2. Pull the most updated version of the project from GitHub
+3. Open the project’s RProject file
+4. Run `renv::restore()`. In our lab’s projects, this is often already found at the top of the config file, so you can just run scripts as is. 
+5. This will pull up a list of the project’s packages that need to be updated for you to be consistent with the project. The console will ask if you want to proceed with updating these packages - type “Y” to continue.
+6. Wait for the correct versions of each package to install/update. This may take some time, depending on how many packages the project uses.
+7. Your R environment should now be using the same package versions as specified in the `renv` lock file. You should now be able to replicate the code.
+8. If you make edits to the code and introduce new/updated packages, see the section above for instructions on how to make updates.
+
+

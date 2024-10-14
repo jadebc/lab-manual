@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 Checklists | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 13 Data Publication | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 Checklists | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 13 Data Publication | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 Checklists | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 13 Data Publication | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slurm.html"/>
-<link rel="next" href="resources.html"/>
+<link rel="prev" href="code-publication.html"/>
+<link rel="next" href="slurm.html"/>
 <script src="libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -358,77 +358,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="checklists" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">Chapter 15</span> Checklists<a href="checklists.html#checklists" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>by Jade Benjamin-Chung</p>
-<div id="pre-analysis-plan-checklist" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> Pre-analysis plan checklist<a href="checklists.html#pre-analysis-plan-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Brief background on the study (a condensed version of the introduction section of the paper)</li>
-<li>Hypotheses / objectives</li>
-<li>Study design</li>
-<li>Description of data</li>
-<li>Definition of outcomes</li>
-<li>Definition of interventions / exposures</li>
-<li>Definition of covariates</li>
-<li>Statistical power calculation</li>
-<li>Statistical model description</li>
-<li>Covariate selection / screening</li>
-<li>Standard error estimation method</li>
-<li>Missing data analysis</li>
-<li>Assessment of effect modification / subgroup analyses</li>
-<li>Sensitivity analyses</li>
-<li>Negative control analyses</li>
-</ul>
+<div id="data-publication" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Data Publication<a href="data-publication.html#data-publication" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Adapted from Fanice Nyatigo and Ben Arnold’s chapter in the <a href="https://urlisolation.com/browser?clickId=524DE241-3F8F-4C98-B619-3C278374BF64&amp;traceToken=1728923499%3Bucsfmed_hosted%3Bhttps%3A%2F%2Fproctor-ucsf.github.io%2Fd&amp;url=https%3A%2F%2Fproctor-ucsf.github.io%2Fdcc-handbook%2Fpublicdata.html">Proctor-UCSF Lab Manual</a></p>
+<div id="overview" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Overview<a href="data-publication.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+<blockquote>
+<p><em><strong>Warning! </strong> <strong>NEVER</strong> push a dataset into the public domain (e.g., GitHub, OSF) without first checking with Jade to ensure that it is appropriately de-identified and we have approval from the sponsor and/or human subjects review board to do so. For example, we will need to re-code participant IDs (even if they contain no identifying information) before making data public to completely break the link between IDs and identifiable information stored on our servers. </em></p>
+</blockquote>
+<hr />
+<p>If you are releasing data into the public domain, then consider making available <em>at minimum</em> a <code>.csv</code> file and a codebook of the same name (note: you should have a codebook for internal data as well). We often also make available <code>.rds</code> files as well. For example, your <code>mystudy/data/public</code> directory could include three files for a single dataset, two with the actual data in <code>.rds</code> and <code>.csv</code> formats, and a third that describes their contents:</p>
+<pre><code>analysis_data_public.csv
+analysis_data_public.rds
+analysis_data_public_codebook.txt</code></pre>
+<p>In general, datasets are usually too big to save on GitHub, but occasionally they are small. Here is an example of where we actually pushed the data directly to GitHub: <a href="https://github.com/ben-arnold/enterics-seroepi/tree/master/data" class="uri">https://github.com/ben-arnold/enterics-seroepi/tree/master/data</a> .</p>
+<p>If the data are bigger, then maintaining them under version control in your git repository can be unweildy. Instead, we recommend using another stable repository that has version control, such as the Open Science Framework (<a href="https://osf.io">osf.io</a>). For example, all of the data from the WASH Benefits trials (led by investigators at Berkeley, icddr,b, IPA-Kenya and others) are all stored through data components nested within in OSF projects: <a href="https://osf.io/tprw2/" class="uri">https://osf.io/tprw2/</a>. Another good option is Dryad (<a href="https://datadryad.org/">datadryad.org</a>) or the (Stanford Digital Repository)[<a href="https://sdr.stanford.edu/" class="uri">https://sdr.stanford.edu/</a>].</p>
+<p>We recommend cross-linking public files in GitHub (scripts/notebooks only) and OSF/Dryad/Stanford Digital Repository.</p>
+<p>Below are the main steps to making data public, after finalizing the analysis datasets and scripts:<br />
+1. Remove Protected Health Information (PHI)<br />
+2. Create public IDs or join already created public IDs to the data<br />
+3. Create an OSF repository and/or Dryad/Stanford Digital Repository<br />
+4. Edit analysis scripts to run using the public datasets and test (optional)<br />
+5. Create a public github page for analysis scripts and link to OSF and/or Dryad/Zenodo<br />
+6. Go live</p>
 </div>
-<div id="code-checklist" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> Code checklist<a href="checklists.html#code-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Does the script run without errors?</li>
-<li>Is code self-contained within repo and/or associated Box folder?</li>
-<li>Is all commented out code / remarks removed?</li>
-<li>Does the header accurately describe the process completed in the script?</li>
-<li>Is the script pushed to its github repository?</li>
-<li>Does the code adhere to the <a href="https://jadebc.github.io/lab-manual/coding-style.html">coding style guide</a>?</li>
-<li>Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?</li>
-</ul>
+<div id="removing-phi" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Removing PHI<a href="data-publication.html#removing-phi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once the data is finalized for analysis, the first step is to strip it of Protected Health Information (PHI), or any other data that could be used to link back to specific participants, such as names, birth dates, or GPS coordinates at the village/neighborhood level or below. PHI includes, but is not limited to:</p>
+<div id="personal-information" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Personal information<a href="data-publication.html#personal-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These are identifiers that directly point to specific individuals, such as:<br />
+- Names, addresses, photographs, date of birth<br />
+- A combination of age, sex, and geographic location (below population 20,000) is considered identifiable</p>
 </div>
-<div id="manuscript-checklist" class="section level2 hasAnchor" number="15.3">
-<h2><span class="header-section-number">15.3</span> Manuscript checklist<a href="checklists.html#manuscript-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><em>This is adapted in part from <a href="https://www.nature.com/articles/d41586-019-01431-z">this article</a>.</em></p>
-<ul>
-<li>Have you completed the relevant reporting checklist, if applicable? (<a href="https://www.equator-network.org/about-us/what-is-a-reporting-guideline/">Collection of checklists</a>)</li>
-<li>Are the study results within the manuscript replicable (i.e., if you rerun the code in the study’s repository, the tables and figures will be exactly replicated?)</li>
-<li>Is a target journal selected?</li>
-<li>Is the title declarative, in other words, does it state the object/findings rather than suggest them?</li>
-<li>Is the word count of the manuscript close to the target journal’s allowance?</li>
-<li>Does the manuscript adhere to the formatting guide of the target journal?</li>
-<li>Does the manuscript use a consistent voice (passive or active – usually active is preferred … pun intended)?</li>
-<li>Is each figure and table (including supplementary material) referenced in the main text?</li>
-<li>Is there a caption for each figure and table (including supplementary material)?</li>
-<li>Are tables/figures and supplementary material numbered in accordance with their appearance in the main text?</li>
-<li>Does the text use past tense if it is reporting research findings or future tense if it is a study protocol?</li>
-<li>Does the text avoid subjective wording (e.g., “interesting”, “dramatic”)?</li>
-<li>Does the text use minimal abbreviations, and are all abbreviations defined at first use?</li>
-<li>Does the text avoid directionless words? (e.g., instead of writing, ‘Precipitation influences disease risk’, write, ‘Precipitation was associated with increased disease risk’).</li>
-<li>Does the text avoid making causal claims that are not supported by the study design? Be careful about the words “effect”, “increase”, and “decrease”, which are often interpreted as causal.</li>
-<li>Does the text avoid describing results with the word “significant”, which can easily be confused with statistical significance? (see references on this topic <a href="https://journals.lww.com/epidem/Fulltext/2001/05000/The_Value_of_P.2.aspx">here</a>)</li>
-<li>Have you drafted author contributions? Do they follow the <a href="https://journals.plos.org/plosone/s/authorship/?utm_source=plos&amp;utm_medium=blog&amp;utm_campaign=plos-1607-credit#loc-author-contributions">CRediT Taxonomy</a> for author contributions?</li>
-</ul>
+<div id="dates" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Dates<a href="data-publication.html#dates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Any specific dates (e.g., study visit dates, birth dates, treatment dates) are usually problematic.<br />
+- If a dataset requires high resolution temporal information, coarsen visit or measurement dates to be two variables: year and week of the year (1-52).<br />
+- If a dataset requires age, provide that information without a birth date (typically month resolution is sufficient)</p>
+<hr />
+<blockquote>
+<p><em><strong>Caution!</strong> If making changes to the format of dates or ages, make sure your analysis code runs on these modified versions of the data (step 3)! </em></p>
+</blockquote>
+<hr />
 </div>
-<div id="figure-checklist" class="section level2 hasAnchor" number="15.4">
-<h2><span class="header-section-number">15.4</span> Figure checklist<a href="checklists.html#figure-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Are the x-axis and y-axis labeled?</li>
-<li>If the figure includes panels, is each panel labeled?</li>
-<li>Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?</li>
-<li>Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)</li>
-<li>Are the colors used colorblind friendly? See a colorblind-friendly palette <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">here</a>, a neat palette generator with colorblind options <a href="https://medialab.github.io/iwanthue/?utm_source=Nature+Briefing&amp;utm_campaign=2c68711076-briefing-dy-20211006&amp;utm_medium=email&amp;utm_term=0_c9dfd39373-2c68711076-44335685">here</a>, and an article on why this matters <a href="https://www.nature.com/articles/d41586-021-02696-z">here</a></li>
-<li>Are colors/shapes/line types defined in a legend?</li>
-<li>Are the legends and other labels easy to understand with minimal abbreviations?</li>
-<li>If there is overplotting, is transparency used to show overlapping data?</li>
-<li>Are 95% confidence intervals or other measures of precision shown, if applicable?</li>
-</ul>
+<div id="geographic-information" class="section level3 hasAnchor" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Geographic information<a href="data-publication.html#geographic-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Do not include GPS coordinates (longitude, latitude) except in special circumstances where they have been obfuscated/shifted. Reach out to Jade before doing this because it can be complicated.</p>
+<p>Do not include place names or codes (e.g., US Zip Codes) if the place contains &lt;20,000 people. For villages or neighborhoods, code them with uninformative IDs. For sub-districts or districts, names are fine.</p>
+<p>If an analysis requires GPS locations (e.g., to make a map), then typically we include a disclaimer in the article’s data availability statement that explains we cannot make GPS locations public to protect participant confidentiality. As a middle ground, we typically make our <em>code</em> public that runs on the geo-located data for transparency, even if independent researchers can’t actually run that code (although please be careful to ensure the code itself does not in any way include geographic identifiers).</p>
+<p>For more examples of what constitutes PHI, please refer to this link: <a href="https://cphs.berkeley.edu/hipaa/hipaa18.html" class="uri">https://cphs.berkeley.edu/hipaa/hipaa18.html</a></p>
+</div>
+</div>
+<div id="create-public-ids" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Create public IDs<a href="data-publication.html#create-public-ids" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rationale" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Rationale<a href="data-publication.html#rationale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Stanford IRB requires that public datasets not include the original study IDs to identify participants or other units in the study (such as village IDs). The reason is that those IDs are linked in our private datasets to PHI. By creating a new set of public IDs, the public dataset is one step further removed from the potential to link to PHI.</p>
+</div>
+<div id="a-single-set-of-public-ids-for-each-study" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> A single set of public IDs for each study<a href="data-publication.html#a-single-set-of-public-ids-for-each-study" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For each study, it is ideal to create a single set of public IDs whenever possible. We could create a new set of public IDs for every public dataset, but the downside is that independent researchers could no longer link data that might be related. By creating a single set of public IDs associated with each internal study ID, public files retain the link.</p>
+<p>Maintaining a single set of public IDs requires a shared “bridge” dataset, that includes a row for each study ID and has the associated public ID. For studies with multiple levels of ID, we would typically have separate bridge datasets for each type of ID (e.g,. cluster ID, participant ID, etc.)</p>
+<p>Create a public ID that can be used to uniquely identify participants and that can internally be linked to the original study IDs. We recommend creating a subdirectory in the study’s shared data directory to store the public IDs. The shared location enables multiple projects to use the same IDs. Create the IDs using a script that reads in the study IDs, creates a unique (uninformative) public ID for the study IDs, and then saves the bridge dataset. The script should be saved in the same directory as the public ID files.</p>
+<hr />
+<blockquote>
+<p><em><strong>Caution!</strong> Note that small differences may arise if the new public IDs do not necessarily order participants in the same way as the internal IDs. The small differences are all in estimates that rely on resampling, such as Bootstrap CIs, permutation P-values, and TMLE, as the resampling process may lead tp slightly different re-samples. The key here, to ensure the results are consistent irrespective of the dataset used, is simply to not assign public IDs randomly. Use <code>rank()</code> on the internal ID instead of <code>row_number()</code> to ensure that the order is always the same. </em></p>
+</blockquote>
+<hr />
+</div>
+<div id="example-scripts" class="section level3 hasAnchor" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Example scripts<a href="data-publication.html#example-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have created a self-contained and reproducible example that you can run and replicate when making data public for your projects. It contains the following files and folders:</p>
+<ol style="list-style-type: decimal">
+<li><code>data/final/</code>- folder containing the projects final data in both csv and rds formats<br />
+</li>
+<li><code>code/DEMO_generate_public_IDs.R</code>- creates randomly generated public IDs that can be matched to the trial’s assigned patient IDs.<br />
+</li>
+<li><code>data/make_public/DEMO_internal_to_publicID.csv</code>- the output from step #2, a bridge dataset with two variables- the new public ID and the patient’s assigned ID.<br />
+</li>
+<li><code>code/DEMO_create_public_datasets.R</code>- joins the public IDs to the trial’s full dataset, and strips it of the assigned patient ID.</li>
+<li><code>data/public/</code>- folder containing the output from step #3- de-identified public dataset, in csv and rds formats, with uniquely identifying public IDs that cannot be easily linked back to the patient’s ID.</li>
+</ol>
+<p>The example workflow is accessible via GitHub: <a href="https://github.com/proctor-ucsf/dcc-handbook/tree/master/templates/making-data-public" class="uri">https://github.com/proctor-ucsf/dcc-handbook/tree/master/templates/making-data-public</a></p>
+</div>
+</div>
+<div id="create-a-data-repository" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Create a data repository<a href="data-publication.html#create-a-data-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First, ensure that you create a codebook and metadata file for each public dataset <a href="https://proctor-ucsf.github.io/dcc-handbook/datawrangling.html#documenting-datasets">See the DCC guide on Documenting datasets</a>. Use the same name as the datasets, but with “-codebook.txt” / “-codebook.html” / “-codebook.csv” at the end (depending on the file format for the codebook). One nice option is the R codebook package, which also generates JSON output that is machine-readable.</p>
+<div id="steps-for-creating-an-open-science-framework-osf-repository" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Steps for creating an Open Science Framework (OSF) repository:<a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Create a new OSF project per these instructions: <a href="https://help.osf.io/article/252-create-a-project" class="uri">https://help.osf.io/article/252-create-a-project</a></li>
+<li>Create a data component and upload the datasets in .csv and .rds format along with the codebooks. The primary format for public dissemination is .csv but we make the .rds files available too as auxiliary files for convenience.</li>
+<li>Create a notebook component and upload the final .html files (which will not be on github… but see optional item below)</li>
+<li>On the OSF landing Wiki, provide some context. Here is a recent example: <a href="https://osf.io/954bt/" class="uri">https://osf.io/954bt/</a></li>
+<li>Create a Digital Object Identifier (DOI) for the repository. A DOI is a unique identifier that provides a persistent link to content, such as a dataset in this case. <a href="https://researchdata.princeton.edu/research-lifecycle-guide/whats-doi-and-what-should-i-know-about-citing-datasets">Learn more about DOIs</a></li>
+<li>Optional: Complete the software checklist and system requirement guide for the analysis to guide others. Include it on the GitHub README for the project: <a href="https://github.com/proctor-ucsf/mordor-antibody" class="uri">https://github.com/proctor-ucsf/mordor-antibody</a></li>
+</ol>
+</div>
+</div>
+<div id="edit-and-test-analysis-scripts" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Edit and test analysis scripts<a href="data-publication.html#edit-and-test-analysis-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Make minor changes to the analysis scripts so that they run on public data. If using version control in GitHub, the most straight-forward way is to create a branch from the main git branch that reads in the public files, and then renames the new public ID variable, e.g., “id_public” to the internally recognized ID variable name, e.g. “recordID”, when reading in the public data. Re-run all the analysis scripts to ensure that they still work with the public version of the dataset.</p>
+</div>
+<div id="create-a-public-github-page-for-public-scripts" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Create a public GitHub page for public scripts<a href="data-publication.html#create-a-public-github-page-for-public-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At minimum, we should include all of the scripts required to run the analyses. <strong>IMPORTANT</strong>: ensure you have taken a snapshot and saved your computing environment using the <code>renv</code> package (<a href="#renv"><code>renv</code></a>).</p>
+<p>See examples:<br />
+- ACTION - <a href="https://github.com/proctor-ucsf/ACTION-public" class="uri">https://github.com/proctor-ucsf/ACTION-public</a><br />
+- NAITRE - <a href="https://github.com/proctor-ucsf/NAITRE-primary" class="uri">https://github.com/proctor-ucsf/NAITRE-primary</a></p>
+<hr />
+<blockquote>
+<p><em><strong>Caution!</strong> Read through the scripts carefully to ensure there is no PHI in the code itself </em></p>
+</blockquote>
+<hr />
+<p>Once a public GitHub page exists, you can create a new component on an OSF project (step 3, above) and link it to the public version of the GitHub repo.</p>
+</div>
+<div id="go-live" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> Go live<a href="data-publication.html#go-live" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>On GitHub, it is useful to create an official “release” version to freeze the repository, where you can have “associated files” with each version. Include the .html notebook output as additional files — since they aren’t tracked in GitHub, it does provide a way of freezing / saving the HTML output for us and others. OSF examples of a few Proctor trials:<br />
+- ACTION - <a href="https://osf.io/ca3pe/" class="uri">https://osf.io/ca3pe/</a><br />
+- NAITRE - <a href="https://osf.io/ujeyb/" class="uri">https://osf.io/ujeyb/</a><br />
+- MORDOR Niger antibody study - <a href="https://osf.io/dgsq3/" class="uri">https://osf.io/dgsq3/</a></p>
+<p>Further reading on end-to-end data management: <a href="https://plos.org/resource/how-to-store-and-manage-your-data/#data-management-plan">How to Store and Manage Your Data - PLOS</a></p>
 
 </div>
 </div>
@@ -437,8 +491,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="slurm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="code-publication.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="slurm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -469,7 +523,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/14-checklists.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/12-data-publication.Rmd",
 "text": "Edit"
 },
 "history": {
