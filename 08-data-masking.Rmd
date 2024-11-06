@@ -1,0 +1,116 @@
+# Data masking
+
+by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
+
+When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the [Sherlock user guide](https://www.sherlock.stanford.edu/docs/overview/introduction/) to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab. 
+
+
+## General Overview
+This chapter covers data masking, a unique process in R in which columns are treated as distinct objects within their dataframe’s environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names  are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.
+
+### What is Data Masking? 
+Within certain tidyverse operations, columns are called as if they were variables. For example, while running `r r df %>% mutate(X = …)` R recognizes that `r X` specifically references a column in `r df` without explicitly stating its membership [`r df %>% mutate(df$X = …)`] or calling the column name as a string [`r df %>% mutate(“X” = …)`] . 
+
+![Alt text](/assets/images/data-masking.PNG)
+
+However, this behavior may introduce errors when we attempt to incorporate variables from the global environment within these tidyverse pipelines. In the example above, `r column_name = “X”` followed by `r df %>% mutate(X2 = column_name + 1)` would yield an error, since `r column_name` is not a column in `r df` and the variable `r column_name` is not defined within the environment of `r df`
+
+
+### Using tidy evaluation for data masking
+In dplyr-based R programming, we make use of tidy evaluation. This allows us to avoid using base R syntax to reference specific columns in a data frame. By leveraging Tidy evaluation-based data masking, we can employ long pipes with several dplyr verbs to manipulate our data using stand-alone variables that store column names as strings.
+ 
+For example, consider a data frame “df” that contains a column called “heavyrain” that we want to manipulate. Suppose we wanted to convert the values of “heavyrain” into a factor.
+
+Using base R, which does not mask data, heavyrain must have quotes to be treated as a data-variable:
+```{r, eval = F}
+df[[“outcome”]] = as.factor(df[[“heavyrain”]])
+```
+
+In a dplyr pipe,  heavyrain is being masked using tidy evaluation and will be correctly interpreted as a column because it is recognized as a data-variable:
+df %>% mutate(outcome = as.factor(heavyrain))
+
+With modified data masking, heavyrain is a string that is coerced into being recognized as a data-variable:
+```{r, eval = F}
+var_name = “heavyrain”
+df %>% mutate(outcome = as.factor(!!sym(var_name)) 
+```
+
+While cleaner and often more convenient, the data frame that var_name is in is now “masked” and we refer to the vectors in the dataframe (data-variables) as though it is an object of its own (an environmental-variable). This is why we can just say the variable’s name in the context of a pipe – we treat it as though it’s an object defined in our environment. Within normal scripts, this is usually fine, because the data frame is “held on to” in the pipe. However, it can cause some programming hurdles when writing functions that take strings of variable/column names as arguments. In the next section, we briefly describe how to troubleshoot common errors in data masking, as relevant to our lab’s work.
+
+## Technical Overview
+
+This section covers the R functions and tools that we often use in the context of data masking, focusing on the bang bang operator (`r !!`) with symbol coercion (`r sym()`) and the Walrus operator (`r:=`). 
+
+The combined use of `r !!` and `r sym()` allows us to use strings, rather than data-variables, to reference column names within dplyr. Together, `r !!sym(“column_name”)` forces dplyr to recognize “column_name” as a data-variable prior to evaluating the rest of the expression, enabling the ability to perform calculations on the column while referring to it as a string.
+`r sym()` is a function that turns strings into symbols. In the context of a dplyr pipe, these symbols are interpreted as data-variables.
+The `r !!` (bang bang) operator tells dplyr to evaluate the sym() expression first, e.g. to unquote its expression (e.g. “column_name”) and evaluate it as a pre-existing object, first. This is helpful because often we use `r sym(“column_name”)` within a larger expression, and dplyr might evaluate other elements of the expression first without !!, causing errors. 
+
+When we want to create a new column (via mutate or summarize), the Walrus operator (`r :=`) allows us to specify the new column’s name using a string. For example, while `r df %>% mutate(“new_column” = values)` would yield an error, `r df %>% mutate(“new_column” := values)` will correctly create a new column called “new_column”. 
+If we want to use a variable representing a string, we can use !! to force the variable to be evaluated before using `r :=` to assign the value of the new column. 
+```{r, eval = F}
+col_name = “new_column”
+df %>% mutate(!!col_name := values)
+```
+
+### Example
+
+Suppose we want to write a function “generate_descriptive_table” to summarize how the prevalence of “outcome” varies under different levels of a “risk_factor” in a data frame “df” 
+
+We can start by writing the function shell:
+```{r, eval = F}
+generate_descriptive_table <- function (df, outcome, rf) {
+outcome_dist_by_rf <- ….
+return(outcome_dist_by_rf)
+}
+```
+Next, we can filter the data frame for only rows in which “rf” and “outcome” are not missing. We can use !! and sym() within filter to evaluate the strings stored in “rf” and “outcome”. Note that defining `r !!sym(outcome)` or `r !!sym(outcome)` in variables _outside of the dplyr pipeline_ will *not* work.
+
+```{r, eval = F}
+generate_descriptive_table <- function (df, outcome, rf,) {
+  outcome_dist_by_rf <- df %>% 
+  filter(!is.na(!!sym(outcome)), !is.na(!!sym(rf))) %>%
+  ….
+  return(outcome_dist_by_rf)
+}
+```
+Similarly, we use !! and sym() in group_by to evaluate column name, stored as a string in the argument “rf”
+
+```{r, eval = F}
+generate_descriptive_table <- function (df, outcome, rf,) {
+  outcome_dist_by_rf <- df %>% 
+  filter(!is.na(!!sym(outcome)), !is.na(!!sym(rf))) %>%
+  ….
+  return(outcome_dist_by_rf)
+}
+```
+Finally, we can use the walrus operator, !! and sym() with “summarize” to create a new column that takes the mean of the column referenced in “rf”. We also use “glue” or “paste” to give the new column an informative name that includes the “outcome” it describes. 
+```{r, eval = F}
+generate_descriptive_table <- function (df, outcome, rf,) {
+  outcome_dist_by_rf <- df %>% 
+  filter(!is.na(!!sym(outcome)), !is.na(!!sym(rf))) %>% 
+  group_by(!!sym(rf)) %>%
+  summarize(!!(glue::glue(“{outcome}_prev”)) := mean(!!sym(outcome))) 
+  return(outcome_dist_by_rf)
+}
+```
+OR
+```{r, eval = F}
+generate_descriptive_table <- function (df, outcome, rf,) {
+  outcome_dist_by_rf <- df %>% 
+  filter(!is.na(!!sym(outcome)), !is.na(!!sym(rf))) %>% 
+  group_by(!!sym(rf)) %>%
+  summarize(!!(paste0(outcome, ”_prev”)) := mean(!!sym(outcome)))
+  return(outcome_dist_by_rf)
+}
+```
+OR
+```{r, eval = F}
+generate_descriptive_table <- function (df, outcome, rf,) {
+  new_column_name = paste0(outcome, ”_prev”)
+  outcome_dist_by_rf <- df %>% 
+  filter(!is.na(!!sym(outcome)), !is.na(!!sym(rf))) %>% 
+  group_by(!!sym(rf)) %>%
+  summarize(!!(new_column_name) := mean(!!sym(outcome))) 
+  return(outcome_dist_by_rf)
+}
+```
