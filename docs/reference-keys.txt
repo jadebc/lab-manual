@@ -24,11 +24,13 @@ coding-style
 comments
 line-breaks
 styling
+data-masking
+general-overview
+example
 github
 basics
 github-desktop
 git-branching
-example-workflow
 unix
 basics-1
 introduction

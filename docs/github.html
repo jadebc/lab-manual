@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Github | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 10 Github | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Github | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 10 Github | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Github | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 10 Github | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="working-with-big-data.html"/>
+<link rel="prev" href="data-masking.html"/>
 <link rel="next" href="unix.html"/>
 <script src="libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -228,115 +228,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="working-with-big-data.html#using-downsampled-data" id="toc-using-downsampled-data"><span class="toc-section-number">8.2</span> Using downsampled data</a></li>
 <li><a href="working-with-big-data.html#optimal-rstudio-set-up" id="toc-optimal-rstudio-set-up"><span class="toc-section-number">8.3</span> Optimal RStudio set up</a></li>
 </ul></li>
-<li><a href="github.html#github" id="toc-github"><span class="toc-section-number">9</span> Github</a>
+<li><a href="data-masking.html#data-masking" id="toc-data-masking"><span class="toc-section-number">9</span> Data masking</a>
 <ul>
-<li><a href="github.html#basics" id="toc-basics"><span class="toc-section-number">9.1</span> Basics</a></li>
-<li><a href="github.html#github-desktop" id="toc-github-desktop"><span class="toc-section-number">9.2</span> Github Desktop</a></li>
-<li><a href="github.html#git-branching" id="toc-git-branching"><span class="toc-section-number">9.3</span> Git Branching</a></li>
-<li><a href="github.html#example-workflow" id="toc-example-workflow"><span class="toc-section-number">9.4</span> Example Workflow</a></li>
-<li><a href="github.html#commonly-used-git-commands" id="toc-commonly-used-git-commands"><span class="toc-section-number">9.5</span> Commonly Used Git Commands</a></li>
-<li><a href="github.html#how-often-should-i-commit" id="toc-how-often-should-i-commit"><span class="toc-section-number">9.6</span> How often should I commit?</a></li>
-<li><a href="github.html#what-should-be-pushed-to-github" id="toc-what-should-be-pushed-to-github"><span class="toc-section-number">9.7</span> What should be pushed to Github?</a></li>
+<li><a href="data-masking.html#general-overview" id="toc-general-overview"><span class="toc-section-number">9.1</span> General Overview</a>
+<ul>
+<li><a href="data-masking.html#what-is-data-masking" id="toc-what-is-data-masking"><span class="toc-section-number">9.1.1</span> What is Data Masking?</a></li>
+<li><a href="data-masking.html#using-tidy-evaluation-for-data-masking" id="toc-using-tidy-evaluation-for-data-masking"><span class="toc-section-number">9.1.2</span> Using tidy evaluation for data masking</a></li>
 </ul></li>
-<li><a href="unix.html#unix" id="toc-unix"><span class="toc-section-number">10</span> Unix commands</a>
+<li><a href="data-masking.html#technical-overview" id="toc-technical-overview"><span class="toc-section-number">9.2</span> Technical Overview</a>
 <ul>
-<li><a href="unix.html#basics-1" id="toc-basics-1"><span class="toc-section-number">10.1</span> Basics</a></li>
-<li><a href="unix.html#syntax-for-both-macwindows" id="toc-syntax-for-both-macwindows"><span class="toc-section-number">10.2</span> Syntax for both Mac/Windows</a></li>
-<li><a href="unix.html#running-bash-scripts" id="toc-running-bash-scripts"><span class="toc-section-number">10.3</span> Running Bash Scripts</a></li>
-<li><a href="unix.html#running-rscripts-in-windows" id="toc-running-rscripts-in-windows"><span class="toc-section-number">10.4</span> Running Rscripts in Windows</a>
-<ul>
-<li><a href="unix.html#common-mistakes" id="toc-common-mistakes"><span class="toc-section-number">10.4.1</span> Common Mistakes</a></li>
-</ul></li>
-<li><a href="unix.html#checking-tasks-and-killing-jobs" id="toc-checking-tasks-and-killing-jobs"><span class="toc-section-number">10.5</span> Checking tasks and killing jobs</a></li>
-<li><a href="unix.html#running-big-jobs" id="toc-running-big-jobs"><span class="toc-section-number">10.6</span> Running big jobs</a>
-<ul>
-<li><a href="unix.html#example-code-for-runfilesavelogs" id="toc-example-code-for-runfilesavelogs"><span class="toc-section-number">10.6.1</span> Example code for <code>runfileSaveLogs</code></a></li>
-<li><a href="unix.html#example-usage-for-runfilesavelogs" id="toc-example-usage-for-runfilesavelogs"><span class="toc-section-number">10.6.2</span> Example usage for <code>runfileSaveLogs</code></a></li>
+<li><a href="data-masking.html#example" id="toc-example"><span class="toc-section-number">9.2.1</span> Example</a></li>
 </ul></li>
 </ul></li>
-<li><a href="reproducible-environments.html#reproducible-environments" id="toc-reproducible-environments"><span class="toc-section-number">11</span> Reproducible Environments</a>
+<li><a href="github.html#github" id="toc-github"><span class="toc-section-number">10</span> Github</a>
 <ul>
-<li><a href="reproducible-environments.html#package-version-control-with-renv" id="toc-package-version-control-with-renv"><span class="toc-section-number">11.1</span> Package Version Control with renv</a>
+<li><a href="github.html#basics" id="toc-basics"><span class="toc-section-number">10.1</span> Basics</a></li>
+<li><a href="github.html#github-desktop" id="toc-github-desktop"><span class="toc-section-number">10.2</span> Github Desktop</a></li>
+<li><a href="github.html#git-branching" id="toc-git-branching"><span class="toc-section-number">10.3</span> Git Branching</a></li>
+<li><a href="github.html#example-workflow" id="toc-example-workflow"><span class="toc-section-number">10.4</span> Example Workflow</a></li>
+<li><a href="github.html#commonly-used-git-commands" id="toc-commonly-used-git-commands"><span class="toc-section-number">10.5</span> Commonly Used Git Commands</a></li>
+<li><a href="github.html#how-often-should-i-commit" id="toc-how-often-should-i-commit"><span class="toc-section-number">10.6</span> How often should I commit?</a></li>
+<li><a href="github.html#what-should-be-pushed-to-github" id="toc-what-should-be-pushed-to-github"><span class="toc-section-number">10.7</span> What should be pushed to Github?</a></li>
+</ul></li>
+<li><a href="unix.html#unix" id="toc-unix"><span class="toc-section-number">11</span> Unix commands</a>
 <ul>
-<li><a href="reproducible-environments.html#introduction" id="toc-introduction"><span class="toc-section-number">11.1.1</span> Introduction</a></li>
-<li><a href="reproducible-environments.html#implementing-renv-in-projects" id="toc-implementing-renv-in-projects"><span class="toc-section-number">11.1.2</span> Implementing renv in projects</a></li>
-<li><a href="reproducible-environments.html#using-projects-with-renv" id="toc-using-projects-with-renv"><span class="toc-section-number">11.1.3</span> Using projects with renv</a></li>
+<li><a href="unix.html#basics-1" id="toc-basics-1"><span class="toc-section-number">11.1</span> Basics</a></li>
+<li><a href="unix.html#syntax-for-both-macwindows" id="toc-syntax-for-both-macwindows"><span class="toc-section-number">11.2</span> Syntax for both Mac/Windows</a></li>
+<li><a href="unix.html#running-bash-scripts" id="toc-running-bash-scripts"><span class="toc-section-number">11.3</span> Running Bash Scripts</a></li>
+<li><a href="unix.html#running-rscripts-in-windows" id="toc-running-rscripts-in-windows"><span class="toc-section-number">11.4</span> Running Rscripts in Windows</a>
+<ul>
+<li><a href="unix.html#common-mistakes" id="toc-common-mistakes"><span class="toc-section-number">11.4.1</span> Common Mistakes</a></li>
+</ul></li>
+<li><a href="unix.html#checking-tasks-and-killing-jobs" id="toc-checking-tasks-and-killing-jobs"><span class="toc-section-number">11.5</span> Checking tasks and killing jobs</a></li>
+<li><a href="unix.html#running-big-jobs" id="toc-running-big-jobs"><span class="toc-section-number">11.6</span> Running big jobs</a>
+<ul>
+<li><a href="unix.html#example-code-for-runfilesavelogs" id="toc-example-code-for-runfilesavelogs"><span class="toc-section-number">11.6.1</span> Example code for <code>runfileSaveLogs</code></a></li>
+<li><a href="unix.html#example-usage-for-runfilesavelogs" id="toc-example-usage-for-runfilesavelogs"><span class="toc-section-number">11.6.2</span> Example usage for <code>runfileSaveLogs</code></a></li>
 </ul></li>
 </ul></li>
-<li><a href="code-publication.html#code-publication" id="toc-code-publication"><span class="toc-section-number">12</span> Code Publication</a>
+<li><a href="reproducible-environments.html#reproducible-environments" id="toc-reproducible-environments"><span class="toc-section-number">12</span> Reproducible Environments</a>
 <ul>
-<li><a href="code-publication.html#checklist-overview" id="toc-checklist-overview"><span class="toc-section-number">12.1</span> Checklist overview</a></li>
-<li><a href="code-publication.html#fill-out-file-headers" id="toc-fill-out-file-headers"><span class="toc-section-number">12.2</span> Fill out file headers</a></li>
-<li><a href="code-publication.html#clean-up-comments" id="toc-clean-up-comments"><span class="toc-section-number">12.3</span> Clean up comments</a></li>
-<li><a href="code-publication.html#document-functions" id="toc-document-functions"><span class="toc-section-number">12.4</span> Document functions</a></li>
-<li><a href="code-publication.html#remove-deprecated-filepaths" id="toc-remove-deprecated-filepaths"><span class="toc-section-number">12.5</span> Remove deprecated filepaths</a></li>
-<li><a href="code-publication.html#ensure-project-runs-via-bash" id="toc-ensure-project-runs-via-bash"><span class="toc-section-number">12.6</span> Ensure project runs via bash</a></li>
-<li><a href="code-publication.html#complete-the-readme" id="toc-complete-the-readme"><span class="toc-section-number">12.7</span> Complete the README</a></li>
-<li><a href="code-publication.html#clean-up-feature-branches" id="toc-clean-up-feature-branches"><span class="toc-section-number">12.8</span> Clean up feature branches</a></li>
-<li><a href="code-publication.html#create-github-release" id="toc-create-github-release"><span class="toc-section-number">12.9</span> Create Github release</a></li>
+<li><a href="reproducible-environments.html#package-version-control-with-renv" id="toc-package-version-control-with-renv"><span class="toc-section-number">12.1</span> Package Version Control with renv</a>
+<ul>
+<li><a href="reproducible-environments.html#introduction" id="toc-introduction"><span class="toc-section-number">12.1.1</span> Introduction</a></li>
+<li><a href="reproducible-environments.html#implementing-renv-in-projects" id="toc-implementing-renv-in-projects"><span class="toc-section-number">12.1.2</span> Implementing renv in projects</a></li>
+<li><a href="reproducible-environments.html#using-projects-with-renv" id="toc-using-projects-with-renv"><span class="toc-section-number">12.1.3</span> Using projects with renv</a></li>
 </ul></li>
-<li><a href="data-publication.html#data-publication" id="toc-data-publication"><span class="toc-section-number">13</span> Data Publication</a>
-<ul>
-<li><a href="data-publication.html#overview" id="toc-overview"><span class="toc-section-number">13.1</span> Overview</a></li>
-<li><a href="data-publication.html#removing-phi" id="toc-removing-phi"><span class="toc-section-number">13.2</span> Removing PHI</a>
-<ul>
-<li><a href="data-publication.html#personal-information" id="toc-personal-information"><span class="toc-section-number">13.2.1</span> Personal information</a></li>
-<li><a href="data-publication.html#dates" id="toc-dates"><span class="toc-section-number">13.2.2</span> Dates</a></li>
-<li><a href="data-publication.html#geographic-information" id="toc-geographic-information"><span class="toc-section-number">13.2.3</span> Geographic information</a></li>
 </ul></li>
-<li><a href="data-publication.html#create-public-ids" id="toc-create-public-ids"><span class="toc-section-number">13.3</span> Create public IDs</a>
+<li><a href="code-publication.html#code-publication" id="toc-code-publication"><span class="toc-section-number">13</span> Code Publication</a>
 <ul>
-<li><a href="data-publication.html#rationale" id="toc-rationale"><span class="toc-section-number">13.3.1</span> Rationale</a></li>
-<li><a href="data-publication.html#a-single-set-of-public-ids-for-each-study" id="toc-a-single-set-of-public-ids-for-each-study"><span class="toc-section-number">13.3.2</span> A single set of public IDs for each study</a></li>
-<li><a href="data-publication.html#example-scripts" id="toc-example-scripts"><span class="toc-section-number">13.3.3</span> Example scripts</a></li>
+<li><a href="code-publication.html#checklist-overview" id="toc-checklist-overview"><span class="toc-section-number">13.1</span> Checklist overview</a></li>
+<li><a href="code-publication.html#fill-out-file-headers" id="toc-fill-out-file-headers"><span class="toc-section-number">13.2</span> Fill out file headers</a></li>
+<li><a href="code-publication.html#clean-up-comments" id="toc-clean-up-comments"><span class="toc-section-number">13.3</span> Clean up comments</a></li>
+<li><a href="code-publication.html#document-functions" id="toc-document-functions"><span class="toc-section-number">13.4</span> Document functions</a></li>
+<li><a href="code-publication.html#remove-deprecated-filepaths" id="toc-remove-deprecated-filepaths"><span class="toc-section-number">13.5</span> Remove deprecated filepaths</a></li>
+<li><a href="code-publication.html#ensure-project-runs-via-bash" id="toc-ensure-project-runs-via-bash"><span class="toc-section-number">13.6</span> Ensure project runs via bash</a></li>
+<li><a href="code-publication.html#complete-the-readme" id="toc-complete-the-readme"><span class="toc-section-number">13.7</span> Complete the README</a></li>
+<li><a href="code-publication.html#clean-up-feature-branches" id="toc-clean-up-feature-branches"><span class="toc-section-number">13.8</span> Clean up feature branches</a></li>
+<li><a href="code-publication.html#create-github-release" id="toc-create-github-release"><span class="toc-section-number">13.9</span> Create Github release</a></li>
 </ul></li>
-<li><a href="data-publication.html#create-a-data-repository" id="toc-create-a-data-repository"><span class="toc-section-number">13.4</span> Create a data repository</a>
+<li><a href="data-publication.html#data-publication" id="toc-data-publication"><span class="toc-section-number">14</span> Data Publication</a>
 <ul>
-<li><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository" id="toc-steps-for-creating-an-open-science-framework-osf-repository"><span class="toc-section-number">13.4.1</span> Steps for creating an Open Science Framework (OSF) repository:</a></li>
-</ul></li>
-<li><a href="data-publication.html#edit-and-test-analysis-scripts" id="toc-edit-and-test-analysis-scripts"><span class="toc-section-number">13.5</span> Edit and test analysis scripts</a></li>
-<li><a href="data-publication.html#create-a-public-github-page-for-public-scripts" id="toc-create-a-public-github-page-for-public-scripts"><span class="toc-section-number">13.6</span> Create a public GitHub page for public scripts</a></li>
-<li><a href="data-publication.html#go-live" id="toc-go-live"><span class="toc-section-number">13.7</span> Go live</a></li>
-</ul></li>
-<li><a href="slurm.html#slurm" id="toc-slurm"><span class="toc-section-number">14</span> Slurm and cluster computing</a>
+<li><a href="data-publication.html#overview" id="toc-overview"><span class="toc-section-number">14.1</span> Overview</a></li>
+<li><a href="data-publication.html#removing-phi" id="toc-removing-phi"><span class="toc-section-number">14.2</span> Removing PHI</a>
 <ul>
-<li><a href="slurm.html#getting-started" id="toc-getting-started"><span class="toc-section-number">14.1</span> Getting started</a>
-<ul>
-<li><a href="slurm.html#one-time-system-set-up" id="toc-one-time-system-set-up"><span class="toc-section-number">14.1.1</span> One-Time System Set-Up</a></li>
+<li><a href="data-publication.html#personal-information" id="toc-personal-information"><span class="toc-section-number">14.2.1</span> Personal information</a></li>
+<li><a href="data-publication.html#dates" id="toc-dates"><span class="toc-section-number">14.2.2</span> Dates</a></li>
+<li><a href="data-publication.html#geographic-information" id="toc-geographic-information"><span class="toc-section-number">14.2.3</span> Geographic information</a></li>
 </ul></li>
-<li><a href="slurm.html#moving-files-to-sherlock" id="toc-moving-files-to-sherlock"><span class="toc-section-number">14.2</span> Moving files to Sherlock</a></li>
-<li><a href="slurm.html#installing-packages-on-sherlock" id="toc-installing-packages-on-sherlock"><span class="toc-section-number">14.3</span> Installing packages on Sherlock</a></li>
-<li><a href="slurm.html#testing-your-code" id="toc-testing-your-code"><span class="toc-section-number">14.4</span> Testing your code</a>
+<li><a href="data-publication.html#create-public-ids" id="toc-create-public-ids"><span class="toc-section-number">14.3</span> Create public IDs</a>
 <ul>
-<li><a href="slurm.html#the-command-line" id="toc-the-command-line"><span class="toc-section-number">14.4.1</span> The command line</a></li>
-<li><a href="slurm.html#the-sherlock-ondemand-dashboard" id="toc-the-sherlock-ondemand-dashboard"><span class="toc-section-number">14.4.2</span> The Sherlock OnDemand Dashboard</a></li>
-<li><a href="slurm.html#filepaths-configuration-on-sherlock" id="toc-filepaths-configuration-on-sherlock"><span class="toc-section-number">14.4.3</span> Filepaths &amp; configuration on Sherlock</a></li>
+<li><a href="data-publication.html#rationale" id="toc-rationale"><span class="toc-section-number">14.3.1</span> Rationale</a></li>
+<li><a href="data-publication.html#a-single-set-of-public-ids-for-each-study" id="toc-a-single-set-of-public-ids-for-each-study"><span class="toc-section-number">14.3.2</span> A single set of public IDs for each study</a></li>
+<li><a href="data-publication.html#example-scripts" id="toc-example-scripts"><span class="toc-section-number">14.3.3</span> Example scripts</a></li>
 </ul></li>
-<li><a href="slurm.html#storage-group-storage-access" id="toc-storage-group-storage-access"><span class="toc-section-number">14.5</span> Storage &amp; group storage access</a>
+<li><a href="data-publication.html#create-a-data-repository" id="toc-create-a-data-repository"><span class="toc-section-number">14.4</span> Create a data repository</a>
 <ul>
-<li><a href="slurm.html#individual-storage" id="toc-individual-storage"><span class="toc-section-number">14.5.1</span> Individual storage</a></li>
-<li><a href="slurm.html#group-storage" id="toc-group-storage"><span class="toc-section-number">14.5.2</span> Group storage</a></li>
-<li><a href="slurm.html#folder-permissions" id="toc-folder-permissions"><span class="toc-section-number">14.5.3</span> Folder permissions</a></li>
+<li><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository" id="toc-steps-for-creating-an-open-science-framework-osf-repository"><span class="toc-section-number">14.4.1</span> Steps for creating an Open Science Framework (OSF) repository:</a></li>
 </ul></li>
-<li><a href="slurm.html#running-big-jobs-1" id="toc-running-big-jobs-1"><span class="toc-section-number">14.6</span> Running big jobs</a></li>
+<li><a href="data-publication.html#edit-and-test-analysis-scripts" id="toc-edit-and-test-analysis-scripts"><span class="toc-section-number">14.5</span> Edit and test analysis scripts</a></li>
+<li><a href="data-publication.html#create-a-public-github-page-for-public-scripts" id="toc-create-a-public-github-page-for-public-scripts"><span class="toc-section-number">14.6</span> Create a public GitHub page for public scripts</a></li>
+<li><a href="data-publication.html#go-live" id="toc-go-live"><span class="toc-section-number">14.7</span> Go live</a></li>
 </ul></li>
-<li><a href="checklists.html#checklists" id="toc-checklists"><span class="toc-section-number">15</span> Checklists</a>
+<li><a href="slurm.html#slurm" id="toc-slurm"><span class="toc-section-number">15</span> Slurm and cluster computing</a>
 <ul>
-<li><a href="checklists.html#pre-analysis-plan-checklist" id="toc-pre-analysis-plan-checklist"><span class="toc-section-number">15.1</span> Pre-analysis plan checklist</a></li>
-<li><a href="checklists.html#code-checklist" id="toc-code-checklist"><span class="toc-section-number">15.2</span> Code checklist</a></li>
-<li><a href="checklists.html#manuscript-checklist" id="toc-manuscript-checklist"><span class="toc-section-number">15.3</span> Manuscript checklist</a></li>
-<li><a href="checklists.html#figure-checklist" id="toc-figure-checklist"><span class="toc-section-number">15.4</span> Figure checklist</a></li>
-</ul></li>
-<li><a href="resources.html#resources" id="toc-resources"><span class="toc-section-number">16</span> Resources</a>
+<li><a href="slurm.html#getting-started" id="toc-getting-started"><span class="toc-section-number">15.1</span> Getting started</a>
 <ul>
-<li><a href="resources.html#resources-for-r" id="toc-resources-for-r"><span class="toc-section-number">16.1</span> Resources for R</a></li>
-<li><a href="resources.html#resources-for-git-github" id="toc-resources-for-git-github"><span class="toc-section-number">16.2</span> Resources for Git &amp; Github</a></li>
-<li><a href="resources.html#scientific-figures" id="toc-scientific-figures"><span class="toc-section-number">16.3</span> Scientific figures</a></li>
-<li><a href="resources.html#writing" id="toc-writing"><span class="toc-section-number">16.4</span> Writing</a></li>
-<li><a href="resources.html#presentations" id="toc-presentations"><span class="toc-section-number">16.5</span> Presentations</a></li>
-<li><a href="resources.html#professional-advice" id="toc-professional-advice"><span class="toc-section-number">16.6</span> Professional advice</a></li>
-<li><a href="resources.html#funding" id="toc-funding"><span class="toc-section-number">16.7</span> Funding</a></li>
-<li><a href="resources.html#ethics-and-global-health-research" id="toc-ethics-and-global-health-research"><span class="toc-section-number">16.8</span> Ethics and global health research</a></li>
+<li><a href="slurm.html#one-time-system-set-up" id="toc-one-time-system-set-up"><span class="toc-section-number">15.1.1</span> One-Time System Set-Up</a></li>
+</ul></li>
+<li><a href="slurm.html#moving-files-to-sherlock" id="toc-moving-files-to-sherlock"><span class="toc-section-number">15.2</span> Moving files to Sherlock</a></li>
+<li><a href="slurm.html#installing-packages-on-sherlock" id="toc-installing-packages-on-sherlock"><span class="toc-section-number">15.3</span> Installing packages on Sherlock</a></li>
+<li><a href="slurm.html#testing-your-code" id="toc-testing-your-code"><span class="toc-section-number">15.4</span> Testing your code</a>
+<ul>
+<li><a href="slurm.html#the-command-line" id="toc-the-command-line"><span class="toc-section-number">15.4.1</span> The command line</a></li>
+<li><a href="slurm.html#the-sherlock-ondemand-dashboard" id="toc-the-sherlock-ondemand-dashboard"><span class="toc-section-number">15.4.2</span> The Sherlock OnDemand Dashboard</a></li>
+<li><a href="slurm.html#filepaths-configuration-on-sherlock" id="toc-filepaths-configuration-on-sherlock"><span class="toc-section-number">15.4.3</span> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
+<li><a href="slurm.html#storage-group-storage-access" id="toc-storage-group-storage-access"><span class="toc-section-number">15.5</span> Storage &amp; group storage access</a>
+<ul>
+<li><a href="slurm.html#individual-storage" id="toc-individual-storage"><span class="toc-section-number">15.5.1</span> Individual storage</a></li>
+<li><a href="slurm.html#group-storage" id="toc-group-storage"><span class="toc-section-number">15.5.2</span> Group storage</a></li>
+<li><a href="slurm.html#folder-permissions" id="toc-folder-permissions"><span class="toc-section-number">15.5.3</span> Folder permissions</a></li>
+</ul></li>
+<li><a href="slurm.html#running-big-jobs-1" id="toc-running-big-jobs-1"><span class="toc-section-number">15.6</span> Running big jobs</a></li>
+</ul></li>
+<li><a href="checklists.html#checklists" id="toc-checklists"><span class="toc-section-number">16</span> Checklists</a>
+<ul>
+<li><a href="checklists.html#pre-analysis-plan-checklist" id="toc-pre-analysis-plan-checklist"><span class="toc-section-number">16.1</span> Pre-analysis plan checklist</a></li>
+<li><a href="checklists.html#code-checklist" id="toc-code-checklist"><span class="toc-section-number">16.2</span> Code checklist</a></li>
+<li><a href="checklists.html#manuscript-checklist" id="toc-manuscript-checklist"><span class="toc-section-number">16.3</span> Manuscript checklist</a></li>
+<li><a href="checklists.html#figure-checklist" id="toc-figure-checklist"><span class="toc-section-number">16.4</span> Figure checklist</a></li>
+</ul></li>
+<li><a href="resources.html#resources" id="toc-resources"><span class="toc-section-number">17</span> Resources</a>
+<ul>
+<li><a href="resources.html#resources-for-r" id="toc-resources-for-r"><span class="toc-section-number">17.1</span> Resources for R</a></li>
+<li><a href="resources.html#resources-for-git-github" id="toc-resources-for-git-github"><span class="toc-section-number">17.2</span> Resources for Git &amp; Github</a></li>
+<li><a href="resources.html#scientific-figures" id="toc-scientific-figures"><span class="toc-section-number">17.3</span> Scientific figures</a></li>
+<li><a href="resources.html#writing" id="toc-writing"><span class="toc-section-number">17.4</span> Writing</a></li>
+<li><a href="resources.html#presentations" id="toc-presentations"><span class="toc-section-number">17.5</span> Presentations</a></li>
+<li><a href="resources.html#professional-advice" id="toc-professional-advice"><span class="toc-section-number">17.6</span> Professional advice</a></li>
+<li><a href="resources.html#funding" id="toc-funding"><span class="toc-section-number">17.7</span> Funding</a></li>
+<li><a href="resources.html#ethics-and-global-health-research" id="toc-ethics-and-global-health-research"><span class="toc-section-number">17.8</span> Ethics and global health research</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
@@ -358,23 +370,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="github" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Github<a href="github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="github" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Github<a href="github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Stephanie Djajadi and Nolan Pokpongkiat</p>
-<div id="basics" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Basics<a href="github.html#basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basics" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basics<a href="github.html#basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>A detailed tutorial of Git can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">here on the CS61B website</a>.</li>
 <li>If you are already familiar with Git, you can reference the summary at the end of <a href="https://sp19.datastructur.es/materials/guides/using-git#b-local-repositories-narrative-introduction">Section B</a>.</li>
 <li>If you have made a mistake in Git, you can refer to this <a href="https://sethrobertson.github.io/GitFixUm/fixup.html">article</a> to undo, fix, or remove commits in git.</li>
 </ul>
 </div>
-<div id="github-desktop" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Github Desktop<a href="github.html#github-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="github-desktop" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Github Desktop<a href="github.html#github-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides <a href="https://desktop.github.com/">Github Desktop</a> as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.</p>
 </div>
-<div id="git-branching" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Git Branching<a href="github.html#git-branching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="git-branching" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Git Branching<a href="github.html#git-branching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you’ve finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:</p>
 <ul>
 <li>You may want to make a dramatic change to your existing code (called refactoring) but it will break other parts of your project. But you want to be able to simultaneously work on other parts or you are collaborating with others, and you don’t want to break the code for them.</li>
@@ -383,8 +395,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>A detailed tutorial on Git Branching can be found <a href="https://sp19.datastructur.es/materials/guides/using-git#e-git-branching-advanced-git-optional">here</a>. You can also find instructions on how to handle merge conflicts when joining branches together.</p>
 </div>
-<div id="example-workflow" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Example Workflow<a href="github.html#example-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="example-workflow" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Example Workflow<a href="github.html#example-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A standard workflow when starting on a new project and contributing code looks like this:</p>
 <table>
 <colgroup>
@@ -450,8 +462,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Other helpful commands are listed below.</p>
 </div>
-<div id="commonly-used-git-commands" class="section level2 hasAnchor" number="9.5">
-<h2><span class="header-section-number">9.5</span> Commonly Used Git Commands<a href="github.html#commonly-used-git-commands" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="commonly-used-git-commands" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Commonly Used Git Commands<a href="github.html#commonly-used-git-commands" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="36%" />
@@ -539,12 +551,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="how-often-should-i-commit" class="section level2 hasAnchor" number="9.6">
-<h2><span class="header-section-number">9.6</span> How often should I commit?<a href="github.html#how-often-should-i-commit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="how-often-should-i-commit" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> How often should I commit?<a href="github.html#how-often-should-i-commit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.</p>
 </div>
-<div id="what-should-be-pushed-to-github" class="section level2 hasAnchor" number="9.7">
-<h2><span class="header-section-number">9.7</span> What should be pushed to Github?<a href="github.html#what-should-be-pushed-to-github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-should-be-pushed-to-github" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> What should be pushed to Github?<a href="github.html#what-should-be-pushed-to-github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.</p>
 <p>There is a standardized <code>.gitignore</code> for <code>R</code> which you <a href="https://github.com/github/gitignore/blob/master/R.gitignore">can download</a> and add to your project. This ensures you’re not committing log files or things that would otherwise best be left ignored to GitHub. This is a <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">great discussion of project-oriented workflows</a>, extolling the virtues of a self-contained, portable projects, for your reference.</p>
 
@@ -555,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="working-with-big-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-masking.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="unix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -587,7 +599,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jadebc/lab-manual/edit/master/08-github.Rmd",
+"link": "https://github.com/jadebc/lab-manual/edit/master/09-github.Rmd",
 "text": "Edit"
 },
 "history": {

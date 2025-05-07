@@ -116,7 +116,7 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
@@ -126,7 +126,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2024-10-14}
+\date{\vspace{-2.5em}Updated: 2025-05-07}
 
 \begin{document}
 \maketitle
@@ -135,16 +135,13 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{welcome-to-the-benjamin-chung-lab}{%
-\chapter{Welcome to the Benjamin-Chung Lab!}\label{welcome-to-the-benjamin-chung-lab}}
+\chapter{Welcome to the Benjamin-Chung Lab!}\label{welcome-to-the-benjamin-chung-lab}
 
-\hypertarget{about-the-lab}{%
-\section{About the lab}\label{about-the-lab}}
+\section{About the lab}\label{about-the-lab}
 
 Welcome to the lab of Dr.~Jade Benjamin-Chung, Assistant Professor in Epidemiology \& Population Health at Stanford University. Our mission is to improve population health by creating high quality evidence about what health interventions work in whom and where, when, and how to implement them. Most of our research is focused on infectious diseases, including malaria, diarrhea, soil-transmitted helminths, and influenza. Our focus is on improving the health of vulnerable populations from low-resource settings, both domestically and internationally. We use a variety of epidemiologic, computational, and statistical methods, including causal inference and machine learning methods, in pursuit of our mission. To learn more about the lab, visit \href{https://jadebc.net}{jadebc.net}.
 
-\hypertarget{about-this-lab-manual}{%
-\section{About this lab manual}\label{about-this-lab-manual}}
+\section{About this lab manual}\label{about-this-lab-manual}
 
 This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly.
 
@@ -155,25 +152,21 @@ Feel free to draw from this manual (and please cite it if you do!).
 
 This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
 
-\hypertarget{culture-and-conduct}{%
-\chapter{Culture and conduct}\label{culture-and-conduct}}
+\chapter{Culture and conduct}\label{culture-and-conduct}
 
 by Jade Benjamin-Chung
 
-\hypertarget{lab-culture}{%
-\section{Lab culture}\label{lab-culture}}
+\section{Lab culture}\label{lab-culture}
 
 We are committed to a lab culture that is collaborative, supportive, inclusive, open, and free from discrimination and harassment.
 
 We encourage students / staff of all experience levels to respectfully share their honest opinions and ideas on any topic. Our group has thrived upon such respectful honest input from team members over the years, and this document is a product of years of student and staff input (and even debate) that has gradually improved our productivity and overall quality of our work.
 
-\hypertarget{diversity-equity-and-inclusion}{%
-\section{Diversity, equity, and inclusion}\label{diversity-equity-and-inclusion}}
+\section{Diversity, equity, and inclusion}\label{diversity-equity-and-inclusion}
 
 The Benjamin-Chung lab recognizes the importance of and is committed to cultivating a culture of diversity, equity, and inclusion. This means being a safe, supportive, and anti-racist environment in which students from diverse backgrounds are equally and inclusively supported in their education and training. Diversity takes many forms, and includes, but is not limited to, differences in race, ethnicity, gender, sexuality, socioeconomic status, religion, disability, and political affiliation.
 
-\hypertarget{protecting-human-subjects}{%
-\section{Protecting human subjects}\label{protecting-human-subjects}}
+\section{Protecting human subjects}\label{protecting-human-subjects}
 
 All lab members must complete \href{https://researchcompliance.stanford.edu/panels/hs/forms/training/citi}{CITI Human Subjects Biomedical Group 1} training and share their certificate with Jade. She will add team members to relevant Institutional Review Board protocols prior to their start date to ensure they have permission to work with identifiable datasets.
 
@@ -189,20 +182,17 @@ One of the most relevant aspects of protecting human subjects in our work is mai
 
 Remember, data that looks like it does not contain identifiers to you might still be classified as data that requires special protection by our IRB or under HIPAA, so always proceed with caution and ask for help if you have any concerns about how to maintain study participant confidentiality.
 
-\hypertarget{authorship}{%
-\section{Authorship}\label{authorship}}
+\section{Authorship}\label{authorship}
 
 We adhere to the \href{http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html}{ICMJE Definition of authorship} and are happy for team members who meet the definition of authorship to be included as co-authors on scientific manuscripts.
 
-\hypertarget{communication-and-coordination}{%
-\chapter{Communication and coordination}\label{communication-and-coordination}}
+\chapter{Communication and coordination}\label{communication-and-coordination}
 
 by Jade Benjamin-Chung
 
 One benefit of the academic environment is its schedule flexibility. This means that lab members may choose to work in the early morning, evening, or weekends. That said, we do not expect lab members to respond outside of business hours (unless there are special circumstances).
 
-\hypertarget{slack}{%
-\section{Slack}\label{slack}}
+\section{Slack}\label{slack}
 
 \begin{itemize}
 \tightlist
@@ -218,8 +208,7 @@ One benefit of the academic environment is its schedule flexibility. This means 
   Please thread messages in Slack as much as possible.
 \end{itemize}
 
-\hypertarget{email}{%
-\section{Email}\label{email}}
+\section{Email}\label{email}
 
 \begin{itemize}
 \tightlist
@@ -229,8 +218,7 @@ One benefit of the academic environment is its schedule flexibility. This means 
   Generally, strive to respond within 24 hours hours. As noted above, if you are unusually busy or on vacation please alert the team in advance so we can expect you not to respond at all / as quickly as usual.
 \end{itemize}
 
-\hypertarget{trello}{%
-\section{Trello}\label{trello}}
+\section{Trello}\label{trello}
 
 \begin{itemize}
 \tightlist
@@ -246,8 +234,7 @@ One benefit of the academic environment is its schedule flexibility. This means 
   Jade will move your card to the ``Completed'' list when it is done.
 \end{itemize}
 
-\hypertarget{google-drives}{%
-\section{Google Drives}\label{google-drives}}
+\section{Google Drives}\label{google-drives}
 
 \begin{itemize}
 \tightlist
@@ -255,8 +242,7 @@ One benefit of the academic environment is its schedule flexibility. This means 
   We mostly use Google Drive to create shared documents with longer descriptions of tasks. These documents are linked to in Trello. Jade often shares these with the whole team since tasks are overlapping, and even if a task is assigned to one person, others may have valuable insights.
 \end{itemize}
 
-\hypertarget{meetings}{%
-\section{Meetings}\label{meetings}}
+\section{Meetings}\label{meetings}
 
 \begin{itemize}
 \tightlist
@@ -268,8 +254,7 @@ One benefit of the academic environment is its schedule flexibility. This means 
   If you are regularly not able to come on the hour, notify the team and we might choose the modify the agenda order or the start time.
 \end{itemize}
 
-\hypertarget{reproducibility}{%
-\chapter{Reproducibility}\label{reproducibility}}
+\chapter{Reproducibility}\label{reproducibility}
 
 by Jade Benjamin-Chung
 
@@ -296,8 +281,7 @@ Our lab adopts the following practices to maximize the reproducibility of our wo
   Publish data (when possible) and replication scripts
 \end{enumerate}
 
-\hypertarget{what-is-the-reproducibility-crisis}{%
-\section{What is the reproducibility crisis?}\label{what-is-the-reproducibility-crisis}}
+\section{What is the reproducibility crisis?}\label{what-is-the-reproducibility-crisis}
 
 In the past decade, an increasing number of studies have found that published study findings could not be reproduced. Researchers found that it was not possible to reproduce estimates from published studies: 1) with the same data and same or similar code and 2) with newly collected data using the same (or similar) study design. These ``failures'' of reproducibility were frequent enough and broad enough in scope, occurring across a range of disciplines (epidemiology, psychology, economics, and others) to be deeply troubling. Program and policy decisions based on erroneous research findings could lead to wasted resources, and at worst, could harm intended beneficiaries. This crisis has motivated new practices in reproducibility, transparency, and openness. Our lab is committed to adopting these best practices, and much of the remainder of the lab manual focuses on how to do so.
 
@@ -312,18 +296,15 @@ Recommended readings on the ``reproducibility crisis'':
   Munafo MR, et al.~A manifesto for reproducible science. \emph{Nature Human Behavior} 2017 \url{http://dx.doi.org/10.1038/s41562-016-0021}
 \end{itemize}
 
-\hypertarget{study-design}{%
-\section{Study design}\label{study-design}}
+\section{Study design}\label{study-design}
 
 Appropriate study design is beyond the scope of this lab manual and is something trainees develop through their coursework and mentoring.
 
-\hypertarget{register-study-protocols}{%
-\section{Register study protocols}\label{register-study-protocols}}
+\section{Register study protocols}\label{register-study-protocols}
 
 We register all randomized trials on \url{clinicaltrials.gov}, and in some cases register observational studies as well.
 
-\hypertarget{write-and-register-pre-analysis-plans}{%
-\section{Write and register pre-analysis plans}\label{write-and-register-pre-analysis-plans}}
+\section{Write and register pre-analysis plans}\label{write-and-register-pre-analysis-plans}
 
 We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Here is an example of one: \url{https://osf.io/tgbxr/}. Generally, these include:
 
@@ -368,8 +349,7 @@ We write pre-analysis plans for most original research projects that are not exp
   Negative control analyses
 \end{itemize}
 
-\hypertarget{create-reproducible-workflows}{%
-\section{Create reproducible workflows}\label{create-reproducible-workflows}}
+\section{Create reproducible workflows}\label{create-reproducible-workflows}
 
 Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a ``single click''. In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic:
 
@@ -391,35 +371,29 @@ Reproducible workflows allow a user to reproduce study estimates and ideally fig
   Chapter 11: Unix
 \end{itemize}
 
-\hypertarget{process-and-analyze-data-with-internal-replication-and-masking}{%
-\section{Process and analyze data with internal replication and masking}\label{process-and-analyze-data-with-internal-replication-and-masking}}
+\section{Process and analyze data with internal replication and masking}\label{process-and-analyze-data-with-internal-replication-and-masking}
 
 See my video on this topic: \url{https://www.youtube.com/watch?v=WoYkY9MkbRE}
 
-\hypertarget{use-reporting-checklists-with-manuscripts}{%
-\section{Use reporting checklists with manuscripts}\label{use-reporting-checklists-with-manuscripts}}
+\section{Use reporting checklists with manuscripts}\label{use-reporting-checklists-with-manuscripts}
 
 Using reporting checklists helps ensure that peer-reviewed articles contain the information needed for readers to assess the validity of your work and/or attempt to reproduce it. A collection of reporting checklists is available here: \href{https://www.equator-network.org/about-us/what-is-a-reporting-guideline/}{https://www.equator-network.org/about-us/what-is-a-reporting-guideline/)}
 
-\hypertarget{publish-preprints}{%
-\section{Publish preprints}\label{publish-preprints}}
+\section{Publish preprints}\label{publish-preprints}
 
 A preprint is a scientific manuscript that has not been peer reviewed. Preprint servers create digital object identifiers (DOIs) and can be cited in other articles and in grant applications. Because the peer review process can take many months, publishing preprints prior to or during peer review enables other scientists to immediately learn from and build on your work. Importantly, NIH allows applicants to include preprint citations in their biosketches. In most cases, we publish preprints on \href{https://www.medrxiv.org/}{medRxiv}.
 
-\hypertarget{publish-data-when-possible-and-replication-scripts}{%
-\section{Publish data (when possible) and replication scripts}\label{publish-data-when-possible-and-replication-scripts}}
+\section{Publish data (when possible) and replication scripts}\label{publish-data-when-possible-and-replication-scripts}
 
 Publishing data and replication scripts allows other scientists to reproduce your work and to build upon it. We typically publish data on \href{osf.io}{Open Science Framework}, share links to \href{github.com}{Github} repositories, and archive code on \href{zenodo.org}{Zenodo}.
 
-\hypertarget{code-repositories}{%
-\chapter{Code repositories}\label{code-repositories}}
+\chapter{Code repositories}\label{code-repositories}
 
 By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
 Each study has at least one code repository that typically holds R code, shell scripts with Unix code, and research outputs (results .RDS files, tables, figures). Repositories may also include datasets. This chapter outlines how to organize these files. Adhering to a standard format makes it easier for us to efficiently collaborate across projects.
 
-\hypertarget{project-structure}{%
-\section{Project Structure}\label{project-structure}}
+\section{Project Structure}\label{project-structure}
 
 We recommend the following directory structure:
 
@@ -466,35 +440,29 @@ We recommend the following directory structure:
 
 For brevity, not every directory is ``expanded'', but we can glean some important takeaways from what we \emph{do} see.
 
-\hypertarget{rproj-files}{%
-\section{\texorpdfstring{\texttt{.Rproj} files}{.Rproj files}}\label{rproj-files}}
+\section{\texorpdfstring{\texttt{.Rproj} files}{.Rproj files}}\label{rproj-files}
 
 An ``R Project'' can be created within RStudio by going to \texttt{File\ \textgreater{}\textgreater{}\ New\ Project}. Depending on where you are with your research, choose the most appropriate option. This will save preferences, working directories, and even the results of running code/data (though I'd recommend starting from scratch each time you open your project, in general). Then, ensure that whenever you are working on that specific research project, you open your created project to enable the full utility of \texttt{.Rproj} files. This also automatically sets the directory to the top level of the project.
 
-\hypertarget{configuration-config-file}{%
-\section{Configuration (`config') File}\label{configuration-config-file}}
+\section{Configuration (`config') File}\label{configuration-config-file}
 
 This is the single most important file for your project. It will be responsible for a variety of common tasks, declare global variables, load functions, declare paths, and more. \emph{Every other file in the project} will begin with \texttt{source("0-config")}, and its role is to reduce redundancy and create an abstraction layer that allows you to make changes in one place (\texttt{0-config.R}) rather than 5 different files. To this end, paths which will be reference in multiple scripts (i.e.~a \texttt{merged\_data\_path}) can be declared in \texttt{0-config.R} and simply referred to by its variable name in scripts. If you ever want to change things, rename them, or even switch from a downsample to the full data, all you would then to need to do is modify the path in one place and the change will automatically update throughout your project. See the example config file for more details. The paths defined in the \texttt{0-config.R} file assume that users have opened the \texttt{.Rproj} file, which sets the directory to the top level of the project.
 
-\hypertarget{order-files-and-directories}{%
-\section{Order Files and Directories}\label{order-files-and-directories}}
+\section{Order Files and Directories}\label{order-files-and-directories}
 
 This makes the jumble of alphabetized filenames much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e.~\texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R} =\textgreater{} \texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.
 
-\hypertarget{using-bash-scripts-to-ensure-reproducibility}{%
-\section{Using Bash scripts to ensure reproducibility}\label{using-bash-scripts-to-ensure-reproducibility}}
+\section{Using Bash scripts to ensure reproducibility}\label{using-bash-scripts-to-ensure-reproducibility}
 
-Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e.~in \texttt{3\ -\ Analysis}), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data ``upstream'' changes -- you simply run the bash script. See the \protect\hyperlink{unix}{Unix Chapter} for further details.
+Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e.~in \texttt{3\ -\ Analysis}), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data ``upstream'' changes -- you simply run the bash script. See the \hyperref[unix]{Unix Chapter} for further details.
 
 After running bash scripts, \texttt{.Rout} log files will be generated for each script that has been executed. It is important to check these files. Scripts may appear to have run correctly in the terminal, but checking the log files is the only way to ensure that everything has run completely.
 
-\hypertarget{coding-practices}{%
-\chapter{Coding practices}\label{coding-practices}}
+\chapter{Coding practices}\label{coding-practices}
 
 by Kunal Mishra, Jade Benjamin-Chung, Stephanie Djajadi, and Iris Tong
 
-\hypertarget{organizing-scripts}{%
-\section{Organizing scripts}\label{organizing-scripts}}
+\section{Organizing scripts}\label{organizing-scripts}
 
 Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to:
 
@@ -513,13 +481,11 @@ Just as your data ``flows'' through your project, data should flow naturally thr
   save your data.
 \end{enumerate}
 
-Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
+Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
 
-\hypertarget{documenting-your-code}{%
-\section{Documenting your code}\label{documenting-your-code}}
+\section{Documenting your code}\label{documenting-your-code}
 
-\hypertarget{file-headers}{%
-\subsection{File headers}\label{file-headers}}
+\subsection{File headers}\label{file-headers}
 
 Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. You may optionally wish to include the inputs and outputs of the script as well, though the next section makes this significantly less necessary.
 
@@ -531,8 +497,7 @@ Every file in a project should have a header that allows it to be interpreted on
 ################################################################################
 \end{verbatim}
 
-\hypertarget{sections-and-subsections}{%
-\subsection{Sections and subsections}\label{sections-and-subsections}}
+\subsection{Sections and subsections}\label{sections-and-subsections}
 
 Rstudio (\href{https://blog.rstudio.com/2020/12/02/rstudio-v1-4-preview-little-things/}{v1.4 or more recent}) supports the use of Sections and Subsections. You can easily navigate through longer scripts using the navigation pane in RStudio, as shown on the right below.
 
@@ -544,20 +509,17 @@ Rstudio (\href{https://blog.rstudio.com/2020/12/02/rstudio-v1-4-preview-little-t
 ### Sub-subsection -------
 \end{verbatim}
 
-\hypertarget{code-folding}{%
-\subsection{Code folding}\label{code-folding}}
+\subsection{Code folding}\label{code-folding}
 
 Consider using RStudio's \href{https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections}{code folding} feature to collapse and expand different sections of your code. Any comment line with at least four trailing dashes (-), equal signs (=), or pound signs (\#) automatically creates a code section. For example:
 
-\hypertarget{comments-in-the-body-of-your-script}{%
-\subsection{Comments in the body of your script}\label{comments-in-the-body-of-your-script}}
+\subsection{Comments in the body of your script}\label{comments-in-the-body-of-your-script}
 
-Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
+Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
 
 \texttt{\#\ This\ is\ a\ comment\ -\/-\ first\ letter\ is\ capitalized\ and\ spaced\ away\ from\ the\ pound\ sign}
 
-\hypertarget{function-documentation}{%
-\subsection{Function documentation}\label{function-documentation}}
+\subsection{Function documentation}\label{function-documentation}
 
 Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a \texttt{string} into an argument that is meant to be a \texttt{data.table}, or a \texttt{list} into an argument meant for a \texttt{tibble}. It is the responsibility of a function's author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by \href{https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html\#format}{JavaDocs} and R's \href{https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/}{Plumber API docs}):
 
@@ -593,8 +555,7 @@ The header tells you what the function does, its various inputs, and how you mig
   \textbf{Note}: Depending on how important your function is, the complexity of your function code, and the complexity of different types of data in your project, you can also add ``type-checking'' to your function with the \texttt{assertthat::assert\_that()} function. You can, for example, \texttt{assert\_that(is.data.frame(statistical\_input))}, which will ensure that collaborators or reviewers of your project attempting to use your function are using it in the way that it is intended by calling it with (at the minimum) the correct type of arguments. You can extend this to ensure that certain assumptions regarding the inputs are fulfilled as well (i.e.~that \texttt{time\_column}, \texttt{location\_column}, \texttt{value\_column}, and \texttt{population\_column} all exist within the \texttt{statistical\_input} tibble).
 \end{itemize}
 
-\hypertarget{object-naming}{%
-\section{Object naming}\label{object-naming}}
+\section{Object naming}\label{object-naming}
 
 Generally we recommend using nouns for objects and verbs for functions. This is because functions are performing actions, while objects are not.
 
@@ -617,8 +578,7 @@ We recommend you use \textbf{Snake\_Case}.
   \textbf{Note}: again, its also worth noting there's nothing inherently wrong with using \texttt{.} in variable names, just that it goes against style best practices that are cropping up in data science, so its worth getting rid of these bad habits now.
 \end{itemize}
 
-\hypertarget{function-calls}{%
-\section{Function calls}\label{function-calls}}
+\section{Function calls}\label{function-calls}
 
 In a function call, use ``named arguments'' and put each argument on a separate line to make your code more readable.
 
@@ -638,16 +598,13 @@ mean_Y = calc_fluseas_mean(
 )
 \end{verbatim}
 
-\hypertarget{the-here-package}{%
-\section{The here package}\label{the-here-package}}
+\section{The here package}\label{the-here-package}
 
 The \texttt{here} package is one great R package that helps multiple collaborators deal with the mess that is working directories within an R project structure. Let's say we have an R project at the path \texttt{/home/oski/Some-R-Project}. My collaborator might clone the repository and work with it at some other path, such as \texttt{/home/bear/R-Code/Some-R-Project}. Dealing with working directories and paths explicitly can be a very large pain, and as you might imagine, setting up a Config with paths requires those paths to flexibly work for all contributors to a project. This is where the \texttt{here} package comes in and this a \href{https://github.com/jennybc/here_here}{great vignette describing it}.
 
-\hypertarget{readingsaving-data}{%
-\section{Reading/Saving Data}\label{readingsaving-data}}
+\section{Reading/Saving Data}\label{readingsaving-data}
 
-\hypertarget{rds-vs-.rdata-files}{%
-\subsection{\texorpdfstring{\texttt{.RDS} vs \texttt{.RData} Files}{.RDS vs .RData Files}}\label{rds-vs-.rdata-files}}
+\subsection{\texorpdfstring{\texttt{.RDS} vs \texttt{.RData} Files}{.RDS vs .RData Files}}\label{rds-vs-.rdata-files}
 
 One of the most common ways to load and save data in Base R is with the \texttt{load()} and \texttt{save()} functions to serialize multiple objects in a single \texttt{.RData} file. The biggest problems with this practice include an inability to control the names of things getting loaded in, the inherent confusion this creates in understanding older code, and the inability to load individual elements of a saved file. For this, we recommend using the RDS format to save R objects.
 
@@ -657,13 +614,11 @@ One of the most common ways to load and save data in Base R is with the \texttt{
   \textbf{Note}: if you have many related R objects you would have otherwise saved all together using the \texttt{save} function, the functional equivalent with \texttt{RDS} would be to create a (named) list containing each of these objects, and saving it.
 \end{itemize}
 
-\hypertarget{csvs}{%
-\subsection{CSVs}\label{csvs}}
+\subsection{CSVs}\label{csvs}
 
 Once again, the \texttt{readr} package as part of the Tidvyerse is great, with a much faster \texttt{read\_csv()} than Base R's \texttt{read.csv()}. For massive CSVs (\textgreater{} 5 GB), you'll find \texttt{data.table::fread()} to be the fastest CSV reader in any data science language out there. For writing CSVs, \texttt{readr::write\_csv()} and \texttt{data.table::fwrite()} outclass Base R's \texttt{write.csv()} by a significant margin as well.
 
-\hypertarget{integrating-box-and-dropbox}{%
-\section{Integrating Box and Dropbox}\label{integrating-box-and-dropbox}}
+\section{Integrating Box and Dropbox}\label{integrating-box-and-dropbox}
 
 Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, the files can slow down the workflow if they are pushed to GitHub. This makes collaboration difficult when not everyone has a copy of the file, unless we decide to duplicate files and share them manually. The files might also take up a lot of local storage. Box and Dropbox help us avoid these issues by automatically storing the files, reading data, and writing data back to the cloud.
 
@@ -671,16 +626,14 @@ Box and Dropbox are separate platforms, but we can use either one to store and s
 
 Make sure to authenticate before reading and writing from either Box or Dropbox. The authentication commands should go in the configuration file; it only needs to be done once. This will prompt you to give your login credentials for Box and Dropbox and will allow your application to access your shared folders.
 
-\hypertarget{box}{%
-\subsection{Box}\label{box}}
+\subsection{Box}\label{box}
 
 Follow the instructions in this section to use the \texttt{boxr} package. Note that there are a few setup steps that need to be done on the box website before you can use the \texttt{boxr} package, \href{https://r-box.github.io/boxr/articles/boxr-app-interactive.html\#create}{explained here} in the section ``Creating an Interactive App.'' This gets the authentication keys that must be put in box.
 Once that is done, add the authentication keys to your code in the configuration file, with \texttt{box\_auth(client\_id\ =\ "\textless{}your\_client\_id\textgreater{}",\ client\_secret\ =\ "\textless{}your\_client\_secret\_id\textgreater{}")}. It is also important to set the default working directory so that the code can reference the correct folder in box: \texttt{box\_setwd(\textless{}folder\_id\textgreater{})}. The folder ID is the sequence of digits at the end of the URL.
 
 Further details can be found \href{https://github.com/r-box/boxr}{here}.
 
-\hypertarget{dropbox}{%
-\subsection{Dropbox}\label{dropbox}}
+\subsection{Dropbox}\label{dropbox}
 
 Follow the instructions at \href{https://github.com/karthik/rdrop2}{this link} to use the \texttt{rdrop2} package. Similar to the \texttt{boxr} package, you must authenticate before reading and writing from Dropbox, which can be done by adding \texttt{drop\_auth()} to the configuration file.
 
@@ -698,8 +651,7 @@ saveRDS(token, "/path/to/tokenfile.RDS")
 drop_auth(rdstoken = "/path/to/tokenfile.RDS")
 \end{verbatim}
 
-\hypertarget{tidyverse}{%
-\section{Tidyverse}\label{tidyverse}}
+\section{Tidyverse}\label{tidyverse}
 
 Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming \href{https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/}{the gold standard} in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e.~big data pipelines that would benefit from Data.Table's performance optimizations).
 
@@ -762,20 +714,17 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
   \href{https://dplyr.tidyverse.org/articles/programming.html}{Programming with dplyr} (package vignette)
 \end{itemize}
 
-\hypertarget{coding-with-r-and-python}{%
-\section{Coding with R and Python}\label{coding-with-r-and-python}}
+\section{Coding with R and Python}\label{coding-with-r-and-python}
 
 If you're using both R and Python, you may wish to check out the \href{https://www.rdocumentation.org/packages/feather/versions/0.3.3}{Feather package} for exchanging data between the two languages \href{https://blog.rstudio.com/2016/03/29/feather/}{extremely quickly}.
 
-\hypertarget{repeating-analyses-with-different-variations}{%
-\section{Repeating analyses with different variations}\label{repeating-analyses-with-different-variations}}
+\section{Repeating analyses with different variations}\label{repeating-analyses-with-different-variations}
 
 In many cases, we will need to apply our modeling on different combinations of interests (outcomes, exposures, etc.). We can certainly use a \texttt{for} loop to repeat the execution of a wrapper function, but generally, \texttt{for} loops request high memory usage and produce the results in long computation time.
 
 Fortunately, R has some functions which implement looping in a compact form to help repeating your analyses with different variations (subgroups, outcomes, covariate sets, etc.) with better performances.
 
-\hypertarget{lapply-and-sapply}{%
-\subsection{\texorpdfstring{\texttt{lapply()} and \texttt{sapply()}}{lapply() and sapply()}}\label{lapply-and-sapply}}
+\subsection{\texorpdfstring{\texttt{lapply()} and \texttt{sapply()}}{lapply() and sapply()}}\label{lapply-and-sapply}
 
 \texttt{lapply()} is a function in the base R package that applies a function to each element of a list and returns a list. It's typically faster than \texttt{for}. Here is a simple generic example:
 
@@ -785,8 +734,7 @@ result <- lapply(X = mylist, FUN = func)
 
 There is another very similar function called \texttt{sapply()}. It also takes a list as its input, but if the output of the \texttt{func} is of the same length for each element in the input list, then \texttt{sapply()} will simplify the output to the simplest data structure possible, which will usually be a vector.
 
-\hypertarget{mapply-and-pmap}{%
-\subsection{\texorpdfstring{\texttt{mapply()} and \texttt{pmap()}}{mapply() and pmap()}}\label{mapply-and-pmap}}
+\subsection{\texorpdfstring{\texttt{mapply()} and \texttt{pmap()}}{mapply() and pmap()}}\label{mapply-and-pmap}
 
 Sometimes, we'd like to employ a wrapper function that takes arguments from multiple different lists/vectors. Then, we can consider using \texttt{mapply()} from the base R package or \texttt{pmap()} from the \texttt{purrr} package.
 
@@ -841,8 +789,7 @@ This example doesn't work in the way that 0 is paired to 6, 1 is paired to 7, an
 
 We can use \texttt{flatten()} or \texttt{unlist()} functions to decrease the depths of our results. If the results are data frames, then we will need to use \texttt{bind\_rows()} to combine them.
 
-\hypertarget{parallel-processing-with-parallel-and-future-packages}{%
-\subsection{\texorpdfstring{Parallel processing with \texttt{parallel} and \texttt{future} packages}{Parallel processing with parallel and future packages}}\label{parallel-processing-with-parallel-and-future-packages}}
+\subsection{\texorpdfstring{Parallel processing with \texttt{parallel} and \texttt{future} packages}{Parallel processing with parallel and future packages}}\label{parallel-processing-with-parallel-and-future-packages}
 
 One big drawback of \texttt{lapply()} is its long computation time, especially when the list length is long. Fortunately, computers nowadays must have multiple cores which makes parallel processing possible to help make computation much faster.
 
@@ -850,8 +797,7 @@ Assume you have a list called \texttt{mylist} of length 1000, and \texttt{lapply
 
 In practice, using functions under the \texttt{parallel} and the \texttt{future} packages, we can split \texttt{mylist} into smaller chunks and apply the function to each element of the several chunks in parallel in different cores to significantly reduce the run time.
 
-\hypertarget{parlapply}{%
-\subsubsection{\texorpdfstring{\texttt{parLapply()}}{parLapply()}}\label{parlapply}}
+\subsubsection{\texorpdfstring{\texttt{parLapply()}}{parLapply()}}\label{parlapply}
 
 Below is a generic example of \texttt{parLapply()}:
 
@@ -875,8 +821,7 @@ You can use \texttt{parallel::detectCores()} to test how many cores your machine
 
 We will always start \texttt{parLapply()} with \texttt{makeCluster()}. \textbf{\texttt{stopCluster()} is not fully necessary but follows the best practices.} If not stopped, the processing will continue in the back end and consuming the computation capacity for other software in your machine. But keep in mind that stopping the cluster is similar quitting R, meaning that you will need to re-load the packages needed when you need to do parallel processing use \texttt{parLapply()} again.
 
-\hypertarget{future.lapply}{%
-\subsubsection{\texorpdfstring{\texttt{future.lapply()}}{future.lapply()}}\label{future.lapply}}
+\subsubsection{\texorpdfstring{\texttt{future.lapply()}}{future.lapply()}}\label{future.lapply}
 
 Below is a generic example of \texttt{future.lapply()}:
 
@@ -895,13 +840,11 @@ future_lapply(x = mylist, FUN = func)
 
 Here, \texttt{future::availableCores()} checks how many cores your machine has. Similar to \texttt{parLapply()} showed above, \texttt{future\_lapply()} parallelizes the computation of \texttt{lapply()} by executing the function \texttt{func} simultaneously on different sub-lists of \texttt{mylist}.
 
-\hypertarget{reviewing-code}{%
-\section{Reviewing Code}\label{reviewing-code}}
+\section{Reviewing Code}\label{reviewing-code}
 
-Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the \protect\hyperlink{Github}{GitHub} section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.
+Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the \hyperref[Github]{GitHub} section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.
 
-\hypertarget{creating-a-pull-request-template}{%
-\subsection{Creating a Pull Request Template}\label{creating-a-pull-request-template}}
+\subsection{Creating a Pull Request Template}\label{creating-a-pull-request-template}
 
 Follow the instructions below to add a pull request template to a repository. More details can be found at this \href{https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository}{GitHub link}.
 
@@ -954,13 +897,11 @@ Here is an example pull request template.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{coding-style}{%
-\chapter{Coding style}\label{coding-style}}
+\chapter{Coding style}\label{coding-style}
 
 by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 
-\hypertarget{comments}{%
-\section{Comments}\label{comments}}
+\section{Comments}\label{comments}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -982,7 +923,7 @@ by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
 \setcounter{enumi}{1}
 \tightlist
 \item
-  \textbf{File Structure} - Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =\textgreater{} 2) load all your data =\textgreater{} 3) do all your analysis/computation =\textgreater{} save your data. Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
+  \textbf{File Structure} - Just as your data ``flows'' through your project, data should flow naturally through a script. Very generally, you want to 1) source your config =\textgreater{} 2) load all your data =\textgreater{} 3) do all your analysis/computation =\textgreater{} save your data. Each of these sections should be ``chunked together'' using comments. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/2a\%20-\%20Statistical-Inputs.R}{this file} for a good example of how to cleanly organize a file in a way that follows this ``flow'' and functionally separate pieces of code that are doing different things.
 
   \begin{itemize}
   \tightlist
@@ -990,7 +931,7 @@ by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
     \textbf{Note}: If your computer isn't able to handle this workflow due to RAM or requirements, modifying the ordering of your code to accomodate it won't be ultimately helpful and your code will be fragile, not to mention less readable and messy. You need to look into high-performance computing (HPC) resources in this case.
   \end{itemize}
 \item
-  \textbf{Single-Line Comments} - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master\textquotesingle{}s\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
+  \textbf{Single-Line Comments} - Commenting your code is an important part of reproducibility and helps document your code for the future. When things change or break, you'll be thankful for comments. There's no need to comment excessively or unnecessarily, but a comment describing what a large or complex chunk of code does is always helpful. See \href{https://github.com/kmishra9/Flu-Absenteeism/blob/master/Master's\%20Thesis\%20-\%20Spatial\%20Epidemiology\%20of\%20Influenza/1b\%20-\%20Map-Management.R}{this file} for an example of how to comment your code and notice that comments are always in the form of:
 \end{enumerate}
 
 \texttt{\#\ This\ is\ a\ comment\ -\/-\ first\ letter\ is\ capitalized\ and\ spaced\ away\ from\ the\ pound\ sign}
@@ -1003,8 +944,7 @@ by Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
   \textbf{Multi-Line Comments} - Occasionally, multi-line comments are necessary. Don't add line breaks manually to a single-line comment for the purpose of making it ``fit'' on the screen. Instead, in RStudio \textgreater{} Tools \textgreater{} Global Options \textgreater{} Code \textgreater{} ``Soft-wrap R source files'' to have lines wrap around. Format your multi-line comments like the file header from above.
 \end{enumerate}
 
-\hypertarget{line-breaks}{%
-\section{Line breaks}\label{line-breaks}}
+\section{Line breaks}\label{line-breaks}
 
 \begin{itemize}
 \item
@@ -1078,11 +1018,9 @@ ggplot(data=data,
   Imagine (or perhaps mournfully recall) the mess that can occur when you don't strictly style a complicated \texttt{ggplot} call. Trying to fix bugs and ensure your code is working can be a nightmare. Now imagine trying to do it with the same code 6 months after you've written it. Invest the time now and reap the rewards as the code practically explains itself, line by line.
 \end{itemize}
 
-\hypertarget{automated-tools-for-style-and-project-workflow}{%
-\section{Automated Tools for Style and Project Workflow}\label{automated-tools-for-style-and-project-workflow}}
+\section{Automated Tools for Style and Project Workflow}\label{automated-tools-for-style-and-project-workflow}
 
-\hypertarget{styling}{%
-\subsection{Styling}\label{styling}}
+\subsection{Styling}\label{styling}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1154,13 +1092,11 @@ OUSD_not_found_aliases = list(
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{working-with-big-data}{%
-\chapter{Working with Big Data}\label{working-with-big-data}}
+\chapter{Working with Big Data}\label{working-with-big-data}
 
 by Kunal Mishra and Jade Benjamin-Chung
 
-\hypertarget{the-data.table-package}{%
-\section{The data.table package}\label{the-data.table-package}}
+\section{The data.table package}\label{the-data.table-package}
 
 It may also be the case that you're working with very large datasets. Generally I would define this as 10+ million rows. As is outlined in this document, the 3 main players in the data analysis space are Base R, \texttt{Tidvyerse} (more specificially, \texttt{dplyr}), and \texttt{data.table}. For a majority of things, Base R is inferior to both \texttt{dplyr} and \texttt{data.table}, with concise but less clear syntax and less speed. \texttt{Dplyr} is architected for medium and smaller data, and while its very fast for everyday usage, it trades off maximum performance for ease of use and syntax compared to \texttt{data.table}. An overview of the \texttt{dplyr} vs \texttt{data.table} debate can be found in \href{https://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349\#27840349}{this stackoverflow post} and all 3 answers are worth a read.
 
@@ -1168,13 +1104,11 @@ You can also achieve a performance boost by running \texttt{dplyr} commands on \
 
 If you want to test whether using a certain coding approach increases speed, consider the \texttt{tictoc} package. Run \texttt{tic()} before a code chunk and \texttt{toc()} after to measure the amount of system time it takes to run the chunk. For example, you might use this to decide if you \emph{really} need to switch a code chunk from \texttt{dplyr} to \texttt{data.table}.
 
-\hypertarget{using-downsampled-data}{%
-\section{Using downsampled data}\label{using-downsampled-data}}
+\section{Using downsampled data}\label{using-downsampled-data}
 
 In our studies with very large datasets, we save ``downsampled'' data that usually includes a 1\% random sample stratified by any important variables, such as year or household id. This allows us to efficiently write and test our code without having to load in large, slow datasets that can cause RStudio to freeze. Be very careful to be sure which dataset you are working with and to label results output accordingly.
 
-\hypertarget{optimal-rstudio-set-up}{%
-\section{Optimal RStudio set up}\label{optimal-rstudio-set-up}}
+\section{Optimal RStudio set up}\label{optimal-rstudio-set-up}
 
 Using the following settings will help ensure a smooth experience when working with big data. In RStudio, go to the ``Tools'' menu, then select ``Global Options''. Under ``General'':
 
@@ -1198,13 +1132,159 @@ Using the following settings will help ensure a smooth experience when working w
 
 Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.
 
-\hypertarget{github}{%
-\chapter{Github}\label{github}}
+\chapter{Data masking}\label{data-masking}
+
+by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
+
+When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the \href{https://www.sherlock.stanford.edu/docs/overview/introduction/}{Sherlock user guide} to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.
+
+\section{General Overview}\label{general-overview}
+
+This chapter covers data masking, a unique process in R in which columns are treated as distinct objects within their dataframe's environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.
+
+\subsection{What is Data Masking?}\label{what-is-data-masking}
+
+Within certain tidyverse operations, columns are called as if they were variables. For example, while running \texttt{df\ \%\textgreater{}\%\ mutate(X\ =\ …)} R recognizes that \texttt{X} specifically references a column in \texttt{df} without explicitly stating its membership \texttt{df\ \%\textgreater{}\%\ mutate(df\$X\ =\ …)} or calling the column name as a string \texttt{df\ \%\textgreater{}\%\ mutate(“X”\ =\ …)}.
+
+\includegraphics[width=0.5\linewidth]{assets/images/data-masking}
+
+However, this behavior may introduce errors when we attempt to incorporate variables from the global environment within these tidyverse pipelines. In the example above, \texttt{column\_name\ =\ “X”} followed by \texttt{df\ \%\textgreater{}\%\ mutate(X2\ =\ column\_name\ +\ 1)} would yield an error, since \texttt{column\_name} is not a column in \texttt{df} and the variable \texttt{column\_name} is not defined within the environment of \texttt{df}
+
+\subsection{Using tidy evaluation for data masking}\label{using-tidy-evaluation-for-data-masking}
+
+In dplyr-based R programming, we make use of tidy evaluation. This allows us to avoid using base R syntax to reference specific columns in a data frame. By leveraging Tidy evaluation-based data masking, we can employ long pipes with several dplyr verbs to manipulate our data using stand-alone variables that store column names as strings.
+
+For example, consider a data frame ``df'' that contains a column called ``heavyrain'' that we want to manipulate. Suppose we wanted to convert the values of ``heavyrain'' into a factor.
+
+Using base R, which does not mask data, heavyrain must have quotes to be treated as a data-variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[[“outcome”]] }\OtherTok{=} \FunctionTok{as.factor}\NormalTok{(df[[“heavyrain”]])}
+\end{Highlighting}
+\end{Shaded}
+
+In a dplyr pipe, heavyrain is being masked using tidy evaluation and will be correctly interpreted as a column because it is recognized as a data-variable:
+df \%\textgreater\% mutate(outcome = as.factor(heavyrain))
+
+With modified data masking, heavyrain is a string that is coerced into being recognized as a data-variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var\_name }\OtherTok{=}\NormalTok{ “heavyrain”}
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{outcome =} \FunctionTok{as.factor}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(var\_name)) }
+\end{Highlighting}
+\end{Shaded}
+
+While cleaner and often more convenient, the data frame that var\_name is in is now ``masked'' and we refer to the vectors in the dataframe (data-variables) as though it is an object of its own (an environmental-variable). This is why we can just say the variable's name in the context of a pipe -- we treat it as though it's an object defined in our environment. Within normal scripts, this is usually fine, because the data frame is ``held on to'' in the pipe. However, it can cause some programming hurdles when writing functions that take strings of variable/column names as arguments. In the next section, we briefly describe how to troubleshoot common errors in data masking, as relevant to our lab's work.
+
+\section{Technical Overview}\label{technical-overview}
+
+This section covers the R functions and tools that we often use in the context of data masking, focusing on the bang bang operator (\texttt{!!}) with symbol coercion (\texttt{sym()}) and the Walrus operator (\texttt{:=}).
+
+The combined use of \texttt{!!} and \texttt{sym()} allows us to use strings, rather than data-variables, to reference column names within dplyr. Together, \texttt{!!sym(“column\_name”)} forces dplyr to recognize ``column\_name'' as a data-variable prior to evaluating the rest of the expression, enabling the ability to perform calculations on the column while referring to it as a string.
+\texttt{sym()} is a function that turns strings into symbols. In the context of a dplyr pipe, these symbols are interpreted as data-variables.
+The \texttt{!!} (bang bang) operator tells dplyr to evaluate the sym() expression first, e.g.~to unquote its expression (e.g.~``column\_name'') and evaluate it as a pre-existing object, first. This is helpful because often we use \texttt{sym(“column\_name”)} within a larger expression, and dplyr might evaluate other elements of the expression first without !!, causing errors.
+
+When we want to create a new column (via mutate or summarize), the Walrus operator (\texttt{:=}) allows us to specify the new column's name using a string. For example, while \texttt{df\ \%\textgreater{}\%\ mutate(“new\_column”\ =\ values)} would yield an error, \texttt{df\ \%\textgreater{}\%\ mutate(“new\_column”\ :=\ values)} will correctly create a new column called ``new\_column''.
+If we want to use a variable representing a string, we can use !! to force the variable to be evaluated before using \texttt{:=} to assign the value of the new column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{col\_name }\OtherTok{=}\NormalTok{ “new\_column”}
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\SpecialCharTok{!!}\AttributeTok{col\_name :=}\NormalTok{ values)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Example}\label{example}
+
+Suppose we want to write a function ``generate\_descriptive\_table'' to summarize how the prevalence of ``outcome'' varies under different levels of a ``risk\_factor'' in a data frame ``df''
+
+We can start by writing the function shell:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf) \{}
+\NormalTok{outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ ….}
+\FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we can filter the data frame for only rows in which ``rf'' and ``outcome'' are not missing. We can use !! and sym() within filter to evaluate the strings stored in ``rf'' and ``outcome''. Note that defining \texttt{!!sym(outcome)} or \texttt{!!sym(outcome)} in variables \emph{outside of the dplyr pipeline} will \emph{not} work.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  ….}
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Similarly, we use !! and sym() in group\_by to evaluate column name, stored as a string in the argument ``rf''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  ….}
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, we can use the walrus operator, !! and sym() with ``summarize'' to create a new column that takes the mean of the column referenced in ``rf''. We also use ``glue'' or ``paste'' to give the new column an informative name that includes the ``outcome'' it describes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(“\{outcome\}\_prev”)) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome))) }
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+OR
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(outcome, ”\_prev”)) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)))}
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+OR
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  new\_column\_name }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(outcome, ”\_prev”)}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(new\_column\_name) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome))) }
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{Github}\label{github}
 
 by Stephanie Djajadi and Nolan Pokpongkiat
 
-\hypertarget{basics}{%
-\section{Basics}\label{basics}}
+\section{Basics}\label{basics}
 
 \begin{itemize}
 \tightlist
@@ -1216,13 +1296,11 @@ by Stephanie Djajadi and Nolan Pokpongkiat
   If you have made a mistake in Git, you can refer to this \href{https://sethrobertson.github.io/GitFixUm/fixup.html}{article} to undo, fix, or remove commits in git.
 \end{itemize}
 
-\hypertarget{github-desktop}{%
-\section{Github Desktop}\label{github-desktop}}
+\section{Github Desktop}\label{github-desktop}
 
 While knowing how to use Git on the command line will always be useful since the full power of Git and its customizations and flexibilty is designed for use with the command line, Github also provides \href{https://desktop.github.com/}{Github Desktop} as an graphical interface to do basic git commands; you can do all of the basic functions of Git using this desktop app. Feel free to use this as an alternative to Git on the command line if you prefer.
 
-\hypertarget{git-branching}{%
-\section{Git Branching}\label{git-branching}}
+\section{Git Branching}\label{git-branching}
 
 Branches allow you to keep track of multiple versions of your work simultaneously, and you can easily switch between versions and merge branches together once you've finished working on a section and want it to join the rest of your code. Here are some cases when it may be a good idea to branch:
 
@@ -1238,8 +1316,7 @@ Branches allow you to keep track of multiple versions of your work simultaneousl
 
 A detailed tutorial on Git Branching can be found \href{https://sp19.datastructur.es/materials/guides/using-git\#e-git-branching-advanced-git-optional}{here}. You can also find instructions on how to handle merge conflicts when joining branches together.
 
-\hypertarget{example-workflow}{%
-\section{Example Workflow}\label{example-workflow}}
+\section{Example Workflow}\label{example-workflow}
 
 A standard workflow when starting on a new project and contributing code looks like this:
 
@@ -1272,8 +1349,7 @@ SETUP: FIRST TIME ONLY: \texttt{git\ clone\ \textless{}url\textgreater{}\ \textl
 
 Other helpful commands are listed below.
 
-\hypertarget{commonly-used-git-commands}{%
-\section{Commonly Used Git Commands}\label{commonly-used-git-commands}}
+\section{Commonly Used Git Commands}\label{commonly-used-git-commands}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3600}}
@@ -1308,20 +1384,17 @@ Description
 \texttt{git\ fetch\ -\/-all\ -\/-prune} & untrack deleted remote branches \\
 \end{longtable}
 
-\hypertarget{how-often-should-i-commit}{%
-\section{How often should I commit?}\label{how-often-should-i-commit}}
+\section{How often should I commit?}\label{how-often-should-i-commit}
 
 It is good practice to commit every 15 minutes, or every time you make a significant change. It is better to commit more rather than less.
 
-\hypertarget{what-should-be-pushed-to-github}{%
-\section{What should be pushed to Github?}\label{what-should-be-pushed-to-github}}
+\section{What should be pushed to Github?}\label{what-should-be-pushed-to-github}
 
 Never push .Rout files! If someone else runs an R script and creates an .Rout file at the same time and both of you try to push to github, it is incredibly difficult to reconcile these two logs. If you run logs, keep them on your own system or (preferably) set up a shared directory where all logs are name and date timestamped.
 
 There is a standardized \texttt{.gitignore} for \texttt{R} which you \href{https://github.com/github/gitignore/blob/master/R.gitignore}{can download} and add to your project. This ensures you're not committing log files or things that would otherwise best be left ignored to GitHub. This is a \href{https://www.tidyverse.org/articles/2017/12/workflow-vs-script/}{great discussion of project-oriented workflows}, extolling the virtues of a self-contained, portable projects, for your reference.
 
-\hypertarget{unix}{%
-\chapter{Unix commands}\label{unix}}
+\chapter{Unix commands}\label{unix}
 
 by Stephanie Djajadi, Kunal Mishra, Anna Nguyen, and Jade Benjamin-Chung
 
@@ -1338,8 +1411,7 @@ We typically use Unix commands in Terminal (for Mac users) or Git Bash (for Wind
   To use git and push to github
 \end{enumerate}
 
-\hypertarget{basics-1}{%
-\section{Basics}\label{basics-1}}
+\section{Basics}\label{basics-1}
 
 On the computer, there is a desktop with two folders, \texttt{folder1} and \texttt{folder2}, and a file called \texttt{file1.} Inside \texttt{folder1}, we have a file called \texttt{file2.} Mac users can run these commands on their terminal; it is recommended that Windows users use Git Bash, not Windows PowerShell.
 
@@ -1349,8 +1421,7 @@ On the computer, there is a desktop with two folders, \texttt{folder1} and \text
 \caption{Here is our example desktop.}
 \end{figure}
 
-\hypertarget{syntax-for-both-macwindows}{%
-\section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}}
+\section{Syntax for both Mac/Windows}\label{syntax-for-both-macwindows}
 
 When typing in directories or file names, quotes are necessary if the name includes spaces.
 
@@ -1386,8 +1457,7 @@ Description
 \caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
 \end{figure}
 
-\hypertarget{running-bash-scripts}{%
-\section{Running Bash Scripts}\label{running-bash-scripts}}
+\section{Running Bash Scripts}\label{running-bash-scripts}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2571}}
@@ -1410,8 +1480,7 @@ Description
 \texttt{bash\ bash\_script\_name.sh\ \&} & \texttt{bash\ bash\_script\_name.sh\ \&} & Run shell script in the background \\
 \end{longtable}
 
-\hypertarget{running-rscripts-in-windows}{%
-\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}}
+\section{Running Rscripts in Windows}\label{running-rscripts-in-windows}
 
 \textbf{Note: This code seems to work only with Windows Command Prompt, not with Git Bash.}
 
@@ -1430,8 +1499,7 @@ If you do not add the PATH as an environment variable, then you can run this lin
 To run an R script from the command line, we can say:
 \texttt{Rscript\ -e\ “source(‘C:/path/to/script/some\_code.R’)”}
 
-\hypertarget{common-mistakes}{%
-\subsection{Common Mistakes}\label{common-mistakes}}
+\subsection{Common Mistakes}\label{common-mistakes}
 
 \begin{itemize}
 \tightlist
@@ -1441,8 +1509,7 @@ To run an R script from the command line, we can say:
   If you attempt to run an R script but run into \texttt{Error:\ \textquotesingle{}\textbackslash{}U\textquotesingle{}\ used\ without\ hex\ digits\ in\ character\ string\ starting\ "\textquotesingle{}C:\textbackslash{}U"}, try replacing all \texttt{\textbackslash{}} with \texttt{\textbackslash{}\textbackslash{}} or \texttt{/}.
 \end{itemize}
 
-\hypertarget{checking-tasks-and-killing-jobs}{%
-\section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}}
+\section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2571}}
@@ -1472,8 +1539,7 @@ Description
 
 To kill a task in Windows, you can also go to Task Manager \textgreater{} More details \textgreater{} Select your desired app \textgreater{} Click on End Task.
 
-\hypertarget{running-big-jobs}{%
-\section{Running big jobs}\label{running-big-jobs}}
+\section{Running big jobs}\label{running-big-jobs}
 
 For big data workflows, the concept of ``backgrounding'' a bash script allows you to start a ``job'' (i.e.~run the script) and leave it overnight to run. At the top level, a bash script (\texttt{0-run-project.sh}) that simply calls the directory-level bash scripts (i.e.~\texttt{0-prep-data.sh}, \texttt{0-run-analysis.sh}, \texttt{0-run-figures.sh}, etc.) is a powerful tool to rerun every script in your project. See the included example bash scripts for more details.
 
@@ -1513,8 +1579,7 @@ Alternatively, to keep code running in the background even when an SSH connectio
   \textbf{Ensuring Things Ran Correctly}: You should check the \texttt{.Rout} files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called \texttt{runFileSaveLogs}, and is used by the example bash scripts to\ldots{} run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using \texttt{runFileSaveLogs}, it is necessary to put the file in the home working directory. For help and documentation, you can use the command \texttt{./runFileSaveLogs\ -h}. See example code and example usage for \texttt{runFileSaveLogs} below.
 \end{itemize}
 
-\hypertarget{example-code-for-runfilesavelogs}{%
-\subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}}
+\subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1591,8 +1656,7 @@ Alternatively, to keep code running in the background even when an SSH connectio
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{example-usage-for-runfilesavelogs}{%
-\subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}}
+\subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}
 
 This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
 
@@ -1617,16 +1681,13 @@ This example bash script runs files and generates logs for five scripts in the \
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{reproducible-environments}{%
-\chapter{Reproducible Environments}\label{reproducible-environments}}
+\chapter{Reproducible Environments}\label{reproducible-environments}
 
 by Anna Nguyen
 
-\hypertarget{package-version-control-with-renv}{%
-\section{Package Version Control with renv}\label{package-version-control-with-renv}}
+\section{Package Version Control with renv}\label{package-version-control-with-renv}
 
-\hypertarget{introduction}{%
-\subsection{Introduction}\label{introduction}}
+\subsection{Introduction}\label{introduction}
 
 Replicable code should produce the same results, regardless of when or where it's run. However, our analyses often leverage open-source R packages that are developed by other teams. These packages continue to be developed after research projects are completed, which may include changes to analysis functions that could impact how code runs for both other team members and external replicators.
 
@@ -1638,8 +1699,7 @@ To ensure that the right functions are used in replication efforts, it is import
 
 In this lab manual chapter, we provide a quick tutorial for integrating \texttt{renv} into research workflows. For more detailed instructions, please refer to the \texttt{renv} package vignette.
 
-\hypertarget{implementing-renv-in-projects}{%
-\subsection{Implementing renv in projects}\label{implementing-renv-in-projects}}
+\subsection{Implementing renv in projects}\label{implementing-renv-in-projects}
 
 Ideally, \texttt{renv} should be initiated at the start of projects and updated continuously when new packages are introduced in the codebase. However, this process can be initated at any point in a project
 
@@ -1662,8 +1722,7 @@ To add \texttt{renv} to your workflow, follow these steps:
   Add \texttt{renv::restore()} to the head of your config file, to make sure that all users that run your code are on the same package versions.
 \end{enumerate}
 
-\hypertarget{using-projects-with-renv}{%
-\subsection{Using projects with renv}\label{using-projects-with-renv}}
+\subsection{Using projects with renv}\label{using-projects-with-renv}
 
 If you're starting to work on an ongoing project that already has \texttt{renv} set up, follow these steps to ensure that you're using the same project versions.
 
@@ -1688,64 +1747,56 @@ If you're starting to work on an ongoing project that already has \texttt{renv} 
   If you make edits to the code and introduce new/updated packages, see the section above for instructions on how to make updates.
 \end{enumerate}
 
-\hypertarget{code-publication}{%
-\chapter{Code Publication}\label{code-publication}}
+\chapter{Code Publication}\label{code-publication}
 
 by Nolan Pokpongkiat
 
-\hypertarget{checklist-overview}{%
-\section{Checklist overview}\label{checklist-overview}}
+\section{Checklist overview}\label{checklist-overview}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \protect\hyperlink{fill-out-file-headers}{Fill out file headers}
+  \hyperref[fill-out-file-headers]{Fill out file headers}
 \item
-  \protect\hyperlink{clean-up-comments}{Clean up comments}
+  \hyperref[clean-up-comments]{Clean up comments}
 \item
-  \protect\hyperlink{document-functions}{Document functions}
+  \hyperref[document-functions]{Document functions}
 \item
-  \protect\hyperlink{remove-deprecated-filepaths}{Remove deprecated filepaths}
+  \hyperref[remove-deprecated-filepaths]{Remove deprecated filepaths}
 \item
-  \protect\hyperlink{ensure-project-runs-via-bash}{Ensure project runs via bash}
+  \hyperref[ensure-project-runs-via-bash]{Ensure project runs via bash}
 \item
-  \protect\hyperlink{complete-the-readme}{Complete the README}
+  \hyperref[complete-the-readme]{Complete the README}
 \item
-  \protect\hyperlink{clean-up-feature-branches}{Clean up feature branches}
+  \hyperref[clean-up-feature-branches]{Clean up feature branches}
 \item
-  \protect\hyperlink{create-github-release}{Create Github release}
+  \hyperref[create-github-release]{Create Github release}
 \end{enumerate}
 
-\hypertarget{fill-out-file-headers}{%
-\section{Fill out file headers}\label{fill-out-file-headers}}
+\section{Fill out file headers}\label{fill-out-file-headers}
 
 Every file in a project should have a header that allows it to be interpreted on its own. It should include the name of the project and a short description for what this file (among the many in your project) does specifically. See template \href{https://jadebc.github.io/lab-manual/coding-practices.html\#file-headers}{here.}
 
-\hypertarget{clean-up-comments}{%
-\section{Clean up comments}\label{clean-up-comments}}
+\section{Clean up comments}\label{clean-up-comments}
 
 Make sure comments in the code are for code documentation purposes only. Do not leave comments to self in the final script files.
 
-\hypertarget{document-functions}{%
-\section{Document functions}\label{document-functions}}
+\section{Document functions}\label{document-functions}
 
 Every function you write must include a header to document its purpose, inputs, and outputs. See template for the function documentation \href{https://jadebc.github.io/lab-manual/coding-practices.html\#function-documentation}{here.}
 
-\hypertarget{remove-deprecated-filepaths}{%
-\section{Remove deprecated filepaths}\label{remove-deprecated-filepaths}}
+\section{Remove deprecated filepaths}\label{remove-deprecated-filepaths}
 
 All file paths should be defined in 0-config.R, and should be set relative to the project working directory. All absolute file paths from your local computer should be removed, and replaced with a relative path. If a third party were to re-run this analysis, if they need to download data from a separate source and change a filepath in the 0-config.R to match, make sure to specify in the README which line of 0-config.R needs to be substituted.
 
-\hypertarget{ensure-project-runs-via-bash}{%
-\section{Ensure project runs via bash}\label{ensure-project-runs-via-bash}}
+\section{Ensure project runs via bash}\label{ensure-project-runs-via-bash}
 
 The project should be configured to be entirely reproducible by running a master bash script, run-project.sh, which should live at the top directory. This bash script can call other bash scripts in subfolders, if necessary. Bash scripts should use the runFileSaveLogs utility script, which is a wrapper around the Rscript command, allowing you to specify where .Rout log files are moved after the R scripts are run.
 
 See usage and documentation \href{https://jadebc.github.io/lab-manual/unix.html\#example-code-for-runfilesavelogs}{here.}
 
-\hypertarget{complete-the-readme}{%
-\section{Complete the README}\label{complete-the-readme}}
+\section{Complete the README}\label{complete-the-readme}
 
 A README.md should live at the top directory of the project. This usually includes a Project Overview and a Directory Structure, along with the names of the contributors and the Creative Commons License. See below for a template:
 
@@ -1827,25 +1878,21 @@ Wu SL, Mertens A, Crider YS, Nguyen A, Pokpongkiat NN, Djajadi S, et al.~Substan
 
 When possible, also include a description of the RDS results that are generated, detailing what data sources were used, where the script lives that creates it, and what information the RDS results hold.
 
-\hypertarget{clean-up-feature-branches}{%
-\section{Clean up feature branches}\label{clean-up-feature-branches}}
+\section{Clean up feature branches}\label{clean-up-feature-branches}
 
 In the remote repository on Github, all feature branches aside from master should be merged in and deleted. All outstanding PRs should be closed.
 
-\hypertarget{create-github-release}{%
-\section{Create Github release}\label{create-github-release}}
+\section{Create Github release}\label{create-github-release}
 
 Once all of these items are verified, create a tag to make a Github release, which will tag the repository, creating a marker at this specific point in time.
 
 Detailed instructions \href{https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases}{here.}
 
-\hypertarget{data-publication}{%
-\chapter{Data Publication}\label{data-publication}}
+\chapter{Data Publication}\label{data-publication}
 
-Adapted from Fanice Nyatigo and Ben Arnold's chapter in the \href{https://urlisolation.com/browser?clickId=524DE241-3F8F-4C98-B619-3C278374BF64\&traceToken=1728923499\%3Bucsfmed_hosted\%3Bhttps\%3A\%2F\%2Fproctor-ucsf.github.io\%2Fd\&url=https\%3A\%2F\%2Fproctor-ucsf.github.io\%2Fdcc-handbook\%2Fpublicdata.html}{Proctor-UCSF Lab Manual}
+Adapted from Fanice Nyatigo and Ben Arnold's chapter in the \href{https://urlisolation.com/browser?clickId=524DE241-3F8F-4C98-B619-3C278374BF64&traceToken=1728923499\%3Bucsfmed_hosted\%3Bhttps\%3A\%2F\%2Fproctor-ucsf.github.io\%2Fd&url=https\%3A\%2F\%2Fproctor-ucsf.github.io\%2Fdcc-handbook\%2Fpublicdata.html}{Proctor-UCSF Lab Manual}
 
-\hypertarget{overview}{%
-\section{Overview}\label{overview}}
+\section{Overview}\label{overview}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1877,20 +1924,17 @@ Below are the main steps to making data public, after finalizing the analysis da
 5. Create a public github page for analysis scripts and link to OSF and/or Dryad/Zenodo\\
 6. Go live
 
-\hypertarget{removing-phi}{%
-\section{Removing PHI}\label{removing-phi}}
+\section{Removing PHI}\label{removing-phi}
 
 Once the data is finalized for analysis, the first step is to strip it of Protected Health Information (PHI), or any other data that could be used to link back to specific participants, such as names, birth dates, or GPS coordinates at the village/neighborhood level or below. PHI includes, but is not limited to:
 
-\hypertarget{personal-information}{%
-\subsection{Personal information}\label{personal-information}}
+\subsection{Personal information}\label{personal-information}
 
 These are identifiers that directly point to specific individuals, such as:\\
 - Names, addresses, photographs, date of birth\\
 - A combination of age, sex, and geographic location (below population 20,000) is considered identifiable
 
-\hypertarget{dates}{%
-\subsection{Dates}\label{dates}}
+\subsection{Dates}\label{dates}
 
 Any specific dates (e.g., study visit dates, birth dates, treatment dates) are usually problematic.\\
 - If a dataset requires high resolution temporal information, coarsen visit or measurement dates to be two variables: year and week of the year (1-52).\\
@@ -1904,8 +1948,7 @@ Any specific dates (e.g., study visit dates, birth dates, treatment dates) are u
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{geographic-information}{%
-\subsection{Geographic information}\label{geographic-information}}
+\subsection{Geographic information}\label{geographic-information}
 
 Do not include GPS coordinates (longitude, latitude) except in special circumstances where they have been obfuscated/shifted. Reach out to Jade before doing this because it can be complicated.
 
@@ -1915,16 +1958,13 @@ If an analysis requires GPS locations (e.g., to make a map), then typically we i
 
 For more examples of what constitutes PHI, please refer to this link: \url{https://cphs.berkeley.edu/hipaa/hipaa18.html}
 
-\hypertarget{create-public-ids}{%
-\section{Create public IDs}\label{create-public-ids}}
+\section{Create public IDs}\label{create-public-ids}
 
-\hypertarget{rationale}{%
-\subsection{Rationale}\label{rationale}}
+\subsection{Rationale}\label{rationale}
 
 The Stanford IRB requires that public datasets not include the original study IDs to identify participants or other units in the study (such as village IDs). The reason is that those IDs are linked in our private datasets to PHI. By creating a new set of public IDs, the public dataset is one step further removed from the potential to link to PHI.
 
-\hypertarget{a-single-set-of-public-ids-for-each-study}{%
-\subsection{A single set of public IDs for each study}\label{a-single-set-of-public-ids-for-each-study}}
+\subsection{A single set of public IDs for each study}\label{a-single-set-of-public-ids-for-each-study}
 
 For each study, it is ideal to create a single set of public IDs whenever possible. We could create a new set of public IDs for every public dataset, but the downside is that independent researchers could no longer link data that might be related. By creating a single set of public IDs associated with each internal study ID, public files retain the link.
 
@@ -1940,8 +1980,7 @@ Create a public ID that can be used to uniquely identify participants and that c
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{example-scripts}{%
-\subsection{Example scripts}\label{example-scripts}}
+\subsection{Example scripts}\label{example-scripts}
 
 We have created a self-contained and reproducible example that you can run and replicate when making data public for your projects. It contains the following files and folders:
 
@@ -1962,13 +2001,11 @@ We have created a self-contained and reproducible example that you can run and r
 
 The example workflow is accessible via GitHub: \url{https://github.com/proctor-ucsf/dcc-handbook/tree/master/templates/making-data-public}
 
-\hypertarget{create-a-data-repository}{%
-\section{Create a data repository}\label{create-a-data-repository}}
+\section{Create a data repository}\label{create-a-data-repository}
 
 First, ensure that you create a codebook and metadata file for each public dataset \href{https://proctor-ucsf.github.io/dcc-handbook/datawrangling.html\#documenting-datasets}{See the DCC guide on Documenting datasets}. Use the same name as the datasets, but with ``-codebook.txt'' / ``-codebook.html'' / ``-codebook.csv'' at the end (depending on the file format for the codebook). One nice option is the R codebook package, which also generates JSON output that is machine-readable.
 
-\hypertarget{steps-for-creating-an-open-science-framework-osf-repository}{%
-\subsection{Steps for creating an Open Science Framework (OSF) repository:}\label{steps-for-creating-an-open-science-framework-osf-repository}}
+\subsection{Steps for creating an Open Science Framework (OSF) repository:}\label{steps-for-creating-an-open-science-framework-osf-repository}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1987,15 +2024,13 @@ First, ensure that you create a codebook and metadata file for each public datas
   Optional: Complete the software checklist and system requirement guide for the analysis to guide others. Include it on the GitHub README for the project: \url{https://github.com/proctor-ucsf/mordor-antibody}
 \end{enumerate}
 
-\hypertarget{edit-and-test-analysis-scripts}{%
-\section{Edit and test analysis scripts}\label{edit-and-test-analysis-scripts}}
+\section{Edit and test analysis scripts}\label{edit-and-test-analysis-scripts}
 
 Make minor changes to the analysis scripts so that they run on public data. If using version control in GitHub, the most straight-forward way is to create a branch from the main git branch that reads in the public files, and then renames the new public ID variable, e.g., ``id\_public'' to the internally recognized ID variable name, e.g.~``recordID'', when reading in the public data. Re-run all the analysis scripts to ensure that they still work with the public version of the dataset.
 
-\hypertarget{create-a-public-github-page-for-public-scripts}{%
-\section{Create a public GitHub page for public scripts}\label{create-a-public-github-page-for-public-scripts}}
+\section{Create a public GitHub page for public scripts}\label{create-a-public-github-page-for-public-scripts}
 
-At minimum, we should include all of the scripts required to run the analyses. \textbf{IMPORTANT}: ensure you have taken a snapshot and saved your computing environment using the \texttt{renv} package (\protect\hyperlink{renv}{\texttt{renv}}).
+At minimum, we should include all of the scripts required to run the analyses. \textbf{IMPORTANT}: ensure you have taken a snapshot and saved your computing environment using the \texttt{renv} package (\hyperref[renv]{\texttt{renv}}).
 
 See examples:\\
 - ACTION - \url{https://github.com/proctor-ucsf/ACTION-public}\\
@@ -2011,25 +2046,22 @@ See examples:\\
 
 Once a public GitHub page exists, you can create a new component on an OSF project (step 3, above) and link it to the public version of the GitHub repo.
 
-\hypertarget{go-live}{%
-\section{Go live}\label{go-live}}
+\section{Go live}\label{go-live}
 
-On GitHub, it is useful to create an official ``release'' version to freeze the repository, where you can have ``associated files'' with each version. Include the .html notebook output as additional files --- since they aren't tracked in GitHub, it does provide a way of freezing / saving the HTML output for us and others. OSF examples of a few Proctor trials:\\
+On GitHub, it is useful to create an official ``release'' version to freeze the repository, where you can have ``associated files'' with each version. Include the .html notebook output as additional files --- since they aren't tracked in GitHub, it does provide a way of freezing / saving the HTML output for us and others. OSF examples of a studies from UCSF's Proctor Foundation:\\
 - ACTION - \url{https://osf.io/ca3pe/}\\
 - NAITRE - \url{https://osf.io/ujeyb/}\\
 - MORDOR Niger antibody study - \url{https://osf.io/dgsq3/}
 
 Further reading on end-to-end data management: \href{https://plos.org/resource/how-to-store-and-manage-your-data/\#data-management-plan}{How to Store and Manage Your Data - PLOS}
 
-\hypertarget{slurm}{%
-\chapter{Slurm and cluster computing}\label{slurm}}
+\chapter{Slurm and cluster computing}\label{slurm}
 
 by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
 
 When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the \href{https://www.sherlock.stanford.edu/docs/overview/introduction/}{Sherlock user guide} to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.
 
-\hypertarget{getting-started}{%
-\section{Getting started}\label{getting-started}}
+\section{Getting started}\label{getting-started}
 
 To access Sherlock, in terminal, log in using the following syntax and replace ``USERNAME'' with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.
 
@@ -2049,8 +2081,7 @@ Once you log in, you can view the contents of your home directory in command lin
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{one-time-system-set-up}{%
-\subsection{One-Time System Set-Up}\label{one-time-system-set-up}}
+\subsection{One-Time System Set-Up}\label{one-time-system-set-up}
 
 To keep the install packages consistent across different nodes, you will need to explicitly set the pathway to your R library directory.
 
@@ -2103,8 +2134,7 @@ Alternatively, create an R script with the following code, and run it on Sherloc
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{moving-files-to-sherlock}{%
-\section{Moving files to Sherlock}\label{moving-files-to-sherlock}}
+\section{Moving files to Sherlock}\label{moving-files-to-sherlock}
 
 The \texttt{\$HOME} directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the \texttt{\$SCRATCH} directory (quota: 100 TB per user). You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}. On the \texttt{\$SCRATCH} directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below:
 
@@ -2125,8 +2155,7 @@ The \texttt{\$HOME} directory is a good place to store code and small test files
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{installing-packages-on-sherlock}{%
-\section{Installing packages on Sherlock}\label{installing-packages-on-sherlock}}
+\section{Installing packages on Sherlock}\label{installing-packages-on-sherlock}
 
 When you begin working on Sherlock, you will most likely encounter problems with installing packages. To install packages, login to Sherlock on the command line and open a development node using the command \texttt{sdev}. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open.
 
@@ -2182,13 +2211,11 @@ Figuring out the issues with some packages will require some trial and error. If
 
 However, you can also reach out to the Sherlock team for help. You can email them at \href{mailto:srcc-support@stanford.edu}{\nolinkurl{srcc-support@stanford.edu}}. They also hold \href{https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours}{office hours}.
 
-\hypertarget{testing-your-code}{%
-\section{Testing your code}\label{testing-your-code}}
+\section{Testing your code}\label{testing-your-code}
 
 Both of the following ways to test code on Sherlock are recommended for making small changes, such as editing file paths and making sure the packages and source files load. You should write and test the functionality of your script locally, only testing on Sherlock once major bugs are out.
 
-\hypertarget{the-command-line}{%
-\subsection{The command line}\label{the-command-line}}
+\subsection{The command line}\label{the-command-line}
 
 There are two main ways to explore and test code on Sherlock. The first way is best for users who are comfortable working on the command line and editing code in base R. Even if you are not comfortable yet, this is probably the better way because these commands will transfer between Sherlock and other cluster computers using Slurm.
 
@@ -2212,8 +2239,7 @@ Typically, you will want to initially test your scripts by initiating a developm
 
 *Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what version is being used for the project you are working on. Some packages only work with some versions of R, so it's best to keep it consistent.
 
-\hypertarget{the-sherlock-ondemand-dashboard}{%
-\subsection{The Sherlock OnDemand Dashboard}\label{the-sherlock-ondemand-dashboard}}
+\subsection{The Sherlock OnDemand Dashboard}\label{the-sherlock-ondemand-dashboard}
 
 The second way to test and edit code is to use the Sherlock OnDemand Dashboard, accessed by typing \url{login.sherlock.stanford.edu} into a web browser. You will be prompted to authenticate the way you would for any Stanford website. This is the best way to edit code for people who are not comfortable accessing \& editing in base R in a Shell application.
 
@@ -2221,8 +2247,7 @@ You can test your code via the \href{https://www.sherlock.stanford.edu/docs/user
 
 Do NOT use the RStudio Server's Terminal to install packages, set your R environment, and do everything else needed to configure Sherlock because you will likely need to re-do it for every session/project. It's best to use the Dashboard/RStudio Server if you are more comfortable testing \& editing in RStudio rather than through base R in a Shell application.
 
-\hypertarget{filepaths-configuration-on-sherlock}{%
-\subsection{Filepaths \& configuration on Sherlock}\label{filepaths-configuration-on-sherlock}}
+\subsection{Filepaths \& configuration on Sherlock}\label{filepaths-configuration-on-sherlock}
 
 In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:
 
@@ -2239,11 +2264,9 @@ In most cases, you will want to test that the file paths work correctly on Sherl
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{storage-group-storage-access}{%
-\section{Storage \& group storage access}\label{storage-group-storage-access}}
+\section{Storage \& group storage access}\label{storage-group-storage-access}
 
-\hypertarget{individual-storage}{%
-\subsection{Individual storage}\label{individual-storage}}
+\subsection{Individual storage}\label{individual-storage}
 
 There are multiple places to store your files on Sherlock. Each user has their own \texttt{\$HOME} directory as well as a \texttt{\$SCRATCH} directory. These are directories that can be accessed via the command line once you've logged in to Sherlock:
 
@@ -2263,8 +2286,7 @@ You can also navigate to these using the File Explorer on Sherlock OnDemand.
 
 You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}.
 
-\hypertarget{group-storage}{%
-\subsection{Group storage}\label{group-storage}}
+\subsection{Group storage}\label{group-storage}
 
 The lab also has a \texttt{\$GROUP\_HOME} and a \texttt{\$GROUP\_SCRATCH} to store files for collaborative use. \texttt{\$GROUP\_HOME} has a volume quota of 1 TB and infinite retention time, whereas \texttt{\$GROUP\_SCRATCH} has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:
 
@@ -2280,8 +2302,7 @@ The lab also has a \texttt{\$GROUP\_HOME} and a \texttt{\$GROUP\_SCRATCH} to sto
 
 However, saving files to group storage can be tricky. You can try using the scp command in the section ``Moving files to Sherlock'' to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.
 
-\hypertarget{folder-permissions}{%
-\subsection{Folder permissions}\label{folder-permissions}}
+\subsection{Folder permissions}\label{folder-permissions}
 
 Generally, when we put folders in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, please check the folder's permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter \texttt{ls\ -l}. You will see output like this:
 
@@ -2299,8 +2320,7 @@ Please review \href{https://www.chriswrites.com/how-to-change-file-permissions-u
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{running-big-jobs-1}{%
-\section{Running big jobs}\label{running-big-jobs-1}}
+\section{Running big jobs}\label{running-big-jobs-1}
 
 Once your test scripts run successfully, you can submit an sbatch script for larger jobs. These are text files with a \texttt{.sh} suffix. Use a text editor like Sublime to create such a script. Documentation on sbatch options is available \href{https://slurm.schedmd.com/sbatch.html}{here}. Here is an example of an sbatch script with the following options:
 
@@ -2374,13 +2394,11 @@ To check on the status of your job, enter the following code into terminal:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{checklists}{%
-\chapter{Checklists}\label{checklists}}
+\chapter{Checklists}\label{checklists}
 
 by Jade Benjamin-Chung
 
-\hypertarget{pre-analysis-plan-checklist}{%
-\section{Pre-analysis plan checklist}\label{pre-analysis-plan-checklist}}
+\section{Pre-analysis plan checklist}\label{pre-analysis-plan-checklist}
 
 \begin{itemize}
 \tightlist
@@ -2416,8 +2434,7 @@ by Jade Benjamin-Chung
   Negative control analyses
 \end{itemize}
 
-\hypertarget{code-checklist}{%
-\section{Code checklist}\label{code-checklist}}
+\section{Code checklist}\label{code-checklist}
 
 \begin{itemize}
 \tightlist
@@ -2437,8 +2454,7 @@ by Jade Benjamin-Chung
   Are all warnings ignorable? Should any warnings be intentionally suppressed or addressed?
 \end{itemize}
 
-\hypertarget{manuscript-checklist}{%
-\section{Manuscript checklist}\label{manuscript-checklist}}
+\section{Manuscript checklist}\label{manuscript-checklist}
 
 \emph{This is adapted in part from \href{https://www.nature.com/articles/d41586-019-01431-z}{this article}.}
 
@@ -2477,11 +2493,10 @@ by Jade Benjamin-Chung
 \item
   Does the text avoid describing results with the word ``significant'', which can easily be confused with statistical significance? (see references on this topic \href{https://journals.lww.com/epidem/Fulltext/2001/05000/The_Value_of_P.2.aspx}{here})
 \item
-  Have you drafted author contributions? Do they follow the \href{https://journals.plos.org/plosone/s/authorship/?utm_source=plos\&utm_medium=blog\&utm_campaign=plos-1607-credit\#loc-author-contributions}{CRediT Taxonomy} for author contributions?
+  Have you drafted author contributions? Do they follow the \href{https://journals.plos.org/plosone/s/authorship/?utm_source=plos&utm_medium=blog&utm_campaign=plos-1607-credit\#loc-author-contributions}{CRediT Taxonomy} for author contributions?
 \end{itemize}
 
-\hypertarget{figure-checklist}{%
-\section{Figure checklist}\label{figure-checklist}}
+\section{Figure checklist}\label{figure-checklist}
 
 \begin{itemize}
 \tightlist
@@ -2494,7 +2509,7 @@ by Jade Benjamin-Chung
 \item
   Is the font size appropriate (i.e., large enough to read, not so large that it distracts from the data presented in the figure?)
 \item
-  Are the colors used colorblind friendly? See a colorblind-friendly palette \href{http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/\#a-colorblind-friendly-palette}{here}, a neat palette generator with colorblind options \href{https://medialab.github.io/iwanthue/?utm_source=Nature+Briefing\&utm_campaign=2c68711076-briefing-dy-20211006\&utm_medium=email\&utm_term=0_c9dfd39373-2c68711076-44335685}{here}, and an article on why this matters \href{https://www.nature.com/articles/d41586-021-02696-z}{here}
+  Are the colors used colorblind friendly? See a colorblind-friendly palette \href{http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/\#a-colorblind-friendly-palette}{here}, a neat palette generator with colorblind options \href{https://medialab.github.io/iwanthue/?utm_source=Nature+Briefing&utm_campaign=2c68711076-briefing-dy-20211006&utm_medium=email&utm_term=0_c9dfd39373-2c68711076-44335685}{here}, and an article on why this matters \href{https://www.nature.com/articles/d41586-021-02696-z}{here}
 \item
   Are colors/shapes/line types defined in a legend?
 \item
@@ -2505,13 +2520,11 @@ by Jade Benjamin-Chung
   Are 95\% confidence intervals or other measures of precision shown, if applicable?
 \end{itemize}
 
-\hypertarget{resources}{%
-\chapter{Resources}\label{resources}}
+\chapter{Resources}\label{resources}
 
 by Jade Benjamin-Chung and Kunal Mishra
 
-\hypertarget{resources-for-r}{%
-\section{Resources for R}\label{resources-for-r}}
+\section{Resources for R}\label{resources-for-r}
 
 \begin{itemize}
 \tightlist
@@ -2539,8 +2552,7 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://dplyr.tidyverse.org/articles/programming.html}{Programming with dplyr} (package vignette)
 \end{itemize}
 
-\hypertarget{resources-for-git-github}{%
-\section{Resources for Git \& Github}\label{resources-for-git-github}}
+\section{Resources for Git \& Github}\label{resources-for-git-github}
 
 \begin{itemize}
 \tightlist
@@ -2550,8 +2562,7 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://lab.github.com/githubtraining/introduction-to-github}{Introduction to Github}
 \end{itemize}
 
-\hypertarget{scientific-figures}{%
-\section{Scientific figures}\label{scientific-figures}}
+\section{Scientific figures}\label{scientific-figures}
 
 \begin{itemize}
 \tightlist
@@ -2559,8 +2570,7 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833}{Ten Simple Rules for Better Figures}
 \end{itemize}
 
-\hypertarget{writing}{%
-\section{Writing}\label{writing}}
+\section{Writing}\label{writing}
 
 \begin{itemize}
 \tightlist
@@ -2576,8 +2586,7 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://x.com/acagamic/status/1680381737816424450}{Secret, actionable writing tips}
 \end{itemize}
 
-\hypertarget{presentations}{%
-\section{Presentations}\label{presentations}}
+\section{Presentations}\label{presentations}
 
 \begin{itemize}
 \tightlist
@@ -2586,13 +2595,12 @@ by Jade Benjamin-Chung and Kunal Mishra
 \item
   \href{https://www-sciencedirect-com.stanford.idm.oclc.org/science/article/pii/S1471491423000928}{How to give a killer narratively-driven scientific talk}
 \item
-  \href{https://www.youtube.com/watch?v=1RwJbhkCA58\&t=1171s}{How to make a better poster}
+  \href{https://www.youtube.com/watch?v=1RwJbhkCA58&t=1171s}{How to make a better poster}
 \item
   \href{https://mitcommlab.mit.edu/be/2023/09/27/toward-an-evenbetterposter-improving-the-betterposter-template/}{How to make an even better poster}
 \end{itemize}
 
-\hypertarget{professional-advice}{%
-\section{Professional advice}\label{professional-advice}}
+\section{Professional advice}\label{professional-advice}
 
 \begin{itemize}
 \tightlist
@@ -2600,8 +2608,7 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://docs.google.com/document/d/1ckgRCcr7FFPyymyMA6Y_-cB_vftOyrrxT28c6gRg0PI/edit}{Professional advice, especially for your first job}
 \end{itemize}
 
-\hypertarget{funding}{%
-\section{Funding}\label{funding}}
+\section{Funding}\label{funding}
 
 \begin{itemize}
 \tightlist
@@ -2609,8 +2616,7 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://grantwriting.stanford.edu/funding-train/\#ep}{Building Your Funding Train}
 \end{itemize}
 
-\hypertarget{ethics-and-global-health-research}{%
-\section{Ethics and global health research}\label{ethics-and-global-health-research}}
+\section{Ethics and global health research}\label{ethics-and-global-health-research}
 
 \begin{itemize}
 \tightlist
