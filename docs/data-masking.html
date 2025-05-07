@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Data masking | Benjamin-Chung Lab Manual</title>
+  <meta name="description" content="Lab practices and data science best practices" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Data masking | Benjamin-Chung Lab Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lab practices and data science best practices" />
+  <meta name="github-repo" content="jadebc/lab-manual" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Data masking | Benjamin-Chung Lab Manual" />
+  
+  <meta name="twitter:description" content="Lab practices and data science best practices" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="working-with-big-data.html"/>
+<link rel="next" href="github.html"/>
+<script src="libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Lab manual</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#welcome-to-the-benjamin-chung-lab" id="toc-welcome-to-the-benjamin-chung-lab"><span class="toc-section-number">1</span> Welcome to the Benjamin-Chung Lab!</a>
+<ul>
+<li><a href="index.html#about-the-lab" id="toc-about-the-lab"><span class="toc-section-number">1.1</span> About the lab</a></li>
+<li><a href="index.html#about-this-lab-manual" id="toc-about-this-lab-manual"><span class="toc-section-number">1.2</span> About this lab manual</a></li>
+</ul></li>
+<li><a href="culture-and-conduct.html#culture-and-conduct" id="toc-culture-and-conduct"><span class="toc-section-number">2</span> Culture and conduct</a>
+<ul>
+<li><a href="culture-and-conduct.html#lab-culture" id="toc-lab-culture"><span class="toc-section-number">2.1</span> Lab culture</a></li>
+<li><a href="culture-and-conduct.html#diversity-equity-and-inclusion" id="toc-diversity-equity-and-inclusion"><span class="toc-section-number">2.2</span> Diversity, equity, and inclusion</a></li>
+<li><a href="culture-and-conduct.html#protecting-human-subjects" id="toc-protecting-human-subjects"><span class="toc-section-number">2.3</span> Protecting human subjects</a></li>
+<li><a href="culture-and-conduct.html#authorship" id="toc-authorship"><span class="toc-section-number">2.4</span> Authorship</a></li>
+</ul></li>
+<li><a href="communication-and-coordination.html#communication-and-coordination" id="toc-communication-and-coordination"><span class="toc-section-number">3</span> Communication and coordination</a>
+<ul>
+<li><a href="communication-and-coordination.html#slack" id="toc-slack"><span class="toc-section-number">3.1</span> Slack</a></li>
+<li><a href="communication-and-coordination.html#email" id="toc-email"><span class="toc-section-number">3.2</span> Email</a></li>
+<li><a href="communication-and-coordination.html#trello" id="toc-trello"><span class="toc-section-number">3.3</span> Trello</a></li>
+<li><a href="communication-and-coordination.html#google-drives" id="toc-google-drives"><span class="toc-section-number">3.4</span> Google Drives</a></li>
+<li><a href="communication-and-coordination.html#meetings" id="toc-meetings"><span class="toc-section-number">3.5</span> Meetings</a></li>
+</ul></li>
+<li><a href="reproducibility.html#reproducibility" id="toc-reproducibility"><span class="toc-section-number">4</span> Reproducibility</a>
+<ul>
+<li><a href="reproducibility.html#what-is-the-reproducibility-crisis" id="toc-what-is-the-reproducibility-crisis"><span class="toc-section-number">4.1</span> What is the reproducibility crisis?</a></li>
+<li><a href="reproducibility.html#study-design" id="toc-study-design"><span class="toc-section-number">4.2</span> Study design</a></li>
+<li><a href="reproducibility.html#register-study-protocols" id="toc-register-study-protocols"><span class="toc-section-number">4.3</span> Register study protocols</a></li>
+<li><a href="reproducibility.html#write-and-register-pre-analysis-plans" id="toc-write-and-register-pre-analysis-plans"><span class="toc-section-number">4.4</span> Write and register pre-analysis plans</a></li>
+<li><a href="reproducibility.html#create-reproducible-workflows" id="toc-create-reproducible-workflows"><span class="toc-section-number">4.5</span> Create reproducible workflows</a></li>
+<li><a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking" id="toc-process-and-analyze-data-with-internal-replication-and-masking"><span class="toc-section-number">4.6</span> Process and analyze data with internal replication and masking</a></li>
+<li><a href="reproducibility.html#use-reporting-checklists-with-manuscripts" id="toc-use-reporting-checklists-with-manuscripts"><span class="toc-section-number">4.7</span> Use reporting checklists with manuscripts</a></li>
+<li><a href="reproducibility.html#publish-preprints" id="toc-publish-preprints"><span class="toc-section-number">4.8</span> Publish preprints</a></li>
+<li><a href="reproducibility.html#publish-data-when-possible-and-replication-scripts" id="toc-publish-data-when-possible-and-replication-scripts"><span class="toc-section-number">4.9</span> Publish data (when possible) and replication scripts</a></li>
+</ul></li>
+<li><a href="code-repositories.html#code-repositories" id="toc-code-repositories"><span class="toc-section-number">5</span> Code repositories</a>
+<ul>
+<li><a href="code-repositories.html#project-structure" id="toc-project-structure"><span class="toc-section-number">5.1</span> Project Structure</a></li>
+<li><a href="code-repositories.html#rproj-files" id="toc-rproj-files"><span class="toc-section-number">5.2</span> <code>.Rproj</code> files</a></li>
+<li><a href="code-repositories.html#configuration-config-file" id="toc-configuration-config-file"><span class="toc-section-number">5.3</span> Configuration (‘config’) File</a></li>
+<li><a href="code-repositories.html#order-files-and-directories" id="toc-order-files-and-directories"><span class="toc-section-number">5.4</span> Order Files and Directories</a></li>
+<li><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility" id="toc-using-bash-scripts-to-ensure-reproducibility"><span class="toc-section-number">5.5</span> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li><a href="coding-practices.html#coding-practices" id="toc-coding-practices"><span class="toc-section-number">6</span> Coding practices</a>
+<ul>
+<li><a href="coding-practices.html#organizing-scripts" id="toc-organizing-scripts"><span class="toc-section-number">6.1</span> Organizing scripts</a></li>
+<li><a href="coding-practices.html#documenting-your-code" id="toc-documenting-your-code"><span class="toc-section-number">6.2</span> Documenting your code</a>
+<ul>
+<li><a href="coding-practices.html#file-headers" id="toc-file-headers"><span class="toc-section-number">6.2.1</span> File headers</a></li>
+<li><a href="coding-practices.html#sections-and-subsections" id="toc-sections-and-subsections"><span class="toc-section-number">6.2.2</span> Sections and subsections</a></li>
+<li><a href="coding-practices.html#code-folding" id="toc-code-folding"><span class="toc-section-number">6.2.3</span> Code folding</a></li>
+<li><a href="coding-practices.html#comments-in-the-body-of-your-script" id="toc-comments-in-the-body-of-your-script"><span class="toc-section-number">6.2.4</span> Comments in the body of your script</a></li>
+<li><a href="coding-practices.html#function-documentation" id="toc-function-documentation"><span class="toc-section-number">6.2.5</span> Function documentation</a></li>
+</ul></li>
+<li><a href="coding-practices.html#object-naming" id="toc-object-naming"><span class="toc-section-number">6.3</span> Object naming</a></li>
+<li><a href="coding-practices.html#function-calls" id="toc-function-calls"><span class="toc-section-number">6.4</span> Function calls</a></li>
+<li><a href="coding-practices.html#the-here-package" id="toc-the-here-package"><span class="toc-section-number">6.5</span> The here package</a></li>
+<li><a href="coding-practices.html#readingsaving-data" id="toc-readingsaving-data"><span class="toc-section-number">6.6</span> Reading/Saving Data</a>
+<ul>
+<li><a href="coding-practices.html#rds-vs-.rdata-files" id="toc-rds-vs-.rdata-files"><span class="toc-section-number">6.6.1</span> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
+<li><a href="coding-practices.html#csvs" id="toc-csvs"><span class="toc-section-number">6.6.2</span> CSVs</a></li>
+</ul></li>
+<li><a href="coding-practices.html#integrating-box-and-dropbox" id="toc-integrating-box-and-dropbox"><span class="toc-section-number">6.7</span> Integrating Box and Dropbox</a>
+<ul>
+<li><a href="coding-practices.html#box" id="toc-box"><span class="toc-section-number">6.7.1</span> Box</a></li>
+<li><a href="coding-practices.html#dropbox" id="toc-dropbox"><span class="toc-section-number">6.7.2</span> Dropbox</a></li>
+</ul></li>
+<li><a href="coding-practices.html#tidyverse" id="toc-tidyverse"><span class="toc-section-number">6.8</span> Tidyverse</a></li>
+<li><a href="coding-practices.html#coding-with-r-and-python" id="toc-coding-with-r-and-python"><span class="toc-section-number">6.9</span> Coding with R and Python</a></li>
+<li><a href="coding-practices.html#repeating-analyses-with-different-variations" id="toc-repeating-analyses-with-different-variations"><span class="toc-section-number">6.10</span> Repeating analyses with different variations</a>
+<ul>
+<li><a href="coding-practices.html#lapply-and-sapply" id="toc-lapply-and-sapply"><span class="toc-section-number">6.10.1</span> <code>lapply()</code> and <code>sapply()</code></a></li>
+<li><a href="coding-practices.html#mapply-and-pmap" id="toc-mapply-and-pmap"><span class="toc-section-number">6.10.2</span> <code>mapply()</code> and <code>pmap()</code></a></li>
+<li><a href="coding-practices.html#parallel-processing-with-parallel-and-future-packages" id="toc-parallel-processing-with-parallel-and-future-packages"><span class="toc-section-number">6.10.3</span> Parallel processing with <code>parallel</code> and <code>future</code> packages</a></li>
+</ul></li>
+<li><a href="coding-practices.html#reviewing-code" id="toc-reviewing-code"><span class="toc-section-number">6.11</span> Reviewing Code</a>
+<ul>
+<li><a href="coding-practices.html#creating-a-pull-request-template" id="toc-creating-a-pull-request-template"><span class="toc-section-number">6.11.1</span> Creating a Pull Request Template</a></li>
+</ul></li>
+</ul></li>
+<li><a href="coding-style.html#coding-style" id="toc-coding-style"><span class="toc-section-number">7</span> Coding style</a>
+<ul>
+<li><a href="coding-style.html#comments" id="toc-comments"><span class="toc-section-number">7.1</span> Comments</a></li>
+<li><a href="coding-style.html#line-breaks" id="toc-line-breaks"><span class="toc-section-number">7.2</span> Line breaks</a></li>
+<li><a href="coding-style.html#automated-tools-for-style-and-project-workflow" id="toc-automated-tools-for-style-and-project-workflow"><span class="toc-section-number">7.3</span> Automated Tools for Style and Project Workflow</a>
+<ul>
+<li><a href="coding-style.html#styling" id="toc-styling"><span class="toc-section-number">7.3.1</span> Styling</a></li>
+</ul></li>
+</ul></li>
+<li><a href="working-with-big-data.html#working-with-big-data" id="toc-working-with-big-data"><span class="toc-section-number">8</span> Working with Big Data</a>
+<ul>
+<li><a href="working-with-big-data.html#the-data.table-package" id="toc-the-data.table-package"><span class="toc-section-number">8.1</span> The data.table package</a></li>
+<li><a href="working-with-big-data.html#using-downsampled-data" id="toc-using-downsampled-data"><span class="toc-section-number">8.2</span> Using downsampled data</a></li>
+<li><a href="working-with-big-data.html#optimal-rstudio-set-up" id="toc-optimal-rstudio-set-up"><span class="toc-section-number">8.3</span> Optimal RStudio set up</a></li>
+</ul></li>
+<li><a href="data-masking.html#data-masking" id="toc-data-masking"><span class="toc-section-number">9</span> Data masking</a>
+<ul>
+<li><a href="data-masking.html#general-overview" id="toc-general-overview"><span class="toc-section-number">9.1</span> General Overview</a>
+<ul>
+<li><a href="data-masking.html#what-is-data-masking" id="toc-what-is-data-masking"><span class="toc-section-number">9.1.1</span> What is Data Masking?</a></li>
+<li><a href="data-masking.html#using-tidy-evaluation-for-data-masking" id="toc-using-tidy-evaluation-for-data-masking"><span class="toc-section-number">9.1.2</span> Using tidy evaluation for data masking</a></li>
+</ul></li>
+<li><a href="data-masking.html#technical-overview" id="toc-technical-overview"><span class="toc-section-number">9.2</span> Technical Overview</a>
+<ul>
+<li><a href="data-masking.html#example" id="toc-example"><span class="toc-section-number">9.2.1</span> Example</a></li>
+</ul></li>
+</ul></li>
+<li><a href="github.html#github" id="toc-github"><span class="toc-section-number">10</span> Github</a>
+<ul>
+<li><a href="github.html#basics" id="toc-basics"><span class="toc-section-number">10.1</span> Basics</a></li>
+<li><a href="github.html#github-desktop" id="toc-github-desktop"><span class="toc-section-number">10.2</span> Github Desktop</a></li>
+<li><a href="github.html#git-branching" id="toc-git-branching"><span class="toc-section-number">10.3</span> Git Branching</a></li>
+<li><a href="github.html#example-workflow" id="toc-example-workflow"><span class="toc-section-number">10.4</span> Example Workflow</a></li>
+<li><a href="github.html#commonly-used-git-commands" id="toc-commonly-used-git-commands"><span class="toc-section-number">10.5</span> Commonly Used Git Commands</a></li>
+<li><a href="github.html#how-often-should-i-commit" id="toc-how-often-should-i-commit"><span class="toc-section-number">10.6</span> How often should I commit?</a></li>
+<li><a href="github.html#what-should-be-pushed-to-github" id="toc-what-should-be-pushed-to-github"><span class="toc-section-number">10.7</span> What should be pushed to Github?</a></li>
+</ul></li>
+<li><a href="unix.html#unix" id="toc-unix"><span class="toc-section-number">11</span> Unix commands</a>
+<ul>
+<li><a href="unix.html#basics-1" id="toc-basics-1"><span class="toc-section-number">11.1</span> Basics</a></li>
+<li><a href="unix.html#syntax-for-both-macwindows" id="toc-syntax-for-both-macwindows"><span class="toc-section-number">11.2</span> Syntax for both Mac/Windows</a></li>
+<li><a href="unix.html#running-bash-scripts" id="toc-running-bash-scripts"><span class="toc-section-number">11.3</span> Running Bash Scripts</a></li>
+<li><a href="unix.html#running-rscripts-in-windows" id="toc-running-rscripts-in-windows"><span class="toc-section-number">11.4</span> Running Rscripts in Windows</a>
+<ul>
+<li><a href="unix.html#common-mistakes" id="toc-common-mistakes"><span class="toc-section-number">11.4.1</span> Common Mistakes</a></li>
+</ul></li>
+<li><a href="unix.html#checking-tasks-and-killing-jobs" id="toc-checking-tasks-and-killing-jobs"><span class="toc-section-number">11.5</span> Checking tasks and killing jobs</a></li>
+<li><a href="unix.html#running-big-jobs" id="toc-running-big-jobs"><span class="toc-section-number">11.6</span> Running big jobs</a>
+<ul>
+<li><a href="unix.html#example-code-for-runfilesavelogs" id="toc-example-code-for-runfilesavelogs"><span class="toc-section-number">11.6.1</span> Example code for <code>runfileSaveLogs</code></a></li>
+<li><a href="unix.html#example-usage-for-runfilesavelogs" id="toc-example-usage-for-runfilesavelogs"><span class="toc-section-number">11.6.2</span> Example usage for <code>runfileSaveLogs</code></a></li>
+</ul></li>
+</ul></li>
+<li><a href="reproducible-environments.html#reproducible-environments" id="toc-reproducible-environments"><span class="toc-section-number">12</span> Reproducible Environments</a>
+<ul>
+<li><a href="reproducible-environments.html#package-version-control-with-renv" id="toc-package-version-control-with-renv"><span class="toc-section-number">12.1</span> Package Version Control with renv</a>
+<ul>
+<li><a href="reproducible-environments.html#introduction" id="toc-introduction"><span class="toc-section-number">12.1.1</span> Introduction</a></li>
+<li><a href="reproducible-environments.html#implementing-renv-in-projects" id="toc-implementing-renv-in-projects"><span class="toc-section-number">12.1.2</span> Implementing renv in projects</a></li>
+<li><a href="reproducible-environments.html#using-projects-with-renv" id="toc-using-projects-with-renv"><span class="toc-section-number">12.1.3</span> Using projects with renv</a></li>
+</ul></li>
+</ul></li>
+<li><a href="code-publication.html#code-publication" id="toc-code-publication"><span class="toc-section-number">13</span> Code Publication</a>
+<ul>
+<li><a href="code-publication.html#checklist-overview" id="toc-checklist-overview"><span class="toc-section-number">13.1</span> Checklist overview</a></li>
+<li><a href="code-publication.html#fill-out-file-headers" id="toc-fill-out-file-headers"><span class="toc-section-number">13.2</span> Fill out file headers</a></li>
+<li><a href="code-publication.html#clean-up-comments" id="toc-clean-up-comments"><span class="toc-section-number">13.3</span> Clean up comments</a></li>
+<li><a href="code-publication.html#document-functions" id="toc-document-functions"><span class="toc-section-number">13.4</span> Document functions</a></li>
+<li><a href="code-publication.html#remove-deprecated-filepaths" id="toc-remove-deprecated-filepaths"><span class="toc-section-number">13.5</span> Remove deprecated filepaths</a></li>
+<li><a href="code-publication.html#ensure-project-runs-via-bash" id="toc-ensure-project-runs-via-bash"><span class="toc-section-number">13.6</span> Ensure project runs via bash</a></li>
+<li><a href="code-publication.html#complete-the-readme" id="toc-complete-the-readme"><span class="toc-section-number">13.7</span> Complete the README</a></li>
+<li><a href="code-publication.html#clean-up-feature-branches" id="toc-clean-up-feature-branches"><span class="toc-section-number">13.8</span> Clean up feature branches</a></li>
+<li><a href="code-publication.html#create-github-release" id="toc-create-github-release"><span class="toc-section-number">13.9</span> Create Github release</a></li>
+</ul></li>
+<li><a href="data-publication.html#data-publication" id="toc-data-publication"><span class="toc-section-number">14</span> Data Publication</a>
+<ul>
+<li><a href="data-publication.html#overview" id="toc-overview"><span class="toc-section-number">14.1</span> Overview</a></li>
+<li><a href="data-publication.html#removing-phi" id="toc-removing-phi"><span class="toc-section-number">14.2</span> Removing PHI</a>
+<ul>
+<li><a href="data-publication.html#personal-information" id="toc-personal-information"><span class="toc-section-number">14.2.1</span> Personal information</a></li>
+<li><a href="data-publication.html#dates" id="toc-dates"><span class="toc-section-number">14.2.2</span> Dates</a></li>
+<li><a href="data-publication.html#geographic-information" id="toc-geographic-information"><span class="toc-section-number">14.2.3</span> Geographic information</a></li>
+</ul></li>
+<li><a href="data-publication.html#create-public-ids" id="toc-create-public-ids"><span class="toc-section-number">14.3</span> Create public IDs</a>
+<ul>
+<li><a href="data-publication.html#rationale" id="toc-rationale"><span class="toc-section-number">14.3.1</span> Rationale</a></li>
+<li><a href="data-publication.html#a-single-set-of-public-ids-for-each-study" id="toc-a-single-set-of-public-ids-for-each-study"><span class="toc-section-number">14.3.2</span> A single set of public IDs for each study</a></li>
+<li><a href="data-publication.html#example-scripts" id="toc-example-scripts"><span class="toc-section-number">14.3.3</span> Example scripts</a></li>
+</ul></li>
+<li><a href="data-publication.html#create-a-data-repository" id="toc-create-a-data-repository"><span class="toc-section-number">14.4</span> Create a data repository</a>
+<ul>
+<li><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository" id="toc-steps-for-creating-an-open-science-framework-osf-repository"><span class="toc-section-number">14.4.1</span> Steps for creating an Open Science Framework (OSF) repository:</a></li>
+</ul></li>
+<li><a href="data-publication.html#edit-and-test-analysis-scripts" id="toc-edit-and-test-analysis-scripts"><span class="toc-section-number">14.5</span> Edit and test analysis scripts</a></li>
+<li><a href="data-publication.html#create-a-public-github-page-for-public-scripts" id="toc-create-a-public-github-page-for-public-scripts"><span class="toc-section-number">14.6</span> Create a public GitHub page for public scripts</a></li>
+<li><a href="data-publication.html#go-live" id="toc-go-live"><span class="toc-section-number">14.7</span> Go live</a></li>
+</ul></li>
+<li><a href="slurm.html#slurm" id="toc-slurm"><span class="toc-section-number">15</span> Slurm and cluster computing</a>
+<ul>
+<li><a href="slurm.html#getting-started" id="toc-getting-started"><span class="toc-section-number">15.1</span> Getting started</a>
+<ul>
+<li><a href="slurm.html#one-time-system-set-up" id="toc-one-time-system-set-up"><span class="toc-section-number">15.1.1</span> One-Time System Set-Up</a></li>
+</ul></li>
+<li><a href="slurm.html#moving-files-to-sherlock" id="toc-moving-files-to-sherlock"><span class="toc-section-number">15.2</span> Moving files to Sherlock</a></li>
+<li><a href="slurm.html#installing-packages-on-sherlock" id="toc-installing-packages-on-sherlock"><span class="toc-section-number">15.3</span> Installing packages on Sherlock</a></li>
+<li><a href="slurm.html#testing-your-code" id="toc-testing-your-code"><span class="toc-section-number">15.4</span> Testing your code</a>
+<ul>
+<li><a href="slurm.html#the-command-line" id="toc-the-command-line"><span class="toc-section-number">15.4.1</span> The command line</a></li>
+<li><a href="slurm.html#the-sherlock-ondemand-dashboard" id="toc-the-sherlock-ondemand-dashboard"><span class="toc-section-number">15.4.2</span> The Sherlock OnDemand Dashboard</a></li>
+<li><a href="slurm.html#filepaths-configuration-on-sherlock" id="toc-filepaths-configuration-on-sherlock"><span class="toc-section-number">15.4.3</span> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
+<li><a href="slurm.html#storage-group-storage-access" id="toc-storage-group-storage-access"><span class="toc-section-number">15.5</span> Storage &amp; group storage access</a>
+<ul>
+<li><a href="slurm.html#individual-storage" id="toc-individual-storage"><span class="toc-section-number">15.5.1</span> Individual storage</a></li>
+<li><a href="slurm.html#group-storage" id="toc-group-storage"><span class="toc-section-number">15.5.2</span> Group storage</a></li>
+<li><a href="slurm.html#folder-permissions" id="toc-folder-permissions"><span class="toc-section-number">15.5.3</span> Folder permissions</a></li>
+</ul></li>
+<li><a href="slurm.html#running-big-jobs-1" id="toc-running-big-jobs-1"><span class="toc-section-number">15.6</span> Running big jobs</a></li>
+</ul></li>
+<li><a href="checklists.html#checklists" id="toc-checklists"><span class="toc-section-number">16</span> Checklists</a>
+<ul>
+<li><a href="checklists.html#pre-analysis-plan-checklist" id="toc-pre-analysis-plan-checklist"><span class="toc-section-number">16.1</span> Pre-analysis plan checklist</a></li>
+<li><a href="checklists.html#code-checklist" id="toc-code-checklist"><span class="toc-section-number">16.2</span> Code checklist</a></li>
+<li><a href="checklists.html#manuscript-checklist" id="toc-manuscript-checklist"><span class="toc-section-number">16.3</span> Manuscript checklist</a></li>
+<li><a href="checklists.html#figure-checklist" id="toc-figure-checklist"><span class="toc-section-number">16.4</span> Figure checklist</a></li>
+</ul></li>
+<li><a href="resources.html#resources" id="toc-resources"><span class="toc-section-number">17</span> Resources</a>
+<ul>
+<li><a href="resources.html#resources-for-r" id="toc-resources-for-r"><span class="toc-section-number">17.1</span> Resources for R</a></li>
+<li><a href="resources.html#resources-for-git-github" id="toc-resources-for-git-github"><span class="toc-section-number">17.2</span> Resources for Git &amp; Github</a></li>
+<li><a href="resources.html#scientific-figures" id="toc-scientific-figures"><span class="toc-section-number">17.3</span> Scientific figures</a></li>
+<li><a href="resources.html#writing" id="toc-writing"><span class="toc-section-number">17.4</span> Writing</a></li>
+<li><a href="resources.html#presentations" id="toc-presentations"><span class="toc-section-number">17.5</span> Presentations</a></li>
+<li><a href="resources.html#professional-advice" id="toc-professional-advice"><span class="toc-section-number">17.6</span> Professional advice</a></li>
+<li><a href="resources.html#funding" id="toc-funding"><span class="toc-section-number">17.7</span> Funding</a></li>
+<li><a href="resources.html#ethics-and-global-health-research" id="toc-ethics-and-global-health-research"><span class="toc-section-number">17.8</span> Ethics and global health research</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Benjamin-Chung Lab Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-masking" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Data masking<a href="data-masking.html#data-masking" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann</p>
+<p>When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford’s computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the <a href="https://www.sherlock.stanford.edu/docs/overview/introduction/">Sherlock user guide</a> to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.</p>
+<div id="general-overview" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> General Overview<a href="data-masking.html#general-overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter covers data masking, a unique process in R in which columns are treated as distinct objects within their dataframe’s environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.</p>
+<div id="what-is-data-masking" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> What is Data Masking?<a href="data-masking.html#what-is-data-masking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Within certain tidyverse operations, columns are called as if they were variables. For example, while running <code>df %&gt;% mutate(X = …)</code> R recognizes that <code>X</code> specifically references a column in <code>df</code> without explicitly stating its membership [<code>df %&gt;% mutate(df$X = …)</code>] or calling the column name as a string [<code>df %&gt;% mutate(“X” = …)</code>] .</p>
+<p>However, this behavior may introduce errors when we attempt to incorporate variables from the global environment within these tidyverse pipelines. In the example above, <code>column_name = “X”</code> followed by <code>df %&gt;% mutate(X2 = column_name + 1)</code> would yield an error, since <code>column_name</code> is not a column in <code>df</code> and the variable <code>column_name</code> is not defined within the environment of <code>df</code></p>
+</div>
+<div id="using-tidy-evaluation-for-data-masking" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Using tidy evaluation for data masking<a href="data-masking.html#using-tidy-evaluation-for-data-masking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In dplyr-based R programming, we make use of tidy evaluation. This allows us to avoid using base R syntax to reference specific columns in a data frame. By leveraging Tidy evaluation-based data masking, we can employ long pipes with several dplyr verbs to manipulate our data using stand-alone variables that store column names as strings.</p>
+<p>For example, consider a data frame “df” that contains a column called “heavyrain” that we want to manipulate. Suppose we wanted to convert the values of “heavyrain” into a factor.</p>
+<p>Using base R, which does not mask data, heavyrain must have quotes to be treated as a data-variable:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-masking.html#cb20-1" tabindex="-1"></a>df[[“outcome”]] <span class="ot">=</span> <span class="fu">as.factor</span>(df[[“heavyrain”]])</span></code></pre></div>
+<p>In a dplyr pipe, heavyrain is being masked using tidy evaluation and will be correctly interpreted as a column because it is recognized as a data-variable:
+df %&gt;% mutate(outcome = as.factor(heavyrain))</p>
+<p>With modified data masking, heavyrain is a string that is coerced into being recognized as a data-variable:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-masking.html#cb21-1" tabindex="-1"></a>var_name <span class="ot">=</span> “heavyrain”</span>
+<span id="cb21-2"><a href="data-masking.html#cb21-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">outcome =</span> <span class="fu">as.factor</span>(<span class="sc">!!</span><span class="fu">sym</span>(var_name)) </span></code></pre></div>
+<p>While cleaner and often more convenient, the data frame that var_name is in is now “masked” and we refer to the vectors in the dataframe (data-variables) as though it is an object of its own (an environmental-variable). This is why we can just say the variable’s name in the context of a pipe – we treat it as though it’s an object defined in our environment. Within normal scripts, this is usually fine, because the data frame is “held on to” in the pipe. However, it can cause some programming hurdles when writing functions that take strings of variable/column names as arguments. In the next section, we briefly describe how to troubleshoot common errors in data masking, as relevant to our lab’s work.</p>
+</div>
+</div>
+<div id="technical-overview" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Technical Overview<a href="data-masking.html#technical-overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section covers the R functions and tools that we often use in the context of data masking, focusing on the bang bang operator (<code>!!</code>) with symbol coercion (<code>sym()</code>) and the Walrus operator (<code>:=</code>).</p>
+<p>The combined use of <code>!!</code> and <code>sym()</code> allows us to use strings, rather than data-variables, to reference column names within dplyr. Together, <code>!!sym(“column_name”)</code> forces dplyr to recognize “column_name” as a data-variable prior to evaluating the rest of the expression, enabling the ability to perform calculations on the column while referring to it as a string.
+<code>sym()</code> is a function that turns strings into symbols. In the context of a dplyr pipe, these symbols are interpreted as data-variables.
+The <code>!!</code> (bang bang) operator tells dplyr to evaluate the sym() expression first, e.g. to unquote its expression (e.g. “column_name”) and evaluate it as a pre-existing object, first. This is helpful because often we use <code>sym(“column_name”)</code> within a larger expression, and dplyr might evaluate other elements of the expression first without !!, causing errors.</p>
+<p>When we want to create a new column (via mutate or summarize), the Walrus operator (<code>:=</code>) allows us to specify the new column’s name using a string. For example, while <code>df %&gt;% mutate(“new_column” = values)</code> would yield an error, <code>df %&gt;% mutate(“new_column” := values)</code> will correctly create a new column called “new_column”.
+If we want to use a variable representing a string, we can use !! to force the variable to be evaluated before using <code>:=</code> to assign the value of the new column.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-masking.html#cb22-1" tabindex="-1"></a>col_name <span class="ot">=</span> “new_column”</span>
+<span id="cb22-2"><a href="data-masking.html#cb22-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">col_name :=</span> values)</span></code></pre></div>
+<div id="example" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Example<a href="data-masking.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we want to write a function “generate_descriptive_table” to summarize how the prevalence of “outcome” varies under different levels of a “risk_factor” in a data frame “df”</p>
+<p>We can start by writing the function shell:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-masking.html#cb23-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf) {</span>
+<span id="cb23-2"><a href="data-masking.html#cb23-2" tabindex="-1"></a>outcome_dist_by_rf <span class="ot">&lt;-</span> ….</span>
+<span id="cb23-3"><a href="data-masking.html#cb23-3" tabindex="-1"></a><span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb23-4"><a href="data-masking.html#cb23-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Next, we can filter the data frame for only rows in which “rf” and “outcome” are not missing. We can use !! and sym() within filter to evaluate the strings stored in “rf” and “outcome”. Note that defining <code>!!sym(outcome)</code> or <code>!!sym(outcome)</code> in variables <em>outside of the dplyr pipeline</em> will <em>not</em> work.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-masking.html#cb24-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb24-2"><a href="data-masking.html#cb24-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="data-masking.html#cb24-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="data-masking.html#cb24-4" tabindex="-1"></a>  ….</span>
+<span id="cb24-5"><a href="data-masking.html#cb24-5" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb24-6"><a href="data-masking.html#cb24-6" tabindex="-1"></a>}</span></code></pre></div>
+<p>Similarly, we use !! and sym() in group_by to evaluate column name, stored as a string in the argument “rf”</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-masking.html#cb25-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb25-2"><a href="data-masking.html#cb25-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="data-masking.html#cb25-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="data-masking.html#cb25-4" tabindex="-1"></a>  ….</span>
+<span id="cb25-5"><a href="data-masking.html#cb25-5" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb25-6"><a href="data-masking.html#cb25-6" tabindex="-1"></a>}</span></code></pre></div>
+<p>Finally, we can use the walrus operator, !! and sym() with “summarize” to create a new column that takes the mean of the column referenced in “rf”. We also use “glue” or “paste” to give the new column an informative name that includes the “outcome” it describes.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-masking.html#cb26-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb26-2"><a href="data-masking.html#cb26-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="data-masking.html#cb26-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4"><a href="data-masking.html#cb26-4" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="data-masking.html#cb26-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="sc">!!</span>(glue<span class="sc">::</span><span class="fu">glue</span>(“{outcome}_prev”)) <span class="sc">:=</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome))) </span>
+<span id="cb26-6"><a href="data-masking.html#cb26-6" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb26-7"><a href="data-masking.html#cb26-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>OR</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-masking.html#cb27-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb27-2"><a href="data-masking.html#cb27-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="data-masking.html#cb27-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="data-masking.html#cb27-4" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="data-masking.html#cb27-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="sc">!!</span>(<span class="fu">paste0</span>(outcome, ”_prev”)) <span class="sc">:=</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)))</span>
+<span id="cb27-6"><a href="data-masking.html#cb27-6" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb27-7"><a href="data-masking.html#cb27-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>OR</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-masking.html#cb28-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb28-2"><a href="data-masking.html#cb28-2" tabindex="-1"></a>  new_column_name <span class="ot">=</span> <span class="fu">paste0</span>(outcome, ”_prev”)</span>
+<span id="cb28-3"><a href="data-masking.html#cb28-3" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="data-masking.html#cb28-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="data-masking.html#cb28-5" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="data-masking.html#cb28-6" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="sc">!!</span>(new_column_name) <span class="sc">:=</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome))) </span>
+<span id="cb28-7"><a href="data-masking.html#cb28-7" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb28-8"><a href="data-masking.html#cb28-8" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="working-with-big-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jadebc/lab-manual/edit/master/08-data-masking.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["lab-manual.pdf", "lab-manual.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
