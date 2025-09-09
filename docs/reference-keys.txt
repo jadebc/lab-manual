@@ -4,7 +4,7 @@ authorship
 slack
 email
 trello
-google-drives
+google-drive
 meetings
 reproducibility
 study-design

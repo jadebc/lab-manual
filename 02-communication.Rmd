@@ -25,7 +25,7 @@ One benefit of the academic environment is its schedule flexibility. This means 
 - Use checklists to break down a task into smaller chunks. Sometimes Jade will write this for you, but you can also add this yourself. 
 - Jade will move your card to the "Completed" list when it is done. 
 
-## Google Drives
+## Google Drive
 
 - We mostly use Google Drive to create shared documents with longer descriptions of tasks. These documents are linked to in Trello. Jade often shares these with the whole team since tasks are overlapping, and even if a task is assigned to one person, others may have valuable insights. 
 
