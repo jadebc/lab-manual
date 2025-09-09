@@ -29,6 +29,11 @@ One benefit of the academic environment is its schedule flexibility. This means 
 
 - We mostly use Google Drive to create shared documents with longer descriptions of tasks. These documents are linked to in Trello. Jade often shares these with the whole team since tasks are overlapping, and even if a task is assigned to one person, others may have valuable insights. 
 
+## Stanford Medicine Box
+
+- Human subjects data for research studies are generally stored in Stanford Medicine Box. Please check with Jade about whether there are special storage and transfer requirements for the datasets you are working with for each study. 
+- If you are in the School of Medicine, you can access Box via your SUNet ID. If you are no in the School of Medicine, please follow [these instructions](https://docs.google.com/document/d/1R3Ngpi8LsezHU0KhgllSKh_XJtQafczrZe3pmeWH2jY/edit?usp=sharing) to get a Box account. 
+
 ## Meetings
 
 - Our meetings start on the hour.
