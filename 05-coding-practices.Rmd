@@ -165,11 +165,9 @@ drop_auth(rdstoken = "/path/to/tokenfile.RDS")
 
 ## Tidyverse
 
-Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming [the gold standard](https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/) in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e. big data pipelines that would benefit from Data.Table's performance optimizations).
+We use the Tidyverse as our default R dialect. For most of our work that does not involve very large datasets, Tidyverse packages provide clear, readable syntax that makes code easier to review and reproduce. For large data pipelines, `data.table` is a performant alternative. If you encounter base R patterns in legacy code or external packages, the reference table below maps common translations. Hadley Wickham's [R for Data Science](https://r4ds.had.co.nz/) is a good resource for learning the Tidyverse ecosystem.
 
-The package author has published a [great textbook on R for Data Science](https://r4ds.had.co.nz/), which leans heavily on many Tidyverse packages and may be worth checking out.
-
-The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:
+The following list is not exhaustive, but is a compact reference for common base R to Tidyverse translations:
 
 Base R | Better Style, Performance, and Utility
 --- | ---
@@ -209,7 +207,29 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
 
 ## Coding with R and Python
 
-If you're using both R and Python, you may wish to check out the [Feather package](https://www.rdocumentation.org/packages/feather/versions/0.3.3) for exchanging data between the two languages [extremely quickly](https://blog.rstudio.com/2016/03/29/feather/).
+Some projects may require both R and Python — for example, using Python for machine learning (e.g., `scikit-learn`, `pytorch`) and R for statistical analysis and visualization. There are two main strategies for interoperability:
+
+**Exchanging data via Apache Arrow / Parquet.** The [Arrow](https://arrow.apache.org/docs/r/) and [Parquet](https://parquet.apache.org/) formats allow fast, zero-copy data exchange between R and Python with no loss of type information. In R, use the `arrow` package to read and write Parquet files:
+
+```
+# In R
+library(arrow)
+write_parquet(my_data, here::here("data", "my_data.parquet"))
+my_data <- read_parquet(here::here("data", "my_data.parquet"))
+```
+
+```
+# In Python
+import pandas as pd
+df = pd.read_parquet("data/my_data.parquet")
+df.to_parquet("data/my_data.parquet")
+```
+
+Parquet is preferred over CSV for R-Python workflows because it preserves column types, handles dates correctly, and is much faster for large datasets.
+
+**Calling Python from R with `reticulate`.** The [`reticulate`](https://rstudio.github.io/reticulate/) package lets you call Python functions directly from R, which can be useful when you want to use a Python library without leaving your R workflow. However, this adds complexity to reproducible environments (you need to manage both `renv` and a Python virtual environment), so use it judiciously.
+
+**Note**: The `feather` package, which was previously recommended for R-Python data exchange, has been superseded by Arrow/Parquet and should no longer be used.
 
 
 ## Repeating analyses with different variations
@@ -341,8 +361,54 @@ Here, `future::availableCores()` checks how many cores your machine has. Similar
 
 ## Reviewing Code
 
-Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the [GitHub](#Github) section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.
+Code review is one of the most important quality control steps in our workflow. Every analysis that will be used in a manuscript, report, or presentation should be reviewed by at least one other person before results are considered final. GitHub pull requests are our primary mechanism for code review.
 
+### Why we review code
+
+Even careful, experienced analysts make mistakes. Common issues caught in review include: incorrect merge keys that silently drop or duplicate observations, filter conditions that exclude the wrong subgroups, mislabeled variables in results tables, and hardcoded values that should be parameterized. In an epidemiology context, these errors can change point estimates, confidence intervals, or conclusions — and they are often invisible in the final output without examining the code itself.
+
+### What to look for in a code review
+
+When reviewing a pull request, check for the following:
+
+**Correctness**
+
+- Does the code do what the analyst intends? Read the description of the task (e.g., the Trello card) and verify the code implements it.
+- Check merge/join operations carefully: Are the join keys correct? Does the resulting number of rows make sense? Are there unexpected duplicates or dropped observations? 
+- Check filter and subset operations: Are the conditions correct? Is the remaining sample size plausible?
+- Do computed variables (e.g., rates, differences, person-time) use the correct formula?
+- Are results consistent with what you'd expect given the data? Look for red flags like zero standard errors, wildly implausible estimates, or sample sizes that don't match expectations.
+
+**Reproducibility**
+
+- Does the script follow the standard flow (header → config → load → analyze → save)?
+- Are file paths relative (using `here()`) rather than absolute?
+- Are there any hardcoded values that should come from the data or config file?
+- Does the code run end-to-end without manual intervention?
+- Are random seeds set where relevant (e.g., bootstrapping, cross-validation)?
+
+**Clarity and style**
+
+- Is the code well-commented? Could someone unfamiliar with the project understand what each major section does?
+- Are variable and function names descriptive?
+- Are functions documented with headers (see [Function documentation] above)?
+- Does the code follow our style conventions (snake_case, named arguments, tidyverse)?
+
+**Data integrity**
+
+- Are assertions or sanity checks present where they should be (see the [Testing and validation] chapter)?
+- Is the code careful about missing data — e.g., does it use `na.rm = TRUE` intentionally vs. ignoring missingness by default?
+- Are there any places where PHI or sensitive data could be accidentally exposed (e.g., printing raw IDs, writing intermediate files without de-identification)?
+
+### How to give feedback
+
+Be specific and constructive. Instead of "this looks wrong," say "the left join on line 45 uses `household_id` but I think it should use `individual_id` since we want one row per person." When something is a suggestion rather than a required change, label it as such (e.g., "Optional: you could simplify this with `across()`"). 
+
+GitHub's review interface lets you leave comments on specific lines, which is much more useful than general comments. Use "Request changes" when there are issues that must be fixed before merging, and "Approve" when the code is ready (or when only minor optional suggestions remain).
+
+### When to approve
+
+Approve a pull request when you are confident that the code is correct, reproducible, and readable. You do not need to verify every line of arithmetic, but you should understand the overall logic and have checked the high-risk operations (joins, filters, key computations). If you're unsure about something, ask — it's better to have a conversation than to approve code you don't understand.
 
 ### Creating a Pull Request Template
 
@@ -365,6 +431,14 @@ Here is an example pull request template.
 ## Summary of change
 
 Please include a summary of the change, including any new functions added and example usage. 
+
+## Testing
+
+Describe how you tested the code:
+- [ ] Script runs end-to-end without errors
+- [ ] Output sample sizes match expectations
+- [ ] Key estimates are plausible
+- [ ] Assertions/sanity checks pass
 
 ## Link to Spec
 
