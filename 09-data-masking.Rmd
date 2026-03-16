@@ -1,14 +1,13 @@
-# Data masking
+# Tidy evaluation and programming with dplyr
 
 by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
 
-When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the [Sherlock user guide](https://www.sherlock.stanford.edu/docs/overview/introduction/) to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab. 
-
-
 ## General Overview
-This chapter covers data masking, a unique process in R in which columns are treated as distinct objects within their dataframe’s environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names  are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.
+This chapter covers tidy evaluation, a programming pattern in R in which columns are treated as distinct objects within their dataframe's environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names  are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.
 
-### What is Data Masking? 
+Note: the tidyverse uses the term 'data masking' to describe this behavior. This is unrelated to masking in the sense of blinding analysts to treatment assignment, which is discussed in the [Reproducibility](03-reproducibility.html) chapter.
+
+### What is Tidy Evaluation? 
 Within certain tidyverse operations, columns are called as if they were variables. For example, while running `df %>% mutate(X = …)` R recognizes that `X` specifically references a column in ` df` without explicitly stating its membership ` df %>% mutate(df$X = …)` or calling the column name as a string ` df %>% mutate(“X” = …)`. 
 
 ```{r, echo=FALSE, out.width="50%"}

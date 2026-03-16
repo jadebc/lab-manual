@@ -1,6 +1,6 @@
 # Reproducible Environments
 
-by Anna Nguyen
+by Anna Nguyen and Jade Benjamin-Chung
 
 ## Package Version Control with renv
 
@@ -41,4 +41,22 @@ If you’re starting to work on an ongoing project that already has `renv` set u
 7. Your R environment should now be using the same package versions as specified in the `renv` lock file. You should now be able to replicate the code.
 8. If you make edits to the code and introduce new/updated packages, see the section above for instructions on how to make updates.
 
+## Documenting the R version
 
+`renv` tracks package versions but does not track the version of R itself. Since R updates can change behavior (e.g., changes to the default `stringsAsFactors` argument in R 4.0, or updates to the random number generator in R 3.6), it is important to document the R version used in each project.
+
+Add the following to your project's README: ```This project was developed using R version 4.3.1 (2023-06-16). Package versions are tracked with renv (see renv.lock).```
+
+You can find your current R version by running `R.version.string` in the console. Update this line in the README whenever you upgrade R for a project.
+
+For published code, also include the R version in the `renv.lock` file header, which `renv` does automatically. Reviewers or replicators can then check whether their R version matches before attempting to reproduce results.
+
+## Ensuring consistency between local and cluster environments
+
+If you develop code locally and run it on Sherlock, differences between your local R environment and the cluster environment can cause code to behave differently or fail. The most common sources of discrepancy are the R version, package versions, and system libraries.
+
+**Use the same R version on both.** Check which R versions are available on Sherlock by running `module avail R` on the command line. Load a specific version with `module load R/4.3.1` (replacing with your version). If your local R version is not available on Sherlock, either update your local installation to match an available Sherlock version, or vice versa. Document the version you are using in your README.
+
+**Use `renv` on Sherlock.** The same `renv.lock` file that tracks packages locally should be used on Sherlock. After cloning your repo on Sherlock, run `renv::restore()` to install the correct package versions. Note that some packages with compiled code (e.g., `data.table`, `Stan`-based packages) may need to be recompiled on Sherlock due to differences in the operating system and system libraries. If `renv::restore()` fails for specific packages, try installing them manually with `renv::install("package_name")` and then running `renv::snapshot()` to update the lock file.
+
+**Test on Sherlock before running full analyses.** Before submitting large batch jobs, run a small test script interactively on a development node (`sdev`) to verify that packages load correctly and that a simple version of your analysis produces expected output. This catches environment mismatches before you spend allocation hours on jobs that will fail.

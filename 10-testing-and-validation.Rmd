@@ -1,0 +1,369 @@
+# Data validation and unit testing
+
+by Jade Benjamin-Chung
+
+In epidemiologic analyses, mistakes in data processing can silently change results without producing any error. A merge with the wrong key can duplicate or drop observations; a filter with the wrong condition can exclude the wrong subgroup; a variable coded as character instead of numeric can cause a model to run but produce nonsensical estimates. These problems are often invisible in the final output — the code runs, a table is produced, and the numbers look plausible enough to go unquestioned. It is best to catch these errors early and systematically. The core idea is simple: at every step where data could go wrong, write a check that will fail and stop the code from proceeding if something is not as expected.
+
+This chapter covers two complementary practices: data validation with `assert_that()`, which checks that your real data meets expectations at each step of an analysis script, and unit testing with `test_that()`, which verifies that your custom functions produce correct output using small synthetic datasets.
+
+## Data validation with assertions in analysis scripts
+
+An assertion is a statement that something must be true at a particular point in your code. If the assertion fails, the script stops immediately with an informative error message. This is far preferable to the alternative — silently producing wrong results that you discover weeks later (or never).
+
+We use the `assertthat` package for assertions. Place assertions after any operation that changes the structure or content of your data: merges, filters, reshapes, variable creation, and aggregation. You write code for what you want to check that results in a TRUE or FALSE value, and `assert_that()` will throw an error if the value is FALSE and stop the code from running further. 
+
+### After merges and joins
+
+Merges are the single most common source of silent errors in our work. When you join two datasets, always check that the result has the number of rows you expect. 
+
+
+**Example: Merging household survey data with an individual symptom module.** Suppose `household` has one row per household and `symptoms` has one row per individual. We want to add household-level covariates (e.g., floor type, water source) to each individual's record.
+
+The key principle: **you should know what the row count should be before the merge, and verify it after.** A left join of individuals onto households should not change the number of rows. If it does, there are duplicate keys in the household data. 
+
+```
+library(dplyr)
+library(assertthat)
+
+# Load data
+household <- readRDS(here::here("data", "household.rds"))
+symptoms <- readRDS(here::here("data", "symptoms.rds"))
+
+# Check pre-merge expectations
+n_individuals <- nrow(symptoms)
+n_households <- n_distinct(household$household_id)
+
+assert_that(
+  n_distinct(household$household_id) == nrow(household),
+  msg = "household data has duplicate household_id values"
+)
+
+assert_that(
+  all(symptoms$household_id %in% household$household_id),
+  msg = "some individuals have household_ids not found in household data"
+)
+
+# Merge
+individual_data <- symptoms %>%
+  left_join(household, by = "household_id")
+
+# Check post-merge expectations
+assert_that(
+  nrow(individual_data) == n_individuals,
+  msg = paste0(
+    "merge changed number of rows: expected ", n_individuals,
+    ", got ", nrow(individual_data),
+    ". Check for duplicate household_ids in household data."
+  )
+)
+
+assert_that(
+  sum(is.na(individual_data$floor_type)) == 0,
+  msg = "floor_type has missing values after merge — household data may be incomplete"
+)
+```
+
+### After filters and subsets
+
+When you filter data to a subgroup, verify that the resulting sample size is plausible. This example restricts the dataset to children under 5 and checks three things: that the filtered dataset is not empty, that it actually removed some rows, and that the resulting sample size is within a plausible range based on enrollment records.
+
+```
+# Restrict to children under 5
+children_under5 <- individual_data %>%
+  filter(age_years < 5)
+
+assert_that(
+  nrow(children_under5) > 0,
+  msg = "no children under 5 found — check age variable coding"
+)
+
+assert_that(
+  nrow(children_under5) < nrow(individual_data),
+  msg = "filter did not remove any rows — all individuals are under 5?"
+)
+
+# If you know the approximate expected count from enrollment records
+assert_that(
+  nrow(children_under5) >= 800 & nrow(children_under5) <= 1200,
+  msg = paste0(
+    "expected ~1000 children under 5 based on enrollment, got ",
+    nrow(children_under5)
+  )
+)
+```
+
+### After variable creation
+
+When you create or recode variables, check that the results are within expected ranges. This example calculates diarrhea prevalence by village and checks that all prevalence values are between 0 and 1 and that no village has zero individuals.
+
+```
+# Calculate prevalence
+village_prev <- individual_data %>%
+  group_by(village_id) %>%
+  summarise(
+    n = n(),
+    n_cases = sum(has_diarrhea, na.rm = TRUE),
+    prevalence = n_cases / n
+  )
+
+assert_that(
+  all(village_prev$prevalence >= 0 & village_prev$prevalence <= 1),
+  msg = "prevalence values outside [0, 1] — check numerator and denominator"
+)
+
+assert_that(
+  all(village_prev$n >= 1),
+  msg = "some villages have 0 individuals — check village_id coding"
+)
+```
+
+### Checking for unexpected missing data
+
+Missing data can appear at any stage. Check for it explicitly after operations that might introduce it. This example creates an age category variable using `case_when()` and checks that no observations were left as NA, which would indicate that some age_years values didn't match any of the specified conditions.
+
+```
+# After creating a derived variable
+individual_data <- individual_data %>%
+  mutate(
+    age_category = case_when(
+      age_years < 1 ~ "infant",
+      age_years < 5 ~ "child",
+      age_years < 18 ~ "adolescent",
+      age_years >= 18 ~ "adult"
+    )
+  )
+
+# case_when returns NA if no condition matches — catch that
+assert_that(
+  sum(is.na(individual_data$age_category)) == 0,
+  msg = paste0(
+    "age_category has ", sum(is.na(individual_data$age_category)),
+    " NAs — check for missing or unexpected age_years values"
+  )
+)
+```
+
+## Writing a validation function
+
+For checks that you repeat across scripts (e.g., verifying a dataset after loading), write a reusable validation function. This example wraps a set of checks into a reusable function that can be called at the top of any analysis script that loads the merged individual-level dataset, verifying that required columns are present, IDs are unique, household counts are close to expected, and age values are plausible.
+
+```
+#' Validate the merged individual-level analysis dataset
+#' @param data the merged individual-level dataset
+#' @param expected_n_hh expected number of unique households
+#' @param expected_n_ind expected number of individuals (approximate)
+validate_individual_data <- function(data, expected_n_hh, expected_n_ind) {
+  
+  # Check that required columns are present
+  required_cols <- c("individual_id", "household_id", "village_id",
+                     "age_years", "has_diarrhea", "floor_type")
+  missing_cols <- setdiff(required_cols, names(data))
+  assert_that(
+    length(missing_cols) == 0,
+    msg = paste0("missing required columns: ", paste(missing_cols, collapse = ", "))
+  )
+  
+  # Check for duplicated rows
+  assert_that(
+    n_distinct(data$individual_id) == nrow(data),
+    msg = "individual_id is not unique — dataset has duplicate rows"
+  )
+  
+  # Check that counts are as expected 
+  n_hh <- n_distinct(data$household_id)
+  assert_that(
+    abs(n_hh - expected_n_hh) / expected_n_hh < 0.05,
+    msg = paste0(
+      "number of households (", n_hh, ") differs from expected (",
+      expected_n_hh, ") by more than 5%"
+    )
+  )
+  
+  # Check that variable levels are within expected ranges 
+  assert_that(
+    all(data$age_years >= 0 & data$age_years < 120, na.rm = TRUE),
+    msg = "age_years contains implausible values"
+  )
+  
+  message("All validation checks passed.")
+}
+```
+
+You can call this function at the top of each analysis script that loads the merged dataset:
+
+```
+individual_data <- readRDS(here::here("data", "individual_data.rds"))
+validate_individual_data(
+  data = individual_data,
+  expected_n_hh = 500,
+  expected_n_ind = 2000
+)
+```
+
+## Unit testing with `testthat`
+
+The assertions described above are embedded in your analysis scripts and run every time the script runs. For custom functions that you use across multiple projects or scripts, more structured testing with the `testthat` package is appropriate.
+
+Unit tests verify that a function produces the correct output for known inputs. They are especially valuable for:
+
+- Functions that compute estimates, standard errors, or confidence intervals
+- Data cleaning functions that recode, reshape, or aggregate
+- Any function that will be used by multiple people or in multiple scripts
+
+### Setting up unit tests
+
+Create a `9-tests/` directory in your project and add test files that mirror your function files:
+
+```
+my-project/
+├── 0-config.R
+├── 0-functions/
+│   ├── 0-base-functions.R
+│   └── 0-plot-functions.R
+├── 1-data-processing/
+├── 2-analysis/
+└── 9-tests/
+    ├── test-base-functions.R
+    └── test-plot-functions.R
+```
+
+### Writing unit tests
+
+Each test file should source the corresponding function file and use `testthat` to verify expected behavior. Unit tests are most relevant for functions that get reused across multiple projects or by multiple people — where a silent change in behavior could propagate widely.
+
+Suppose you have a function called `fit_glm_robust` in `0-base-functions.R` that works correctly. Six months later, you or a student modifies it (adds a new option, changes how it handles NAs, refactors it) and accidentally breaks the original behavior. Unit tests catch that immediately. Each `test_that()` block does three things: 
+
+1. Creates a small fake dataset with known values
+2. Runs the function on it 
+3. Checks that the output matches what you expect 
+
+You're not testing on your real data — you're testing the function's logic in isolation with inputs you control completely.
+
+This differs from `assert_that()` earlier in this chapter, which checks the data — did the merge produce the right number of rows, are prevalence values between 0 and 1, etc. Those run every time your analysis runs, on your real data. The two practices complement each other: `test_that()` protects your **functions** from being broken by future edits, and `assert_that()` protects your **analysis** from being wrong due to unexpected data.
+
+Functions that wrap regression models are good candidates for unit testing because they combine multiple steps — fitting a model, computing robust standard errors, and formatting output — and a bug in any step can produce results that look plausible but are wrong. For example, a confidence interval computed on the log scale that isn't exponentiated back, or a standard error from the model-based variance instead of the sandwich estimator, will still produce a table with numbers in it. The tests below assume a function called `fit_glm_robust` in `0-base-functions.R` that fits a GLM with a binomial family, computes cluster-robust sandwich standard errors, and returns a one-row data frame with columns for N, point estimate, SE, 95% CI, and p-value.
+
+```
+# 9-tests/test-base-functions.R
+library(testthat)
+source(here::here("0-functions", "0-base-functions.R"))
+
+# ---- fit_glm_robust ----
+
+test_that("fit_glm_robust returns expected columns", {
+  set.seed(123)
+  test_data <- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  expected_cols <- c("n", "estimate", "se", "ci_lower", "ci_upper", "pvalue")
+  expect_true(all(expected_cols %in% names(result)))
+})
+
+test_that("fit_glm_robust CI contains point estimate", {
+  set.seed(123)
+  test_data <- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  expect_true(result$ci_lower <= result$estimate)
+  expect_true(result$ci_upper >= result$estimate)
+})
+
+test_that("fit_glm_robust returns correct N", {
+  set.seed(123)
+  test_data <- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  expect_equal(result$n, 200)
+})
+
+test_that("fit_glm_robust detects null effect with synthetic data", {
+  set.seed(456)
+  test_data <- data.frame(
+    Y = rbinom(500, 1, 0.3),
+    X = rbinom(500, 1, 0.5),
+    cluster_id = rep(1:100, each = 5)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  # With no true effect, CI should include the null
+  expect_true(result$ci_lower <= 0 & result$ci_upper >= 0)
+})
+
+test_that("fit_glm_robust errors on missing outcome variable", {
+  test_data <- data.frame(X = c(0, 1), cluster_id = c(1, 2))
+  expect_error(fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  ))
+})
+```
+
+### Running tests
+
+You can run all tests from the project root:
+
+```
+# Run all tests in the 9-tests/ directory
+testthat::test_dir(here::here("9-tests"))
+
+# Run a specific test file
+testthat::test_file(here::here("9-tests", "test-base-functions.R"))
+```
+
+You can also add a line to your project's master bash script to run tests before the analysis:
+
+```
+# In run_all.sh
+Rscript -e 'testthat::test_dir("9-tests")' || { echo "Tests failed"; exit 1; }
+```
+
+This ensures that if any test fails, the analysis pipeline stops before producing results.
+
+### What to test
+
+Not every function needs a full test suite. Prioritize testing:
+
+- **Functions that implement statistical methods** (e.g., custom estimators, bootstrap procedures, variance calculations). These are high-consequence and hard to verify by inspection.
+- **Complex data cleaning functions** used across multiple scripts or projects. A bug here propagates everywhere.
+- **Functions with complex logic** — many conditionals, edge cases, or interactions between arguments.
+
+For simple helper functions (e.g., formatting a label), inline assertions in the analysis script are usually sufficient.
+
+## Summary of practices
+
+- Place `assertthat::assert_that()` calls after every merge, filter, reshape, and variable creation step in your analysis scripts.
+- Always check row counts before and after merges. Know what the correct number should be.
+- Check that computed values are within plausible ranges.
+- Write reusable validation functions for datasets you load in multiple scripts.
+- Use `test_that()` for custom functions that are shared across scripts or projects.
+- Add test execution to your master bash script so failures halt the pipeline.
