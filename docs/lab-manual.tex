@@ -1,10 +1,11 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
 ]{book}
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -35,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -88,21 +88,24 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
@@ -111,11 +114,6 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\usepackage[]{natbib}
-\bibliographystyle{apalike}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -126,7 +124,7 @@
 
 \title{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2025-09-09}
+\date{\vspace{-2.5em}Updated: 2026-03-16}
 
 \begin{document}
 \maketitle
@@ -145,8 +143,10 @@ Welcome to the lab of Dr.~Jade Benjamin-Chung, Assistant Professor in Epidemiolo
 
 This lab manual covers our communication strategy, code of conduct, and best practices for reproducibility of computational workflows. It is a living document that is updated regularly.
 
+Most of the code examples in this manual are written in R, which is the primary language used in our lab. However, the core principles --- reproducibility, documentation, version control, data validation, and code review --- apply to any language. Where a practice is R-specific (e.g., \texttt{renv}, tidyverse conventions), we note it as such.
+
 This manual was created with input from a large number of team members and with inspiration from \href{https://github.com/alylab/labmanual/blob/master/aly-lab-manual.pdf}{other scientists' lab manuals}.
-Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen, Iris Tong, and Gabby Barratt Heitmann.
+Contributors include Jade Benjamin-Chung, Kunal Mishra, Stephanie Djajadi, Nolan Pokpongkiat, Anna Nguyen, Iris Tong, and Gabby Barratt Heitmann. Some chapters were drafted with AI assistance from Claude (Anthropic).
 
 Feel free to draw from this manual (and please cite it if you do!).
 
@@ -295,6 +295,14 @@ Our lab adopts the following practices to maximize the reproducibility of our wo
 
 In the past decade, an increasing number of studies have found that published study findings could not be reproduced. Researchers found that it was not possible to reproduce estimates from published studies: 1) with the same data and same or similar code and 2) with newly collected data using the same (or similar) study design. These ``failures'' of reproducibility were frequent enough and broad enough in scope, occurring across a range of disciplines (epidemiology, psychology, economics, and others) to be deeply troubling. Program and policy decisions based on erroneous research findings could lead to wasted resources, and at worst, could harm intended beneficiaries. This crisis has motivated new practices in reproducibility, transparency, and openness. Our lab is committed to adopting these best practices, and much of the remainder of the lab manual focuses on how to do so.
 
+The scientific process involves a series of steps from defining a hypothesis through publishing results, and threats to reproducibility can arise at each stage. The figure below summarizes common threats that can occur at each step in the scientific process, including bias and low statistical power in study design, measurement error during data collection, and confirmation bias, p-hacking, and errors during analysis.
+
+\includegraphics[width=0.8\linewidth]{assets/images/repro-threats}
+
+Our lab attempts to minimize these threats through a set of practices at each stage of the research process. The figure below illustrates our approach: we register protocols and pre-analysis plans before data collection, create reproducible computational workflows and conduct internal replication during analysis, and publish code and data alongside our results to enable external replication. The rest of this chapter describes each of these practices in detail.
+
+\includegraphics[width=0.8\linewidth]{assets/images/repro-vision}
+
 Recommended readings on the ``reproducibility crisis'':
 
 \begin{itemize}
@@ -314,9 +322,9 @@ Appropriate study design is beyond the scope of this lab manual and is something
 
 We register all randomized trials on \url{clinicaltrials.gov}, and in some cases register observational studies as well.
 
-\section{Write and register pre-analysis plans}\label{write-and-register-pre-analysis-plans}
+\section{Write pre-analysis plans}\label{write-pre-analysis-plans}
 
-We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Here is an example of one: \url{https://osf.io/tgbxr/}. Generally, these include:
+We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Generally, these include:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -359,6 +367,24 @@ We write pre-analysis plans for most original research projects that are not exp
   Negative control analyses
 \end{itemize}
 
+See the following pre-analysis plans for examples from our lab:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://osf.io/tprw2/}{Trials of water, sanitation, and hygiene interventions}
+\item
+  \href{https://osf.io/c8xuq/}{Observational study of school-located influenza vaccination}
+\item
+  \href{https://osf.io/rb3cw/}{Complex re-analysis of malaria intervention trial}
+\end{itemize}
+
+\section{Register pre-analysis plans}\label{register-pre-analysis-plans}
+
+We use Open Science Framework to register pre-analysis plans. Learn more \href{https://www.cos.io/initiatives/prereg}{here}. Briefly, what this entails is creating a time-stamped, publicly accessible record of your hypotheses, study design, and analysis plan before you analyze the data. Registration does not prevent you from conducting additional analyses --- it simply makes transparent which analyses were planned in advance and which were exploratory. To register, create a project on OSF, upload your pre-analysis plan document, and select ``Register'' to create a frozen, time-stamped version. Once registered, the plan cannot be edited or deleted, though you can add addenda if your analysis plan changes after registration. You can also include a link to the registration at the time of submitting your manuscript. This shows peer reviewers and editors (and later, readers) that you pre-specified your analysis.
+
+People often ask, well what if I need to change my plan after pre-specifying it? No problem! We commonly include a list of deviations from the pre-analysis plan in the supplement of our manuscript. In our experience, this has only strengthened reviewer and editor perceptions of the reproducibility and rigor of our work because it shows that we are transparent about our process and that we are not hiding any changes to the analysis plan. We have even included a list of deviations resulting from the peer review process as its own section in the supplement to make those changes transparent as well.
+
 \section{Create reproducible workflows}\label{create-reproducible-workflows}
 
 Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a ``single click''. In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic:
@@ -366,19 +392,27 @@ Reproducible workflows allow a user to reproduce study estimates and ideally fig
 \begin{itemize}
 \tightlist
 \item
-  Chapter 5: Code repositories
+  \href{getting-started.html}{Getting started}: Overview of the tools used in our lab
 \item
-  Chapter 6: Coding practices
+  \href{code-repositories.html}{Code repositories}: Project structure and configuration
 \item
-  Chapter 7: Coding style
+  \href{coding-practices.html}{Coding practices}: Script organization, documentation, and code review
 \item
-  Chapter 8: Code publication
+  \href{coding-style.html}{Coding style}: Formatting conventions
 \item
-  Chapter 9: Working with big data
+  \href{data-validation-and-unit-testing.html}{Data validation and unit testing}: Assertions, sanity checks, and unit testing
 \item
-  Chapter 10: Github
+  \href{working-with-big-data.html}{Working with big data}: Handling large datasets
 \item
-  Chapter 11: Unix
+  \href{tidy-evaluation-and-programming-with-dplyr.html}{Tidy evaluation and programming with dplyr}: Programming with tidyverse functions
+\item
+  \href{github.html}{GitHub}: Version control and collaboration
+\item
+  \href{unix.html}{Unix commands}: Running scripts from the command line
+\item
+  \href{reproducible-environments.html}{Reproducible environments}: Package and R version management
+\item
+  \href{code-publication.html}{Code publication}: Preparing code for public release
 \end{itemize}
 
 \section{Process and analyze data with internal replication and masking}\label{process-and-analyze-data-with-internal-replication-and-masking}
@@ -397,6 +431,146 @@ A preprint is a scientific manuscript that has not been peer reviewed. Preprint 
 
 Publishing data and replication scripts allows other scientists to reproduce your work and to build upon it. We typically publish data on \href{osf.io}{Open Science Framework}, share links to \href{github.com}{Github} repositories, and archive code on \href{zenodo.org}{Zenodo}.
 
+\chapter{Getting started}\label{getting-started}
+
+by Jade Benjamin-Chung
+
+This chapter is for students who are new to computational research. It provides a brief overview of the core tools you will use in our lab and how they fit together. Each tool is covered in more detail in later chapters --- the goal here is to give you the big picture before you dive in.
+
+\section{The tools and how they connect}\label{the-tools-and-how-they-connect}
+
+A typical project in our lab involves writing R code to clean data, run statistical analyses, and produce tables and figures for a manuscript. That code lives in a GitHub repository so that multiple people can collaborate on it and so that every change is tracked. Some projects involve large datasets or computationally intensive analyses that need to run on Stanford's Sherlock computing cluster rather than your laptop. The terminal (command line) is how you interact with Sherlock and how you run scripts outside of RStudio.
+
+\includegraphics[width=0.8\linewidth]{assets/images/lab-workflow-overview}
+
+Here is how these tools relate to each other:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{RStudio} is where you write and run R code interactively. You will spend most of your time here.
+\item
+  \textbf{GitHub} is where your code is stored and shared. It tracks every change, lets multiple people work on the same project, and is where code review happens.
+\item
+  \textbf{The terminal} (also called the command line) is how you run scripts outside of RStudio, interact with GitHub from the command line, connect to Sherlock, and run bash scripts that execute your full analysis pipeline.
+\item
+  \textbf{Sherlock} is Stanford's computing cluster. You use it when your analysis is too slow or too memory-intensive to run on your laptop.
+\item
+  \textbf{Box} is where we store large data files that should not be pushed to GitHub (e.g., datasets with protected health information).
+\end{itemize}
+
+You do not need to be an expert in all of these before starting. Most students learn them incrementally as they work on their first project. But you should have each tool set up and be comfortable with the basics described below before you begin coding.
+
+\section{RStudio}\label{rstudio}
+
+RStudio is an integrated development environment (IDE) for R. It provides a text editor for writing scripts, a console for running code interactively, a file browser, and tools for viewing plots and data. Download it from \href{https://posit.co/download/rstudio-desktop/}{posit.co}.
+
+A few things to set up right away:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Turn off saving the workspace on exit.} Go to Tools \textgreater{} Global Options \textgreater{} General and set ``Save workspace to .RData on exit'' to ``Never.'' This prevents old objects from persisting between sessions, which is a common source of irreproducible results.
+\item
+  \textbf{Enable soft-wrap.} Go to Tools \textgreater{} Global Options \textgreater{} Code and check ``Soft-wrap R source files'' so that long lines wrap on screen rather than running off the edge.
+\item
+  \textbf{Use RStudio projects.} Every project in our lab should have an \texttt{.Rproj} file. When you open an \texttt{.Rproj} file, RStudio sets the working directory to the project folder, which means file paths work consistently for everyone. See the \href{code-repositories.html}{Code repositories} chapter for more detail.
+\end{itemize}
+
+If you are new to R, work through the first few chapters of \href{https://r4ds.had.co.nz/}{R for Data Science} before starting your first project. If you took an introductory R course, you likely already know enough to get started --- most of what you need beyond that you will learn on the job.
+
+\section{GitHub intro}\label{github-intro}
+
+GitHub is a platform for version control and collaboration. In practice, this means:
+
+\begin{itemize}
+\tightlist
+\item
+  Every change you make to your code is recorded with a short description (a ``commit''). If something breaks, you can see exactly what changed and revert it.
+\item
+  Multiple people can work on the same codebase without overwriting each other's work.
+\item
+  Before code is incorporated into the main project, it goes through a code review via a ``pull request,'' where another team member checks it for correctness and clarity.
+\end{itemize}
+
+To get started:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a free account at \href{https://github.com}{github.com}.
+\item
+  Install \href{https://desktop.github.com/}{GitHub Desktop}, which provides a graphical interface for common Git operations (cloning, committing, pushing, pulling). You can also use Git from the terminal, but GitHub Desktop is easier when you are starting out.
+\item
+  Ask Jade to add you to the relevant Github repositories.
+\end{enumerate}
+
+You do not need to understand Git deeply to start --- the basics are: \textbf{pull} (download the latest code), \textbf{commit} (save a set of changes with a description), and \textbf{push} (upload your commits to GitHub). The \href{github.html}{GitHub} chapter covers this in more detail, including branching and pull requests.
+
+\section{The terminal}\label{the-terminal}
+
+The terminal (called Terminal on Mac, or Git Bash on Windows) is a text-based interface for interacting with your computer. You will use it to:
+
+\begin{itemize}
+\tightlist
+\item
+  Run bash scripts that execute your full analysis pipeline end-to-end
+\item
+  Connect to Sherlock via SSH
+\item
+  Use Git from the command line (optional if you prefer GitHub Desktop)
+\end{itemize}
+
+If you have never used the terminal before, the key concepts are:
+
+\begin{itemize}
+\tightlist
+\item
+  You type commands and press Enter to execute them.
+\item
+  \texttt{cd} changes your directory (folder), \texttt{ls} lists the files in your current directory, and \texttt{pwd} shows where you are.
+\item
+  You run an R script from the terminal with \texttt{Rscript\ my\_script.R} or a bash script with \texttt{bash\ run\_all.sh}.
+\end{itemize}
+
+On Mac, Terminal is pre-installed (find it in Applications \textgreater{} Utilities). On Windows, install \href{https://gitforwindows.org/}{Git for Windows}, which includes Git Bash. The \href{unix.html}{Unix commands} chapter covers the commands you will use most often.
+
+\section{Sherlock}\label{sherlock}
+
+Sherlock is Stanford's high-performance computing cluster. You will use it when your analysis requires more memory or computing power than your laptop can provide --- for example, running bootstrapped confidence intervals across many subgroups, or fitting models on large datasets.
+
+You do not need Sherlock for every project, and you will typically develop and test your code locally in RStudio first. When you are ready to run on Sherlock, the \href{slurm.html}{Slurm and cluster computing} chapter walks through the setup. To get access, ask Jade to request an account for you.
+
+\section{Box}\label{box}
+
+We use Stanford Medicine Box to store data files that are too large for GitHub or that contain protected health information (PHI). GitHub repositories should never contain data --- they contain only code, documentation, and small configuration files. Your project's configuration file (\texttt{0-config.R}) will include paths that point to the relevant Box folder so that your scripts can read and write data. See the \href{communication-and-coordination.html}{Communication and coordination} chapter for more on how we use Box.
+
+\section{A typical first week}\label{a-typical-first-week}
+
+When you join the lab and are assigned to a project, here is roughly what your first week of setup looks like:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Install R, RStudio, and GitHub Desktop. Configure RStudio as described above.
+\item
+  Create a GitHub account and get added to the lab organization.
+\item
+  Clone the project repository using GitHub Desktop.
+\item
+  Open the \texttt{.Rproj} file in RStudio.
+\item
+  Run \texttt{renv::restore()} to install the correct package versions (see \href{reproducible-environments.html}{Reproducible environments}).
+\item
+  Get access to the project's Box folder and set up your local Box sync so that data paths in the config file work.
+\item
+  Try running the project's main bash script or a single analysis script to make sure everything is set up correctly.
+\end{enumerate}
+
+If something doesn't work, that is normal --- environment setup is often the hardest part. Ask a current lab member for help before spending hours debugging on your own.
+
 \chapter{Code repositories}\label{code-repositories}
 
 By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
@@ -410,22 +584,21 @@ We recommend the following directory structure:
 \begin{verbatim}
 0-run-project.sh
 0-config.R
+0-functions/
+    0-base-functions.R
+    0-plot-functions.R
+    ...
 1 - Data-Management/
     0-prep-data.sh
     1-prep-cdph-fluseas.R
-    2a-prep-absentee.R
-    2b-prep-absentee-weighted.R
-    3a-prep-absentee-adj.R
-    3b-prep-absentee-adj-weighted.R
+    2-prep-absentee.R
+    ...
 2 - Analysis/
     0-run-analysis.sh
     1 - Absentee-Mean/
         1-absentee-mean-primary.R
         2-absentee-mean-negative-control.R
-        3-absentee-mean-CDC.R
-        4-absentee-mean-peakwk.R
-        5-absentee-mean-cdph2.R
-        6-absentee-mean-cdph3.R
+        ...
     2 - Absentee-Positivity-Check/
     3 - Absentee-P1/
     4 - Absentee-P2/
@@ -439,10 +612,6 @@ We recommend the following directory structure:
     1 - Absentee-Mean/
         1-absentee-mean-primary.RDS
         2-absentee-mean-negative-control.RDS
-        3-absentee-mean-CDC.RDS
-        4-absentee-mean-peakwk.RDS
-        5-absentee-mean-cdph2.RDS
-        6-absentee-mean-cdph3.RDS
     ...
 .gitignore
 .Rproj
@@ -450,17 +619,60 @@ We recommend the following directory structure:
 
 For brevity, not every directory is ``expanded'', but we can glean some important takeaways from what we \emph{do} see.
 
+\section{\texorpdfstring{\texttt{0-functions} folder}{0-functions folder}}\label{functions-folder}
+
+The \texttt{0-functions/} folder contains reusable helper functions that are shared across multiple scripts in the project. These are sourced in \texttt{0-config.R} so they are available to every script in the pipeline. \texttt{0-base-functions.R} typically contains functions for data cleaning, regression wrappers (e.g., fitting a model with robust standard errors and formatting the output), and common data manipulation tasks. \texttt{0-plot-functions.R} contains functions for generating figures with consistent formatting, such as custom ggplot themes, color palettes, and wrappers for common plot types used across the project.
+
 \section{\texorpdfstring{\texttt{.Rproj} files}{.Rproj files}}\label{rproj-files}
 
 An ``R Project'' can be created within RStudio by going to \texttt{File\ \textgreater{}\textgreater{}\ New\ Project}. Depending on where you are with your research, choose the most appropriate option. This will save preferences, working directories, and even the results of running code/data (though I'd recommend starting from scratch each time you open your project, in general). Then, ensure that whenever you are working on that specific research project, you open your created project to enable the full utility of \texttt{.Rproj} files. This also automatically sets the directory to the top level of the project.
 
 \section{Configuration (`config') File}\label{configuration-config-file}
 
-This is the single most important file for your project. It will be responsible for a variety of common tasks, declare global variables, load functions, declare paths, and more. \emph{Every other file in the project} will begin with \texttt{source("0-config")}, and its role is to reduce redundancy and create an abstraction layer that allows you to make changes in one place (\texttt{0-config.R}) rather than 5 different files. To this end, paths which will be reference in multiple scripts (i.e.~a \texttt{merged\_data\_path}) can be declared in \texttt{0-config.R} and simply referred to by its variable name in scripts. If you ever want to change things, rename them, or even switch from a downsample to the full data, all you would then to need to do is modify the path in one place and the change will automatically update throughout your project. See the example config file for more details. The paths defined in the \texttt{0-config.R} file assume that users have opened the \texttt{.Rproj} file, which sets the directory to the top level of the project.
+This is the single most important file for your project to ensure reproducibility. It loads all libraries, sources shared functions from \texttt{0-functions/}, declares global variables, and defines file paths for data, figures, and tables. \emph{Every other file in the project} will begin with \texttt{source("0-config.R")}, which means changes made here automatically propagate throughout the project. For example, if you need to rename a data directory or switch from a downsampled dataset to the full data, you only modify the path in \texttt{0-config.R} rather than in every script that references it.
+
+The config file also handles differences between collaborators' machines. Since Box syncs to a different local path on each person's computer, the config detects which user is running the code and sets the Box root path accordingly. Local paths within the project repository (for data, figures, and tables) use the \texttt{here} package, which assumes that users have opened the \texttt{.Rproj} file, setting the working directory to the top level of the project.
+
+Here is an example config file:
+
+\begin{verbatim}
+#-------------------------------------
+# Name of study 
+
+# configure data directories
+# source base functions
+# load libraries
+#-------------------------------------
+library(tidyverse)
+library(here)
+library(ggplot2)
+library(gridExtra)
+library(reshape2)
+library(assertthat)
+library(testthat)
+
+if(Sys.getenv("LOGNAME")=="person1"){
+  box_root_path = "<FILL IN PERSON 1'S COMPUTER'S BOX PATH>"
+}
+
+if(Sys.getenv("LOGNAME")=="person2"){
+  box_root_path = "<FILL IN PERSON 2'S COMPUTER'S BOX PATH>"
+}
+
+# Box paths
+box_path <- paste0(box_root_path, "Housing-DHS-analysis/")
+box_path_raw_data <- paste0(box_path, "raw-data/")
+box_path_processed_data <- paste0(box_path, "processed-data/")
+
+# Local directories
+data_path = here::here("data/")
+figure_path = here::here("figures/")
+table_path = here::here("tables/")
+\end{verbatim}
 
 \section{Order Files and Directories}\label{order-files-and-directories}
 
-This makes the jumble of alphabetized filenames much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e.~\texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R} =\textgreater{} \texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.
+At the end of the project, we recommend ordering the files in order of how they must be run and then numbering them within sub-folders. This makes the jumble of alphabetized file names much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e.~\texttt{2\ -\ Analysis/1\ -\ Absentee-Mean/1-absentee-mean-primary.R} =\textgreater{} \texttt{5\ -\ Results/1\ -\ Absentee-Mean/1-absentee-mean-primary.RDS}). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.
 
 \section{Using Bash scripts to ensure reproducibility}\label{using-bash-scripts-to-ensure-reproducibility}
 
@@ -531,28 +743,28 @@ Commenting your code is an important part of reproducibility and helps document 
 
 \subsection{Function documentation}\label{function-documentation}
 
-Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows, they are essential, because R is dynamically typed. This means, you can pass a \texttt{string} into an argument that is meant to be a \texttt{data.table}, or a \texttt{list} into an argument meant for a \texttt{tibble}. It is the responsibility of a function's author to document what each argument is meant to do and its basic type. This is an example for documenting a function (inspired by \href{https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html\#format}{JavaDocs} and R's \href{https://blog.rstudio.com/2018/10/23/rstudio-1-2-preview-plumber-integration/}{Plumber API docs}):
+Every function you write must include a header to document its purpose, inputs, and outputs. For any reproducible workflows they are essential because R is dynamically typed. This means you can pass a \texttt{string} into an argument that is meant to be a \texttt{data.table}, or a \texttt{list} into an argument meant for a \texttt{tibble}. It is the responsibility of a function's author to document what each argument is meant to do and its basic type.
+
+We use roxygen2-style documentation headers (\texttt{\#\textquotesingle{}} comments with \texttt{@param}, \texttt{@return} tags). This is the standard convention used in R package development, which means students will encounter it throughout the R ecosystem. It is also structured enough to be parsed programmatically, which supports automated code review. Here is an example:
 
 \begin{verbatim}
 ##############################################
 ##############################################
-# Documentation: calc_fluseas_mean
-# Usage: calc_fluseas_mean(data, yname)
-# Description: Make a dataframe with rows for flu season and site
-# and the number of patients with an outcome, the total patients,
-# and the percent of patients with the outcome
-
-# Args/Options:
-# data: a data frame with variables flu_season, site, studyID, and yname
-# yname: a string for the outcome name
-# silent: a boolean specifying whether the function shouldn't output anything to the console (DEFAULT: TRUE)
-
-# Returns: the dataframe as described above
-# Output: prints the data frame described above if silent is not True
-
-calc_fluseas_mean = function(data, yname, silent = TRUE) {
- ### function code here 
-
+#' Calculate flu season means by site
+#'
+#' Make a dataframe with rows for flu season and site
+#' and the number of patients with an outcome, the total patients,
+#' and the percent of patients with the outcome.
+#'
+#' @param data A data frame with variables flu_season, site, studyID, and yname.
+#' @param yname A string for the outcome name.
+#' @param silent A boolean specifying whether the function should suppress
+#'   console output. Default: TRUE.
+#'
+#' @return A data frame with columns for flu season, site, outcome count,
+#'   total count, and percent.
+calc_fluseas_mean <- function(data, yname, silent = TRUE) {
+function code here
 }
 \end{verbatim}
 
@@ -628,50 +840,17 @@ One of the most common ways to load and save data in Base R is with the \texttt{
 
 Once again, the \texttt{readr} package as part of the Tidvyerse is great, with a much faster \texttt{read\_csv()} than Base R's \texttt{read.csv()}. For massive CSVs (\textgreater{} 5 GB), you'll find \texttt{data.table::fread()} to be the fastest CSV reader in any data science language out there. For writing CSVs, \texttt{readr::write\_csv()} and \texttt{data.table::fwrite()} outclass Base R's \texttt{write.csv()} by a significant margin as well.
 
-\section{Integrating Box and Dropbox}\label{integrating-box-and-dropbox}
-
-Box and Dropbox are cloud-based file sharing systems that are useful when dealing with large files. When our scripts generate large output files, the files can slow down the workflow if they are pushed to GitHub. This makes collaboration difficult when not everyone has a copy of the file, unless we decide to duplicate files and share them manually. The files might also take up a lot of local storage. Box and Dropbox help us avoid these issues by automatically storing the files, reading data, and writing data back to the cloud.
-
-Box and Dropbox are separate platforms, but we can use either one to store and share files. To use them, we can install the packages that have been created to integrate Box and Dropbox into R. The set-up instructions are detailed below.
-
-Make sure to authenticate before reading and writing from either Box or Dropbox. The authentication commands should go in the configuration file; it only needs to be done once. This will prompt you to give your login credentials for Box and Dropbox and will allow your application to access your shared folders.
-
-\subsection{Box}\label{box}
-
-Follow the instructions in this section to use the \texttt{boxr} package. Note that there are a few setup steps that need to be done on the box website before you can use the \texttt{boxr} package, \href{https://r-box.github.io/boxr/articles/boxr-app-interactive.html\#create}{explained here} in the section ``Creating an Interactive App.'' This gets the authentication keys that must be put in box.
-Once that is done, add the authentication keys to your code in the configuration file, with \texttt{box\_auth(client\_id\ =\ "\textless{}your\_client\_id\textgreater{}",\ client\_secret\ =\ "\textless{}your\_client\_secret\_id\textgreater{}")}. It is also important to set the default working directory so that the code can reference the correct folder in box: \texttt{box\_setwd(\textless{}folder\_id\textgreater{})}. The folder ID is the sequence of digits at the end of the URL.
-
-Further details can be found \href{https://github.com/r-box/boxr}{here}.
-
-\subsection{Dropbox}\label{dropbox}
-
-Follow the instructions at \href{https://github.com/karthik/rdrop2}{this link} to use the \texttt{rdrop2} package. Similar to the \texttt{boxr} package, you must authenticate before reading and writing from Dropbox, which can be done by adding \texttt{drop\_auth()} to the configuration file.
-
-Saving the authentication token is not required, although it may be useful if you plan on using Dropbox frequently. To do so, save the token with the following commands. Tokens are valid until they are manually revoked.
-
-\begin{verbatim}
-# first time only
-# save the output of drop_auth to an RDS file
-token <- drop_auth()
-# this token only has to be generated once, it is valid until revoked
-saveRDS(token, "/path/to/tokenfile.RDS")
-
-# all future usages
-# to use a stored token, provide the rdstoken argument
-drop_auth(rdstoken = "/path/to/tokenfile.RDS")
-\end{verbatim}
-
 \section{Tidyverse}\label{tidyverse}
 
-Throughout this document there have been references to the Tidyverse, but this section is to explicitly show you how to transform your Base R tendencies to Tidyverse (or Data.Table, Tidyverse's performance-optimized competitor). For most of our work that does not utilize very large datasets, we recommend that you code in Tidyverse rather than Base R. Tidyverse is quickly becoming \href{https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/}{the gold standard} in R data analysis and modern data science packages and code should use Tidyverse style and packages unless there's a significant reason not to (i.e.~big data pipelines that would benefit from Data.Table's performance optimizations).
+R has two broad dialects you'll encounter: base R, which is the syntax built into the language, and the tidyverse, a collection of packages (including \texttt{dplyr}, \texttt{tidyr}, \texttt{ggplot2}, and \texttt{readr}) that provide an alternative, more consistent syntax for data manipulation and visualization. If you learned R in a short course, you may have used a mix of both without realizing it. Base R uses syntax like \texttt{df{[}df\$age\ \textless{}\ 5,\ {]}} and \texttt{merge()}, while tidyverse uses pipes and verbs like \texttt{df\ \%\textgreater{}\%\ filter(age\ \textless{}\ 5)} and \texttt{left\_join()}.
 
-The package author has published a \href{https://r4ds.had.co.nz/}{great textbook on R for Data Science}, which leans heavily on many Tidyverse packages and may be worth checking out.
+Both work, but our lab standardizes on tidyverse because the syntax is more readable and consistent across operations, which makes code easier to review and reproduce. The table below maps common base R patterns to their tidyverse equivalents for reference. For large data pipelines, \texttt{data.table} is a performant alternative. If you encounter base R patterns in legacy code or external packages, the reference table below maps common translations. Hadley Wickham's \href{https://r4ds.had.co.nz/}{R for Data Science} is a good resource for learning the Tidyverse ecosystem.
 
-The following list is not exhaustive, but is a compact overview to begin to translate Base R into something better:
+The following list is not exhaustive, but is a compact reference for common base R to Tidyverse translations:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Base R
@@ -726,7 +905,29 @@ Working with Tidyverse within functions can be somewhat of a pain due to non-sta
 
 \section{Coding with R and Python}\label{coding-with-r-and-python}
 
-If you're using both R and Python, you may wish to check out the \href{https://www.rdocumentation.org/packages/feather/versions/0.3.3}{Feather package} for exchanging data between the two languages \href{https://blog.rstudio.com/2016/03/29/feather/}{extremely quickly}.
+Some projects may require both R and Python --- for example, using Python for machine learning (e.g., \texttt{scikit-learn}, \texttt{pytorch}) and R for statistical analysis and visualization. There are two main strategies for interoperability:
+
+\textbf{Exchanging data via Apache Arrow / Parquet.} The \href{https://arrow.apache.org/docs/r/}{Arrow} and \href{https://parquet.apache.org/}{Parquet} formats allow fast, zero-copy data exchange between R and Python with no loss of type information. In R, use the \texttt{arrow} package to read and write Parquet files:
+
+\begin{verbatim}
+# In R
+library(arrow)
+write_parquet(my_data, here::here("data", "my_data.parquet"))
+my_data <- read_parquet(here::here("data", "my_data.parquet"))
+\end{verbatim}
+
+\begin{verbatim}
+# In Python
+import pandas as pd
+df = pd.read_parquet("data/my_data.parquet")
+df.to_parquet("data/my_data.parquet")
+\end{verbatim}
+
+Parquet is preferred over CSV for R-Python workflows because it preserves column types, handles dates correctly, and is much faster for large datasets.
+
+\textbf{Calling Python from R with \texttt{reticulate}.} The \href{https://rstudio.github.io/reticulate/}{\texttt{reticulate}} package lets you call Python functions directly from R, which can be useful when you want to use a Python library without leaving your R workflow. However, this adds complexity to reproducible environments (you need to manage both \texttt{renv} and a Python virtual environment), so use it judiciously.
+
+\textbf{Note}: The \texttt{feather} package, which was previously recommended for R-Python data exchange, has been superseded by Arrow/Parquet and should no longer be used.
 
 \section{Repeating analyses with different variations}\label{repeating-analyses-with-different-variations}
 
@@ -852,7 +1053,83 @@ Here, \texttt{future::availableCores()} checks how many cores your machine has. 
 
 \section{Reviewing Code}\label{reviewing-code}
 
-Before publishing new changes, it is important to ensure that the code has been tested and well-documented. GitHub makes it possible to document all of these changes in a pull request. Pull requests can be used to describe changes in a branch that are ready to be merged with the base branch (more information in the \hyperref[Github]{GitHub} section). Github allows users to create a pull request template in a repository to standardize and customize the information in a pull request. When you add a pull request template to your repository, everyone will automatically see the template's contents in the pull request body.
+Code review is one of the most important quality control steps in our workflow. Every analysis that will be used in a manuscript, report, or presentation should be reviewed by at least one other person before results are considered final. GitHub pull requests are our primary mechanism for code review.
+
+\subsection{Why we review code}\label{why-we-review-code}
+
+Even careful, experienced analysts make mistakes. Common issues caught in review include: incorrect merge keys that silently drop or duplicate observations, filter conditions that exclude the wrong subgroups, mislabeled variables in results tables, and hardcoded values that should be parameterized. In an epidemiology context, these errors can change point estimates, confidence intervals, or conclusions --- and they are often invisible in the final output without examining the code itself.
+
+\subsection{What to look for in a code review}\label{what-to-look-for-in-a-code-review}
+
+When reviewing a pull request, check for the following:
+
+\textbf{Correctness}
+
+\begin{itemize}
+\tightlist
+\item
+  Does the code do what the analyst intends? Read the description of the task (e.g., the Trello card) and verify the code implements it.
+\item
+  Check merge/join operations carefully: Are the join keys correct? Does the resulting number of rows make sense? Are there unexpected duplicates or dropped observations?
+\item
+  Check filter and subset operations: Are the conditions correct? Is the remaining sample size plausible?
+\item
+  Do computed variables (e.g., rates, differences, person-time) use the correct formula?
+\item
+  Are results consistent with what you'd expect given the data? Look for red flags like zero standard errors, wildly implausible estimates, or sample sizes that don't match expectations.
+\end{itemize}
+
+\textbf{Reproducibility}
+
+\begin{itemize}
+\tightlist
+\item
+  Does the script follow the standard flow (header → config → load → analyze → save)?
+\item
+  Are file paths relative (using \texttt{here()}) rather than absolute?
+\item
+  Are there any hardcoded values that should come from the data or config file?
+\item
+  Does the code run end-to-end without manual intervention?
+\item
+  Are random seeds set where relevant (e.g., bootstrapping, cross-validation)?
+\end{itemize}
+
+\textbf{Clarity and style}
+
+\begin{itemize}
+\tightlist
+\item
+  Is the code well-commented? Could someone unfamiliar with the project understand what each major section does?
+\item
+  Are variable and function names descriptive?
+\item
+  Are functions documented with headers (see \hyperref[function-documentation]{Function documentation} above)?
+\item
+  Does the code follow our style conventions (snake\_case, named arguments, tidyverse)?
+\end{itemize}
+
+\textbf{Data integrity}
+
+\begin{itemize}
+\tightlist
+\item
+  Are assertions or sanity checks present where they should be (see the {[}Testing and validation{]} chapter)?
+\item
+  Is the code careful about missing data --- e.g., does it use \texttt{na.rm\ =\ TRUE} intentionally vs.~ignoring missingness by default?
+\item
+  Are there any places where PHI or sensitive data could be accidentally exposed (e.g., printing raw IDs, writing intermediate files without de-identification)?
+\end{itemize}
+
+\subsection{How to give feedback}\label{how-to-give-feedback}
+
+Be specific and constructive. Instead of ``this looks wrong,'' say ``the left join on line 45 uses \texttt{household\_id} but I think it should use \texttt{individual\_id} since we want one row per person.'' When something is a suggestion rather than a required change, label it as such (e.g., ``Optional: you could simplify this with \texttt{across()}'').
+
+GitHub's review interface lets you leave comments on specific lines, which is much more useful than general comments. Use ``Request changes'' when there are issues that must be fixed before merging, and ``Approve'' when the code is ready (or when only minor optional suggestions remain).
+
+\subsection{When to approve}\label{when-to-approve}
+
+Approve a pull request when you are confident that the code is correct, reproducible, and readable. You do not need to verify every line of arithmetic, but you should understand the overall logic and have checked the high-risk operations (joins, filters, key computations). If you're unsure about something, ask --- it's better to have a conversation than to approve code you don't understand.
 
 \subsection{Creating a Pull Request Template}\label{creating-a-pull-request-template}
 
@@ -897,6 +1174,14 @@ Here is an example pull request template.
 \NormalTok{\#\# Summary of change}
 
 \NormalTok{Please include a summary of the change, including any new functions added and example usage. }
+
+\NormalTok{\#\# Testing}
+
+\NormalTok{Describe how you tested the code:}
+\NormalTok{{-} [ ] Script runs end{-}to{-}end without errors}
+\NormalTok{{-} [ ] Output sample sizes match expectations}
+\NormalTok{{-} [ ] Key estimates are plausible}
+\NormalTok{{-} [ ] Assertions/sanity checks pass}
 
 \NormalTok{\#\# Link to Spec}
 
@@ -1142,17 +1427,17 @@ Using the following settings will help ensure a smooth experience when working w
 
 Unfortunately RStudio often gets slow and/or freezes after hours working with big datasets. Sometimes it is much more efficient to just use Terminal / gitbash to run code and make updates in git.
 
-\chapter{Data masking}\label{data-masking}
+\chapter{Tidy evaluation and programming with dplyr}\label{tidy-evaluation-and-programming-with-dplyr}
 
 by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
 
-When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the \href{https://www.sherlock.stanford.edu/docs/overview/introduction/}{Sherlock user guide} to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.
-
 \section{General Overview}\label{general-overview}
 
-This chapter covers data masking, a unique process in R in which columns are treated as distinct objects within their dataframe's environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.
+This chapter covers tidy evaluation, a programming pattern in R in which columns are treated as distinct objects within their dataframe's environment. In our lab, data masking most frequently comes up when writing wrapper functions where arguments to indicate column names are supplied as strings. We often do this when we repeat the same code on multiple columns, and want to apply a function to a vector of strings that correspond to column names in a dataframe. For example, we might want to clean multiple columns using the same function or estimate the same model under different feature sets. Here, we try to break down what data masking is, why this error comes up, and common approaches to solve this problem.
 
-\subsection{What is Data Masking?}\label{what-is-data-masking}
+Note: the tidyverse uses the term `data masking' to describe this behavior. This is unrelated to masking in the sense of blinding analysts to treatment assignment, which is discussed in the \href{03-reproducibility.html}{Reproducibility} chapter.
+
+\subsection{What is Tidy Evaluation?}\label{what-is-tidy-evaluation}
 
 Within certain tidyverse operations, columns are called as if they were variables. For example, while running \texttt{df\ \%\textgreater{}\%\ mutate(X\ =\ …)} R recognizes that \texttt{X} specifically references a column in \texttt{df} without explicitly stating its membership \texttt{df\ \%\textgreater{}\%\ mutate(df\$X\ =\ …)} or calling the column name as a string \texttt{df\ \%\textgreater{}\%\ mutate(“X”\ =\ …)}.
 
@@ -1290,6 +1575,403 @@ OR
 \end{Highlighting}
 \end{Shaded}
 
+\chapter{Data validation and unit testing}\label{data-validation-and-unit-testing}
+
+by Jade Benjamin-Chung
+
+In epidemiologic analyses, mistakes in data processing can silently change results without producing any error. A merge with the wrong key can duplicate or drop observations; a filter with the wrong condition can exclude the wrong subgroup; a variable coded as character instead of numeric can cause a model to run but produce nonsensical estimates. These problems are often invisible in the final output --- the code runs, a table is produced, and the numbers look plausible enough to go unquestioned. It is best to catch these errors early and systematically. The core idea is simple: at every step where data could go wrong, write a check that will fail and stop the code from proceeding if something is not as expected.
+
+This chapter covers two complementary practices: data validation with \texttt{assert\_that()}, which checks that your real data meets expectations at each step of an analysis script, and unit testing with \texttt{test\_that()}, which verifies that your custom functions produce correct output using small synthetic datasets.
+
+\section{Data validation with assertions in analysis scripts}\label{data-validation-with-assertions-in-analysis-scripts}
+
+An assertion is a statement that something must be true at a particular point in your code. If the assertion fails, the script stops immediately with an informative error message. This is far preferable to the alternative --- silently producing wrong results that you discover weeks later (or never).
+
+We use the \texttt{assertthat} package for assertions. Place assertions after any operation that changes the structure or content of your data: merges, filters, reshapes, variable creation, and aggregation. You write code for what you want to check that results in a TRUE or FALSE value, and \texttt{assert\_that()} will throw an error if the value is FALSE and stop the code from running further.
+
+\subsection{After merges and joins}\label{after-merges-and-joins}
+
+Merges are the single most common source of silent errors in our work. When you join two datasets, always check that the result has the number of rows you expect.
+
+\textbf{Example: Merging household survey data with an individual symptom module.} Suppose \texttt{household} has one row per household and \texttt{symptoms} has one row per individual. We want to add household-level covariates (e.g., floor type, water source) to each individual's record.
+
+The key principle: \textbf{you should know what the row count should be before the merge, and verify it after.} A left join of individuals onto households should not change the number of rows. If it does, there are duplicate keys in the household data.
+
+\begin{verbatim}
+library(dplyr)
+library(assertthat)
+
+# Load data
+household <- readRDS(here::here("data", "household.rds"))
+symptoms <- readRDS(here::here("data", "symptoms.rds"))
+
+# Check pre-merge expectations
+n_individuals <- nrow(symptoms)
+n_households <- n_distinct(household$household_id)
+
+assert_that(
+  n_distinct(household$household_id) == nrow(household),
+  msg = "household data has duplicate household_id values"
+)
+
+assert_that(
+  all(symptoms$household_id %in% household$household_id),
+  msg = "some individuals have household_ids not found in household data"
+)
+
+# Merge
+individual_data <- symptoms %>%
+  left_join(household, by = "household_id")
+
+# Check post-merge expectations
+assert_that(
+  nrow(individual_data) == n_individuals,
+  msg = paste0(
+    "merge changed number of rows: expected ", n_individuals,
+    ", got ", nrow(individual_data),
+    ". Check for duplicate household_ids in household data."
+  )
+)
+
+assert_that(
+  sum(is.na(individual_data$floor_type)) == 0,
+  msg = "floor_type has missing values after merge — household data may be incomplete"
+)
+\end{verbatim}
+
+\subsection{After filters and subsets}\label{after-filters-and-subsets}
+
+When you filter data to a subgroup, verify that the resulting sample size is plausible. This example restricts the dataset to children under 5 and checks three things: that the filtered dataset is not empty, that it actually removed some rows, and that the resulting sample size is within a plausible range based on enrollment records.
+
+\begin{verbatim}
+# Restrict to children under 5
+children_under5 <- individual_data %>%
+  filter(age_years < 5)
+
+assert_that(
+  nrow(children_under5) > 0,
+  msg = "no children under 5 found — check age variable coding"
+)
+
+assert_that(
+  nrow(children_under5) < nrow(individual_data),
+  msg = "filter did not remove any rows — all individuals are under 5?"
+)
+
+# If you know the approximate expected count from enrollment records
+assert_that(
+  nrow(children_under5) >= 800 & nrow(children_under5) <= 1200,
+  msg = paste0(
+    "expected ~1000 children under 5 based on enrollment, got ",
+    nrow(children_under5)
+  )
+)
+\end{verbatim}
+
+\subsection{After variable creation}\label{after-variable-creation}
+
+When you create or recode variables, check that the results are within expected ranges. This example calculates diarrhea prevalence by village and checks that all prevalence values are between 0 and 1 and that no village has zero individuals.
+
+\begin{verbatim}
+# Calculate prevalence
+village_prev <- individual_data %>%
+  group_by(village_id) %>%
+  summarise(
+    n = n(),
+    n_cases = sum(has_diarrhea, na.rm = TRUE),
+    prevalence = n_cases / n
+  )
+
+assert_that(
+  all(village_prev$prevalence >= 0 & village_prev$prevalence <= 1),
+  msg = "prevalence values outside [0, 1] — check numerator and denominator"
+)
+
+assert_that(
+  all(village_prev$n >= 1),
+  msg = "some villages have 0 individuals — check village_id coding"
+)
+\end{verbatim}
+
+\subsection{Checking for unexpected missing data}\label{checking-for-unexpected-missing-data}
+
+Missing data can appear at any stage. Check for it explicitly after operations that might introduce it. This example creates an age category variable using \texttt{case\_when()} and checks that no observations were left as NA, which would indicate that some age\_years values didn't match any of the specified conditions.
+
+\begin{verbatim}
+# After creating a derived variable
+individual_data <- individual_data %>%
+  mutate(
+    age_category = case_when(
+      age_years < 1 ~ "infant",
+      age_years < 5 ~ "child",
+      age_years < 18 ~ "adolescent",
+      age_years >= 18 ~ "adult"
+    )
+  )
+
+# case_when returns NA if no condition matches — catch that
+assert_that(
+  sum(is.na(individual_data$age_category)) == 0,
+  msg = paste0(
+    "age_category has ", sum(is.na(individual_data$age_category)),
+    " NAs — check for missing or unexpected age_years values"
+  )
+)
+\end{verbatim}
+
+\section{Writing a validation function}\label{writing-a-validation-function}
+
+For checks that you repeat across scripts (e.g., verifying a dataset after loading), write a reusable validation function. This example wraps a set of checks into a reusable function that can be called at the top of any analysis script that loads the merged individual-level dataset, verifying that required columns are present, IDs are unique, household counts are close to expected, and age values are plausible.
+
+\begin{verbatim}
+#' Validate the merged individual-level analysis dataset
+#' @param data the merged individual-level dataset
+#' @param expected_n_hh expected number of unique households
+#' @param expected_n_ind expected number of individuals (approximate)
+validate_individual_data <- function(data, expected_n_hh, expected_n_ind) {
+  
+  # Check that required columns are present
+  required_cols <- c("individual_id", "household_id", "village_id",
+                     "age_years", "has_diarrhea", "floor_type")
+  missing_cols <- setdiff(required_cols, names(data))
+  assert_that(
+    length(missing_cols) == 0,
+    msg = paste0("missing required columns: ", paste(missing_cols, collapse = ", "))
+  )
+  
+  # Check for duplicated rows
+  assert_that(
+    n_distinct(data$individual_id) == nrow(data),
+    msg = "individual_id is not unique — dataset has duplicate rows"
+  )
+  
+  # Check that counts are as expected 
+  n_hh <- n_distinct(data$household_id)
+  assert_that(
+    abs(n_hh - expected_n_hh) / expected_n_hh < 0.05,
+    msg = paste0(
+      "number of households (", n_hh, ") differs from expected (",
+      expected_n_hh, ") by more than 5%"
+    )
+  )
+  
+  # Check that variable levels are within expected ranges 
+  assert_that(
+    all(data$age_years >= 0 & data$age_years < 120, na.rm = TRUE),
+    msg = "age_years contains implausible values"
+  )
+  
+  message("All validation checks passed.")
+}
+\end{verbatim}
+
+You can call this function at the top of each analysis script that loads the merged dataset:
+
+\begin{verbatim}
+individual_data <- readRDS(here::here("data", "individual_data.rds"))
+validate_individual_data(
+  data = individual_data,
+  expected_n_hh = 500,
+  expected_n_ind = 2000
+)
+\end{verbatim}
+
+\section{\texorpdfstring{Unit testing with \texttt{testthat}}{Unit testing with testthat}}\label{unit-testing-with-testthat}
+
+The assertions described above are embedded in your analysis scripts and run every time the script runs. For custom functions that you use across multiple projects or scripts, more structured testing with the \texttt{testthat} package is appropriate.
+
+Unit tests verify that a function produces the correct output for known inputs. They are especially valuable for:
+
+\begin{itemize}
+\tightlist
+\item
+  Functions that compute estimates, standard errors, or confidence intervals
+\item
+  Data cleaning functions that recode, reshape, or aggregate
+\item
+  Any function that will be used by multiple people or in multiple scripts
+\end{itemize}
+
+\subsection{Setting up unit tests}\label{setting-up-unit-tests}
+
+Create a \texttt{9-tests/} directory in your project and add test files that mirror your function files:
+
+\begin{verbatim}
+my-project/
+├── 0-config.R
+├── 0-functions/
+│   ├── 0-base-functions.R
+│   └── 0-plot-functions.R
+├── 1-data-processing/
+├── 2-analysis/
+└── 9-tests/
+    ├── test-base-functions.R
+    └── test-plot-functions.R
+\end{verbatim}
+
+\subsection{Writing unit tests}\label{writing-unit-tests}
+
+Each test file should source the corresponding function file and use \texttt{testthat} to verify expected behavior. Unit tests are most relevant for functions that get reused across multiple projects or by multiple people --- where a silent change in behavior could propagate widely.
+
+Suppose you have a function called \texttt{fit\_glm\_robust} in \texttt{0-base-functions.R} that works correctly. Six months later, you or a student modifies it (adds a new option, changes how it handles NAs, refactors it) and accidentally breaks the original behavior. Unit tests catch that immediately. Each \texttt{test\_that()} block does three things:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Creates a small fake dataset with known values
+\item
+  Runs the function on it
+\item
+  Checks that the output matches what you expect
+\end{enumerate}
+
+You're not testing on your real data --- you're testing the function's logic in isolation with inputs you control completely.
+
+This differs from \texttt{assert\_that()} earlier in this chapter, which checks the data --- did the merge produce the right number of rows, are prevalence values between 0 and 1, etc. Those run every time your analysis runs, on your real data. The two practices complement each other: \texttt{test\_that()} protects your \textbf{functions} from being broken by future edits, and \texttt{assert\_that()} protects your \textbf{analysis} from being wrong due to unexpected data.
+
+Functions that wrap regression models are good candidates for unit testing because they combine multiple steps --- fitting a model, computing robust standard errors, and formatting output --- and a bug in any step can produce results that look plausible but are wrong. For example, a confidence interval computed on the log scale that isn't exponentiated back, or a standard error from the model-based variance instead of the sandwich estimator, will still produce a table with numbers in it. The tests below assume a function called \texttt{fit\_glm\_robust} in \texttt{0-base-functions.R} that fits a GLM with a binomial family, computes cluster-robust sandwich standard errors, and returns a one-row data frame with columns for N, point estimate, SE, 95\% CI, and p-value.
+
+\begin{verbatim}
+# 9-tests/test-base-functions.R
+library(testthat)
+source(here::here("0-functions", "0-base-functions.R"))
+
+# ---- fit_glm_robust ----
+
+test_that("fit_glm_robust returns expected columns", {
+  set.seed(123)
+  test_data <- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  expected_cols <- c("n", "estimate", "se", "ci_lower", "ci_upper", "pvalue")
+  expect_true(all(expected_cols %in% names(result)))
+})
+
+test_that("fit_glm_robust CI contains point estimate", {
+  set.seed(123)
+  test_data <- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  expect_true(result$ci_lower <= result$estimate)
+  expect_true(result$ci_upper >= result$estimate)
+})
+
+test_that("fit_glm_robust returns correct N", {
+  set.seed(123)
+  test_data <- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  expect_equal(result$n, 200)
+})
+
+test_that("fit_glm_robust detects null effect with synthetic data", {
+  set.seed(456)
+  test_data <- data.frame(
+    Y = rbinom(500, 1, 0.3),
+    X = rbinom(500, 1, 0.5),
+    cluster_id = rep(1:100, each = 5)
+  )
+  result <- fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  )
+  # With no true effect, CI should include the null
+  expect_true(result$ci_lower <= 0 & result$ci_upper >= 0)
+})
+
+test_that("fit_glm_robust errors on missing outcome variable", {
+  test_data <- data.frame(X = c(0, 1), cluster_id = c(1, 2))
+  expect_error(fit_glm_robust(
+    data = test_data,
+    outcome = "Y",
+    treatment = "X",
+    cluster_var = "cluster_id"
+  ))
+})
+\end{verbatim}
+
+\subsection{Running tests}\label{running-tests}
+
+You can run all tests from the project root:
+
+\begin{verbatim}
+# Run all tests in the 9-tests/ directory
+testthat::test_dir(here::here("9-tests"))
+
+# Run a specific test file
+testthat::test_file(here::here("9-tests", "test-base-functions.R"))
+\end{verbatim}
+
+You can also add a line to your project's master bash script to run tests before the analysis:
+
+\begin{verbatim}
+# In run_all.sh
+Rscript -e 'testthat::test_dir("9-tests")' || { echo "Tests failed"; exit 1; }
+\end{verbatim}
+
+This ensures that if any test fails, the analysis pipeline stops before producing results.
+
+\subsection{What to test}\label{what-to-test}
+
+Not every function needs a full test suite. Prioritize testing:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Functions that implement statistical methods} (e.g., custom estimators, bootstrap procedures, variance calculations). These are high-consequence and hard to verify by inspection.
+\item
+  \textbf{Complex data cleaning functions} used across multiple scripts or projects. A bug here propagates everywhere.
+\item
+  \textbf{Functions with complex logic} --- many conditionals, edge cases, or interactions between arguments.
+\end{itemize}
+
+For simple helper functions (e.g., formatting a label), inline assertions in the analysis script are usually sufficient.
+
+\section{Summary of practices}\label{summary-of-practices}
+
+\begin{itemize}
+\tightlist
+\item
+  Place \texttt{assertthat::assert\_that()} calls after every merge, filter, reshape, and variable creation step in your analysis scripts.
+\item
+  Always check row counts before and after merges. Know what the correct number should be.
+\item
+  Check that computed values are within plausible ranges.
+\item
+  Write reusable validation functions for datasets you load in multiple scripts.
+\item
+  Use \texttt{test\_that()} for custom functions that are shared across scripts or projects.
+\item
+  Add test execution to your master bash script so failures halt the pipeline.
+\end{itemize}
+
 \chapter{Github}\label{github}
 
 by Stephanie Djajadi and Nolan Pokpongkiat
@@ -1331,8 +2013,8 @@ A detailed tutorial on Git Branching can be found \href{https://sp19.datastructu
 A standard workflow when starting on a new project and contributing code looks like this:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3600}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6400}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6400}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Command
@@ -1362,8 +2044,8 @@ Other helpful commands are listed below.
 \section{Commonly Used Git Commands}\label{commonly-used-git-commands}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3600}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6400}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6400}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Command
@@ -1427,7 +2109,7 @@ On the computer, there is a desktop with two folders, \texttt{folder1} and \text
 
 \begin{figure}
 \centering
-\includegraphics{assets/images/ex-desktop.jpg}
+\pandocbounded{\includegraphics[keepaspectratio]{assets/images/ex-desktop.jpg}}
 \caption{Here is our example desktop.}
 \end{figure}
 
@@ -1436,8 +2118,8 @@ On the computer, there is a desktop with two folders, \texttt{folder1} and \text
 When typing in directories or file names, quotes are necessary if the name includes spaces.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4348}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5652}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4348}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5652}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Command
@@ -1463,16 +2145,16 @@ Description
 
 \begin{figure}
 \centering
-\includegraphics{assets/images/ex-terminal.PNG}
+\pandocbounded{\includegraphics[keepaspectratio]{assets/images/ex-terminal.PNG}}
 \caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
 \end{figure}
 
 \section{Running Bash Scripts}\label{running-bash-scripts}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2571}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2571}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3714}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3714}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Windows
@@ -1522,9 +2204,9 @@ To run an R script from the command line, we can say:
 \section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2571}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3714}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2571}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3714}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3714}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Windows
@@ -1693,7 +2375,7 @@ This example bash script runs files and generates logs for five scripts in the \
 
 \chapter{Reproducible Environments}\label{reproducible-environments}
 
-by Anna Nguyen
+by Anna Nguyen and Jade Benjamin-Chung
 
 \section{Package Version Control with renv}\label{package-version-control-with-renv}
 
@@ -1756,6 +2438,26 @@ If you're starting to work on an ongoing project that already has \texttt{renv} 
 \item
   If you make edits to the code and introduce new/updated packages, see the section above for instructions on how to make updates.
 \end{enumerate}
+
+\section{Documenting the R version}\label{documenting-the-r-version}
+
+\texttt{renv} tracks package versions but does not track the version of R itself. Since R updates can change behavior (e.g., changes to the default \texttt{stringsAsFactors} argument in R 4.0, or updates to the random number generator in R 3.6), it is important to document the R version used in each project.
+
+Add the following to your project's README: \texttt{This\ project\ was\ developed\ using\ R\ version\ 4.3.1\ (2023-06-16).\ Package\ versions\ are\ tracked\ with\ renv\ (see\ renv.lock).}
+
+You can find your current R version by running \texttt{R.version.string} in the console. Update this line in the README whenever you upgrade R for a project.
+
+For published code, also include the R version in the \texttt{renv.lock} file header, which \texttt{renv} does automatically. Reviewers or replicators can then check whether their R version matches before attempting to reproduce results.
+
+\section{Ensuring consistency between local and cluster environments}\label{ensuring-consistency-between-local-and-cluster-environments}
+
+If you develop code locally and run it on Sherlock, differences between your local R environment and the cluster environment can cause code to behave differently or fail. The most common sources of discrepancy are the R version, package versions, and system libraries.
+
+\textbf{Use the same R version on both.} Check which R versions are available on Sherlock by running \texttt{module\ avail\ R} on the command line. Load a specific version with \texttt{module\ load\ R/4.3.1} (replacing with your version). If your local R version is not available on Sherlock, either update your local installation to match an available Sherlock version, or vice versa. Document the version you are using in your README.
+
+\textbf{Use \texttt{renv} on Sherlock.} The same \texttt{renv.lock} file that tracks packages locally should be used on Sherlock. After cloning your repo on Sherlock, run \texttt{renv::restore()} to install the correct package versions. Note that some packages with compiled code (e.g., \texttt{data.table}, \texttt{Stan}-based packages) may need to be recompiled on Sherlock due to differences in the operating system and system libraries. If \texttt{renv::restore()} fails for specific packages, try installing them manually with \texttt{renv::install("package\_name")} and then running \texttt{renv::snapshot()} to update the lock file.
+
+\textbf{Test on Sherlock before running full analyses.} Before submitting large batch jobs, run a small test script interactively on a development node (\texttt{sdev}) to verify that packages load correctly and that a simple version of your analysis produces expected output. This catches environment mismatches before you spend allocation hours on jobs that will fail.
 
 \chapter{Code Publication}\label{code-publication}
 
@@ -2071,7 +2773,7 @@ by Anna Nguyen, Jade Benjamin-Chung, and Gabby Barratt Heitmann
 
 When you need to run a script that requires a large amount of RAM, large files, or that uses parallelization, you can use Sherlock, Stanford's computing cluster. Sherlock uses Slurm, an open source, scalable cluster management and job scheduling system for computing clusters. Jade can email Sherlock managers to get you an account. Please refer to the \href{https://www.sherlock.stanford.edu/docs/overview/introduction/}{Sherlock user guide} to learn about the system and how to use it. Below, we include a few tips specific to how we use Sherlock in our lab.
 
-\section{Getting started}\label{getting-started}
+\section{Getting started}\label{getting-started-1}
 
 To access Sherlock, in terminal, log in using the following syntax and replace ``USERNAME'' with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.
 
@@ -2410,38 +3112,16 @@ by Jade Benjamin-Chung
 
 \section{Pre-analysis plan checklist}\label{pre-analysis-plan-checklist}
 
+Before registering a pre-analysis plan, verify that it includes all elements described in the \href{reproducibility.html\#write-and-register-pre-analysis-plans}{Write and register pre-analysis plans} section. See the following pre-analysis plans for examples from our lab:
+
 \begin{itemize}
 \tightlist
 \item
-  Brief background on the study (a condensed version of the introduction section of the paper)
+  \href{https://osf.io/tprw2/}{Trials of water, sanitation, and hygiene interventions}
 \item
-  Hypotheses / objectives
+  \href{https://osf.io/c8xuq/}{Observational study of school-located influenza vaccination}
 \item
-  Study design
-\item
-  Description of data
-\item
-  Definition of outcomes
-\item
-  Definition of interventions / exposures
-\item
-  Definition of covariates
-\item
-  Statistical power calculation
-\item
-  Statistical model description
-\item
-  Covariate selection / screening
-\item
-  Standard error estimation method
-\item
-  Missing data analysis
-\item
-  Assessment of effect modification / subgroup analyses
-\item
-  Sensitivity analyses
-\item
-  Negative control analyses
+  \href{https://osf.io/rb3cw/}{Re-analysis of malaria intervention trial}
 \end{itemize}
 
 \section{Code checklist}\label{code-checklist}
@@ -2456,6 +3136,14 @@ by Jade Benjamin-Chung
   Is all commented out code / remarks removed?
 \item
   Does the header accurately describe the process completed in the script?
+\item
+  Are file paths relative (using \texttt{here()}) rather than absolute?
+\item
+  Are assertions present after merges, filters, and key variable creation steps?
+\item
+  Do unit tests pass (\texttt{testthat::test\_dir(\textquotesingle{}9-tests\textquotesingle{})})?
+\item
+  Are random seeds set where relevant?
 \item
   Is the script pushed to its github repository?
 \item
@@ -2487,7 +3175,9 @@ by Jade Benjamin-Chung
 \item
   Is each figure and table (including supplementary material) referenced in the main text?
 \item
-  Is there a caption for each figure and table (including supplementary material)?
+  Is there a caption for each figure and table (including supplementary material)?\\
+\item
+  Are all numbers in the text (sample sizes, point estimates, CIs, p-values) generated programmatically from the analysis output rather than manually typed?\\
 \item
   Are tables/figures and supplementary material numbered in accordance with their appearance in the main text?
 \item
@@ -2513,6 +3203,8 @@ by Jade Benjamin-Chung
 \item
   Are the x-axis and y-axis labeled?
 \item
+  Are the axis limits appropriate (e.g., not truncating data or exaggerating differences)?
+\item
   If the figure includes panels, is each panel labeled?
 \item
   Are there sufficient numerical / text labels and breaks on the x-axis and y-axis?
@@ -2528,6 +3220,8 @@ by Jade Benjamin-Chung
   If there is overplotting, is transparency used to show overlapping data?
 \item
   Are 95\% confidence intervals or other measures of precision shown, if applicable?
+\item
+  Does the figure have a consistent theme/style with other figures in the manuscript?
 \end{itemize}
 
 \chapter{Resources}\label{resources}
@@ -2638,6 +3332,6 @@ by Jade Benjamin-Chung and Kunal Mishra
   \href{https://link.springer.com/book/9783031537929}{Transforming Global Health Partnerships}
 \end{itemize}
 
-  \bibliography{book.bib,packages.bib}
+\bibliography{book.bib,packages.bib}
 
 \end{document}

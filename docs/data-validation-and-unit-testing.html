@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Code repositories | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 11 Data validation and unit testing | Benjamin-Chung Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Code repositories | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 11 Data validation and unit testing | Benjamin-Chung Lab Manual" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Code repositories | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 11 Data validation and unit testing | Benjamin-Chung Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-started.html"/>
-<link rel="next" href="coding-practices.html"/>
+<link rel="prev" href="tidy-evaluation-and-programming-with-dplyr.html"/>
+<link rel="next" href="github.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -406,102 +406,334 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="code-repositories" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Code repositories<a href="code-repositories.html#code-repositories" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi</p>
-<p>Each study has at least one code repository that typically holds R code, shell scripts with Unix code, and research outputs (results .RDS files, tables, figures). Repositories may also include datasets. This chapter outlines how to organize these files. Adhering to a standard format makes it easier for us to efficiently collaborate across projects.</p>
-<div id="project-structure" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Project Structure<a href="code-repositories.html#project-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We recommend the following directory structure:</p>
-<pre><code>0-run-project.sh
-0-config.R
-0-functions/
-    0-base-functions.R
-    0-plot-functions.R
-    ...
-1 - Data-Management/
-    0-prep-data.sh
-    1-prep-cdph-fluseas.R
-    2-prep-absentee.R
-    ...
-2 - Analysis/
-    0-run-analysis.sh
-    1 - Absentee-Mean/
-        1-absentee-mean-primary.R
-        2-absentee-mean-negative-control.R
-        ...
-    2 - Absentee-Positivity-Check/
-    3 - Absentee-P1/
-    4 - Absentee-P2/
-3 - Figures/
-    0-run-figures.sh
-    ...
-4 - Tables/
-    0-run-tables.sh
-    ...
-5 - Results/
-    1 - Absentee-Mean/
-        1-absentee-mean-primary.RDS
-        2-absentee-mean-negative-control.RDS
-    ...
-.gitignore
-.Rproj</code></pre>
-<p>For brevity, not every directory is “expanded”, but we can glean some important takeaways from what we <em>do</em> see.</p>
-</div>
-<div id="functions-folder" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> <code>0-functions</code> folder<a href="code-repositories.html#functions-folder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>0-functions/</code> folder contains reusable helper functions that are shared across multiple scripts in the project. These are sourced in <code>0-config.R</code> so they are available to every script in the pipeline. <code>0-base-functions.R</code> typically contains functions for data cleaning, regression wrappers (e.g., fitting a model with robust standard errors and formatting the output), and common data manipulation tasks. <code>0-plot-functions.R</code> contains functions for generating figures with consistent formatting, such as custom ggplot themes, color palettes, and wrappers for common plot types used across the project.</p>
-</div>
-<div id="rproj-files" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> <code>.Rproj</code> files<a href="code-repositories.html#rproj-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>An “R Project” can be created within RStudio by going to <code>File &gt;&gt; New Project</code>. Depending on where you are with your research, choose the most appropriate option. This will save preferences, working directories, and even the results of running code/data (though I’d recommend starting from scratch each time you open your project, in general). Then, ensure that whenever you are working on that specific research project, you open your created project to enable the full utility of <code>.Rproj</code> files. This also automatically sets the directory to the top level of the project.</p>
-</div>
-<div id="configuration-config-file" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Configuration (‘config’) File<a href="code-repositories.html#configuration-config-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This is the single most important file for your project to ensure reproducibility. It loads all libraries, sources shared functions from <code>0-functions/</code>, declares global variables, and defines file paths for data, figures, and tables. <em>Every other file in the project</em> will begin with <code>source("0-config.R")</code>, which means changes made here automatically propagate throughout the project. For example, if you need to rename a data directory or switch from a downsampled dataset to the full data, you only modify the path in <code>0-config.R</code> rather than in every script that references it.</p>
-<p>The config file also handles differences between collaborators’ machines. Since Box syncs to a different local path on each person’s computer, the config detects which user is running the code and sets the Box root path accordingly. Local paths within the project repository (for data, figures, and tables) use the <code>here</code> package, which assumes that users have opened the <code>.Rproj</code> file, setting the working directory to the top level of the project.</p>
-<p>Here is an example config file:</p>
-<pre><code>#-------------------------------------
-# Name of study 
-
-# configure data directories
-# source base functions
-# load libraries
-#-------------------------------------
-library(tidyverse)
-library(here)
-library(ggplot2)
-library(gridExtra)
-library(reshape2)
+<div id="data-validation-and-unit-testing" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Data validation and unit testing<a href="data-validation-and-unit-testing.html#data-validation-and-unit-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>by Jade Benjamin-Chung</p>
+<p>In epidemiologic analyses, mistakes in data processing can silently change results without producing any error. A merge with the wrong key can duplicate or drop observations; a filter with the wrong condition can exclude the wrong subgroup; a variable coded as character instead of numeric can cause a model to run but produce nonsensical estimates. These problems are often invisible in the final output — the code runs, a table is produced, and the numbers look plausible enough to go unquestioned. It is best to catch these errors early and systematically. The core idea is simple: at every step where data could go wrong, write a check that will fail and stop the code from proceeding if something is not as expected.</p>
+<p>This chapter covers two complementary practices: data validation with <code>assert_that()</code>, which checks that your real data meets expectations at each step of an analysis script, and unit testing with <code>test_that()</code>, which verifies that your custom functions produce correct output using small synthetic datasets.</p>
+<div id="data-validation-with-assertions-in-analysis-scripts" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Data validation with assertions in analysis scripts<a href="data-validation-and-unit-testing.html#data-validation-with-assertions-in-analysis-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An assertion is a statement that something must be true at a particular point in your code. If the assertion fails, the script stops immediately with an informative error message. This is far preferable to the alternative — silently producing wrong results that you discover weeks later (or never).</p>
+<p>We use the <code>assertthat</code> package for assertions. Place assertions after any operation that changes the structure or content of your data: merges, filters, reshapes, variable creation, and aggregation. You write code for what you want to check that results in a TRUE or FALSE value, and <code>assert_that()</code> will throw an error if the value is FALSE and stop the code from running further.</p>
+<div id="after-merges-and-joins" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> After merges and joins<a href="data-validation-and-unit-testing.html#after-merges-and-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Merges are the single most common source of silent errors in our work. When you join two datasets, always check that the result has the number of rows you expect.</p>
+<p><strong>Example: Merging household survey data with an individual symptom module.</strong> Suppose <code>household</code> has one row per household and <code>symptoms</code> has one row per individual. We want to add household-level covariates (e.g., floor type, water source) to each individual’s record.</p>
+<p>The key principle: <strong>you should know what the row count should be before the merge, and verify it after.</strong> A left join of individuals onto households should not change the number of rows. If it does, there are duplicate keys in the household data.</p>
+<pre><code>library(dplyr)
 library(assertthat)
+
+# Load data
+household &lt;- readRDS(here::here(&quot;data&quot;, &quot;household.rds&quot;))
+symptoms &lt;- readRDS(here::here(&quot;data&quot;, &quot;symptoms.rds&quot;))
+
+# Check pre-merge expectations
+n_individuals &lt;- nrow(symptoms)
+n_households &lt;- n_distinct(household$household_id)
+
+assert_that(
+  n_distinct(household$household_id) == nrow(household),
+  msg = &quot;household data has duplicate household_id values&quot;
+)
+
+assert_that(
+  all(symptoms$household_id %in% household$household_id),
+  msg = &quot;some individuals have household_ids not found in household data&quot;
+)
+
+# Merge
+individual_data &lt;- symptoms %&gt;%
+  left_join(household, by = &quot;household_id&quot;)
+
+# Check post-merge expectations
+assert_that(
+  nrow(individual_data) == n_individuals,
+  msg = paste0(
+    &quot;merge changed number of rows: expected &quot;, n_individuals,
+    &quot;, got &quot;, nrow(individual_data),
+    &quot;. Check for duplicate household_ids in household data.&quot;
+  )
+)
+
+assert_that(
+  sum(is.na(individual_data$floor_type)) == 0,
+  msg = &quot;floor_type has missing values after merge — household data may be incomplete&quot;
+)</code></pre>
+</div>
+<div id="after-filters-and-subsets" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> After filters and subsets<a href="data-validation-and-unit-testing.html#after-filters-and-subsets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you filter data to a subgroup, verify that the resulting sample size is plausible. This example restricts the dataset to children under 5 and checks three things: that the filtered dataset is not empty, that it actually removed some rows, and that the resulting sample size is within a plausible range based on enrollment records.</p>
+<pre><code># Restrict to children under 5
+children_under5 &lt;- individual_data %&gt;%
+  filter(age_years &lt; 5)
+
+assert_that(
+  nrow(children_under5) &gt; 0,
+  msg = &quot;no children under 5 found — check age variable coding&quot;
+)
+
+assert_that(
+  nrow(children_under5) &lt; nrow(individual_data),
+  msg = &quot;filter did not remove any rows — all individuals are under 5?&quot;
+)
+
+# If you know the approximate expected count from enrollment records
+assert_that(
+  nrow(children_under5) &gt;= 800 &amp; nrow(children_under5) &lt;= 1200,
+  msg = paste0(
+    &quot;expected ~1000 children under 5 based on enrollment, got &quot;,
+    nrow(children_under5)
+  )
+)</code></pre>
+</div>
+<div id="after-variable-creation" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> After variable creation<a href="data-validation-and-unit-testing.html#after-variable-creation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you create or recode variables, check that the results are within expected ranges. This example calculates diarrhea prevalence by village and checks that all prevalence values are between 0 and 1 and that no village has zero individuals.</p>
+<pre><code># Calculate prevalence
+village_prev &lt;- individual_data %&gt;%
+  group_by(village_id) %&gt;%
+  summarise(
+    n = n(),
+    n_cases = sum(has_diarrhea, na.rm = TRUE),
+    prevalence = n_cases / n
+  )
+
+assert_that(
+  all(village_prev$prevalence &gt;= 0 &amp; village_prev$prevalence &lt;= 1),
+  msg = &quot;prevalence values outside [0, 1] — check numerator and denominator&quot;
+)
+
+assert_that(
+  all(village_prev$n &gt;= 1),
+  msg = &quot;some villages have 0 individuals — check village_id coding&quot;
+)</code></pre>
+</div>
+<div id="checking-for-unexpected-missing-data" class="section level3 hasAnchor" number="11.1.4">
+<h3><span class="header-section-number">11.1.4</span> Checking for unexpected missing data<a href="data-validation-and-unit-testing.html#checking-for-unexpected-missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Missing data can appear at any stage. Check for it explicitly after operations that might introduce it. This example creates an age category variable using <code>case_when()</code> and checks that no observations were left as NA, which would indicate that some age_years values didn’t match any of the specified conditions.</p>
+<pre><code># After creating a derived variable
+individual_data &lt;- individual_data %&gt;%
+  mutate(
+    age_category = case_when(
+      age_years &lt; 1 ~ &quot;infant&quot;,
+      age_years &lt; 5 ~ &quot;child&quot;,
+      age_years &lt; 18 ~ &quot;adolescent&quot;,
+      age_years &gt;= 18 ~ &quot;adult&quot;
+    )
+  )
+
+# case_when returns NA if no condition matches — catch that
+assert_that(
+  sum(is.na(individual_data$age_category)) == 0,
+  msg = paste0(
+    &quot;age_category has &quot;, sum(is.na(individual_data$age_category)),
+    &quot; NAs — check for missing or unexpected age_years values&quot;
+  )
+)</code></pre>
+</div>
+</div>
+<div id="writing-a-validation-function" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Writing a validation function<a href="data-validation-and-unit-testing.html#writing-a-validation-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For checks that you repeat across scripts (e.g., verifying a dataset after loading), write a reusable validation function. This example wraps a set of checks into a reusable function that can be called at the top of any analysis script that loads the merged individual-level dataset, verifying that required columns are present, IDs are unique, household counts are close to expected, and age values are plausible.</p>
+<pre><code>#&#39; Validate the merged individual-level analysis dataset
+#&#39; @param data the merged individual-level dataset
+#&#39; @param expected_n_hh expected number of unique households
+#&#39; @param expected_n_ind expected number of individuals (approximate)
+validate_individual_data &lt;- function(data, expected_n_hh, expected_n_ind) {
+  
+  # Check that required columns are present
+  required_cols &lt;- c(&quot;individual_id&quot;, &quot;household_id&quot;, &quot;village_id&quot;,
+                     &quot;age_years&quot;, &quot;has_diarrhea&quot;, &quot;floor_type&quot;)
+  missing_cols &lt;- setdiff(required_cols, names(data))
+  assert_that(
+    length(missing_cols) == 0,
+    msg = paste0(&quot;missing required columns: &quot;, paste(missing_cols, collapse = &quot;, &quot;))
+  )
+  
+  # Check for duplicated rows
+  assert_that(
+    n_distinct(data$individual_id) == nrow(data),
+    msg = &quot;individual_id is not unique — dataset has duplicate rows&quot;
+  )
+  
+  # Check that counts are as expected 
+  n_hh &lt;- n_distinct(data$household_id)
+  assert_that(
+    abs(n_hh - expected_n_hh) / expected_n_hh &lt; 0.05,
+    msg = paste0(
+      &quot;number of households (&quot;, n_hh, &quot;) differs from expected (&quot;,
+      expected_n_hh, &quot;) by more than 5%&quot;
+    )
+  )
+  
+  # Check that variable levels are within expected ranges 
+  assert_that(
+    all(data$age_years &gt;= 0 &amp; data$age_years &lt; 120, na.rm = TRUE),
+    msg = &quot;age_years contains implausible values&quot;
+  )
+  
+  message(&quot;All validation checks passed.&quot;)
+}</code></pre>
+<p>You can call this function at the top of each analysis script that loads the merged dataset:</p>
+<pre><code>individual_data &lt;- readRDS(here::here(&quot;data&quot;, &quot;individual_data.rds&quot;))
+validate_individual_data(
+  data = individual_data,
+  expected_n_hh = 500,
+  expected_n_ind = 2000
+)</code></pre>
+</div>
+<div id="unit-testing-with-testthat" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Unit testing with <code>testthat</code><a href="data-validation-and-unit-testing.html#unit-testing-with-testthat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The assertions described above are embedded in your analysis scripts and run every time the script runs. For custom functions that you use across multiple projects or scripts, more structured testing with the <code>testthat</code> package is appropriate.</p>
+<p>Unit tests verify that a function produces the correct output for known inputs. They are especially valuable for:</p>
+<ul>
+<li>Functions that compute estimates, standard errors, or confidence intervals</li>
+<li>Data cleaning functions that recode, reshape, or aggregate</li>
+<li>Any function that will be used by multiple people or in multiple scripts</li>
+</ul>
+<div id="setting-up-unit-tests" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Setting up unit tests<a href="data-validation-and-unit-testing.html#setting-up-unit-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create a <code>9-tests/</code> directory in your project and add test files that mirror your function files:</p>
+<pre><code>my-project/
+├── 0-config.R
+├── 0-functions/
+│   ├── 0-base-functions.R
+│   └── 0-plot-functions.R
+├── 1-data-processing/
+├── 2-analysis/
+└── 9-tests/
+    ├── test-base-functions.R
+    └── test-plot-functions.R</code></pre>
+</div>
+<div id="writing-unit-tests" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Writing unit tests<a href="data-validation-and-unit-testing.html#writing-unit-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Each test file should source the corresponding function file and use <code>testthat</code> to verify expected behavior. Unit tests are most relevant for functions that get reused across multiple projects or by multiple people — where a silent change in behavior could propagate widely.</p>
+<p>Suppose you have a function called <code>fit_glm_robust</code> in <code>0-base-functions.R</code> that works correctly. Six months later, you or a student modifies it (adds a new option, changes how it handles NAs, refactors it) and accidentally breaks the original behavior. Unit tests catch that immediately. Each <code>test_that()</code> block does three things:</p>
+<ol style="list-style-type: decimal">
+<li>Creates a small fake dataset with known values</li>
+<li>Runs the function on it</li>
+<li>Checks that the output matches what you expect</li>
+</ol>
+<p>You’re not testing on your real data — you’re testing the function’s logic in isolation with inputs you control completely.</p>
+<p>This differs from <code>assert_that()</code> earlier in this chapter, which checks the data — did the merge produce the right number of rows, are prevalence values between 0 and 1, etc. Those run every time your analysis runs, on your real data. The two practices complement each other: <code>test_that()</code> protects your <strong>functions</strong> from being broken by future edits, and <code>assert_that()</code> protects your <strong>analysis</strong> from being wrong due to unexpected data.</p>
+<p>Functions that wrap regression models are good candidates for unit testing because they combine multiple steps — fitting a model, computing robust standard errors, and formatting output — and a bug in any step can produce results that look plausible but are wrong. For example, a confidence interval computed on the log scale that isn’t exponentiated back, or a standard error from the model-based variance instead of the sandwich estimator, will still produce a table with numbers in it. The tests below assume a function called <code>fit_glm_robust</code> in <code>0-base-functions.R</code> that fits a GLM with a binomial family, computes cluster-robust sandwich standard errors, and returns a one-row data frame with columns for N, point estimate, SE, 95% CI, and p-value.</p>
+<pre><code># 9-tests/test-base-functions.R
 library(testthat)
+source(here::here(&quot;0-functions&quot;, &quot;0-base-functions.R&quot;))
 
-if(Sys.getenv(&quot;LOGNAME&quot;)==&quot;person1&quot;){
-  box_root_path = &quot;&lt;FILL IN PERSON 1&#39;S COMPUTER&#39;S BOX PATH&gt;&quot;
-}
+# ---- fit_glm_robust ----
 
-if(Sys.getenv(&quot;LOGNAME&quot;)==&quot;person2&quot;){
-  box_root_path = &quot;&lt;FILL IN PERSON 2&#39;S COMPUTER&#39;S BOX PATH&gt;&quot;
-}
+test_that(&quot;fit_glm_robust returns expected columns&quot;, {
+  set.seed(123)
+  test_data &lt;- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result &lt;- fit_glm_robust(
+    data = test_data,
+    outcome = &quot;Y&quot;,
+    treatment = &quot;X&quot;,
+    cluster_var = &quot;cluster_id&quot;
+  )
+  expected_cols &lt;- c(&quot;n&quot;, &quot;estimate&quot;, &quot;se&quot;, &quot;ci_lower&quot;, &quot;ci_upper&quot;, &quot;pvalue&quot;)
+  expect_true(all(expected_cols %in% names(result)))
+})
 
-# Box paths
-box_path &lt;- paste0(box_root_path, &quot;Housing-DHS-analysis/&quot;)
-box_path_raw_data &lt;- paste0(box_path, &quot;raw-data/&quot;)
-box_path_processed_data &lt;- paste0(box_path, &quot;processed-data/&quot;)
+test_that(&quot;fit_glm_robust CI contains point estimate&quot;, {
+  set.seed(123)
+  test_data &lt;- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result &lt;- fit_glm_robust(
+    data = test_data,
+    outcome = &quot;Y&quot;,
+    treatment = &quot;X&quot;,
+    cluster_var = &quot;cluster_id&quot;
+  )
+  expect_true(result$ci_lower &lt;= result$estimate)
+  expect_true(result$ci_upper &gt;= result$estimate)
+})
 
-# Local directories
-data_path = here::here(&quot;data/&quot;)
-figure_path = here::here(&quot;figures/&quot;)
-table_path = here::here(&quot;tables/&quot;)</code></pre>
+test_that(&quot;fit_glm_robust returns correct N&quot;, {
+  set.seed(123)
+  test_data &lt;- data.frame(
+    Y = rbinom(200, 1, 0.3),
+    X = rbinom(200, 1, 0.5),
+    cluster_id = rep(1:50, each = 4)
+  )
+  result &lt;- fit_glm_robust(
+    data = test_data,
+    outcome = &quot;Y&quot;,
+    treatment = &quot;X&quot;,
+    cluster_var = &quot;cluster_id&quot;
+  )
+  expect_equal(result$n, 200)
+})
+
+test_that(&quot;fit_glm_robust detects null effect with synthetic data&quot;, {
+  set.seed(456)
+  test_data &lt;- data.frame(
+    Y = rbinom(500, 1, 0.3),
+    X = rbinom(500, 1, 0.5),
+    cluster_id = rep(1:100, each = 5)
+  )
+  result &lt;- fit_glm_robust(
+    data = test_data,
+    outcome = &quot;Y&quot;,
+    treatment = &quot;X&quot;,
+    cluster_var = &quot;cluster_id&quot;
+  )
+  # With no true effect, CI should include the null
+  expect_true(result$ci_lower &lt;= 0 &amp; result$ci_upper &gt;= 0)
+})
+
+test_that(&quot;fit_glm_robust errors on missing outcome variable&quot;, {
+  test_data &lt;- data.frame(X = c(0, 1), cluster_id = c(1, 2))
+  expect_error(fit_glm_robust(
+    data = test_data,
+    outcome = &quot;Y&quot;,
+    treatment = &quot;X&quot;,
+    cluster_var = &quot;cluster_id&quot;
+  ))
+})</code></pre>
 </div>
-<div id="order-files-and-directories" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Order Files and Directories<a href="code-repositories.html#order-files-and-directories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At the end of the project, we recommend ordering the files in order of how they must be run and then numbering them within sub-folders. This makes the jumble of alphabetized file names much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e. <code>2 - Analysis/1 - Absentee-Mean/1-absentee-mean-primary.R</code> =&gt; <code>5 - Results/1 - Absentee-Mean/1-absentee-mean-primary.RDS</code>). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript.</p>
+<div id="running-tests" class="section level3 hasAnchor" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Running tests<a href="data-validation-and-unit-testing.html#running-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can run all tests from the project root:</p>
+<pre><code># Run all tests in the 9-tests/ directory
+testthat::test_dir(here::here(&quot;9-tests&quot;))
+
+# Run a specific test file
+testthat::test_file(here::here(&quot;9-tests&quot;, &quot;test-base-functions.R&quot;))</code></pre>
+<p>You can also add a line to your project’s master bash script to run tests before the analysis:</p>
+<pre><code># In run_all.sh
+Rscript -e &#39;testthat::test_dir(&quot;9-tests&quot;)&#39; || { echo &quot;Tests failed&quot;; exit 1; }</code></pre>
+<p>This ensures that if any test fails, the analysis pipeline stops before producing results.</p>
 </div>
-<div id="using-bash-scripts-to-ensure-reproducibility" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Using Bash scripts to ensure reproducibility<a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e. in <code>3 - Analysis</code>), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data “upstream” changes – you simply run the bash script. See the <a href="unix.html#unix">Unix Chapter</a> for further details.</p>
-<p>After running bash scripts, <code>.Rout</code> log files will be generated for each script that has been executed. It is important to check these files. Scripts may appear to have run correctly in the terminal, but checking the log files is the only way to ensure that everything has run completely.</p>
+<div id="what-to-test" class="section level3 hasAnchor" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> What to test<a href="data-validation-and-unit-testing.html#what-to-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Not every function needs a full test suite. Prioritize testing:</p>
+<ul>
+<li><strong>Functions that implement statistical methods</strong> (e.g., custom estimators, bootstrap procedures, variance calculations). These are high-consequence and hard to verify by inspection.</li>
+<li><strong>Complex data cleaning functions</strong> used across multiple scripts or projects. A bug here propagates everywhere.</li>
+<li><strong>Functions with complex logic</strong> — many conditionals, edge cases, or interactions between arguments.</li>
+</ul>
+<p>For simple helper functions (e.g., formatting a label), inline assertions in the analysis script are usually sufficient.</p>
+</div>
+</div>
+<div id="summary-of-practices" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Summary of practices<a href="data-validation-and-unit-testing.html#summary-of-practices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Place <code>assertthat::assert_that()</code> calls after every merge, filter, reshape, and variable creation step in your analysis scripts.</li>
+<li>Always check row counts before and after merges. Know what the correct number should be.</li>
+<li>Check that computed values are within plausible ranges.</li>
+<li>Write reusable validation functions for datasets you load in multiple scripts.</li>
+<li>Use <code>test_that()</code> for custom functions that are shared across scripts or projects.</li>
+<li>Add test execution to your master bash script so failures halt the pipeline.</li>
+</ul>
 
 </div>
 </div>
@@ -510,8 +742,8 @@ table_path = here::here(&quot;tables/&quot;)</code></pre>
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="coding-practices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidy-evaluation-and-programming-with-dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -542,7 +774,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/jadebc/lab-manual/edit/master/05-code-repositories.Rmd",
+    "link": "https://github.com/jadebc/lab-manual/edit/master/10-testing-and-validation.Rmd",
     "text": "Edit"
   },
   "history": {

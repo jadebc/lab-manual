@@ -1,0 +1,104 @@
+# Code repositories
+
+By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
+
+Each study has at least one code repository that typically holds R code, shell scripts with Unix code, and research outputs (results .RDS files, tables, figures). Repositories may also include datasets. This chapter outlines how to organize these files. Adhering to a standard format makes it easier for us to efficiently collaborate across projects. 
+
+## Project Structure
+
+We recommend the following directory structure:
+
+```
+0-run-project.sh
+0-config.R
+0-functions/
+    0-base-functions.R
+    0-plot-functions.R
+    ...
+1 - Data-Management/
+    0-prep-data.sh
+    1-prep-cdph-fluseas.R
+    2-prep-absentee.R
+    ...
+2 - Analysis/
+    0-run-analysis.sh
+    1 - Absentee-Mean/
+        1-absentee-mean-primary.R
+        2-absentee-mean-negative-control.R
+        ...
+    2 - Absentee-Positivity-Check/
+    3 - Absentee-P1/
+    4 - Absentee-P2/
+3 - Figures/
+    0-run-figures.sh
+    ...
+4 - Tables/
+    0-run-tables.sh
+    ...
+5 - Results/
+    1 - Absentee-Mean/
+        1-absentee-mean-primary.RDS
+        2-absentee-mean-negative-control.RDS
+    ...
+.gitignore
+.Rproj
+```
+
+For brevity, not every directory is "expanded", but we can glean some important takeaways from what we _do_ see.
+
+## `0-functions` folder
+The `0-functions/` folder contains reusable helper functions that are shared across multiple scripts in the project. These are sourced in `0-config.R` so they are available to every script in the pipeline. `0-base-functions.R` typically contains functions for data cleaning, regression wrappers (e.g., fitting a model with robust standard errors and formatting the output), and common data manipulation tasks. `0-plot-functions.R` contains functions for generating figures with consistent formatting, such as custom ggplot themes, color palettes, and wrappers for common plot types used across the project.
+
+## `.Rproj` files
+An "R Project" can be created within RStudio by going to `File >> New Project`. Depending on where you are with your research, choose the most appropriate option. This will save preferences, working directories, and even the results of running code/data (though I'd recommend starting from scratch each time you open your project, in general). Then, ensure that whenever you are working on that specific research project, you open your created project to enable the full utility of `.Rproj` files. This also automatically sets the directory to the top level of the project. 
+
+## Configuration ('config') File
+
+This is the single most important file for your project to ensure reproducibility. It loads all libraries, sources shared functions from `0-functions/`, declares global variables, and defines file paths for data, figures, and tables. _Every other file in the project_ will begin with `source("0-config.R")`, which means changes made here automatically propagate throughout the project. For example, if you need to rename a data directory or switch from a downsampled dataset to the full data, you only modify the path in `0-config.R` rather than in every script that references it.
+
+The config file also handles differences between collaborators' machines. Since Box syncs to a different local path on each person's computer, the config detects which user is running the code and sets the Box root path accordingly. Local paths within the project repository (for data, figures, and tables) use the `here` package, which assumes that users have opened the `.Rproj` file, setting the working directory to the top level of the project.
+
+Here is an example config file:
+
+```
+#-------------------------------------
+# Name of study 
+
+# configure data directories
+# source base functions
+# load libraries
+#-------------------------------------
+library(tidyverse)
+library(here)
+library(ggplot2)
+library(gridExtra)
+library(reshape2)
+library(assertthat)
+library(testthat)
+
+if(Sys.getenv("LOGNAME")=="person1"){
+  box_root_path = "<FILL IN PERSON 1'S COMPUTER'S BOX PATH>"
+}
+
+if(Sys.getenv("LOGNAME")=="person2"){
+  box_root_path = "<FILL IN PERSON 2'S COMPUTER'S BOX PATH>"
+}
+
+# Box paths
+box_path <- paste0(box_root_path, "Housing-DHS-analysis/")
+box_path_raw_data <- paste0(box_path, "raw-data/")
+box_path_processed_data <- paste0(box_path, "processed-data/")
+
+# Local directories
+data_path = here::here("data/")
+figure_path = here::here("figures/")
+table_path = here::here("tables/")
+```
+
+## Order Files and Directories
+At the end of the project, we recommend ordering the files in order of how they must be run and then numbering them within sub-folders. This makes the jumble of alphabetized file names much more coherent and places similar code and files next to one another. This also helps us understand how data flows from start to finish and allows us to easily map a script to its output (i.e. `2 - Analysis/1 - Absentee-Mean/1-absentee-mean-primary.R` => `5 - Results/1 - Absentee-Mean/1-absentee-mean-primary.RDS`). If you take nothing else away from this guide, this is the single most helpful suggestion to make your workflow more coherent. Often the particular order of files will be in flux until an analysis is close to completion. At that time it is important to review file order and naming and reproduce everything prior to drafting a manuscript. 
+
+## Using Bash scripts to ensure reproducibility
+Bash scripts are useful components of a reproducible workflow. At many of the directory levels (i.e. in `3 - Analysis`), there is a bash script that runs each of the analysis scripts. This is exceptionally useful when data "upstream" changes -- you simply run the bash script. See the [Unix Chapter](#unix) for further details. 
+
+After running bash scripts, `.Rout` log files will be generated for each script that has been executed. It is important to check these files. Scripts may appear to have run correctly in the terminal, but checking the log files is the only way to ensure that everything has run completely.

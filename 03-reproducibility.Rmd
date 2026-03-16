@@ -18,6 +18,19 @@ Our lab adopts the following practices to maximize the reproducibility of our wo
 
 In the past decade, an increasing number of studies have found that published study findings could not be reproduced. Researchers found that it was not possible to reproduce estimates from published studies: 1) with the same data and same or similar code and 2) with newly collected data using the same (or similar) study design. These "failures" of reproducibility were frequent enough and broad enough in scope, occurring across a range of disciplines (epidemiology, psychology, economics, and others) to be deeply troubling. Program and policy decisions based on erroneous research findings could lead to wasted resources, and at worst, could harm intended beneficiaries. This crisis has motivated new practices in reproducibility, transparency, and openness. Our lab is committed to adopting these best practices, and much of the remainder of the lab manual focuses on how to do so. 
 
+The scientific process involves a series of steps from defining a hypothesis through publishing results, and threats to reproducibility can arise at each stage. The figure below summarizes common threats that can occur at each step in the scientific process, including bias and low statistical power in study design, measurement error during data collection, and confirmation bias, p-hacking, and errors during analysis.
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("assets/images/repro-threats.png")
+```
+
+Our lab attempts to minimize these threats through a set of practices at each stage of the research process. The figure below illustrates our approach: we register protocols and pre-analysis plans before data collection, create reproducible computational workflows and conduct internal replication during analysis, and publish code and data alongside our results to enable external replication. The rest of this chapter describes each of these practices in detail.
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("assets/images/repro-vision.png")
+```
+
+
 Recommended readings on the "reproducibility crisis": 
 
 - Nuzzo R. How scientists fool themselves – and how they can stop. 2015. [https://www.nature.com/articles/526182a]()
@@ -35,9 +48,9 @@ Appropriate study design is beyond the scope of this lab manual and is something
 
 We register all randomized trials on [clinicaltrials.gov](clinicaltrials.gov), and in some cases register observational studies as well. 
 
-## Write and register pre-analysis plans
+## Write pre-analysis plans
 
-We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Here is an example of one: [https://osf.io/tgbxr/](https://osf.io/tgbxr/). Generally, these include: 
+We write pre-analysis plans for most original research projects that are not exploratory in nature, although in some cases, we write pre-analysis plans for exploratory studies as well. The format and content of pre-analysis plans can vary from project to project. Generally, these include: 
 
 1. Brief background on the study (a condensed version of the introduction section of the paper)
 2. Hypotheses / objectives
@@ -56,17 +69,33 @@ We write pre-analysis plans for most original research projects that are not exp
 - Sensitivity analyses
 - Negative control analyses
 
+See the following pre-analysis plans for examples from our lab:  
+
+- [Trials of water, sanitation, and hygiene interventions](https://osf.io/tprw2/)
+- [Observational study of school-located influenza vaccination](https://osf.io/c8xuq/)
+- [Complex re-analysis of malaria intervention trial](https://osf.io/rb3cw/)
+
+## Register pre-analysis plans
+We use Open Science Framework to register pre-analysis plans. Learn more [here](https://www.cos.io/initiatives/prereg). Briefly, what this entails is creating a time-stamped, publicly accessible record of your hypotheses, study design, and analysis plan before you analyze the data. Registration does not prevent you from conducting additional analyses — it simply makes transparent which analyses were planned in advance and which were exploratory. To register, create a project on OSF, upload your pre-analysis plan document, and select "Register" to create a frozen, time-stamped version. Once registered, the plan cannot be edited or deleted, though you can add addenda if your analysis plan changes after registration. You can also include a link to the registration at the time of submitting your manuscript. This shows peer reviewers and editors (and later, readers) that you pre-specified your analysis. 
+
+People often ask, well what if I need to change my plan after pre-specifying it? No problem! We commonly include a list of deviations from the pre-analysis plan in the supplement of our manuscript. In our experience, this has only strengthened reviewer and editor perceptions of the reproducibility and rigor of our work because it shows that we are transparent about our process and that we are not hiding any changes to the analysis plan. We have even included a list of deviations resulting from the peer review process as its own section in the supplement to make those changes transparent as well. 
+
 ## Create reproducible workflows
 
-Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a "single click". In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic: 
+Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a "single click". In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic:
 
-- Chapter 5: Code repositories
-- Chapter 6: Coding practices
-- Chapter 7: Coding style
-- Chapter 8: Code publication
-- Chapter 9: Working with big data
-- Chapter 10: Github
-- Chapter 11: Unix
+- [Getting started](getting-started.html): Overview of the tools used in our lab
+- [Code repositories](code-repositories.html): Project structure and configuration
+- [Coding practices](coding-practices.html): Script organization, documentation, and code review
+- [Coding style](coding-style.html): Formatting conventions
+- [Data validation and unit testing](data-validation-and-unit-testing.html): Assertions, sanity checks, and unit testing
+- [Working with big data](working-with-big-data.html): Handling large datasets
+- [Tidy evaluation and programming with dplyr](tidy-evaluation-and-programming-with-dplyr.html): Programming with tidyverse functions
+- [GitHub](github.html): Version control and collaboration
+- [Unix commands](unix.html): Running scripts from the command line
+- [Reproducible environments](reproducible-environments.html): Package and R version management
+- [Code publication](code-publication.html): Preparing code for public release
+
 
 ## Process and analyze data with internal replication and masking
 
