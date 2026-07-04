@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Using agentic AI coding assistants | Using AI Coding Assistants in the Lab</title>
+  <meta name="description" content="Lab practices and data science best practices" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Using agentic AI coding assistants | Using AI Coding Assistants in the Lab" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Lab practices and data science best practices" />
+  <meta name="github-repo" content="jadebc/lab-manual" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Using agentic AI coding assistants | Using AI Coding Assistants in the Lab" />
+  
+  <meta name="twitter:description" content="Lab practices and data science best practices" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started.html"/>
+<link rel="next" href="code-repositories.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Lab manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the Benjamin-Chung Lab!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-the-lab"><i class="fa fa-check"></i><b>1.1</b> About the lab</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about-this-lab-manual"><i class="fa fa-check"></i><b>1.2</b> About this lab manual</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html"><i class="fa fa-check"></i><b>2</b> Culture and conduct</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#lab-culture"><i class="fa fa-check"></i><b>2.1</b> Lab culture</a></li>
+<li class="chapter" data-level="2.2" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#diversity-equity-and-inclusion"><i class="fa fa-check"></i><b>2.2</b> Diversity, equity, and inclusion</a></li>
+<li class="chapter" data-level="2.3" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#protecting-human-subjects"><i class="fa fa-check"></i><b>2.3</b> Protecting human subjects</a></li>
+<li class="chapter" data-level="2.4" data-path="culture-and-conduct.html"><a href="culture-and-conduct.html#authorship"><i class="fa fa-check"></i><b>2.4</b> Authorship</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html"><i class="fa fa-check"></i><b>3</b> Communication and coordination</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#slack"><i class="fa fa-check"></i><b>3.1</b> Slack</a></li>
+<li class="chapter" data-level="3.2" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#email"><i class="fa fa-check"></i><b>3.2</b> Email</a></li>
+<li class="chapter" data-level="3.3" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#trello"><i class="fa fa-check"></i><b>3.3</b> Trello</a></li>
+<li class="chapter" data-level="3.4" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#google-drive"><i class="fa fa-check"></i><b>3.4</b> Google Drive</a></li>
+<li class="chapter" data-level="3.5" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#stanford-medicine-box"><i class="fa fa-check"></i><b>3.5</b> Stanford Medicine Box</a></li>
+<li class="chapter" data-level="3.6" data-path="communication-and-coordination.html"><a href="communication-and-coordination.html#meetings"><i class="fa fa-check"></i><b>3.6</b> Meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reproducibility.html"><a href="reproducibility.html"><i class="fa fa-check"></i><b>4</b> Reproducibility</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reproducibility.html"><a href="reproducibility.html#what-is-the-reproducibility-crisis"><i class="fa fa-check"></i><b>4.1</b> What is the reproducibility crisis?</a></li>
+<li class="chapter" data-level="4.2" data-path="reproducibility.html"><a href="reproducibility.html#study-design"><i class="fa fa-check"></i><b>4.2</b> Study design</a></li>
+<li class="chapter" data-level="4.3" data-path="reproducibility.html"><a href="reproducibility.html#register-study-protocols"><i class="fa fa-check"></i><b>4.3</b> Register study protocols</a></li>
+<li class="chapter" data-level="4.4" data-path="reproducibility.html"><a href="reproducibility.html#write-pre-analysis-plans"><i class="fa fa-check"></i><b>4.4</b> Write pre-analysis plans</a></li>
+<li class="chapter" data-level="4.5" data-path="reproducibility.html"><a href="reproducibility.html#register-pre-analysis-plans"><i class="fa fa-check"></i><b>4.5</b> Register pre-analysis plans</a></li>
+<li class="chapter" data-level="4.6" data-path="reproducibility.html"><a href="reproducibility.html#create-reproducible-workflows"><i class="fa fa-check"></i><b>4.6</b> Create reproducible workflows</a></li>
+<li class="chapter" data-level="4.7" data-path="reproducibility.html"><a href="reproducibility.html#process-and-analyze-data-with-internal-replication-and-masking"><i class="fa fa-check"></i><b>4.7</b> Process and analyze data with internal replication and masking</a></li>
+<li class="chapter" data-level="4.8" data-path="reproducibility.html"><a href="reproducibility.html#use-reporting-checklists-with-manuscripts"><i class="fa fa-check"></i><b>4.8</b> Use reporting checklists with manuscripts</a></li>
+<li class="chapter" data-level="4.9" data-path="reproducibility.html"><a href="reproducibility.html#publish-preprints"><i class="fa fa-check"></i><b>4.9</b> Publish preprints</a></li>
+<li class="chapter" data-level="4.10" data-path="reproducibility.html"><a href="reproducibility.html#publish-data-when-possible-and-replication-scripts"><i class="fa fa-check"></i><b>4.10</b> Publish data (when possible) and replication scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>5</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started.html"><a href="getting-started.html#the-tools-and-how-they-connect"><i class="fa fa-check"></i><b>5.1</b> The tools and how they connect</a></li>
+<li class="chapter" data-level="5.2" data-path="getting-started.html"><a href="getting-started.html#rstudio"><i class="fa fa-check"></i><b>5.2</b> RStudio</a></li>
+<li class="chapter" data-level="5.3" data-path="getting-started.html"><a href="getting-started.html#github-intro"><i class="fa fa-check"></i><b>5.3</b> GitHub intro</a></li>
+<li class="chapter" data-level="5.4" data-path="getting-started.html"><a href="getting-started.html#the-terminal"><i class="fa fa-check"></i><b>5.4</b> The terminal</a></li>
+<li class="chapter" data-level="5.5" data-path="getting-started.html"><a href="getting-started.html#sherlock"><i class="fa fa-check"></i><b>5.5</b> Sherlock</a></li>
+<li class="chapter" data-level="5.6" data-path="getting-started.html"><a href="getting-started.html#box"><i class="fa fa-check"></i><b>5.6</b> Box</a></li>
+<li class="chapter" data-level="5.7" data-path="getting-started.html"><a href="getting-started.html#a-typical-first-week"><i class="fa fa-check"></i><b>5.7</b> A typical first week</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html"><i class="fa fa-check"></i><b>6</b> Using agentic AI coding assistants</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#three-key-issues"><i class="fa fa-check"></i><b>6.1</b> Three key issues</a></li>
+<li class="chapter" data-level="6.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#bottom-line"><i class="fa fa-check"></i><b>6.2</b> Bottom line</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#research-accuracy-and-the-value-of-experience"><i class="fa fa-check"></i><b>6.2.1</b> Research accuracy and the value of experience</a></li>
+<li class="chapter" data-level="6.2.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#impeding-learning-an-open-question"><i class="fa fa-check"></i><b>6.2.2</b> Impeding learning: an open question</a></li>
+<li class="chapter" data-level="6.2.3" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#data-safety-in-a-research-context"><i class="fa fa-check"></i><b>6.2.3</b> Data safety in a research context</a></li>
+<li class="chapter" data-level="6.2.4" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#what-these-prompts-actually-look-like"><i class="fa fa-check"></i><b>6.2.4</b> What these prompts actually look like</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#suggested-safeguards"><i class="fa fa-check"></i><b>6.3</b> Suggested safeguards</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#for-learning-and-skill-development"><i class="fa fa-check"></i><b>6.3.1</b> For learning and skill development</a></li>
+<li class="chapter" data-level="6.3.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#for-research-accuracy"><i class="fa fa-check"></i><b>6.3.2</b> For research accuracy</a></li>
+<li class="chapter" data-level="6.3.3" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#for-data-protection"><i class="fa fa-check"></i><b>6.3.3</b> For data protection</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#know-your-target-journals-ai-policy-before-you-start"><i class="fa fa-check"></i><b>6.4</b> Know your target journal’s AI policy before you start</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>7</b> Code repositories</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>7.1</b> Project Structure</a></li>
+<li class="chapter" data-level="7.2" data-path="code-repositories.html"><a href="code-repositories.html#functions-folder"><i class="fa fa-check"></i><b>7.2</b> <code>0-functions</code> folder</a></li>
+<li class="chapter" data-level="7.3" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>7.3</b> <code>.Rproj</code> files</a></li>
+<li class="chapter" data-level="7.4" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>7.4</b> Configuration (‘config’) File</a></li>
+<li class="chapter" data-level="7.5" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>7.5</b> Order Files and Directories</a></li>
+<li class="chapter" data-level="7.6" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>7.6</b> Using Bash scripts to ensure reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>8</b> Coding practices</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>8.1</b> Organizing scripts</a></li>
+<li class="chapter" data-level="8.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>8.2</b> Documenting your code</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>8.2.1</b> File headers</a></li>
+<li class="chapter" data-level="8.2.2" data-path="coding-practices.html"><a href="coding-practices.html#sections-and-subsections"><i class="fa fa-check"></i><b>8.2.2</b> Sections and subsections</a></li>
+<li class="chapter" data-level="8.2.3" data-path="coding-practices.html"><a href="coding-practices.html#code-folding"><i class="fa fa-check"></i><b>8.2.3</b> Code folding</a></li>
+<li class="chapter" data-level="8.2.4" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>8.2.4</b> Comments in the body of your script</a></li>
+<li class="chapter" data-level="8.2.5" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>8.2.5</b> Function documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>8.3</b> Object naming</a></li>
+<li class="chapter" data-level="8.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>8.4</b> Function calls</a></li>
+<li class="chapter" data-level="8.5" data-path="coding-practices.html"><a href="coding-practices.html#the-here-package"><i class="fa fa-check"></i><b>8.5</b> The here package</a></li>
+<li class="chapter" data-level="8.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>8.6</b> Reading/Saving Data</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="coding-practices.html"><a href="coding-practices.html#rds-vs-.rdata-files"><i class="fa fa-check"></i><b>8.6.1</b> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
+<li class="chapter" data-level="8.6.2" data-path="coding-practices.html"><a href="coding-practices.html#csvs"><i class="fa fa-check"></i><b>8.6.2</b> CSVs</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>8.7</b> Tidyverse</a></li>
+<li class="chapter" data-level="8.8" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>8.8</b> Coding with R and Python</a></li>
+<li class="chapter" data-level="8.9" data-path="coding-practices.html"><a href="coding-practices.html#repeating-analyses-with-different-variations"><i class="fa fa-check"></i><b>8.9</b> Repeating analyses with different variations</a>
+<ul>
+<li class="chapter" data-level="8.9.1" data-path="coding-practices.html"><a href="coding-practices.html#lapply-and-sapply"><i class="fa fa-check"></i><b>8.9.1</b> <code>lapply()</code> and <code>sapply()</code></a></li>
+<li class="chapter" data-level="8.9.2" data-path="coding-practices.html"><a href="coding-practices.html#mapply-and-pmap"><i class="fa fa-check"></i><b>8.9.2</b> <code>mapply()</code> and <code>pmap()</code></a></li>
+<li class="chapter" data-level="8.9.3" data-path="coding-practices.html"><a href="coding-practices.html#parallel-processing-with-parallel-and-future-packages"><i class="fa fa-check"></i><b>8.9.3</b> Parallel processing with <code>parallel</code> and <code>future</code> packages</a></li>
+</ul></li>
+<li class="chapter" data-level="8.10" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>8.10</b> Reviewing Code</a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="coding-practices.html"><a href="coding-practices.html#why-we-review-code"><i class="fa fa-check"></i><b>8.10.1</b> Why we review code</a></li>
+<li class="chapter" data-level="8.10.2" data-path="coding-practices.html"><a href="coding-practices.html#what-to-look-for-in-a-code-review"><i class="fa fa-check"></i><b>8.10.2</b> What to look for in a code review</a></li>
+<li class="chapter" data-level="8.10.3" data-path="coding-practices.html"><a href="coding-practices.html#how-to-give-feedback"><i class="fa fa-check"></i><b>8.10.3</b> How to give feedback</a></li>
+<li class="chapter" data-level="8.10.4" data-path="coding-practices.html"><a href="coding-practices.html#when-to-approve"><i class="fa fa-check"></i><b>8.10.4</b> When to approve</a></li>
+<li class="chapter" data-level="8.10.5" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>8.10.5</b> Creating a Pull Request Template</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>9</b> Coding style</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>9.1</b> Comments</a></li>
+<li class="chapter" data-level="9.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>9.2</b> Line breaks</a></li>
+<li class="chapter" data-level="9.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>9.3</b> Automated Tools for Style and Project Workflow</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>9.3.1</b> Styling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>10</b> Working with Big Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>10.1</b> The data.table package</a></li>
+<li class="chapter" data-level="10.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>10.2</b> Using downsampled data</a></li>
+<li class="chapter" data-level="10.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>10.3</b> Optimal RStudio set up</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html"><i class="fa fa-check"></i><b>11</b> Tidy evaluation and programming with dplyr</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#general-overview"><i class="fa fa-check"></i><b>11.1</b> General Overview</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#what-is-tidy-evaluation"><i class="fa fa-check"></i><b>11.1.1</b> What is Tidy Evaluation?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#using-tidy-evaluation-for-data-masking"><i class="fa fa-check"></i><b>11.1.2</b> Using tidy evaluation for data masking</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#technical-overview"><i class="fa fa-check"></i><b>11.2</b> Technical Overview</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#example"><i class="fa fa-check"></i><b>11.2.1</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-validation.html"><a href="data-validation.html"><i class="fa fa-check"></i><b>12</b> Data validation and unit testing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="data-validation.html"><a href="data-validation.html#data-validation-with-assertions-in-analysis-scripts"><i class="fa fa-check"></i><b>12.1</b> Data validation with assertions in analysis scripts</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="data-validation.html"><a href="data-validation.html#after-merges-and-joins"><i class="fa fa-check"></i><b>12.1.1</b> After merges and joins</a></li>
+<li class="chapter" data-level="12.1.2" data-path="data-validation.html"><a href="data-validation.html#after-filters-and-subsets"><i class="fa fa-check"></i><b>12.1.2</b> After filters and subsets</a></li>
+<li class="chapter" data-level="12.1.3" data-path="data-validation.html"><a href="data-validation.html#after-variable-creation"><i class="fa fa-check"></i><b>12.1.3</b> After variable creation</a></li>
+<li class="chapter" data-level="12.1.4" data-path="data-validation.html"><a href="data-validation.html#checking-for-unexpected-missing-data"><i class="fa fa-check"></i><b>12.1.4</b> Checking for unexpected missing data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="data-validation.html"><a href="data-validation.html#writing-a-validation-function"><i class="fa fa-check"></i><b>12.2</b> Writing a validation function</a></li>
+<li class="chapter" data-level="12.3" data-path="data-validation.html"><a href="data-validation.html#unit-testing-with-testthat"><i class="fa fa-check"></i><b>12.3</b> Unit testing with <code>testthat</code></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="data-validation.html"><a href="data-validation.html#setting-up-unit-tests"><i class="fa fa-check"></i><b>12.3.1</b> Setting up unit tests</a></li>
+<li class="chapter" data-level="12.3.2" data-path="data-validation.html"><a href="data-validation.html#writing-unit-tests"><i class="fa fa-check"></i><b>12.3.2</b> Writing unit tests</a></li>
+<li class="chapter" data-level="12.3.3" data-path="data-validation.html"><a href="data-validation.html#running-tests"><i class="fa fa-check"></i><b>12.3.3</b> Running tests</a></li>
+<li class="chapter" data-level="12.3.4" data-path="data-validation.html"><a href="data-validation.html#what-to-test"><i class="fa fa-check"></i><b>12.3.4</b> What to test</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="data-validation.html"><a href="data-validation.html#summary-of-practices"><i class="fa fa-check"></i><b>12.4</b> Summary of practices</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>13</b> Github</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>13.1</b> Basics</a></li>
+<li class="chapter" data-level="13.2" data-path="github.html"><a href="github.html#github-desktop"><i class="fa fa-check"></i><b>13.2</b> Github Desktop</a></li>
+<li class="chapter" data-level="13.3" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>13.3</b> Git Branching</a></li>
+<li class="chapter" data-level="13.4" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>13.4</b> Example Workflow</a></li>
+<li class="chapter" data-level="13.5" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>13.5</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="13.6" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>13.6</b> How often should I commit?</a></li>
+<li class="chapter" data-level="13.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>13.7</b> What should be pushed to Github?</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>14</b> Unix commands</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>14.1</b> Basics</a></li>
+<li class="chapter" data-level="14.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>14.2</b> Syntax for both Mac/Windows</a></li>
+<li class="chapter" data-level="14.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>14.3</b> Running Bash Scripts</a></li>
+<li class="chapter" data-level="14.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>14.4</b> Running Rscripts in Windows</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>14.4.1</b> Common Mistakes</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>14.5</b> Checking tasks and killing jobs</a></li>
+<li class="chapter" data-level="14.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>14.6</b> Running big jobs</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="unix.html"><a href="unix.html#example-code-for-runfilesavelogs"><i class="fa fa-check"></i><b>14.6.1</b> Example code for <code>runfileSaveLogs</code></a></li>
+<li class="chapter" data-level="14.6.2" data-path="unix.html"><a href="unix.html#example-usage-for-runfilesavelogs"><i class="fa fa-check"></i><b>14.6.2</b> Example usage for <code>runfileSaveLogs</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="reproducible-environments.html"><a href="reproducible-environments.html"><i class="fa fa-check"></i><b>15</b> Reproducible Environments</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="reproducible-environments.html"><a href="reproducible-environments.html#package-version-control-with-renv"><i class="fa fa-check"></i><b>15.1</b> Package Version Control with renv</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="reproducible-environments.html"><a href="reproducible-environments.html#introduction"><i class="fa fa-check"></i><b>15.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.1.2" data-path="reproducible-environments.html"><a href="reproducible-environments.html#implementing-renv-in-projects"><i class="fa fa-check"></i><b>15.1.2</b> Implementing renv in projects</a></li>
+<li class="chapter" data-level="15.1.3" data-path="reproducible-environments.html"><a href="reproducible-environments.html#using-projects-with-renv"><i class="fa fa-check"></i><b>15.1.3</b> Using projects with renv</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="reproducible-environments.html"><a href="reproducible-environments.html#documenting-the-r-version"><i class="fa fa-check"></i><b>15.2</b> Documenting the R version</a></li>
+<li class="chapter" data-level="15.3" data-path="reproducible-environments.html"><a href="reproducible-environments.html#ensuring-consistency-between-local-and-cluster-environments"><i class="fa fa-check"></i><b>15.3</b> Ensuring consistency between local and cluster environments</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="code-publication.html"><a href="code-publication.html"><i class="fa fa-check"></i><b>16</b> Code Publication</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="code-publication.html"><a href="code-publication.html#checklist-overview"><i class="fa fa-check"></i><b>16.1</b> Checklist overview</a></li>
+<li class="chapter" data-level="16.2" data-path="code-publication.html"><a href="code-publication.html#fill-out-file-headers"><i class="fa fa-check"></i><b>16.2</b> Fill out file headers</a></li>
+<li class="chapter" data-level="16.3" data-path="code-publication.html"><a href="code-publication.html#clean-up-comments"><i class="fa fa-check"></i><b>16.3</b> Clean up comments</a></li>
+<li class="chapter" data-level="16.4" data-path="code-publication.html"><a href="code-publication.html#document-functions"><i class="fa fa-check"></i><b>16.4</b> Document functions</a></li>
+<li class="chapter" data-level="16.5" data-path="code-publication.html"><a href="code-publication.html#remove-deprecated-filepaths"><i class="fa fa-check"></i><b>16.5</b> Remove deprecated filepaths</a></li>
+<li class="chapter" data-level="16.6" data-path="code-publication.html"><a href="code-publication.html#ensure-project-runs-via-bash"><i class="fa fa-check"></i><b>16.6</b> Ensure project runs via bash</a></li>
+<li class="chapter" data-level="16.7" data-path="code-publication.html"><a href="code-publication.html#complete-the-readme"><i class="fa fa-check"></i><b>16.7</b> Complete the README</a></li>
+<li class="chapter" data-level="16.8" data-path="code-publication.html"><a href="code-publication.html#clean-up-feature-branches"><i class="fa fa-check"></i><b>16.8</b> Clean up feature branches</a></li>
+<li class="chapter" data-level="16.9" data-path="code-publication.html"><a href="code-publication.html#create-github-release"><i class="fa fa-check"></i><b>16.9</b> Create Github release</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="data-publication.html"><a href="data-publication.html"><i class="fa fa-check"></i><b>17</b> Data Publication</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="data-publication.html"><a href="data-publication.html#overview"><i class="fa fa-check"></i><b>17.1</b> Overview</a></li>
+<li class="chapter" data-level="17.2" data-path="data-publication.html"><a href="data-publication.html#removing-phi"><i class="fa fa-check"></i><b>17.2</b> Removing PHI</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="data-publication.html"><a href="data-publication.html#personal-information"><i class="fa fa-check"></i><b>17.2.1</b> Personal information</a></li>
+<li class="chapter" data-level="17.2.2" data-path="data-publication.html"><a href="data-publication.html#dates"><i class="fa fa-check"></i><b>17.2.2</b> Dates</a></li>
+<li class="chapter" data-level="17.2.3" data-path="data-publication.html"><a href="data-publication.html#geographic-information"><i class="fa fa-check"></i><b>17.2.3</b> Geographic information</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="data-publication.html"><a href="data-publication.html#create-public-ids"><i class="fa fa-check"></i><b>17.3</b> Create public IDs</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="data-publication.html"><a href="data-publication.html#rationale"><i class="fa fa-check"></i><b>17.3.1</b> Rationale</a></li>
+<li class="chapter" data-level="17.3.2" data-path="data-publication.html"><a href="data-publication.html#a-single-set-of-public-ids-for-each-study"><i class="fa fa-check"></i><b>17.3.2</b> A single set of public IDs for each study</a></li>
+<li class="chapter" data-level="17.3.3" data-path="data-publication.html"><a href="data-publication.html#example-scripts"><i class="fa fa-check"></i><b>17.3.3</b> Example scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="data-publication.html"><a href="data-publication.html#create-a-data-repository"><i class="fa fa-check"></i><b>17.4</b> Create a data repository</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="data-publication.html"><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository"><i class="fa fa-check"></i><b>17.4.1</b> Steps for creating an Open Science Framework (OSF) repository:</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="data-publication.html"><a href="data-publication.html#edit-and-test-analysis-scripts"><i class="fa fa-check"></i><b>17.5</b> Edit and test analysis scripts</a></li>
+<li class="chapter" data-level="17.6" data-path="data-publication.html"><a href="data-publication.html#create-a-public-github-page-for-public-scripts"><i class="fa fa-check"></i><b>17.6</b> Create a public GitHub page for public scripts</a></li>
+<li class="chapter" data-level="17.7" data-path="data-publication.html"><a href="data-publication.html#go-live"><i class="fa fa-check"></i><b>17.7</b> Go live</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="slurm.html"><a href="slurm.html"><i class="fa fa-check"></i><b>18</b> Slurm and cluster computing</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="slurm.html"><a href="slurm.html#getting-started-1"><i class="fa fa-check"></i><b>18.1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>18.1.1</b> One-Time System Set-Up</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>18.2</b> Moving files to Sherlock</a></li>
+<li class="chapter" data-level="18.3" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>18.3</b> Installing packages on Sherlock</a></li>
+<li class="chapter" data-level="18.4" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>18.4</b> Testing your code</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="slurm.html"><a href="slurm.html#the-command-line"><i class="fa fa-check"></i><b>18.4.1</b> The command line</a></li>
+<li class="chapter" data-level="18.4.2" data-path="slurm.html"><a href="slurm.html#the-sherlock-ondemand-dashboard"><i class="fa fa-check"></i><b>18.4.2</b> The Sherlock OnDemand Dashboard</a></li>
+<li class="chapter" data-level="18.4.3" data-path="slurm.html"><a href="slurm.html#filepaths-configuration-on-sherlock"><i class="fa fa-check"></i><b>18.4.3</b> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="slurm.html"><a href="slurm.html#storage-group-storage-access"><i class="fa fa-check"></i><b>18.5</b> Storage &amp; group storage access</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="slurm.html"><a href="slurm.html#individual-storage"><i class="fa fa-check"></i><b>18.5.1</b> Individual storage</a></li>
+<li class="chapter" data-level="18.5.2" data-path="slurm.html"><a href="slurm.html#group-storage"><i class="fa fa-check"></i><b>18.5.2</b> Group storage</a></li>
+<li class="chapter" data-level="18.5.3" data-path="slurm.html"><a href="slurm.html#folder-permissions"><i class="fa fa-check"></i><b>18.5.3</b> Folder permissions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>18.6</b> Running big jobs</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>19</b> Checklists</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="checklists.html"><a href="checklists.html#pre-analysis-plan-checklist"><i class="fa fa-check"></i><b>19.1</b> Pre-analysis plan checklist</a></li>
+<li class="chapter" data-level="19.2" data-path="checklists.html"><a href="checklists.html#code-checklist"><i class="fa fa-check"></i><b>19.2</b> Code checklist</a></li>
+<li class="chapter" data-level="19.3" data-path="checklists.html"><a href="checklists.html#manuscript-checklist"><i class="fa fa-check"></i><b>19.3</b> Manuscript checklist</a></li>
+<li class="chapter" data-level="19.4" data-path="checklists.html"><a href="checklists.html#figure-checklist"><i class="fa fa-check"></i><b>19.4</b> Figure checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>20</b> Resources</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>20.1</b> Resources for R</a></li>
+<li class="chapter" data-level="20.2" data-path="resources.html"><a href="resources.html#resources-for-git-github"><i class="fa fa-check"></i><b>20.2</b> Resources for Git &amp; Github</a></li>
+<li class="chapter" data-level="20.3" data-path="resources.html"><a href="resources.html#scientific-figures"><i class="fa fa-check"></i><b>20.3</b> Scientific figures</a></li>
+<li class="chapter" data-level="20.4" data-path="resources.html"><a href="resources.html#writing"><i class="fa fa-check"></i><b>20.4</b> Writing</a></li>
+<li class="chapter" data-level="20.5" data-path="resources.html"><a href="resources.html#presentations"><i class="fa fa-check"></i><b>20.5</b> Presentations</a></li>
+<li class="chapter" data-level="20.6" data-path="resources.html"><a href="resources.html#professional-advice"><i class="fa fa-check"></i><b>20.6</b> Professional advice</a></li>
+<li class="chapter" data-level="20.7" data-path="resources.html"><a href="resources.html#funding"><i class="fa fa-check"></i><b>20.7</b> Funding</a></li>
+<li class="chapter" data-level="20.8" data-path="resources.html"><a href="resources.html#ethics-and-global-health-research"><i class="fa fa-check"></i><b>20.8</b> Ethics and global health research</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Using AI Coding Assistants in the Lab</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="using-agentic-ai-coding-assistants" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Using agentic AI coding assistants<a href="using-agentic-ai-coding-assistants.html#using-agentic-ai-coding-assistants" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Tools like Claude Code (and comparable agentic coding tools from other
+vendors) are different from asking a chatbot to help you write a snippet of
+code. This distinction matters for how we use these tools in research:</p>
+<ul>
+<li><strong>Chat-based help</strong> (e.g., asking a chatbot to explain a function or debug
+a pasted error) keeps you in the loop for every step. You decide what code
+to run, when, and where.</li>
+<li><strong>Agentic coding tools</strong> (e.g., Claude Code, Cursor) run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output — all with a degree of
+autonomy that you grant it. It can plan a multi-step task, write and execute code
+across several files, install packages, and run analyses with minimal
+intervention. This is powerful, but it also means more can happen without
+your direct review at each step. That’s why coding with these tools is called “vibe coding”.</li>
+</ul>
+<p>Both modes are useful. The rest of this chapter focuses on the agentic mode,
+since it raises issues that are new for our research workflows.</p>
+<div id="three-key-issues" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Three key issues<a href="using-agentic-ai-coding-assistants.html#three-key-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><strong>Learning and skill development.</strong> Heavy reliance on AI coding tools may
+impede the development of coding fluency and statistical/computational
+intuition — particularly for trainees who are still building these
+skills.</li>
+<li><strong>Research accuracy.</strong> Using these tools on datasets, analysis types, or
+workflows you aren’t already familiar with raises the risk of subtle
+errors going undetected, because you may lack the intuition to recognize
+when something looks wrong.</li>
+<li><strong>Data protection.</strong> These tools can access files on your machine, which
+introduces new and sometimes subtle data-handling risks in a research
+context governed by IRB protocols, data use agreements, and participant
+privacy commitments.</li>
+</ol>
+<p>Each is discussed in more detail below, along with suggested safeguards.</p>
+</div>
+<div id="bottom-line" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Bottom line<a href="using-agentic-ai-coding-assistants.html#bottom-line" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>AI coding assistants are a powerful addition to our computational toolkit,
+but they are not a substitute for the judgment that comes from hands-on
+coding experience, nor for careful attention to data governance. Use them
+deliberately: lean on them more for familiar, low-stakes tasks, and less for
+unfamiliar or high-stakes ones, with unit tests, replication checks, and
+careful permission review as standing practice regardless of experience
+level.</p>
+<p><strong>When in doubt about whether a workflow is compliant, ask Jade before proceeding.</strong></p>
+<div id="research-accuracy-and-the-value-of-experience" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Research accuracy and the value of experience<a href="using-agentic-ai-coding-assistants.html#research-accuracy-and-the-value-of-experience" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In 2026, most seasoned quantitative researchers have been writing code for a decade
+or more — tens of thousands of cumulative hours. There’s a popular “rule” that it takes 10,000 hours to master a new skill– equivalent to 5.5 years of full time work. That experience builds a kind of gut instinct: when you look at code, or watch it run, you develop a sense for what <em>might</em> be going wrong, even when nothing throws an obvious error. Examples of silent failures:</p>
+<ul>
+<li>A merge that drops rows unexpectedly</li>
+<li>A factor variable that got silently releveled</li>
+<li>A date field parsed in the wrong timezone</li>
+</ul>
+<p>After dealing with these silent errors hundreds or thousands of times, the human brain recognizes the <em>shape</em> of a subtle bug before you can necessarily articulate exactly what it is. That experience is what lets seasoned researchers know what safeguards to put in place:</p>
+<ul>
+<li>Which unit tests are worth writing</li>
+<li>Which portions of a work flow require human or independent agentic replication checks</li>
+<li>Which outputs deserve a manual sanity check versus which can be trusted.</li>
+</ul>
+<p>AI coding tools do not have this judgment about <em>your specific project</em>. They can write tests if asked, but deciding <em>which</em> tests matter for a given dataset or analysis is still a human judgment call, grounded in domain and data familiarity.</p>
+<p>This means the risk of using these tools is not constant. As your mentor, I am working on developing systems to help you learn when you might be in the <strong>danger zone</strong>. When you’re in the danger zone, you are outside your area of established expertise, working with a new data source, an unfamiliar analysis method, or a computational workflow you haven’t run by hand before. The challenge is, when you’re new to a project or to a field of study, you’re always in the <strong>danger zone.</strong></p>
+</div>
+<div id="impeding-learning-an-open-question" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Impeding learning: an open question<a href="using-agentic-ai-coding-assistants.html#impeding-learning-an-open-question" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Little to nothing is currently known about the pedagogy of learning to code with AI
+assistance versus learning to code without it.</strong> If you never manually write code —
+if you never sit with a bug for twenty minutes and slowly figure out that
+the join key had a leading whitespace — how do you develop the gut instinct
+described above? We don’t know.</p>
+<p>It’s also possible that this concern will turn out to be less important
+than it seems. The future of research computing may not involve much
+hands-on human coding at all. But even if that’s true, we don’t yet know
+<em>how</em> to teach someone — a rotation student, a new Research Assistant, a first-year PhD student — to “vibe code” well: to direct an AI tool effectively, to catch
+its mistakes, and to build sound judgment about when to trust its output.
+<strong>Until the pedagogy of computational research with agentic AI exists, in our lab, we consider risks of agentic AI use to be high for early-career skill-building to be high.</strong></p>
+</div>
+<div id="data-safety-in-a-research-context" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Data safety in a research context<a href="using-agentic-ai-coding-assistants.html#data-safety-in-a-research-context" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Claude Code and similar tools run locally and, with your permission, can
+read and modify files on your laptop — including, potentially, files
+containing participant-level data governed by IRB protocols and data use
+agreements.</p>
+<p>The practical risk is subtler than “the AI leaks your data.” During a
+typical coding session, the tool may generate tens or even hundreds of
+permission requests (to read a file, run a command, install a package,
+access the network, etc.). These prompts are sometimes phrased in dense
+technical language that is genuinely hard to parse quickly. It is easy to
+click “allow” reflexively — especially late in a long session — and
+inadvertently grant access to a raw data directory, or permission to send
+data over the network (e.g., installing a package, calling an external
+API), without fully registering what you approved.</p>
+<p>This is not primarily a malicious-AI risk; it’s a human-factors risk. The
+tool is doing what you told it to do, but “what you told it to do” is
+easy to misjudge when permission requests are frequent, fast, and
+technically dense.</p>
+<p>As of June 2026, <a href="https://uit.stanford.edu/ai/connectors">Stanford’s Approved Connectors for AI Services</a> have different different risk categories by different products. Note that Google and OpenAI can be used with High Risk <a href="https://med.stanford.edu/irt/security/stanfordinfo/hipaa.html">Protected Health Information (PHI)</a> data, while using PHI with Claude requires routing through the Stanford AI API Gateway. If you are not sure whether you your project is using PHI, check with Jade before proceeding.</p>
+</div>
+<div id="what-these-prompts-actually-look-like" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> What these prompts actually look like<a href="using-agentic-ai-coding-assistants.html#what-these-prompts-actually-look-like" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Note: the following is based on Claude Code, but other agentic coding tools have similar permission prompts.</em></p>
+<p>The prompt and approval interface differs depending on whether you’re working in a terminal or
+a GUI/editor-based tool, but the underlying pattern is the same:</p>
+<ul>
+<li><p><strong>AI’s own plain-English summary</strong> of
+the action, not a guarantee of what the command actually does. It’s
+usually accurate, but it can omit exactly the detail — a hardcoded file
+path, a write to an unexpected directory — that matters for review.
+Read the actual command or diff underneath, not just the summary.
+<img src="assets/images/claude-code-render-qmd.png" /></p></li>
+<li><p><strong>Long commands or file paths that are often truncated.</strong> Claude Code may write a snippet of code and ask you for permission to run it, but it might not be in your project’s language, and often these code snippets are not saved in your repository at all. For example, if you’re working in an R codebase and ask it to double-check a calculation or validate an assumption, it might quietly reach for Python — writing a small throwaway script to cross-check the logic, run it, read the output, and then report back to you in English. That scratch script often never gets saved as a file you’d see in a pull request; it’s more like a post-it note the AI wrote to itself, used once, and threw away. The problem is that if you don’t read Python, you have no way to actually verify what that post-it note said or did — you’re not reviewing the check, you’re reviewing Claude’s summary of the check. That might be perfectly fine for something low-stakes, but for a step that’s supposed to be your safeguard against a subtle analytic error, it’s worth pausing on: if you can’t read the language a verification was written in, you aren’t really approving the verification — you’re approving a description of it, written by the same tool whose work it’s supposed to be checking.</p></li>
+</ul>
+<p>Here’s an example from a code base entirely written in R, where Claude Code asked for permission to check for duplicates using a “post-it” note in Python.</p>
+<p><img src="assets/images/claude-code-other-language.png" /></p>
+<ul>
+<li><strong>“Always allow” sits right next to the one-time approval</strong>, in the
+terminal as option 2 of 3, and in the GUI as a persistent button with its
+own keyboard shortcut. It’s one keystroke away from a single-use
+approval, which is exactly what makes reflexive over-granting easy,
+especially late in a long session.</li>
+</ul>
+<p>When Claude Code (or a similar AI coding assistant) asks for permission to
+run a command, recognizing the command itself — not just reading the
+plain-English gloss above it — is the fastest way to know what you’re
+actually approving. The tables below are organized by risk level.</p>
+<!-- | **Low-risk commands **|   || -->
+<!-- |---|---|---| -->
+<!-- | Command | What it does | Why it matters| -->
+<!-- | `ls`, `cat`, `head`, `tail` | List directory contents; print file contents || -->
+<!-- | `cd`, `pwd` | Change / print working directory || -->
+<!-- | `cp` | Copy files || -->
+<!-- | `\|` (pipe) | Send one command's output into another as input || -->
+<!-- | `&&` | Run the next command only if the previous one succeeded || -->
+<!-- | **High-risk commands** |   || -->
+<!-- | `rm` | Delete files | No undo. Watch for this near raw data paths | -->
+<!-- | `rm -rf` | Force-delete a directory and everything in it, no confirmation | The single riskiest pattern to recognize — `-rf` = recursive + force, can wipe a whole folder tree silently | -->
+<!-- | `mv` | Move files | Can silently overwrite a destination file with no confirmation | -->
+<!-- | `>`, `>>` | Redirect output to a file (overwrite / append) | `>` silently overwrites the entire target file's contents; easy to miss inside a longer command | -->
+<!-- | `sed -i`, `awk` | Edit files in place / process text | `-i` modifies the original file directly — no diff preview the way an Edit-tool prompt gives you | -->
+<!-- | `chmod` | Change file permissions | Can make a file world-readable/writable — relevant for data files that should stay restricted | -->
+<!-- | `chown` | Change file ownership | Rare in normal analysis work; worth a second look if it appears | -->
+<!-- | `find ... -exec` | Search for files, then run a command on each match | Can apply `rm`, `chmod`, etc. across many files at once — read the `-exec` clause carefully | -->
+<!-- | `curl`, `wget` | Download content from a URL | Network access — relevant if you're trying to keep data from leaving the machine | -->
+<!-- | `scp`, `rsync` | Copy files to/from a remote machine | Data transfer off your machine — deserves close scrutiny with unfamiliar destinations | -->
+<!-- | `git push`, `git commit` | Send code changes to version control / record a commit | Worth noticing if you didn't expect Claude to be committing on your behalf | -->
+<!-- | `sudo` | Run a command with administrator privileges | Rare and high-risk in a research computing context — should almost never be needed for data analysis | -->
+<!-- | `export` | Set an environment variable | Can be used to set API keys, credentials, or paths — worth checking what's being exported | -->
+<table class="table table-striped table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+What it does
+</th>
+<th style="text-align:left;">
+Why it matters
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="5">
+<td colspan="3" style="background-color: #eee;">
+<strong>Low-risk commands</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>ls</code>, <code>cat</code>, <code>head</code>, <code>tail</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+List directory contents; print file contents
+</td>
+<td style="text-align:left;width: 42%; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>cd</code>, <code>pwd</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Change / print working directory
+</td>
+<td style="text-align:left;width: 42%; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>cp</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Copy files
+</td>
+<td style="text-align:left;width: 42%; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>|</code> (pipe)
+</td>
+<td style="text-align:left;width: 40%; ">
+Send one command’s output into another as input
+</td>
+<td style="text-align:left;width: 42%; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>&amp;amp;&amp;amp;</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Run the next command only if the previous one succeeded
+</td>
+<td style="text-align:left;width: 42%; ">
+</td>
+</tr>
+<tr grouplength="13">
+<td colspan="3" style="background-color: #f8d7da;">
+<strong>High-risk commands</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>rm</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Delete files
+</td>
+<td style="text-align:left;width: 42%; ">
+No undo. Watch for this near raw data paths
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>rm -rf</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Force-delete a directory and everything in it, no confirmation
+</td>
+<td style="text-align:left;width: 42%; ">
+Riskiest pattern to recognize — recursive + force, can wipe a folder tree silently
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>mv</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Move files
+</td>
+<td style="text-align:left;width: 42%; ">
+Can silently overwrite a destination file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>&amp;gt;</code>, <code>&amp;gt;&amp;gt;</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Redirect output to a file
+</td>
+<td style="text-align:left;width: 42%; ">
+<code>&amp;gt;</code> silently overwrites the whole target file; easy to miss mid-command
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>sed -i</code>, <code>awk</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Edit files in place / process text
+</td>
+<td style="text-align:left;width: 42%; ">
+<code>-i</code> modifies the original directly — no diff preview
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>chmod</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Change file permissions
+</td>
+<td style="text-align:left;width: 42%; ">
+Can make a data file world-readable/writable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>chown</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Change file ownership
+</td>
+<td style="text-align:left;width: 42%; ">
+Rare in normal analysis work; worth a second look
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>find ... -exec</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Search files, run a command on each match
+</td>
+<td style="text-align:left;width: 42%; ">
+Can apply <code>rm</code>/<code>chmod</code> across many files — read the <code>-exec</code> clause carefully
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>curl</code>, <code>wget</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Download content from a URL
+</td>
+<td style="text-align:left;width: 42%; ">
+Network access — relevant if data shouldn’t leave the machine
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>scp</code>, <code>rsync</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Copy files to/from a remote machine
+</td>
+<td style="text-align:left;width: 42%; ">
+Data transfer off-machine — scrutinize unfamiliar destinations
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>git push</code>, <code>git commit</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Send code / record a commit
+</td>
+<td style="text-align:left;width: 42%; ">
+Notice if Claude is committing on your behalf
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>sudo</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Run with admin privileges
+</td>
+<td style="text-align:left;width: 42%; ">
+Should almost never be needed for data analysis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 18%; padding-left: 2em;" indentlevel="1">
+<code>export</code>
+</td>
+<td style="text-align:left;width: 40%; ">
+Set an environment variable
+</td>
+<td style="text-align:left;width: 42%; ">
+May set API keys/credentials — check what’s exported
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="suggested-safeguards" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Suggested safeguards<a href="using-agentic-ai-coding-assistants.html#suggested-safeguards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="for-learning-and-skill-development" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> For learning and skill development<a href="using-agentic-ai-coding-assistants.html#for-learning-and-skill-development" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Spend meaningful time writing core analysis code by hand</strong> before leaning on
+agentic tools for that same type of task — e.g., write your first TMLE or
+IPW pipeline yourself before asking an AI tool to generate one.</li>
+<li>When using an AI tool for a task you’re still learning, <strong>ask it to
+explain its reasoning</strong>, not just produce output. Treat it as a tutor for
+code you then re-derive yourself, not a black box.</li>
+<li>Before fully letting agentic AI write a script for you, try writing out detailed pseudo-code – aka, <strong>a step-by-step plan for what the code should do</strong>. Then ask the AI to implement that plan, and check that it actually does what you intended.</li>
+</ul>
+</div>
+<div id="for-research-accuracy" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> For research accuracy<a href="using-agentic-ai-coding-assistants.html#for-research-accuracy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Match AI use to familiarity.</strong> Use these tools most freely for
+boilerplate, refactoring, and workflows you already know well. Increase
+manual scrutiny — or avoid heavy AI use — for new datasets, unfamiliar
+methods, or unfamiliar computational environments.</li>
+<li><strong>Always require unit tests and replication checks</strong> for AI-assisted
+analysis code, especially for anything going into a manuscript or grant
+deliverable. Ask the AI to write these tests, but have a human (ideally
+someone senior on the project) confirm the tests actually check the right
+things. Learn more in the chapter Data validation and unit testing in Chapter <a href="data-validation.html#data-validation">12</a>.</li>
+<li><strong>Spot-check intermediate outputs</strong>, not just final results — row counts
+after joins/merges, variable distributions before and after recoding,
+and sample sizes at each analytic step.</li>
+<li><strong>Independent replication</strong> for key analyses: have a second team member
+reproduce a critical result from raw data, ideally without heavy reliance
+on the same AI-generated code path. In the kind of research we do, the code most likely to lead to a lack of replication arises during data processing, i.e., converting survey data to the form needed for analyses. Two reasonable people or agents could make different assumptions, none of which are wrong, that result in different data. Replication brings these differences to light and allows them to be transparently reconciled. Learn more <a href="https://gatesopenresearch-files.f1000.com/manuscripts/14274/333a74aa-51bb-44a9-af2b-209f67c2c425_13108_-_jade_benjamin-chung.pdf?doi=10.12688/gatesopenres.13108.1&amp;gtmKey=GTM-MWFK8L5J&amp;gtmAuth=hzk0Vc3qFsQYhCrIoHz68A&amp;gtmPreview=env-1&amp;immUserUrl=https%3A%2F%2Fgates-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F&amp;otid=275477bf-f17b-474f-befe-635d8fa9661a&amp;s3BucketUrl=https%3A%2F%2Fgatesopenresearch-files.f1000.com&amp;submissionUrl=%2Ffor-authors%2Fpublish-your-research&amp;transcendEnv=cm&amp;transcendId=ef49a3f1-d8c1-47d6-88fc-50e41130631f&amp;numberOfBrowsableCollections=5&amp;numberOfBrowsableInstitutionalCollections=0&amp;numberOfBrowsableGateways=14">here</a>.</li>
+</ul>
+</div>
+<div id="for-data-protection" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> For data protection<a href="using-agentic-ai-coding-assistants.html#for-data-protection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Never point an AI coding tool at a directory containing raw
+participant-level data</strong> unless you have specifically confirmed this is
+permitted under the relevant IRB protocol and data use agreement — and
+ideally, work with de-identified or synthetic data during code
+development, applying finished code to real data only in a controlled
+step.</li>
+<li><strong>Read permission prompts before approving them</strong>, especially requests to
+access the network, install packages, or read/write outside the current
+project folder. When in doubt, ask Jade.</li>
+<li><strong>Use project-level permission scoping</strong> (e.g.,
+allow-listing specific directories or commands) rather than granting
+broad or session-wide access.</li>
+</ul>
+<p><strong>When in doubt about whether a workflow is compliant, ask Jade before proceeding.</strong></p>
+</div>
+</div>
+<div id="know-your-target-journals-ai-policy-before-you-start" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Know your target journal’s AI policy before you start<a href="using-agentic-ai-coding-assistants.html#know-your-target-journals-ai-policy-before-you-start" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before you start a project that will be published in a peer-reviewed journal, keep in mind that you will likely need to disclose any AI assistance in your methods section, acknowledgments, or cover letter. Journal policies on AI use vary widely (see table below).</p>
+<ul>
+<li>Before relying on AI tools for a substantial part of your workflow, check the current policy for your intended journal to learn what it does and doesn’t cover — a policy permitting AI for language editing is not the same as one permitting it for analysis or figure generation.</li>
+<li>Document what tools you use throughout the project so you can disclose them at the time of journal submission.</li>
+<li>Given how quickly tools are changing, you’ll need to check the policy again closer to submission.</li>
+</ul>
+<p>Here is an example of the type of acknowledgement language you might include in a manuscript:</p>
+<blockquote>
+<p>Claude (Sonnet 4.6, Anthropic) was used for language editing and improving clarity of expression. Claude Code (Sonnet 4.6, Anthropic) was used to assist with data processing, statistical coding, and figure and table generation. All code was reviewed by two independent team members to verify accuracy and reproducibility. These tools were not used to develop research questions, interpret findings, or draw conclusions. The authors take full responsibility for the interpretations, conclusions, accuracy, and integrity of the work.</p>
+</blockquote>
+<p>The following was generated by Claude in July 2026:</p>
+<table class="table table-striped table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:ai-journal-policies">Table 6.1: </span>Journal AI policies as of proposal writing — policies change, verify current policy before heavy AI use.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Publisher
+</th>
+<th style="text-align:left;">
+Journals
+</th>
+<th style="text-align:left;">
+Policy (🚫 not permitted / ✅ allowed w/ disclosure / ❓ not addressed)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="10">
+<td colspan="3" style="background-color: #eee;">
+<strong>Policy documented</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+Springer Nature
+</td>
+<td style="text-align:left;width: 30%; ">
+Nature, Nat. Comms/Med/Health, Sci. Reports, BMC, Discover Env.
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; ✅ copy-edit w/ disclosure; name tool + use in Methods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+PLOS
+</td>
+<td style="text-align:left;width: 30%; ">
+Glob. Public Health, Medicine, NTD
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; tool/use/validation disclosed in Methods/Ack.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+Elsevier/Lancet
+</td>
+<td style="text-align:left;width: 30%; ">
+Lancet GH/PH, eBioMed, eClinicalMed, Vaccine, IJHEH, Heliyon
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; ✅ copy-edit w/ disclosure; declaration before references
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+BMJ
+</td>
+<td style="text-align:left;width: 30%; ">
+BMJ Open, BMJ Glob. Health
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; described in manuscript + flagged at submission
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+Oxford UP
+</td>
+<td style="text-align:left;width: 30%; ">
+AJE, IJE, Epi Reviews, CID, JID, OFID
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; ✅ coding/analysis w/ disclosure; cover letter + Methods/Ack.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+Wiley
+</td>
+<td style="text-align:left;width: 30%; ">
+Stats in Med, TMIH, Paediatric &amp; Perinatal Epi
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; ✅ copy-edit w/ disclosure; 🚫 data alteration; Methods/Ack. if substantial
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+ACS
+</td>
+<td style="text-align:left;width: 30%; ">
+Env. Sci. &amp; Tech.
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; disclosed in Ack., Methods if substantial
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+ASM
+</td>
+<td style="text-align:left;width: 30%; ">
+Applied &amp; Env. Micro.
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; cover letter + Materials &amp; Methods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+AAAS/Science
+</td>
+<td style="text-align:left;width: 30%; ">
+Science
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; cover letter + Ack. + full prompts in Methods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+F1000
+</td>
+<td style="text-align:left;width: 30%; ">
+Gates Open Research
+</td>
+<td style="text-align:left;width: 55%; ">
+🚫 Authorship; not detailed — check w/ editor
+</td>
+</tr>
+<tr grouplength="6">
+<td colspan="3" style="background-color: #f8d7da;">
+<strong>Policy not yet located — check before use</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+ASTMH
+</td>
+<td style="text-align:left;width: 30%; ">
+AJTMH
+</td>
+<td style="text-align:left;width: 55%; ">
+❓ Not located — verify before use
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+APHA
+</td>
+<td style="text-align:left;width: 30%; ">
+AJPH
+</td>
+<td style="text-align:left;width: 55%; ">
+❓ Not located; 🖼️ AI images must be disclosed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+eLife
+</td>
+<td style="text-align:left;width: 30%; ">
+eLife
+</td>
+<td style="text-align:left;width: 55%; ">
+❓ Not located — verify before use
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+NIEHS
+</td>
+<td style="text-align:left;width: 30%; ">
+EHP
+</td>
+<td style="text-align:left;width: 55%; ">
+❓ Not located — verify before use
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+Wolters Kluwer
+</td>
+<td style="text-align:left;width: 30%; ">
+Epidemiology
+</td>
+<td style="text-align:left;width: 55%; ">
+❓ Not located — verify before use
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 15%; padding-left: 2em;" indentlevel="1">
+Cambridge UP
+</td>
+<td style="text-align:left;width: 30%; ">
+J. Clin. &amp; Trans. Sci.
+</td>
+<td style="text-align:left;width: 55%; ">
+❓ Not located — verify before use
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Sources: publisher policy pages accessed July 2026 (springernature.com, journals.plos.org, elsevier.com, authors-bmj-com, academic.oup.com, wiley.com, researcher-resources.acs.org, journals.asm.org, science.org, f1000research.com). Cells marked “not located” should be re-checked directly before submission — this space is evolving fast.</em></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="code-repositories.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jadebc/lab-manual/edit/master/05-using-ai-coding-assistants.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["lab-manual.pdf", "lab-manual.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

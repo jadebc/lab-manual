@@ -9,13 +9,13 @@ When you need to run a script that requires a large amount of RAM, large files, 
 
 To access Sherlock, in terminal, log in using the following syntax and replace "USERNAME" with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication. 
 
-```{code1, eval=FALSE}
+```{bash, eval=FALSE}
 ssh USERNAME@login.sherlock.stanford.edu
 ```
 
 Once you log in, you can view the contents of your home directory in command line by entering `cd $HOME`. You can create subfolders within this directory using the `mkdir` command. For example, you could make a  "code" subdirectory and clone a Github repository there using the following code: 
 
-```{code2, eval=FALSE}
+```{bash, eval=FALSE}
 cd $HOME
 mkdir code
 git clone https://github.com/jadebc/covid19-infections.git
@@ -35,7 +35,7 @@ R_LIBS=~/R/x86_64-pc-linux-gnu-library/4.0.2
 
 Alternatively, run an R script with the following code on Sherlock:
 
-```{code3, eval=FALSE}
+```{r, eval=FALSE}
 r_environ_file_path = file.path(Sys.getenv("HOME"), ".Renviron")
 if (!file.exists(r_environ_file_path)) file.create(r_environ_file_path)
 
@@ -54,7 +54,7 @@ CXX14=g++
 
 Alternatively, create an R script with the following code, and run it on Sherlock: 
 
-```{code4, eval=FALSE}
+```{r, eval=FALSE}
 dotR = file.path(Sys.getenv("HOME"), ".R")
 if (!file.exists(dotR)) dir.create(dotR)
 

@@ -77,6 +77,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -114,17 +115,38 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Benjamin-Chung Lab Manual},
+  pdftitle={Using AI Coding Assistants in the Lab},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Benjamin-Chung Lab Manual}
+\title{Using AI Coding Assistants in the Lab}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Benjamin-Chung Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2026-03-16}
+\date{\vspace{-2.5em}Updated: 2026-07-04}
 
 \begin{document}
 \maketitle
@@ -571,6 +593,362 @@ When you join the lab and are assigned to a project, here is roughly what your f
 
 If something doesn't work, that is normal --- environment setup is often the hardest part. Ask a current lab member for help before spending hours debugging on your own.
 
+\chapter{Using agentic AI coding assistants}\label{using-agentic-ai-coding-assistants}
+
+Tools like Claude Code (and comparable agentic coding tools from other
+vendors) are different from asking a chatbot to help you write a snippet of
+code. This distinction matters for how we use these tools in research:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Chat-based help} (e.g., asking a chatbot to explain a function or debug
+  a pasted error) keeps you in the loop for every step. You decide what code
+  to run, when, and where.
+\item
+  \textbf{Agentic coding tools} (e.g., Claude Code, Cursor) run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output --- all with a degree of
+  autonomy that you grant it. It can plan a multi-step task, write and execute code
+  across several files, install packages, and run analyses with minimal
+  intervention. This is powerful, but it also means more can happen without
+  your direct review at each step. That's why coding with these tools is called ``vibe coding''.
+\end{itemize}
+
+Both modes are useful. The rest of this chapter focuses on the agentic mode,
+since it raises issues that are new for our research workflows.
+
+\section{Three key issues}\label{three-key-issues}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Learning and skill development.} Heavy reliance on AI coding tools may
+  impede the development of coding fluency and statistical/computational
+  intuition --- particularly for trainees who are still building these
+  skills.
+\item
+  \textbf{Research accuracy.} Using these tools on datasets, analysis types, or
+  workflows you aren't already familiar with raises the risk of subtle
+  errors going undetected, because you may lack the intuition to recognize
+  when something looks wrong.
+\item
+  \textbf{Data protection.} These tools can access files on your machine, which
+  introduces new and sometimes subtle data-handling risks in a research
+  context governed by IRB protocols, data use agreements, and participant
+  privacy commitments.
+\end{enumerate}
+
+Each is discussed in more detail below, along with suggested safeguards.
+
+\section{Bottom line}\label{bottom-line}
+
+AI coding assistants are a powerful addition to our computational toolkit,
+but they are not a substitute for the judgment that comes from hands-on
+coding experience, nor for careful attention to data governance. Use them
+deliberately: lean on them more for familiar, low-stakes tasks, and less for
+unfamiliar or high-stakes ones, with unit tests, replication checks, and
+careful permission review as standing practice regardless of experience
+level.
+
+\textbf{When in doubt about whether a workflow is compliant, ask Jade before proceeding.}
+
+\subsection{Research accuracy and the value of experience}\label{research-accuracy-and-the-value-of-experience}
+
+In 2026, most seasoned quantitative researchers have been writing code for a decade
+or more --- tens of thousands of cumulative hours. There's a popular ``rule'' that it takes 10,000 hours to master a new skill-- equivalent to 5.5 years of full time work. That experience builds a kind of gut instinct: when you look at code, or watch it run, you develop a sense for what \emph{might} be going wrong, even when nothing throws an obvious error. Examples of silent failures:
+
+\begin{itemize}
+\tightlist
+\item
+  A merge that drops rows unexpectedly
+\item
+  A factor variable that got silently releveled
+\item
+  A date field parsed in the wrong timezone
+\end{itemize}
+
+After dealing with these silent errors hundreds or thousands of times, the human brain recognizes the \emph{shape} of a subtle bug before you can necessarily articulate exactly what it is. That experience is what lets seasoned researchers know what safeguards to put in place:
+
+\begin{itemize}
+\tightlist
+\item
+  Which unit tests are worth writing
+\item
+  Which portions of a work flow require human or independent agentic replication checks
+\item
+  Which outputs deserve a manual sanity check versus which can be trusted.
+\end{itemize}
+
+AI coding tools do not have this judgment about \emph{your specific project}. They can write tests if asked, but deciding \emph{which} tests matter for a given dataset or analysis is still a human judgment call, grounded in domain and data familiarity.
+
+This means the risk of using these tools is not constant. As your mentor, I am working on developing systems to help you learn when you might be in the \textbf{danger zone}. When you're in the danger zone, you are outside your area of established expertise, working with a new data source, an unfamiliar analysis method, or a computational workflow you haven't run by hand before. The challenge is, when you're new to a project or to a field of study, you're always in the \textbf{danger zone.}
+
+\subsection{Impeding learning: an open question}\label{impeding-learning-an-open-question}
+
+\textbf{Little to nothing is currently known about the pedagogy of learning to code with AI
+assistance versus learning to code without it.} If you never manually write code ---
+if you never sit with a bug for twenty minutes and slowly figure out that
+the join key had a leading whitespace --- how do you develop the gut instinct
+described above? We don't know.
+
+It's also possible that this concern will turn out to be less important
+than it seems. The future of research computing may not involve much
+hands-on human coding at all. But even if that's true, we don't yet know
+\emph{how} to teach someone --- a rotation student, a new Research Assistant, a first-year PhD student --- to ``vibe code'' well: to direct an AI tool effectively, to catch
+its mistakes, and to build sound judgment about when to trust its output.
+\textbf{Until the pedagogy of computational research with agentic AI exists, in our lab, we consider risks of agentic AI use to be high for early-career skill-building to be high.}
+
+\subsection{Data safety in a research context}\label{data-safety-in-a-research-context}
+
+Claude Code and similar tools run locally and, with your permission, can
+read and modify files on your laptop --- including, potentially, files
+containing participant-level data governed by IRB protocols and data use
+agreements.
+
+The practical risk is subtler than ``the AI leaks your data.'' During a
+typical coding session, the tool may generate tens or even hundreds of
+permission requests (to read a file, run a command, install a package,
+access the network, etc.). These prompts are sometimes phrased in dense
+technical language that is genuinely hard to parse quickly. It is easy to
+click ``allow'' reflexively --- especially late in a long session --- and
+inadvertently grant access to a raw data directory, or permission to send
+data over the network (e.g., installing a package, calling an external
+API), without fully registering what you approved.
+
+This is not primarily a malicious-AI risk; it's a human-factors risk. The
+tool is doing what you told it to do, but ``what you told it to do'' is
+easy to misjudge when permission requests are frequent, fast, and
+technically dense.
+
+As of June 2026, \href{https://uit.stanford.edu/ai/connectors}{Stanford's Approved Connectors for AI Services} have different different risk categories by different products. Note that Google and OpenAI can be used with High Risk \href{https://med.stanford.edu/irt/security/stanfordinfo/hipaa.html}{Protected Health Information (PHI)} data, while using PHI with Claude requires routing through the Stanford AI API Gateway. If you are not sure whether you your project is using PHI, check with Jade before proceeding.
+
+\subsection{What these prompts actually look like}\label{what-these-prompts-actually-look-like}
+
+\emph{Note: the following is based on Claude Code, but other agentic coding tools have similar permission prompts.}
+
+The prompt and approval interface differs depending on whether you're working in a terminal or
+a GUI/editor-based tool, but the underlying pattern is the same:
+
+\begin{itemize}
+\item
+  \textbf{AI's own plain-English summary} of
+  the action, not a guarantee of what the command actually does. It's
+  usually accurate, but it can omit exactly the detail --- a hardcoded file
+  path, a write to an unexpected directory --- that matters for review.
+  Read the actual command or diff underneath, not just the summary.
+  \pandocbounded{\includegraphics[keepaspectratio]{lab-manual_files/assets/images/claude-code-render-qmd.png}}
+\item
+  \textbf{Long commands or file paths that are often truncated.} Claude Code may write a snippet of code and ask you for permission to run it, but it might not be in your project's language, and often these code snippets are not saved in your repository at all. For example, if you're working in an R codebase and ask it to double-check a calculation or validate an assumption, it might quietly reach for Python --- writing a small throwaway script to cross-check the logic, run it, read the output, and then report back to you in English. That scratch script often never gets saved as a file you'd see in a pull request; it's more like a post-it note the AI wrote to itself, used once, and threw away. The problem is that if you don't read Python, you have no way to actually verify what that post-it note said or did --- you're not reviewing the check, you're reviewing Claude's summary of the check. That might be perfectly fine for something low-stakes, but for a step that's supposed to be your safeguard against a subtle analytic error, it's worth pausing on: if you can't read the language a verification was written in, you aren't really approving the verification --- you're approving a description of it, written by the same tool whose work it's supposed to be checking.
+\end{itemize}
+
+Here's an example from a code base entirely written in R, where Claude Code asked for permission to check for duplicates using a ``post-it'' note in Python.
+
+\pandocbounded{\includegraphics[keepaspectratio]{lab-manual_files/assets/images/claude-code-other-language.png}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{``Always allow'' sits right next to the one-time approval}, in the
+  terminal as option 2 of 3, and in the GUI as a persistent button with its
+  own keyboard shortcut. It's one keystroke away from a single-use
+  approval, which is exactly what makes reflexive over-granting easy,
+  especially late in a long session.
+\end{itemize}
+
+When Claude Code (or a similar AI coding assistant) asks for permission to
+run a command, recognizing the command itself --- not just reading the
+plain-English gloss above it --- is the fastest way to know what you're
+actually approving. The tables below are organized by risk level.
+
+\begin{table}
+\centering\begingroup\fontsize{12}{14}\selectfont
+
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}|>{\raggedright\arraybackslash}p{11em}|>{\raggedright\arraybackslash}p{12em}}
+\hline
+Command & What it does & Why it matters\\
+\hline
+\multicolumn{3}{l}{\textbf{Low-risk commands}}\\
+\hline
+\hspace{1em}`ls`, `cat`, `head`, `tail` & List directory contents; print file contents & \\
+\hline
+\hspace{1em}`cd`, `pwd` & Change / print working directory & \\
+\hline
+\hspace{1em}`cp` & Copy files & \\
+\hline
+\hspace{1em}`|` (pipe) & Send one command's output into another as input & \\
+\hline
+\hspace{1em}`\&\&` & Run the next command only if the previous one succeeded & \\
+\hline
+\multicolumn{3}{l}{\textbf{High-risk commands}}\\
+\hline
+\hspace{1em}`rm` & Delete files & No undo. Watch for this near raw data paths\\
+\hline
+\hspace{1em}`rm -rf` & Force-delete a directory and everything in it, no confirmation & Riskiest pattern to recognize — recursive + force, can wipe a folder tree silently\\
+\hline
+\hspace{1em}`mv` & Move files & Can silently overwrite a destination file\\
+\hline
+\hspace{1em}`>`, `>>` & Redirect output to a file & `>` silently overwrites the whole target file; easy to miss mid-command\\
+\hline
+\hspace{1em}`sed -i`, `awk` & Edit files in place / process text & `-i` modifies the original directly — no diff preview\\
+\hline
+\hspace{1em}`chmod` & Change file permissions & Can make a data file world-readable/writable\\
+\hline
+\hspace{1em}`chown` & Change file ownership & Rare in normal analysis work; worth a second look\\
+\hline
+\hspace{1em}`find ... -exec` & Search files, run a command on each match & Can apply `rm`/`chmod` across many files — read the `-exec` clause carefully\\
+\hline
+\hspace{1em}`curl`, `wget` & Download content from a URL & Network access — relevant if data shouldn't leave the machine\\
+\hline
+\hspace{1em}`scp`, `rsync` & Copy files to/from a remote machine & Data transfer off-machine — scrutinize unfamiliar destinations\\
+\hline
+\hspace{1em}`git push`, `git commit` & Send code / record a commit & Notice if Claude is committing on your behalf\\
+\hline
+\hspace{1em}`sudo` & Run with admin privileges & Should almost never be needed for data analysis\\
+\hline
+\hspace{1em}`export` & Set an environment variable & May set API keys/credentials — check what's exported\\
+\hline
+\end{tabular}
+\endgroup{}
+\end{table}
+
+\section{Suggested safeguards}\label{suggested-safeguards}
+
+\subsection{For learning and skill development}\label{for-learning-and-skill-development}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Spend meaningful time writing core analysis code by hand} before leaning on
+  agentic tools for that same type of task --- e.g., write your first TMLE or
+  IPW pipeline yourself before asking an AI tool to generate one.
+\item
+  When using an AI tool for a task you're still learning, \textbf{ask it to
+  explain its reasoning}, not just produce output. Treat it as a tutor for
+  code you then re-derive yourself, not a black box.
+\item
+  Before fully letting agentic AI write a script for you, try writing out detailed pseudo-code -- aka, \textbf{a step-by-step plan for what the code should do}. Then ask the AI to implement that plan, and check that it actually does what you intended.
+\end{itemize}
+
+\subsection{For research accuracy}\label{for-research-accuracy}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Match AI use to familiarity.} Use these tools most freely for
+  boilerplate, refactoring, and workflows you already know well. Increase
+  manual scrutiny --- or avoid heavy AI use --- for new datasets, unfamiliar
+  methods, or unfamiliar computational environments.
+\item
+  \textbf{Always require unit tests and replication checks} for AI-assisted
+  analysis code, especially for anything going into a manuscript or grant
+  deliverable. Ask the AI to write these tests, but have a human (ideally
+  someone senior on the project) confirm the tests actually check the right
+  things. Learn more in the chapter Data validation and unit testing in Chapter \ref{data-validation}.
+\item
+  \textbf{Spot-check intermediate outputs}, not just final results --- row counts
+  after joins/merges, variable distributions before and after recoding,
+  and sample sizes at each analytic step.
+\item
+  \textbf{Independent replication} for key analyses: have a second team member
+  reproduce a critical result from raw data, ideally without heavy reliance
+  on the same AI-generated code path. In the kind of research we do, the code most likely to lead to a lack of replication arises during data processing, i.e., converting survey data to the form needed for analyses. Two reasonable people or agents could make different assumptions, none of which are wrong, that result in different data. Replication brings these differences to light and allows them to be transparently reconciled. Learn more \href{https://gatesopenresearch-files.f1000.com/manuscripts/14274/333a74aa-51bb-44a9-af2b-209f67c2c425_13108_-_jade_benjamin-chung.pdf?doi=10.12688/gatesopenres.13108.1&gtmKey=GTM-MWFK8L5J&gtmAuth=hzk0Vc3qFsQYhCrIoHz68A&gtmPreview=env-1&immUserUrl=https\%3A\%2F\%2Fgates-proxy.f1krdev.com\%2Feditor\%2Fmember\%2Fshow\%2F&otid=275477bf-f17b-474f-befe-635d8fa9661a&s3BucketUrl=https\%3A\%2F\%2Fgatesopenresearch-files.f1000.com&submissionUrl=\%2Ffor-authors\%2Fpublish-your-research&transcendEnv=cm&transcendId=ef49a3f1-d8c1-47d6-88fc-50e41130631f&numberOfBrowsableCollections=5&numberOfBrowsableInstitutionalCollections=0&numberOfBrowsableGateways=14}{here}.
+\end{itemize}
+
+\subsection{For data protection}\label{for-data-protection}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Never point an AI coding tool at a directory containing raw
+  participant-level data} unless you have specifically confirmed this is
+  permitted under the relevant IRB protocol and data use agreement --- and
+  ideally, work with de-identified or synthetic data during code
+  development, applying finished code to real data only in a controlled
+  step.
+\item
+  \textbf{Read permission prompts before approving them}, especially requests to
+  access the network, install packages, or read/write outside the current
+  project folder. When in doubt, ask Jade.
+\item
+  \textbf{Use project-level permission scoping} (e.g.,
+  allow-listing specific directories or commands) rather than granting
+  broad or session-wide access.
+\end{itemize}
+
+\textbf{When in doubt about whether a workflow is compliant, ask Jade before proceeding.}
+
+\section{Know your target journal's AI policy before you start}\label{know-your-target-journals-ai-policy-before-you-start}
+
+Before you start a project that will be published in a peer-reviewed journal, keep in mind that you will likely need to disclose any AI assistance in your methods section, acknowledgments, or cover letter. Journal policies on AI use vary widely (see table below).
+
+\begin{itemize}
+\tightlist
+\item
+  Before relying on AI tools for a substantial part of your workflow, check the current policy for your intended journal to learn what it does and doesn't cover --- a policy permitting AI for language editing is not the same as one permitting it for analysis or figure generation.
+\item
+  Document what tools you use throughout the project so you can disclose them at the time of journal submission.
+\item
+  Given how quickly tools are changing, you'll need to check the policy again closer to submission.
+\end{itemize}
+
+Here is an example of the type of acknowledgement language you might include in a manuscript:
+
+\begin{quote}
+Claude (Sonnet 4.6, Anthropic) was used for language editing and improving clarity of expression. Claude Code (Sonnet 4.6, Anthropic) was used to assist with data processing, statistical coding, and figure and table generation. All code was reviewed by two independent team members to verify accuracy and reproducibility. These tools were not used to develop research questions, interpret findings, or draw conclusions. The authors take full responsibility for the interpretations, conclusions, accuracy, and integrity of the work.
+\end{quote}
+
+The following was generated by Claude in July 2026:
+
+\begin{table}
+\centering
+\caption{\label{tab:ai-journal-policies}Journal AI policies as of proposal writing — policies change, verify current policy before heavy AI use.}
+\centering
+\fontsize{12}{14}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4em}|>{\raggedright\arraybackslash}p{8em}|>{\raggedright\arraybackslash}p{15em}}
+\hline
+Publisher & Journals & Policy (🚫 not permitted / ✅ allowed w/ disclosure / ❓ not addressed)\\
+\hline
+\multicolumn{3}{l}{\textbf{Policy documented}}\\
+\hline
+\hspace{1em}Springer Nature & Nature, Nat. Comms/Med/Health, Sci. Reports, BMC, Discover Env. & 🚫 Authorship; ✅ copy-edit w/ disclosure; name tool + use in Methods\\
+\hline
+\hspace{1em}PLOS & Glob. Public Health, Medicine, NTD & 🚫 Authorship; tool/use/validation disclosed in Methods/Ack.\\
+\hline
+\hspace{1em}Elsevier/Lancet & Lancet GH/PH, eBioMed, eClinicalMed, Vaccine, IJHEH, Heliyon & 🚫 Authorship; ✅ copy-edit w/ disclosure; declaration before references\\
+\hline
+\hspace{1em}BMJ & BMJ Open, BMJ Glob. Health & 🚫 Authorship; described in manuscript + flagged at submission\\
+\hline
+\hspace{1em}Oxford UP & AJE, IJE, Epi Reviews, CID, JID, OFID & 🚫 Authorship; ✅ coding/analysis w/ disclosure; cover letter + Methods/Ack.\\
+\hline
+\hspace{1em}Wiley & Stats in Med, TMIH, Paediatric \& Perinatal Epi & 🚫 Authorship; ✅ copy-edit w/ disclosure; 🚫 data alteration; Methods/Ack. if substantial\\
+\hline
+\hspace{1em}ACS & Env. Sci. \& Tech. & 🚫 Authorship; disclosed in Ack., Methods if substantial\\
+\hline
+\hspace{1em}ASM & Applied \& Env. Micro. & 🚫 Authorship; cover letter + Materials \& Methods\\
+\hline
+\hspace{1em}AAAS/Science & Science & 🚫 Authorship; cover letter + Ack. + full prompts in Methods\\
+\hline
+\hspace{1em}F1000 & Gates Open Research & 🚫 Authorship; not detailed — check w/ editor\\
+\hline
+\multicolumn{3}{l}{\textbf{Policy not yet located — check before use}}\\
+\hline
+\hspace{1em}ASTMH & AJTMH & ❓ Not located — verify before use\\
+\hline
+\hspace{1em}APHA & AJPH & ❓ Not located; 🖼️ AI images must be disclosed\\
+\hline
+\hspace{1em}eLife & eLife & ❓ Not located — verify before use\\
+\hline
+\hspace{1em}NIEHS & EHP & ❓ Not located — verify before use\\
+\hline
+\hspace{1em}Wolters Kluwer & Epidemiology & ❓ Not located — verify before use\\
+\hline
+\hspace{1em}Cambridge UP & J. Clin. \& Trans. Sci. & ❓ Not located — verify before use\\
+\hline
+\end{tabular}
+\end{table}
+
+\emph{Sources: publisher policy pages accessed July 2026 (springernature.com, journals.plos.org, elsevier.com, authors-bmj-com, academic.oup.com, wiley.com, researcher-resources.acs.org, journals.asm.org, science.org, f1000research.com). Cells marked ``not located'' should be re-checked directly before submission --- this space is evolving fast.}
+
 \chapter{Code repositories}\label{code-repositories}
 
 By Kunal Mishra, Jade Benjamin-Chung, and Stephanie Djajadi
@@ -848,6 +1226,7 @@ Both work, but our lab standardizes on tidyverse because the syntax is more read
 
 The following list is not exhaustive, but is a compact reference for common base R to Tidyverse translations:
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
@@ -884,6 +1263,7 @@ Nested: \texttt{ifelse(test\_expression1,\ yes1,\ ifelse(test\_expression2,\ yes
 \texttt{proc.time()} & \texttt{tictoc::tic()} and \texttt{tictoc::toc()} \\
 \texttt{stopifnot()} & \texttt{assertthat::assert\_that()} or \texttt{assertthat::see\_if()} or \texttt{assertthat::validate\_that()} \\
 \end{longtable}
+}
 
 For a more extensive set of syntactical translations to Tidyverse, you can check out \href{https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html\#reshaping_data}{this document}.
 
@@ -1453,23 +1833,10 @@ For example, consider a data frame ``df'' that contains a column called ``heavyr
 
 Using base R, which does not mask data, heavyrain must have quotes to be treated as a data-variable:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df[[“outcome”]] }\OtherTok{=} \FunctionTok{as.factor}\NormalTok{(df[[“heavyrain”]])}
-\end{Highlighting}
-\end{Shaded}
-
 In a dplyr pipe, heavyrain is being masked using tidy evaluation and will be correctly interpreted as a column because it is recognized as a data-variable:
 df \%\textgreater\% mutate(outcome = as.factor(heavyrain))
 
 With modified data masking, heavyrain is a string that is coerced into being recognized as a data-variable:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{var\_name }\OtherTok{=}\NormalTok{ “heavyrain”}
-\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{outcome =} \FunctionTok{as.factor}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(var\_name)) }
-\end{Highlighting}
-\end{Shaded}
 
 While cleaner and often more convenient, the data frame that var\_name is in is now ``masked'' and we refer to the vectors in the dataframe (data-variables) as though it is an object of its own (an environmental-variable). This is why we can just say the variable's name in the context of a pipe -- we treat it as though it's an object defined in our environment. Within normal scripts, this is usually fine, because the data frame is ``held on to'' in the pipe. However, it can cause some programming hurdles when writing functions that take strings of variable/column names as arguments. In the next section, we briefly describe how to troubleshoot common errors in data masking, as relevant to our lab's work.
 
@@ -1484,98 +1851,23 @@ The \texttt{!!} (bang bang) operator tells dplyr to evaluate the sym() expressio
 When we want to create a new column (via mutate or summarize), the Walrus operator (\texttt{:=}) allows us to specify the new column's name using a string. For example, while \texttt{df\ \%\textgreater{}\%\ mutate(“new\_column”\ =\ values)} would yield an error, \texttt{df\ \%\textgreater{}\%\ mutate(“new\_column”\ :=\ values)} will correctly create a new column called ``new\_column''.
 If we want to use a variable representing a string, we can use !! to force the variable to be evaluated before using \texttt{:=} to assign the value of the new column.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{col\_name }\OtherTok{=}\NormalTok{ “new\_column”}
-\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\SpecialCharTok{!!}\AttributeTok{col\_name :=}\NormalTok{ values)}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{Example}\label{example}
 
 Suppose we want to write a function ``generate\_descriptive\_table'' to summarize how the prevalence of ``outcome'' varies under different levels of a ``risk\_factor'' in a data frame ``df''
 
 We can start by writing the function shell:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf) \{}
-\NormalTok{outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ ….}
-\FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 Next, we can filter the data frame for only rows in which ``rf'' and ``outcome'' are not missing. We can use !! and sym() within filter to evaluate the strings stored in ``rf'' and ``outcome''. Note that defining \texttt{!!sym(outcome)} or \texttt{!!sym(outcome)} in variables \emph{outside of the dplyr pipeline} will \emph{not} work.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
-\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  ….}
-  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
 
 Similarly, we use !! and sym() in group\_by to evaluate column name, stored as a string in the argument ``rf''
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
-\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  ….}
-  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 Finally, we can use the walrus operator, !! and sym() with ``summarize'' to create a new column that takes the mean of the column referenced in ``rf''. We also use ``glue'' or ``paste'' to give the new column an informative name that includes the ``outcome'' it describes.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
-\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(“\{outcome\}\_prev”)) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome))) }
-  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+OR
 
 OR
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
-\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(outcome, ”\_prev”)) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)))}
-  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-OR
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
-\NormalTok{  new\_column\_name }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(outcome, ”\_prev”)}
-\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(new\_column\_name) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome))) }
-  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\chapter{Data validation and unit testing}\label{data-validation-and-unit-testing}
+\chapter{Data validation and unit testing}\label{data-validation}
 
 by Jade Benjamin-Chung
 
@@ -2012,6 +2304,7 @@ A detailed tutorial on Git Branching can be found \href{https://sp19.datastructu
 
 A standard workflow when starting on a new project and contributing code looks like this:
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3600}}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6400}}@{}}
@@ -2038,11 +2331,13 @@ SETUP: FIRST TIME ONLY: \texttt{git\ clone\ \textless{}url\textgreater{}\ \textl
 (10.) Your changes and PR get approved, your reviewer deletes your remote branch upon merging & \\
 11. \texttt{git\ fetch\ -\/-all\ -\/-prune} & clean up your local git by untracking deleted remote branches \\
 \end{longtable}
+}
 
 Other helpful commands are listed below.
 
 \section{Commonly Used Git Commands}\label{commonly-used-git-commands}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3600}}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6400}}@{}}
@@ -2075,6 +2370,7 @@ Description
 \texttt{git\ branch\ -d\ \textless{}branch\_name\textgreater{}} & deletes local branch, -D to force \\
 \texttt{git\ fetch\ -\/-all\ -\/-prune} & untrack deleted remote branches \\
 \end{longtable}
+}
 
 \section{How often should I commit?}\label{how-often-should-i-commit}
 
@@ -2109,7 +2405,7 @@ On the computer, there is a desktop with two folders, \texttt{folder1} and \text
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{assets/images/ex-desktop.jpg}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Here is our example desktop.}]{lab-manual_files/assets/images/ex-desktop.jpg}}
 \caption{Here is our example desktop.}
 \end{figure}
 
@@ -2117,6 +2413,7 @@ On the computer, there is a desktop with two folders, \texttt{folder1} and \text
 
 When typing in directories or file names, quotes are necessary if the name includes spaces.
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4348}}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5652}}@{}}
@@ -2142,15 +2439,17 @@ Description
 \texttt{rm\ -rf\ folder3} & Remove directories (\texttt{-r} will attempt to remove the directory recursively, \texttt{-rf} will force removal of the directory) \\
 \texttt{clear} & Clear terminal screen of all previous commands \\
 \end{longtable}
+}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{assets/images/ex-terminal.PNG}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Here is an example of what your terminal might look like after executing the commands in the order listed above.}]{lab-manual_files/assets/images/ex-terminal.PNG}}
 \caption{Here is an example of what your terminal might look like after executing the commands in the order listed above.}
 \end{figure}
 
 \section{Running Bash Scripts}\label{running-bash-scripts}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2571}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3714}}
@@ -2171,6 +2470,7 @@ Description
 \texttt{./\textless{}filename.sh\textgreater{}} & \texttt{./\textless{}filename.sh\textgreater{}} & Run file (\texttt{./} to run any executable file) \\
 \texttt{bash\ bash\_script\_name.sh\ \&} & \texttt{bash\ bash\_script\_name.sh\ \&} & Run shell script in the background \\
 \end{longtable}
+}
 
 \section{Running Rscripts in Windows}\label{running-rscripts-in-windows}
 
@@ -2203,6 +2503,7 @@ To run an R script from the command line, we can say:
 
 \section{Checking tasks and killing jobs}\label{checking-tasks-and-killing-jobs}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2571}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3714}}
@@ -2228,6 +2529,7 @@ Description
 & \texttt{disown} & Keeps jobs running in the background even if you close R \\
 \texttt{taskkill\ /?} & & Help, lists out other commands \\
 \end{longtable}
+}
 
 To kill a task in Windows, you can also go to Task Manager \textgreater{} More details \textgreater{} Select your desired app \textgreater{} Click on End Task.
 
@@ -2243,27 +2545,6 @@ For big data workflows, the concept of ``backgrounding'' a bash script allows yo
 
 Alternatively, to keep code running in the background even when an SSH connection is broken, you can use \texttt{tmux}. In terminal or gitbash follow the steps below. This \href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site} has useful tips on using \texttt{tmux}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# create a new tmux session called session\_name}
-\ExtensionTok{tmux}\NormalTok{ new }\AttributeTok{{-}ssession\_name}
-
-\CommentTok{\# run your job of interest}
-\ExtensionTok{R}\NormalTok{ CMD BATCH myjob.R }\KeywordTok{\&} 
-  
-\CommentTok{\# check that it is running}
-\FunctionTok{ps} \AttributeTok{{-}v}
-
-\CommentTok{\# to exit the tmux session (Mac)}
-\ExtensionTok{ctrl}\NormalTok{ + b }
-\ExtensionTok{d}
-
-\CommentTok{\# to reopen the tmux session to kill the job or }
-\CommentTok{\# start another job}
-\ExtensionTok{tmux}\NormalTok{ attach }\AttributeTok{{-}tsession\_name} 
-\end{Highlighting}
-\end{Shaded}
-
 \begin{itemize}
 \item
   \textbf{Deleting Previously Computed Results}: One helpful lesson we've learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).
@@ -2273,105 +2554,9 @@ Alternatively, to keep code running in the background even when an SSH connectio
 
 \subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#!/usr/bin/env python3}
-\CommentTok{\# Type "./runFileSaveLogs {-}h" for help}
-
-\ImportTok{import}\NormalTok{ os}
-\ImportTok{import}\NormalTok{ sys}
-\ImportTok{import}\NormalTok{ argparse}
-\ImportTok{import}\NormalTok{ getpass}
-\ImportTok{import}\NormalTok{ datetime}
-\ImportTok{import}\NormalTok{ shutil}
-\ImportTok{import}\NormalTok{ glob}
-\ImportTok{import}\NormalTok{ pathlib}
-
-\CommentTok{\# Setting working directory to this script\textquotesingle{}s current directory}
-\NormalTok{os.chdir(os.path.dirname(os.path.abspath(}\VariableTok{\_\_file\_\_}\NormalTok{)))}
-
-\CommentTok{\# Setting up argument parser}
-\NormalTok{parser }\OperatorTok{=}\NormalTok{ argparse.ArgumentParser(description}\OperatorTok{=}\StringTok{\textquotesingle{}Runs the argument R script(s) {-} in parallel if specified {-} and moves the subsequent generated .Rout log files to a timestamped directory.\textquotesingle{}}\NormalTok{)}
-
-\CommentTok{\# Function ensuring that the file is valid}
-\KeywordTok{def}\NormalTok{ is\_valid\_file(parser, arg):}
-    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.exists(arg):}
-\NormalTok{        parser.error(}\StringTok{"The file }\SpecialCharTok{\%s}\StringTok{ does not exist!"} \OperatorTok{\%}\NormalTok{ arg)}
-    \ControlFlowTok{else}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ arg}
-
-\CommentTok{\# Function ensuring that the directory is valid}
-\KeywordTok{def}\NormalTok{ is\_valid\_directory(parser, arg):}
-    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.isdir(arg):}
-\NormalTok{        parser.error(}\StringTok{"The specified path (}\SpecialCharTok{\%s}\StringTok{) is not a directory!"} \OperatorTok{\%}\NormalTok{ arg)}
-    \ControlFlowTok{else}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ arg}
-
-\CommentTok{\# Additional arguments that can be added when running runFileSaveLogs}
-\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}{-}p\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}{-}parallel\textquotesingle{}}\NormalTok{, action}\OperatorTok{=}\StringTok{\textquotesingle{}store\_true\textquotesingle{}}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Runs the argument R scripts in parallel if specified"}\NormalTok{)}
-\NormalTok{parser.add\_argument(}\StringTok{"{-}i"}\NormalTok{, }\StringTok{"{-}{-}identifier"}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Adds an identifier to the directory name where this is saved"}\NormalTok{)}
-\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}filenames\textquotesingle{}}\NormalTok{, nargs}\OperatorTok{=}\StringTok{\textquotesingle{}+\textquotesingle{}}\NormalTok{, }\BuiltInTok{type}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ x: is\_valid\_file(parser, x))}
-
-\NormalTok{args }\OperatorTok{=}\NormalTok{ parser.parse\_args()}
-\NormalTok{args\_dict }\OperatorTok{=} \BuiltInTok{vars}\NormalTok{(args)}
-
-\BuiltInTok{print}\NormalTok{(args\_dict)}
-
-\CommentTok{\# Run given R Scripts}
-\ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ args\_dict[}\StringTok{"filenames"}\NormalTok{]:}
-\NormalTok{  system\_call }\OperatorTok{=} \StringTok{"R CMD BATCH"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ filename}
-  \ControlFlowTok{if}\NormalTok{ args\_dict[}\StringTok{"parallel"}\NormalTok{]: }
-\NormalTok{    system\_call }\OperatorTok{=} \StringTok{"nohup"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ system\_call }\OperatorTok{+} \StringTok{" \&"}
-
-\NormalTok{  os.system(system\_call)}
-
-\CommentTok{\# Create the directory (and any parents) of the log files}
-\NormalTok{currentUser }\OperatorTok{=}\NormalTok{ getpass.getuser()}
-\NormalTok{currentTime }\OperatorTok{=}\NormalTok{ datetime.datetime.now().strftime(}\StringTok{"\%Y{-}\%m{-}}\SpecialCharTok{\%d}\StringTok{ \%H:\%M:\%S"}\NormalTok{)}
-\NormalTok{logDirPrefix }\OperatorTok{=} \StringTok{"/home/kaiserData/logs/"} \CommentTok{\# Change to the directory where the logs should be saved}
-\NormalTok{logDir }\OperatorTok{=}\NormalTok{ logDirPrefix }\OperatorTok{+}\NormalTok{ currentTime }\OperatorTok{+} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ currentUser }
-
-\CommentTok{\# If specified, adds the identifier to the filename of the log}
-\ControlFlowTok{if}\NormalTok{ args.identifier }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{:}
-\NormalTok{  logDir }\OperatorTok{+=} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ args.identifier}
-
-\NormalTok{logDir }\OperatorTok{+=} \StringTok{"/"}
-
-\NormalTok{pathlib.Path(logDir).mkdir(parents}\OperatorTok{=}\VariableTok{True}\NormalTok{, exist\_ok}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-
-\CommentTok{\# Find and move all logs to this new directory}
-\NormalTok{currentLogPaths }\OperatorTok{=}\NormalTok{ glob.glob(}\StringTok{\textquotesingle{}./*.Rout\textquotesingle{}}\NormalTok{)}
-
-\ControlFlowTok{for}\NormalTok{ currentLogPath }\KeywordTok{in}\NormalTok{ currentLogPaths:}
-\NormalTok{  filename }\OperatorTok{=}\NormalTok{ currentLogPath.split(}\StringTok{"/"}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
-\NormalTok{  shutil.move(currentLogPath, logDir }\OperatorTok{+}\NormalTok{ filename)}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}
 
 This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#!/bin/bash}
-
-\CommentTok{\# Copy utility run script into this folder for concision in call}
-\FunctionTok{cp}\NormalTok{ \textasciitilde{}/kaiserflu/runFileSaveLogs \textasciitilde{}/kaiserflu/3{-}figures/}
-
-\CommentTok{\# Run folder scripts and produce output}
-\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/kaiserflu/3{-}figures/}
-\ExtensionTok{./runFileSaveLogs} \AttributeTok{{-}i} \StringTok{"figures"} \DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}mean{-}season{-}age.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}monthly{-}rate.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}point{-}estimates{-}combined.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}point{-}estimates.R }\DataTypeTok{\textbackslash{}}
-\NormalTok{fig{-}weekly{-}rate.R}
-
-\CommentTok{\# Remove copied utility run script}
-\FunctionTok{rm}\NormalTok{ runFileSaveLogs}
-\end{Highlighting}
-\end{Shaded}
 
 \chapter{Reproducible Environments}\label{reproducible-environments}
 
@@ -2777,21 +2962,7 @@ When you need to run a script that requires a large amount of RAM, large files, 
 
 To access Sherlock, in terminal, log in using the following syntax and replace ``USERNAME'' with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ssh USERNAME@login.sherlock.stanford.edu}
-\end{Highlighting}
-\end{Shaded}
-
 Once you log in, you can view the contents of your home directory in command line by entering \texttt{cd\ \$HOME}. You can create subfolders within this directory using the \texttt{mkdir} command. For example, you could make a ``code'' subdirectory and clone a Github repository there using the following code:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{cd $HOME}
-\NormalTok{mkdir code}
-\NormalTok{git clone https://github.com/jadebc/covid19{-}infections.git}
-\end{Highlighting}
-\end{Shaded}
 
 \subsection{One-Time System Set-Up}\label{one-time-system-set-up}
 
@@ -2801,125 +2972,27 @@ Open your \texttt{\textasciitilde{}/.Renviron} file (\texttt{vi\ \textasciitilde
 
 \emph{Note: Once you open the file using \texttt{vi\ {[}file\_name{]}}, you must press \texttt{i} (on Mac OS) or \texttt{Insert} (on Windows) to make edits. After you finish, hit \texttt{Esc} to exit editing mode and type \texttt{:wq} to save and close the file.}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\VariableTok{R\_LIBS}\OperatorTok{=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2}
-\end{Highlighting}
-\end{Shaded}
-
 Alternatively, run an R script with the following code on Sherlock:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{r\_environ\_file\_path = file.path(Sys.getenv("HOME"), ".Renviron")}
-\NormalTok{if (!file.exists(r\_environ\_file\_path)) file.create(r\_environ\_file\_path)}
-
-\NormalTok{cat("\textbackslash{}nR\_LIBS=\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2",}
-\NormalTok{    file = r\_environ\_file\_path, sep = "\textbackslash{}n", append = TRUE)}
-\end{Highlighting}
-\end{Shaded}
 
 To load packages that run off of C++, you'll need to set the correct compiler options in your R environment.
 
 Open the Makevars file in Sherlock (\texttt{vi\ \textasciitilde{}/.R/Makevars}) and append the following lines
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\VariableTok{CXX14FLAGS}\OperatorTok{=}\NormalTok{{-}O3 }\ExtensionTok{{-}march=native} \AttributeTok{{-}mtune}\OperatorTok{=}\NormalTok{native }\AttributeTok{{-}fPIC}
-\VariableTok{CXX14}\OperatorTok{=}\NormalTok{g++}
-\end{Highlighting}
-\end{Shaded}
-
 Alternatively, create an R script with the following code, and run it on Sherlock:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dotR = file.path(Sys.getenv("HOME"), ".R")}
-\NormalTok{if (!file.exists(dotR)) dir.create(dotR)}
-
-\NormalTok{M = file.path(dotR, "Makevars")}
-\NormalTok{if (!file.exists(M)) file.create(M)}
-
-\NormalTok{cat("\textbackslash{}nCXX14FLAGS={-}O3 {-}march=native {-}mtune=native {-}fPIC",}
-\NormalTok{    "CXX14=g++",}
-\NormalTok{    file = M, sep = "\textbackslash{}n", append = TRUE)}
-\end{Highlighting}
-\end{Shaded}
 
 \section{Moving files to Sherlock}\label{moving-files-to-sherlock}
 
 The \texttt{\$HOME} directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the \texttt{\$SCRATCH} directory (quota: 100 TB per user). You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}. On the \texttt{\$SCRATCH} directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# note: the following steps should be done from your local }
-\CommentTok{\# (not after ssh{-}ing into sherlock)}
-
-\CommentTok{\# securely transfer folders from Box to sherlock home directory}
-\CommentTok{\# note: the {-}r option is for folders and is not needed for files}
-\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}1/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/}
-
-\CommentTok{\# securely transfer folders from Box to your sherlock scratch directory}
-\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}2/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/}
-
-\CommentTok{\# securely transfer folders from Box to our shared scratch directory}
-\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}3/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Installing packages on Sherlock}\label{installing-packages-on-sherlock}
 
 When you begin working on Sherlock, you will most likely encounter problems with installing packages. To install packages, login to Sherlock on the command line and open a development node using the command \texttt{sdev}. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ssh}\NormalTok{ USERNAME@login.sherlock.stanford.edu}
-
-\ExtensionTok{sdev}
-\end{Highlighting}
-\end{Shaded}
-
 There is a package installation \href{https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view}{file} explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to install packages once. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to install.packages to prevent the packages from locking after installation:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{PACKAGE NAME}\SpecialCharTok{\textgreater{}}\NormalTok{, }\AttributeTok{repos=}\NormalTok{“http}\SpecialCharTok{:}\ErrorTok{//}\NormalTok{cran.us.ur}\SpecialCharTok{{-}}\NormalTok{project.org”, }
-                  \AttributeTok{INSTALL\_opts =} \StringTok{"{-}{-}no{-}lock"")}
-\end{Highlighting}
-\end{Shaded}
 
 In order for some R packages to work on Sherlock, it is necessary to load specific software modules before running R. These must be loaded in Sherlock each time you want to use the package in R. For example, for spatial and random effects analyses, you may need the modules/packages below. These modules must also be loaded on the command line prior to opening R in order for package installation to work.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{module} \AttributeTok{{-}{-}force}\NormalTok{ purge }\CommentTok{\# remove any previously loaded modules, including math and devel}
-\ExtensionTok{module}\NormalTok{ load math}
-\ExtensionTok{module}\NormalTok{ load math gmp/6.1.2}
-\ExtensionTok{module}\NormalTok{ load devel}
-\ExtensionTok{module}\NormalTok{ load gcc/10}
-\ExtensionTok{module}\NormalTok{ load system}
-\ExtensionTok{module}\NormalTok{ load json{-}glib/1.4.4}
-\ExtensionTok{module}\NormalTok{ load curl/7.81.0}
-\ExtensionTok{module}\NormalTok{ load physics}
-\ExtensionTok{module}\NormalTok{ load physics udunits geos}
-\ExtensionTok{module}\NormalTok{ load physics gdal/2.2.1 }\CommentTok{\# for R/4.0.2}
-\ExtensionTok{module}\NormalTok{ load physics proj/4.9.3 }\CommentTok{\# for R/4.0.2}
-\ExtensionTok{module}\NormalTok{ load pandoc/2.7.3}
-
-\ExtensionTok{module}\NormalTok{ load R/4.0.2}
-
-\ExtensionTok{R} \CommentTok{\# Open R in the Shell window to install individual packages or test code}
-\ExtensionTok{Rscript}\NormalTok{ install{-}packages{-}sherlock.R }\CommentTok{\# Alternatively, run the entire package installation script in the Shell window}
-\end{Highlighting}
-\end{Shaded}
-
 Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the \texttt{module\ spider} command:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{module}\NormalTok{ spider DEPENDENCY NAME}
-\end{Highlighting}
-\end{Shaded}
 
 However, you can also reach out to the Sherlock team for help. You can email them at \href{mailto:srcc-support@stanford.edu}{\nolinkurl{srcc-support@stanford.edu}}. They also hold \href{https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours}{office hours}.
 
@@ -2932,22 +3005,6 @@ Both of the following ways to test code on Sherlock are recommended for making s
 There are two main ways to explore and test code on Sherlock. The first way is best for users who are comfortable working on the command line and editing code in base R. Even if you are not comfortable yet, this is probably the better way because these commands will transfer between Sherlock and other cluster computers using Slurm.
 
 Typically, you will want to initially test your scripts by initiating a development node using the command \texttt{sdev}. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# open development node}
-\ExtensionTok{sdev}
-
-\CommentTok{\# Load all the modules required by the packages you are using}
-\ExtensionTok{module}\NormalTok{ load MODULE NAME  }
-
-\CommentTok{\# Load R (default version)*}
-\ExtensionTok{module}\NormalTok{ load R }
-
-\CommentTok{\# initiate R in command line}
-\ExtensionTok{R}
-\end{Highlighting}
-\end{Shaded}
 
 *Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what version is being used for the project you are working on. Some packages only work with some versions of R, so it's best to keep it consistent.
 
@@ -2963,34 +3020,11 @@ Do NOT use the RStudio Server's Terminal to install packages, set your R environ
 
 In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# set sherlock{-}specific file paths}
-\ControlFlowTok{if}\KeywordTok{(}\ExtensionTok{Sys.getenv}\ErrorTok{(}\StringTok{"LMOD\_SYSHOST"}\KeywordTok{)}\ExtensionTok{==}\StringTok{"sherlock"}\KeywordTok{)\{}
-  
-  \ExtensionTok{sherlock\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{Sys.getenv}\ErrorTok{(}\StringTok{"HOME"}\KeywordTok{)}\ExtensionTok{,} \StringTok{"/malaria{-}project/"}\KeywordTok{)}
-  
-  \ExtensionTok{data\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{sherlock\_path,} \StringTok{"data/"}\KeywordTok{)}
-  \ExtensionTok{results\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{sherlock\_path,} \StringTok{"results/"}\KeywordTok{)}
-\KeywordTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Storage \& group storage access}\label{storage-group-storage-access}
 
 \subsection{Individual storage}\label{individual-storage}
 
 There are multiple places to store your files on Sherlock. Each user has their own \texttt{\$HOME} directory as well as a \texttt{\$SCRATCH} directory. These are directories that can be accessed via the command line once you've logged in to Sherlock:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{cd} \VariableTok{$HOME} 
-\BuiltInTok{cd}\NormalTok{ /home/users/USERNAME }\CommentTok{\# Alternatively, use the full path}
-
-\BuiltInTok{cd} \VariableTok{$SCRATCH}
-\BuiltInTok{cd}\NormalTok{ /scratch/users/USERNAME }\CommentTok{\# Full path}
-\end{Highlighting}
-\end{Shaded}
 
 You can also navigate to these using the File Explorer on Sherlock OnDemand.
 
@@ -3002,35 +3036,13 @@ You can read more about storage options on Sherlock \href{https://www.sherlock.s
 
 The lab also has a \texttt{\$GROUP\_HOME} and a \texttt{\$GROUP\_SCRATCH} to store files for collaborative use. \texttt{\$GROUP\_HOME} has a volume quota of 1 TB and infinite retention time, whereas \texttt{\$GROUP\_SCRATCH} has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{cd} \VariableTok{$GROUP\_HOME}
-\BuiltInTok{cd}\NormalTok{ /home/groups/jadebc}
-
-\BuiltInTok{cd} \VariableTok{$GROUP\_SCRATCH}
-\BuiltInTok{cd}\NormalTok{ /scratch/groups/jadebc}
-\end{Highlighting}
-\end{Shaded}
-
 However, saving files to group storage can be tricky. You can try using the scp command in the section ``Moving files to Sherlock'' to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.
 
 \subsection{Folder permissions}\label{folder-permissions}
 
 Generally, when we put folders in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, please check the folder's permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter \texttt{ls\ -l}. You will see output like this:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{drwxrwxrwx}\NormalTok{ 2 jadebc jadebc  2204 Jun 17 13:12 myfolder}
-\end{Highlighting}
-\end{Shaded}
-
 Please review \href{https://www.chriswrites.com/how-to-change-file-permissions-using-the-terminal/}{this website} to learn how to interpret the code on the left side of this output. The website also tells you how to change folder permissions. In order to ensure that all users and group members are able to access a folder's contents, you can use the following command:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{chmod}\NormalTok{ ugo+rwx FOLDER\_NAME}
-\end{Highlighting}
-\end{Shaded}
 
 \section{Running big jobs}\label{running-big-jobs-1}
 
@@ -3058,53 +3070,9 @@ Once your test scripts run successfully, you can submit an sbatch script for lar
 
 The file \texttt{analysis.out} will contain the log file for the R script \texttt{analysis.R}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#!/bin/bash}
-
-\CommentTok{\#SBATCH {-}{-}job{-}name=run\_inc}
-\CommentTok{\#SBATCH {-}{-}begin=now}
-\CommentTok{\#SBATCH {-}{-}dependency=singleton}
-\CommentTok{\#SBATCH {-}{-}mail{-}type=ALL}
-\CommentTok{\#SBATCH {-}{-}cpus{-}per{-}task=16}
-\CommentTok{\#SBATCH {-}{-}mem=64G}
-\CommentTok{\#SBATCH {-}{-}mem=64G}
-\CommentTok{\#SBATCH {-}{-}output=00{-}run\_inc\_log.out}
-\CommentTok{\#SBATCH {-}{-}time=47:59:00}
-
-\BuiltInTok{cd} \VariableTok{$HOME}\NormalTok{/malaria{-}code{-}repo/2{-}analysis/}
-
-\ExtensionTok{module}\NormalTok{ purge }
-
-\CommentTok{\# load R version 4.0.2 (required for certain packages)}
-\ExtensionTok{module}\NormalTok{ load R/4.0.2}
-
-\CommentTok{\# load gcc, a C++ compiler (required for certain packages)}
-\ExtensionTok{module}\NormalTok{ load gcc/10}
-
-\CommentTok{\# load software required for spatial analyses in R}
-\ExtensionTok{module}\NormalTok{ load physics gdal}
-\ExtensionTok{module}\NormalTok{ load physics proj}
-
-\ExtensionTok{R}\NormalTok{ CMD BATCH }\AttributeTok{{-}{-}no{-}save}\NormalTok{ analysis.R analysis.out}
-\end{Highlighting}
-\end{Shaded}
-
 To submit this job, save the code in the chunk above in a script called \texttt{myjob.sh} and then enter the following command into terminal:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{sbatch}\NormalTok{ myjob.sh }
-\end{Highlighting}
-\end{Shaded}
-
 To check on the status of your job, enter the following code into terminal:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{squeue} \AttributeTok{{-}u} \VariableTok{$USERNAME}
-\end{Highlighting}
-\end{Shaded}
 
 \chapter{Checklists}\label{checklists}
 
