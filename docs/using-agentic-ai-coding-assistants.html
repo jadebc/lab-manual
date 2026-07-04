@@ -124,6 +124,7 @@
 </ul></li>
 <li class="chapter" data-level="6" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html"><i class="fa fa-check"></i><b>6</b> Using agentic AI coding assistants</a>
 <ul>
+<li class="chapter" data-level="6.0.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#benjamin-chung-lab-policy-on-use-of-ai-in-research"><i class="fa fa-check"></i><b>6.0.1</b> Benjamin-Chung Lab Policy on use of AI in Research</a></li>
 <li class="chapter" data-level="6.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#three-key-issues"><i class="fa fa-check"></i><b>6.1</b> Three key issues</a></li>
 <li class="chapter" data-level="6.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#bottom-line"><i class="fa fa-check"></i><b>6.2</b> Bottom line</a>
 <ul>
@@ -372,14 +373,34 @@ code. This distinction matters for how we use these tools in research:</p>
 <li><strong>Chat-based help</strong> (e.g., asking a chatbot to explain a function or debug
 a pasted error) keeps you in the loop for every step. You decide what code
 to run, when, and where.</li>
-<li><strong>Agentic coding tools</strong> (e.g., Claude Code, Cursor) run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output — all with a degree of
+<li><strong>Agentic coding tools</strong> run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output — all with a degree of
 autonomy that you grant it. It can plan a multi-step task, write and execute code
 across several files, install packages, and run analyses with minimal
 intervention. This is powerful, but it also means more can happen without
-your direct review at each step. That’s why coding with these tools is called “vibe coding”.</li>
+your direct review at each step. That’s why coding with these tools is called “vibe coding”. Agentic tools include Claude Code, Codex, Gemini CLI, Cursor, and Github Co-Pilot.</li>
 </ul>
-<p>Both modes are useful. The rest of this chapter focuses on the agentic mode,
+<p>Both modes are useful. This chapter includes our Lab Policy on use of AI in Research and then discusses the rationale in detail with a focus on the agentic mode,
 since it raises issues that are new for our research workflows.</p>
+<div id="benjamin-chung-lab-policy-on-use-of-ai-in-research" class="section level3 hasAnchor" number="6.0.1">
+<h3><span class="header-section-number">6.0.1</span> Benjamin-Chung Lab Policy on use of AI in Research<a href="using-agentic-ai-coding-assistants.html#benjamin-chung-lab-policy-on-use-of-ai-in-research" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="policy-box">
+<ul>
+<li><strong>Lab members must use <a href="https://uit.stanford.edu/ai/connectors">Stanford-licensed enterprise AI tools</a></strong> (Claude for Education, ChatGPT Edu, Gemini Enterprise) for all research-related work involving lab data, code, or drafts. These tools carry Stanford’s data protection and institutional agreements; personal/free-tier accounts do not.</li>
+<li><strong>Tool choice must match the data risk level and requirements in the IRB protocol and Data Use Agreement, if applicable.</strong>
+<ul>
+<li><strong>Low risk</strong> (e.g., public data, non-sensitive code, general drafts): any Stanford-licensed enterprise tool may be used.</li>
+<li><strong>Moderate risk</strong> (e.g., de-identified data, unpublished results, internal code, grant/manuscript drafts): Stanford-licensed enterprise tools only — no personal or free-tier accounts.</li>
+<li><strong>High risk / PHI</strong> (e.g., identifiable or participant-level data, protected health information): only tools explicitly approved for this risk tier may be used, and only after confirming with Jade that the specific tool and use case are permitted under the project’s IRB protocol and data use agreement. Some Stanford-licensed tools may not be approved for PHI use even if generally approved for lab work — check before proceeding.</li>
+</ul></li>
+<li><strong>No lab data, code, or manuscripts can be used in non-approved tools.</strong> This includes participant data (even de-identified), unpublished results, grant drafts, IRB materials, and internal code — never paste or upload these into a personal ChatGPT account, a non-Stanford API key, or any tool outside the approved list.</li>
+<li><strong>Exceptions require prior disclosure and approval.</strong> If a project genuinely requires a tool outside the approved list, you must: Describe the tool and intended use to Jade in writing before use. Confirm what data, if any, would be shared with it. Get explicit sign-off before proceeding.</li>
+<li><strong>Agentic tools (Claude Code, Codex, Cowork, Gemini CLI, etc.) require extra caution.</strong> Because these tools can read, write, and execute code or take actions autonomously, always: Review generated code/output before running or committing it. Never grant an agentic tool access to production data, credentials, or shared drives without lab PI approval. Disclose if an agentic tool was used to produce analysis code, and document this in commit messages or code comments.</li>
+<li><strong>When in doubt, ask first.</strong> It’s always acceptable — and preferred — to check with Jade before using a new tool, rather than after.</li>
+<li><strong>You must complete a short quiz and agree to the lab’s AI use policy</strong> before using any AI tool for research in the <a href="https://forms.gle/6ZGJBDY9Qqq3Jn1j6">Benjamin-Chung Lab AI Use in Research Permission Form</a></li>
+<li><strong>Use of AI tools in research must be documented</strong> in the <a href="https://docs.google.com/forms/d/e/1FAIpQLScphiuDTkUXH0RVFFuj-I4KqgmxXP796MfV9mLeQ2uY8k9mgA/viewform?usp=publish-editor">Benjamin-Chung Lab AI Use in Research Documentation Form</a></li>
+</ul>
+</div>
+</div>
 <div id="three-key-issues" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Three key issues<a href="using-agentic-ai-coding-assistants.html#three-key-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">

@@ -44,3 +44,14 @@ blockquote {
   padding-left: 1em;
   margin-left: 0;
 }
+
+.policy-box {
+  background-color: #f4f4f4;
+  border-left: 5px solid #8B0000;
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  border-radius: 4px;
+}
+.policy-box p:first-child {
+  margin-top: 0;
+}

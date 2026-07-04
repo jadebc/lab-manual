@@ -606,15 +606,47 @@ code. This distinction matters for how we use these tools in research:
   a pasted error) keeps you in the loop for every step. You decide what code
   to run, when, and where.
 \item
-  \textbf{Agentic coding tools} (e.g., Claude Code, Cursor) run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output --- all with a degree of
+  \textbf{Agentic coding tools} run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output --- all with a degree of
   autonomy that you grant it. It can plan a multi-step task, write and execute code
   across several files, install packages, and run analyses with minimal
   intervention. This is powerful, but it also means more can happen without
-  your direct review at each step. That's why coding with these tools is called ``vibe coding''.
+  your direct review at each step. That's why coding with these tools is called ``vibe coding''. Agentic tools include Claude Code, Codex, Gemini CLI, Cursor, and Github Co-Pilot.
 \end{itemize}
 
-Both modes are useful. The rest of this chapter focuses on the agentic mode,
+Both modes are useful. This chapter includes our Lab Policy on use of AI in Research and then discusses the rationale in detail with a focus on the agentic mode,
 since it raises issues that are new for our research workflows.
+
+\subsection{Benjamin-Chung Lab Policy on use of AI in Research}\label{benjamin-chung-lab-policy-on-use-of-ai-in-research}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Lab members must use \href{https://uit.stanford.edu/ai/connectors}{Stanford-licensed enterprise AI tools}} (Claude for Education, ChatGPT Edu, Gemini Enterprise) for all research-related work involving lab data, code, or drafts. These tools carry Stanford's data protection and institutional agreements; personal/free-tier accounts do not.
+\item
+  \textbf{Tool choice must match the data risk level and requirements in the IRB protocol and Data Use Agreement, if applicable.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Low risk} (e.g., public data, non-sensitive code, general drafts): any Stanford-licensed enterprise tool may be used.
+  \item
+    \textbf{Moderate risk} (e.g., de-identified data, unpublished results, internal code, grant/manuscript drafts): Stanford-licensed enterprise tools only --- no personal or free-tier accounts.
+  \item
+    \textbf{High risk / PHI} (e.g., identifiable or participant-level data, protected health information): only tools explicitly approved for this risk tier may be used, and only after confirming with Jade that the specific tool and use case are permitted under the project's IRB protocol and data use agreement. Some Stanford-licensed tools may not be approved for PHI use even if generally approved for lab work --- check before proceeding.
+  \end{itemize}
+\item
+  \textbf{No lab data, code, or manuscripts can be used in non-approved tools.} This includes participant data (even de-identified), unpublished results, grant drafts, IRB materials, and internal code --- never paste or upload these into a personal ChatGPT account, a non-Stanford API key, or any tool outside the approved list.
+\item
+  \textbf{Exceptions require prior disclosure and approval.} If a project genuinely requires a tool outside the approved list, you must: Describe the tool and intended use to Jade in writing before use. Confirm what data, if any, would be shared with it. Get explicit sign-off before proceeding.
+\item
+  \textbf{Agentic tools (Claude Code, Codex, Cowork, Gemini CLI, etc.) require extra caution.} Because these tools can read, write, and execute code or take actions autonomously, always: Review generated code/output before running or committing it. Never grant an agentic tool access to production data, credentials, or shared drives without lab PI approval. Disclose if an agentic tool was used to produce analysis code, and document this in commit messages or code comments.
+\item
+  \textbf{When in doubt, ask first.} It's always acceptable --- and preferred --- to check with Jade before using a new tool, rather than after.
+\item
+  \textbf{You must complete a short quiz and agree to the lab's AI use policy} before using any AI tool for research in the \href{https://forms.gle/6ZGJBDY9Qqq3Jn1j6}{Benjamin-Chung Lab AI Use in Research Permission Form}
+\item
+  \textbf{Use of AI tools in research must be documented} in the \href{https://docs.google.com/forms/d/e/1FAIpQLScphiuDTkUXH0RVFFuj-I4KqgmxXP796MfV9mLeQ2uY8k9mgA/viewform?usp=publish-editor}{Benjamin-Chung Lab AI Use in Research Documentation Form}
+\end{itemize}
 
 \section{Three key issues}\label{three-key-issues}
 
