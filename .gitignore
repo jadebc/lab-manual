@@ -34,3 +34,6 @@ vignettes/*.pdf
 placeholder.Rcheck/
 placeholder*.tar.gz
 placeholder*.tgz
+
+# Mac OS
+.DS_Store

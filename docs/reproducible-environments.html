@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 Reproducible Environments | Benjamin-Chung Lab Manual</title>
+  <title>Chapter 15 Reproducible Environments | Using AI Coding Assistants in the Lab</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 Reproducible Environments | Benjamin-Chung Lab Manual" />
+  <meta property="og:title" content="Chapter 15 Reproducible Environments | Using AI Coding Assistants in the Lab" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 Reproducible Environments | Benjamin-Chung Lab Manual" />
+  <meta name="twitter:title" content="Chapter 15 Reproducible Environments | Using AI Coding Assistants in the Lab" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -50,73 +50,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
-<style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -183,208 +122,226 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="getting-started.html"><a href="getting-started.html#box"><i class="fa fa-check"></i><b>5.6</b> Box</a></li>
 <li class="chapter" data-level="5.7" data-path="getting-started.html"><a href="getting-started.html#a-typical-first-week"><i class="fa fa-check"></i><b>5.7</b> A typical first week</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>6</b> Code repositories</a>
+<li class="chapter" data-level="6" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html"><i class="fa fa-check"></i><b>6</b> Using agentic AI coding assistants</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>6.1</b> Project Structure</a></li>
-<li class="chapter" data-level="6.2" data-path="code-repositories.html"><a href="code-repositories.html#functions-folder"><i class="fa fa-check"></i><b>6.2</b> <code>0-functions</code> folder</a></li>
-<li class="chapter" data-level="6.3" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>6.3</b> <code>.Rproj</code> files</a></li>
-<li class="chapter" data-level="6.4" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>6.4</b> Configuration (‘config’) File</a></li>
-<li class="chapter" data-level="6.5" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>6.5</b> Order Files and Directories</a></li>
-<li class="chapter" data-level="6.6" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>6.6</b> Using Bash scripts to ensure reproducibility</a></li>
+<li class="chapter" data-level="6.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#three-key-issues"><i class="fa fa-check"></i><b>6.1</b> Three key issues</a></li>
+<li class="chapter" data-level="6.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#bottom-line"><i class="fa fa-check"></i><b>6.2</b> Bottom line</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#research-accuracy-and-the-value-of-experience"><i class="fa fa-check"></i><b>6.2.1</b> Research accuracy and the value of experience</a></li>
+<li class="chapter" data-level="6.2.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#impeding-learning-an-open-question"><i class="fa fa-check"></i><b>6.2.2</b> Impeding learning: an open question</a></li>
+<li class="chapter" data-level="6.2.3" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#data-safety-in-a-research-context"><i class="fa fa-check"></i><b>6.2.3</b> Data safety in a research context</a></li>
+<li class="chapter" data-level="6.2.4" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#what-these-prompts-actually-look-like"><i class="fa fa-check"></i><b>6.2.4</b> What these prompts actually look like</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>7</b> Coding practices</a>
+<li class="chapter" data-level="6.3" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#suggested-safeguards"><i class="fa fa-check"></i><b>6.3</b> Suggested safeguards</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>7.1</b> Organizing scripts</a></li>
-<li class="chapter" data-level="7.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>7.2</b> Documenting your code</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>7.2.1</b> File headers</a></li>
-<li class="chapter" data-level="7.2.2" data-path="coding-practices.html"><a href="coding-practices.html#sections-and-subsections"><i class="fa fa-check"></i><b>7.2.2</b> Sections and subsections</a></li>
-<li class="chapter" data-level="7.2.3" data-path="coding-practices.html"><a href="coding-practices.html#code-folding"><i class="fa fa-check"></i><b>7.2.3</b> Code folding</a></li>
-<li class="chapter" data-level="7.2.4" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>7.2.4</b> Comments in the body of your script</a></li>
-<li class="chapter" data-level="7.2.5" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>7.2.5</b> Function documentation</a></li>
+<li class="chapter" data-level="6.3.1" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#for-learning-and-skill-development"><i class="fa fa-check"></i><b>6.3.1</b> For learning and skill development</a></li>
+<li class="chapter" data-level="6.3.2" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#for-research-accuracy"><i class="fa fa-check"></i><b>6.3.2</b> For research accuracy</a></li>
+<li class="chapter" data-level="6.3.3" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#for-data-protection"><i class="fa fa-check"></i><b>6.3.3</b> For data protection</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>7.3</b> Object naming</a></li>
-<li class="chapter" data-level="7.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>7.4</b> Function calls</a></li>
-<li class="chapter" data-level="7.5" data-path="coding-practices.html"><a href="coding-practices.html#the-here-package"><i class="fa fa-check"></i><b>7.5</b> The here package</a></li>
-<li class="chapter" data-level="7.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>7.6</b> Reading/Saving Data</a>
-<ul>
-<li class="chapter" data-level="7.6.1" data-path="coding-practices.html"><a href="coding-practices.html#rds-vs-.rdata-files"><i class="fa fa-check"></i><b>7.6.1</b> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
-<li class="chapter" data-level="7.6.2" data-path="coding-practices.html"><a href="coding-practices.html#csvs"><i class="fa fa-check"></i><b>7.6.2</b> CSVs</a></li>
+<li class="chapter" data-level="6.4" data-path="using-agentic-ai-coding-assistants.html"><a href="using-agentic-ai-coding-assistants.html#know-your-target-journals-ai-policy-before-you-start"><i class="fa fa-check"></i><b>6.4</b> Know your target journal’s AI policy before you start</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>7.7</b> Tidyverse</a></li>
-<li class="chapter" data-level="7.8" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>7.8</b> Coding with R and Python</a></li>
-<li class="chapter" data-level="7.9" data-path="coding-practices.html"><a href="coding-practices.html#repeating-analyses-with-different-variations"><i class="fa fa-check"></i><b>7.9</b> Repeating analyses with different variations</a>
+<li class="chapter" data-level="7" data-path="code-repositories.html"><a href="code-repositories.html"><i class="fa fa-check"></i><b>7</b> Code repositories</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="coding-practices.html"><a href="coding-practices.html#lapply-and-sapply"><i class="fa fa-check"></i><b>7.9.1</b> <code>lapply()</code> and <code>sapply()</code></a></li>
-<li class="chapter" data-level="7.9.2" data-path="coding-practices.html"><a href="coding-practices.html#mapply-and-pmap"><i class="fa fa-check"></i><b>7.9.2</b> <code>mapply()</code> and <code>pmap()</code></a></li>
-<li class="chapter" data-level="7.9.3" data-path="coding-practices.html"><a href="coding-practices.html#parallel-processing-with-parallel-and-future-packages"><i class="fa fa-check"></i><b>7.9.3</b> Parallel processing with <code>parallel</code> and <code>future</code> packages</a></li>
+<li class="chapter" data-level="7.1" data-path="code-repositories.html"><a href="code-repositories.html#project-structure"><i class="fa fa-check"></i><b>7.1</b> Project Structure</a></li>
+<li class="chapter" data-level="7.2" data-path="code-repositories.html"><a href="code-repositories.html#functions-folder"><i class="fa fa-check"></i><b>7.2</b> <code>0-functions</code> folder</a></li>
+<li class="chapter" data-level="7.3" data-path="code-repositories.html"><a href="code-repositories.html#rproj-files"><i class="fa fa-check"></i><b>7.3</b> <code>.Rproj</code> files</a></li>
+<li class="chapter" data-level="7.4" data-path="code-repositories.html"><a href="code-repositories.html#configuration-config-file"><i class="fa fa-check"></i><b>7.4</b> Configuration (‘config’) File</a></li>
+<li class="chapter" data-level="7.5" data-path="code-repositories.html"><a href="code-repositories.html#order-files-and-directories"><i class="fa fa-check"></i><b>7.5</b> Order Files and Directories</a></li>
+<li class="chapter" data-level="7.6" data-path="code-repositories.html"><a href="code-repositories.html#using-bash-scripts-to-ensure-reproducibility"><i class="fa fa-check"></i><b>7.6</b> Using Bash scripts to ensure reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>7.10</b> Reviewing Code</a>
+<li class="chapter" data-level="8" data-path="coding-practices.html"><a href="coding-practices.html"><i class="fa fa-check"></i><b>8</b> Coding practices</a>
 <ul>
-<li class="chapter" data-level="7.10.1" data-path="coding-practices.html"><a href="coding-practices.html#why-we-review-code"><i class="fa fa-check"></i><b>7.10.1</b> Why we review code</a></li>
-<li class="chapter" data-level="7.10.2" data-path="coding-practices.html"><a href="coding-practices.html#what-to-look-for-in-a-code-review"><i class="fa fa-check"></i><b>7.10.2</b> What to look for in a code review</a></li>
-<li class="chapter" data-level="7.10.3" data-path="coding-practices.html"><a href="coding-practices.html#how-to-give-feedback"><i class="fa fa-check"></i><b>7.10.3</b> How to give feedback</a></li>
-<li class="chapter" data-level="7.10.4" data-path="coding-practices.html"><a href="coding-practices.html#when-to-approve"><i class="fa fa-check"></i><b>7.10.4</b> When to approve</a></li>
-<li class="chapter" data-level="7.10.5" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>7.10.5</b> Creating a Pull Request Template</a></li>
+<li class="chapter" data-level="8.1" data-path="coding-practices.html"><a href="coding-practices.html#organizing-scripts"><i class="fa fa-check"></i><b>8.1</b> Organizing scripts</a></li>
+<li class="chapter" data-level="8.2" data-path="coding-practices.html"><a href="coding-practices.html#documenting-your-code"><i class="fa fa-check"></i><b>8.2</b> Documenting your code</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="coding-practices.html"><a href="coding-practices.html#file-headers"><i class="fa fa-check"></i><b>8.2.1</b> File headers</a></li>
+<li class="chapter" data-level="8.2.2" data-path="coding-practices.html"><a href="coding-practices.html#sections-and-subsections"><i class="fa fa-check"></i><b>8.2.2</b> Sections and subsections</a></li>
+<li class="chapter" data-level="8.2.3" data-path="coding-practices.html"><a href="coding-practices.html#code-folding"><i class="fa fa-check"></i><b>8.2.3</b> Code folding</a></li>
+<li class="chapter" data-level="8.2.4" data-path="coding-practices.html"><a href="coding-practices.html#comments-in-the-body-of-your-script"><i class="fa fa-check"></i><b>8.2.4</b> Comments in the body of your script</a></li>
+<li class="chapter" data-level="8.2.5" data-path="coding-practices.html"><a href="coding-practices.html#function-documentation"><i class="fa fa-check"></i><b>8.2.5</b> Function documentation</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="coding-practices.html"><a href="coding-practices.html#object-naming"><i class="fa fa-check"></i><b>8.3</b> Object naming</a></li>
+<li class="chapter" data-level="8.4" data-path="coding-practices.html"><a href="coding-practices.html#function-calls"><i class="fa fa-check"></i><b>8.4</b> Function calls</a></li>
+<li class="chapter" data-level="8.5" data-path="coding-practices.html"><a href="coding-practices.html#the-here-package"><i class="fa fa-check"></i><b>8.5</b> The here package</a></li>
+<li class="chapter" data-level="8.6" data-path="coding-practices.html"><a href="coding-practices.html#readingsaving-data"><i class="fa fa-check"></i><b>8.6</b> Reading/Saving Data</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="coding-practices.html"><a href="coding-practices.html#rds-vs-.rdata-files"><i class="fa fa-check"></i><b>8.6.1</b> <code>.RDS</code> vs <code>.RData</code> Files</a></li>
+<li class="chapter" data-level="8.6.2" data-path="coding-practices.html"><a href="coding-practices.html#csvs"><i class="fa fa-check"></i><b>8.6.2</b> CSVs</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>8</b> Coding style</a>
+<li class="chapter" data-level="8.7" data-path="coding-practices.html"><a href="coding-practices.html#tidyverse"><i class="fa fa-check"></i><b>8.7</b> Tidyverse</a></li>
+<li class="chapter" data-level="8.8" data-path="coding-practices.html"><a href="coding-practices.html#coding-with-r-and-python"><i class="fa fa-check"></i><b>8.8</b> Coding with R and Python</a></li>
+<li class="chapter" data-level="8.9" data-path="coding-practices.html"><a href="coding-practices.html#repeating-analyses-with-different-variations"><i class="fa fa-check"></i><b>8.9</b> Repeating analyses with different variations</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>8.1</b> Comments</a></li>
-<li class="chapter" data-level="8.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>8.2</b> Line breaks</a></li>
-<li class="chapter" data-level="8.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>8.3</b> Automated Tools for Style and Project Workflow</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>8.3.1</b> Styling</a></li>
+<li class="chapter" data-level="8.9.1" data-path="coding-practices.html"><a href="coding-practices.html#lapply-and-sapply"><i class="fa fa-check"></i><b>8.9.1</b> <code>lapply()</code> and <code>sapply()</code></a></li>
+<li class="chapter" data-level="8.9.2" data-path="coding-practices.html"><a href="coding-practices.html#mapply-and-pmap"><i class="fa fa-check"></i><b>8.9.2</b> <code>mapply()</code> and <code>pmap()</code></a></li>
+<li class="chapter" data-level="8.9.3" data-path="coding-practices.html"><a href="coding-practices.html#parallel-processing-with-parallel-and-future-packages"><i class="fa fa-check"></i><b>8.9.3</b> Parallel processing with <code>parallel</code> and <code>future</code> packages</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>9</b> Working with Big Data</a>
+<li class="chapter" data-level="8.10" data-path="coding-practices.html"><a href="coding-practices.html#reviewing-code"><i class="fa fa-check"></i><b>8.10</b> Reviewing Code</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>9.1</b> The data.table package</a></li>
-<li class="chapter" data-level="9.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>9.2</b> Using downsampled data</a></li>
-<li class="chapter" data-level="9.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>9.3</b> Optimal RStudio set up</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html"><i class="fa fa-check"></i><b>10</b> Tidy evaluation and programming with dplyr</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#general-overview"><i class="fa fa-check"></i><b>10.1</b> General Overview</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#what-is-tidy-evaluation"><i class="fa fa-check"></i><b>10.1.1</b> What is Tidy Evaluation?</a></li>
-<li class="chapter" data-level="10.1.2" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#using-tidy-evaluation-for-data-masking"><i class="fa fa-check"></i><b>10.1.2</b> Using tidy evaluation for data masking</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#technical-overview"><i class="fa fa-check"></i><b>10.2</b> Technical Overview</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#example"><i class="fa fa-check"></i><b>10.2.1</b> Example</a></li>
+<li class="chapter" data-level="8.10.1" data-path="coding-practices.html"><a href="coding-practices.html#why-we-review-code"><i class="fa fa-check"></i><b>8.10.1</b> Why we review code</a></li>
+<li class="chapter" data-level="8.10.2" data-path="coding-practices.html"><a href="coding-practices.html#what-to-look-for-in-a-code-review"><i class="fa fa-check"></i><b>8.10.2</b> What to look for in a code review</a></li>
+<li class="chapter" data-level="8.10.3" data-path="coding-practices.html"><a href="coding-practices.html#how-to-give-feedback"><i class="fa fa-check"></i><b>8.10.3</b> How to give feedback</a></li>
+<li class="chapter" data-level="8.10.4" data-path="coding-practices.html"><a href="coding-practices.html#when-to-approve"><i class="fa fa-check"></i><b>8.10.4</b> When to approve</a></li>
+<li class="chapter" data-level="8.10.5" data-path="coding-practices.html"><a href="coding-practices.html#creating-a-pull-request-template"><i class="fa fa-check"></i><b>8.10.5</b> Creating a Pull Request Template</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html"><i class="fa fa-check"></i><b>11</b> Data validation and unit testing</a>
+<li class="chapter" data-level="9" data-path="coding-style.html"><a href="coding-style.html"><i class="fa fa-check"></i><b>9</b> Coding style</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#data-validation-with-assertions-in-analysis-scripts"><i class="fa fa-check"></i><b>11.1</b> Data validation with assertions in analysis scripts</a>
+<li class="chapter" data-level="9.1" data-path="coding-style.html"><a href="coding-style.html#comments"><i class="fa fa-check"></i><b>9.1</b> Comments</a></li>
+<li class="chapter" data-level="9.2" data-path="coding-style.html"><a href="coding-style.html#line-breaks"><i class="fa fa-check"></i><b>9.2</b> Line breaks</a></li>
+<li class="chapter" data-level="9.3" data-path="coding-style.html"><a href="coding-style.html#automated-tools-for-style-and-project-workflow"><i class="fa fa-check"></i><b>9.3</b> Automated Tools for Style and Project Workflow</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#after-merges-and-joins"><i class="fa fa-check"></i><b>11.1.1</b> After merges and joins</a></li>
-<li class="chapter" data-level="11.1.2" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#after-filters-and-subsets"><i class="fa fa-check"></i><b>11.1.2</b> After filters and subsets</a></li>
-<li class="chapter" data-level="11.1.3" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#after-variable-creation"><i class="fa fa-check"></i><b>11.1.3</b> After variable creation</a></li>
-<li class="chapter" data-level="11.1.4" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#checking-for-unexpected-missing-data"><i class="fa fa-check"></i><b>11.1.4</b> Checking for unexpected missing data</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#writing-a-validation-function"><i class="fa fa-check"></i><b>11.2</b> Writing a validation function</a></li>
-<li class="chapter" data-level="11.3" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#unit-testing-with-testthat"><i class="fa fa-check"></i><b>11.3</b> Unit testing with <code>testthat</code></a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#setting-up-unit-tests"><i class="fa fa-check"></i><b>11.3.1</b> Setting up unit tests</a></li>
-<li class="chapter" data-level="11.3.2" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#writing-unit-tests"><i class="fa fa-check"></i><b>11.3.2</b> Writing unit tests</a></li>
-<li class="chapter" data-level="11.3.3" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#running-tests"><i class="fa fa-check"></i><b>11.3.3</b> Running tests</a></li>
-<li class="chapter" data-level="11.3.4" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#what-to-test"><i class="fa fa-check"></i><b>11.3.4</b> What to test</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="data-validation-and-unit-testing.html"><a href="data-validation-and-unit-testing.html#summary-of-practices"><i class="fa fa-check"></i><b>11.4</b> Summary of practices</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>12</b> Github</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>12.1</b> Basics</a></li>
-<li class="chapter" data-level="12.2" data-path="github.html"><a href="github.html#github-desktop"><i class="fa fa-check"></i><b>12.2</b> Github Desktop</a></li>
-<li class="chapter" data-level="12.3" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>12.3</b> Git Branching</a></li>
-<li class="chapter" data-level="12.4" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>12.4</b> Example Workflow</a></li>
-<li class="chapter" data-level="12.5" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>12.5</b> Commonly Used Git Commands</a></li>
-<li class="chapter" data-level="12.6" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>12.6</b> How often should I commit?</a></li>
-<li class="chapter" data-level="12.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>12.7</b> What should be pushed to Github?</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>13</b> Unix commands</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>13.1</b> Basics</a></li>
-<li class="chapter" data-level="13.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>13.2</b> Syntax for both Mac/Windows</a></li>
-<li class="chapter" data-level="13.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>13.3</b> Running Bash Scripts</a></li>
-<li class="chapter" data-level="13.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>13.4</b> Running Rscripts in Windows</a>
-<ul>
-<li class="chapter" data-level="13.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>13.4.1</b> Common Mistakes</a></li>
-</ul></li>
-<li class="chapter" data-level="13.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>13.5</b> Checking tasks and killing jobs</a></li>
-<li class="chapter" data-level="13.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>13.6</b> Running big jobs</a>
-<ul>
-<li class="chapter" data-level="13.6.1" data-path="unix.html"><a href="unix.html#example-code-for-runfilesavelogs"><i class="fa fa-check"></i><b>13.6.1</b> Example code for <code>runfileSaveLogs</code></a></li>
-<li class="chapter" data-level="13.6.2" data-path="unix.html"><a href="unix.html#example-usage-for-runfilesavelogs"><i class="fa fa-check"></i><b>13.6.2</b> Example usage for <code>runfileSaveLogs</code></a></li>
+<li class="chapter" data-level="9.3.1" data-path="coding-style.html"><a href="coding-style.html#styling"><i class="fa fa-check"></i><b>9.3.1</b> Styling</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="reproducible-environments.html"><a href="reproducible-environments.html"><i class="fa fa-check"></i><b>14</b> Reproducible Environments</a>
+<li class="chapter" data-level="10" data-path="working-with-big-data.html"><a href="working-with-big-data.html"><i class="fa fa-check"></i><b>10</b> Working with Big Data</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="reproducible-environments.html"><a href="reproducible-environments.html#package-version-control-with-renv"><i class="fa fa-check"></i><b>14.1</b> Package Version Control with renv</a>
-<ul>
-<li class="chapter" data-level="14.1.1" data-path="reproducible-environments.html"><a href="reproducible-environments.html#introduction"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="reproducible-environments.html"><a href="reproducible-environments.html#implementing-renv-in-projects"><i class="fa fa-check"></i><b>14.1.2</b> Implementing renv in projects</a></li>
-<li class="chapter" data-level="14.1.3" data-path="reproducible-environments.html"><a href="reproducible-environments.html#using-projects-with-renv"><i class="fa fa-check"></i><b>14.1.3</b> Using projects with renv</a></li>
+<li class="chapter" data-level="10.1" data-path="working-with-big-data.html"><a href="working-with-big-data.html#the-data.table-package"><i class="fa fa-check"></i><b>10.1</b> The data.table package</a></li>
+<li class="chapter" data-level="10.2" data-path="working-with-big-data.html"><a href="working-with-big-data.html#using-downsampled-data"><i class="fa fa-check"></i><b>10.2</b> Using downsampled data</a></li>
+<li class="chapter" data-level="10.3" data-path="working-with-big-data.html"><a href="working-with-big-data.html#optimal-rstudio-set-up"><i class="fa fa-check"></i><b>10.3</b> Optimal RStudio set up</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="reproducible-environments.html"><a href="reproducible-environments.html#documenting-the-r-version"><i class="fa fa-check"></i><b>14.2</b> Documenting the R version</a></li>
-<li class="chapter" data-level="14.3" data-path="reproducible-environments.html"><a href="reproducible-environments.html#ensuring-consistency-between-local-and-cluster-environments"><i class="fa fa-check"></i><b>14.3</b> Ensuring consistency between local and cluster environments</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="code-publication.html"><a href="code-publication.html"><i class="fa fa-check"></i><b>15</b> Code Publication</a>
+<li class="chapter" data-level="11" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html"><i class="fa fa-check"></i><b>11</b> Tidy evaluation and programming with dplyr</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="code-publication.html"><a href="code-publication.html#checklist-overview"><i class="fa fa-check"></i><b>15.1</b> Checklist overview</a></li>
-<li class="chapter" data-level="15.2" data-path="code-publication.html"><a href="code-publication.html#fill-out-file-headers"><i class="fa fa-check"></i><b>15.2</b> Fill out file headers</a></li>
-<li class="chapter" data-level="15.3" data-path="code-publication.html"><a href="code-publication.html#clean-up-comments"><i class="fa fa-check"></i><b>15.3</b> Clean up comments</a></li>
-<li class="chapter" data-level="15.4" data-path="code-publication.html"><a href="code-publication.html#document-functions"><i class="fa fa-check"></i><b>15.4</b> Document functions</a></li>
-<li class="chapter" data-level="15.5" data-path="code-publication.html"><a href="code-publication.html#remove-deprecated-filepaths"><i class="fa fa-check"></i><b>15.5</b> Remove deprecated filepaths</a></li>
-<li class="chapter" data-level="15.6" data-path="code-publication.html"><a href="code-publication.html#ensure-project-runs-via-bash"><i class="fa fa-check"></i><b>15.6</b> Ensure project runs via bash</a></li>
-<li class="chapter" data-level="15.7" data-path="code-publication.html"><a href="code-publication.html#complete-the-readme"><i class="fa fa-check"></i><b>15.7</b> Complete the README</a></li>
-<li class="chapter" data-level="15.8" data-path="code-publication.html"><a href="code-publication.html#clean-up-feature-branches"><i class="fa fa-check"></i><b>15.8</b> Clean up feature branches</a></li>
-<li class="chapter" data-level="15.9" data-path="code-publication.html"><a href="code-publication.html#create-github-release"><i class="fa fa-check"></i><b>15.9</b> Create Github release</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="data-publication.html"><a href="data-publication.html"><i class="fa fa-check"></i><b>16</b> Data Publication</a>
+<li class="chapter" data-level="11.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#general-overview"><i class="fa fa-check"></i><b>11.1</b> General Overview</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="data-publication.html"><a href="data-publication.html#overview"><i class="fa fa-check"></i><b>16.1</b> Overview</a></li>
-<li class="chapter" data-level="16.2" data-path="data-publication.html"><a href="data-publication.html#removing-phi"><i class="fa fa-check"></i><b>16.2</b> Removing PHI</a>
-<ul>
-<li class="chapter" data-level="16.2.1" data-path="data-publication.html"><a href="data-publication.html#personal-information"><i class="fa fa-check"></i><b>16.2.1</b> Personal information</a></li>
-<li class="chapter" data-level="16.2.2" data-path="data-publication.html"><a href="data-publication.html#dates"><i class="fa fa-check"></i><b>16.2.2</b> Dates</a></li>
-<li class="chapter" data-level="16.2.3" data-path="data-publication.html"><a href="data-publication.html#geographic-information"><i class="fa fa-check"></i><b>16.2.3</b> Geographic information</a></li>
+<li class="chapter" data-level="11.1.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#what-is-tidy-evaluation"><i class="fa fa-check"></i><b>11.1.1</b> What is Tidy Evaluation?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#using-tidy-evaluation-for-data-masking"><i class="fa fa-check"></i><b>11.1.2</b> Using tidy evaluation for data masking</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="data-publication.html"><a href="data-publication.html#create-public-ids"><i class="fa fa-check"></i><b>16.3</b> Create public IDs</a>
+<li class="chapter" data-level="11.2" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#technical-overview"><i class="fa fa-check"></i><b>11.2</b> Technical Overview</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="data-publication.html"><a href="data-publication.html#rationale"><i class="fa fa-check"></i><b>16.3.1</b> Rationale</a></li>
-<li class="chapter" data-level="16.3.2" data-path="data-publication.html"><a href="data-publication.html#a-single-set-of-public-ids-for-each-study"><i class="fa fa-check"></i><b>16.3.2</b> A single set of public IDs for each study</a></li>
-<li class="chapter" data-level="16.3.3" data-path="data-publication.html"><a href="data-publication.html#example-scripts"><i class="fa fa-check"></i><b>16.3.3</b> Example scripts</a></li>
+<li class="chapter" data-level="11.2.1" data-path="tidy-evaluation-and-programming-with-dplyr.html"><a href="tidy-evaluation-and-programming-with-dplyr.html#example"><i class="fa fa-check"></i><b>11.2.1</b> Example</a></li>
 </ul></li>
-<li class="chapter" data-level="16.4" data-path="data-publication.html"><a href="data-publication.html#create-a-data-repository"><i class="fa fa-check"></i><b>16.4</b> Create a data repository</a>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-validation.html"><a href="data-validation.html"><i class="fa fa-check"></i><b>12</b> Data validation and unit testing</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="data-publication.html"><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository"><i class="fa fa-check"></i><b>16.4.1</b> Steps for creating an Open Science Framework (OSF) repository:</a></li>
-</ul></li>
-<li class="chapter" data-level="16.5" data-path="data-publication.html"><a href="data-publication.html#edit-and-test-analysis-scripts"><i class="fa fa-check"></i><b>16.5</b> Edit and test analysis scripts</a></li>
-<li class="chapter" data-level="16.6" data-path="data-publication.html"><a href="data-publication.html#create-a-public-github-page-for-public-scripts"><i class="fa fa-check"></i><b>16.6</b> Create a public GitHub page for public scripts</a></li>
-<li class="chapter" data-level="16.7" data-path="data-publication.html"><a href="data-publication.html#go-live"><i class="fa fa-check"></i><b>16.7</b> Go live</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="slurm.html"><a href="slurm.html"><i class="fa fa-check"></i><b>17</b> Slurm and cluster computing</a>
+<li class="chapter" data-level="12.1" data-path="data-validation.html"><a href="data-validation.html#data-validation-with-assertions-in-analysis-scripts"><i class="fa fa-check"></i><b>12.1</b> Data validation with assertions in analysis scripts</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="slurm.html"><a href="slurm.html#getting-started-1"><i class="fa fa-check"></i><b>17.1</b> Getting started</a>
-<ul>
-<li class="chapter" data-level="17.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>17.1.1</b> One-Time System Set-Up</a></li>
+<li class="chapter" data-level="12.1.1" data-path="data-validation.html"><a href="data-validation.html#after-merges-and-joins"><i class="fa fa-check"></i><b>12.1.1</b> After merges and joins</a></li>
+<li class="chapter" data-level="12.1.2" data-path="data-validation.html"><a href="data-validation.html#after-filters-and-subsets"><i class="fa fa-check"></i><b>12.1.2</b> After filters and subsets</a></li>
+<li class="chapter" data-level="12.1.3" data-path="data-validation.html"><a href="data-validation.html#after-variable-creation"><i class="fa fa-check"></i><b>12.1.3</b> After variable creation</a></li>
+<li class="chapter" data-level="12.1.4" data-path="data-validation.html"><a href="data-validation.html#checking-for-unexpected-missing-data"><i class="fa fa-check"></i><b>12.1.4</b> Checking for unexpected missing data</a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>17.2</b> Moving files to Sherlock</a></li>
-<li class="chapter" data-level="17.3" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>17.3</b> Installing packages on Sherlock</a></li>
-<li class="chapter" data-level="17.4" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>17.4</b> Testing your code</a>
+<li class="chapter" data-level="12.2" data-path="data-validation.html"><a href="data-validation.html#writing-a-validation-function"><i class="fa fa-check"></i><b>12.2</b> Writing a validation function</a></li>
+<li class="chapter" data-level="12.3" data-path="data-validation.html"><a href="data-validation.html#unit-testing-with-testthat"><i class="fa fa-check"></i><b>12.3</b> Unit testing with <code>testthat</code></a>
 <ul>
-<li class="chapter" data-level="17.4.1" data-path="slurm.html"><a href="slurm.html#the-command-line"><i class="fa fa-check"></i><b>17.4.1</b> The command line</a></li>
-<li class="chapter" data-level="17.4.2" data-path="slurm.html"><a href="slurm.html#the-sherlock-ondemand-dashboard"><i class="fa fa-check"></i><b>17.4.2</b> The Sherlock OnDemand Dashboard</a></li>
-<li class="chapter" data-level="17.4.3" data-path="slurm.html"><a href="slurm.html#filepaths-configuration-on-sherlock"><i class="fa fa-check"></i><b>17.4.3</b> Filepaths &amp; configuration on Sherlock</a></li>
+<li class="chapter" data-level="12.3.1" data-path="data-validation.html"><a href="data-validation.html#setting-up-unit-tests"><i class="fa fa-check"></i><b>12.3.1</b> Setting up unit tests</a></li>
+<li class="chapter" data-level="12.3.2" data-path="data-validation.html"><a href="data-validation.html#writing-unit-tests"><i class="fa fa-check"></i><b>12.3.2</b> Writing unit tests</a></li>
+<li class="chapter" data-level="12.3.3" data-path="data-validation.html"><a href="data-validation.html#running-tests"><i class="fa fa-check"></i><b>12.3.3</b> Running tests</a></li>
+<li class="chapter" data-level="12.3.4" data-path="data-validation.html"><a href="data-validation.html#what-to-test"><i class="fa fa-check"></i><b>12.3.4</b> What to test</a></li>
 </ul></li>
-<li class="chapter" data-level="17.5" data-path="slurm.html"><a href="slurm.html#storage-group-storage-access"><i class="fa fa-check"></i><b>17.5</b> Storage &amp; group storage access</a>
+<li class="chapter" data-level="12.4" data-path="data-validation.html"><a href="data-validation.html#summary-of-practices"><i class="fa fa-check"></i><b>12.4</b> Summary of practices</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>13</b> Github</a>
 <ul>
-<li class="chapter" data-level="17.5.1" data-path="slurm.html"><a href="slurm.html#individual-storage"><i class="fa fa-check"></i><b>17.5.1</b> Individual storage</a></li>
-<li class="chapter" data-level="17.5.2" data-path="slurm.html"><a href="slurm.html#group-storage"><i class="fa fa-check"></i><b>17.5.2</b> Group storage</a></li>
-<li class="chapter" data-level="17.5.3" data-path="slurm.html"><a href="slurm.html#folder-permissions"><i class="fa fa-check"></i><b>17.5.3</b> Folder permissions</a></li>
+<li class="chapter" data-level="13.1" data-path="github.html"><a href="github.html#basics"><i class="fa fa-check"></i><b>13.1</b> Basics</a></li>
+<li class="chapter" data-level="13.2" data-path="github.html"><a href="github.html#github-desktop"><i class="fa fa-check"></i><b>13.2</b> Github Desktop</a></li>
+<li class="chapter" data-level="13.3" data-path="github.html"><a href="github.html#git-branching"><i class="fa fa-check"></i><b>13.3</b> Git Branching</a></li>
+<li class="chapter" data-level="13.4" data-path="github.html"><a href="github.html#example-workflow"><i class="fa fa-check"></i><b>13.4</b> Example Workflow</a></li>
+<li class="chapter" data-level="13.5" data-path="github.html"><a href="github.html#commonly-used-git-commands"><i class="fa fa-check"></i><b>13.5</b> Commonly Used Git Commands</a></li>
+<li class="chapter" data-level="13.6" data-path="github.html"><a href="github.html#how-often-should-i-commit"><i class="fa fa-check"></i><b>13.6</b> How often should I commit?</a></li>
+<li class="chapter" data-level="13.7" data-path="github.html"><a href="github.html#what-should-be-pushed-to-github"><i class="fa fa-check"></i><b>13.7</b> What should be pushed to Github?</a></li>
 </ul></li>
-<li class="chapter" data-level="17.6" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>17.6</b> Running big jobs</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>18</b> Checklists</a>
+<li class="chapter" data-level="14" data-path="unix.html"><a href="unix.html"><i class="fa fa-check"></i><b>14</b> Unix commands</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="checklists.html"><a href="checklists.html#pre-analysis-plan-checklist"><i class="fa fa-check"></i><b>18.1</b> Pre-analysis plan checklist</a></li>
-<li class="chapter" data-level="18.2" data-path="checklists.html"><a href="checklists.html#code-checklist"><i class="fa fa-check"></i><b>18.2</b> Code checklist</a></li>
-<li class="chapter" data-level="18.3" data-path="checklists.html"><a href="checklists.html#manuscript-checklist"><i class="fa fa-check"></i><b>18.3</b> Manuscript checklist</a></li>
-<li class="chapter" data-level="18.4" data-path="checklists.html"><a href="checklists.html#figure-checklist"><i class="fa fa-check"></i><b>18.4</b> Figure checklist</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>19</b> Resources</a>
+<li class="chapter" data-level="14.1" data-path="unix.html"><a href="unix.html#basics-1"><i class="fa fa-check"></i><b>14.1</b> Basics</a></li>
+<li class="chapter" data-level="14.2" data-path="unix.html"><a href="unix.html#syntax-for-both-macwindows"><i class="fa fa-check"></i><b>14.2</b> Syntax for both Mac/Windows</a></li>
+<li class="chapter" data-level="14.3" data-path="unix.html"><a href="unix.html#running-bash-scripts"><i class="fa fa-check"></i><b>14.3</b> Running Bash Scripts</a></li>
+<li class="chapter" data-level="14.4" data-path="unix.html"><a href="unix.html#running-rscripts-in-windows"><i class="fa fa-check"></i><b>14.4</b> Running Rscripts in Windows</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>19.1</b> Resources for R</a></li>
-<li class="chapter" data-level="19.2" data-path="resources.html"><a href="resources.html#resources-for-git-github"><i class="fa fa-check"></i><b>19.2</b> Resources for Git &amp; Github</a></li>
-<li class="chapter" data-level="19.3" data-path="resources.html"><a href="resources.html#scientific-figures"><i class="fa fa-check"></i><b>19.3</b> Scientific figures</a></li>
-<li class="chapter" data-level="19.4" data-path="resources.html"><a href="resources.html#writing"><i class="fa fa-check"></i><b>19.4</b> Writing</a></li>
-<li class="chapter" data-level="19.5" data-path="resources.html"><a href="resources.html#presentations"><i class="fa fa-check"></i><b>19.5</b> Presentations</a></li>
-<li class="chapter" data-level="19.6" data-path="resources.html"><a href="resources.html#professional-advice"><i class="fa fa-check"></i><b>19.6</b> Professional advice</a></li>
-<li class="chapter" data-level="19.7" data-path="resources.html"><a href="resources.html#funding"><i class="fa fa-check"></i><b>19.7</b> Funding</a></li>
-<li class="chapter" data-level="19.8" data-path="resources.html"><a href="resources.html#ethics-and-global-health-research"><i class="fa fa-check"></i><b>19.8</b> Ethics and global health research</a></li>
+<li class="chapter" data-level="14.4.1" data-path="unix.html"><a href="unix.html#common-mistakes"><i class="fa fa-check"></i><b>14.4.1</b> Common Mistakes</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="unix.html"><a href="unix.html#checking-tasks-and-killing-jobs"><i class="fa fa-check"></i><b>14.5</b> Checking tasks and killing jobs</a></li>
+<li class="chapter" data-level="14.6" data-path="unix.html"><a href="unix.html#running-big-jobs"><i class="fa fa-check"></i><b>14.6</b> Running big jobs</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="unix.html"><a href="unix.html#example-code-for-runfilesavelogs"><i class="fa fa-check"></i><b>14.6.1</b> Example code for <code>runfileSaveLogs</code></a></li>
+<li class="chapter" data-level="14.6.2" data-path="unix.html"><a href="unix.html#example-usage-for-runfilesavelogs"><i class="fa fa-check"></i><b>14.6.2</b> Example usage for <code>runfileSaveLogs</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="reproducible-environments.html"><a href="reproducible-environments.html"><i class="fa fa-check"></i><b>15</b> Reproducible Environments</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="reproducible-environments.html"><a href="reproducible-environments.html#package-version-control-with-renv"><i class="fa fa-check"></i><b>15.1</b> Package Version Control with renv</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="reproducible-environments.html"><a href="reproducible-environments.html#introduction"><i class="fa fa-check"></i><b>15.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.1.2" data-path="reproducible-environments.html"><a href="reproducible-environments.html#implementing-renv-in-projects"><i class="fa fa-check"></i><b>15.1.2</b> Implementing renv in projects</a></li>
+<li class="chapter" data-level="15.1.3" data-path="reproducible-environments.html"><a href="reproducible-environments.html#using-projects-with-renv"><i class="fa fa-check"></i><b>15.1.3</b> Using projects with renv</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="reproducible-environments.html"><a href="reproducible-environments.html#documenting-the-r-version"><i class="fa fa-check"></i><b>15.2</b> Documenting the R version</a></li>
+<li class="chapter" data-level="15.3" data-path="reproducible-environments.html"><a href="reproducible-environments.html#ensuring-consistency-between-local-and-cluster-environments"><i class="fa fa-check"></i><b>15.3</b> Ensuring consistency between local and cluster environments</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="code-publication.html"><a href="code-publication.html"><i class="fa fa-check"></i><b>16</b> Code Publication</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="code-publication.html"><a href="code-publication.html#checklist-overview"><i class="fa fa-check"></i><b>16.1</b> Checklist overview</a></li>
+<li class="chapter" data-level="16.2" data-path="code-publication.html"><a href="code-publication.html#fill-out-file-headers"><i class="fa fa-check"></i><b>16.2</b> Fill out file headers</a></li>
+<li class="chapter" data-level="16.3" data-path="code-publication.html"><a href="code-publication.html#clean-up-comments"><i class="fa fa-check"></i><b>16.3</b> Clean up comments</a></li>
+<li class="chapter" data-level="16.4" data-path="code-publication.html"><a href="code-publication.html#document-functions"><i class="fa fa-check"></i><b>16.4</b> Document functions</a></li>
+<li class="chapter" data-level="16.5" data-path="code-publication.html"><a href="code-publication.html#remove-deprecated-filepaths"><i class="fa fa-check"></i><b>16.5</b> Remove deprecated filepaths</a></li>
+<li class="chapter" data-level="16.6" data-path="code-publication.html"><a href="code-publication.html#ensure-project-runs-via-bash"><i class="fa fa-check"></i><b>16.6</b> Ensure project runs via bash</a></li>
+<li class="chapter" data-level="16.7" data-path="code-publication.html"><a href="code-publication.html#complete-the-readme"><i class="fa fa-check"></i><b>16.7</b> Complete the README</a></li>
+<li class="chapter" data-level="16.8" data-path="code-publication.html"><a href="code-publication.html#clean-up-feature-branches"><i class="fa fa-check"></i><b>16.8</b> Clean up feature branches</a></li>
+<li class="chapter" data-level="16.9" data-path="code-publication.html"><a href="code-publication.html#create-github-release"><i class="fa fa-check"></i><b>16.9</b> Create Github release</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="data-publication.html"><a href="data-publication.html"><i class="fa fa-check"></i><b>17</b> Data Publication</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="data-publication.html"><a href="data-publication.html#overview"><i class="fa fa-check"></i><b>17.1</b> Overview</a></li>
+<li class="chapter" data-level="17.2" data-path="data-publication.html"><a href="data-publication.html#removing-phi"><i class="fa fa-check"></i><b>17.2</b> Removing PHI</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="data-publication.html"><a href="data-publication.html#personal-information"><i class="fa fa-check"></i><b>17.2.1</b> Personal information</a></li>
+<li class="chapter" data-level="17.2.2" data-path="data-publication.html"><a href="data-publication.html#dates"><i class="fa fa-check"></i><b>17.2.2</b> Dates</a></li>
+<li class="chapter" data-level="17.2.3" data-path="data-publication.html"><a href="data-publication.html#geographic-information"><i class="fa fa-check"></i><b>17.2.3</b> Geographic information</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="data-publication.html"><a href="data-publication.html#create-public-ids"><i class="fa fa-check"></i><b>17.3</b> Create public IDs</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="data-publication.html"><a href="data-publication.html#rationale"><i class="fa fa-check"></i><b>17.3.1</b> Rationale</a></li>
+<li class="chapter" data-level="17.3.2" data-path="data-publication.html"><a href="data-publication.html#a-single-set-of-public-ids-for-each-study"><i class="fa fa-check"></i><b>17.3.2</b> A single set of public IDs for each study</a></li>
+<li class="chapter" data-level="17.3.3" data-path="data-publication.html"><a href="data-publication.html#example-scripts"><i class="fa fa-check"></i><b>17.3.3</b> Example scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="data-publication.html"><a href="data-publication.html#create-a-data-repository"><i class="fa fa-check"></i><b>17.4</b> Create a data repository</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="data-publication.html"><a href="data-publication.html#steps-for-creating-an-open-science-framework-osf-repository"><i class="fa fa-check"></i><b>17.4.1</b> Steps for creating an Open Science Framework (OSF) repository:</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="data-publication.html"><a href="data-publication.html#edit-and-test-analysis-scripts"><i class="fa fa-check"></i><b>17.5</b> Edit and test analysis scripts</a></li>
+<li class="chapter" data-level="17.6" data-path="data-publication.html"><a href="data-publication.html#create-a-public-github-page-for-public-scripts"><i class="fa fa-check"></i><b>17.6</b> Create a public GitHub page for public scripts</a></li>
+<li class="chapter" data-level="17.7" data-path="data-publication.html"><a href="data-publication.html#go-live"><i class="fa fa-check"></i><b>17.7</b> Go live</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="slurm.html"><a href="slurm.html"><i class="fa fa-check"></i><b>18</b> Slurm and cluster computing</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="slurm.html"><a href="slurm.html#getting-started-1"><i class="fa fa-check"></i><b>18.1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="slurm.html"><a href="slurm.html#one-time-system-set-up"><i class="fa fa-check"></i><b>18.1.1</b> One-Time System Set-Up</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="slurm.html"><a href="slurm.html#moving-files-to-sherlock"><i class="fa fa-check"></i><b>18.2</b> Moving files to Sherlock</a></li>
+<li class="chapter" data-level="18.3" data-path="slurm.html"><a href="slurm.html#installing-packages-on-sherlock"><i class="fa fa-check"></i><b>18.3</b> Installing packages on Sherlock</a></li>
+<li class="chapter" data-level="18.4" data-path="slurm.html"><a href="slurm.html#testing-your-code"><i class="fa fa-check"></i><b>18.4</b> Testing your code</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="slurm.html"><a href="slurm.html#the-command-line"><i class="fa fa-check"></i><b>18.4.1</b> The command line</a></li>
+<li class="chapter" data-level="18.4.2" data-path="slurm.html"><a href="slurm.html#the-sherlock-ondemand-dashboard"><i class="fa fa-check"></i><b>18.4.2</b> The Sherlock OnDemand Dashboard</a></li>
+<li class="chapter" data-level="18.4.3" data-path="slurm.html"><a href="slurm.html#filepaths-configuration-on-sherlock"><i class="fa fa-check"></i><b>18.4.3</b> Filepaths &amp; configuration on Sherlock</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="slurm.html"><a href="slurm.html#storage-group-storage-access"><i class="fa fa-check"></i><b>18.5</b> Storage &amp; group storage access</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="slurm.html"><a href="slurm.html#individual-storage"><i class="fa fa-check"></i><b>18.5.1</b> Individual storage</a></li>
+<li class="chapter" data-level="18.5.2" data-path="slurm.html"><a href="slurm.html#group-storage"><i class="fa fa-check"></i><b>18.5.2</b> Group storage</a></li>
+<li class="chapter" data-level="18.5.3" data-path="slurm.html"><a href="slurm.html#folder-permissions"><i class="fa fa-check"></i><b>18.5.3</b> Folder permissions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="slurm.html"><a href="slurm.html#running-big-jobs-1"><i class="fa fa-check"></i><b>18.6</b> Running big jobs</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>19</b> Checklists</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="checklists.html"><a href="checklists.html#pre-analysis-plan-checklist"><i class="fa fa-check"></i><b>19.1</b> Pre-analysis plan checklist</a></li>
+<li class="chapter" data-level="19.2" data-path="checklists.html"><a href="checklists.html#code-checklist"><i class="fa fa-check"></i><b>19.2</b> Code checklist</a></li>
+<li class="chapter" data-level="19.3" data-path="checklists.html"><a href="checklists.html#manuscript-checklist"><i class="fa fa-check"></i><b>19.3</b> Manuscript checklist</a></li>
+<li class="chapter" data-level="19.4" data-path="checklists.html"><a href="checklists.html#figure-checklist"><i class="fa fa-check"></i><b>19.4</b> Figure checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>20</b> Resources</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="resources.html"><a href="resources.html#resources-for-r"><i class="fa fa-check"></i><b>20.1</b> Resources for R</a></li>
+<li class="chapter" data-level="20.2" data-path="resources.html"><a href="resources.html#resources-for-git-github"><i class="fa fa-check"></i><b>20.2</b> Resources for Git &amp; Github</a></li>
+<li class="chapter" data-level="20.3" data-path="resources.html"><a href="resources.html#scientific-figures"><i class="fa fa-check"></i><b>20.3</b> Scientific figures</a></li>
+<li class="chapter" data-level="20.4" data-path="resources.html"><a href="resources.html#writing"><i class="fa fa-check"></i><b>20.4</b> Writing</a></li>
+<li class="chapter" data-level="20.5" data-path="resources.html"><a href="resources.html#presentations"><i class="fa fa-check"></i><b>20.5</b> Presentations</a></li>
+<li class="chapter" data-level="20.6" data-path="resources.html"><a href="resources.html#professional-advice"><i class="fa fa-check"></i><b>20.6</b> Professional advice</a></li>
+<li class="chapter" data-level="20.7" data-path="resources.html"><a href="resources.html#funding"><i class="fa fa-check"></i><b>20.7</b> Funding</a></li>
+<li class="chapter" data-level="20.8" data-path="resources.html"><a href="resources.html#ethics-and-global-health-research"><i class="fa fa-check"></i><b>20.8</b> Ethics and global health research</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/jadebc/lab-manual" target="blank">Published with bookdown</a></li>
@@ -398,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Benjamin-Chung Lab Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Using AI Coding Assistants in the Lab</a>
           </h1>
         </div>
 
@@ -406,21 +363,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reproducible-environments" class="section level1 hasAnchor" number="14">
-<h1><span class="header-section-number">Chapter 14</span> Reproducible Environments<a href="reproducible-environments.html#reproducible-environments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="reproducible-environments" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Reproducible Environments<a href="reproducible-environments.html#reproducible-environments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>by Anna Nguyen and Jade Benjamin-Chung</p>
-<div id="package-version-control-with-renv" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> Package Version Control with renv<a href="reproducible-environments.html#package-version-control-with-renv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="introduction" class="section level3 hasAnchor" number="14.1.1">
-<h3><span class="header-section-number">14.1.1</span> Introduction<a href="reproducible-environments.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="package-version-control-with-renv" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Package Version Control with renv<a href="reproducible-environments.html#package-version-control-with-renv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction" class="section level3 hasAnchor" number="15.1.1">
+<h3><span class="header-section-number">15.1.1</span> Introduction<a href="reproducible-environments.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Replicable code should produce the same results, regardless of when or where it’s run. However, our analyses often leverage open-source R packages that are developed by other teams. These packages continue to be developed after research projects are completed, which may include changes to analysis functions that could impact how code runs for both other team members and external replicators.</p>
 <p>For example, suppose we had used a function that took in one argument, such that our code contained <code>example_function(arg_a = “a”)</code>. A few months after we publish our code, the package developers update the function to take in another mandatory argument <code>arg_b</code>. If someone runs our code, but has the most recent version of the package, they’ll receive an error message that the argument <code>arg_b</code> is missing and will not be able to full reproduce our results.</p>
 <p>To ensure that the right functions are used in replication efforts, it is important for us to keep track of package versions used in each project.</p>
 <p><code>renv</code> can be to promote reproducible environments within R projects. <code>renv</code> creates individual package libraries for each project instead of having all projects, which may use different versions of the same package, share the same package library. However, for projects that use many packages, this process can be memory intensive and increase the time needed for a new users to start running code.</p>
 <p>In this lab manual chapter, we provide a quick tutorial for integrating <code>renv</code> into research workflows. For more detailed instructions, please refer to the <code>renv</code> package vignette.</p>
 </div>
-<div id="implementing-renv-in-projects" class="section level3 hasAnchor" number="14.1.2">
-<h3><span class="header-section-number">14.1.2</span> Implementing renv in projects<a href="reproducible-environments.html#implementing-renv-in-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="implementing-renv-in-projects" class="section level3 hasAnchor" number="15.1.2">
+<h3><span class="header-section-number">15.1.2</span> Implementing renv in projects<a href="reproducible-environments.html#implementing-renv-in-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ideally, <code>renv</code> should be initiated at the start of projects and updated continuously when new packages are introduced in the codebase. However, this process can be initated at any point in a project</p>
 <p>To add <code>renv</code> to your workflow, follow these steps:</p>
 <ol style="list-style-type: decimal">
@@ -432,8 +389,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Add <code>renv::restore()</code> to the head of your config file, to make sure that all users that run your code are on the same package versions.</li>
 </ol>
 </div>
-<div id="using-projects-with-renv" class="section level3 hasAnchor" number="14.1.3">
-<h3><span class="header-section-number">14.1.3</span> Using projects with renv<a href="reproducible-environments.html#using-projects-with-renv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="using-projects-with-renv" class="section level3 hasAnchor" number="15.1.3">
+<h3><span class="header-section-number">15.1.3</span> Using projects with renv<a href="reproducible-environments.html#using-projects-with-renv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you’re starting to work on an ongoing project that already has <code>renv</code> set up, follow these steps to ensure that you’re using the same project versions.</p>
 <ol style="list-style-type: decimal">
 <li>Install the <code>renv</code> package by running <code>install.packages(“renv”)</code></li>
@@ -447,15 +404,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="documenting-the-r-version" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> Documenting the R version<a href="reproducible-environments.html#documenting-the-r-version" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="documenting-the-r-version" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Documenting the R version<a href="reproducible-environments.html#documenting-the-r-version" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>renv</code> tracks package versions but does not track the version of R itself. Since R updates can change behavior (e.g., changes to the default <code>stringsAsFactors</code> argument in R 4.0, or updates to the random number generator in R 3.6), it is important to document the R version used in each project.</p>
 <p>Add the following to your project’s README: <code>This project was developed using R version 4.3.1 (2023-06-16). Package versions are tracked with renv (see renv.lock).</code></p>
 <p>You can find your current R version by running <code>R.version.string</code> in the console. Update this line in the README whenever you upgrade R for a project.</p>
 <p>For published code, also include the R version in the <code>renv.lock</code> file header, which <code>renv</code> does automatically. Reviewers or replicators can then check whether their R version matches before attempting to reproduce results.</p>
 </div>
-<div id="ensuring-consistency-between-local-and-cluster-environments" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">14.3</span> Ensuring consistency between local and cluster environments<a href="reproducible-environments.html#ensuring-consistency-between-local-and-cluster-environments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ensuring-consistency-between-local-and-cluster-environments" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Ensuring consistency between local and cluster environments<a href="reproducible-environments.html#ensuring-consistency-between-local-and-cluster-environments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you develop code locally and run it on Sherlock, differences between your local R environment and the cluster environment can cause code to behave differently or fail. The most common sources of discrepancy are the R version, package versions, and system libraries.</p>
 <p><strong>Use the same R version on both.</strong> Check which R versions are available on Sherlock by running <code>module avail R</code> on the command line. Load a specific version with <code>module load R/4.3.1</code> (replacing with your version). If your local R version is not available on Sherlock, either update your local installation to match an available Sherlock version, or vice versa. Document the version you are using in your README.</p>
 <p><strong>Use <code>renv</code> on Sherlock.</strong> The same <code>renv.lock</code> file that tracks packages locally should be used on Sherlock. After cloning your repo on Sherlock, run <code>renv::restore()</code> to install the correct package versions. Note that some packages with compiled code (e.g., <code>data.table</code>, <code>Stan</code>-based packages) may need to be recompiled on Sherlock due to differences in the operating system and system libraries. If <code>renv::restore()</code> fails for specific packages, try installing them manually with <code>renv::install("package_name")</code> and then running <code>renv::snapshot()</code> to update the lock file.</p>
@@ -500,7 +457,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/jadebc/lab-manual/edit/master/13-reproducible-environments.Rmd",
+    "link": "https://github.com/jadebc/lab-manual/edit/master/14-reproducible-environments.Rmd",
     "text": "Edit"
   },
   "history": {

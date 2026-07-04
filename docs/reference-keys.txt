@@ -1,3 +1,4 @@
+tab:ai-journal-policies
 welcome-to-the-benjamin-chung-lab
 about-the-lab
 about-this-lab-manual
@@ -32,6 +33,18 @@ the-terminal
 sherlock
 box
 a-typical-first-week
+using-agentic-ai-coding-assistants
+three-key-issues
+bottom-line
+research-accuracy-and-the-value-of-experience
+impeding-learning-an-open-question
+data-safety-in-a-research-context
+what-these-prompts-actually-look-like
+suggested-safeguards
+for-learning-and-skill-development
+for-research-accuracy
+for-data-protection
+know-your-target-journals-ai-policy-before-you-start
 code-repositories
 project-structure
 functions-folder
@@ -82,7 +95,7 @@ what-is-tidy-evaluation
 using-tidy-evaluation-for-data-masking
 technical-overview
 example
-data-validation-and-unit-testing
+data-validation
 data-validation-with-assertions-in-analysis-scripts
 after-merges-and-joins
 after-filters-and-subsets

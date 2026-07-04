@@ -1,0 +1,349 @@
+---
+title: "Using AI Coding Assistants in the Lab"
+subtitle: "Benjamin-Chung Lab Manual"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Using agentic AI coding assistants
+
+Tools like Claude Code (and comparable agentic coding tools from other
+vendors) are different from asking a chatbot to help you write a snippet of
+code. This distinction matters for how we use these tools in research:
+
+- **Chat-based help** (e.g., asking a chatbot to explain a function or debug
+  a pasted error) keeps you in the loop for every step. You decide what code
+  to run, when, and where.
+- **Agentic coding tools** (e.g., Claude Code, Cursor) run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output — all with a degree of
+autonomy that you grant it. It can plan a multi-step task, write and execute code
+  across several files, install packages, and run analyses with minimal
+  intervention. This is powerful, but it also means more can happen without
+  your direct review at each step. That's why coding with these tools is called "vibe coding".
+
+Both modes are useful. The rest of this chapter focuses on the agentic mode,
+since it raises issues that are new for our research workflows.
+
+## Three key issues
+
+1. **Learning and skill development.** Heavy reliance on AI coding tools may
+   impede the development of coding fluency and statistical/computational
+   intuition — particularly for trainees who are still building these
+   skills.
+2. **Research accuracy.** Using these tools on datasets, analysis types, or
+   workflows you aren't already familiar with raises the risk of subtle
+   errors going undetected, because you may lack the intuition to recognize
+   when something looks wrong.
+3. **Data protection.** These tools can access files on your machine, which
+   introduces new and sometimes subtle data-handling risks in a research
+   context governed by IRB protocols, data use agreements, and participant
+   privacy commitments.
+
+Each is discussed in more detail below, along with suggested safeguards.
+
+## Bottom line
+
+AI coding assistants are a powerful addition to our computational toolkit,
+but they are not a substitute for the judgment that comes from hands-on
+coding experience, nor for careful attention to data governance. Use them
+deliberately: lean on them more for familiar, low-stakes tasks, and less for
+unfamiliar or high-stakes ones, with unit tests, replication checks, and
+careful permission review as standing practice regardless of experience
+level.
+
+**When in doubt about whether a workflow is compliant, ask Jade before proceeding.**
+
+### Research accuracy and the value of experience
+
+In 2026, most seasoned quantitative researchers have been writing code for a decade
+or more — tens of thousands of cumulative hours. There's a popular "rule" that it takes 10,000 hours to master a new skill-- equivalent to 5.5 years of full time work. That experience builds a kind of gut instinct: when you look at code, or watch it run, you develop a sense for what *might* be going wrong, even when nothing throws an obvious error. Examples of silent failures:
+
+- A merge that drops rows unexpectedly
+- A factor variable that got silently releveled
+- A date field parsed in the wrong timezone
+
+After dealing with these silent errors hundreds or thousands of times, the human brain recognizes the *shape* of a subtle bug before you can necessarily articulate exactly what it is. That experience is what lets seasoned researchers know what safeguards to put in place: 
+
+- Which unit tests are worth writing
+- Which portions of a work flow require human or independent agentic replication checks
+- Which outputs deserve a manual sanity check versus which can be trusted. 
+
+AI coding tools do not have this judgment about *your specific project*. They can write tests if asked, but deciding *which* tests matter for a given dataset or analysis is still a human judgment call, grounded in domain and data familiarity.
+
+This means the risk of using these tools is not constant. As your mentor, I am working on developing systems to help you learn when you might be in the **danger zone**. When you're in the danger zone, you are outside your area of established expertise, working with a new data source, an unfamiliar analysis method, or a computational workflow you haven't run by hand before. The challenge is, when you're new to a project or to a field of study, you're always in the **danger zone.** 
+
+### Impeding learning: an open question
+
+**Little to nothing is currently known about the pedagogy of learning to code with AI
+assistance versus learning to code without it.**  If you never manually write code —
+if you never sit with a bug for twenty minutes and slowly figure out that
+the join key had a leading whitespace — how do you develop the gut instinct
+described above? We don't know.
+
+It's also possible that this concern will turn out to be less important
+than it seems. The future of research computing may not involve much
+hands-on human coding at all. But even if that's true, we don't yet know
+*how* to teach someone — a rotation student, a new Research Assistant, a first-year PhD student — to "vibe code" well: to direct an AI tool effectively, to catch
+its mistakes, and to build sound judgment about when to trust its output.
+**Until the pedagogy of computational research with agentic AI exists, in our lab, we consider risks of agentic AI use to be high for early-career skill-building to be high.**
+
+### Data safety in a research context
+
+Claude Code and similar tools run locally and, with your permission, can
+read and modify files on your laptop — including, potentially, files
+containing participant-level data governed by IRB protocols and data use
+agreements.
+
+The practical risk is subtler than "the AI leaks your data." During a
+typical coding session, the tool may generate tens or even hundreds of
+permission requests (to read a file, run a command, install a package,
+access the network, etc.). These prompts are sometimes phrased in dense
+technical language that is genuinely hard to parse quickly. It is easy to
+click "allow" reflexively — especially late in a long session — and
+inadvertently grant access to a raw data directory, or permission to send
+data over the network (e.g., installing a package, calling an external
+API), without fully registering what you approved.
+
+This is not primarily a malicious-AI risk; it's a human-factors risk. The
+tool is doing what you told it to do, but "what you told it to do" is
+easy to misjudge when permission requests are frequent, fast, and
+technically dense.
+
+As of June 2026, [Stanford's Approved Connectors for AI Services](https://uit.stanford.edu/ai/connectors) have different different risk categories by different products. Note that Google and OpenAI can be used with High Risk [Protected Health Information (PHI)](https://med.stanford.edu/irt/security/stanfordinfo/hipaa.html) data, while using PHI with Claude requires routing through the Stanford AI API Gateway. If you are not sure whether you your project is using PHI, check with Jade before proceeding. 
+
+
+
+### What these prompts actually look like
+
+*Note: the following is based on Claude Code, but other agentic coding tools have similar permission prompts.*
+
+The prompt and approval interface differs depending on whether you're working in a terminal or
+a GUI/editor-based tool, but the underlying pattern is the same: 
+
+- **AI's own plain-English summary** of
+  the action, not a guarantee of what the command actually does. It's
+  usually accurate, but it can omit exactly the detail — a hardcoded file
+  path, a write to an unexpected directory — that matters for review.
+  Read the actual command or diff underneath, not just the summary.
+  ![](assets/images/claude-code-render-qmd.png)
+
+- **Long commands or file paths that are often truncated.** Claude Code may write a snippet of code and ask you for permission to run it, but it might not be in your project's language, and often these code snippets are not saved in your repository at all. For example, if you're working in an R codebase and ask it to double-check a calculation or validate an assumption, it might quietly reach for Python — writing a small throwaway script to cross-check the logic, run it, read the output, and then report back to you in English. That scratch script often never gets saved as a file you'd see in a pull request; it's more like a post-it note the AI wrote to itself, used once, and threw away. The problem is that if you don't read Python, you have no way to actually verify what that post-it note said or did — you're not reviewing the check, you're reviewing Claude's summary of the check. That might be perfectly fine for something low-stakes, but for a step that's supposed to be your safeguard against a subtle analytic error, it's worth pausing on: if you can't read the language a verification was written in, you aren't really approving the verification — you're approving a description of it, written by the same tool whose work it's supposed to be checking.
+  
+Here's an example from a code base entirely written in R, where Claude Code asked for permission to check for duplicates using a "post-it" note in Python. 
+  
+![](assets/images/claude-code-other-language.png)
+  
+- **"Always allow" sits right next to the one-time approval**, in the
+  terminal as option 2 of 3, and in the GUI as a persistent button with its
+  own keyboard shortcut. It's one keystroke away from a single-use
+  approval, which is exactly what makes reflexive over-granting easy,
+  especially late in a long session.
+  
+When Claude Code (or a similar AI coding assistant) asks for permission to
+run a command, recognizing the command itself — not just reading the
+plain-English gloss above it — is the fastest way to know what you're
+actually approving. The tables below are organized by risk level.
+
+
+<!-- | **Low-risk commands **|   || -->
+<!-- |---|---|---| -->
+<!-- | Command | What it does | Why it matters| -->
+<!-- | `ls`, `cat`, `head`, `tail` | List directory contents; print file contents || -->
+<!-- | `cd`, `pwd` | Change / print working directory || -->
+<!-- | `cp` | Copy files || -->
+<!-- | `\|` (pipe) | Send one command's output into another as input || -->
+<!-- | `&&` | Run the next command only if the previous one succeeded || -->
+<!-- | **High-risk commands** |   || -->
+<!-- | `rm` | Delete files | No undo. Watch for this near raw data paths | -->
+<!-- | `rm -rf` | Force-delete a directory and everything in it, no confirmation | The single riskiest pattern to recognize — `-rf` = recursive + force, can wipe a whole folder tree silently | -->
+<!-- | `mv` | Move files | Can silently overwrite a destination file with no confirmation | -->
+<!-- | `>`, `>>` | Redirect output to a file (overwrite / append) | `>` silently overwrites the entire target file's contents; easy to miss inside a longer command | -->
+<!-- | `sed -i`, `awk` | Edit files in place / process text | `-i` modifies the original file directly — no diff preview the way an Edit-tool prompt gives you | -->
+<!-- | `chmod` | Change file permissions | Can make a file world-readable/writable — relevant for data files that should stay restricted | -->
+<!-- | `chown` | Change file ownership | Rare in normal analysis work; worth a second look if it appears | -->
+<!-- | `find ... -exec` | Search for files, then run a command on each match | Can apply `rm`, `chmod`, etc. across many files at once — read the `-exec` clause carefully | -->
+<!-- | `curl`, `wget` | Download content from a URL | Network access — relevant if you're trying to keep data from leaving the machine | -->
+<!-- | `scp`, `rsync` | Copy files to/from a remote machine | Data transfer off your machine — deserves close scrutiny with unfamiliar destinations | -->
+<!-- | `git push`, `git commit` | Send code changes to version control / record a commit | Worth noticing if you didn't expect Claude to be committing on your behalf | -->
+<!-- | `sudo` | Run a command with administrator privileges | Rare and high-risk in a research computing context — should almost never be needed for data analysis | -->
+<!-- | `export` | Set an environment variable | Can be used to set API keys, credentials, or paths — worth checking what's being exported | -->
+
+```{r, echo=FALSE, message=FALSE}
+library(kableExtra)
+library(dplyr)
+
+# Percent widths are valid CSS but break LaTeX (% starts a comment there),
+# and backslash widths like \linewidth break kableExtra's own regex on the
+# next column_spec call — so for PDF use em widths (~28em usable text width).
+col_w <- function(pct) {
+  if (knitr::is_latex_output()) {
+    paste0(round(pct * 0.28), "em")
+  } else {
+    paste0(pct, "%")
+  }
+}
+
+cmds <- tribble(
+  ~Command, ~`What it does`, ~`Why it matters`,
+  "`ls`, `cat`, `head`, `tail`", "List directory contents; print file contents", "",
+  "`cd`, `pwd`", "Change / print working directory", "",
+  "`cp`", "Copy files", "",
+  "`|` (pipe)", "Send one command's output into another as input", "",
+  "`&&`", "Run the next command only if the previous one succeeded", "",
+  "`rm`", "Delete files", "No undo. Watch for this near raw data paths",
+  "`rm -rf`", "Force-delete a directory and everything in it, no confirmation", "Riskiest pattern to recognize — recursive + force, can wipe a folder tree silently",
+  "`mv`", "Move files", "Can silently overwrite a destination file",
+  "`>`, `>>`", "Redirect output to a file", "`>` silently overwrites the whole target file; easy to miss mid-command",
+  "`sed -i`, `awk`", "Edit files in place / process text", "`-i` modifies the original directly — no diff preview",
+  "`chmod`", "Change file permissions", "Can make a data file world-readable/writable",
+  "`chown`", "Change file ownership", "Rare in normal analysis work; worth a second look",
+  "`find ... -exec`", "Search files, run a command on each match", "Can apply `rm`/`chmod` across many files — read the `-exec` clause carefully",
+  "`curl`, `wget`", "Download content from a URL", "Network access — relevant if data shouldn't leave the machine",
+  "`scp`, `rsync`", "Copy files to/from a remote machine", "Data transfer off-machine — scrutinize unfamiliar destinations",
+  "`git push`, `git commit`", "Send code / record a commit", "Notice if Claude is committing on your behalf",
+  "`sudo`", "Run with admin privileges", "Should almost never be needed for data analysis",
+  "`export`", "Set an environment variable", "May set API keys/credentials — check what's exported"
+)
+
+cmds %>%
+  kbl() %>%
+  kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    full_width = FALSE,
+    font_size = 12
+  ) %>%
+  column_spec(1, width = col_w(18)) %>%
+  column_spec(2, width = col_w(40)) %>%
+  column_spec(3, width = col_w(42)) %>%
+  pack_rows("Low-risk commands", 1, 5, label_row_css = "background-color: #eee;") %>%
+  pack_rows("High-risk commands", 6, 18, label_row_css = "background-color: #f8d7da;")
+```
+
+## Suggested safeguards
+
+### For learning and skill development
+
+- **Spend meaningful time writing core analysis code by hand** before leaning on
+  agentic tools for that same type of task — e.g., write your first TMLE or
+  IPW pipeline yourself before asking an AI tool to generate one.
+- When using an AI tool for a task you're still learning, **ask it to
+  explain its reasoning**, not just produce output. Treat it as a tutor for
+  code you then re-derive yourself, not a black box.
+- Before fully letting agentic AI write a script for you, try writing out detailed pseudo-code -- aka, **a step-by-step plan for what the code should do**. Then ask the AI to implement that plan, and check that it actually does what you intended.
+
+### For research accuracy
+
+- **Match AI use to familiarity.** Use these tools most freely for
+  boilerplate, refactoring, and workflows you already know well. Increase
+  manual scrutiny — or avoid heavy AI use — for new datasets, unfamiliar
+  methods, or unfamiliar computational environments.
+- **Always require unit tests and replication checks** for AI-assisted
+  analysis code, especially for anything going into a manuscript or grant
+  deliverable. Ask the AI to write these tests, but have a human (ideally
+  someone senior on the project) confirm the tests actually check the right
+  things. Learn more in the chapter Data validation and unit testing  in Chapter \@ref(data-validation).
+- **Spot-check intermediate outputs**, not just final results — row counts
+  after joins/merges, variable distributions before and after recoding,
+  and sample sizes at each analytic step.
+- **Independent replication** for key analyses: have a second team member
+  reproduce a critical result from raw data, ideally without heavy reliance
+  on the same AI-generated code path. In the kind of research we do, the code most likely to lead to a lack of replication arises during data processing, i.e., converting survey data to the form needed for analyses. Two reasonable people or agents could make different assumptions, none of which are wrong, that result in different data. Replication brings these differences to light and allows them to be transparently reconciled. Learn more [here](https://gatesopenresearch-files.f1000.com/manuscripts/14274/333a74aa-51bb-44a9-af2b-209f67c2c425_13108_-_jade_benjamin-chung.pdf?doi=10.12688/gatesopenres.13108.1&gtmKey=GTM-MWFK8L5J&gtmAuth=hzk0Vc3qFsQYhCrIoHz68A&gtmPreview=env-1&immUserUrl=https%3A%2F%2Fgates-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F&otid=275477bf-f17b-474f-befe-635d8fa9661a&s3BucketUrl=https%3A%2F%2Fgatesopenresearch-files.f1000.com&submissionUrl=%2Ffor-authors%2Fpublish-your-research&transcendEnv=cm&transcendId=ef49a3f1-d8c1-47d6-88fc-50e41130631f&numberOfBrowsableCollections=5&numberOfBrowsableInstitutionalCollections=0&numberOfBrowsableGateways=14). 
+
+### For data protection
+
+- **Never point an AI coding tool at a directory containing raw
+  participant-level data** unless you have specifically confirmed this is
+  permitted under the relevant IRB protocol and data use agreement — and
+  ideally, work with de-identified or synthetic data during code
+  development, applying finished code to real data only in a controlled
+  step.
+- **Read permission prompts before approving them**, especially requests to
+  access the network, install packages, or read/write outside the current
+  project folder. When in doubt, ask Jade.
+- **Use project-level permission scoping**  (e.g.,
+  allow-listing specific directories or commands) rather than granting
+  broad or session-wide access.
+
+**When in doubt about whether a workflow is compliant, ask Jade before proceeding.**
+
+## Know your target journal's AI policy before you start
+Before you start a project that will be published in a peer-reviewed journal, keep in mind that you will likely need to disclose any AI assistance in your methods section, acknowledgments, or cover letter. Journal policies on AI use vary widely (see table below). 
+
+- Before relying on AI tools for a substantial part of your workflow, check the current policy for your intended journal to learn what it does and doesn't cover — a policy permitting AI for language editing is not the same as one permitting it for analysis or figure generation. 
+- Document what tools you use throughout the project so you can disclose them at the time of journal submission. 
+- Given how quickly tools are changing, you'll need to check the policy again closer to submission.
+
+Here is an example of the type of acknowledgement language you might include in a manuscript:
+
+>Claude (Sonnet 4.6, Anthropic) was used for language editing and improving clarity of expression. Claude Code (Sonnet 4.6, Anthropic) was used to assist with data processing, statistical coding, and figure and table generation. All code was reviewed by two independent team members to verify accuracy and reproducibility. These tools were not used to develop research questions, interpret findings, or draw conclusions. The authors take full responsibility for the interpretations, conclusions, accuracy, and integrity of the work.
+
+The following was generated by Claude in July 2026: 
+
+```{r ai-journal-policies, echo=FALSE}
+library(knitr)
+library(kableExtra)
+
+ai_policies <- data.frame(
+  Publisher = c(
+    "Springer Nature", "PLOS", "Elsevier/Lancet", "BMJ", "Oxford UP", "Wiley",
+    "ACS", "ASM", "AAAS/Science", "F1000",
+    "ASTMH", "APHA", "eLife", "NIEHS", "Wolters Kluwer", "Cambridge UP"
+  ),
+  Journals = c(
+    "Nature, Nat. Comms/Med/Health, Sci. Reports, BMC, Discover Env.",
+    "Glob. Public Health, Medicine, NTD",
+    "Lancet GH/PH, eBioMed, eClinicalMed, Vaccine, IJHEH, Heliyon",
+    "BMJ Open, BMJ Glob. Health",
+    "AJE, IJE, Epi Reviews, CID, JID, OFID",
+    "Stats in Med, TMIH, Paediatric & Perinatal Epi",
+    "Env. Sci. & Tech.",
+    "Applied & Env. Micro.",
+    "Science",
+    "Gates Open Research",
+    "AJTMH", "AJPH", "eLife", "EHP", "Epidemiology", "J. Clin. & Trans. Sci."
+  ),
+  Policy = c(
+    "\U0001F6AB Authorship; \u2705 copy-edit w/ disclosure; name tool + use in Methods",
+    "\U0001F6AB Authorship; tool/use/validation disclosed in Methods/Ack.",
+    "\U0001F6AB Authorship; \u2705 copy-edit w/ disclosure; declaration before references",
+    "\U0001F6AB Authorship; described in manuscript + flagged at submission",
+    "\U0001F6AB Authorship; \u2705 coding/analysis w/ disclosure; cover letter + Methods/Ack.",
+    "\U0001F6AB Authorship; \u2705 copy-edit w/ disclosure; \U0001F6AB data alteration; Methods/Ack. if substantial",
+    "\U0001F6AB Authorship; disclosed in Ack., Methods if substantial",
+    "\U0001F6AB Authorship; cover letter + Materials & Methods",
+    "\U0001F6AB Authorship; cover letter + Ack. + full prompts in Methods",
+    "\U0001F6AB Authorship; not detailed \u2014 check w/ editor",
+    "\u2753 Not located \u2014 verify before use",
+    "\u2753 Not located; \U0001F5BC\uFE0F AI images must be disclosed",
+    "\u2753 Not located \u2014 verify before use",
+    "\u2753 Not located \u2014 verify before use",
+    "\u2753 Not located \u2014 verify before use",
+    "\u2753 Not located \u2014 verify before use"
+  ),
+  stringsAsFactors = FALSE
+)
+
+ai_policies %>%
+  kbl(
+    col.names = c("Publisher", "Journals", "Policy (\U0001F6AB not permitted / \u2705 allowed w/ disclosure / \u2753 not addressed)"),
+    caption = "Journal AI policies as of proposal writing \u2014 policies change, verify current policy before heavy AI use."
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    full_width = FALSE,
+    font_size = 12
+  ) %>%
+  column_spec(1, width = col_w(15)) %>%
+  column_spec(2, width = col_w(30)) %>%
+  column_spec(3, width = col_w(55)) %>%
+  pack_rows("Policy documented", 1, 10, label_row_css = "background-color: #eee;") %>%
+  pack_rows("Policy not yet located \u2014 check before use", 11, 16, label_row_css = "background-color: #f8d7da;")
+```
+*Sources: publisher policy pages accessed July 2026 (springernature.com, journals.plos.org, elsevier.com, authors-bmj-com, academic.oup.com, wiley.com, researcher-resources.acs.org, journals.asm.org, science.org, f1000research.com). Cells marked "not located" should be re-checked directly before submission — this space is evolving fast.*
+
