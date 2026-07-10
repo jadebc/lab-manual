@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 428 527.1" style="enable-background:new 0 0 428 527.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#EEEDFE;stroke:#534AB7;stroke-width:0.45;stroke-miterlimit:3.6;}
+	.st1{fill:#3C3489;}
+	.st2{font-family:'ArialMT';}
+	.st3{font-size:12.6px;}
+	.st4{fill:#534AB7;}
+	.st5{font-size:10.8px;}
+	.st6{fill:#F1EFE8;stroke:#5F5E5A;stroke-width:0.45;stroke-miterlimit:3.6;}
+	.st7{fill:#444441;}
+	.st8{fill:#5F5E5A;}
+	.st9{fill:#E1F5EE;stroke:#0F6E56;stroke-width:0.45;stroke-miterlimit:3.6;}
+	.st10{fill:#085041;}
+	.st11{fill:#0F6E56;}
+	.st12{fill:#FAEEDA;stroke:#854F0B;stroke-width:0.45;stroke-miterlimit:3.6;}
+	.st13{fill:#633806;}
+	.st14{fill:#854F0B;}
+	.st15{fill:#FAECE7;stroke:#993C1D;stroke-width:0.45;stroke-miterlimit:3.6;}
+	.st16{fill:#712B13;}
+	.st17{fill:#993C1D;}
+	.st18{fill:none;}
+	.st19{fill:#EDF4FC;stroke:#534AB7;stroke-width:0.45;stroke-miterlimit:3.6;}
+	.st20{fill:#356687;}
+	.st21{fill:none;stroke:#666666;stroke-miterlimit:10;}
+	.st22{fill:#666666;}
+</style>
+<g>
+	<path class="st0" d="M29.8,258.6h133.3c3.2,0,5.8,3.2,5.8,7.2v48.6c0,4-2.6,7.2-5.8,7.2H29.8c-3.2,0-5.8-3.2-5.8-7.2v-48.6
+		C24,261.8,26.6,258.6,29.8,258.6z"/>
+	<text transform="matrix(1 0 0 1 76.1324 281.1023)" class="st1 st2 st3">GitHub</text>
+	<text transform="matrix(1 0 0 1 31.5728 310.4026)" class="st4 st2 st5">Track changes, collaborate</text>
+</g>
+<g>
+	<path class="st6" d="M267.2,257.4h129.6c4,0,7.2,3.2,7.2,7.2v48.6c0,4-3.2,7.2-7.2,7.2H267.2c-4,0-7.2-3.2-7.2-7.2v-48.6
+		C260,260.7,263.2,257.4,267.2,257.4z"/>
+	<text transform="matrix(1 0 0 1 308.5375 303.5799)" class="st7 st2 st3">Terminal</text>
+	<text transform="matrix(1 0 0 1 284.3357 314.5674)" class="st8 st2 st5">Run scripts, connect</text>
+</g>
+<g>
+	<path class="st9" d="M136.8,399.5h156.6c4,0,7.2,3.2,7.2,7.2v48.6c0,4-3.2,7.2-7.2,7.2H136.8c-4,0-7.2-3.2-7.2-7.2v-48.6
+		C129.6,402.7,132.9,399.5,136.8,399.5z"/>
+	<text transform="matrix(1 0 0 1 190.6196 421.9513)" class="st10 st2 st3">Sherlock</text>
+	<text transform="matrix(1 0 0 1 166.0669 452.3525)" class="st11 st2 st5">Large jobs on cluster</text>
+</g>
+<g>
+	<path class="st12" d="M55,20.1h85c2.3,0,4.1,3.2,4.1,7.2v48.6c0,4-1.9,7.2-4.1,7.2H55c-2.3,0-4.1-3.2-4.1-7.2V27.3
+		C50.9,23.3,52.7,20.1,55,20.1z"/>
+	<text transform="matrix(1 0 0 1 86.3669 42.6118)" class="st13 st2 st3">Box</text>
+	<text transform="matrix(1 0 0 1 61.2678 76.6254)" class="st14 st2 st5">Store data files</text>
+</g>
+<g>
+	<path class="st15" d="M278.4,19.8h121c2.9,0,5.3,3.2,5.3,7.2v48.6c0,4-2.4,7.2-5.3,7.2h-121c-2.9,0-5.3-3.2-5.3-7.2V27
+		C273.1,23,275.5,19.8,278.4,19.8z"/>
+	<text transform="matrix(1 0 0 1 307.7452 42.2784)" class="st16 st2 st3">Manuscript</text>
+	<text transform="matrix(1 0 0 1 284.8331 60.2784)" class="st17 st2 st5">Tables, figures, results</text>
+</g>
+<path class="st18" d=""/>
+<path class="st18" d="M47.7,253.3l4.9,3.2l-4.9,3.2"/>
+<path marker-end="url(#arrow)" class="st18" d="M52.6,256.5"/>
+<text transform="matrix(0.8015 -0.598 0.598 0.8015 46.532 243.446)" class="st2 st5">Push your code</text>
+<path class="st18" d=""/>
+<path class="st18" d="M207.9,253.3l4.9,3.2l-4.9,3.2"/>
+<path marker-end="url(#arrow)" class="st18" d="M212.8,256.5"/>
+<text transform="matrix(0.7204 0.6936 -0.6936 0.7204 262.724 204.4639)" class="st2 st5">Run scripts</text>
+<path class="st18" d=""/>
+<path class="st18" d="M306.9,286.6l4.9,3.2l-4.9,3.2"/>
+<path marker-end="url(#arrow)" class="st18" d="M311.8,289.8"/>
+<text transform="matrix(0.7587 -0.6514 0.6514 0.7587 269.9317 379.5662)" class="st2 st5">Transfer data</text>
+<path class="st18" d=""/>
+<path class="st18" d="M155.7,184.9l4.9,3.2l-4.9,3.2"/>
+<path marker-end="url(#arrow)" class="st18" d="M160.6,188.1"/>
+<text transform="matrix(0.7933 0.6088 -0.6088 0.7933 124.7461 87.265)" class="st2 st5">Read data</text>
+<path class="st18" d=""/>
+<path class="st18" d="M310.7,17.7l4.9,3.2l-4.9,3.2"/>
+<path marker-end="url(#arrow)" class="st18" d="M315.6,21"/>
+<text transform="matrix(0.7788 -0.6273 0.6273 0.7788 280.2891 397.2219)" class="st2 st5">Transfer results to local</text>
+<text transform="matrix(1 0 0 1 138.8413 489.7585)" class="st2 st5">How the tools in our lab typically connect</text>
+<text transform="matrix(1 0 0 1 16.9878 505.9587)" class="st2 st5">Most of your time is spent in RStudio; the other tools support the workflow around it</text>
+<g>
+	<path class="st19" d="M129.3,127.8h165.6c4,0,7.2,3.2,7.2,7.2v48.6c0,4-3.2,7.2-7.2,7.2H129.3c-4,0-7.2-3.2-7.2-7.2V135
+		C122.1,131.1,125.3,127.8,129.3,127.8z"/>
+	<text transform="matrix(1 0 0 1 192.4483 150.3332)" class="st20 st2 st3">RStudio</text>
+	<text transform="matrix(1 0 0 1 162.422 180.3332)" class="st20 st2 st5">Write and run R code</text>
+</g>
+<g>
+	<g>
+		<line class="st21" x1="125.6" y1="189.3" x2="36.6" y2="254.7"/>
+		<g>
+			<path class="st22" d="M31.8,258.3c1.7-2.5,3.4-6.1,4.1-8.9l1.4,4.9l4.2,2.8C38.6,256.8,34.7,257.5,31.8,258.3z"/>
+		</g>
+	</g>
+</g>
+<image style="overflow:visible;" width="379" height="133" xlink:href="../../../../Downloads/rstudio.png"  transform="matrix(0.223 0 0 0.223 170.5558 134.6348)">
+</image>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="52.7" y="266.6" width="88.9" height="28"/>
+	</defs>
+	<clipPath id="SVGID_00000167391480571253020080000002263766945055544727_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	
+		<g transform="matrix(1 0 0 1 0 -1.525879e-05)" style="clip-path:url(#SVGID_00000167391480571253020080000002263766945055544727_);">
+		
+			<image style="overflow:visible;" width="900" height="500" xlink:href="../../../../Downloads/github.png"  transform="matrix(9.870000e-02 0 0 9.870000e-02 52.3898 255.4023)">
+		</image>
+	</g>
+</g>
+<image style="overflow:visible;" width="512" height="512" xlink:href="../../../../Downloads/box logo.png"  transform="matrix(8.203125e-02 0 0 8.203125e-02 77.2536 22.9301)">
+</image>
+<image style="overflow:visible;" width="248" height="203" xlink:href="../../../../Downloads/terminal.png"  transform="matrix(0.1459 0 0 0.1459 314.6668 261.4279)">
+</image>
+<image style="overflow:visible;" width="153" height="44" xlink:href="../../../../Downloads/Screenshot 2026-03-16 at 8.56.56 AM.png"  transform="matrix(0.4293 0 0 0.4293 183.083 409.5292)">
+</image>
+<g>
+	<g>
+		<line class="st21" x1="154" y1="193.6" x2="65.1" y2="259"/>
+		<g>
+			<path class="st22" d="M158.9,190c-2.9,0.8-6.8,1.5-9.7,1.2l4.2,2.8l1.4,4.8C155.4,196.1,157.2,192.6,158.9,190z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(0.8015 -0.598 0.598 0.8015 84.7039 240.3024)" class="st2 st5">Pull code</text>
+<g>
+	<g>
+		<line class="st21" x1="245" y1="194.5" x2="309.2" y2="254.7"/>
+		<g>
+			<path class="st22" d="M240.6,190.4c1.4,2.7,2.7,6.4,3,9.3l2-4.6l4.5-2.3C247.2,192.6,243.4,191.5,240.6,190.4z"/>
+		</g>
+		<g>
+			<path class="st22" d="M313.6,258.8c-2.8-1.2-6.6-2.3-9.5-2.4l4.5-2.3l2-4.6C310.9,252.4,312.2,256.1,313.6,258.8z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(0.6874 0.7263 -0.7263 0.6874 94.1464 333.7193)" class="st2 st5">Pull your code</text>
+<g>
+	<g>
+		<line class="st21" x1="165.8" y1="123.9" x2="112.7" y2="83.2"/>
+		<g>
+			<path class="st22" d="M170.6,127.5c-1.6-2.6-3.3-6.1-3.9-9l-1.5,4.8l-4.3,2.7C163.8,125.9,167.7,126.6,170.6,127.5z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st21" x1="76.9" y1="322.5" x2="146.3" y2="396.1"/>
+		<g>
+			<path class="st22" d="M150.4,400.5c-2.7-1.3-6.4-2.7-9.3-3l4.6-2l2.3-4.5C148.1,394,149.2,397.8,150.4,400.5z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st21" x1="346.9" y1="320.5" x2="253.8" y2="396.7"/>
+		<g>
+			<path class="st22" d="M249.1,400.5c1.5-2.6,3.1-6.2,3.6-9.1l1.7,4.8l4.3,2.6C255.8,398.7,252,399.6,249.1,400.5z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st21" x1="373.3" y1="325.3" x2="282.9" y2="399.6"/>
+		<g>
+			<path class="st22" d="M378,321.4c-2.9,1-6.7,1.8-9.6,1.8l4.3,2.6l1.7,4.8C374.9,327.7,376.5,324,378,321.4z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st21" x1="143.3" y1="48.5" x2="266.2" y2="48.5"/>
+		<g>
+			<path class="st22" d="M272.2,48.5c-2.8,1.1-6.4,2.9-8.5,4.8l1.7-4.8l-1.7-4.8C265.8,45.7,269.4,47.5,272.2,48.5z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 185.0415 43.9574)" class="st2 st5">Results</text>
+<g>
+	<g>
+		<line class="st21" x1="140.7" y1="127.6" x2="87.6" y2="86.9"/>
+		<g>
+			<path class="st22" d="M82.8,83.3c2.9,0.9,6.8,1.6,9.7,1.4l-4.3,2.7l-1.5,4.8C86.1,89.4,84.4,85.8,82.8,83.3z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(0.7933 0.6088 -0.6088 0.7933 95.9341 89.195)" class="st2 st5">Save results</text>
+</svg>
