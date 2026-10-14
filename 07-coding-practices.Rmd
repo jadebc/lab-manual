@@ -84,13 +84,19 @@ The header tells you what the function does, its various inputs, and how you mig
 
 ## Object naming
 
-Generally we recommend using nouns for objects and verbs for functions. This is because functions are performing actions, while objects are not. 
+Generally we recommend using nouns for objects (e.g., variables) and verbs for functions. This is because functions are performing actions, while objects are not. 
 
 Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable `vaxcov_1718`, try naming it `vaccination_coverage_2017_18`. Similarly, `flu_res` could be named `absentee_flu_residuals`, making your code more readable and explicit.
 
 - For more help, check out [Be Expressive: How to Give Your Variables Better Names](https://spin.atomicobject.com/2017/11/01/good-variable-names/)
 
-We recommend you use **Snake_Case**.  
+The example below illustrates these principles applied to survey data: a consistent prefix (`bl_` for baseline) marks every variable from the same survey wave, related variables share a consistent order (`bl_delivery_[detail]`) so they scan as one set, and full, meaningful words replace cryptic shorthand.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("assets/images/variable-naming-example.png")
+```
+
+We recommend you use **Snake_Case**.
 
 - Base R allows `.` in variable names and functions (such as `read.csv()`), but this goes against best practices for variable naming in many other coding languages. For consistency's sake, `snake_case` has been adopted across languages, and modern packages and functions typically use it (i.e. `readr::read_csv()`). As a very general rule of thumb, if a package you're using doesn't use `snake_case`, there may be an updated version or more modern package that _does_, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.
 
