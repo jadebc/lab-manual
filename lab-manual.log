@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.22)  10 JUL 2026 12:25
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.22)  14 OCT 2026 12:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,40 +819,40 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ) (./lab-manual.aux)
 \openout1 = `lab-manual.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 151.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 151.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 151.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 151.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 151.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 151.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 144.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 151.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 144.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -883,7 +883,7 @@ pt=math;language=dflt;"
 pt=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 151.
+(Font)              scaled to size 10.0pt on input line 144.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -926,18 +926,18 @@ ath.otf]/OT:script=math;language=dflt;+ssty=1;"
 pt=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 151.
+(Font)              scaled to size 10.0pt on input line 144.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 151.
+(Font)              `operators' in the math version `normal' on input line 144.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 151.
+ line 144.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 151.
+(Font)              `operators' in the math version `bold' on input line 144.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 151.
+t line 144.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -1011,15 +1011,15 @@ ript=math;language=dflt;"<6-8.5>s*[1.000096459334209]"[latinmodern-math.otf]/OT
 t=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 151.
+(Font)              `symbols' in the math version `normal' on input line 144.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 151.
+t line 144.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 151.
+(Font)              `symbols' in the math version `bold' on input line 144.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 151.
+t line 144.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -1088,26 +1088,26 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-51.
+44.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 151.
+t line 144.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 151
+(Font)              `largesymbols' in the math version `bold' on input line 144
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 151.
+t line 144.
 Package microtype Info: Patching varwidth to enable character protrusion.
 \MT@vwid@leftmargin=\dimen265
 \MT@vwid@rightmargin=\dimen266
-LaTeX Info: Redefining \microtypecontext on input line 151.
-Package microtype Info: Applying patch `item' on input line 151.
-Package microtype Info: Applying patch `toc' on input line 151.
-Package microtype Info: Applying patch `eqnum' on input line 151.
-Package microtype Info: Applying patch `footnote' on input line 151.
-Package microtype Info: Applying patch `verbatim' on input line 151.
-LaTeX Info: Redefining \microtypesetup on input line 151.
+LaTeX Info: Redefining \microtypecontext on input line 144.
+Package microtype Info: Applying patch `item' on input line 144.
+Package microtype Info: Applying patch `toc' on input line 144.
+Package microtype Info: Applying patch `eqnum' on input line 144.
+Package microtype Info: Applying patch `footnote' on input line 144.
+Package microtype Info: Applying patch `verbatim' on input line 144.
+LaTeX Info: Redefining \microtypesetup on input line 144.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1118,38 +1118,38 @@ Package microtype Info: No adjustment of kerning.
 File: mt-LatinModernRoman.cfg 2026/02/26 v1.2 microtype config. file: Latin Mod
 ern Roman (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 151.
+Package hyperref Info: Link coloring OFF on input line 144.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 153.
+(Font)              scaled to size 12.0pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 153.
+(Font)              scaled to size 8.0pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 153.
+(Font)              scaled to size 6.0pt on input line 146.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-53.
+46.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 153.
+(Font)              scaled to size 12.0011pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 153.
+(Font)              scaled to size 8.00073pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 153.
+(Font)              scaled to size 6.00055pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 153.
+(Font)              scaled to size 11.99872pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 153.
+(Font)              scaled to size 7.99915pt on input line 146.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 153.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 153
+(Font)              scaled to size 5.99936pt on input line 146.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 146
 .
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 153
+LaTeX Font Info:    Trying to load font information for U+msb on input line 146
 .
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1203,7 +1203,7 @@ File: assets/images/repro-threats.png Graphic file (type bmp)
 File: assets/images/repro-vision.png Graphic file (type bmp)
 <assets/images/repro-vision.png>
 
-Package hyperref Warning: Suppressing link with empty target on input line 332.
+Package hyperref Warning: Suppressing link with empty target on input line 325.
 
 
 [14] [15]
@@ -1229,13 +1229,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 Chapter 6.
 [25]
-Underfull \hbox (badness 1838) in paragraph at lines 675--677
+Underfull \hbox (badness 1838) in paragraph at lines 668--670
 []\TU/lmr/bx/n/10 Follow lab guidelines on Agentic AI permissions: \TU/lmr/m/n/
 10 Always
  []
 
 [26]
-Underfull \hbox (badness 1314) in paragraph at lines 698--703
+Underfull \hbox (badness 1314) in paragraph at lines 691--696
 \TU/lmr/m/n/10 tools may impede the development of coding fluency and statisti-
 
  []
@@ -1245,23 +1245,23 @@ File: lab-manual_files/assets/images/claude-code-render-qmd.png Graphic file (t
 ype bmp)
 <lab-manual_files/assets/images/claude-code-render-qmd.png>
 
-Underfull \hbox (badness 1953) in paragraph at lines 849--856
+Underfull \hbox (badness 1953) in paragraph at lines 842--849
 []\TU/lmr/bx/n/10 AI’s own plain-English summary \TU/lmr/m/n/10 of the action, 
 not a guar-
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 849--856
+Underfull \hbox (badness 1048) in paragraph at lines 842--849
 \TU/lmr/m/n/10 antee of what the command actually does. It’s usually accurate,
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 849--856
+Underfull \hbox (badness 1755) in paragraph at lines 842--849
 \TU/lmr/m/n/10 but it can omit exactly the detail — a hardcoded file path, a
  []
 
 
-Underfull \hbox (badness 2790) in paragraph at lines 849--856
+Underfull \hbox (badness 2790) in paragraph at lines 842--849
 \TU/lmr/m/n/10 the actual command or diff underneath, not just the summary.
  []
 
@@ -1273,26 +1273,26 @@ File: lab-manual_files/assets/images/claude-code-other-language.png Graphic fil
 e (type bmp)
 <lab-manual_files/assets/images/claude-code-other-language.png>
 [30]
-Overfull \hbox (27.79999pt too wide) in paragraph at lines 901--947
+Overfull \hbox (27.79999pt too wide) in paragraph at lines 894--940
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 145.79987pt on input line 947.
+LaTeX Warning: Float too large for page by 145.79987pt on input line 940.
 
 [31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1029
+Underfull \hbox (badness 10000) in paragraph at lines 1018--1022
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
 []\TU/lmr/bx/n/10 Use project-level permission scoping \TU/lmr/m/n/10 instead o
 f granting
  []
 
 
-Underfull \hbox (badness 2556) in paragraph at lines 1029--1030
+Underfull \hbox (badness 2556) in paragraph at lines 1022--1023
 \TU/lmtt/m/n/10 .claude/settings.json \TU/lmr/m/n/10 (allow-listing specific di
 rectories and com-
  []
@@ -1301,19 +1301,19 @@ rectories and com-
 Underfull \vbox (badness 2600) has occurred while \output is active []
 
 [33]
-Overfull \hbox (3.83202pt too wide) in paragraph at lines 1088--1091
+Overfull \hbox (3.83202pt too wide) in paragraph at lines 1081--1084
 []\TU/lmr/m/n/10 For each code repository, set up permissions by saving a \TU/l
 mtt/m/n/10 .claude/settings.json
  []
 
 [34]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1094.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1087.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [35]
-Underfull \hbox (badness 1603) in paragraph at lines 1153--1154
+Underfull \hbox (badness 1603) in paragraph at lines 1146--1147
 \TU/lmr/m/n/10 script is particularly computationally intensive or destructive,
  you
  []
@@ -1332,7 +1332,7 @@ ex-text;!
 Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
 ex-text;!
 [37]
-Overfull \hbox (0.528pt too wide) in paragraph at lines 1279--1279
+Overfull \hbox (0.528pt too wide) in paragraph at lines 1272--1272
 []|\TU/lmr/m/n/12 Publisher|  
  []
 
@@ -1343,7 +1343,7 @@ ex-text;!
 Missing character: There is no ❓ (U+2753) in font [lmroman12-regular]:mapping=t
 ex-text;!
 
-Overfull \hbox (12.756pt too wide) in paragraph at lines 1283--1283
+Overfull \hbox (12.756pt too wide) in paragraph at lines 1276--1276
 \TU/lmr/m/n/12 Comms/Med/Health, 
  []
 
@@ -1354,7 +1354,7 @@ ex-text;!
 Missing character: There is no 🚫 (U+1F6AB) in font [lmroman12-regular]:mapping=
 tex-text;!
 
-Overfull \hbox (11.59201pt too wide) in paragraph at lines 1287--1287
+Overfull \hbox (11.59201pt too wide) in paragraph at lines 1280--1280
 \TU/lmr/m/n/12 vier/Lancet|  
  []
 
@@ -1379,7 +1379,7 @@ tex-text;!
 Missing character: There is no 🚫 (U+1F6AB) in font [lmroman12-regular]:mapping=
 tex-text;!
 
-Overfull \hbox (27.588pt too wide) in paragraph at lines 1299--1299
+Overfull \hbox (27.588pt too wide) in paragraph at lines 1292--1292
 \TU/lmr/m/n/12 AAAS/Science|  
  []
 
@@ -1404,12 +1404,12 @@ ex-text;!
 Missing character: There is no ❓ (U+2753) in font [lmroman12-regular]:mapping=t
 ex-text;!
 
-Overfull \hbox (15.79999pt too wide) in paragraph at lines 1277--1318
+Overfull \hbox (15.79999pt too wide) in paragraph at lines 1270--1311
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 158.75989pt on input line 1318.
+LaTeX Warning: Float too large for page by 158.75989pt on input line 1311.
 
 [38]
 Overfull \hbox (16.37122pt too wide) has occurred while \output is active
@@ -1423,14 +1423,14 @@ Overfull \hbox (16.37122pt too wide) has occurred while \output is active
 Chapter 7.
 [41]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1374.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1367.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [42] [43] [44]
 Chapter 8.
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1465--1465
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
@@ -1438,37 +1438,37 @@ Overfull \hbox (75.0pt too wide) in paragraph at lines 1472--1472
 [45
 
 ]
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1465--1465
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1495
+Underfull \hbox (badness 10000) in paragraph at lines 1487--1488
 []\TU/lmtt/m/n/10 # This is a comment -- first letter is capitalized and spaced
 
  []
 
 [46]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 1521--1521
+Overfull \hbox (1.5pt too wide) in paragraph at lines 1514--1514
 []\TU/lmtt/m/n/10 #[] and the number of patients with an outcome, the total pat
 ients,[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1521--1521
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1514--1514
 []\TU/lmtt/m/n/10 #[] @param data A data frame with variables flu_season, site,
  studyID, and yname.[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1521--1521
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1514--1514
 []\TU/lmtt/m/n/10 #[] @param silent A boolean specifying whether the function s
 hould suppress[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1521--1521
+Overfull \hbox (38.25pt too wide) in paragraph at lines 1514--1514
 []\TU/lmtt/m/n/10 #[] @return A data frame with columns for flu season, site, o
 utcome count,[] 
  []
@@ -1478,27 +1478,27 @@ Underfull \vbox (badness 1577) has occurred while \output is active []
 
 [48]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1581.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1574.
 [49]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 1628--1629
+Overfull \hbox (6.75pt too wide) in paragraph at lines 1621--1622
 \TU/lmtt/m/n/10 dplyr::filter(get_rows_condition)|  
  []
 
 
 ignored: Infinite glue shrinkage found in box being split [50] [51] [52]
-Overfull \hbox (80.25pt too wide) in paragraph at lines 1751--1751
+Overfull \hbox (80.25pt too wide) in paragraph at lines 1744--1744
 []  \TU/lmtt/m/n/10 result <- lapply(X = mylist2, FUN = function(y) square_sum(
 mylist1[[1]][i], y))[] 
  []
 
 [53]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1781--1781
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1774--1774
 []\TU/lmtt/m/n/10 # Set how many processors will be used to process the list an
 d make cluster[] 
  []
 
 [54] [55]
-Underfull \hbox (badness 2478) in paragraph at lines 1849--1850
+Underfull \hbox (badness 2478) in paragraph at lines 1842--1843
 []\TU/lmr/m/n/10 Are random seeds set where relevant (e.g., bootstrapping, cros
 s-
  []
@@ -1506,13 +1506,13 @@ s-
 [56] [57] [58]
 Chapter 9.
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1968--1968
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1961--1961
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1968--1968
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1961--1961
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
@@ -1520,61 +1520,61 @@ Overfull \hbox (75.0pt too wide) in paragraph at lines 1968--1968
 [59
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1986--1987
+Underfull \hbox (badness 10000) in paragraph at lines 1979--1980
 []\TU/lmtt/m/n/10 # This is a comment -- first letter is capitalized and spaced
 
  []
 
 
-Overfull \hbox (42.25pt too wide) in paragraph at lines 2028--2028
+Overfull \hbox (42.25pt too wide) in paragraph at lines 2021--2021
  []  \TU/lmtt/m/n/10 mutate(program = case_when(schoolyr %in% pre_program_schoo
 lyrs ~ 0,[] 
  []
 
 
-Overfull \hbox (47.5pt too wide) in paragraph at lines 2028--2028
+Overfull \hbox (47.5pt too wide) in paragraph at lines 2021--2021
  []                             \TU/lmtt/m/n/10 schoolyr %in% program_schoolyrs
  ~ 1)) %>%[] 
  []
 
 
-Overfull \hbox (37.0pt too wide) in paragraph at lines 2028--2028
+Overfull \hbox (37.0pt too wide) in paragraph at lines 2021--2021
  []  \TU/lmtt/m/n/10 mutate(period = case_when(schoolyr %in% pre_program_school
 yrs ~ 0,[] 
  []
 
 
-Overfull \hbox (0.25pt too wide) in paragraph at lines 2028--2028
+Overfull \hbox (0.25pt too wide) in paragraph at lines 2021--2021
  []                            \TU/lmtt/m/n/10 schoolyr %in% LAIV_schoolyrs ~ 1
 ,[] 
  []
 
 
-Overfull \hbox (21.25pt too wide) in paragraph at lines 2028--2028
+Overfull \hbox (21.25pt too wide) in paragraph at lines 2021--2021
  []                            \TU/lmtt/m/n/10 schoolyr %in% IIV_schoolyrs ~ 2)
 ) %>%[] 
  []
 
 [60]
-Overfull \hbox (37.0pt too wide) in paragraph at lines 2065--2065
+Overfull \hbox (37.0pt too wide) in paragraph at lines 2058--2058
  []  \TU/lmtt/m/n/10 geom_errorbar(mapping=aes_string(ymin="lb", ymax="ub", col
 =group),[] 
  []
 
 
-Overfull \hbox (58.0pt too wide) in paragraph at lines 2065--2065
+Overfull \hbox (58.0pt too wide) in paragraph at lines 2058--2058
  []  \TU/lmtt/m/n/10 scale_color_manual(std_legend_title,values=cols,labels=leg
 end_label) +[] 
  []
 
 
-Overfull \hbox (73.75pt too wide) in paragraph at lines 2065--2065
+Overfull \hbox (73.75pt too wide) in paragraph at lines 2058--2058
  []  \TU/lmtt/m/n/10 scale_shape_manual(std_legend_title,values=shapes, labels=
 legend_label) +[] 
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 2070--2070
+Underfull \hbox (badness 1478) in paragraph at lines 2063--2063
 []\TU/lmr/bx/n/14.4 Automated Tools for Style and Project
  []
 
@@ -1582,139 +1582,139 @@ Underfull \hbox (badness 1478) in paragraph at lines 2070--2070
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [61]
-Overfull \hbox (216.75pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (216.75pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "Brookfield Village Elementary" = str_subset(string = OUSD_
 school_shapes$schnam, pattern = "Brookfield"),[] 
  []
 
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "Carl Munck Elementary" = str_subset(string = OUSD_school_s
 hapes$schnam, pattern = "Munck"),[] 
  []
 
 
-Overfull \hbox (274.5pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (274.5pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "Community United Elementary School" = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Community United"),[] 
  []
 
 
-Overfull \hbox (258.75pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (258.75pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "East Oakland PRIDE Elementary" = str_subset(string = OUSD_
 school_shapes$schnam, pattern = "East Oakland Pride"),[] 
  []
 
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "EnCompass Academy" = str_subset(string = OUSD_school_shape
 s$schnam, pattern = "EnCompass"),[] 
  []
 
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "Global Family School" = str_subset(string = OUSD_school_sh
 apes$schnam, pattern = "Global"),[] 
  []
 
 
-Overfull \hbox (290.25pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (290.25pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "International Community School" = str_subset(string = OUSD
 _school_shapes$schnam, pattern = "International Community"),[] 
  []
 
 
-Overfull \hbox (248.25pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (248.25pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "Manzanita Community School" = str_subset(string = OUSD_sch
 ool_shapes$schnam, pattern = "Manzanita Community"),[] 
  []
 
 
-Overfull \hbox (201.0pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (201.0pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "Martin Luther King Jr Elementary" = str_subset(string = OU
 SD_school_shapes$schnam, pattern = "King"),[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "PLACE @ Prescott" = "Preparatory Literary Academy of Cultu
 ral Excellence",[] 
  []
 
 
-Overfull \hbox (190.5pt too wide) in paragraph at lines 2098--2098
+Overfull \hbox (190.5pt too wide) in paragraph at lines 2091--2091
 []  \TU/lmtt/m/n/10 "RISE Community School" = str_subset(string = OUSD_school_s
 hapes$schnam, pattern = "Rise Community")[] 
  []
 
 
-Overfull \hbox (243.0pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (243.0pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Brookfield Village Elementary"      = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Brookfield"),[] 
  []
 
 
-Overfull \hbox (216.75pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (216.75pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Carl Munck Elementary"              = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Munck"),[] 
  []
 
 
-Overfull \hbox (274.5pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (274.5pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Community United Elementary School" = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Community United"),[] 
  []
 
 
-Overfull \hbox (285.0pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (285.0pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "East Oakland PRIDE Elementary"      = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),[] 
  []
 
 
-Overfull \hbox (237.75pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (237.75pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "EnCompass Academy"                  = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "EnCompass"),[] 
  []
 
 
-Overfull \hbox (222.0pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (222.0pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Global Family School"               = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Global"),[] 
  []
 
 
-Overfull \hbox (311.25pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (311.25pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "International Community School"     = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "International Community"),[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Madison Park Lower Campus"          = "Madison Park Academ
 y TK-5",[] 
  []
 
 
-Overfull \hbox (290.25pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (290.25pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Manzanita Community School"         = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Manzanita Community"),[] 
  []
 
 
-Overfull \hbox (211.5pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (211.5pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "Martin Luther King Jr Elementary"   = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "King"),[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (153.75pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "PLACE @ Prescott"                   = "Preparatory Literar
 y Academy of Cultural Excellence",[] 
  []
 
 
-Overfull \hbox (258.75pt too wide) in paragraph at lines 2116--2116
+Overfull \hbox (258.75pt too wide) in paragraph at lines 2109--2109
 []  \TU/lmtt/m/n/10 "RISE Community School"              = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Rise Community")[] 
  []
@@ -1733,16 +1733,13 @@ File: assets/images/data-masking.png Graphic file (type bmp)
 [67
 
 ]
-Underfull \vbox (badness 2197) has occurred while \output is active []
-
-
 Overfull \hbox (8.38454pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 68 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
 WITH DPLYR
  []
 
 [68]
-Underfull \hbox (badness 1122) in paragraph at lines 2221--2224
+Underfull \hbox (badness 1122) in paragraph at lines 2227--2230
 []\TU/lmr/m/n/10 The combined use of \TU/lmtt/m/n/10 !! \TU/lmr/m/n/10 and \TU/
 lmtt/m/n/10 sym() \TU/lmr/m/n/10 allows us to use strings, rather
  []
@@ -1753,36 +1750,42 @@ Overfull \hbox (8.38454pt too wide) has occurred while \output is active
 WITH DPLYR
  []
 
-[70]
+[70] [71]
+Overfull \hbox (8.38454pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 72 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
+WITH DPLYR
+ []
+
+[72
+
+]
 Chapter 12.
 
-Underfull \hbox (badness 1137) in paragraph at lines 2250--2251
+Underfull \hbox (badness 1137) in paragraph at lines 2331--2332
 []\TU/lmr/m/n/10 This chapter covers two complementary practices: data validati
 on with
  []
 
-[71
-
-]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 2306--2306
+[73]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2387--2387
 []  \TU/lmtt/m/n/10 msg = "some individuals have household_ids not found in hou
 sehold data"[] 
  []
 
-[72]
-Overfull \hbox (106.5pt too wide) in paragraph at lines 2306--2306
+[74]
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2387--2387
 []  \TU/lmtt/m/n/10 msg = "floor_type has missing values after merge — househol
 d data may be incomplete"[] 
  []
 
 
-Overfull \hbox (27.75pt too wide) in paragraph at lines 2335--2335
+Overfull \hbox (27.75pt too wide) in paragraph at lines 2416--2416
 []  \TU/lmtt/m/n/10 msg = "filter did not remove any rows — all individuals are
  under 5?"[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2335--2335
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2416--2416
 []\TU/lmtt/m/n/10 # If you know the approximate expected count from enrollment 
 records[] 
  []
@@ -1790,74 +1793,74 @@ records[]
 
 Underfull \vbox (badness 1769) has occurred while \output is active []
 
-[73]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2360--2360
+[75]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2441--2441
 []  \TU/lmtt/m/n/10 all(village_prev$prevalence >= 0 & village_prev$prevalence 
 <= 1),[] 
  []
 
 
-Overfull \hbox (54.0pt too wide) in paragraph at lines 2360--2360
+Overfull \hbox (54.0pt too wide) in paragraph at lines 2441--2441
 []  \TU/lmtt/m/n/10 msg = "prevalence values outside [0, 1] — check numerator a
 nd denominator"[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2360--2360
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2441--2441
 []  \TU/lmtt/m/n/10 msg = "some villages have 0 individuals — check village_id 
 coding"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2386--2386
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2467--2467
 []    \TU/lmtt/m/n/10 "age_category has ", sum(is.na(individual_data$age_catego
 ry)),[] 
  []
 
-[74]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2432--2432
+[76]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2513--2513
 []\TU/lmtt/m/n/10 #[] @param expected_n_ind expected number of individuals (app
 roximate)[] 
  []
 
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (48.75pt too wide) in paragraph at lines 2513--2513
 []\TU/lmtt/m/n/10 validate_individual_data <- function(data, expected_n_hh, exp
 ected_n_ind) {[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2513--2513
 []  \TU/lmtt/m/n/10 required_cols <- c("individual_id", "household_id", "villag
 e_id",[] 
  []
 
 
-Overfull \hbox (96.0pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (96.0pt too wide) in paragraph at lines 2513--2513
 []    \TU/lmtt/m/n/10 msg = paste0("missing required columns: ", paste(missing_
 cols, collapse = ", "))[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2513--2513
 []    \TU/lmtt/m/n/10 msg = "individual_id is not unique — dataset has duplicat
 e rows"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2513--2513
 []      \TU/lmtt/m/n/10 "number of households (", n_hh, ") differs from expecte
 d (",[] 
  []
 
-[75]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2432--2432
+[77]
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2513--2513
 []    \TU/lmtt/m/n/10 all(data$age_years >= 0 & data$age_years < 120, na.rm = T
 RUE),[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2443--2443
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2524--2524
 []\TU/lmtt/m/n/10 individual_data <- readRDS(here::here("data", "individual_dat
 a.rds"))[] 
  []
@@ -1913,33 +1916,33 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-[76] [77]
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2584--2584
+[78] [79]
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2665--2665
 []  \TU/lmtt/m/n/10 expected_cols <- c("n", "estimate", "se", "ci_lower", "ci_u
 pper", "pvalue")[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2584--2584
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2665--2665
 []\TU/lmtt/m/n/10 test_that("fit_glm_robust detects null effect with synthetic 
 data", {[] 
  []
 
-[78]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2596--2596
+[80]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2677--2677
 []\TU/lmtt/m/n/10 testthat::test_file(here::here("9-tests", "test-base-function
 s.R"))[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2603--2603
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2684--2684
 []\TU/lmtt/m/n/10 Rscript -e []testthat::test_dir("9-tests")[] || { echo "Tests
  failed"; exit 1; }[] 
  []
 
-[79] [80]
+[81] [82]
 Chapter 13.
-[81
+[83
 
 ]
 File: lab-manual_files/assets/images/lab_github_workflow.png Graphic file (type
@@ -1948,133 +1951,141 @@ File: lab-manual_files/assets/images/lab_github_workflow.png Graphic file (type
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[82]
-ignored: Infinite glue shrinkage found in box being split [83]
+[84]
+ignored: Infinite glue shrinkage found in box being split [85]
 ignored: Infinite glue shrinkag
-e found in box being split [84] [85] [86]
+e found in box being split [86] [87] [88]
 Chapter 14.
 File: lab-manual_files/assets/images/ex-desktop.jpg Graphic file (type bmp)
 <lab-manual_files/assets/images/ex-desktop.jpg>
 
-ignored: Infinite glue shrinkage found in box being split [87
+ignored: Infinite glue shrinkage found in box being split [89
 
 ]
 File: lab-manual_files/assets/images/ex-terminal.PNG Graphic file (type bmp)
 <lab-manual_files/assets/images/ex-terminal.PNG>
 
-LaTeX Warning: Float too large for page by 36.06166pt on input line 2851.
+LaTeX Warning: Float too large for page by 36.06166pt on input line 2932.
 
 
-Overfull \hbox (17.2224pt too wide) in paragraph at lines 2874--2874
+Overfull \hbox (17.2224pt too wide) in paragraph at lines 2955--2955
 \TU/lmtt/m/n/10 bash_script_name.sh 
  []
 
-[88]
-Underfull \hbox (badness 10000) in paragraph at lines 2904--2905
+[90]
+Underfull \hbox (badness 10000) in paragraph at lines 2985--2986
 \TU/lmtt/m/n/10 without hex digits in character string starting "[]C:\U"\TU/lmr
 /m/n/10 , try
  []
 
-[89] [90] [91] [92]
+[91] [92] [93] [94]
+Underfull \vbox (badness 10000) detected at line 3135
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3135
+ []
+
+[95] [96]
 Chapter 15.
-[93
+[97
 
 ]
-Overfull \hbox (25.07903pt too wide) in paragraph at lines 2998--3000
+Overfull \hbox (25.07903pt too wide) in paragraph at lines 3196--3198
 []\TU/lmr/m/n/10 This will create the following files: \TU/lmtt/m/n/10 renv.loc
 k\TU/lmr/m/n/10 , .\TU/lmtt/m/n/10 Rprofile\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 ren
 v/settings.json
  []
 
 
-Underfull \hbox (badness 2941) in paragraph at lines 3000--3002
+Underfull \hbox (badness 2941) in paragraph at lines 3198--3200
 []\TU/lmr/m/n/10 As you write code, update the project’s R library by running
  []
 
 
 Underfull \vbox (badness 3826) has occurred while \output is active []
 
-[94]
-Underfull \hbox (badness 10000) in paragraph at lines 3034--3035
+[98]
+Underfull \hbox (badness 10000) in paragraph at lines 3232--3233
 \TU/lmtt/m/n/10 using R version 4.3.1 (2023-06-16). Package versions are tracke
 d
  []
 
-[95] [96
+[99] [100
 
 ]
 Chapter 16.
 
 Underfull \vbox (badness 1107) has occurred while \output is active []
 
-[97] [98]
-Underfull \hbox (badness 1303) in paragraph at lines 3129--3130
+[101] [102]
+Underfull \hbox (badness 1303) in paragraph at lines 3327--3328
 []\TU/lmr/m/n/10 2-analysis: folder containing analysis scripts. To rerun
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3137--3139
+Underfull \hbox (badness 10000) in paragraph at lines 3335--3337
 []\TU/lmr/m/n/10 3-est-expected-cases-state-perf-testing.R: estimate ex-
  []
 
-[99] [100]
+[103] [104]
 Chapter 17.
-[101
+[105
 
-] [102] [103]
-Underfull \hbox (badness 10000) in paragraph at lines 3291--3293
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3293--3295
+] [106] [107]
+Underfull \hbox (badness 10000) in paragraph at lines 3489--3491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3295--3297
+Underfull \hbox (badness 10000) in paragraph at lines 3491--3493
 
  []
 
-[104]
 
-LaTeX Warning: Hyper reference `renv' on page 105 undefined on input line 3333.
+Underfull \hbox (badness 10000) in paragraph at lines 3493--3495
+
+ []
+
+[108]
+
+LaTeX Warning: Hyper reference `renv' on page 109 undefined on input line 3531.
 
 
-[105] [106]
+[109] [110]
 Chapter 18.
-[107
+[111
 
-] [108] [109] [110]
-Overfull \hbox (7.98502pt too wide) in paragraph at lines 3469--3471
+] [112] [113] [114] [115] [116]
+Overfull \hbox (7.98502pt too wide) in paragraph at lines 3840--3842
 []\TU/lmtt/m/n/10 output=00-run_inc_log.out\TU/lmr/m/n/10 : Create a log file c
 alled \TU/lmtt/m/n/10 00-run_inc_log.out
  []
 
-[111] [112
+[117] [118]
+Chapter 19.
+[119
 
 ]
-Chapter 19.
-[113]
-Underfull \hbox (badness 10000) in paragraph at lines 3549--3551
+Underfull \hbox (badness 10000) in paragraph at lines 3964--3966
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3551--3553
+Underfull \hbox (badness 10000) in paragraph at lines 3966--3968
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[114] [115] [116
+[120] [121] [122
 
 ]
 Chapter 20.
-[117]
+[123]
 No file lab-manual.bbl.
-[118] (./lab-manual.aux)
+[124] (./lab-manual.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -2084,12 +2095,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21332 strings out of 468168
- 387794 string characters out of 5432815
- 985561 words of memory out of 5000000
- 49712 multiletter control sequences out of 15000+600000
+ 21331 strings out of 468168
+ 387786 string characters out of 5432815
+ 985548 words of memory out of 5000000
+ 49711 multiletter control sequences out of 15000+600000
  634334 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,11n,114p,1007b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on lab-manual.pdf (118 pages).
+Output written on lab-manual.pdf (124 pages).

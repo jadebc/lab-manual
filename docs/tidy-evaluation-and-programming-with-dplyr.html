@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Tidy evaluation and programming with dplyr | Using Generative AI to Code</title>
+  <title>Chapter 11 Tidy evaluation and programming with dplyr | Benjamin-Chung Group Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Tidy evaluation and programming with dplyr | Using Generative AI to Code" />
+  <meta property="og:title" content="Chapter 11 Tidy evaluation and programming with dplyr | Benjamin-Chung Group Lab Manual" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Tidy evaluation and programming with dplyr | Using Generative AI to Code" />
+  <meta name="twitter:title" content="Chapter 11 Tidy evaluation and programming with dplyr | Benjamin-Chung Group Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -428,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Using Generative AI to Code</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Benjamin-Chung Group Lab Manual</a>
           </h1>
         </div>
 
@@ -454,9 +454,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In dplyr-based R programming, we make use of tidy evaluation. This allows us to avoid using base R syntax to reference specific columns in a data frame. By leveraging Tidy evaluation-based data masking, we can employ long pipes with several dplyr verbs to manipulate our data using stand-alone variables that store column names as strings.</p>
 <p>For example, consider a data frame “df” that contains a column called “heavyrain” that we want to manipulate. Suppose we wanted to convert the values of “heavyrain” into a factor.</p>
 <p>Using base R, which does not mask data, heavyrain must have quotes to be treated as a data-variable:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb23-1" tabindex="-1"></a>df[[“outcome”]] <span class="ot">=</span> <span class="fu">as.factor</span>(df[[“heavyrain”]])</span></code></pre></div>
 <p>In a dplyr pipe, heavyrain is being masked using tidy evaluation and will be correctly interpreted as a column because it is recognized as a data-variable:
 df %&gt;% mutate(outcome = as.factor(heavyrain))</p>
 <p>With modified data masking, heavyrain is a string that is coerced into being recognized as a data-variable:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb24-1" tabindex="-1"></a>var_name <span class="ot">=</span> “heavyrain”</span>
+<span id="cb24-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb24-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">outcome =</span> <span class="fu">as.factor</span>(<span class="sc">!!</span><span class="fu">sym</span>(var_name)) </span></code></pre></div>
 <p>While cleaner and often more convenient, the data frame that var_name is in is now “masked” and we refer to the vectors in the dataframe (data-variables) as though it is an object of its own (an environmental-variable). This is why we can just say the variable’s name in the context of a pipe – we treat it as though it’s an object defined in our environment. Within normal scripts, this is usually fine, because the data frame is “held on to” in the pipe. However, it can cause some programming hurdles when writing functions that take strings of variable/column names as arguments. In the next section, we briefly describe how to troubleshoot common errors in data masking, as relevant to our lab’s work.</p>
 </div>
 </div>
@@ -468,15 +471,55 @@ df %&gt;% mutate(outcome = as.factor(heavyrain))</p>
 The <code>!!</code> (bang bang) operator tells dplyr to evaluate the sym() expression first, e.g. to unquote its expression (e.g. “column_name”) and evaluate it as a pre-existing object, first. This is helpful because often we use <code>sym(“column_name”)</code> within a larger expression, and dplyr might evaluate other elements of the expression first without !!, causing errors.</p>
 <p>When we want to create a new column (via mutate or summarize), the Walrus operator (<code>:=</code>) allows us to specify the new column’s name using a string. For example, while <code>df %&gt;% mutate(“new_column” = values)</code> would yield an error, <code>df %&gt;% mutate(“new_column” := values)</code> will correctly create a new column called “new_column”.
 If we want to use a variable representing a string, we can use !! to force the variable to be evaluated before using <code>:=</code> to assign the value of the new column.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb25-1" tabindex="-1"></a>col_name <span class="ot">=</span> “new_column”</span>
+<span id="cb25-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb25-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">col_name :=</span> values)</span></code></pre></div>
 <div id="example" class="section level3 hasAnchor" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> Example<a href="tidy-evaluation-and-programming-with-dplyr.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose we want to write a function “generate_descriptive_table” to summarize how the prevalence of “outcome” varies under different levels of a “risk_factor” in a data frame “df”</p>
 <p>We can start by writing the function shell:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb26-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf) {</span>
+<span id="cb26-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb26-2" tabindex="-1"></a>outcome_dist_by_rf <span class="ot">&lt;-</span> ….</span>
+<span id="cb26-3"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb26-3" tabindex="-1"></a><span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb26-4"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb26-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Next, we can filter the data frame for only rows in which “rf” and “outcome” are not missing. We can use !! and sym() within filter to evaluate the strings stored in “rf” and “outcome”. Note that defining <code>!!sym(outcome)</code> or <code>!!sym(outcome)</code> in variables <em>outside of the dplyr pipeline</em> will <em>not</em> work.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb27-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb27-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb27-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb27-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb27-4" tabindex="-1"></a>  ….</span>
+<span id="cb27-5"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb27-5" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb27-6"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb27-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Similarly, we use !! and sym() in group_by to evaluate column name, stored as a string in the argument “rf”</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb28-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb28-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb28-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb28-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb28-4" tabindex="-1"></a>  ….</span>
+<span id="cb28-5"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb28-5" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb28-6"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb28-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Finally, we can use the walrus operator, !! and sym() with “summarize” to create a new column that takes the mean of the column referenced in “rf”. We also use “glue” or “paste” to give the new column an informative name that includes the “outcome” it describes.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb29-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-4" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="sc">!!</span>(glue<span class="sc">::</span><span class="fu">glue</span>(“{outcome}_prev”)) <span class="sc">:=</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome))) </span>
+<span id="cb29-6"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-6" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb29-7"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb29-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>OR</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb30-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-2" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-4" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="sc">!!</span>(<span class="fu">paste0</span>(outcome, ”_prev”)) <span class="sc">:=</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)))</span>
+<span id="cb30-6"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-6" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb30-7"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb30-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>OR</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-1" tabindex="-1"></a>generate_descriptive_table <span class="ot">&lt;-</span> <span class="cf">function</span> (df, outcome, rf,) {</span>
+<span id="cb31-2"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-2" tabindex="-1"></a>  new_column_name <span class="ot">=</span> <span class="fu">paste0</span>(outcome, ”_prev”)</span>
+<span id="cb31-3"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-3" tabindex="-1"></a>  outcome_dist_by_rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb31-4"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf))) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-5"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-5" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(rf)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-6"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-6" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="sc">!!</span>(new_column_name) <span class="sc">:=</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(outcome))) </span>
+<span id="cb31-7"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-7" tabindex="-1"></a>  <span class="fu">return</span>(outcome_dist_by_rf)</span>
+<span id="cb31-8"><a href="tidy-evaluation-and-programming-with-dplyr.html#cb31-8" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
