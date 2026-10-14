@@ -402,7 +402,19 @@ People often ask, well what if I need to change my plan after pre-specifying it?
 
 \section{Create reproducible workflows}\label{create-reproducible-workflows}
 
-Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a ``single click''. In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation. The following chapters provide detailed guidance on this topic:
+A reproducible workflow is like a Russian nesting doll: each layer fits neatly inside the next. Careful data management nests within consistent variable naming, which nests within well-organized analysis scripts, which together make up a fully reproducible workflow. If any one layer is inconsistent, disorganized, or non-standard, the layers around it no longer fit together. Keeping each layer consistent, standardized, and organized is what allows the whole workflow to be reproduced --- by collaborators, by external researchers, and by your future self.
+
+\includegraphics[width=0.8\linewidth]{assets/images/repro-russian-doll}
+
+Reproducible workflows allow a user to reproduce study estimates and ideally figures and tables with a ``single click''. In practice, this typically means running a single bash script that sources all replication scripts in a repository. These replication scripts complete data processing, data analysis, and figure/table generation.
+
+\includegraphics[width=1\linewidth]{assets/images/repro-workflow-pipeline}
+
+Why does this matter in practice? Consider three scenarios that come up in nearly every research lab: an analyst graduates and their successor inherits a file like ``cleaned\_data\_FINAL\_v3.xlsx'' with no record of how it was derived; a peer reviewer requests an additional sensitivity analysis, and when it is implemented the primary results change for no apparent reason; or an error is discovered in the raw data behind a published paper, and rerunning the code fails to reproduce the submitted results. Without a reproducible pipeline, each of these becomes a stressful forensic exercise. With one, each has a straightforward resolution: the code documents every step, so the successor can trace and rerun it; rerunning the full pipeline reproduces the original results, isolating the discrepancy to the new analysis; and fixing the data error is a one-line change, with the same logic reapplied automatically to every downstream result.
+
+\includegraphics[width=1\linewidth]{assets/images/repro-pipeline-scenarios}
+
+The following chapters provide detailed guidance on this topic:
 
 \begin{itemize}
 \tightlist
@@ -1524,7 +1536,7 @@ The header tells you what the function does, its various inputs, and how you mig
 
 \section{Object naming}\label{object-naming}
 
-Generally we recommend using nouns for objects and verbs for functions. This is because functions are performing actions, while objects are not.
+Generally we recommend using nouns for objects (e.g., variables) and verbs for functions. This is because functions are performing actions, while objects are not.
 
 Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable \texttt{vaxcov\_1718}, try naming it \texttt{vaccination\_coverage\_2017\_18}. Similarly, \texttt{flu\_res} could be named \texttt{absentee\_flu\_residuals}, making your code more readable and explicit.
 
@@ -1533,6 +1545,10 @@ Try to make your variable names both more expressive and more explicit. Being a 
 \item
   For more help, check out \href{https://spin.atomicobject.com/2017/11/01/good-variable-names/}{Be Expressive: How to Give Your Variables Better Names}
 \end{itemize}
+
+The example below illustrates these principles applied to survey data: a consistent prefix (\texttt{bl\_} for baseline) marks every variable from the same survey wave, related variables share a consistent order (\texttt{bl\_delivery\_{[}detail{]}}) so they scan as one set, and full, meaningful words replace cryptic shorthand.
+
+\includegraphics[width=1\linewidth]{assets/images/variable-naming-example}
 
 We recommend you use \textbf{Snake\_Case}.
 

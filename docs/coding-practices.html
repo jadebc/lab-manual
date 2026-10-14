@@ -512,11 +512,13 @@ function code here
 </div>
 <div id="object-naming" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Object naming<a href="coding-practices.html#object-naming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Generally we recommend using nouns for objects and verbs for functions. This is because functions are performing actions, while objects are not.</p>
+<p>Generally we recommend using nouns for objects (e.g., variables) and verbs for functions. This is because functions are performing actions, while objects are not.</p>
 <p>Try to make your variable names both more expressive and more explicit. Being a bit more verbose is useful and easy in the age of autocompletion! For example, instead of naming a variable <code>vaxcov_1718</code>, try naming it <code>vaccination_coverage_2017_18</code>. Similarly, <code>flu_res</code> could be named <code>absentee_flu_residuals</code>, making your code more readable and explicit.</p>
 <ul>
 <li>For more help, check out <a href="https://spin.atomicobject.com/2017/11/01/good-variable-names/">Be Expressive: How to Give Your Variables Better Names</a></li>
 </ul>
+<p>The example below illustrates these principles applied to survey data: a consistent prefix (<code>bl_</code> for baseline) marks every variable from the same survey wave, related variables share a consistent order (<code>bl_delivery_[detail]</code>) so they scan as one set, and full, meaningful words replace cryptic shorthand.</p>
+<p><img src="assets/images/variable-naming-example.png" alt="" width="100%" /></p>
 <p>We recommend you use <strong>Snake_Case</strong>.</p>
 <ul>
 <li><p>Base R allows <code>.</code> in variable names and functions (such as <code>read.csv()</code>), but this goes against best practices for variable naming in many other coding languages. For consistency’s sake, <code>snake_case</code> has been adopted across languages, and modern packages and functions typically use it (i.e. <code>readr::read_csv()</code>). As a very general rule of thumb, if a package you’re using doesn’t use <code>snake_case</code>, there may be an updated version or more modern package that <em>does</em>, bringing with it the variety of performance improvements and bug fixes inherent in more mature and modern software.</p></li>
