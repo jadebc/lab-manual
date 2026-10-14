@@ -1,5 +1,5 @@
 --- 
-title: "Benjamin-Chung Lab Manual"
+title: "Benjamin-Chung Group Lab Manual"
 date: "Updated: `r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook

@@ -1,20 +1,3 @@
----
-title: "Using Generative AI to Code"
-subtitle: "Benjamin-Chung Lab Manual"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    number_sections: true
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
 # Using generative AI to code
 
 By Jade Benjamin-Chung and Anna Nguyen

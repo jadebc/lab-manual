@@ -133,20 +133,13 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Using Generative AI to Code},
+  pdftitle={Benjamin-Chung Group Lab Manual},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Using Generative AI to Code}
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{Benjamin-Chung Lab Manual}
+\title{Benjamin-Chung Group Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2026-07-10}
+\date{\vspace{-2.5em}Updated: 2026-10-14}
 
 \begin{document}
 \maketitle
@@ -2207,10 +2200,23 @@ For example, consider a data frame ``df'' that contains a column called ``heavyr
 
 Using base R, which does not mask data, heavyrain must have quotes to be treated as a data-variable:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[[“outcome”]] }\OtherTok{=} \FunctionTok{as.factor}\NormalTok{(df[[“heavyrain”]])}
+\end{Highlighting}
+\end{Shaded}
+
 In a dplyr pipe, heavyrain is being masked using tidy evaluation and will be correctly interpreted as a column because it is recognized as a data-variable:
 df \%\textgreater\% mutate(outcome = as.factor(heavyrain))
 
 With modified data masking, heavyrain is a string that is coerced into being recognized as a data-variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var\_name }\OtherTok{=}\NormalTok{ “heavyrain”}
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{outcome =} \FunctionTok{as.factor}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(var\_name)) }
+\end{Highlighting}
+\end{Shaded}
 
 While cleaner and often more convenient, the data frame that var\_name is in is now ``masked'' and we refer to the vectors in the dataframe (data-variables) as though it is an object of its own (an environmental-variable). This is why we can just say the variable's name in the context of a pipe -- we treat it as though it's an object defined in our environment. Within normal scripts, this is usually fine, because the data frame is ``held on to'' in the pipe. However, it can cause some programming hurdles when writing functions that take strings of variable/column names as arguments. In the next section, we briefly describe how to troubleshoot common errors in data masking, as relevant to our lab's work.
 
@@ -2225,21 +2231,96 @@ The \texttt{!!} (bang bang) operator tells dplyr to evaluate the sym() expressio
 When we want to create a new column (via mutate or summarize), the Walrus operator (\texttt{:=}) allows us to specify the new column's name using a string. For example, while \texttt{df\ \%\textgreater{}\%\ mutate(“new\_column”\ =\ values)} would yield an error, \texttt{df\ \%\textgreater{}\%\ mutate(“new\_column”\ :=\ values)} will correctly create a new column called ``new\_column''.
 If we want to use a variable representing a string, we can use !! to force the variable to be evaluated before using \texttt{:=} to assign the value of the new column.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{col\_name }\OtherTok{=}\NormalTok{ “new\_column”}
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\SpecialCharTok{!!}\AttributeTok{col\_name :=}\NormalTok{ values)}
+\end{Highlighting}
+\end{Shaded}
+
 \subsection{Example}\label{example}
 
 Suppose we want to write a function ``generate\_descriptive\_table'' to summarize how the prevalence of ``outcome'' varies under different levels of a ``risk\_factor'' in a data frame ``df''
 
 We can start by writing the function shell:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf) \{}
+\NormalTok{outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ ….}
+\FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
 Next, we can filter the data frame for only rows in which ``rf'' and ``outcome'' are not missing. We can use !! and sym() within filter to evaluate the strings stored in ``rf'' and ``outcome''. Note that defining \texttt{!!sym(outcome)} or \texttt{!!sym(outcome)} in variables \emph{outside of the dplyr pipeline} will \emph{not} work.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  ….}
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 Similarly, we use !! and sym() in group\_by to evaluate column name, stored as a string in the argument ``rf''
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  ….}
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
 Finally, we can use the walrus operator, !! and sym() with ``summarize'' to create a new column that takes the mean of the column referenced in ``rf''. We also use ``glue'' or ``paste'' to give the new column an informative name that includes the ``outcome'' it describes.
 
-OR
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(“\{outcome\}\_prev”)) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome))) }
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 OR
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(outcome, ”\_prev”)) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)))}
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+OR
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generate\_descriptive\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (df, outcome, rf,) \{}
+\NormalTok{  new\_column\_name }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(outcome, ”\_prev”)}
+\NormalTok{  outcome\_dist\_by\_rf }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome)), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{(new\_column\_name) }\SpecialCharTok{:=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(outcome))) }
+  \FunctionTok{return}\NormalTok{(outcome\_dist\_by\_rf)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \chapter{Data validation and unit testing}\label{data-validation}
 
@@ -2948,6 +3029,27 @@ For big data workflows, the concept of ``backgrounding'' a bash script allows yo
 
 Alternatively, to keep code running in the background even when an SSH connection is broken, you can use \texttt{tmux}. In terminal or gitbash follow the steps below. This \href{https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e}{site} has useful tips on using \texttt{tmux}.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a new tmux session called session\_name}
+\ExtensionTok{tmux}\NormalTok{ new }\AttributeTok{{-}ssession\_name}
+
+\CommentTok{\# run your job of interest}
+\ExtensionTok{R}\NormalTok{ CMD BATCH myjob.R }\KeywordTok{\&} 
+  
+\CommentTok{\# check that it is running}
+\FunctionTok{ps} \AttributeTok{{-}v}
+
+\CommentTok{\# to exit the tmux session (Mac)}
+\ExtensionTok{ctrl}\NormalTok{ + b }
+\ExtensionTok{d}
+
+\CommentTok{\# to reopen the tmux session to kill the job or }
+\CommentTok{\# start another job}
+\ExtensionTok{tmux}\NormalTok{ attach }\AttributeTok{{-}tsession\_name} 
+\end{Highlighting}
+\end{Shaded}
+
 \begin{itemize}
 \item
   \textbf{Deleting Previously Computed Results}: One helpful lesson we've learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).
@@ -2957,9 +3059,105 @@ Alternatively, to keep code running in the background even when an SSH connectio
 
 \subsection{\texorpdfstring{Example code for \texttt{runfileSaveLogs}}{Example code for runfileSaveLogs}}\label{example-code-for-runfilesavelogs}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/usr/bin/env python3}
+\CommentTok{\# Type "./runFileSaveLogs {-}h" for help}
+
+\ImportTok{import}\NormalTok{ os}
+\ImportTok{import}\NormalTok{ sys}
+\ImportTok{import}\NormalTok{ argparse}
+\ImportTok{import}\NormalTok{ getpass}
+\ImportTok{import}\NormalTok{ datetime}
+\ImportTok{import}\NormalTok{ shutil}
+\ImportTok{import}\NormalTok{ glob}
+\ImportTok{import}\NormalTok{ pathlib}
+
+\CommentTok{\# Setting working directory to this script\textquotesingle{}s current directory}
+\NormalTok{os.chdir(os.path.dirname(os.path.abspath(}\VariableTok{\_\_file\_\_}\NormalTok{)))}
+
+\CommentTok{\# Setting up argument parser}
+\NormalTok{parser }\OperatorTok{=}\NormalTok{ argparse.ArgumentParser(description}\OperatorTok{=}\StringTok{\textquotesingle{}Runs the argument R script(s) {-} in parallel if specified {-} and moves the subsequent generated .Rout log files to a timestamped directory.\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Function ensuring that the file is valid}
+\KeywordTok{def}\NormalTok{ is\_valid\_file(parser, arg):}
+    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.exists(arg):}
+\NormalTok{        parser.error(}\StringTok{"The file }\SpecialCharTok{\%s}\StringTok{ does not exist!"} \OperatorTok{\%}\NormalTok{ arg)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ arg}
+
+\CommentTok{\# Function ensuring that the directory is valid}
+\KeywordTok{def}\NormalTok{ is\_valid\_directory(parser, arg):}
+    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.isdir(arg):}
+\NormalTok{        parser.error(}\StringTok{"The specified path (}\SpecialCharTok{\%s}\StringTok{) is not a directory!"} \OperatorTok{\%}\NormalTok{ arg)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ arg}
+
+\CommentTok{\# Additional arguments that can be added when running runFileSaveLogs}
+\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}{-}p\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}{-}{-}parallel\textquotesingle{}}\NormalTok{, action}\OperatorTok{=}\StringTok{\textquotesingle{}store\_true\textquotesingle{}}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Runs the argument R scripts in parallel if specified"}\NormalTok{)}
+\NormalTok{parser.add\_argument(}\StringTok{"{-}i"}\NormalTok{, }\StringTok{"{-}{-}identifier"}\NormalTok{, }\BuiltInTok{help}\OperatorTok{=}\StringTok{"Adds an identifier to the directory name where this is saved"}\NormalTok{)}
+\NormalTok{parser.add\_argument(}\StringTok{\textquotesingle{}filenames\textquotesingle{}}\NormalTok{, nargs}\OperatorTok{=}\StringTok{\textquotesingle{}+\textquotesingle{}}\NormalTok{, }\BuiltInTok{type}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ x: is\_valid\_file(parser, x))}
+
+\NormalTok{args }\OperatorTok{=}\NormalTok{ parser.parse\_args()}
+\NormalTok{args\_dict }\OperatorTok{=} \BuiltInTok{vars}\NormalTok{(args)}
+
+\BuiltInTok{print}\NormalTok{(args\_dict)}
+
+\CommentTok{\# Run given R Scripts}
+\ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ args\_dict[}\StringTok{"filenames"}\NormalTok{]:}
+\NormalTok{  system\_call }\OperatorTok{=} \StringTok{"R CMD BATCH"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ filename}
+  \ControlFlowTok{if}\NormalTok{ args\_dict[}\StringTok{"parallel"}\NormalTok{]: }
+\NormalTok{    system\_call }\OperatorTok{=} \StringTok{"nohup"} \OperatorTok{+} \StringTok{" "} \OperatorTok{+}\NormalTok{ system\_call }\OperatorTok{+} \StringTok{" \&"}
+
+\NormalTok{  os.system(system\_call)}
+
+\CommentTok{\# Create the directory (and any parents) of the log files}
+\NormalTok{currentUser }\OperatorTok{=}\NormalTok{ getpass.getuser()}
+\NormalTok{currentTime }\OperatorTok{=}\NormalTok{ datetime.datetime.now().strftime(}\StringTok{"\%Y{-}\%m{-}}\SpecialCharTok{\%d}\StringTok{ \%H:\%M:\%S"}\NormalTok{)}
+\NormalTok{logDirPrefix }\OperatorTok{=} \StringTok{"/home/kaiserData/logs/"} \CommentTok{\# Change to the directory where the logs should be saved}
+\NormalTok{logDir }\OperatorTok{=}\NormalTok{ logDirPrefix }\OperatorTok{+}\NormalTok{ currentTime }\OperatorTok{+} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ currentUser }
+
+\CommentTok{\# If specified, adds the identifier to the filename of the log}
+\ControlFlowTok{if}\NormalTok{ args.identifier }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{:}
+\NormalTok{  logDir }\OperatorTok{+=} \StringTok{"{-}"} \OperatorTok{+}\NormalTok{ args.identifier}
+
+\NormalTok{logDir }\OperatorTok{+=} \StringTok{"/"}
+
+\NormalTok{pathlib.Path(logDir).mkdir(parents}\OperatorTok{=}\VariableTok{True}\NormalTok{, exist\_ok}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# Find and move all logs to this new directory}
+\NormalTok{currentLogPaths }\OperatorTok{=}\NormalTok{ glob.glob(}\StringTok{\textquotesingle{}./*.Rout\textquotesingle{}}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ currentLogPath }\KeywordTok{in}\NormalTok{ currentLogPaths:}
+\NormalTok{  filename }\OperatorTok{=}\NormalTok{ currentLogPath.split(}\StringTok{"/"}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{  shutil.move(currentLogPath, logDir }\OperatorTok{+}\NormalTok{ filename)}
+\end{Highlighting}
+\end{Shaded}
+
 \subsection{\texorpdfstring{Example usage for \texttt{runfileSaveLogs}}{Example usage for runfileSaveLogs}}\label{example-usage-for-runfilesavelogs}
 
 This example bash script runs files and generates logs for five scripts in the \texttt{kaiserflu/3-figures} folder. Note that the \texttt{-i} flag is used as an identifier to add \texttt{figures} to the filename of each log.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+
+\CommentTok{\# Copy utility run script into this folder for concision in call}
+\FunctionTok{cp}\NormalTok{ \textasciitilde{}/kaiserflu/runFileSaveLogs \textasciitilde{}/kaiserflu/3{-}figures/}
+
+\CommentTok{\# Run folder scripts and produce output}
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/kaiserflu/3{-}figures/}
+\ExtensionTok{./runFileSaveLogs} \AttributeTok{{-}i} \StringTok{"figures"} \DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}mean{-}season{-}age.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}monthly{-}rate.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}point{-}estimates{-}combined.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}point{-}estimates.R }\DataTypeTok{\textbackslash{}}
+\NormalTok{fig{-}weekly{-}rate.R}
+
+\CommentTok{\# Remove copied utility run script}
+\FunctionTok{rm}\NormalTok{ runFileSaveLogs}
+\end{Highlighting}
+\end{Shaded}
 
 \chapter{Reproducible Environments}\label{reproducible-environments}
 
@@ -3365,7 +3563,21 @@ When you need to run a script that requires a large amount of RAM, large files, 
 
 To access Sherlock, in terminal, log in using the following syntax and replace ``USERNAME'' with your Stanford alias. You will be prompted to enter your Stanford password (the same one you use for your email and other accounts) and to complete two-factor authentication.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ssh}\NormalTok{ USERNAME@login.sherlock.stanford.edu}
+\end{Highlighting}
+\end{Shaded}
+
 Once you log in, you can view the contents of your home directory in command line by entering \texttt{cd\ \$HOME}. You can create subfolders within this directory using the \texttt{mkdir} command. For example, you could make a ``code'' subdirectory and clone a Github repository there using the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd} \VariableTok{$HOME}
+\FunctionTok{mkdir}\NormalTok{ code}
+\FunctionTok{git}\NormalTok{ clone https://github.com/jadebc/covid19{-}infections.git}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection{One-Time System Set-Up}\label{one-time-system-set-up}
 
@@ -3375,27 +3587,125 @@ Open your \texttt{\textasciitilde{}/.Renviron} file (\texttt{vi\ \textasciitilde
 
 \emph{Note: Once you open the file using \texttt{vi\ {[}file\_name{]}}, you must press \texttt{i} (on Mac OS) or \texttt{Insert} (on Windows) to make edits. After you finish, hit \texttt{Esc} to exit editing mode and type \texttt{:wq} to save and close the file.}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{R\_LIBS}\OperatorTok{=}\NormalTok{\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2}
+\end{Highlighting}
+\end{Shaded}
+
 Alternatively, run an R script with the following code on Sherlock:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_environ\_file\_path }\OtherTok{=} \FunctionTok{file.path}\NormalTok{(}\FunctionTok{Sys.getenv}\NormalTok{(}\StringTok{"HOME"}\NormalTok{), }\StringTok{".Renviron"}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(r\_environ\_file\_path)) }\FunctionTok{file.create}\NormalTok{(r\_environ\_file\_path)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{R\_LIBS=\textasciitilde{}/R/x86\_64{-}pc{-}linux{-}gnu{-}library/4.0.2"}\NormalTok{,}
+    \AttributeTok{file =}\NormalTok{ r\_environ\_file\_path, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\AttributeTok{append =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 To load packages that run off of C++, you'll need to set the correct compiler options in your R environment.
 
 Open the Makevars file in Sherlock (\texttt{vi\ \textasciitilde{}/.R/Makevars}) and append the following lines
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{CXX14FLAGS}\OperatorTok{=}\NormalTok{{-}O3 }\ExtensionTok{{-}march=native} \AttributeTok{{-}mtune}\OperatorTok{=}\NormalTok{native }\AttributeTok{{-}fPIC}
+\VariableTok{CXX14}\OperatorTok{=}\NormalTok{g++}
+\end{Highlighting}
+\end{Shaded}
+
 Alternatively, create an R script with the following code, and run it on Sherlock:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dotR }\OtherTok{=} \FunctionTok{file.path}\NormalTok{(}\FunctionTok{Sys.getenv}\NormalTok{(}\StringTok{"HOME"}\NormalTok{), }\StringTok{".R"}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(dotR)) }\FunctionTok{dir.create}\NormalTok{(dotR)}
+
+\NormalTok{M }\OtherTok{=} \FunctionTok{file.path}\NormalTok{(dotR, }\StringTok{"Makevars"}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(M)) }\FunctionTok{file.create}\NormalTok{(M)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{CXX14FLAGS={-}O3 {-}march=native {-}mtune=native {-}fPIC"}\NormalTok{,}
+    \StringTok{"CXX14=g++"}\NormalTok{,}
+    \AttributeTok{file =}\NormalTok{ M, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\AttributeTok{append =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Moving files to Sherlock}\label{moving-files-to-sherlock}
 
 The \texttt{\$HOME} directory is a good place to store code and small test files (quota: 15 GB per user). Save large files to the \texttt{\$SCRATCH} directory (quota: 100 TB per user). You can read more about storage options on Sherlock \href{https://www.sherlock.stanford.edu/docs/storage/}{here}. On the \texttt{\$SCRATCH} directory, files that are not modified after 90 days are automatically deleted. For this reason, it's best to create a bash script that records the file transfer process for a given project. See example code below:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# note: the following steps should be done from your local }
+\CommentTok{\# (not after ssh{-}ing into sherlock)}
+
+\CommentTok{\# securely transfer folders from Box to sherlock home directory}
+\CommentTok{\# note: the {-}r option is for folders and is not needed for files}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}1/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/home/users/USERNAME/}
+
+\CommentTok{\# securely transfer folders from Box to your sherlock scratch directory}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}2/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/scratch/users/USERNAME/}
+
+\CommentTok{\# securely transfer folders from Box to our shared scratch directory}
+\FunctionTok{scp} \AttributeTok{{-}r} \StringTok{"Box/malaria{-}project/folder{-}3/"}\NormalTok{ USERNAME@login.sherlock.stanford.edu:/scratch/group/jadebc/}
+\end{Highlighting}
+\end{Shaded}
+
 \section{Installing packages on Sherlock}\label{installing-packages-on-sherlock}
 
 When you begin working on Sherlock, you will most likely encounter problems with installing packages. To install packages, login to Sherlock on the command line and open a development node using the command \texttt{sdev}. Do not attempt to do this in the RStudio Server (see next section), as you will have to re-do it for every new session you open.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ssh}\NormalTok{ USERNAME@login.sherlock.stanford.edu}
+
+\ExtensionTok{sdev}
+\end{Highlighting}
+\end{Shaded}
+
 There is a package installation \href{https://drive.google.com/file/d/1eybh4j_G-r3pMZBCVA4QHoWZBo_cW5zb/view}{file} explicitly written for Sherlock that you should run before testing any code and sourcing the configuration file. You should only have to install packages once. Sherlock requires that you specify the repository where the package is downloaded from. You may also need to add an additional argument to install.packages to prevent the packages from locking after installation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{PACKAGE NAME}\SpecialCharTok{\textgreater{}}\NormalTok{, }\AttributeTok{repos=}\NormalTok{“http}\SpecialCharTok{:}\ErrorTok{//}\NormalTok{cran.us.ur}\SpecialCharTok{{-}}\NormalTok{project.org”, }
+                  \AttributeTok{INSTALL\_opts =} \StringTok{"{-}{-}no{-}lock"")}
+\end{Highlighting}
+\end{Shaded}
 
 In order for some R packages to work on Sherlock, it is necessary to load specific software modules before running R. These must be loaded in Sherlock each time you want to use the package in R. For example, for spatial and random effects analyses, you may need the modules/packages below. These modules must also be loaded on the command line prior to opening R in order for package installation to work.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module} \AttributeTok{{-}{-}force}\NormalTok{ purge }\CommentTok{\# remove any previously loaded modules, including math and devel}
+\ExtensionTok{module}\NormalTok{ load math}
+\ExtensionTok{module}\NormalTok{ load math gmp/6.1.2}
+\ExtensionTok{module}\NormalTok{ load devel}
+\ExtensionTok{module}\NormalTok{ load gcc/10}
+\ExtensionTok{module}\NormalTok{ load system}
+\ExtensionTok{module}\NormalTok{ load json{-}glib/1.4.4}
+\ExtensionTok{module}\NormalTok{ load curl/7.81.0}
+\ExtensionTok{module}\NormalTok{ load physics}
+\ExtensionTok{module}\NormalTok{ load physics udunits geos}
+\ExtensionTok{module}\NormalTok{ load physics gdal/2.2.1 }\CommentTok{\# for R/4.0.2}
+\ExtensionTok{module}\NormalTok{ load physics proj/4.9.3 }\CommentTok{\# for R/4.0.2}
+\ExtensionTok{module}\NormalTok{ load pandoc/2.7.3}
+
+\ExtensionTok{module}\NormalTok{ load R/4.0.2}
+
+\ExtensionTok{R} \CommentTok{\# Open R in the Shell window to install individual packages or test code}
+\ExtensionTok{Rscript}\NormalTok{ install{-}packages{-}sherlock.R }\CommentTok{\# Alternatively, run the entire package installation script in the Shell window}
+\end{Highlighting}
+\end{Shaded}
+
 Figuring out the issues with some packages will require some trial and error. If you are still encountering problems installing a package, you may have to install other dependencies manually by reading through the error messages. If you try to install a dependency from CRAN and it isn't working, it may be a module. You can search for it using the \texttt{module\ spider} command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{module}\NormalTok{ spider DEPENDENCY NAME}
+\end{Highlighting}
+\end{Shaded}
 
 However, you can also reach out to the Sherlock team for help. You can email them at \href{mailto:srcc-support@stanford.edu}{\nolinkurl{srcc-support@stanford.edu}}. They also hold \href{https://jumpstartsrcc.sites.stanford.edu/events/series/sherlock-office-hours}{office hours}.
 
@@ -3408,6 +3718,22 @@ Both of the following ways to test code on Sherlock are recommended for making s
 There are two main ways to explore and test code on Sherlock. The first way is best for users who are comfortable working on the command line and editing code in base R. Even if you are not comfortable yet, this is probably the better way because these commands will transfer between Sherlock and other cluster computers using Slurm.
 
 Typically, you will want to initially test your scripts by initiating a development node using the command \texttt{sdev}. This will allocate a small amount of computing resources for 1 hour. You can access R via command line using the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# open development node}
+\ExtensionTok{sdev}
+
+\CommentTok{\# Load all the modules required by the packages you are using}
+\ExtensionTok{module}\NormalTok{ load MODULE NAME  }
+
+\CommentTok{\# Load R (default version)*}
+\ExtensionTok{module}\NormalTok{ load R }
+
+\CommentTok{\# initiate R in command line}
+\ExtensionTok{R}
+\end{Highlighting}
+\end{Shaded}
 
 *Note: for collaboration purposes, it's best for everyone to work with one version of R. Check what version is being used for the project you are working on. Some packages only work with some versions of R, so it's best to keep it consistent.
 
@@ -3423,11 +3749,34 @@ Do NOT use the RStudio Server's Terminal to install packages, set your R environ
 
 In most cases, you will want to test that the file paths work correctly on Sherlock. You will likely need to add code to the configuration file in the project repository that specifies Sherlock-specific file paths. Here is an example:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set sherlock{-}specific file paths}
+\ControlFlowTok{if}\KeywordTok{(}\ExtensionTok{Sys.getenv}\ErrorTok{(}\StringTok{"LMOD\_SYSHOST"}\KeywordTok{)}\ExtensionTok{==}\StringTok{"sherlock"}\KeywordTok{)\{}
+  
+  \ExtensionTok{sherlock\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{Sys.getenv}\ErrorTok{(}\StringTok{"HOME"}\KeywordTok{)}\ExtensionTok{,} \StringTok{"/malaria{-}project/"}\KeywordTok{)}
+  
+  \ExtensionTok{data\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{sherlock\_path,} \StringTok{"data/"}\KeywordTok{)}
+  \ExtensionTok{results\_path}\NormalTok{ = paste0}\ErrorTok{(}\ExtensionTok{sherlock\_path,} \StringTok{"results/"}\KeywordTok{)}
+\KeywordTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
 \section{Storage \& group storage access}\label{storage-group-storage-access}
 
 \subsection{Individual storage}\label{individual-storage}
 
 There are multiple places to store your files on Sherlock. Each user has their own \texttt{\$HOME} directory as well as a \texttt{\$SCRATCH} directory. These are directories that can be accessed via the command line once you've logged in to Sherlock:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd} \VariableTok{$HOME} 
+\BuiltInTok{cd}\NormalTok{ /home/users/USERNAME }\CommentTok{\# Alternatively, use the full path}
+
+\BuiltInTok{cd} \VariableTok{$SCRATCH}
+\BuiltInTok{cd}\NormalTok{ /scratch/users/USERNAME }\CommentTok{\# Full path}
+\end{Highlighting}
+\end{Shaded}
 
 You can also navigate to these using the File Explorer on Sherlock OnDemand.
 
@@ -3439,13 +3788,35 @@ You can read more about storage options on Sherlock \href{https://www.sherlock.s
 
 The lab also has a \texttt{\$GROUP\_HOME} and a \texttt{\$GROUP\_SCRATCH} to store files for collaborative use. \texttt{\$GROUP\_HOME} has a volume quota of 1 TB and infinite retention time, whereas \texttt{\$GROUP\_SCRATCH} has a volume quota of 100 TB and the same 90-day retention limit. You can access these via the command line or navigate to them using the File Explorer:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd} \VariableTok{$GROUP\_HOME}
+\BuiltInTok{cd}\NormalTok{ /home/groups/jadebc}
+
+\BuiltInTok{cd} \VariableTok{$GROUP\_SCRATCH}
+\BuiltInTok{cd}\NormalTok{ /scratch/groups/jadebc}
+\end{Highlighting}
+\end{Shaded}
+
 However, saving files to group storage can be tricky. You can try using the scp command in the section ``Moving files to Sherlock'' to see if you have permission to add files to group directories. Read the next section to ensure any directories you create have the right permissions.
 
 \subsection{Folder permissions}\label{folder-permissions}
 
 Generally, when we put folders in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, it is so that we can collaborate on an analysis within the research group, so multiple people need to be able to access the folders. If you create a new folder in \texttt{\$GROUP\_HOME} or \texttt{\$GROUP\_SCRATCH}, please check the folder's permissions to ensure that other group members are able to access its contents. To check the permissions of a folder, navigate to the level above it, and enter \texttt{ls\ -l}. You will see output like this:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{drwxrwxrwx}\NormalTok{ 2 jadebc jadebc  2204 Jun 17 13:12 myfolder}
+\end{Highlighting}
+\end{Shaded}
+
 Please review \href{https://www.chriswrites.com/how-to-change-file-permissions-using-the-terminal/}{this website} to learn how to interpret the code on the left side of this output. The website also tells you how to change folder permissions. In order to ensure that all users and group members are able to access a folder's contents, you can use the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{chmod}\NormalTok{ ugo+rwx FOLDER\_NAME}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Running big jobs}\label{running-big-jobs-1}
 
@@ -3473,9 +3844,53 @@ Once your test scripts run successfully, you can submit an sbatch script for lar
 
 The file \texttt{analysis.out} will contain the log file for the R script \texttt{analysis.R}.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/bin/bash}
+
+\CommentTok{\#SBATCH {-}{-}job{-}name=run\_inc}
+\CommentTok{\#SBATCH {-}{-}begin=now}
+\CommentTok{\#SBATCH {-}{-}dependency=singleton}
+\CommentTok{\#SBATCH {-}{-}mail{-}type=ALL}
+\CommentTok{\#SBATCH {-}{-}cpus{-}per{-}task=16}
+\CommentTok{\#SBATCH {-}{-}mem=64G}
+\CommentTok{\#SBATCH {-}{-}mem=64G}
+\CommentTok{\#SBATCH {-}{-}output=00{-}run\_inc\_log.out}
+\CommentTok{\#SBATCH {-}{-}time=47:59:00}
+
+\BuiltInTok{cd} \VariableTok{$HOME}\NormalTok{/malaria{-}code{-}repo/2{-}analysis/}
+
+\ExtensionTok{module}\NormalTok{ purge }
+
+\CommentTok{\# load R version 4.0.2 (required for certain packages)}
+\ExtensionTok{module}\NormalTok{ load R/4.0.2}
+
+\CommentTok{\# load gcc, a C++ compiler (required for certain packages)}
+\ExtensionTok{module}\NormalTok{ load gcc/10}
+
+\CommentTok{\# load software required for spatial analyses in R}
+\ExtensionTok{module}\NormalTok{ load physics gdal}
+\ExtensionTok{module}\NormalTok{ load physics proj}
+
+\ExtensionTok{R}\NormalTok{ CMD BATCH }\AttributeTok{{-}{-}no{-}save}\NormalTok{ analysis.R analysis.out}
+\end{Highlighting}
+\end{Shaded}
+
 To submit this job, save the code in the chunk above in a script called \texttt{myjob.sh} and then enter the following command into terminal:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{sbatch}\NormalTok{ myjob.sh }
+\end{Highlighting}
+\end{Shaded}
+
 To check on the status of your job, enter the following code into terminal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{squeue} \AttributeTok{{-}u} \VariableTok{$USERNAME}
+\end{Highlighting}
+\end{Shaded}
 
 \chapter{Checklists}\label{checklists}
 

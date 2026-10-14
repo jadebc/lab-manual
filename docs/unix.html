@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 Unix commands | Using Generative AI to Code</title>
+  <title>Chapter 14 Unix commands | Benjamin-Chung Group Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 Unix commands | Using Generative AI to Code" />
+  <meta property="og:title" content="Chapter 14 Unix commands | Benjamin-Chung Group Lab Manual" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Lab practices and data science best practices" />
   <meta name="github-repo" content="jadebc/lab-manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 Unix commands | Using Generative AI to Code" />
+  <meta name="twitter:title" content="Chapter 14 Unix commands | Benjamin-Chung Group Lab Manual" />
   
   <meta name="twitter:description" content="Lab practices and data science best practices" />
   
@@ -428,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Using Generative AI to Code</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Benjamin-Chung Group Lab Manual</a>
           </h1>
         </div>
 
@@ -640,16 +640,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Running Bash Scripts in Background</strong>: Running a long bash script is not trivial. Normally you would run a bash script by opening a terminal and typing something like <code>./run-project.sh</code>. But what if you leave your computer, log out of your server, or close the terminal? Normally, the bash script will exit and fail to complete. To run it in background, type <code>./run-project.sh &amp;; disown</code>. You can see the job running (and CPU utilization) with the command <code>top</code> or <code>ps -v</code> and check your memory with <code>free -h</code>.</li>
 </ul>
 <p>Alternatively, to keep code running in the background even when an SSH connection is broken, you can use <code>tmux</code>. In terminal or gitbash follow the steps below. This <a href="https://medium.com/@jeongwhanchoi/install-tmux-on-osx-and-basics-commands-for-beginners-be22520fd95e">site</a> has useful tips on using <code>tmux</code>.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="unix.html#cb42-1" tabindex="-1"></a><span class="co"># create a new tmux session called session_name</span></span>
+<span id="cb42-2"><a href="unix.html#cb42-2" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-ssession_name</span></span>
+<span id="cb42-3"><a href="unix.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="unix.html#cb42-4" tabindex="-1"></a><span class="co"># run your job of interest</span></span>
+<span id="cb42-5"><a href="unix.html#cb42-5" tabindex="-1"></a><span class="ex">R</span> CMD BATCH myjob.R <span class="kw">&amp;</span> </span>
+<span id="cb42-6"><a href="unix.html#cb42-6" tabindex="-1"></a>  </span>
+<span id="cb42-7"><a href="unix.html#cb42-7" tabindex="-1"></a><span class="co"># check that it is running</span></span>
+<span id="cb42-8"><a href="unix.html#cb42-8" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-v</span></span>
+<span id="cb42-9"><a href="unix.html#cb42-9" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="unix.html#cb42-10" tabindex="-1"></a><span class="co"># to exit the tmux session (Mac)</span></span>
+<span id="cb42-11"><a href="unix.html#cb42-11" tabindex="-1"></a><span class="ex">ctrl</span> + b </span>
+<span id="cb42-12"><a href="unix.html#cb42-12" tabindex="-1"></a><span class="ex">d</span></span>
+<span id="cb42-13"><a href="unix.html#cb42-13" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="unix.html#cb42-14" tabindex="-1"></a><span class="co"># to reopen the tmux session to kill the job or </span></span>
+<span id="cb42-15"><a href="unix.html#cb42-15" tabindex="-1"></a><span class="co"># start another job</span></span>
+<span id="cb42-16"><a href="unix.html#cb42-16" tabindex="-1"></a><span class="ex">tmux</span> attach <span class="at">-tsession_name</span> </span></code></pre></div>
 <ul>
 <li><p><strong>Deleting Previously Computed Results</strong>: One helpful lesson we’ve learned is that your bash scripts should remove previous results (computed and saved by scripts run at a previous time) so that you never mix results from one run with a previous run. This can happen when an R script errors out before saving its result, and can be difficult to catch because your previously saved result exists (leading you to believe everything ran correctly).</p></li>
 <li><p><strong>Ensuring Things Ran Correctly</strong>: You should check the <code>.Rout</code> files generated by the R scripts run by your bash scripts for errors once things are run. A utility file is include in this repository, called <code>runFileSaveLogs</code>, and is used by the example bash scripts to… run files and save the generated logs. It is an awesome utility and one I definitely recommend using. Before using <code>runFileSaveLogs</code>, it is necessary to put the file in the home working directory. For help and documentation, you can use the command <code>./runFileSaveLogs -h</code>. See example code and example usage for <code>runFileSaveLogs</code> below.</p></li>
 </ul>
 <div id="example-code-for-runfilesavelogs" class="section level3 hasAnchor" number="14.6.1">
 <h3><span class="header-section-number">14.6.1</span> Example code for <code>runfileSaveLogs</code><a href="unix.html#example-code-for-runfilesavelogs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="unix.html#cb43-1" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb43-2"><a href="unix.html#cb43-2" tabindex="-1"></a><span class="co"># Type &quot;./runFileSaveLogs -h&quot; for help</span></span>
+<span id="cb43-3"><a href="unix.html#cb43-3" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="unix.html#cb43-4" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb43-5"><a href="unix.html#cb43-5" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb43-6"><a href="unix.html#cb43-6" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb43-7"><a href="unix.html#cb43-7" tabindex="-1"></a><span class="im">import</span> getpass</span>
+<span id="cb43-8"><a href="unix.html#cb43-8" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb43-9"><a href="unix.html#cb43-9" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb43-10"><a href="unix.html#cb43-10" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb43-11"><a href="unix.html#cb43-11" tabindex="-1"></a><span class="im">import</span> pathlib</span>
+<span id="cb43-12"><a href="unix.html#cb43-12" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="unix.html#cb43-13" tabindex="-1"></a><span class="co"># Setting working directory to this script&#39;s current directory</span></span>
+<span id="cb43-14"><a href="unix.html#cb43-14" tabindex="-1"></a>os.chdir(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
+<span id="cb43-15"><a href="unix.html#cb43-15" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="unix.html#cb43-16" tabindex="-1"></a><span class="co"># Setting up argument parser</span></span>
+<span id="cb43-17"><a href="unix.html#cb43-17" tabindex="-1"></a>parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">&#39;Runs the argument R script(s) - in parallel if specified - and moves the subsequent generated .Rout log files to a timestamped directory.&#39;</span>)</span>
+<span id="cb43-18"><a href="unix.html#cb43-18" tabindex="-1"></a></span>
+<span id="cb43-19"><a href="unix.html#cb43-19" tabindex="-1"></a><span class="co"># Function ensuring that the file is valid</span></span>
+<span id="cb43-20"><a href="unix.html#cb43-20" tabindex="-1"></a><span class="kw">def</span> is_valid_file(parser, arg):</span>
+<span id="cb43-21"><a href="unix.html#cb43-21" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(arg):</span>
+<span id="cb43-22"><a href="unix.html#cb43-22" tabindex="-1"></a>        parser.error(<span class="st">&quot;The file </span><span class="sc">%s</span><span class="st"> does not exist!&quot;</span> <span class="op">%</span> arg)</span>
+<span id="cb43-23"><a href="unix.html#cb43-23" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb43-24"><a href="unix.html#cb43-24" tabindex="-1"></a>        <span class="cf">return</span> arg</span>
+<span id="cb43-25"><a href="unix.html#cb43-25" tabindex="-1"></a></span>
+<span id="cb43-26"><a href="unix.html#cb43-26" tabindex="-1"></a><span class="co"># Function ensuring that the directory is valid</span></span>
+<span id="cb43-27"><a href="unix.html#cb43-27" tabindex="-1"></a><span class="kw">def</span> is_valid_directory(parser, arg):</span>
+<span id="cb43-28"><a href="unix.html#cb43-28" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(arg):</span>
+<span id="cb43-29"><a href="unix.html#cb43-29" tabindex="-1"></a>        parser.error(<span class="st">&quot;The specified path (</span><span class="sc">%s</span><span class="st">) is not a directory!&quot;</span> <span class="op">%</span> arg)</span>
+<span id="cb43-30"><a href="unix.html#cb43-30" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb43-31"><a href="unix.html#cb43-31" tabindex="-1"></a>        <span class="cf">return</span> arg</span>
+<span id="cb43-32"><a href="unix.html#cb43-32" tabindex="-1"></a></span>
+<span id="cb43-33"><a href="unix.html#cb43-33" tabindex="-1"></a><span class="co"># Additional arguments that can be added when running runFileSaveLogs</span></span>
+<span id="cb43-34"><a href="unix.html#cb43-34" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-p&#39;</span>, <span class="st">&#39;--parallel&#39;</span>, action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Runs the argument R scripts in parallel if specified&quot;</span>)</span>
+<span id="cb43-35"><a href="unix.html#cb43-35" tabindex="-1"></a>parser.add_argument(<span class="st">&quot;-i&quot;</span>, <span class="st">&quot;--identifier&quot;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;Adds an identifier to the directory name where this is saved&quot;</span>)</span>
+<span id="cb43-36"><a href="unix.html#cb43-36" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;filenames&#39;</span>, nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="kw">lambda</span> x: is_valid_file(parser, x))</span>
+<span id="cb43-37"><a href="unix.html#cb43-37" tabindex="-1"></a></span>
+<span id="cb43-38"><a href="unix.html#cb43-38" tabindex="-1"></a>args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb43-39"><a href="unix.html#cb43-39" tabindex="-1"></a>args_dict <span class="op">=</span> <span class="bu">vars</span>(args)</span>
+<span id="cb43-40"><a href="unix.html#cb43-40" tabindex="-1"></a></span>
+<span id="cb43-41"><a href="unix.html#cb43-41" tabindex="-1"></a><span class="bu">print</span>(args_dict)</span>
+<span id="cb43-42"><a href="unix.html#cb43-42" tabindex="-1"></a></span>
+<span id="cb43-43"><a href="unix.html#cb43-43" tabindex="-1"></a><span class="co"># Run given R Scripts</span></span>
+<span id="cb43-44"><a href="unix.html#cb43-44" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> args_dict[<span class="st">&quot;filenames&quot;</span>]:</span>
+<span id="cb43-45"><a href="unix.html#cb43-45" tabindex="-1"></a>  system_call <span class="op">=</span> <span class="st">&quot;R CMD BATCH&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> filename</span>
+<span id="cb43-46"><a href="unix.html#cb43-46" tabindex="-1"></a>  <span class="cf">if</span> args_dict[<span class="st">&quot;parallel&quot;</span>]: </span>
+<span id="cb43-47"><a href="unix.html#cb43-47" tabindex="-1"></a>    system_call <span class="op">=</span> <span class="st">&quot;nohup&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> system_call <span class="op">+</span> <span class="st">&quot; &amp;&quot;</span></span>
+<span id="cb43-48"><a href="unix.html#cb43-48" tabindex="-1"></a></span>
+<span id="cb43-49"><a href="unix.html#cb43-49" tabindex="-1"></a>  os.system(system_call)</span>
+<span id="cb43-50"><a href="unix.html#cb43-50" tabindex="-1"></a></span>
+<span id="cb43-51"><a href="unix.html#cb43-51" tabindex="-1"></a><span class="co"># Create the directory (and any parents) of the log files</span></span>
+<span id="cb43-52"><a href="unix.html#cb43-52" tabindex="-1"></a>currentUser <span class="op">=</span> getpass.getuser()</span>
+<span id="cb43-53"><a href="unix.html#cb43-53" tabindex="-1"></a>currentTime <span class="op">=</span> datetime.datetime.now().strftime(<span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>)</span>
+<span id="cb43-54"><a href="unix.html#cb43-54" tabindex="-1"></a>logDirPrefix <span class="op">=</span> <span class="st">&quot;/home/kaiserData/logs/&quot;</span> <span class="co"># Change to the directory where the logs should be saved</span></span>
+<span id="cb43-55"><a href="unix.html#cb43-55" tabindex="-1"></a>logDir <span class="op">=</span> logDirPrefix <span class="op">+</span> currentTime <span class="op">+</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> currentUser </span>
+<span id="cb43-56"><a href="unix.html#cb43-56" tabindex="-1"></a></span>
+<span id="cb43-57"><a href="unix.html#cb43-57" tabindex="-1"></a><span class="co"># If specified, adds the identifier to the filename of the log</span></span>
+<span id="cb43-58"><a href="unix.html#cb43-58" tabindex="-1"></a><span class="cf">if</span> args.identifier <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb43-59"><a href="unix.html#cb43-59" tabindex="-1"></a>  logDir <span class="op">+=</span> <span class="st">&quot;-&quot;</span> <span class="op">+</span> args.identifier</span>
+<span id="cb43-60"><a href="unix.html#cb43-60" tabindex="-1"></a></span>
+<span id="cb43-61"><a href="unix.html#cb43-61" tabindex="-1"></a>logDir <span class="op">+=</span> <span class="st">&quot;/&quot;</span></span>
+<span id="cb43-62"><a href="unix.html#cb43-62" tabindex="-1"></a></span>
+<span id="cb43-63"><a href="unix.html#cb43-63" tabindex="-1"></a>pathlib.Path(logDir).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb43-64"><a href="unix.html#cb43-64" tabindex="-1"></a></span>
+<span id="cb43-65"><a href="unix.html#cb43-65" tabindex="-1"></a><span class="co"># Find and move all logs to this new directory</span></span>
+<span id="cb43-66"><a href="unix.html#cb43-66" tabindex="-1"></a>currentLogPaths <span class="op">=</span> glob.glob(<span class="st">&#39;./*.Rout&#39;</span>)</span>
+<span id="cb43-67"><a href="unix.html#cb43-67" tabindex="-1"></a></span>
+<span id="cb43-68"><a href="unix.html#cb43-68" tabindex="-1"></a><span class="cf">for</span> currentLogPath <span class="kw">in</span> currentLogPaths:</span>
+<span id="cb43-69"><a href="unix.html#cb43-69" tabindex="-1"></a>  filename <span class="op">=</span> currentLogPath.split(<span class="st">&quot;/&quot;</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb43-70"><a href="unix.html#cb43-70" tabindex="-1"></a>  shutil.move(currentLogPath, logDir <span class="op">+</span> filename)</span></code></pre></div>
 </div>
 <div id="example-usage-for-runfilesavelogs" class="section level3 hasAnchor" number="14.6.2">
 <h3><span class="header-section-number">14.6.2</span> Example usage for <code>runfileSaveLogs</code><a href="unix.html#example-usage-for-runfilesavelogs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This example bash script runs files and generates logs for five scripts in the <code>kaiserflu/3-figures</code> folder. Note that the <code>-i</code> flag is used as an identifier to add <code>figures</code> to the filename of each log.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="unix.html#cb44-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb44-2"><a href="unix.html#cb44-2" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="unix.html#cb44-3" tabindex="-1"></a><span class="co"># Copy utility run script into this folder for concision in call</span></span>
+<span id="cb44-4"><a href="unix.html#cb44-4" tabindex="-1"></a><span class="fu">cp</span> ~/kaiserflu/runFileSaveLogs ~/kaiserflu/3-figures/</span>
+<span id="cb44-5"><a href="unix.html#cb44-5" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="unix.html#cb44-6" tabindex="-1"></a><span class="co"># Run folder scripts and produce output</span></span>
+<span id="cb44-7"><a href="unix.html#cb44-7" tabindex="-1"></a><span class="bu">cd</span> ~/kaiserflu/3-figures/</span>
+<span id="cb44-8"><a href="unix.html#cb44-8" tabindex="-1"></a><span class="ex">./runFileSaveLogs</span> <span class="at">-i</span> <span class="st">&quot;figures&quot;</span> <span class="dt">\</span></span>
+<span id="cb44-9"><a href="unix.html#cb44-9" tabindex="-1"></a>fig-mean-season-age.R <span class="dt">\</span></span>
+<span id="cb44-10"><a href="unix.html#cb44-10" tabindex="-1"></a>fig-monthly-rate.R <span class="dt">\</span></span>
+<span id="cb44-11"><a href="unix.html#cb44-11" tabindex="-1"></a>fig-point-estimates-combined.R <span class="dt">\</span></span>
+<span id="cb44-12"><a href="unix.html#cb44-12" tabindex="-1"></a>fig-point-estimates.R <span class="dt">\</span></span>
+<span id="cb44-13"><a href="unix.html#cb44-13" tabindex="-1"></a>fig-weekly-rate.R</span>
+<span id="cb44-14"><a href="unix.html#cb44-14" tabindex="-1"></a></span>
+<span id="cb44-15"><a href="unix.html#cb44-15" tabindex="-1"></a><span class="co"># Remove copied utility run script</span></span>
+<span id="cb44-16"><a href="unix.html#cb44-16" tabindex="-1"></a><span class="fu">rm</span> runFileSaveLogs</span></code></pre></div>
 
 </div>
 </div>
