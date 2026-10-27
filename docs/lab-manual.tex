@@ -139,7 +139,7 @@
 
 \title{Benjamin-Chung Group Lab Manual}
 \author{}
-\date{\vspace{-2.5em}Updated: 2026-10-14}
+\date{\vspace{-2.5em}Updated: 2026-10-27}
 
 \begin{document}
 \maketitle
@@ -629,7 +629,7 @@ Both modes are useful, but they each pose different risks to learning
 and to research safety and accuracy. This chapter includes our Lab
 Policy on use of AI in Research and then discusses the rationale.
 
-\subsection{Benjamin-Chung Lab Policy on use of AI in Research}\label{benjamin-chung-lab-policy-on-use-of-ai-in-research}
+\section{Benjamin-Chung Lab Policy on use of AI in Research}\label{benjamin-chung-lab-policy-on-use-of-ai-in-research}
 
 \begin{itemize}
 \item
@@ -677,7 +677,7 @@ Policy on use of AI in Research and then discusses the rationale.
   approval. Disclose if an agentic tool was used to produce analysis
   code, and document this in commit messages or code comments.
 \item
-  \textbf{Follow lab guidelines on Agentic AI permissions:} Always leave the tool's permission mode on default (the setting that asks before making edits or running commands) --- never switch to a mode that lets the AI act without asking first. This applies to the shared project \texttt{.claude/settings.json}, which is the only settings file you should edit; do not create a personal settings.local.json or a user-level \texttt{\textasciitilde{}/.claude/settings.json} override for lab projects.
+  \textbf{Follow lab guidelines on Agentic AI permissions:} Always leave the tool's permission mode on default (the setting that asks before making edits or running commands) --- never switch to a mode that lets the AI act without asking first. Our lab uses exactly two settings files plus a guidance file (see the permissions section below): the shared project \texttt{.claude/settings.json} committed in each repo, your personal \texttt{\textasciitilde{}/.claude/settings.json}, which exists only to hold \texttt{deny} rules protecting raw datasets in your local Box folder, and a shared \texttt{CLAUDE.md} in each repo for advisory project context. Never use a personal settings file (\texttt{\textasciitilde{}/.claude/settings.json} or a \texttt{settings.local.json}) to add \texttt{allow} rules, relax \texttt{ask} rules, or change the permission mode for lab projects.
 \item
   \textbf{Humans are responsible for Git commit and Git push, not AI.} Because research errors are analytical rather than technical and often can't be caught by automated checks, every lab member must personally write and execute their own commits and pushes --- this keeps the reasoning behind each change with the person responsible for it, and builds the judgment mentees need to develop.
 \item
@@ -718,7 +718,7 @@ Policy on use of AI in Research and then discusses the rationale.
 
 Each is discussed in more detail below, along with suggested safeguards.
 
-\section{Bottom line}\label{bottom-line}
+\section{Guiding principles}\label{guiding-principles}
 
 AI coding assistants are a powerful addition to our computational
 toolkit, but they are not a substitute for the judgment that comes from
@@ -731,7 +731,27 @@ practice regardless of experience level.
 \textbf{When in doubt about whether a workflow is compliant, ask Jade before
 proceeding.}
 
-\subsection{Research accuracy and the value of experience}\label{research-accuracy-and-the-value-of-experience}
+\subsection{Potential risks of using generative AI in education}\label{potential-risks-of-using-generative-ai-in-education}
+
+\textbf{Little to nothing is currently known about the pedagogy of learning to
+code with AI assistance versus learning to code without it.} If you
+never manually write code --- if you never sit with a bug for twenty
+minutes and slowly figure out that the join key had a leading whitespace
+--- how do you develop the gut instinct described above? We don't know.
+
+It's also possible that this concern will turn out to be less important
+than it seems. The future of research computing may not involve much
+hands-on human coding at all. But even if that's true, we don't yet know
+\emph{how} to teach someone --- a rotation student, a new Research Assistant, a
+first-year PhD student --- to ``vibe code'' well: to direct an AI tool
+effectively, to catch its mistakes, and to build sound judgment about
+when to trust its output. Until the pedagogy of computational research
+with agentic AI exists, in our lab, we consider risks of agentic AI use
+to be high for early-career skill-building to be high.
+
+\subsection{Potential risks of using generative AI in research}\label{potential-risks-of-using-generative-ai-in-research}
+
+\subsubsection{Risk: errors lead to incorrect scientific conclusions}\label{risk-errors-lead-to-incorrect-scientific-conclusions}
 
 In 2026, most seasoned quantitative researchers have been writing code
 for a decade or more --- tens of thousands of cumulative hours. There's a
@@ -782,25 +802,7 @@ source, an unfamiliar analysis method, or a computational workflow you
 haven't run by hand before. The challenge is, when you're new to a
 project or to a field of study, you're always in the \textbf{danger zone.}
 
-\subsection{Impeding learning? An open question}\label{impeding-learning-an-open-question}
-
-\textbf{Little to nothing is currently known about the pedagogy of learning to
-code with AI assistance versus learning to code without it.} If you
-never manually write code --- if you never sit with a bug for twenty
-minutes and slowly figure out that the join key had a leading whitespace
---- how do you develop the gut instinct described above? We don't know.
-
-It's also possible that this concern will turn out to be less important
-than it seems. The future of research computing may not involve much
-hands-on human coding at all. But even if that's true, we don't yet know
-\emph{how} to teach someone --- a rotation student, a new Research Assistant, a
-first-year PhD student --- to ``vibe code'' well: to direct an AI tool
-effectively, to catch its mistakes, and to build sound judgment about
-when to trust its output. Until the pedagogy of computational research
-with agentic AI exists, in our lab, we consider risks of agentic AI use
-to be high for early-career skill-building to be high.
-
-\subsection{Data safety in a research context}\label{data-safety-in-a-research-context}
+\subsubsection{Risk: potential breaches of confidentiality and IRB / data use agreement violations}\label{risk-potential-breaches-of-confidentiality-and-irb-data-use-agreement-violations}
 
 Uploading data to a chat-based AI tool poses risks, including:
 
@@ -817,7 +819,7 @@ Uploading data to a chat-based AI tool poses risks, including:
   uploaded content in ways that are not fully transparent to the user.
 \end{itemize}
 
-The risks are substatially higher for agentic tools such as Claude Code
+The risks are substantially higher for agentic tools such as Claude Code
 that run locally and, with your permission, can read and modify files on
 your laptop --- including, potentially, files containing participant-level
 data governed by IRB protocols and data use agreements.
@@ -840,7 +842,427 @@ data, while using PHI with Claude requires routing through the Stanford
 AI API Gateway. If you are not sure whether you your project is using
 PHI, check with Jade before proceeding.
 
-\subsection{Understanding agentic AI permission prompts}\label{understanding-agentic-ai-permission-prompts}
+\section{Configuring permissions for agentic AI}\label{configuring-permissions-for-agentic-ai}
+
+This section covers Claude Code's \textbf{permission system}. This guidance won't necessarily work in other agentic tools (Cursor, Codex CLI,
+OpenCode, etc.), each of which has its own config format and varying
+hook support. If you're using a different agent, you would need to look
+up that tool's own permissions/hooks documentation and check with Jade to ensure compliance.
+
+The overarching goal of these permissions is to prevent Claude from directly touching raw data. It is of course expected that you (alone or with Claude) will write R scripts that Claude edits and runs can use raw data. However, we do not want Claude to directly access raw data outside of R scripts because any file Claude reads \emph{directly} enters
+the AI conversation and is transmitted to Anthropic's servers, which can violate participant confidentiality and data use agreements. Claude can
+write and run the cleaning script; it can never look at the raw data.
+One caveat: Claude sees script \emph{output}, so don't let raw-data
+scripts print row-level data (e.g., \texttt{head(d)}), or run those steps
+yourself.
+
+\subsection{Permission modes}\label{permission-modes}
+
+Claude Code has several permission modes that set the baseline approval
+behavior for a session. \textbf{default mode} requires explicit approval for
+every action other than reads --- every:
+
+\begin{itemize}
+\tightlist
+\item
+  file edit
+\item
+  shell command
+\item
+  network call
+\end{itemize}
+
+gets a permission prompt. This is the only mode that guarantees a human
+is in the loop, which matters given that our work involves participant
+data and code that feeds into published analyses. Other modes exist, but
+they trade oversight for speed in ways that aren't appropriate for
+research in our lab without explicit permission from Jade.
+
+\subsection{Setting up permissions}\label{setting-up-permissions}
+
+Our lab setup uses \textbf{three files that work together}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{A shared project settings file} \emph{with rules that are }enforced*. --- \texttt{.claude/settings.json} in
+  each repo's root folder, committed and pushed to GitHub. The
+  Claude Code software checks them before any action runs, so a denied
+  command never executes, no matter what the AI intends. Anyone who clones the repo gets
+  these rules automatically.
+\item
+  \textbf{A shared \texttt{CLAUDE.md} project file} \emph{that contains conventions and context and is advisory}. It's a plain-English file in the
+  repo's root that Claude reads at the start of each session ---
+  project context, lab conventions, how we work. Claude genuinely
+  tries to follow it, but nothing enforces it: the model can forget it
+  in a long session or weigh it against other instructions. Save it in each repo's
+  root folder and commit and push it to GitHub.
+\item
+  \textbf{A personal settings file} --- \texttt{\textasciitilde{}/.claude/settings.json} in your
+  home folder, one per person per computer. It carries the only
+  enforced rules that can't be shared: the \texttt{deny} rules protecting
+  \textbf{raw datasets}, which are typically in your local Box folder, because Box lives at a
+  different local path on each computer and each person has access to
+  different datasets. The
+  Claude Code software checks them before any action runs, so a denied
+  command never executes, no matter what the AI intends.
+\end{enumerate}
+
+\subsection{Template: Shared project settings file}\label{template-shared-project-settings-file}
+
+Save this \texttt{.claude/settings.json} file in each project's root folder and push it to GitHub so it's
+version-controlled and shared by everyone working in that repo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"permissions"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"defaultMode"}\FunctionTok{:} \StringTok{"default"}\FunctionTok{,}
+    \DataTypeTok{"allow"}\FunctionTok{:} \OtherTok{[}
+      \StringTok{"Read(./**)"}\OtherTok{,}
+      \StringTok{"Bash(git show*)"}\OtherTok{,}
+      \StringTok{"Bash(git status*)"}\OtherTok{,}
+      \StringTok{"Bash(git diff*)"}\OtherTok{,}
+      \StringTok{"Bash(git branch*)"}\OtherTok{,}
+      \StringTok{"Bash(git log*)"}\OtherTok{,}
+      \StringTok{"Bash(git fetch*)"}\OtherTok{,}
+      \StringTok{"Bash(Rscript *)"}\OtherTok{,}
+      \StringTok{"Bash(quarto *)"}
+    \OtherTok{]}\FunctionTok{,}
+    \DataTypeTok{"ask"}\FunctionTok{:} \OtherTok{[}
+      \StringTok{"Bash(git checkout*)"}\OtherTok{,}
+      \StringTok{"Bash(pip install *)"}\OtherTok{,}
+      \StringTok{"Bash(pip3 install *)"}\OtherTok{,}
+      \StringTok{"Bash(curl *)"}\OtherTok{,}
+      \StringTok{"Bash(rm *)"}\OtherTok{,}
+      \StringTok{"Bash(npm install *)"}\OtherTok{,}
+      \StringTok{"Bash(conda install *)"}\OtherTok{,}
+      \StringTok{"Bash(apt{-}get install *)"}\OtherTok{,}
+      \StringTok{"Bash(apt install *)"}\OtherTok{,}
+      \StringTok{"Bash(python *)"}\OtherTok{,}
+      \StringTok{"Bash(python3 *)"}\OtherTok{,}
+      \StringTok{"Bash(Rscript PATH/TO/YOUR{-}INTENSIVE{-}SCRIPT.R)"}
+    \OtherTok{]}\FunctionTok{,}
+    \DataTypeTok{"deny"}\FunctionTok{:} \OtherTok{[}
+      \StringTok{"Bash(git add*)"}\OtherTok{,}
+      \StringTok{"Bash(git commit*)"}\OtherTok{,}
+      \StringTok{"Bash(git push*)"}\OtherTok{,}
+      \StringTok{"Bash(git merge*)"}\OtherTok{,}
+      \StringTok{"Bash(git rebase*)"}\OtherTok{,}
+      \StringTok{"Bash(git reset*)"}\OtherTok{,}
+      \StringTok{"Bash(rm {-}r*)"}\OtherTok{,}
+      \StringTok{"Bash(rm {-}fr*)"}\OtherTok{,}
+      \StringTok{"Bash(rmdir *)"}
+    \OtherTok{]}\FunctionTok{,}
+    \DataTypeTok{"additionalDirectories"}\FunctionTok{:} \OtherTok{[]}
+  \FunctionTok{\}}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{What every line of this file means, in plain English:}
+
+\textbf{Top-level settings}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Setting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Plain-English explanation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{"defaultMode":\ "default"} & Claude must ask before each file edit, shell command, or network call (e.g., calling an external API, installing packages from the internet). Because this lives in the repo, the setting travels with the project and get pushed to Github. \\
+\texttt{"additionalDirectories":\ {[}{]}} & Claude Code treats the folder you opened it in (the repo) as its workspace. additionalDirectories extends Claude's access to other folders. If left empty, Claude can only work inside the project folder itself. \\
+\end{longtable}
+}
+
+\textbf{\texttt{allow} --- Claude does these without asking} (read-only or low-risk actions):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Rule
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Plain-English explanation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Read(./**)} & Claude can read any file inside the project folder. (But it can never read the raw-data folders protected by your personal settings file, described below.) \\
+\texttt{Bash(git\ show*)}, \texttt{Bash(git\ status*)}, \texttt{Bash(git\ diff*)}, \texttt{Bash(git\ branch*)}, \texttt{Bash(git\ log*)}, \texttt{Bash(git\ fetch*)} & Claude can look at the state and history of the git repository. These commands are informational only --- none of them rewrite history or touch your uncommitted changes. \\
+\texttt{Bash(Rscript\ *)}, \texttt{Bash(quarto\ *)} & Claude can run R scripts and render Quarto documents. \\
+\end{longtable}
+}
+
+\textbf{\texttt{ask} --- Claude must ask you first, every time} (actions that change state or reach outside the repo):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Rule
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Plain-English explanation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Bash(git\ checkout*)} & Switching branches can silently discard uncommitted work, so you approve it each time, even though it doesn't touch remote history. \\
+\texttt{Bash(pip\ install\ *)}, \texttt{Bash(pip3\ install\ *)}, \texttt{Bash(npm\ install\ *)}, \texttt{Bash(conda\ install\ *)}, \texttt{Bash(apt-get\ install\ *)}, \texttt{Bash(apt\ install\ *)} & Installing packages or dependencies reaches outside the repo and changes your computing environment, so each install needs your approval. \\
+\texttt{Bash(curl\ *)} & Any outbound network request needs your approval. \\
+\texttt{Bash(rm\ *)} & Deleting a file. Claude shows you the exact delete command and waits for your approval --- this is how Claude can delete an \emph{individual file}, and only with your permission each time. Folder deletion is never allowed; see \texttt{deny} below. \\
+\texttt{Bash(python\ *)}, \texttt{Bash(python3\ *)} & Python isn't part of our core R-based workflow; Claude typically writes these scripts on its own to run quick tests or check its work. Approve them individually at first so you can see what it's doing; once you trust a specific recurring script, you can move its exact path to \texttt{allow}. \\
+\texttt{Bash(Rscript\ PATH/TO/YOUR-INTENSIVE-SCRIPT.R)} & Claude cannot run computationally intensive or destructive scripts without permission. ⚠️ \textbf{The path is a placeholder} --- replace it with the actual path to a script in your project (e.g., \texttt{Bash(Rscript\ 2-analysis/fit-main-model.R)}), add a line per script, or delete the line if the project has none. Because \texttt{ask} is checked before \texttt{allow}, a script listed here always prompts even though \texttt{Bash(Rscript\ *)} is in \texttt{allow}. \\
+\end{longtable}
+}
+
+\textbf{\texttt{deny} --- hard blocks Claude can never perform, even if you say yes:}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Rule
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Plain-English explanation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Bash(git\ add*)}, \texttt{Bash(git\ commit*)}, \texttt{Bash(git\ push*)}, \texttt{Bash(git\ merge*)}, \texttt{Bash(git\ rebase*)}, \texttt{Bash(git\ reset*)} & \textbf{Humans are responsible for git, not AI.} Lab members must personally write and run their own commits, pushes, merges, rebases, and resets --- this keeps the reasoning behind each change with the person responsible for it, and builds the judgment our team needs. Claude can still draft a suggested commit message or explain what changed, but cannot run these commands itself, even with approval. \\
+\texttt{Bash(rm\ -r*)}, \texttt{Bash(rm\ -fr*)}, \texttt{Bash(rmdir\ *)} & Claude can never delete a folder --- these block recursive deletes (\texttt{rm\ -r}, \texttt{rm\ -rf}, \texttt{rm\ -fr}) and directory removal (\texttt{rmdir}) everywhere, with no option to approve them. Because these are global, they also mean Claude can never delete a folder in your Box folder. \\
+\end{longtable}
+}
+
+\textbf{A note on why we don't recommend having AI responsible for Git commit and push:} Though in industry, agents are increasingly performing Git commits on their own, research code differs from software engineering in ways that change how much autonomy is appropriate. In engineering, continuous integration and test suites can verify correctness before a commit lands, and multiple reviewers typically stand between an AI-drafted commit and production. In our lab, the errors that matter most are analytical, not technical --- a mishandling of a missing observation, an incorrect ICD-11 code, an inappropriate mediator --- and no automated check can catch these. Further, most of our team are mentees still building that judgment, and if an AI agent can commit once a person clicks ``approve,'' the person approving may not yet have the expertise to catch what's wrong. Requiring each person to write and run their own \texttt{git\ commit}/\texttt{git\ push} keeps a deliberate human decision point before any change becomes part of our shared code base and promotes learning.
+
+Nothing in \texttt{ask} or \texttt{allow} can override anything in \texttt{deny}.
+
+\subsection{Template: Shared CLAUDE.md project file}\label{template-shared-claude.md-project-file}
+
+Save this as \texttt{CLAUDE.md} in each project's root folder and push it to
+GitHub. Fill in the bracketed parts for your project; keep the
+fixed lines of the Data and How-we-work sections as written. Remember
+this file is \emph{advisory} --- it makes
+Claude work better and explains the why, while the enforcement lives
+in the settings files above.
+
+Two cautions when filling it in. \textbf{Keep the whole file to a page or
+two} --- Claude loads it at the start of every session, so a bloated
+file wastes the model's attention; link to the pre-analysis plan and
+codebook rather than pasting their contents (Claude can open those
+files when it needs them). And \textbf{never put anything sensitive in it}
+--- no participant data values, nothing copied from raw datasets --- it's
+a committed, shared file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# [PROJECT NAME]}
+
+\CommentTok{[}\OtherTok{One or two sentences: what study this is, and what this repo does.}\CommentTok{]}
+
+\FunctionTok{\#\# Study context}
+\SpecialStringTok{{-} }\NormalTok{[Design and population, e.g.: cluster{-}randomized trial of X in Y;}
+\NormalTok{  child{-}level outcomes, clustering at the village level.]}
+\SpecialStringTok{{-} }\CommentTok{[}\OtherTok{Primary exposure(s) and outcome(s), briefly.}\CommentTok{]}
+
+\FunctionTok{\#\# Pre{-}analysis plan}
+\SpecialStringTok{{-} }\NormalTok{The pre{-}analysis plan is at }\CommentTok{[}\OtherTok{path in repo or OSF link}\CommentTok{]}\NormalTok{. Analyses}
+\NormalTok{  follow it: flag any deviation from the pre{-}specified outcomes,}
+\NormalTok{  models, or subgroups rather than improvising, and never add}
+\NormalTok{  exploratory analyses unless asked.}
+
+\FunctionTok{\#\# About this repo}
+\SpecialStringTok{{-} }\NormalTok{Analyses are written in R and Quarto. [Describe the folder}
+\NormalTok{  structure, e.g.: scripts run in order from }\InformationTok{\textasciigrave{}1{-}data{-}cleaning/\textasciigrave{}}\NormalTok{ to}
+  \InformationTok{\textasciigrave{}3{-}figures{-}tables/\textasciigrave{}}\NormalTok{; shared functions live in }\InformationTok{\textasciigrave{}0{-}functions/\textasciigrave{}}\NormalTok{.]}
+\SpecialStringTok{{-} }\NormalTok{[How to run the pipeline: config file, renv, run order, where}
+\NormalTok{  outputs go. Note any scripts too expensive to run casually.]}
+
+\FunctionTok{\#\# Data}
+\SpecialStringTok{{-} }\NormalTok{Raw data lives on Box, outside this repo, and is off{-}limits to you:}
+\NormalTok{  never read, edit, or delete anything in a raw{-}data folder.}
+\SpecialStringTok{{-} }\NormalTok{Scripts you write may read raw data when they run, but must not}
+\NormalTok{  print row{-}level data to the console — no }\InformationTok{\textasciigrave{}head()\textasciigrave{}}\NormalTok{, }\InformationTok{\textasciigrave{}print()\textasciigrave{}}\NormalTok{, or}
+  \InformationTok{\textasciigrave{}View()\textasciigrave{}}\NormalTok{ on identifiable datasets.}
+\SpecialStringTok{{-} }\NormalTok{Prefer de{-}identified or synthetic data during code development.}
+\SpecialStringTok{{-} }\NormalTok{The codebook / data dictionary is at [path to de{-}identified}
+\NormalTok{  codebook in repo].}
+\SpecialStringTok{{-} }\NormalTok{[Known dataset gotchas: date formats, site codes, sentinel values}
+\NormalTok{  like {-}9 for missing, variables recoded mid{-}study.]}
+
+\FunctionTok{\#\# Conventions}
+\SpecialStringTok{{-} }\NormalTok{[Statistical conventions: preferred packages, how missing data are}
+\NormalTok{  handled, survey weights or robust/clustered SEs, etc.]}
+\SpecialStringTok{{-} }\NormalTok{Follow the lab coding style guide}
+\NormalTok{  (https://jadebc.github.io/lab{-}manual/coding{-}style.html).}
+
+\FunctionTok{\#\# How we work}
+\SpecialStringTok{{-} }\NormalTok{This is research code: correctness matters more than speed.}
+\SpecialStringTok{{-} }\NormalTok{Analytical decisions — model choice, variable definitions, handling}
+\NormalTok{  of edge cases — go to a human. Say what you are unsure about rather}
+\NormalTok{  than picking silently.}
+\SpecialStringTok{{-} }\NormalTok{Humans run all git commits, pushes, merges, and rebases — never run}
+\NormalTok{  these yourself. You may draft commit messages and explain diffs.}
+\SpecialStringTok{{-} }\NormalTok{Enforced permissions are in }\InformationTok{\textasciigrave{}.claude/settings.json\textasciigrave{}}\NormalTok{; do not suggest}
+\NormalTok{  changing or working around them.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Template: Personal settings file}\label{template-personal-settings-file}
+
+Save this \texttt{\textasciitilde{}/.claude/settings.json} in your home folder. This file protects \textbf{raw datasets stored in your local Box folder}.
+Raw data locations are project-specific, so this file must be updated
+\textbf{every time you get access to a new raw dataset}: add a set of three
+\texttt{deny} lines (\texttt{Read}, \texttt{Edit}, \texttt{Write}) pointing at that dataset's
+folder in Box, as in this example with two datasets:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"permissions"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"deny"}\FunctionTok{:} \OtherTok{[}
+      \StringTok{"Read(\textasciitilde{}/Library/CloudStorage/Box{-}Box/STUDY{-}A/raw{-}data/**)"}\OtherTok{,}
+      \StringTok{"Edit(\textasciitilde{}/Library/CloudStorage/Box{-}Box/STUDY{-}A/raw{-}data/**)"}\OtherTok{,}
+      \StringTok{"Write(\textasciitilde{}/Library/CloudStorage/Box{-}Box/STUDY{-}A/raw{-}data/**)"}\OtherTok{,}
+      \StringTok{"Read(\textasciitilde{}/Library/CloudStorage/Box{-}Box/STUDY{-}B/data/untouched/**)"}\OtherTok{,}
+      \StringTok{"Edit(\textasciitilde{}/Library/CloudStorage/Box{-}Box/STUDY{-}B/data/untouched/**)"}\OtherTok{,}
+      \StringTok{"Write(\textasciitilde{}/Library/CloudStorage/Box{-}Box/STUDY{-}B/data/untouched/**)"}
+    \OtherTok{]}
+  \FunctionTok{\}}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Rule
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Plain-English explanation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Read(...raw\ data\ path...)} & Claude can never read raw data files, so participant data never enters the AI's context (file contents Claude reads are transmitted to the AI provider's servers). \\
+\texttt{Edit(...raw\ data\ path...)}, \texttt{Write(...raw\ data\ path...)} & Claude can never modify or create anything inside a raw-data folder --- raw data stays exactly as collected. \\
+\end{longtable}
+}
+
+⚠️ \textbf{The paths shown are placeholders} --- replace them with the real
+local Box paths on \emph{your} computer (see the checklist below). A
+path-based deny rule only protects the exact path it names; if the path
+doesn't match where the data actually live, the rule silently protects
+nothing.
+
+Why doesn't this cover all of Box? Box also holds plenty of
+non-sensitive material --- manuscripts, admin files, derived datasets ---
+that we \emph{do} want Claude to be able to read and edit when asked. The
+deny rules draw the line exactly around the raw datasets.
+
+Note these rules block \emph{Claude's own} file access, not the programs it
+runs: R scripts that Claude writes and executes can still read raw
+data normally (see ``For data protection'' under Best practices below).
+
+\textbf{What this means for deleting files --- in plain terms:}
+
+\begin{itemize}
+\tightlist
+\item
+  Claude \textbf{can delete an individual file, but only after asking you} and receiving your explicit permission for that specific command (\texttt{rm} is in the \texttt{ask} list of the shared project file).
+\item
+  Claude \textbf{can never delete folders} --- not in the project, and \textbf{never any folder in Box}. Recursive and folder deletes are in the shared \texttt{deny} list, so no approval you give can make them run.
+\item
+  Claude \textbf{can never read, change, write, or remove anything inside a raw-data folder} you've listed in your personal settings file --- and no approval can override that either.
+\item
+  The rest of Box (manuscripts, admin files, derived data) stays readable and editable by Claude, subject to the normal ask-first prompts.
+\end{itemize}
+
+\subsection{Setup checklist}\label{setup-checklist}
+
+\textbf{Once per computer:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  \textbf{Create your personal settings file \texttt{\textasciitilde{}/.claude/settings.json}} in your home folder with the
+  \texttt{permissions}/\texttt{deny} structure shown in the personal-file template
+  above (start with an empty \texttt{deny} list if you don't have raw data
+  access yet).
+\end{itemize}
+
+\textbf{Every time you get access to a new raw dataset:}
+
+\begin{itemize}
+\item[$\square$]
+  \textbf{Add three \texttt{deny} lines to your personal settings file for that dataset's Box folder} to your
+  personal \texttt{\textasciitilde{}/.claude/settings.json}. To find the path:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Open the dataset's raw-data folder in Finder (Mac) or File
+    Explorer (Windows).
+  \item
+    Copy the folder's full path (Mac: right-click the folder, hold
+    \textbf{Option}, and choose ``Copy \ldots{} as Pathname''; Windows: click the
+    address bar). On a Mac with Box Drive this is usually
+    \texttt{\textasciitilde{}/Library/CloudStorage/Box-Box/\textless{}folder\ name\textgreater{}} (or \texttt{\textasciitilde{}/Box/\textless{}folder\ name\textgreater{}} on older installs); on Windows it is usually
+    \texttt{C:\textbackslash{}Users\textbackslash{}\textless{}you\textgreater{}\textbackslash{}Box\textbackslash{}\textless{}folder\ name\textgreater{}}.
+  \item
+    Add that path, followed by \texttt{/**}, in a \texttt{Read}, an \texttt{Edit}, and a
+    \texttt{Write} line in the \texttt{deny} list.
+  \end{enumerate}
+
+  \begin{quote}
+  ⚠️ This step matters more than it might look --- if the path doesn't
+  match where the data actually live on your computer, the deny rule
+  silently protects nothing. Do this \emph{before} pointing Claude Code at
+  any work involving that dataset.
+  \end{quote}
+\end{itemize}
+
+\textbf{Once per project repo (tailor the shared templates):}
+
+\begin{itemize}
+\item[$\square$]
+  \textbf{Add \texttt{.claude/settings.json}} in the repo's root folder, copied
+  from the shared settings template above, and commit it so everyone
+  on the project gets the same rules. Fill in any placeholders (e.g., for intensive scripts).
+\item[$\square$]
+  \textbf{Add a \texttt{CLAUDE.md}} from the template above: fill in the
+  project name, repo structure, and how to run the pipeline; keep the
+  data and git sections as written.
+\item[$\square$]
+  \textbf{Check whether the project needs additional \texttt{allow} tools} Does
+  the project need to list tools in \texttt{allow} other than \texttt{git}, \texttt{Rscript},
+  \texttt{python}, and \texttt{python3}? If so, modify this section.
+\end{itemize}
+
+\section{Understanding agentic AI permission prompts}\label{understanding-agentic-ai-permission-prompts}
 
 \emph{Note: the following is based on Claude Code, but other agentic coding
 tools have similar permission prompts.}
@@ -1029,192 +1451,13 @@ Command & What it does & Why it matters\\
 \item
   \textbf{Read permission prompts before approving them}, especially requests
   to access the network, install packages, or read/write outside the
-  current project folder.\\
+  current project folder.
 \item
-  \textbf{Use project-level permission scoping} instead of granting broad or session-wide access. This is why our lab uses a shared \texttt{.claude/settings.json} (allow-listing specific directories and commands, mode set to default) rather than individual overrides (see below). Don't work around it with a personal \texttt{settings.local.json} or broader access than the project file grants.
+  \textbf{Use project-level permission scoping} instead of granting broad or session-wide access. This is why our lab uses a shared \texttt{.claude/settings.json} (allow-listing specific directories and commands, mode set to default), with personal settings reserved for \emph{adding} raw-data \texttt{deny} rules only (see above). Don't work around the shared file with a personal \texttt{settings.local.json} or broader access than the project file grants.
 \end{itemize}
 
 \textbf{When in doubt about whether a workflow is compliant, ask Jade before
 proceeding.}
-
-\section{Configuring permissions for agentic AI}\label{configuring-permissions-for-agentic-ai}
-
-This section covers Claude Code's \textbf{permission system}. This guidance won't necessarily work in other agentic tools (Cursor, Codex CLI,
-OpenCode, etc.), each of which has its own config format and varying
-hook support. If you're using a different agent, you would need to look
-up that tool's own permissions/hooks documentation and check with Jade to ensure compliance.
-
-\subsection{Permission modes}\label{permission-modes}
-
-Claude Code has several permission modes that set the baseline approval
-behavior for a session. \textbf{default mode} requires explicit approval for
-every action other than reads --- every:
-
-\begin{itemize}
-\tightlist
-\item
-  file edit
-\item
-  shell command
-\item
-  network call
-\end{itemize}
-
-gets a permission prompt. This is the only mode that guarantees a human
-is in the loop, which matters given that our work involves participant
-data and code that feeds into published analyses. Other modes exist, but
-they trade oversight for speed in ways that aren't appropriate for
-research in our lab without explicit permission from Jade.
-
-\subsubsection{Setting up permissions}\label{setting-up-permissions}
-
-Below, we recommend lab-specific permissions that apply to all projects. They adjustthe standard default permissions in Claude to:
-
-\begin{itemize}
-\tightlist
-\item
-  Be more permissive for named safe tools
-\item
-  Be more restrictive for accessing raw data file paths
-\end{itemize}
-
-Permission rules live in a \texttt{permissions} block in \texttt{settings.json} and
-let you pre-approve safe, repetitive actions while keeping prompts (or
-hard blocks) on anything sensitive. Rules are written as
-\texttt{Tool(specifier)} patterns and are evaluated in a fixed order --- \textbf{deny,
-then ask, then allow} --- with the first match winning. A deny rule
-always wins even if a more specific allow rule also matches; you cannot
-carve an allow list exception out of a deny rule.
-
-Note: \textbf{lab policy is that humans are responsible for Git commit and Git push, Not AI.} Though in industry, agents are increasingly performing Git commits on their own, research code differs from software engineering in ways that change how much autonomy is appropriate. In engineering, continuous integration and test suites can verify correctness before a commit lands, and multiple reviewers typically stand between an AI-drafted commit and production.
-
-In our lab, the errors that matter most are analytical, not technical --- a mishandling of a missing observation, an incorrect ICD-11 code, an inappropriate mediator --- and no automated check can catch these. Further, most of our team are mentees still building that judgment, and if an AI agent can commit once a person clicks ``approve,'' the person approving may not yet have the expertise to catch what's wrong. Requiring each person to write and run their own \texttt{git\ commit}/\texttt{git\ push} keeps a deliberate human decision point before any change becomes part of our shared code base and promotes learning.
-
-For each code repository, set up permissions by saving a
-\texttt{.claude/settings.json} in each project's root folder. Push it to Github
-so it's version-controlled and shared by everyone working in that repo:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\{}
-  \DataTypeTok{"permissions"}\FunctionTok{:} \FunctionTok{\{}
-    \DataTypeTok{"defaultMode"}\FunctionTok{:} \StringTok{"default"}\FunctionTok{,}
-    \DataTypeTok{"allow"}\FunctionTok{:} \OtherTok{[}
-      \StringTok{"Read(./**)"}\OtherTok{,}
-      \StringTok{"Bash(git show*)"}\OtherTok{,}
-      \StringTok{"Bash(git status*)"}\OtherTok{,}
-      \StringTok{"Bash(git diff*)"}\OtherTok{,}
-      \StringTok{"Bash(git branch*)"}\OtherTok{,}
-      \StringTok{"Bash(git log*)"}\OtherTok{,}
-      \StringTok{"Bash(git fetch*)"}\OtherTok{,}
-      \StringTok{"Bash(Rscript *)"}\OtherTok{,}
-      \StringTok{"Bash(quarto *)"}
-    \OtherTok{]}\FunctionTok{,}
-    \DataTypeTok{"ask"}\FunctionTok{:} \OtherTok{[}
-      \StringTok{"Bash(git checkout*)"}\OtherTok{,}
-      \StringTok{"Bash(pip install *)"}\OtherTok{,}
-      \StringTok{"Bash(pip3 install *)"}\OtherTok{,}
-      \StringTok{"Bash(install.packages(*)*)"}\OtherTok{,}
-      \StringTok{"Bash(curl *)"}\OtherTok{,}
-      \StringTok{"Bash(rm *)"}\OtherTok{,}
-      \StringTok{"Bash(npm install *)"}\OtherTok{,}
-      \StringTok{"Bash(conda install *)"}\OtherTok{,}
-      \StringTok{"Bash(apt{-}get install *)"}\OtherTok{,}
-      \StringTok{"Bash(apt install *)"}\OtherTok{,}
-      \StringTok{"Bash(python *)"}\OtherTok{,}
-      \StringTok{"Bash(python3 *)"}
-    \OtherTok{]}\FunctionTok{,}
-    \DataTypeTok{"deny"}\FunctionTok{:} \OtherTok{[}
-      \StringTok{"Bash(git add*)"}\OtherTok{,}
-      \StringTok{"Bash(git commit*)"}\OtherTok{,}
-      \StringTok{"Bash(git push*)"}\OtherTok{,}
-      \StringTok{"Bash(git merge*)"}\OtherTok{,}
-      \StringTok{"Bash(git rebase*)"}\OtherTok{,}
-      \StringTok{"Bash(git reset*)"}\OtherTok{,}
-      \StringTok{"Read(./data/raw/**)"}\OtherTok{,}
-      \StringTok{"Edit(./data/raw/**)"}\OtherTok{,}
-      \StringTok{"Write(./data/raw/**)"}\OtherTok{,}
-      \StringTok{"Bash(rm {-}rf *)"}
-    \OtherTok{]}\FunctionTok{,}
-    \DataTypeTok{"additionalDirectories"}\FunctionTok{:} \OtherTok{[]}
-  \FunctionTok{\}}
-\FunctionTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{What this does, line by line:}
-
-\textbf{\texttt{defaultMode:\ "default"}} --- pins the session to the mode described above, so the setting travels with the repo.
-
-\textbf{\texttt{allow}} --- actions that proceed without a permission prompt because they're read-only or low-risk:
-
-\begin{itemize}
-\tightlist
-\item
-  Reading any file in the project (\texttt{Read(./**)})
-\item
-  Checking git status/diff/log/show/branch/fetch (informational or non-destructive --- none of these rewrite history or touch the working directory's uncommitted changes)
-\item
-  Running R scripts and Quarto documents within this project repo (\texttt{Rscript\ *}, \texttt{quarto\ *}) --- the core of most analysis work. If a specific script is particularly computationally intensive or destructive, you can move that script's path from \texttt{allow} to \texttt{ask} (e.g.~\texttt{Bash(Rscript\ scripts/expensive\_model.R)}).
-\end{itemize}
-
-\textbf{\texttt{ask}} --- actions that change state or reach outside the repo, so we want a checkpoint rather than a hard block:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{git\ checkout} --- can silently discard uncommitted work, so it's gated even though it doesn't touch remote history.
-\item
-  Installing packages or dependencies (\texttt{pip\ install}, \texttt{install.packages}, \texttt{npm\ install}, \texttt{conda\ install}, \texttt{apt\ install}/\texttt{apt-get\ install}) --- these reach outside the repo and change your environment.
-\item
-  \texttt{curl} --- any outbound network request.
-\item
-  \texttt{rm} (plain delete) --- file deletion that isn't the \texttt{-rf} pattern blocked outright below.
-\item
-  Running Python scripts (\texttt{python\ *}, \texttt{python3\ *}) --- Python isn't part of our core R-based analysis workflow. Claude typically writes these on its own to run quick tests or check its work. For new users of agentic AI, it's best to approve these individually at first so you can see what it's doing; once you trust a specific recurring script, you can move its exact path to \texttt{allow}.
-\end{itemize}
-
-\textbf{\texttt{deny}} --- hard blocks, regardless of any other rule:
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Git history commands} (\texttt{git\ add}, \texttt{git\ commit}, \texttt{git\ push}, \texttt{git\ merge}, \texttt{git\ rebase}, \texttt{git\ reset}) --- \textbf{humans are responsible for these, not AI.} Lab members must personally write and execute their own commits, pushes, merges, rebases, and resets --- this keeps the reasoning behind each change with the person responsible for it, and builds the judgment our team needs to develop. Claude can still draft a suggested commit message or explain what changed, but cannot run these commands itself, even with approval.
-\item
-  Reading, editing, \emph{or} writing anything in \texttt{data/raw/} (our raw, unprocessed field data --- see the hook section for why a path rule alone isn't sufficient here, and remember to update this path per-project)
-\item
-  \texttt{rm\ -rf} (recursive force delete) --- blocked outright rather than merely asked, since this is the highest-consequence single command available.
-\end{itemize}
-
-Nothing in \texttt{ask} or \texttt{allow} can override any of these.
-
-\textbf{\texttt{additionalDirectories}} --- left empty here; add paths only if a
-project genuinely needs to read/write outside its own folder (e.g., a
-shared reference-data directory), and prefer read access over write
-access when you do.
-
-\subsubsection{Tailor the template to your project}\label{tailor-the-template-to-your-project}
-
-\begin{itemize}
-\item[$\square$]
-  \textbf{Modify the \texttt{data/raw/**} path in the \texttt{deny} block} Enter the
-  path to your project's raw, unprocessed field data. If a project has
-  more than one raw-data location, add a separate line for each.
-
-  \begin{quote}
-  ⚠️ This step matters more than it might look --- if the path doesn't
-  match reality, the deny rule silently protects nothing.
-  \end{quote}
-\item[$\square$]
-  \textbf{Check whether the project needs additional \texttt{allow} tools} Does
-  the project need to list tools in \texttt{allow} other than \texttt{git}, \texttt{Rscript},
-  \texttt{python}, and \texttt{python3}? If so, modify this section.
-\item[$\square$]
-  \textbf{Review the \texttt{ask} list} This assumes a standard git workflow.
-  \texttt{Bash(curl\ *)}, \texttt{Bash(rm\ -rf\ *)}, and the overall structure of the
-  file are generic safety defaults and typically don't need to change
-  per project.
-\end{itemize}
 
 \section{Disclosing use of generative AI in research}\label{disclosing-use-of-generative-ai-in-research}
 

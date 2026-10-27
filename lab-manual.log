@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.22)  14 OCT 2026 14:32
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.22)  27 OCT 2026 06:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1227,111 +1227,128 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Chapter 6.
-[25]
-Underfull \hbox (badness 1838) in paragraph at lines 680--682
-[]\TU/lmr/bx/n/10 Follow lab guidelines on Agentic AI permissions: \TU/lmr/m/n/
-10 Always
- []
-
-[26]
+[25] [26]
 Underfull \hbox (badness 1314) in paragraph at lines 703--708
 \TU/lmr/m/n/10 tools may impede the development of coding fluency and statisti-
 
  []
 
-[27] [28]
+[27] [28] [29]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 895.
+[30]
+Underfull \vbox (badness 10000) detected at line 962
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[31]
+Overfull \hbox (1.5pt too wide) in paragraph at lines 1030--1030
+\TU/lmtt/m/n/10 PATH/TO/YOUR-INTENSIVE-SCRIPT.R)|  
+ []
+
+Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[32] [33] [34]
+
+LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1095.
+
+
+
+Underfull \vbox (badness 10000) detected at line 1128
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[35]
+Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[36]
+Underfull \hbox (badness 1728) in paragraph at lines 1230--1236
+\TU/lmr/m/n/10 the address bar). On a Mac with Box Drive this is usu-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1230--1236
+\TU/lmr/m/n/10 ally \TU/lmtt/m/n/10 ~/Library/CloudStorage/Box-Box/<folder name
+> \TU/lmr/m/n/10 (or
+ []
+
+[37]
+Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1265--1265
+[]\TU/lmr/bx/n/14.4 Understanding agentic AI permission
+ []
+
 File: lab-manual_files/assets/images/claude-code-render-qmd.png Graphic file (t
 ype bmp)
 <lab-manual_files/assets/images/claude-code-render-qmd.png>
 
-Underfull \hbox (badness 1953) in paragraph at lines 854--861
+Underfull \hbox (badness 1953) in paragraph at lines 1276--1283
 []\TU/lmr/bx/n/10 AI’s own plain-English summary \TU/lmr/m/n/10 of the action, 
 not a guar-
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 854--861
+Underfull \hbox (badness 1048) in paragraph at lines 1276--1283
 \TU/lmr/m/n/10 antee of what the command actually does. It’s usually accurate,
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 854--861
+Underfull \hbox (badness 1755) in paragraph at lines 1276--1283
 \TU/lmr/m/n/10 but it can omit exactly the detail — a hardcoded file path, a
  []
 
 
-Underfull \hbox (badness 2790) in paragraph at lines 854--861
+Underfull \hbox (badness 2790) in paragraph at lines 1276--1283
 \TU/lmr/m/n/10 the actual command or diff underneath, not just the summary.
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[29]
+[38]
 File: lab-manual_files/assets/images/claude-code-other-language.png Graphic fil
 e (type bmp)
 <lab-manual_files/assets/images/claude-code-other-language.png>
-[30]
-Overfull \hbox (27.79999pt too wide) in paragraph at lines 906--952
+
+Overfull \hbox (27.79999pt too wide) in paragraph at lines 1328--1374
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 145.79987pt on input line 952.
+LaTeX Warning: Float too large for page by 145.79987pt on input line 1374.
 
-[31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1030--1034
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
+[39] [40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1456--1457
 []\TU/lmr/bx/n/10 Use project-level permission scoping \TU/lmr/m/n/10 instead o
 f granting
  []
 
 
-Underfull \hbox (badness 2556) in paragraph at lines 1034--1035
+Underfull \hbox (badness 2556) in paragraph at lines 1456--1457
 \TU/lmtt/m/n/10 .claude/settings.json \TU/lmr/m/n/10 (allow-listing specific di
 rectories and com-
  []
 
-
-Underfull \vbox (badness 2600) has occurred while \output is active []
-
-[33]
-Overfull \hbox (3.83202pt too wide) in paragraph at lines 1093--1096
-[]\TU/lmr/m/n/10 For each code repository, set up permissions by saving a \TU/l
-mtt/m/n/10 .claude/settings.json
- []
-
-[34]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1099.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[35]
-Underfull \hbox (badness 1603) in paragraph at lines 1158--1159
-\TU/lmr/m/n/10 script is particularly computationally intensive or destructive,
- you
- []
-
-[36]
-Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[37]
-Overfull \hbox (0.528pt too wide) in paragraph at lines 1284--1284
+[42]
+Overfull \hbox (0.528pt too wide) in paragraph at lines 1527--1527
 []|\TU/lmr/m/n/12 Publisher|  
  []
 
@@ -1342,7 +1359,7 @@ ex-text;!
 Missing character: There is no ❓ (U+2753) in font [lmroman12-regular]:mapping=t
 ex-text;!
 
-Overfull \hbox (12.756pt too wide) in paragraph at lines 1288--1288
+Overfull \hbox (12.756pt too wide) in paragraph at lines 1531--1531
 \TU/lmr/m/n/12 Comms/Med/Health, 
  []
 
@@ -1353,7 +1370,7 @@ ex-text;!
 Missing character: There is no 🚫 (U+1F6AB) in font [lmroman12-regular]:mapping=
 tex-text;!
 
-Overfull \hbox (11.59201pt too wide) in paragraph at lines 1292--1292
+Overfull \hbox (11.59201pt too wide) in paragraph at lines 1535--1535
 \TU/lmr/m/n/12 vier/Lancet|  
  []
 
@@ -1378,7 +1395,7 @@ tex-text;!
 Missing character: There is no 🚫 (U+1F6AB) in font [lmroman12-regular]:mapping=
 tex-text;!
 
-Overfull \hbox (27.588pt too wide) in paragraph at lines 1304--1304
+Overfull \hbox (27.588pt too wide) in paragraph at lines 1547--1547
 \TU/lmr/m/n/12 AAAS/Science|  
  []
 
@@ -1403,394 +1420,394 @@ ex-text;!
 Missing character: There is no ❓ (U+2753) in font [lmroman12-regular]:mapping=t
 ex-text;!
 
-Overfull \hbox (15.79999pt too wide) in paragraph at lines 1282--1323
+Overfull \hbox (15.79999pt too wide) in paragraph at lines 1525--1566
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 158.75989pt on input line 1323.
+LaTeX Warning: Float too large for page by 158.75989pt on input line 1566.
 
-[38]
+
 Overfull \hbox (16.37122pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 6.6.  KNOW YOUR TARGET JOURNAL’S AI POLICY BEFORE YOU START \TU
-/lmr/m/n/10 39
+\TU/lmr/m/sl/10 6.8.  KNOW YOUR TARGET JOURNAL’S AI POLICY BEFORE YOU START \TU
+/lmr/m/n/10 43
  []
 
-[39] [40
-
-]
+[43] [44]
 Chapter 7.
-[41]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1379.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[42] [43] [44]
-Chapter 8.
-
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1477--1477
-[]\TU/lmtt/m/n/10 #############################################################
-###################[] 
- []
-
 [45
 
 ]
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1477--1477
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1622.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[46] [47] [48]
+Chapter 8.
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1720--1720
+[]\TU/lmtt/m/n/10 #############################################################
+###################[] 
+ []
+
+[49
+
+]
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1720--1720
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1499--1500
+Underfull \hbox (badness 10000) in paragraph at lines 1742--1743
 []\TU/lmtt/m/n/10 # This is a comment -- first letter is capitalized and spaced
 
  []
 
-[46]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 1526--1526
+[50]
+Overfull \hbox (1.5pt too wide) in paragraph at lines 1769--1769
 []\TU/lmtt/m/n/10 #[] and the number of patients with an outcome, the total pat
 ients,[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1526--1526
+Overfull \hbox (75.0pt too wide) in paragraph at lines 1769--1769
 []\TU/lmtt/m/n/10 #[] @param data A data frame with variables flu_season, site,
  studyID, and yname.[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1526--1526
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1769--1769
 []\TU/lmtt/m/n/10 #[] @param silent A boolean specifying whether the function s
 hould suppress[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 1526--1526
+Overfull \hbox (38.25pt too wide) in paragraph at lines 1769--1769
 []\TU/lmtt/m/n/10 #[] @return A data frame with columns for flu season, site, o
 utcome count,[] 
  []
 
-[47]
+[51]
 File: assets/images/variable-naming-example.png Graphic file (type bmp)
 <assets/images/variable-naming-example.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[48]
+[52]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1590.
-[49]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 1637--1638
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1833.
+[53]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 1880--1881
 \TU/lmtt/m/n/10 dplyr::filter(get_rows_condition)|  
  []
 
 
-ignored: Infinite glue shrinkage found in box being split [50]
+ignored: Infinite glue shrinkage found in box being split [54]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[51] [52] [53]
-Overfull \hbox (80.25pt too wide) in paragraph at lines 1760--1760
+[55] [56] [57]
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2003--2003
 []  \TU/lmtt/m/n/10 result <- lapply(X = mylist2, FUN = function(y) square_sum(
 mylist1[[1]][i], y))[] 
  []
 
-[54]
-Overfull \hbox (48.75pt too wide) in paragraph at lines 1790--1790
+[58]
+Overfull \hbox (48.75pt too wide) in paragraph at lines 2033--2033
 []\TU/lmtt/m/n/10 # Set how many processors will be used to process the list an
 d make cluster[] 
  []
 
-[55] [56]
-Underfull \hbox (badness 2478) in paragraph at lines 1858--1859
+[59] [60]
+Underfull \hbox (badness 2478) in paragraph at lines 2101--2102
 []\TU/lmr/m/n/10 Are random seeds set where relevant (e.g., bootstrapping, cros
 s-
  []
 
-[57] [58]
+[61] [62]
 Chapter 9.
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1977--1977
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2220--2220
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 1977--1977
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2220--2220
 []\TU/lmtt/m/n/10 #############################################################
 ###################[] 
  []
 
-[59
+[63
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1995--1996
+Underfull \hbox (badness 10000) in paragraph at lines 2238--2239
 []\TU/lmtt/m/n/10 # This is a comment -- first letter is capitalized and spaced
 
  []
 
 
-Overfull \hbox (42.25pt too wide) in paragraph at lines 2037--2037
+Overfull \hbox (42.25pt too wide) in paragraph at lines 2280--2280
  []  \TU/lmtt/m/n/10 mutate(program = case_when(schoolyr %in% pre_program_schoo
 lyrs ~ 0,[] 
  []
 
 
-Overfull \hbox (47.5pt too wide) in paragraph at lines 2037--2037
+Overfull \hbox (47.5pt too wide) in paragraph at lines 2280--2280
  []                             \TU/lmtt/m/n/10 schoolyr %in% program_schoolyrs
  ~ 1)) %>%[] 
  []
 
 
-Overfull \hbox (37.0pt too wide) in paragraph at lines 2037--2037
+Overfull \hbox (37.0pt too wide) in paragraph at lines 2280--2280
  []  \TU/lmtt/m/n/10 mutate(period = case_when(schoolyr %in% pre_program_school
 yrs ~ 0,[] 
  []
 
 
-Overfull \hbox (0.25pt too wide) in paragraph at lines 2037--2037
+Overfull \hbox (0.25pt too wide) in paragraph at lines 2280--2280
  []                            \TU/lmtt/m/n/10 schoolyr %in% LAIV_schoolyrs ~ 1
 ,[] 
  []
 
 
-Overfull \hbox (21.25pt too wide) in paragraph at lines 2037--2037
+Overfull \hbox (21.25pt too wide) in paragraph at lines 2280--2280
  []                            \TU/lmtt/m/n/10 schoolyr %in% IIV_schoolyrs ~ 2)
 ) %>%[] 
  []
 
-[60]
-Overfull \hbox (37.0pt too wide) in paragraph at lines 2074--2074
+[64]
+Overfull \hbox (37.0pt too wide) in paragraph at lines 2317--2317
  []  \TU/lmtt/m/n/10 geom_errorbar(mapping=aes_string(ymin="lb", ymax="ub", col
 =group),[] 
  []
 
 
-Overfull \hbox (58.0pt too wide) in paragraph at lines 2074--2074
+Overfull \hbox (58.0pt too wide) in paragraph at lines 2317--2317
  []  \TU/lmtt/m/n/10 scale_color_manual(std_legend_title,values=cols,labels=leg
 end_label) +[] 
  []
 
 
-Overfull \hbox (73.75pt too wide) in paragraph at lines 2074--2074
+Overfull \hbox (73.75pt too wide) in paragraph at lines 2317--2317
  []  \TU/lmtt/m/n/10 scale_shape_manual(std_legend_title,values=shapes, labels=
 legend_label) +[] 
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 2079--2079
+Underfull \hbox (badness 1478) in paragraph at lines 2322--2322
 []\TU/lmr/bx/n/14.4 Automated Tools for Style and Project
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[61]
-Overfull \hbox (216.75pt too wide) in paragraph at lines 2107--2107
+[65]
+Overfull \hbox (216.75pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "Brookfield Village Elementary" = str_subset(string = OUSD_
 school_shapes$schnam, pattern = "Brookfield"),[] 
  []
 
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "Carl Munck Elementary" = str_subset(string = OUSD_school_s
 hapes$schnam, pattern = "Munck"),[] 
  []
 
 
-Overfull \hbox (274.5pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (274.5pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "Community United Elementary School" = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Community United"),[] 
  []
 
 
-Overfull \hbox (258.75pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (258.75pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "East Oakland PRIDE Elementary" = str_subset(string = OUSD_
 school_shapes$schnam, pattern = "East Oakland Pride"),[] 
  []
 
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "EnCompass Academy" = str_subset(string = OUSD_school_shape
 s$schnam, pattern = "EnCompass"),[] 
  []
 
 
-Overfull \hbox (148.5pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (148.5pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "Global Family School" = str_subset(string = OUSD_school_sh
 apes$schnam, pattern = "Global"),[] 
  []
 
 
-Overfull \hbox (290.25pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (290.25pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "International Community School" = str_subset(string = OUSD
 _school_shapes$schnam, pattern = "International Community"),[] 
  []
 
 
-Overfull \hbox (248.25pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (248.25pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "Manzanita Community School" = str_subset(string = OUSD_sch
 ool_shapes$schnam, pattern = "Manzanita Community"),[] 
  []
 
 
-Overfull \hbox (201.0pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (201.0pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "Martin Luther King Jr Elementary" = str_subset(string = OU
 SD_school_shapes$schnam, pattern = "King"),[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "PLACE @ Prescott" = "Preparatory Literary Academy of Cultu
 ral Excellence",[] 
  []
 
 
-Overfull \hbox (190.5pt too wide) in paragraph at lines 2107--2107
+Overfull \hbox (190.5pt too wide) in paragraph at lines 2350--2350
 []  \TU/lmtt/m/n/10 "RISE Community School" = str_subset(string = OUSD_school_s
 hapes$schnam, pattern = "Rise Community")[] 
  []
 
 
-Overfull \hbox (243.0pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (243.0pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Brookfield Village Elementary"      = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Brookfield"),[] 
  []
 
 
-Overfull \hbox (216.75pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (216.75pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Carl Munck Elementary"              = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Munck"),[] 
  []
 
 
-Overfull \hbox (274.5pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (274.5pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Community United Elementary School" = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Community United"),[] 
  []
 
 
-Overfull \hbox (285.0pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (285.0pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "East Oakland PRIDE Elementary"      = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "East Oakland Pride"),[] 
  []
 
 
-Overfull \hbox (237.75pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (237.75pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "EnCompass Academy"                  = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "EnCompass"),[] 
  []
 
 
-Overfull \hbox (222.0pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (222.0pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Global Family School"               = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Global"),[] 
  []
 
 
-Overfull \hbox (311.25pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (311.25pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "International Community School"     = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "International Community"),[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Madison Park Lower Campus"          = "Madison Park Academ
 y TK-5",[] 
  []
 
 
-Overfull \hbox (290.25pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (290.25pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Manzanita Community School"         = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Manzanita Community"),[] 
  []
 
 
-Overfull \hbox (211.5pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (211.5pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "Martin Luther King Jr Elementary"   = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "King"),[] 
  []
 
 
-Overfull \hbox (153.75pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (153.75pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "PLACE @ Prescott"                   = "Preparatory Literar
 y Academy of Cultural Excellence",[] 
  []
 
 
-Overfull \hbox (258.75pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (258.75pt too wide) in paragraph at lines 2368--2368
 []  \TU/lmtt/m/n/10 "RISE Community School"              = str_subset(string = 
 OUSD_school_shapes$schnam, pattern = "Rise Community")[] 
  []
 
-[62] [63] [64
+[66] [67] [68
 
 ]
 Chapter 10.
 
 Underfull \vbox (badness 3354) has occurred while \output is active []
 
-[65] [66]
+[69] [70]
 Chapter 11.
 File: assets/images/data-masking.png Graphic file (type bmp)
 <assets/images/data-masking.png>
-[67
+[71
 
 ]
-Overfull \hbox (8.38454pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 68 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
-WITH DPLYR
- []
-
-[68]
-Underfull \hbox (badness 1122) in paragraph at lines 2243--2246
-[]\TU/lmr/m/n/10 The combined use of \TU/lmtt/m/n/10 !! \TU/lmr/m/n/10 and \TU/
-lmtt/m/n/10 sym() \TU/lmr/m/n/10 allows us to use strings, rather
- []
-
-[69]
-Overfull \hbox (8.38454pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 70 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
-WITH DPLYR
- []
-
-[70] [71]
 Overfull \hbox (8.38454pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 72 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
 WITH DPLYR
  []
 
-[72
+[72]
+Underfull \hbox (badness 1122) in paragraph at lines 2486--2489
+[]\TU/lmr/m/n/10 The combined use of \TU/lmtt/m/n/10 !! \TU/lmr/m/n/10 and \TU/
+lmtt/m/n/10 sym() \TU/lmr/m/n/10 allows us to use strings, rather
+ []
+
+[73]
+Overfull \hbox (8.38454pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 74 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
+WITH DPLYR
+ []
+
+[74] [75]
+Overfull \hbox (8.38454pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 76 \TU/lmr/m/sl/10 CHAPTER 11.  TIDY EVALUATION AND PROGRAMMING 
+WITH DPLYR
+ []
+
+[76
 
 ]
 Chapter 12.
 
-Underfull \hbox (badness 1137) in paragraph at lines 2347--2348
+Underfull \hbox (badness 1137) in paragraph at lines 2590--2591
 []\TU/lmr/m/n/10 This chapter covers two complementary practices: data validati
 on with
  []
 
-[73]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 2403--2403
+[77]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2646--2646
 []  \TU/lmtt/m/n/10 msg = "some individuals have household_ids not found in hou
 sehold data"[] 
  []
 
-[74]
-Overfull \hbox (106.5pt too wide) in paragraph at lines 2403--2403
+[78]
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2646--2646
 []  \TU/lmtt/m/n/10 msg = "floor_type has missing values after merge — househol
 d data may be incomplete"[] 
  []
 
 
-Overfull \hbox (27.75pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (27.75pt too wide) in paragraph at lines 2675--2675
 []  \TU/lmtt/m/n/10 msg = "filter did not remove any rows — all individuals are
  under 5?"[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2432--2432
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2675--2675
 []\TU/lmtt/m/n/10 # If you know the approximate expected count from enrollment 
 records[] 
  []
@@ -1798,74 +1815,74 @@ records[]
 
 Underfull \vbox (badness 1769) has occurred while \output is active []
 
-[75]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2457--2457
+[79]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2700--2700
 []  \TU/lmtt/m/n/10 all(village_prev$prevalence >= 0 & village_prev$prevalence 
 <= 1),[] 
  []
 
 
-Overfull \hbox (54.0pt too wide) in paragraph at lines 2457--2457
+Overfull \hbox (54.0pt too wide) in paragraph at lines 2700--2700
 []  \TU/lmtt/m/n/10 msg = "prevalence values outside [0, 1] — check numerator a
 nd denominator"[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2457--2457
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2700--2700
 []  \TU/lmtt/m/n/10 msg = "some villages have 0 individuals — check village_id 
 coding"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2483--2483
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2726--2726
 []    \TU/lmtt/m/n/10 "age_category has ", sum(is.na(individual_data$age_catego
 ry)),[] 
  []
 
-[76]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2529--2529
+[80]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2772--2772
 []\TU/lmtt/m/n/10 #[] @param expected_n_ind expected number of individuals (app
 roximate)[] 
  []
 
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 2529--2529
+Overfull \hbox (48.75pt too wide) in paragraph at lines 2772--2772
 []\TU/lmtt/m/n/10 validate_individual_data <- function(data, expected_n_hh, exp
 ected_n_ind) {[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2529--2529
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2772--2772
 []  \TU/lmtt/m/n/10 required_cols <- c("individual_id", "household_id", "villag
 e_id",[] 
  []
 
 
-Overfull \hbox (96.0pt too wide) in paragraph at lines 2529--2529
+Overfull \hbox (96.0pt too wide) in paragraph at lines 2772--2772
 []    \TU/lmtt/m/n/10 msg = paste0("missing required columns: ", paste(missing_
 cols, collapse = ", "))[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2529--2529
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2772--2772
 []    \TU/lmtt/m/n/10 msg = "individual_id is not unique — dataset has duplicat
 e rows"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2529--2529
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2772--2772
 []      \TU/lmtt/m/n/10 "number of households (", n_hh, ") differs from expecte
 d (",[] 
  []
 
-[77]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2529--2529
+[81]
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2772--2772
 []    \TU/lmtt/m/n/10 all(data$age_years >= 0 & data$age_years < 120, na.rm = T
 RUE),[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2540--2540
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2783--2783
 []\TU/lmtt/m/n/10 individual_data <- readRDS(here::here("data", "individual_dat
 a.rds"))[] 
  []
@@ -1921,33 +1938,33 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-[78] [79]
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2681--2681
+[82] [83]
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2924--2924
 []  \TU/lmtt/m/n/10 expected_cols <- c("n", "estimate", "se", "ci_lower", "ci_u
 pper", "pvalue")[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2681--2681
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2924--2924
 []\TU/lmtt/m/n/10 test_that("fit_glm_robust detects null effect with synthetic 
 data", {[] 
  []
 
-[80]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2693--2693
+[84]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2936--2936
 []\TU/lmtt/m/n/10 testthat::test_file(here::here("9-tests", "test-base-function
 s.R"))[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2700--2700
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2943--2943
 []\TU/lmtt/m/n/10 Rscript -e []testthat::test_dir("9-tests")[] || { echo "Tests
  failed"; exit 1; }[] 
  []
 
-[81] [82]
+[85] [86]
 Chapter 13.
-[83
+[87
 
 ]
 File: lab-manual_files/assets/images/lab_github_workflow.png Graphic file (type
@@ -1956,141 +1973,141 @@ File: lab-manual_files/assets/images/lab_github_workflow.png Graphic file (type
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[84]
-ignored: Infinite glue shrinkage found in box being split [85]
+[88]
+ignored: Infinite glue shrinkage found in box being split [89]
 ignored: Infinite glue shrinkag
-e found in box being split [86] [87] [88]
+e found in box being split [90] [91] [92]
 Chapter 14.
 File: lab-manual_files/assets/images/ex-desktop.jpg Graphic file (type bmp)
 <lab-manual_files/assets/images/ex-desktop.jpg>
 
-ignored: Infinite glue shrinkage found in box being split [89
+ignored: Infinite glue shrinkage found in box being split [93
 
 ]
 File: lab-manual_files/assets/images/ex-terminal.PNG Graphic file (type bmp)
 <lab-manual_files/assets/images/ex-terminal.PNG>
 
-LaTeX Warning: Float too large for page by 36.06166pt on input line 2948.
+LaTeX Warning: Float too large for page by 36.06166pt on input line 3191.
 
 
-Overfull \hbox (17.2224pt too wide) in paragraph at lines 2971--2971
+Overfull \hbox (17.2224pt too wide) in paragraph at lines 3214--3214
 \TU/lmtt/m/n/10 bash_script_name.sh 
  []
 
-[90]
-Underfull \hbox (badness 10000) in paragraph at lines 3001--3002
+[94]
+Underfull \hbox (badness 10000) in paragraph at lines 3244--3245
 \TU/lmtt/m/n/10 without hex digits in character string starting "[]C:\U"\TU/lmr
 /m/n/10 , try
  []
 
-[91] [92] [93] [94]
-Underfull \vbox (badness 10000) detected at line 3151
+[95] [96] [97] [98]
+Underfull \vbox (badness 10000) detected at line 3394
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3151
+Underfull \vbox (badness 10000) detected at line 3394
  []
 
-[95] [96]
+[99] [100]
 Chapter 15.
-[97
+[101
 
 ]
-Overfull \hbox (25.07903pt too wide) in paragraph at lines 3212--3214
+Overfull \hbox (25.07903pt too wide) in paragraph at lines 3455--3457
 []\TU/lmr/m/n/10 This will create the following files: \TU/lmtt/m/n/10 renv.loc
 k\TU/lmr/m/n/10 , .\TU/lmtt/m/n/10 Rprofile\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 ren
 v/settings.json
  []
 
 
-Underfull \hbox (badness 2941) in paragraph at lines 3214--3216
+Underfull \hbox (badness 2941) in paragraph at lines 3457--3459
 []\TU/lmr/m/n/10 As you write code, update the project’s R library by running
  []
 
 
 Underfull \vbox (badness 3826) has occurred while \output is active []
 
-[98]
-Underfull \hbox (badness 10000) in paragraph at lines 3248--3249
+[102]
+Underfull \hbox (badness 10000) in paragraph at lines 3491--3492
 \TU/lmtt/m/n/10 using R version 4.3.1 (2023-06-16). Package versions are tracke
 d
  []
 
-[99] [100
+[103] [104
 
 ]
 Chapter 16.
 
 Underfull \vbox (badness 1107) has occurred while \output is active []
 
-[101] [102]
-Underfull \hbox (badness 1303) in paragraph at lines 3343--3344
+[105] [106]
+Underfull \hbox (badness 1303) in paragraph at lines 3586--3587
 []\TU/lmr/m/n/10 2-analysis: folder containing analysis scripts. To rerun
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3351--3353
+Underfull \hbox (badness 10000) in paragraph at lines 3594--3596
 []\TU/lmr/m/n/10 3-est-expected-cases-state-perf-testing.R: estimate ex-
  []
 
-[103] [104]
+[107] [108]
 Chapter 17.
-[105
+[109
 
-] [106] [107]
-Underfull \hbox (badness 10000) in paragraph at lines 3505--3507
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3507--3509
+] [110] [111]
+Underfull \hbox (badness 10000) in paragraph at lines 3748--3750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3509--3511
+Underfull \hbox (badness 10000) in paragraph at lines 3750--3752
 
  []
 
-[108]
 
-LaTeX Warning: Hyper reference `renv' on page 109 undefined on input line 3547.
+Underfull \hbox (badness 10000) in paragraph at lines 3752--3754
+
+ []
+
+[112]
+
+LaTeX Warning: Hyper reference `renv' on page 113 undefined on input line 3790.
 
 
-[109] [110]
+[113] [114]
 Chapter 18.
-[111
+[115
 
-] [112] [113] [114] [115] [116]
-Overfull \hbox (7.98502pt too wide) in paragraph at lines 3856--3858
+] [116] [117] [118] [119] [120]
+Overfull \hbox (7.98502pt too wide) in paragraph at lines 4099--4101
 []\TU/lmtt/m/n/10 output=00-run_inc_log.out\TU/lmr/m/n/10 : Create a log file c
 alled \TU/lmtt/m/n/10 00-run_inc_log.out
  []
 
-[117] [118]
+[121] [122]
 Chapter 19.
-[119
+[123
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 3980--3982
+Underfull \hbox (badness 10000) in paragraph at lines 4223--4225
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3982--3984
+Underfull \hbox (badness 10000) in paragraph at lines 4225--4227
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[120] [121] [122
+[124] [125] [126
 
 ]
 Chapter 20.
-[123]
+[127]
 No file lab-manual.bbl.
-[124] (./lab-manual.aux)
+[128] (./lab-manual.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -2100,12 +2117,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21407 strings out of 468168
- 391154 string characters out of 5432815
- 985548 words of memory out of 5000000
- 49783 multiletter control sequences out of 15000+600000
- 634334 words of font info for 101 fonts, out of 8000000 for 9000
+ 21423 strings out of 468168
+ 391523 string characters out of 5432815
+ 983042 words of memory out of 5000000
+ 49797 multiletter control sequences out of 15000+600000
+ 634342 words of font info for 102 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 90i,11n,114p,1007b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,114p,1125b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on lab-manual.pdf (124 pages).
+Output written on lab-manual.pdf (128 pages).
