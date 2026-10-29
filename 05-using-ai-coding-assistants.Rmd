@@ -99,7 +99,7 @@ This section covers Claude Code's **permission system**. This guidance won't nec
 
 The overarching goal of these permissions is to prevent agents from modifying raw data or interacting with it outside of a secure environment.
 
-Any workflows that use high-risk data or files that contain PHI must only use Claude Code through the [Stanford AI API Gateway](https://uit.stanford.edu/service/ai-api-gateway). When working with the AI API Gateway, always double check that you are using the correct API key and that your session is routed through the Gateway (check that"ANTHROPIC_BASE_URL" is set to "<https://aiapi-prod.stanford.edu>"). Our template claude.MD file includes a reminder to check this at the start of every session.
+Any workflows that use high-risk data or files that contain PHI must only use Claude Code through the [Stanford AI API Gateway](https://uit.stanford.edu/service/ai-api-gateway). When working with the AI API Gateway, always double check that you are using the correct API key and that your session is routed through the Gateway (check that"ANTHROPIC_BASE_URL" is set to "<https://aiapi-prod.stanford.edu>"). Our template CLAUDE.md file includes a reminder to check this at the start of every session.
 
 If you use agentic tools without the AI API Gateway - even if you're using a Stanford Enterprise account - you must make a deidentified copy of the data and remove all PHI before allowing an agent to read it. If PHI is needed for your analyses (ie you need to stratify by age/gender), only retain the minimal set of necessary identifying columns and permute and/or add noise to their values. Once your code is finished, you must manually run the analyses on the original data.
 
