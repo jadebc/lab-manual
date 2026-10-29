@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Using generative AI to code | Benjamin-Chung Group Lab Manual</title>
   <meta name="description" content="Lab practices and data science best practices" />
-  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Using generative AI to code | Benjamin-Chung Group Lab Manual" />
   <meta property="og:type" content="book" />
@@ -198,12 +198,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#configuring-permissions-for-agentic-ai"><i class="fa fa-check"></i><b>6.4</b> Configuring permissions for agentic AI</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#permission-modes"><i class="fa fa-check"></i><b>6.4.1</b> Permission modes</a></li>
-<li class="chapter" data-level="6.4.2" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#setting-up-permissions"><i class="fa fa-check"></i><b>6.4.2</b> Setting up permissions</a></li>
-<li class="chapter" data-level="6.4.3" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#template-shared-project-settings-file"><i class="fa fa-check"></i><b>6.4.3</b> Template: Shared project settings file</a></li>
-<li class="chapter" data-level="6.4.4" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#template-shared-claude.md-project-file"><i class="fa fa-check"></i><b>6.4.4</b> Template: Shared CLAUDE.md project file</a></li>
-<li class="chapter" data-level="6.4.5" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#template-personal-settings-file"><i class="fa fa-check"></i><b>6.4.5</b> Template: Personal settings file</a></li>
-<li class="chapter" data-level="6.4.6" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#setup-checklist"><i class="fa fa-check"></i><b>6.4.6</b> Setup checklist</a></li>
+<li class="chapter" data-level="6.4.1" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#setting-up-permissions"><i class="fa fa-check"></i><b>6.4.1</b> Setting up permissions</a></li>
+<li class="chapter" data-level="6.4.2" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#template-shared-project-settings-file"><i class="fa fa-check"></i><b>6.4.2</b> Template: Shared project settings file</a></li>
+<li class="chapter" data-level="6.4.3" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#template-shared-claude.md-project-file"><i class="fa fa-check"></i><b>6.4.3</b> Template: Shared CLAUDE.md project file</a></li>
+<li class="chapter" data-level="6.4.4" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#template-personal-settings-file"><i class="fa fa-check"></i><b>6.4.4</b> Template: Personal settings file</a></li>
+<li class="chapter" data-level="6.4.5" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#setup-checklist"><i class="fa fa-check"></i><b>6.4.5</b> Setup checklist</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#understanding-agentic-ai-permission-prompts"><i class="fa fa-check"></i><b>6.5</b> Understanding agentic AI permission prompts</a></li>
 <li class="chapter" data-level="6.6" data-path="using-generative-ai-to-code.html"><a href="using-generative-ai-to-code.html#best-practices"><i class="fa fa-check"></i><b>6.6</b> Best practices</a>
@@ -443,165 +442,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-generative-ai-to-code" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Using generative AI to code<a href="using-generative-ai-to-code.html#using-generative-ai-to-code" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>By Jade Benjamin-Chung and Anna Nguyen</p>
-<p>AI can be enormously useful in writing code for research. Currently,
-there are two main ways to use it, and the distinction is important:</p>
+<p>AI can be enormously useful in writing code for research. Currently, there are two main ways to use it, and the distinction is important:</p>
 <ul>
-<li><strong>Chat-based help</strong>: asking a chatbot to explain a function or debug a
-pasted error in an app or website. You copy/paste code back and forth.
-If data is ever provided to it, it must be manually uploaded. You have
-a high degree of agency over data access and what code to run, when,
-and where.</li>
-<li><strong>Agentic coding tools</strong> run directly in your terminal or code editor
-(e.g., RStudio), can read and edit files across your project, execute
-code, run tests, and iterate on its own output — all with a degree of
-autonomy that you grant it. It can plan a multi-step task, write and
-execute code across several files, install packages, and run analyses
-with minimal intervention. This is powerful, but it also means more
-can happen without your direct review at each step. That’s why coding
-with these tools is called “vibe coding”. Agentic tools include Claude
-Code, Codex, Gemini CLI, Cursor, and Github Co-Pilot.</li>
+<li><strong>Chat-based help</strong>: asking a chatbot to explain a function or debug a pasted error in an app or website. You copy/paste code back and forth. If data is ever provided to it, it must be manually uploaded. You have a high degree of agency over data access and what code to run, when, and where.</li>
+<li><strong>Agentic coding tools</strong> run directly in your terminal or code editor (e.g., RStudio), can read and edit files across your project, execute code, run tests, and iterate on its own output — all with a degree of autonomy that you grant it. It can plan a multi-step task, write and execute code across several files, install packages, and run analyses with minimal intervention. This is powerful, but it also means more can happen without your direct review at each step. That’s why coding with these tools is called “vibe coding”. Agentic tools include Claude Code, Codex, Gemini CLI, Cursor, and Github Co-Pilot.</li>
 </ul>
-<p>Both modes are useful, but they each pose different risks to learning
-and to research safety and accuracy. This chapter includes our Lab
-Policy on use of AI in Research and then discusses the rationale.</p>
+<p>Both modes are useful, but they each pose different risks to learning and to research safety and accuracy. This chapter includes our Lab Policy on use of AI in Research and then discusses the rationale.</p>
 <div id="benjamin-chung-lab-policy-on-use-of-ai-in-research" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Benjamin-Chung Lab Policy on use of AI in Research<a href="using-generative-ai-to-code.html#benjamin-chung-lab-policy-on-use-of-ai-in-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="policy-box">
 <ul>
-<li><p><strong>Lab members must use <a href="https://uit.stanford.edu/ai/connectors">Stanford-licensed enterprise AI
-tools</a></strong> (Claude for
-Education, ChatGPT Edu, Gemini Enterprise) for all research-related
-work involving lab data, code, or drafts. These tools carry Stanford’s
-data protection and institutional agreements; personal/free-tier
-accounts do not.</p></li>
-<li><p><strong>Tool choice must match the data risk level and requirements in the
-IRB protocol and Data Use Agreement, if applicable.</strong></p>
+<li><p><strong>Lab members must use <a href="https://uit.stanford.edu/ai/connectors">Stanford-licensed enterprise AI tools</a></strong> (Claude for Education, ChatGPT Edu, Gemini Enterprise) for all research-related work involving lab data, code, or drafts. These tools carry Stanford’s data protection and institutional agreements; personal/free-tier accounts do not.</p></li>
+<li><p><strong>Tool choice must match the data risk level and requirements in the IRB protocol and Data Use Agreement, if applicable.</strong></p>
 <ul>
-<li><strong>Low risk</strong> (e.g., public data, non-sensitive code, general
-drafts): any Stanford-licensed enterprise tool may be used.</li>
-<li><strong>Moderate risk</strong> (e.g., de-identified data, unpublished results,
-internal code, grant/manuscript drafts): Stanford-licensed
-enterprise tools only — no personal or free-tier accounts.</li>
-<li><strong>High risk / PHI</strong> (e.g., identifiable or participant-level data,
-protected health information): only tools explicitly approved for
-this risk tier may be used, and only after confirming with Jade that
-the specific tool and use case are permitted under the project’s IRB
-protocol and data use agreement. Some Stanford-licensed tools may
-not be approved for PHI use even if generally approved for lab work
-— check before proceeding.</li>
+<li><strong>Low risk</strong> (e.g., public data, non-sensitive code, general drafts): any Stanford-licensed enterprise tool may be used.</li>
+<li><strong>Moderate risk</strong> (e.g., de-identified data, unpublished results, internal code, grant/manuscript drafts): Stanford-licensed enterprise tools only — no personal or free-tier accounts.</li>
+<li><strong>High risk / PHI</strong> (e.g., identifiable or participant-level data, protected health information): only tools explicitly approved for this risk tier may be used, and only after confirming with Jade that the specific tool and use case are permitted under the project’s IRB protocol and data use agreement. Some Stanford-licensed tools may not be approved for PHI use even if generally approved for lab work — check before proceeding.</li>
 </ul></li>
-<li><p><strong>No lab data, code, or manuscripts can be used in non-approved
-tools.</strong> This includes participant data (even de-identified),
-unpublished results, grant drafts, IRB materials, and internal code —
-never paste or upload these into a personal ChatGPT account, a
-non-Stanford API key, or any tool outside the approved list. If a project
-genuinely requires a tool outside the approved list, you must get explicit permission from Jade in writing before use.</p></li>
-<li><p><strong>Agentic tools (Claude Code, Codex, Cowork, Gemini CLI, etc.) require
-extra caution.</strong> Because these tools can read, write, and execute code
-or take actions autonomously, always: Review generated code/output
-before running or committing it. Never grant an agentic tool access to
-production data, credentials, or shared drives without lab PI
-approval. Disclose if an agentic tool was used to produce analysis
-code, and document this in commit messages or code comments.</p></li>
+<li><p><strong>No lab data, code, or manuscripts can be used in non-approved tools.</strong> This includes participant data (even de-identified), unpublished results, grant drafts, IRB materials, and internal code — never paste or upload these into a personal ChatGPT account, a non-Stanford API key, or any tool outside the approved list. If a project genuinely requires a tool outside the approved list, you must get explicit permission from Jade in writing before use.</p></li>
+<li><p><strong>Agentic tools (Claude Code, Codex, Cowork, Gemini CLI, etc.) require extra caution.</strong> Because these tools can read, write, and execute code or take actions autonomously, always: Review generated code/output before running or committing it. Never grant an agentic tool access to production data, credentials, or shared drives without lab PI approval. Disclose if an agentic tool was used to produce analysis code, and document this in commit messages or code comments.</p></li>
 <li><p><strong>Follow lab guidelines on Agentic AI permissions:</strong> Always leave the tool’s permission mode on default (the setting that asks before making edits or running commands) — never switch to a mode that lets the AI act without asking first. Our lab uses exactly two settings files plus a guidance file (see the permissions section below): the shared project <code>.claude/settings.json</code> committed in each repo, your personal <code>~/.claude/settings.json</code>, which exists only to hold <code>deny</code> rules protecting raw datasets in your local Box folder, and a shared <code>CLAUDE.md</code> in each repo for advisory project context. Never use a personal settings file (<code>~/.claude/settings.json</code> or a <code>settings.local.json</code>) to add <code>allow</code> rules, relax <code>ask</code> rules, or change the permission mode for lab projects.</p></li>
 <li><p><strong>Humans are responsible for Git commit and Git push, not AI.</strong> Because research errors are analytical rather than technical and often can’t be caught by automated checks, every lab member must personally write and execute their own commits and pushes — this keeps the reasoning behind each change with the person responsible for it, and builds the judgment mentees need to develop.</p></li>
-<li><p><strong>When in doubt, ask first.</strong> It’s always acceptable — and preferred —
-to check with Jade before using a new tool or changing permission settings, rather than after.</p></li>
-<li><p><strong>You must complete a short quiz and agree to the lab’s AI use
-policy</strong> before using any AI tool for research in the <a href="https://forms.gle/6ZGJBDY9Qqq3Jn1j6">Benjamin-Chung
-Lab AI Use in Research Permission
-Form</a></p></li>
-<li><p><strong>Use of AI tools in research must be documented</strong> in the
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScphiuDTkUXH0RVFFuj-I4KqgmxXP796MfV9mLeQ2uY8k9mgA/viewform?usp=publish-editor">Benjamin-Chung Lab AI Use in Research Documentation
-Form</a></p></li>
+<li><p><strong>When in doubt, ask first.</strong> It’s always acceptable — and preferred — to check with Jade before using a new tool or changing permission settings, rather than after.</p></li>
+<li><p><strong>You must complete a short quiz and agree to the lab’s AI use policy</strong> before using any AI tool for research in the <a href="https://forms.gle/6ZGJBDY9Qqq3Jn1j6">Benjamin-Chung Lab AI Use in Research Permission Form</a></p></li>
+<li><p><strong>Use of AI tools in research must be documented</strong> in the <a href="https://docs.google.com/forms/d/e/1FAIpQLScphiuDTkUXH0RVFFuj-I4KqgmxXP796MfV9mLeQ2uY8k9mgA/viewform?usp=publish-editor">Benjamin-Chung Lab AI Use in Research Documentation Form</a></p></li>
 </ul>
 </div>
 </div>
 <div id="three-key-issues" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Three key issues<a href="using-generative-ai-to-code.html#three-key-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><strong>Learning and skill development.</strong> Heavy reliance on AI coding
-tools may impede the development of coding fluency and
-statistical/computational intuition — particularly for trainees who
-are still building these skills.</li>
-<li><strong>Research accuracy.</strong> Using these tools on datasets, analysis
-types, or workflows you aren’t already familiar with raises the risk
-of subtle errors going undetected, because you may lack the
-intuition to recognize when something looks wrong.</li>
-<li><strong>Data protection.</strong> These tools can access files on your machine,
-which introduces new and sometimes subtle data-handling risks in a
-research context governed by IRB protocols, data use agreements, and
-participant privacy commitments.</li>
+<li><strong>Learning and skill development.</strong> Heavy reliance on AI coding tools may impede the development of coding fluency and statistical/computational intuition — particularly for trainees who are still building these skills.</li>
+<li><strong>Research accuracy.</strong> Using these tools on datasets, analysis types, or workflows you aren’t already familiar with raises the risk of subtle errors going undetected, because you may lack the intuition to recognize when something looks wrong.</li>
+<li><strong>Data protection.</strong> These tools can access files on your machine, which introduces new and sometimes subtle data-handling risks in a research context governed by IRB protocols, data use agreements, and participant privacy commitments.</li>
 </ol>
 <p>Each is discussed in more detail below, along with suggested safeguards.</p>
 </div>
 <div id="guiding-principles" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Guiding principles<a href="using-generative-ai-to-code.html#guiding-principles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>AI coding assistants are a powerful addition to our computational
-toolkit, but they are not a substitute for the judgment that comes from
-hands-on coding experience, nor for careful attention to data
-governance. Use them deliberately: lean on them more for familiar,
-low-stakes tasks, and less for unfamiliar or high-stakes ones, with unit
-tests, replication checks, and careful permission review as standing
-practice regardless of experience level.</p>
-<p><strong>When in doubt about whether a workflow is compliant, ask Jade before
-proceeding.</strong></p>
+<p>AI coding assistants are a powerful addition to our computational toolkit, but they are not a substitute for the judgment that comes from hands-on coding experience, nor for careful attention to data governance. Use them deliberately: lean on them more for familiar, low-stakes tasks, and less for unfamiliar or high-stakes ones, with unit tests, replication checks, and careful permission review as standing practice regardless of experience level.</p>
+<p><strong>When in doubt about whether a workflow is compliant, ask Jade before proceeding.</strong></p>
 <div id="potential-risks-of-using-generative-ai-in-education" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Potential risks of using generative AI in education<a href="using-generative-ai-to-code.html#potential-risks-of-using-generative-ai-in-education" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Little to nothing is currently known about the pedagogy of learning to
-code with AI assistance versus learning to code without it.</strong> If you
-never manually write code — if you never sit with a bug for twenty
-minutes and slowly figure out that the join key had a leading whitespace
-— how do you develop the gut instinct described above? We don’t know.</p>
-<p>It’s also possible that this concern will turn out to be less important
-than it seems. The future of research computing may not involve much
-hands-on human coding at all. But even if that’s true, we don’t yet know
-<em>how</em> to teach someone — a rotation student, a new Research Assistant, a
-first-year PhD student — to “vibe code” well: to direct an AI tool
-effectively, to catch its mistakes, and to build sound judgment about
-when to trust its output. Until the pedagogy of computational research
-with agentic AI exists, in our lab, we consider risks of agentic AI use
-to be high for early-career skill-building to be high.</p>
+<p><strong>Little to nothing is currently known about the pedagogy of learning to code with AI assistance versus learning to code without it.</strong> If you never manually write code — if you never sit with a bug for twenty minutes and slowly figure out that the join key had a leading whitespace — how do you develop the gut instinct described above? We don’t know.</p>
+<p>It’s also possible that this concern will turn out to be less important than it seems. The future of research computing may not involve much hands-on human coding at all. But even if that’s true, we don’t yet know <em>how</em> to teach someone — a rotation student, a new Research Assistant, a first-year PhD student — to “vibe code” well: to direct an AI tool effectively, to catch its mistakes, and to build sound judgment about when to trust its output. Until the pedagogy of computational research with agentic AI exists, in our lab, we consider risks of agentic AI use to be high for early-career skill-building to be high.</p>
 </div>
 <div id="potential-risks-of-using-generative-ai-in-research" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> Potential risks of using generative AI in research<a href="using-generative-ai-to-code.html#potential-risks-of-using-generative-ai-in-research" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="risk-errors-lead-to-incorrect-scientific-conclusions" class="section level4 hasAnchor" number="6.3.2.1">
 <h4><span class="header-section-number">6.3.2.1</span> Risk: errors lead to incorrect scientific conclusions<a href="using-generative-ai-to-code.html#risk-errors-lead-to-incorrect-scientific-conclusions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In 2026, most seasoned quantitative researchers have been writing code
-for a decade or more — tens of thousands of cumulative hours. There’s a
-popular “rule” that <a href="https://en.wikipedia.org/wiki/Outliers_(book)">it takes 10,000
-hours</a> to master a new
-skill– equivalent to 5.5 years of full time work. That experience
-builds a kind of gut instinct: when you look at code, or watch it run,
-you develop a sense for what <em>might</em> be going wrong, even when nothing
-throws an obvious error. Examples of silent failures:</p>
+<p>In 2026, most seasoned quantitative researchers have been writing code for a decade or more — tens of thousands of cumulative hours. There’s a popular “rule” that <a href="https://en.wikipedia.org/wiki/Outliers_(book)">it takes 10,000 hours</a> to master a new skill– equivalent to 5.5 years of full time work. That experience builds a kind of gut instinct: when you look at code, or watch it run, you develop a sense for what <em>might</em> be going wrong, even when nothing throws an obvious error. Examples of silent failures:</p>
 <ul>
 <li>A merge that drops rows unexpectedly</li>
 <li>A factor variable that got silently releveled</li>
 <li>A date field parsed in the wrong timezone</li>
 </ul>
-<p>After dealing with these silent errors hundreds or thousands of times,
-the human brain recognizes the <em>shape</em> of a subtle bug before you can
-necessarily articulate exactly what it is. That experience is what lets
-seasoned researchers know what safeguards to put in place:</p>
+<p>After dealing with these silent errors hundreds or thousands of times, the human brain recognizes the <em>shape</em> of a subtle bug before you can necessarily articulate exactly what it is. That experience is what lets seasoned researchers know what safeguards to put in place:</p>
 <ul>
 <li>Which unit tests are worth writing</li>
-<li>Which portions of a work flow require human or independent agentic
-replication checks</li>
-<li>Which outputs deserve a manual sanity check versus which can be
-trusted.</li>
+<li>Which portions of a work flow require human or independent agentic replication checks</li>
+<li>Which outputs deserve a manual sanity check versus which can be trusted.</li>
 </ul>
-<p>AI coding tools do not have this judgment about <em>your specific project</em>.
-They can write tests if asked, but deciding <em>which</em> tests matter for a
-given dataset or analysis is still a human judgment call, grounded in
-domain and data familiarity.</p>
-<p>This means the risk of using these tools is not constant. As your
-mentor, I am working on developing systems to help you learn when you
-might be in the <strong>danger zone</strong>. When you’re in the danger zone, you are
-outside your area of established expertise, working with a new data
-source, an unfamiliar analysis method, or a computational workflow you
-haven’t run by hand before. The challenge is, when you’re new to a
-project or to a field of study, you’re always in the <strong>danger zone.</strong></p>
+<p>AI coding tools do not have this judgment about <em>your specific project</em>. They can write tests if asked, but deciding <em>which</em> tests matter for a given dataset or analysis is still a human judgment call, grounded in domain and data familiarity.</p>
+<p>This means the risk of using these tools is not constant. As your mentor, I am working on developing systems to help you learn when you might be in the <strong>danger zone</strong>. When you’re in the danger zone, you are outside your area of established expertise, working with a new data source, an unfamiliar analysis method, or a computational workflow you haven’t run by hand before. The challenge is, when you’re new to a project or to a field of study, you’re always in the <strong>danger zone.</strong></p>
 </div>
 <div id="risk-potential-breaches-of-confidentiality-and-irb-data-use-agreement-violations" class="section level4 hasAnchor" number="6.3.2.2">
 <h4><span class="header-section-number">6.3.2.2</span> Risk: potential breaches of confidentiality and IRB / data use agreement violations<a href="using-generative-ai-to-code.html#risk-potential-breaches-of-confidentiality-and-irb-data-use-agreement-violations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -609,91 +512,39 @@ project or to a field of study, you’re always in the <strong>danger zone.</str
 <ul>
 <li>Breaches of participant confidentiality</li>
 <li>Violations of IRB protocols and data use agreements,</li>
-<li>Loss of control over how the data is stored, retained, or used to train future models. Even de-identified datasets can
-sometimes be re-identified when combined with other information, and
-many AI tools’ terms of service permit them to retain or process
-uploaded content in ways that are not fully transparent to the user.</li>
+<li>Loss of control over how the data is stored, retained, or used to train future models. Even de-identified datasets can sometimes be re-identified when combined with other information, and many AI tools’ terms of service permit them to retain or process uploaded content in ways that are not fully transparent to the user.</li>
 </ul>
-<p>The risks are substantially higher for agentic tools such as Claude Code
-that run locally and, with your permission, can read and modify files on
-your laptop — including, potentially, files containing participant-level
-data governed by IRB protocols and data use agreements.</p>
-<p>The practical risk is subtler than “the AI leaks your data.” During a coding session, the tool may generate hundreds of
-permission requests (to read a file, run a command, install a package,
-access the network, etc.). These prompts are sometimes phrased in dense
-technical language that is genuinely hard to parse quickly. It is easy
-to click “allow” reflexively and
-inadvertently grant access to a raw data directory, or permission to
-send data over the network (e.g., installing a package, calling an
-external API), without fully registering what you approved. This is not primarily a malicious-AI risk; it’s a human-factors risk.</p>
-<p>As of June 2026, <a href="https://uit.stanford.edu/ai/connectors">Stanford’s Approved Connectors for AI
-Services</a> have different
-different risk categories by different products. Note that Google and
-OpenAI can be used with High Risk <a href="https://med.stanford.edu/irt/security/stanfordinfo/hipaa.html">Protected Health Information
-(PHI)</a>
-data, while using PHI with Claude requires routing through the Stanford
-AI API Gateway. If you are not sure whether you your project is using
-PHI, check with Jade before proceeding.</p>
+<p>The risks are substantially higher for agentic tools such as Claude Code that run locally and, with your permission, can read and modify files on your laptop — including, potentially, files containing participant-level data governed by IRB protocols and data use agreements.</p>
+<p>The practical risk is subtler than “the AI leaks your data.” During a coding session, the tool may generate hundreds of permission requests (to read a file, run a command, install a package, access the network, etc.). These prompts are sometimes phrased in dense technical language that is genuinely hard to parse quickly. It is easy to click “allow” reflexively and inadvertently grant access to a raw data directory, or permission to send data over the network (e.g., installing a package, calling an external API), without fully registering what you approved. This is not primarily a malicious-AI risk; it’s a human-factors risk.</p>
+<p>As of June 2026, <a href="https://uit.stanford.edu/ai/connectors">Stanford’s Approved Connectors for AI Services</a> have different different risk categories by different products. Note that Google and OpenAI can be used with High Risk <a href="https://med.stanford.edu/irt/security/stanfordinfo/hipaa.html">Protected Health Information (PHI)</a> data, while using PHI with Claude requires routing through the Stanford AI API Gateway. If you are not sure whether you your project is using PHI, check with Jade before proceeding.</p>
 </div>
 </div>
 </div>
 <div id="configuring-permissions-for-agentic-ai" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Configuring permissions for agentic AI<a href="using-generative-ai-to-code.html#configuring-permissions-for-agentic-ai" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This section covers Claude Code’s <strong>permission system</strong>. This guidance won’t necessarily work in other agentic tools (Cursor, Codex CLI,
-OpenCode, etc.), each of which has its own config format and varying
-hook support. If you’re using a different agent, you would need to look
-up that tool’s own permissions/hooks documentation and check with Jade to ensure compliance.</p>
-<p>The overarching goal of these permissions is to prevent Claude from directly touching raw data. It is of course expected that you (alone or with Claude) will write R scripts that Claude edits and runs can use raw data. However, we do not want Claude to directly access raw data outside of R scripts because any file Claude reads <em>directly</em> enters
-the AI conversation and is transmitted to Anthropic’s servers, which can violate participant confidentiality and data use agreements. Claude can
-write and run the cleaning script; it can never look at the raw data.
-One caveat: Claude sees script <em>output</em>, so don’t let raw-data
-scripts print row-level data (e.g., <code>head(d)</code>), or run those steps
-yourself.</p>
-<div id="permission-modes" class="section level3 hasAnchor" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> Permission modes<a href="using-generative-ai-to-code.html#permission-modes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Claude Code has several permission modes that set the baseline approval
-behavior for a session. <strong>default mode</strong> requires explicit approval for
-every action other than reads — every:</p>
+<p>This section covers Claude Code’s <strong>permission system</strong>. This guidance won’t necessarily work in other agentic tools (Cursor, Codex CLI, OpenCode, etc.), each of which has its own config format and varying hook support. If you’re using a different agent, you would need to look up that tool’s own permissions/hooks documentation and check with Jade to ensure compliance.</p>
+<p>The overarching goal of these permissions is to prevent agents from modifying raw data or interacting with it outside of a secure environment.</p>
+<p>Any workflows that use high-risk data or files that contain PHI must only use Claude Code through the <a href="https://uit.stanford.edu/service/ai-api-gateway">Stanford AI API Gateway</a>. When working with the AI API Gateway, always double check that you are using the correct API key and that your session is routed through the Gateway (check that”ANTHROPIC_BASE_URL” is set to “<a href="https://aiapi-prod.stanford.edu" class="uri">https://aiapi-prod.stanford.edu</a>”). Our template claude.MD file includes a reminder to check this at the start of every session.</p>
+<p>If you use agentic tools without the AI API Gateway - even if you’re using a Stanford Enterprise account - you must make a deidentified copy of the data and remove all PHI before allowing an agent to read it. If PHI is needed for your analyses (ie you need to stratify by age/gender), only retain the minimal set of necessary identifying columns and permute and/or add noise to their values. Once your code is finished, you must manually run the analyses on the original data.</p>
+<p>Claude Code has several permission modes that set the baseline approval behavior for a session. <strong>default mode</strong> requires explicit approval for every action other than reads — every:</p>
 <ul>
 <li>file edit</li>
 <li>shell command</li>
 <li>network call</li>
 </ul>
-<p>gets a permission prompt. This is the only mode that guarantees a human
-is in the loop, which matters given that our work involves participant
-data and code that feeds into published analyses. Other modes exist, but
-they trade oversight for speed in ways that aren’t appropriate for
-research in our lab without explicit permission from Jade.</p>
-</div>
-<div id="setting-up-permissions" class="section level3 hasAnchor" number="6.4.2">
-<h3><span class="header-section-number">6.4.2</span> Setting up permissions<a href="using-generative-ai-to-code.html#setting-up-permissions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>gets a permission prompt. This is the only mode that guarantees a human is in the loop, which matters given that our work involves participant data and code that feeds into published analyses. Other modes exist, but they trade oversight for speed in ways that aren’t appropriate for research in our lab without explicit permission from Jade.</p>
+<div id="setting-up-permissions" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Setting up permissions<a href="using-generative-ai-to-code.html#setting-up-permissions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Our lab setup uses <strong>three files that work together</strong>:</p>
 <ol style="list-style-type: decimal">
-<li><strong>A shared project settings file</strong> <em>with rules that are </em>enforced*. — <code>.claude/settings.json</code> in
-each repo’s root folder, committed and pushed to GitHub. The
-Claude Code software checks them before any action runs, so a denied
-command never executes, no matter what the AI intends. Anyone who clones the repo gets
-these rules automatically.</li>
-<li><strong>A shared <code>CLAUDE.md</code> project file</strong> <em>that contains conventions and context and is advisory</em>. It’s a plain-English file in the
-repo’s root that Claude reads at the start of each session —
-project context, lab conventions, how we work. Claude genuinely
-tries to follow it, but nothing enforces it: the model can forget it
-in a long session or weigh it against other instructions. Save it in each repo’s
-root folder and commit and push it to GitHub.</li>
-<li><strong>A personal settings file</strong> — <code>~/.claude/settings.json</code> in your
-home folder, one per person per computer. It carries the only
-enforced rules that can’t be shared: the <code>deny</code> rules protecting
-<strong>raw datasets</strong>, which are typically in your local Box folder, because Box lives at a
-different local path on each computer and each person has access to
-different datasets. The
-Claude Code software checks them before any action runs, so a denied
-command never executes, no matter what the AI intends.</li>
+<li><strong>A shared project settings file</strong> <em>with rules that are</em> enforced*. — <code>.claude/settings.json</code> in each repo’s root folder, committed and pushed to GitHub. The Claude Code software checks them before any action runs, so a denied command never executes, no matter what the AI intends. Anyone who clones the repo gets these rules automatically.</li>
+<li><strong>A shared <code>CLAUDE.md</code> project file</strong> <em>that contains conventions and context and is advisory</em>. It’s a plain-English file in the repo’s root that Claude reads at the start of each session — project context, lab conventions, how we work. Claude genuinely tries to follow it, but nothing enforces it: the model can forget it in a long session or weigh it against other instructions. Save it in each repo’s root folder and commit and push it to GitHub.</li>
+<li><strong>A personal settings file</strong> — <code>~/.claude/settings.json</code> in your home folder, one per person per computer. It carries the only enforced rules that can’t be shared: the <code>deny</code> rules protecting <strong>raw datasets</strong>, which are typically in your local Box folder, because Box lives at a different local path on each computer and each person has access to different datasets. The Claude Code software checks them before any action runs, so a denied command never executes, no matter what the AI intends.</li>
 </ol>
 </div>
-<div id="template-shared-project-settings-file" class="section level3 hasAnchor" number="6.4.3">
-<h3><span class="header-section-number">6.4.3</span> Template: Shared project settings file<a href="using-generative-ai-to-code.html#template-shared-project-settings-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Save this <code>.claude/settings.json</code> file in each project’s root folder and push it to GitHub so it’s
-version-controlled and shared by everyone working in that repo:</p>
+<div id="template-shared-project-settings-file" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Template: Shared project settings file<a href="using-generative-ai-to-code.html#template-shared-project-settings-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Save this <code>.claude/settings.json</code> file in each project’s root folder and push it to GitHub so it’s version-controlled and shared by everyone working in that repo:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="using-generative-ai-to-code.html#cb1-1" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="using-generative-ai-to-code.html#cb1-2" tabindex="-1"></a>  <span class="dt">&quot;permissions&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
 <span id="cb1-3"><a href="using-generative-ai-to-code.html#cb1-3" tabindex="-1"></a>    <span class="dt">&quot;defaultMode&quot;</span><span class="fu">:</span> <span class="st">&quot;default&quot;</span><span class="fu">,</span></span>
@@ -731,11 +582,14 @@ version-controlled and shared by everyone working in that repo:</p>
 <span id="cb1-35"><a href="using-generative-ai-to-code.html#cb1-35" tabindex="-1"></a>      <span class="st">&quot;Bash(git reset*)&quot;</span><span class="ot">,</span></span>
 <span id="cb1-36"><a href="using-generative-ai-to-code.html#cb1-36" tabindex="-1"></a>      <span class="st">&quot;Bash(rm -r*)&quot;</span><span class="ot">,</span></span>
 <span id="cb1-37"><a href="using-generative-ai-to-code.html#cb1-37" tabindex="-1"></a>      <span class="st">&quot;Bash(rm -fr*)&quot;</span><span class="ot">,</span></span>
-<span id="cb1-38"><a href="using-generative-ai-to-code.html#cb1-38" tabindex="-1"></a>      <span class="st">&quot;Bash(rmdir *)&quot;</span></span>
-<span id="cb1-39"><a href="using-generative-ai-to-code.html#cb1-39" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-40"><a href="using-generative-ai-to-code.html#cb1-40" tabindex="-1"></a>    <span class="dt">&quot;additionalDirectories&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb1-41"><a href="using-generative-ai-to-code.html#cb1-41" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb1-42"><a href="using-generative-ai-to-code.html#cb1-42" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb1-38"><a href="using-generative-ai-to-code.html#cb1-38" tabindex="-1"></a>      <span class="st">&quot;Bash(rmdir *)&quot;</span><span class="ot">,</span></span>
+<span id="cb1-39"><a href="using-generative-ai-to-code.html#cb1-39" tabindex="-1"></a>      <span class="st">&quot;Bash(sbatch:*)&quot;</span><span class="ot">,</span></span>
+<span id="cb1-40"><a href="using-generative-ai-to-code.html#cb1-40" tabindex="-1"></a>      <span class="st">&quot;Bash(srun:*)&quot;</span><span class="ot">,</span></span>
+<span id="cb1-41"><a href="using-generative-ai-to-code.html#cb1-41" tabindex="-1"></a>      <span class="st">&quot;Bash(salloc:*)&quot;</span></span>
+<span id="cb1-42"><a href="using-generative-ai-to-code.html#cb1-42" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-43"><a href="using-generative-ai-to-code.html#cb1-43" tabindex="-1"></a>    <span class="dt">&quot;additionalDirectories&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb1-44"><a href="using-generative-ai-to-code.html#cb1-44" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb1-45"><a href="using-generative-ai-to-code.html#cb1-45" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p><strong>What every line of this file means, in plain English:</strong></p>
 <p><strong>Top-level settings</strong></p>
 <table>
@@ -775,7 +629,7 @@ version-controlled and shared by everyone working in that repo:</p>
 <tbody>
 <tr class="odd">
 <td><code>Read(./**)</code></td>
-<td>Claude can read any file inside the project folder. (But it can never read the raw-data folders protected by your personal settings file, described below.)</td>
+<td>Claude can read any file inside the project folder. (But it can never read any folders - ex raw-data - protected by your personal settings file, described below.)</td>
 </tr>
 <tr class="even">
 <td><code>Bash(git show*)</code>, <code>Bash(git status*)</code>, <code>Bash(git diff*)</code>, <code>Bash(git branch*)</code>, <code>Bash(git log*)</code>, <code>Bash(git fetch*)</code></td>
@@ -847,26 +701,19 @@ version-controlled and shared by everyone working in that repo:</p>
 <td><code>Bash(rm -r*)</code>, <code>Bash(rm -fr*)</code>, <code>Bash(rmdir *)</code></td>
 <td>Claude can never delete a folder — these block recursive deletes (<code>rm -r</code>, <code>rm -rf</code>, <code>rm -fr</code>) and directory removal (<code>rmdir</code>) everywhere, with no option to approve them. Because these are global, they also mean Claude can never delete a folder in your Box folder.</td>
 </tr>
+<tr class="odd">
+<td><code>Bash(sbatch:*)</code>, <code>Bash(srun:*)</code>, <code>Bash(salloc:*)</code></td>
+<td>Claude should not submit Slurm jobs to an external cluster (ex Sherlock). If your project needs to run Slurm jobs, you must do so manually.</td>
+</tr>
 </tbody>
 </table>
 <p><strong>A note on why we don’t recommend having AI responsible for Git commit and push:</strong> Though in industry, agents are increasingly performing Git commits on their own, research code differs from software engineering in ways that change how much autonomy is appropriate. In engineering, continuous integration and test suites can verify correctness before a commit lands, and multiple reviewers typically stand between an AI-drafted commit and production. In our lab, the errors that matter most are analytical, not technical — a mishandling of a missing observation, an incorrect ICD-11 code, an inappropriate mediator — and no automated check can catch these. Further, most of our team are mentees still building that judgment, and if an AI agent can commit once a person clicks “approve,” the person approving may not yet have the expertise to catch what’s wrong. Requiring each person to write and run their own <code>git commit</code>/<code>git push</code> keeps a deliberate human decision point before any change becomes part of our shared code base and promotes learning.</p>
 <p>Nothing in <code>ask</code> or <code>allow</code> can override anything in <code>deny</code>.</p>
 </div>
-<div id="template-shared-claude.md-project-file" class="section level3 hasAnchor" number="6.4.4">
-<h3><span class="header-section-number">6.4.4</span> Template: Shared CLAUDE.md project file<a href="using-generative-ai-to-code.html#template-shared-claude.md-project-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Save this as <code>CLAUDE.md</code> in each project’s root folder and push it to
-GitHub. Fill in the bracketed parts for your project; keep the
-fixed lines of the Data and How-we-work sections as written. Remember
-this file is <em>advisory</em> — it makes
-Claude work better and explains the why, while the enforcement lives
-in the settings files above.</p>
-<p>Two cautions when filling it in. <strong>Keep the whole file to a page or
-two</strong> — Claude loads it at the start of every session, so a bloated
-file wastes the model’s attention; link to the pre-analysis plan and
-codebook rather than pasting their contents (Claude can open those
-files when it needs them). And <strong>never put anything sensitive in it</strong>
-— no participant data values, nothing copied from raw datasets — it’s
-a committed, shared file.</p>
+<div id="template-shared-claude.md-project-file" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Template: Shared CLAUDE.md project file<a href="using-generative-ai-to-code.html#template-shared-claude.md-project-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Save this as <code>CLAUDE.md</code> in each project’s root folder and push it to GitHub. Fill in the bracketed parts for your project; keep the fixed lines of the Data and How-we-work sections as written. Remember this file is <em>advisory</em> — it makes Claude work better and explains the why, while the enforcement lives in the settings files above.</p>
+<p>Two cautions when filling it in. <strong>Keep the whole file to a page or two</strong> — Claude loads it at the start of every session, so a bloated file wastes the model’s attention; link to the pre-analysis plan and codebook rather than pasting their contents (Claude can open those files when it needs them). And <strong>never put anything sensitive in it</strong> — no participant data values, nothing copied from raw datasets — it’s a committed, shared file.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="using-generative-ai-to-code.html#cb2-1" tabindex="-1"></a><span class="fu"># [PROJECT NAME]</span></span>
 <span id="cb2-2"><a href="using-generative-ai-to-code.html#cb2-2" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="using-generative-ai-to-code.html#cb2-3" tabindex="-1"></a><span class="co">[</span><span class="ot">One or two sentences: what study this is, and what this repo does.</span><span class="co">]</span></span>
@@ -883,47 +730,44 @@ a committed, shared file.</p>
 <span id="cb2-14"><a href="using-generative-ai-to-code.html#cb2-14" tabindex="-1"></a>  exploratory analyses unless asked.</span>
 <span id="cb2-15"><a href="using-generative-ai-to-code.html#cb2-15" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="using-generative-ai-to-code.html#cb2-16" tabindex="-1"></a><span class="fu">## About this repo</span></span>
-<span id="cb2-17"><a href="using-generative-ai-to-code.html#cb2-17" tabindex="-1"></a><span class="ss">- </span>Analyses are written in R and Quarto. [Describe the folder</span>
-<span id="cb2-18"><a href="using-generative-ai-to-code.html#cb2-18" tabindex="-1"></a>  structure, e.g.: scripts run in order from <span class="in">`1-data-cleaning/`</span> to</span>
-<span id="cb2-19"><a href="using-generative-ai-to-code.html#cb2-19" tabindex="-1"></a>  <span class="in">`3-figures-tables/`</span>; shared functions live in <span class="in">`0-functions/`</span>.]</span>
-<span id="cb2-20"><a href="using-generative-ai-to-code.html#cb2-20" tabindex="-1"></a><span class="ss">- </span>[How to run the pipeline: config file, renv, run order, where</span>
-<span id="cb2-21"><a href="using-generative-ai-to-code.html#cb2-21" tabindex="-1"></a>  outputs go. Note any scripts too expensive to run casually.]</span>
-<span id="cb2-22"><a href="using-generative-ai-to-code.html#cb2-22" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="using-generative-ai-to-code.html#cb2-23" tabindex="-1"></a><span class="fu">## Data</span></span>
-<span id="cb2-24"><a href="using-generative-ai-to-code.html#cb2-24" tabindex="-1"></a><span class="ss">- </span>Raw data lives on Box, outside this repo, and is off-limits to you:</span>
-<span id="cb2-25"><a href="using-generative-ai-to-code.html#cb2-25" tabindex="-1"></a>  never read, edit, or delete anything in a raw-data folder.</span>
-<span id="cb2-26"><a href="using-generative-ai-to-code.html#cb2-26" tabindex="-1"></a><span class="ss">- </span>Scripts you write may read raw data when they run, but must not</span>
-<span id="cb2-27"><a href="using-generative-ai-to-code.html#cb2-27" tabindex="-1"></a>  print row-level data to the console — no <span class="in">`head()`</span>, <span class="in">`print()`</span>, or</span>
-<span id="cb2-28"><a href="using-generative-ai-to-code.html#cb2-28" tabindex="-1"></a>  <span class="in">`View()`</span> on identifiable datasets.</span>
-<span id="cb2-29"><a href="using-generative-ai-to-code.html#cb2-29" tabindex="-1"></a><span class="ss">- </span>Prefer de-identified or synthetic data during code development.</span>
-<span id="cb2-30"><a href="using-generative-ai-to-code.html#cb2-30" tabindex="-1"></a><span class="ss">- </span>The codebook / data dictionary is at [path to de-identified</span>
-<span id="cb2-31"><a href="using-generative-ai-to-code.html#cb2-31" tabindex="-1"></a>  codebook in repo].</span>
-<span id="cb2-32"><a href="using-generative-ai-to-code.html#cb2-32" tabindex="-1"></a><span class="ss">- </span>[Known dataset gotchas: date formats, site codes, sentinel values</span>
-<span id="cb2-33"><a href="using-generative-ai-to-code.html#cb2-33" tabindex="-1"></a>  like -9 for missing, variables recoded mid-study.]</span>
-<span id="cb2-34"><a href="using-generative-ai-to-code.html#cb2-34" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="using-generative-ai-to-code.html#cb2-35" tabindex="-1"></a><span class="fu">## Conventions</span></span>
-<span id="cb2-36"><a href="using-generative-ai-to-code.html#cb2-36" tabindex="-1"></a><span class="ss">- </span>[Statistical conventions: preferred packages, how missing data are</span>
-<span id="cb2-37"><a href="using-generative-ai-to-code.html#cb2-37" tabindex="-1"></a>  handled, survey weights or robust/clustered SEs, etc.]</span>
-<span id="cb2-38"><a href="using-generative-ai-to-code.html#cb2-38" tabindex="-1"></a><span class="ss">- </span>Follow the lab coding style guide</span>
-<span id="cb2-39"><a href="using-generative-ai-to-code.html#cb2-39" tabindex="-1"></a>  (https://jadebc.github.io/lab-manual/coding-style.html).</span>
-<span id="cb2-40"><a href="using-generative-ai-to-code.html#cb2-40" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="using-generative-ai-to-code.html#cb2-41" tabindex="-1"></a><span class="fu">## How we work</span></span>
-<span id="cb2-42"><a href="using-generative-ai-to-code.html#cb2-42" tabindex="-1"></a><span class="ss">- </span>This is research code: correctness matters more than speed.</span>
-<span id="cb2-43"><a href="using-generative-ai-to-code.html#cb2-43" tabindex="-1"></a><span class="ss">- </span>Analytical decisions — model choice, variable definitions, handling</span>
-<span id="cb2-44"><a href="using-generative-ai-to-code.html#cb2-44" tabindex="-1"></a>  of edge cases — go to a human. Say what you are unsure about rather</span>
-<span id="cb2-45"><a href="using-generative-ai-to-code.html#cb2-45" tabindex="-1"></a>  than picking silently.</span>
-<span id="cb2-46"><a href="using-generative-ai-to-code.html#cb2-46" tabindex="-1"></a><span class="ss">- </span>Humans run all git commits, pushes, merges, and rebases — never run</span>
-<span id="cb2-47"><a href="using-generative-ai-to-code.html#cb2-47" tabindex="-1"></a>  these yourself. You may draft commit messages and explain diffs.</span>
-<span id="cb2-48"><a href="using-generative-ai-to-code.html#cb2-48" tabindex="-1"></a><span class="ss">- </span>Enforced permissions are in <span class="in">`.claude/settings.json`</span>; do not suggest</span>
-<span id="cb2-49"><a href="using-generative-ai-to-code.html#cb2-49" tabindex="-1"></a>  changing or working around them.</span></code></pre></div>
+<span id="cb2-17"><a href="using-generative-ai-to-code.html#cb2-17" tabindex="-1"></a><span class="ss">- </span>Print ANTHROPIC_BASE_URL at the start of each session, and flag any session where it is not equal to <span class="in">`https://aiapi-prod.stanford.edu`</span> (the Stanford AI API Gateway).</span>
+<span id="cb2-18"><a href="using-generative-ai-to-code.html#cb2-18" tabindex="-1"></a><span class="ss">- </span>Analyses are written in R and Quarto. [Describe the folder</span>
+<span id="cb2-19"><a href="using-generative-ai-to-code.html#cb2-19" tabindex="-1"></a>  structure, e.g.: scripts run in order from <span class="in">`1-data-cleaning/`</span> to</span>
+<span id="cb2-20"><a href="using-generative-ai-to-code.html#cb2-20" tabindex="-1"></a>  <span class="in">`3-figures-tables/`</span>; shared functions live in <span class="in">`0-functions/`</span>.]</span>
+<span id="cb2-21"><a href="using-generative-ai-to-code.html#cb2-21" tabindex="-1"></a><span class="ss">- </span>[How to run the pipeline: config file, renv, run order, where</span>
+<span id="cb2-22"><a href="using-generative-ai-to-code.html#cb2-22" tabindex="-1"></a>  outputs go. Note any scripts too expensive to run casually.]</span>
+<span id="cb2-23"><a href="using-generative-ai-to-code.html#cb2-23" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="using-generative-ai-to-code.html#cb2-24" tabindex="-1"></a><span class="fu">## Data</span></span>
+<span id="cb2-25"><a href="using-generative-ai-to-code.html#cb2-25" tabindex="-1"></a><span class="ss">- </span>Raw data lives on Box, outside this repo, and is off-limits to you:</span>
+<span id="cb2-26"><a href="using-generative-ai-to-code.html#cb2-26" tabindex="-1"></a>  never read, edit, or delete anything in a raw-data folder.</span>
+<span id="cb2-27"><a href="using-generative-ai-to-code.html#cb2-27" tabindex="-1"></a><span class="ss">- </span>Scripts you write may read raw data when they run, but must not</span>
+<span id="cb2-28"><a href="using-generative-ai-to-code.html#cb2-28" tabindex="-1"></a>  print row-level data to the console — no <span class="in">`head()`</span>, <span class="in">`print()`</span>, or</span>
+<span id="cb2-29"><a href="using-generative-ai-to-code.html#cb2-29" tabindex="-1"></a>  <span class="in">`View()`</span> on identifiable datasets.</span>
+<span id="cb2-30"><a href="using-generative-ai-to-code.html#cb2-30" tabindex="-1"></a><span class="ss">- </span>Prefer de-identified or synthetic data during code development.</span>
+<span id="cb2-31"><a href="using-generative-ai-to-code.html#cb2-31" tabindex="-1"></a><span class="ss">- </span>The codebook / data dictionary is at [path to de-identified</span>
+<span id="cb2-32"><a href="using-generative-ai-to-code.html#cb2-32" tabindex="-1"></a>  codebook in repo].</span>
+<span id="cb2-33"><a href="using-generative-ai-to-code.html#cb2-33" tabindex="-1"></a><span class="ss">- </span>[Known dataset gotchas: date formats, site codes, sentinel values</span>
+<span id="cb2-34"><a href="using-generative-ai-to-code.html#cb2-34" tabindex="-1"></a>  like -9 for missing, variables recoded mid-study.]</span>
+<span id="cb2-35"><a href="using-generative-ai-to-code.html#cb2-35" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="using-generative-ai-to-code.html#cb2-36" tabindex="-1"></a><span class="fu">## Conventions</span></span>
+<span id="cb2-37"><a href="using-generative-ai-to-code.html#cb2-37" tabindex="-1"></a><span class="ss">- </span>[Statistical conventions: preferred packages, how missing data are</span>
+<span id="cb2-38"><a href="using-generative-ai-to-code.html#cb2-38" tabindex="-1"></a>  handled, survey weights or robust/clustered SEs, etc.]</span>
+<span id="cb2-39"><a href="using-generative-ai-to-code.html#cb2-39" tabindex="-1"></a><span class="ss">- </span>Follow the lab coding style guide</span>
+<span id="cb2-40"><a href="using-generative-ai-to-code.html#cb2-40" tabindex="-1"></a>  (https://jadebc.github.io/lab-manual/coding-style.html).</span>
+<span id="cb2-41"><a href="using-generative-ai-to-code.html#cb2-41" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="using-generative-ai-to-code.html#cb2-42" tabindex="-1"></a><span class="fu">## How we work</span></span>
+<span id="cb2-43"><a href="using-generative-ai-to-code.html#cb2-43" tabindex="-1"></a><span class="ss">- </span>This is research code: correctness matters more than speed.</span>
+<span id="cb2-44"><a href="using-generative-ai-to-code.html#cb2-44" tabindex="-1"></a><span class="ss">- </span>Analytical decisions — model choice, variable definitions, handling</span>
+<span id="cb2-45"><a href="using-generative-ai-to-code.html#cb2-45" tabindex="-1"></a>  of edge cases — go to a human. Say what you are unsure about rather</span>
+<span id="cb2-46"><a href="using-generative-ai-to-code.html#cb2-46" tabindex="-1"></a>  than picking silently.</span>
+<span id="cb2-47"><a href="using-generative-ai-to-code.html#cb2-47" tabindex="-1"></a><span class="ss">- </span>Humans run all git commits, pushes, merges, and rebases — never run</span>
+<span id="cb2-48"><a href="using-generative-ai-to-code.html#cb2-48" tabindex="-1"></a>  these yourself. You may draft commit messages and explain diffs.</span>
+<span id="cb2-49"><a href="using-generative-ai-to-code.html#cb2-49" tabindex="-1"></a><span class="ss">- </span>Enforced permissions are in <span class="in">`.claude/settings.json`</span>; do not suggest</span>
+<span id="cb2-50"><a href="using-generative-ai-to-code.html#cb2-50" tabindex="-1"></a>  changing or working around them.</span></code></pre></div>
 </div>
-<div id="template-personal-settings-file" class="section level3 hasAnchor" number="6.4.5">
-<h3><span class="header-section-number">6.4.5</span> Template: Personal settings file<a href="using-generative-ai-to-code.html#template-personal-settings-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Save this <code>~/.claude/settings.json</code> in your home folder. This file protects <strong>raw datasets stored in your local Box folder</strong>.
-Raw data locations are project-specific, so this file must be updated
-<strong>every time you get access to a new raw dataset</strong>: add a set of three
-<code>deny</code> lines (<code>Read</code>, <code>Edit</code>, <code>Write</code>) pointing at that dataset’s
-folder in Box, as in this example with two datasets:</p>
+<div id="template-personal-settings-file" class="section level3 hasAnchor" number="6.4.4">
+<h3><span class="header-section-number">6.4.4</span> Template: Personal settings file<a href="using-generative-ai-to-code.html#template-personal-settings-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Save this <code>~/.claude/settings.json</code> in your home folder. This file protects <strong>raw datasets stored in your local Box folder</strong>. Raw data locations are project-specific, so this file must be updated <strong>every time you get access to a new raw dataset</strong>: add a set of three <code>deny</code> lines (<code>Read</code>, <code>Edit</code>, <code>Write</code>) pointing at that dataset’s folder in Box, as in this example with two datasets:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="using-generative-ai-to-code.html#cb3-1" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb3-2"><a href="using-generative-ai-to-code.html#cb3-2" tabindex="-1"></a>  <span class="dt">&quot;permissions&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
 <span id="cb3-3"><a href="using-generative-ai-to-code.html#cb3-3" tabindex="-1"></a>    <span class="dt">&quot;deny&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
@@ -958,18 +802,9 @@ folder in Box, as in this example with two datasets:</p>
 </tr>
 </tbody>
 </table>
-<p>⚠️ <strong>The paths shown are placeholders</strong> — replace them with the real
-local Box paths on <em>your</em> computer (see the checklist below). A
-path-based deny rule only protects the exact path it names; if the path
-doesn’t match where the data actually live, the rule silently protects
-nothing.</p>
-<p>Why doesn’t this cover all of Box? Box also holds plenty of
-non-sensitive material — manuscripts, admin files, derived datasets —
-that we <em>do</em> want Claude to be able to read and edit when asked. The
-deny rules draw the line exactly around the raw datasets.</p>
-<p>Note these rules block <em>Claude’s own</em> file access, not the programs it
-runs: R scripts that Claude writes and executes can still read raw
-data normally (see “For data protection” under Best practices below).</p>
+<p>⚠️ <strong>The paths shown are placeholders</strong> — replace them with the real local Box paths on <em>your</em> computer (see the checklist below). A path-based deny rule only protects the exact path it names; if the path doesn’t match where the data actually live, the rule silently protects nothing.</p>
+<p>Why doesn’t this cover all of Box? Box also holds plenty of non-sensitive material — manuscripts, admin files, derived datasets — that we <em>do</em> want Claude to be able to read and edit when asked. The deny rules draw the line exactly around the raw datasets.</p>
+<p>Note these rules block <em>Claude’s own</em> file access, not the programs it runs: R scripts that Claude writes and executes can still read raw data normally (see “For data protection” under Best practices below).</p>
 <p><strong>What this means for deleting files — in plain terms:</strong></p>
 <ul>
 <li>Claude <strong>can delete an individual file, but only after asking you</strong> and receiving your explicit permission for that specific command (<code>rm</code> is in the <code>ask</code> list of the shared project file).</li>
@@ -978,100 +813,46 @@ data normally (see “For data protection” under Best practices below).</p>
 <li>The rest of Box (manuscripts, admin files, derived data) stays readable and editable by Claude, subject to the normal ask-first prompts.</li>
 </ul>
 </div>
-<div id="setup-checklist" class="section level3 hasAnchor" number="6.4.6">
-<h3><span class="header-section-number">6.4.6</span> Setup checklist<a href="using-generative-ai-to-code.html#setup-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="setup-checklist" class="section level3 hasAnchor" number="6.4.5">
+<h3><span class="header-section-number">6.4.5</span> Setup checklist<a href="using-generative-ai-to-code.html#setup-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Once per computer:</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" /><strong>Create your personal settings file <code>~/.claude/settings.json</code></strong> in your home folder with the
-<code>permissions</code>/<code>deny</code> structure shown in the personal-file template
-above (start with an empty <code>deny</code> list if you don’t have raw data
-access yet).</label></li>
+<li><label><input type="checkbox" /><strong>Create your personal settings file <code>~/.claude/settings.json</code></strong> in your home folder with the <code>permissions</code>/<code>deny</code> structure shown in the personal-file template above (start with an empty <code>deny</code> list if you don’t have raw data access yet).</label></li>
 </ul>
 <p><strong>Every time you get access to a new raw dataset:</strong></p>
 <ul class="task-list">
-<li><p><label><input type="checkbox" /><strong>Add three <code>deny</code> lines to your personal settings file for that dataset’s Box folder</strong> to your
-personal <code>~/.claude/settings.json</code>. To find the path:</label></p>
+<li><p><label><input type="checkbox" /><strong>Add three <code>deny</code> lines to your personal settings file for that dataset’s Box folder</strong> to your personal <code>~/.claude/settings.json</code>. To find the path:</label></p>
 <ol style="list-style-type: decimal">
-<li>Open the dataset’s raw-data folder in Finder (Mac) or File
-Explorer (Windows).</li>
-<li>Copy the folder’s full path (Mac: right-click the folder, hold
-<strong>Option</strong>, and choose “Copy … as Pathname”; Windows: click the
-address bar). On a Mac with Box Drive this is usually
-<code>~/Library/CloudStorage/Box-Box/&lt;folder name&gt;</code> (or <code>~/Box/&lt;folder name&gt;</code> on older installs); on Windows it is usually
-<code>C:\Users\&lt;you&gt;\Box\&lt;folder name&gt;</code>.</li>
-<li>Add that path, followed by <code>/**</code>, in a <code>Read</code>, an <code>Edit</code>, and a
-<code>Write</code> line in the <code>deny</code> list.</li>
+<li>Open the dataset’s raw-data folder in Finder (Mac) or File Explorer (Windows).</li>
+<li>Copy the folder’s full path (Mac: right-click the folder, hold <strong>Option</strong>, and choose “Copy … as Pathname”; Windows: click the address bar). On a Mac with Box Drive this is usually <code>~/Library/CloudStorage/Box-Box/&lt;folder name&gt;</code> (or <code>~/Box/&lt;folder name&gt;</code> on older installs); on Windows it is usually <code>C:\Users\&lt;you&gt;\Box\&lt;folder name&gt;</code>.</li>
+<li>Add that path, followed by <code>/**</code>, in a <code>Read</code>, an <code>Edit</code>, and a <code>Write</code> line in the <code>deny</code> list.</li>
 </ol>
 <blockquote>
-<p>⚠️ This step matters more than it might look — if the path doesn’t
-match where the data actually live on your computer, the deny rule
-silently protects nothing. Do this <em>before</em> pointing Claude Code at
-any work involving that dataset.</p>
+<p>⚠️ This step matters more than it might look — if the path doesn’t match where the data actually live on your computer, the deny rule silently protects nothing. Do this <em>before</em> pointing Claude Code at any work involving that dataset.</p>
 </blockquote></li>
 </ul>
 <p><strong>Once per project repo (tailor the shared templates):</strong></p>
 <ul class="task-list">
-<li><p><label><input type="checkbox" /><strong>Add <code>.claude/settings.json</code></strong> in the repo’s root folder, copied
-from the shared settings template above, and commit it so everyone
-on the project gets the same rules. Fill in any placeholders (e.g., for intensive scripts).</label></p></li>
-<li><p><label><input type="checkbox" /><strong>Add a <code>CLAUDE.md</code></strong> from the template above: fill in the
-project name, repo structure, and how to run the pipeline; keep the
-data and git sections as written.</label></p></li>
-<li><p><label><input type="checkbox" /><strong>Check whether the project needs additional <code>allow</code> tools</strong> Does
-the project need to list tools in <code>allow</code> other than <code>git</code>, <code>Rscript</code>,
-<code>python</code>, and <code>python3</code>? If so, modify this section.</label></p></li>
+<li><p><label><input type="checkbox" /><strong>Add <code>.claude/settings.json</code></strong> in the repo’s root folder, copied from the shared settings template above, and commit it so everyone on the project gets the same rules. Fill in any placeholders (e.g., for intensive scripts).</label></p></li>
+<li><p><label><input type="checkbox" /><strong>Add a <code>CLAUDE.md</code></strong> from the template above: fill in the project name, repo structure, and how to run the pipeline; keep the data and git sections as written.</label></p></li>
+<li><p><label><input type="checkbox" /><strong>Check whether the project needs additional <code>allow</code> tools</strong> Does the project need to list tools in <code>allow</code> other than <code>git</code>, <code>Rscript</code>, <code>python</code>, and <code>python3</code>? If so, modify this section.</label></p></li>
 </ul>
 </div>
 </div>
 <div id="understanding-agentic-ai-permission-prompts" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> Understanding agentic AI permission prompts<a href="using-generative-ai-to-code.html#understanding-agentic-ai-permission-prompts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><em>Note: the following is based on Claude Code, but other agentic coding
-tools have similar permission prompts.</em></p>
-<p>The prompt and approval interface differs depending on whether you’re
-working in a terminal or a GUI/editor-based tool, but the underlying
-pattern is the same:</p>
+<p><em>Note: the following is based on Claude Code, but other agentic coding tools have similar permission prompts.</em></p>
+<p>The prompt and approval interface differs depending on whether you’re working in a terminal or a GUI/editor-based tool, but the underlying pattern is the same:</p>
 <ul>
-<li><p><strong>AI’s own plain-English summary</strong> of the action, not a guarantee of
-what the command actually does. It’s usually accurate, but it can omit
-exactly the detail — a hardcoded file path, a write to an unexpected
-directory — that matters for review. Read the actual command or diff
-underneath, not just the summary.
-<img src="assets/images/claude-code-render-qmd.png" /></p></li>
-<li><p><strong>Long commands or file paths that are often truncated.</strong> Claude Code
-may write a snippet of code and ask you for permission to run it, but
-it might not be in your project’s language, and often these code
-snippets are not saved in your repository at all. For example, if
-you’re working in an R codebase and ask it to double-check a
-calculation or validate an assumption, it might quietly reach for
-Python — writing a small throwaway script to cross-check the logic,
-run it, read the output, and then report back to you in English. That
-scratch script often never gets saved as a file you’d see in a pull
-request; it’s more like a post-it note the AI wrote to itself, used
-once, and threw away. The problem is that if you don’t read Python,
-you have no way to actually verify what that post-it note said or did
-— you’re not reviewing the check, you’re reviewing Claude’s summary of
-the check. That might be perfectly fine for something low-stakes, but
-for a step that’s supposed to be your safeguard against a subtle
-analytic error, it’s worth pausing on: if you can’t read the language
-a verification was written in, you aren’t really approving the
-verification — you’re approving a description of it, written by the
-same tool whose work it’s supposed to be checking.</p></li>
+<li><p><strong>AI’s own plain-English summary</strong> of the action, not a guarantee of what the command actually does. It’s usually accurate, but it can omit exactly the detail — a hardcoded file path, a write to an unexpected directory — that matters for review. Read the actual command or diff underneath, not just the summary. <img src="assets/images/claude-code-render-qmd.png" /></p></li>
+<li><p><strong>Long commands or file paths that are often truncated.</strong> Claude Code may write a snippet of code and ask you for permission to run it, but it might not be in your project’s language, and often these code snippets are not saved in your repository at all. For example, if you’re working in an R codebase and ask it to double-check a calculation or validate an assumption, it might quietly reach for Python — writing a small throwaway script to cross-check the logic, run it, read the output, and then report back to you in English. That scratch script often never gets saved as a file you’d see in a pull request; it’s more like a post-it note the AI wrote to itself, used once, and threw away. The problem is that if you don’t read Python, you have no way to actually verify what that post-it note said or did — you’re not reviewing the check, you’re reviewing Claude’s summary of the check. That might be perfectly fine for something low-stakes, but for a step that’s supposed to be your safeguard against a subtle analytic error, it’s worth pausing on: if you can’t read the language a verification was written in, you aren’t really approving the verification — you’re approving a description of it, written by the same tool whose work it’s supposed to be checking.</p></li>
 </ul>
-<p>Here’s an example from a code base entirely written in R, where Claude
-Code asked for permission to check for duplicates using a “post-it” note
-in Python.</p>
+<p>Here’s an example from a code base entirely written in R, where Claude Code asked for permission to check for duplicates using a “post-it” note in Python.</p>
 <p><img src="assets/images/claude-code-other-language.png" /></p>
 <ul>
-<li><strong>“Always allow” sits right next to the one-time approval</strong>, in the
-terminal as option 2 of 3, and in the GUI as a persistent button with
-its own keyboard shortcut. It’s one keystroke away from a single-use
-approval, which is exactly what makes reflexive over-granting easy,
-especially late in a long session.</li>
+<li><strong>“Always allow” sits right next to the one-time approval</strong>, in the terminal as option 2 of 3, and in the GUI as a persistent button with its own keyboard shortcut. It’s one keystroke away from a single-use approval, which is exactly what makes reflexive over-granting easy, especially late in a long session.</li>
 </ul>
-<p>When Claude Code (or a similar AI coding assistant) asks for permission
-to run a command, recognizing the command itself — not just reading the
-plain-English gloss above it — is the fastest way to know what you’re
-actually approving. The tables below are organized by risk level.</p>
+<p>When Claude Code (or a similar AI coding assistant) asks for permission to run a command, recognizing the command itself — not just reading the plain-English gloss above it — is the fastest way to know what you’re actually approving. The tables below are organized by risk level.</p>
 <!-- | **Low-risk commands **|   || -->
 <!-- |---|---|---| -->
 <!-- | Command | What it does | Why it matters| -->
@@ -1320,79 +1101,38 @@ May set API keys/credentials — check what’s exported
 <div id="for-learning-and-skill-development" class="section level3 hasAnchor" number="6.6.1">
 <h3><span class="header-section-number">6.6.1</span> For learning and skill development<a href="using-generative-ai-to-code.html#for-learning-and-skill-development" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><strong>Spend meaningful time writing core analysis code by hand</strong> before
-leaning on agentic tools for that same type of task — e.g., write your
-first TMLE or IPW pipeline yourself before asking an AI tool to
-generate one.</li>
-<li>When using an AI tool for a task you’re still learning, <strong>ask it to
-explain its reasoning</strong>, not just produce output. Treat it as a tutor
-for code you then re-derive yourself, not a black box.</li>
-<li>Before fully letting agentic AI write a script for you, try writing
-out detailed pseudo-code – aka, <strong>a step-by-step plan for what the
-code should do</strong>. Then ask the AI to implement that plan, and check
-that it actually does what you intended.</li>
+<li><strong>Spend meaningful time writing core analysis code by hand</strong> before leaning on agentic tools for that same type of task — e.g., write your first TMLE or IPW pipeline yourself before asking an AI tool to generate one.</li>
+<li>When using an AI tool for a task you’re still learning, <strong>ask it to explain its reasoning</strong>, not just produce output. Treat it as a tutor for code you then re-derive yourself, not a black box.</li>
+<li>Before fully letting agentic AI write a script for you, try writing out detailed pseudo-code – aka, <strong>a step-by-step plan for what the code should do</strong>. Then ask the AI to implement that plan, and check that it actually does what you intended.</li>
 </ul>
 </div>
 <div id="for-research-accuracy" class="section level3 hasAnchor" number="6.6.2">
 <h3><span class="header-section-number">6.6.2</span> For research accuracy<a href="using-generative-ai-to-code.html#for-research-accuracy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><p><strong>Match AI use to familiarity.</strong> Use these tools most freely for
-boilerplate, refactoring, and workflows you already know well.
-Increase manual scrutiny — or avoid heavy AI use — for new datasets,
-unfamiliar methods, or unfamiliar computational environments.</p></li>
-<li><p><strong>Use unit tests</strong> for AI-assisted
-analysis code, especially for anything going into a manuscript or
-grant deliverable. Ideally, you write these, not an agent, and you
-confirm the tests actually check the right things. <em>Learn more in the
-chapter: Data validation and unit testing in Chapter</em>
-<a href="data-validation.html#data-validation">12</a><em>.</em></p></li>
-<li><p><strong>Spot-check intermediate outputs</strong>, not just final results — row
-counts after joins/merges, variable distributions before and after
-recoding, and sample sizes at each analytic step.</p></li>
-<li><p><strong>Set up automated logging</strong> to track what files agents have edited.
-Read about it
-<a href="https://dev.to/boucle2026/how-to-see-everything-claude-code-does-audit-trail-hook-1g9j">here</a>.</p></li>
-<li><p><strong>Perform independent replication</strong> for key analyses: have a second team
-member reproduce a critical result from raw data, ideally without
-heavy reliance on the same AI-generated code path. In the kind of
-research we do, the code most likely to lead to a lack of replication
-arises during data processing, i.e., converting survey data to the
-form needed for analyses. Two reasonable people or agents could make
-different assumptions, none of which are wrong, that result in
-different data. Replication brings these differences to light and
-allows them to be transparently reconciled. Learn more
-<a href="https://gatesopenresearch-files.f1000.com/manuscripts/14274/333a74aa-51bb-44a9-af2b-209f67c2c425_13108_-_jade_benjamin-chung.pdf?doi=10.12688/gatesopenres.13108.1&amp;gtmKey=GTM-MWFK8L5J&amp;gtmAuth=hzk0Vc3qFsQYhCrIoHz68A&amp;gtmPreview=env-1&amp;immUserUrl=https%3A%2F%2Fgates-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F&amp;otid=275477bf-f17b-474f-befe-635d8fa9661a&amp;s3BucketUrl=https%3A%2F%2Fgatesopenresearch-files.f1000.com&amp;submissionUrl=%2Ffor-authors%2Fpublish-your-research&amp;transcendEnv=cm&amp;transcendId=ef49a3f1-d8c1-47d6-88fc-50e41130631f&amp;numberOfBrowsableCollections=5&amp;numberOfBrowsableInstitutionalCollections=0&amp;numberOfBrowsableGateways=14">here</a>.</p></li>
+<li><p><strong>Match AI use to familiarity.</strong> Use these tools most freely for boilerplate, refactoring, and workflows you already know well. Increase manual scrutiny — or avoid heavy AI use — for new datasets, unfamiliar methods, or unfamiliar computational environments.</p></li>
+<li><p><strong>Use unit tests</strong> for AI-assisted analysis code, especially for anything going into a manuscript or grant deliverable. Ideally, you write these, not an agent, and you confirm the tests actually check the right things. <em>Learn more in the chapter: Data validation and unit testing in Chapter</em> <a href="data-validation.html#data-validation">12</a><em>.</em></p></li>
+<li><p><strong>Spot-check intermediate outputs</strong>, not just final results — row counts after joins/merges, variable distributions before and after recoding, and sample sizes at each analytic step.</p></li>
+<li><p><strong>Set up automated logging</strong> to track what files agents have edited. Read about it <a href="https://dev.to/boucle2026/how-to-see-everything-claude-code-does-audit-trail-hook-1g9j">here</a>.</p></li>
+<li><p><strong>Perform independent replication</strong> for key analyses: have a second team member reproduce a critical result from raw data, ideally without heavy reliance on the same AI-generated code path. In the kind of research we do, the code most likely to lead to a lack of replication arises during data processing, i.e., converting survey data to the form needed for analyses. Two reasonable people or agents could make different assumptions, none of which are wrong, that result in different data. Replication brings these differences to light and allows them to be transparently reconciled. Learn more <a href="https://gatesopenresearch-files.f1000.com/manuscripts/14274/333a74aa-51bb-44a9-af2b-209f67c2c425_13108_-_jade_benjamin-chung.pdf?doi=10.12688/gatesopenres.13108.1&amp;gtmKey=GTM-MWFK8L5J&amp;gtmAuth=hzk0Vc3qFsQYhCrIoHz68A&amp;gtmPreview=env-1&amp;immUserUrl=https%3A%2F%2Fgates-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F&amp;otid=275477bf-f17b-474f-befe-635d8fa9661a&amp;s3BucketUrl=https%3A%2F%2Fgatesopenresearch-files.f1000.com&amp;submissionUrl=%2Ffor-authors%2Fpublish-your-research&amp;transcendEnv=cm&amp;transcendId=ef49a3f1-d8c1-47d6-88fc-50e41130631f&amp;numberOfBrowsableCollections=5&amp;numberOfBrowsableInstitutionalCollections=0&amp;numberOfBrowsableGateways=14">here</a>.</p></li>
 <li><p><strong>Practice password safety</strong>: Don’t put passwords, SSH keys, or API tokens in any file that an AI tool can read. Don’t paste passwords or keys into code or notebooks. Don’t leave credential files (like SSH keys) in folders that an AI coding tool has access to. <strong>Keep passwords and keys in a password manager, not in your files</strong>.</p></li>
 </ul>
 </div>
 <div id="for-data-protection" class="section level3 hasAnchor" number="6.6.3">
 <h3><span class="header-section-number">6.6.3</span> For data protection<a href="using-generative-ai-to-code.html#for-data-protection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><strong>Ensure your datasets are backed up</strong> in locations that cannot be
-accessed by agentic AI tools to prevent accidentally overwriting or
-deleting data.</li>
-<li><strong>Never point an AI coding tool at a directory containing raw
-participant-level data</strong> unless you have specifically confirmed this
-is permitted under the relevant IRB protocol and data use agreement —
-and ideally, work with de-identified or synthetic data during code
-development, applying finished code to real data only in a controlled
-step.</li>
-<li><strong>Read permission prompts before approving them</strong>, especially requests
-to access the network, install packages, or read/write outside the
-current project folder.</li>
+<li><strong>Ensure your datasets are backed up</strong> in locations that cannot be accessed by agentic AI tools to prevent accidentally overwriting or deleting data.</li>
+<li><strong>Never point an AI coding tool at a directory containing raw participant-level data</strong> unless you have specifically confirmed this is permitted under the relevant IRB protocol and data use agreement. Work with de-identified or synthetic data during code development, applying finished code to real data only in a controlled step.</li>
+<li><strong>Read permission prompts before approving them</strong>, especially requests to access the network, install packages, or read/write outside the current project folder.</li>
 <li><strong>Use project-level permission scoping</strong> instead of granting broad or session-wide access. This is why our lab uses a shared <code>.claude/settings.json</code> (allow-listing specific directories and commands, mode set to default), with personal settings reserved for <em>adding</em> raw-data <code>deny</code> rules only (see above). Don’t work around the shared file with a personal <code>settings.local.json</code> or broader access than the project file grants.</li>
 </ul>
-<p><strong>When in doubt about whether a workflow is compliant, ask Jade before
-proceeding.</strong></p>
+<p><strong>When in doubt about whether a workflow is compliant, ask Jade before proceeding.</strong></p>
 </div>
 </div>
 <div id="disclosing-use-of-generative-ai-in-research" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> Disclosing use of generative AI in research<a href="using-generative-ai-to-code.html#disclosing-use-of-generative-ai-in-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lab members must disclose GenAI use in research at four points:</p>
 <ol style="list-style-type: decimal">
-<li>Within the lab, to Jade using the <a href="https://docs.google.com/forms/d/e/1FAIpQLScphiuDTkUXH0RVFFuj-I4KqgmxXP796MfV9mLeQ2uY8k9mgA/viewform?usp=publish-editor">Benjamin-Chung Lab AI Use in
-Research Documentation
-Form</a></li>
+<li>Within the lab, to Jade using the <a href="https://docs.google.com/forms/d/e/1FAIpQLScphiuDTkUXH0RVFFuj-I4KqgmxXP796MfV9mLeQ2uY8k9mgA/viewform?usp=publish-editor">Benjamin-Chung Lab AI Use in Research Documentation Form</a></li>
 <li>To collaborators, whenever their data or materials are involved</li>
 <li>To journals, at time of submission (see below)</li>
 <li>To funders, when their policies require it.</li>
@@ -1400,32 +1140,15 @@ Form</a></li>
 </div>
 <div id="know-your-target-journals-ai-policy-before-you-start" class="section level2 hasAnchor" number="6.8">
 <h2><span class="header-section-number">6.8</span> Know your target journal’s AI policy before you start<a href="using-generative-ai-to-code.html#know-your-target-journals-ai-policy-before-you-start" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before you start a project that will be published in a peer-reviewed
-journal, keep in mind that you will likely need to disclose any AI
-assistance in your methods section, acknowledgments, or cover letter.
-Journal policies on AI use vary widely (see table below).</p>
+<p>Before you start a project that will be published in a peer-reviewed journal, keep in mind that you will likely need to disclose any AI assistance in your methods section, acknowledgments, or cover letter. Journal policies on AI use vary widely (see table below).</p>
 <ul>
-<li>Before relying on AI tools for a substantial part of your workflow,
-check the current policy for your intended journal to learn what it
-does and doesn’t cover — a policy permitting AI for language editing
-is not the same as one permitting it for analysis or figure
-generation.</li>
-<li>Document what tools you use throughout the project so you can disclose
-them at the time of journal submission.</li>
-<li>Given how quickly tools are changing, you’ll need to check the policy
-again closer to submission.</li>
+<li>Before relying on AI tools for a substantial part of your workflow, check the current policy for your intended journal to learn what it does and doesn’t cover — a policy permitting AI for language editing is not the same as one permitting it for analysis or figure generation.</li>
+<li>Document what tools you use throughout the project so you can disclose them at the time of journal submission.</li>
+<li>Given how quickly tools are changing, you’ll need to check the policy again closer to submission.</li>
 </ul>
-<p>Here is an example of the type of acknowledgement language you might
-include in a manuscript:</p>
+<p>Here is an example of the type of acknowledgement language you might include in a manuscript:</p>
 <blockquote>
-<p>Claude (Sonnet 4.6, Anthropic) was used for language editing and
-improving clarity of expression. Claude Code (Sonnet 4.6, Anthropic)
-was used to assist with data processing, statistical coding, and
-figure and table generation. All code was reviewed by two independent
-team members to verify accuracy and reproducibility. These tools were
-not used to develop research questions, interpret findings, or draw
-conclusions. The authors take full responsibility for the
-interpretations, conclusions, accuracy, and integrity of the work.</p>
+<p>Claude (Sonnet 4.6, Anthropic) was used for language editing and improving clarity of expression. Claude Code (Sonnet 4.6, Anthropic) was used to assist with data processing, statistical coding, and figure and table generation. All code was reviewed by two independent team members to verify accuracy and reproducibility. These tools were not used to develop research questions, interpret findings, or draw conclusions. The authors take full responsibility for the interpretations, conclusions, accuracy, and integrity of the work.</p>
 </blockquote>
 <p>The following was generated by Claude in July 2026:</p>
 <table class="table table-striped table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1634,11 +1357,7 @@ J. Clin. &amp; Trans. Sci.
 </tr>
 </tbody>
 </table>
-<p><em>Sources: publisher policy pages accessed July 2026 (springernature.com,
-journals.plos.org, elsevier.com, authors-bmj-com, academic.oup.com,
-wiley.com, researcher-resources.acs.org, journals.asm.org, science.org,
-f1000research.com). Cells marked “not located” should be re-checked
-directly before submission — this space is evolving fast.</em></p>
+<p><em>Sources: publisher policy pages accessed July 2026 (springernature.com, journals.plos.org, elsevier.com, authors-bmj-com, academic.oup.com, wiley.com, researcher-resources.acs.org, journals.asm.org, science.org, f1000research.com). Cells marked “not located” should be re-checked directly before submission — this space is evolving fast.</em></p>
 
 </div>
 </div>

@@ -1,9 +1,6 @@
----
+------------------------------------------------------------------------
 
-editor_options: 
-  markdown: 
-    wrap: 72
----
+editor_options: markdown: wrap: 72 ---
 
 # Using generative AI to code
 
@@ -100,7 +97,11 @@ As of June 2026, [Stanford's Approved Connectors for AI Services](https://uit.st
 
 This section covers Claude Code's **permission system**. This guidance won't necessarily work in other agentic tools (Cursor, Codex CLI, OpenCode, etc.), each of which has its own config format and varying hook support. If you're using a different agent, you would need to look up that tool's own permissions/hooks documentation and check with Jade to ensure compliance.
 
-The overarching goal of these permissions is to prevent agents from modifying raw data or interacting with it outside of a secure environment. Any workflows that use high-risk data or files that contain PHI must only use Claude Code through the [Stanford AI API Gateway](https://uit.stanford.edu/service/ai-api-gateway). If you use agentic tools without the AI API Gateway - even if you're using a Stanford Enterprise account - you must make a deidentified copy of the data and remove all PHI before allowing an agent to read it. If PHI is needed for your analyses (ie you need to stratify by age/gender), only retain the minimal set of necessary identifying columns and permute and/or add noise to their values. Once your code is finished, you must manually run the analyses on the original data.
+The overarching goal of these permissions is to prevent agents from modifying raw data or interacting with it outside of a secure environment.
+
+Any workflows that use high-risk data or files that contain PHI must only use Claude Code through the [Stanford AI API Gateway](https://uit.stanford.edu/service/ai-api-gateway). When working with the AI API Gateway, always double check that you are using the correct API key and that your session is routed through the Gateway (check that"ANTHROPIC_BASE_URL" is set to "<https://aiapi-prod.stanford.edu>"). Our template claude.MD file includes a reminder to check this at the start of every session.
+
+If you use agentic tools without the AI API Gateway - even if you're using a Stanford Enterprise account - you must make a deidentified copy of the data and remove all PHI before allowing an agent to read it. If PHI is needed for your analyses (ie you need to stratify by age/gender), only retain the minimal set of necessary identifying columns and permute and/or add noise to their values. Once your code is finished, you must manually run the analyses on the original data.
 
 Claude Code has several permission modes that set the baseline approval behavior for a session. **default mode** requires explicit approval for every action other than reads — every:
 
@@ -160,7 +161,10 @@ Save this `.claude/settings.json` file in each project's root folder and push it
       "Bash(git reset*)",
       "Bash(rm -r*)",
       "Bash(rm -fr*)",
-      "Bash(rmdir *)"
+      "Bash(rmdir *)",
+      "Bash(sbatch:*)",
+      "Bash(srun:*)",
+      "Bash(salloc:*)"
     ],
     "additionalDirectories": []
   }
@@ -201,6 +205,7 @@ Save this `.claude/settings.json` file in each project's root folder and push it
 |------------------------------------|------------------------------------|
 | `Bash(git add*)`, `Bash(git commit*)`, `Bash(git push*)`, `Bash(git merge*)`, `Bash(git rebase*)`, `Bash(git reset*)` | **Humans are responsible for git, not AI.** Lab members must personally write and run their own commits, pushes, merges, rebases, and resets — this keeps the reasoning behind each change with the person responsible for it, and builds the judgment our team needs. Claude can still draft a suggested commit message or explain what changed, but cannot run these commands itself, even with approval. |
 | `Bash(rm -r*)`, `Bash(rm -fr*)`, `Bash(rmdir *)` | Claude can never delete a folder — these block recursive deletes (`rm -r`, `rm -rf`, `rm -fr`) and directory removal (`rmdir`) everywhere, with no option to approve them. Because these are global, they also mean Claude can never delete a folder in your Box folder. |
+| `Bash(sbatch:*)`, `Bash(srun:*)`, `Bash(salloc:*)` | Claude should not submit Slurm jobs to an external cluster (ex Sherlock). If your project needs to run Slurm jobs, you must do so manually. |
 
 **A note on why we don't recommend having AI responsible for Git commit and push:** Though in industry, agents are increasingly performing Git commits on their own, research code differs from software engineering in ways that change how much autonomy is appropriate. In engineering, continuous integration and test suites can verify correctness before a commit lands, and multiple reviewers typically stand between an AI-drafted commit and production. In our lab, the errors that matter most are analytical, not technical — a mishandling of a missing observation, an incorrect ICD-11 code, an inappropriate mediator — and no automated check can catch these. Further, most of our team are mentees still building that judgment, and if an AI agent can commit once a person clicks "approve," the person approving may not yet have the expertise to catch what's wrong. Requiring each person to write and run their own `git commit`/`git push` keeps a deliberate human decision point before any change becomes part of our shared code base and promotes learning.
 
@@ -229,6 +234,7 @@ Two cautions when filling it in. **Keep the whole file to a page or two** — Cl
   exploratory analyses unless asked.
 
 ## About this repo
+- Print ANTHROPIC_BASE_URL at the start of each session, and flag any session where it is not equal to `https://aiapi-prod.stanford.edu` (the Stanford AI API Gateway).
 - Analyses are written in R and Quarto. [Describe the folder
   structure, e.g.: scripts run in order from `1-data-cleaning/` to
   `3-figures-tables/`; shared functions live in `0-functions/`.]

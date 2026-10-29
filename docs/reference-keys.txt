@@ -42,7 +42,6 @@ potential-risks-of-using-generative-ai-in-research
 risk-errors-lead-to-incorrect-scientific-conclusions
 risk-potential-breaches-of-confidentiality-and-irb-data-use-agreement-violations
 configuring-permissions-for-agentic-ai
-permission-modes
 setting-up-permissions
 template-shared-project-settings-file
 template-shared-claude.md-project-file
